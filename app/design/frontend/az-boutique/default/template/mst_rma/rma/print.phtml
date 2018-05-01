@@ -1,0 +1,36 @@
+<?php $rma = $this->getRma() ?>
+<h1><?php echo $this->__('RMA #%s', $rma->getIncrementId()) ?></h1>
+<p class="order-date"><?php echo $this->__('Date: %s', $this->formatDate($rma->getCreatedAt(), 'long')) ?></p>
+<div class="col2-set">
+    <div class="col-1">
+        <h2><?php echo $this->__('Return Address') ?></h2>
+        <address><?php echo $rma->getReturnAddressHtml() ?></address>
+    </div>
+</div>
+<h2><?php echo $this->__('RMA Items') ?></h2>
+<table class="data-table" id="my-orders-table">
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Product Name') ?></th>
+            <th><?php echo $this->__('SKU') ?></th>
+            <th class="a-center"><?php echo $this->__('Qty') ?></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <?php echo $this->getChildHtml('order_totals') ?>
+    </tfoot>
+    <tbody>
+    <?php foreach($rma->getItemCollection() as $item):?>
+        <tr class="border">
+            <td><h3 class="product-name"><?php echo $item->getProduct()->getName() ?></h3></td>
+            <td><?php echo $item->getProduct()->getSku() ?></td>
+            <td class="a-center"><?php echo $item->getQtyRequested() ?></td>
+        </tr>
+    <?php endforeach?>
+    </tbody>
+</table>
+<script type="text/javascript">decorateTable('my-orders-table', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})</script>
+<script type="text/javascript">window.print();</script>

@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MDN_AutoCancelOrder>
+            <version>1.2</version>
+        </MDN_AutoCancelOrder>
+    </modules>
+
+    <global>
+        <helpers>
+            <AutoCancelOrder>
+                <class>MDN_AutoCancelOrder_Helper</class>
+            </AutoCancelOrder>
+        </helpers>
+        <blocks>
+            <AutoCancelOrder>
+                <class>MDN_AutoCancelOrder_Block</class>
+            </AutoCancelOrder>
+        </blocks>
+        
+        <models>
+            <AutoCancelOrder>
+                <class>MDN_AutoCancelOrder_Model</class>
+                <resourceModel>AutoCancelOrder_mysql4</resourceModel>
+            </AutoCancelOrder>
+            
+            <AutoCancelOrder_mysql4>
+                <class>MDN_AutoCancelOrder_Model_Mysql4</class>
+                <entities>
+                    <Log>
+                        <table>auto_cancel_order_log</table>
+                    </Log>
+                </entities>
+            </AutoCancelOrder_mysql4>
+        </models>
+        
+        <resources>
+            <AutoCancelOrder_setup>
+                <setup>
+                    <module>MDN_AutoCancelOrder</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </AutoCancelOrder_setup>
+            <AutoCancelOrder_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </AutoCancelOrder_write>
+            <AutoCancelOrder_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </AutoCancelOrder_read>
+        </resources>
+        
+    </global>
+    
+    <frontend>
+        <routers>
+            <AutoCancelOrder>
+                <use>standard</use>
+                <args>
+                    <module>MDN_AutoCancelOrder</module>
+                    <frontName>AutoCancelOrder</frontName>
+                </args>
+            </AutoCancelOrder>
+        </routers>
+
+        <layout>
+            <updates>
+                <AutoCancelOrder>
+                    <file>AutoCancelOrder.xml</file>
+                </AutoCancelOrder>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <admin>
+        <routers>
+            <AutoCancelOrder>
+                <use>admin</use>
+                <args>
+                    <module>MDN_AutoCancelOrder</module>
+                    <frontName>AutoCancelOrder</frontName>
+                </args>
+            </AutoCancelOrder>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+
+        <translate>
+            <modules>
+                <MDN_AutoCancelOrder>
+                    <files>
+                        <default>MDN_AutoCancelOrder.csv</default>
+                    </files>
+                </MDN_AutoCancelOrder>
+            </modules>
+        </translate>
+
+        <layout>
+            <updates>
+                <AutoCancelOrder>
+                    <file>AutoCancelOrder.xml</file>
+                </AutoCancelOrder>
+            </updates>
+        </layout>
+
+        <menu>
+            <report>
+                <children>
+                    <autocancelorder module="AutoCancelOrder">
+                        <title>Auto Cancel Order</title>
+                        <children>
+                            <view_log translate="title" module="AutoCancelOrder">
+                                <title>Logs</title>
+                                <action>AutoCancelOrder/Admin/showLogs</action>
+                            </view_log>
+                        </children>
+                    </autocancelorder>
+                </children>
+            </report>
+        </menu>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <autocancelorder module="AutoCancelOrder">
+                                            <title>Auto Cancel Order</title>
+                                        </autocancelorder>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        
+    </adminhtml>
+    
+    <default>
+        <autocancelorder>
+            <delay_cancelation>
+                <default>3</default>
+            </delay_cancelation>
+        </autocancelorder>
+    </default>
+     
+    <crontab>
+        <jobs>
+            <auto_cancel_order_cron>
+                <schedule>
+                    <cron_expr>0 */1 * * *</cron_expr>
+              <!--      <cron_expr>* * */1 * *</cron_expr> -->
+                </schedule>
+                <run>
+                    <model>AutoCancelOrder/Observer::ExecuteTasks</model>
+                </run>
+            </auto_cancel_order_cron>
+        </jobs>
+    </crontab>
+
+</config>

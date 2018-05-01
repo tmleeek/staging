@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_RewardsLoyalty>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <TBT_Common/>
+            </depends>
+        </TBT_RewardsLoyalty>
+    </modules>
+</config>

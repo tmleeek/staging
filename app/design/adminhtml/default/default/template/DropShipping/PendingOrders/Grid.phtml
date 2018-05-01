@@ -1,0 +1,27 @@
+<script>
+	function dropShip()
+	{
+		if (confirm('Are you sure ?'))
+			document.getElementById('form_dropshipping').submit();
+	}
+</script>
+
+<div class="entry-edit">
+
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Drop Shipping')?></h3></td>
+            <td align="right">
+	            <button onclick="dropShip();" class="scalable save" type="button"><span><?php echo $this->__('Process')?></span></button>	
+            </td>
+        </tr>
+    </table>
+</div>
+
+<form name="form_dropshipping" id="form_dropshipping" method="POST" action="<?php echo $this->getUrl('DropShipping/Admin/DropShip'); ?>">
+<input id="form_key" name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+	<?php echo $this->getGridParentHtml() ?>
+</form>
+
+</div>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Creative_SearchIndex>
+            <version>1.0.1</version>
+        </Creative_SearchIndex>
+    </modules>
+    <global>
+        <models>
+            <catalogsearch>
+                <rewrite>
+                    <indexer_fulltext>Creative_SearchIndex_Model_Catalogsearch_Indexer_Fulltext</indexer_fulltext>
+                    <fulltext>Creative_SearchIndex_Model_Catalogsearch_Fulltext</fulltext>
+                </rewrite>
+            </catalogsearch>
+            <index>
+                <rewrite>
+                    <process>Creative_SearchIndex_Model_Index_Process</process>
+                </rewrite>
+            </index>
+            <searchindex>
+                <class>Creative_SearchIndex_Model</class>
+                <resourceModel>searchindex_resource</resourceModel>
+            </searchindex>
+        </models>
+    </global>
+</config>

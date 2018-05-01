@@ -1,0 +1,34 @@
+<config>
+    <modules>
+        <CommerceExtensions_Advancedcustomerimportexport>
+            <version>0.1.0</version>
+        </CommerceExtensions_Advancedcustomerimportexport>
+    </modules>   
+    <global>
+        <models>
+            <commerceextensions_advancedcustomerimportexport>
+                <class>CommerceExtensions_Advancedcustomerimportexport_Model</class>
+            </commerceextensions_advancedcustomerimportexport>
+        </models>
+        <resources><!--
+            <advancedcustomerimportexport_setup>
+                <setup>
+                    <module>CommerceExtensions_Advancedcustomerimportexport</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </advancedcustomerimportexport_setup> -->
+            <advancedcustomerimportexport_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </advancedcustomerimportexport_write>
+            <advancedcustomerimportexport_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </advancedcustomerimportexport_read>
+        </resources>
+    </global>
+</config>

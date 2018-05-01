@@ -1,0 +1,10 @@
+<script>
+    MPM_URL_MATCHING_URLS = '<?php echo $this->getUrl('adminhtml/Mpm_Products/postMatchingUrls', array('product_id' => '#product_id#', 'urls' => '#urls#')); ?>';
+</script>
+
+<br /><br />
+Save your matching urls, one url per line.<br />
+<textarea name="urls" id="matching_urls" cols="80" rows="5"><?php echo $this->getUrls(); ?></textarea><br />
+<div id="mpm-success" style="padding:5px; display: none; color: green; font-weight: bold">Changes successfully applied</div>
+<button onclick="return updateMatchingUrls('<?php echo $this->getProduct()->getProductId(); ?>')">Save</button>
+<br /><br />

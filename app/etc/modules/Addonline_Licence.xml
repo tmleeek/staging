@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>       
+	    <Addonline_Licence>
+	        <active>true</active>
+            <codePool>local</codePool>
+	    </Addonline_Licence>  
+    </modules>
+</config>

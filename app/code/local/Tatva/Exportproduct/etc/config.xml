@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Exportproduct>
+            <version>0.1.0</version>
+        </Tatva_Exportproduct>
+    </modules>
+	<global>
+		<helpers>
+            <exportproduct>
+                <class>Tatva_Exportproduct_Helper</class>
+            </exportproduct>
+        </helpers> 
+		<blocks>
+            <exportproduct>
+                <class>Tatva_Exportproduct_Block</class>
+            </exportproduct>
+        </blocks>
+        <models>
+			<exportproduct>
+				<class>Tatva_Exportproduct_Model</class>
+			</exportproduct>
+		</models>
+    </global>
+    <crontab>
+        <jobs>
+            <!--<exportsimpleproduct_az_boutique>
+                <schedule><cron_expr>* 5 * * *</cron_expr></schedule>
+                <run><model>exportproduct/observer::exportsimpleproduct</model></run>
+            </exportsimpleproduct_az_boutique>
+			<exportbundleproduct_az_boutique>
+                <schedule><cron_expr>* 6 * * *</cron_expr></schedule>
+                <run><model>exportproduct/observer::exportbundleproduct</model></run>
+            </exportbundleproduct_az_boutique>
+			<exportenstoreproduct_az_boutique>
+                <schedule><cron_expr>* 7 * * *</cron_expr></schedule>
+                <run><model>exportproduct/observer::exportenstoreproduct</model></run>
+            </exportenstoreproduct_az_boutique>
+			<exportorder_az_boutique>
+                <schedule><cron_expr>* 3 * * *</cron_expr></schedule>
+                <run><model>exportproduct/observer::exportorder</model></run>
+            </exportorder_az_boutique>-->
+			<!--<exportcat_az_boutique>
+                <schedule><cron_expr>* 5 * * *</cron_expr></schedule>
+                <run><model>exportproduct/observer::exportcategory</model></run>
+            </exportcat_az_boutique>-->
+        </jobs>
+    </crontab>
+</config>

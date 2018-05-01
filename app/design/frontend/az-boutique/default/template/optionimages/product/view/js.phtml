@@ -1,0 +1,159 @@
+<script type="text/javascript">
+//<![CDATA[
+
+   var opImagePopup = '';
+
+<?php if(Mage::getStoreConfig('catalog/custom_option_images/popup', Mage::app()->getStore()->getStoreId())): ?>
+    opImagePopup = 'onclick="popWin($(\'option_image_{{id}}\').src, \'gallery\', \'width=300,height=300,left=50,top=50,location=no,status=yes,scrollbars=yes,resizable=yes\'); return false;"';
+<?php endif ?>
+
+
+ var opImageTemplate = 	'<img src="{{url}}" id="option_image_{{id}}" width="100" style="display:none;" alt="" ' + opImagePopup + ' />';
+
+
+
+	OptionImages = Class.create();
+	OptionImages.prototype = {
+	old : [],
+	options : [],
+	optionslen : [],
+	spacer : '<?php echo $this->getSkinUrl('images/spacer.gif')?>',
+	images : [],
+	origImage : new Image(),
+	opImageTemplate : opImageTemplate,
+	templatePattern : /(^|.|\r|\n)({{(\w+)}})/,
+	imageTemplate : '',
+	  initialize : function(config){
+			this.config = config;
+		this.imageTemplate = new Template(this.opImageTemplate, this.templatePattern);
+			this.loadImages();
+	  },
+	  loadImages : function(){
+			$$('.product-custom-option').each(function(element){
+				 var optionId = 0;
+				 element.name.sub(/[0-9]+/, function(match){
+					  optionId = match[0];
+				 });
+				if (this.config[optionId]){
+					if (!this.old[optionId]){
+						this.old[optionId] = [];
+						this.images[optionId] = [];
+						isNewOption = true;
+					}
+					 if (element.type == 'radio') {
+						 if (this.config[optionId][element.value]){
+								this.images[optionId][element.value] = new Image();
+								this.images[optionId][element.value].src = this.config[optionId][element.value];
+								if(isNewOption){
+									Element.insert(element.up('dd'), {'top': this.imageTemplate.evaluate({'id' : optionId, 'url' : this.spacer})});
+									isNewOption = false;
+								}
+						}
+						element.observe('click', this.reloadImagesTypeRadio.bind(this,optionId,element.value));
+					} else if (element.type == 'checkbox') {
+						 if (this.config[optionId][element.value]){
+							if(isNewOption){
+								Element.insert(element.up('dd'), {'top': this.imageTemplate.evaluate({'id' : optionId+'_'+element.value, 'url' : this.config[optionId][element.value]})});
+								isNewOption = false;
+							  } else {
+								Element.insert(previousImage, {'after': this.imageTemplate.evaluate({'id' : optionId+'_'+element.value, 'url' : this.config[optionId][element.value]})});
+							 }
+							previousImage = $('option_image_' + optionId + '_' + element.value);
+							element.observe('click', this.reloadImagesTypeCheckbox.bind(this,element,optionId,element.value));
+						}
+					} else if(element.type == 'select-one') {
+						$A(element.options).each(function(selectOption){
+							 if (this.config[optionId][selectOption.value]){
+									this.images[optionId][selectOption.value] = new Image();
+									this.images[optionId][selectOption.value].src = this.config[optionId][selectOption.value];
+							}
+						}.bind(this));
+                         //jQuery('.product-image image').attr("src",color);
+                       Element.insert(element.up('dd'), {'after': this.imageTemplate.evaluate({'id' : optionId, 'url' : this.spacer})});
+						element.observe('change', this.reloadImagesTypeSelectOne.bind(this,element,optionId));
+					} else if(element.type == 'select-multiple') {
+						var i = 0;
+						this.options[optionId] = [];
+						$A(element.options).each(function(selectOption){
+							 if (this.config[optionId][selectOption.value]){
+								if(isNewOption){
+									Element.insert(element.up('dd'), {'top': this.imageTemplate.evaluate({'id' : optionId+'_'+selectOption.value, 'url' : this.config[optionId][selectOption.value]})});
+									isNewOption = false;
+								} else {
+									Element.insert(previousImage, {'after': this.imageTemplate.evaluate({'id' : optionId+'_'+selectOption.value, 'url' : this.config[optionId][selectOption.value]})});
+								}
+								previousImage = $('option_image_' + optionId + '_' + selectOption.value);
+								this.old[optionId][selectOption.value] = false;
+								this.options[optionId][i] = selectOption;
+								i++;
+							}
+						}.bind(this));
+						this.optionslen[optionId] = i;
+						element.observe('change', this.reloadImagesTypeSelectMultiple.bind(this,element,optionId));
+					}
+				}
+			}.bind(this));
+	  },
+	  reloadImagesTypeRadio : function(optionId, valueId){
+
+				image = $('option_image_'+optionId);
+                var tempval=jQuery(":radio[value="+valueId+"]").attr('id');
+                 //alert(tempval);
+				 if (this.config[optionId] && this.config[optionId][valueId]){
+					image.src = this.images[optionId][valueId].src;
+					 jQuery('#tatvazoom').attr("src",image.src);
+					 jQuery('#zoom1 img').attr("src",image.src);
+                     jQuery('#zoom-btn').attr("href",image.src);
+                     var temp=jQuery('#'+tempval).parent().find('label').html();
+                     //alert(temp);
+                     jQuery('#option-title').html('<div style="font-size:12px;padding:0 0 2px 0px; float: left;width: 100%;position: relative;bottom: 0px;color: white;margin:0px 0px 10px 0px; background-color: #555555; text-align:left;">&nbsp;'+temp+'</div>');
+                     //alert('url('+ image.src +')');
+                     jQuery('#cloud-zoom-big').css('background-image','url('+ image.src +')');
+                     jQuery('#zoom1').attr('href',image.src);
+				} else {
+					image.src = this.spacer;
+					image.hide();
+				}
+	 },
+	  reloadImagesTypeCheckbox : function(element, optionId, valueId){
+				if (element.checked){
+					$('option_image_' + optionId + '_' + valueId).show();
+				} else {
+					$('option_image_' + optionId + '_' + valueId).hide();
+				}
+	 },
+	  reloadImagesTypeSelectOne : function(element, optionId){
+				valueId = element.value;
+
+				image = $('option_image_'+optionId);
+
+                 if (valueId != '' && this.config[optionId] && this.config[optionId][valueId]){
+					image.src = this.images[optionId][valueId].src;
+
+                    jQuery('#imagelight').attr("src",image.src).height(235).width(235);
+                    jQuery('#imagemainlight a').attr("href",image.src);
+
+                } else {
+					image.src = this.spacer;
+					image.hide();
+            	}
+	 },
+	  reloadImagesTypeSelectMultiple : function(element, optionId){
+				for (var i = 0; i < this.optionslen[optionId]; ++i){
+					option = this.options[optionId][i];
+					if (this.old[optionId][option.value] !== option.selected){
+						if (option.selected){
+							$('option_image_' + optionId + '_' + option.value).show();
+						} else {
+							$('option_image_' + optionId + '_' + option.value).hide();
+						}
+					}
+					this.old[optionId][option.value] = option.selected;
+				}
+	 }
+	}
+
+	var opImagesConfig = new OptionImages(<?php echo $this->getOptionImages() ?>);
+
+//]]>
+</script>

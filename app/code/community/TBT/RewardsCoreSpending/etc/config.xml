@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_RewardsCoreSpending>
+            <version>1.0.0.0</version>
+        </TBT_RewardsCoreSpending>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <rewardsspend>
+                    <file>rewardsspend.xml</file>
+                </rewardsspend>
+            </updates>
+        </layout>
+        
+    </frontend>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <rewardsspend>
+                    <file>rewardsspend.xml</file>
+                </rewardsspend>
+            </updates>
+        </layout>
+        <menu>
+	        <rewards module="rewards" translate="title">
+	            <children>
+	                <rules module="rewards" translate="title">
+	                    <children>
+	                        <redemption module="rewards" translate="title">
+	                            <title>Spending Rules</title>
+	                            <sort_order>20</sort_order>
+	                            <children>
+	                                <catalog module="rewards" translate="title">
+	                                    <title>Catalog</title>
+	                                    <sort_order>10</sort_order>
+	                                    <action>rewardsadmin/manage_promo_catalog/index/type/2/</action>
+	                                </catalog>
+	                                <quote module="rewards" translate="title">
+	                                    <title>Shopping Cart</title>
+	                                    <sort_order>20</sort_order>
+	                                    <action>rewardsadmin/manage_promo_quote/index/type/2/</action>
+	                                </quote>
+	                            </children>
+	                        </redemption>
+	                    </children>
+	                </rules>
+	            </children>
+	        </rewards>
+	    </menu>
+	    <acl>
+	        <resources>
+	            <all>
+	                <title>Allow Everything</title>
+	            </all>
+	            <admin>
+	                <children>
+	                    <rewards module="rewards" translate="title">
+	                        <children>
+	                            <rules module="rewards" translate="title">
+	                                <children>
+	                                    <redemption module="rewards" translate="title">
+	                                        <title>Spending Rules</title>
+	                                        <sort_order>20</sort_order>
+	                                        <children>
+	                                            <catalog module="rewards" translate="title">
+	                                                <title>Catalog Redeeming Rules</title>
+	                                                <sort_order>10</sort_order>
+	                                            </catalog>
+	                                            <quote module="rewards" translate="title">
+	                                                <title>Shopping Cart Redeeming Rules</title>
+	                                                <sort_order>20</sort_order>
+	                                            </quote>
+	                                        </children>
+	                                    </redemption>
+	                                </children>
+	                            </rules>
+	                        </children>
+	                    </rewards>
+	                </children>
+	            </admin>
+	        </resources>
+	    </acl>
+    
+    </adminhtml>
+    
+    <global>
+        <models>
+            <rewardsspend>
+                <class>TBT_RewardsCoreSpending_Model</class>
+            </rewardsspend>
+        </models>
+        <blocks>
+            <rewardsspend>
+                <class>TBT_RewardsCoreSpending_Block</class>
+            </rewardsspend>
+        </blocks>
+        <helpers>
+            <rewardsspend>
+                <class>TBT_RewardsCoreSpending_Helper</class>
+            </rewardsspend>
+        </helpers>
+    </global>
+    
+    
+    <default>
+        <rewards>
+        </rewards>
+    </default>
+</config>

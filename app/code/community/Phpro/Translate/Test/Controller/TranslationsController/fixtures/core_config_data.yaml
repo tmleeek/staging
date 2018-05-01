@@ -1,0 +1,2 @@
+config:
+  default/security/use_form_key: 0

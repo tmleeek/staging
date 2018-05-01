@@ -1,0 +1,69 @@
+<layout version="0.1.0">
+    <rmaadmin_adminhtml_rma_add>
+        <reference name="left">
+            <action method="setIsCollapsed"><value>true</value></action>
+        </reference>
+        <reference name="root">
+            <block type="rma/adminhtml_rma_create" name="rma_adminhtml_rma_create">
+                <block type="rma/adminhtml_rma_create_form" template="mst_rma/rma/create/form.phtml" name="form">
+                        <block type="rma/adminhtml_rma_create_order_grid" name="grid" />
+                </block>
+            </block>
+        </reference>
+    </rmaadmin_adminhtml_rma_add>
+    <rmaadmin_adminhtml_rma_edit>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_rma_edit>
+    
+    <rmaadmin_adminhtml_status_add>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_status_add>
+    <rmaadmin_adminhtml_status_edit>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_status_edit>
+    
+    <rmaadmin_adminhtml_reason_add>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_reason_add>
+    <rmaadmin_adminhtml_reason_edit>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_reason_edit>
+    
+    <rmaadmin_adminhtml_condition_add>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_condition_add>
+    <rmaadmin_adminhtml_condition_edit>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_condition_edit>
+    
+    <rmaadmin_adminhtml_resolution_add>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_resolution_add>
+    <rmaadmin_adminhtml_resolution_edit>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_resolution_edit>
+    
+    <rmaadmin_adminhtml_field_add>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_field_add>
+    <rmaadmin_adminhtml_field_edit>
+        <update handle="editor"/>
+    </rmaadmin_adminhtml_field_edit>
+    
+    <rmaadmin_adminhtml_report_rma_index>
+        <reference name="head">
+            <action method="addJs"><script>mirasvit/code/rma/lib/amcharts-3.4.5/amcharts.js</script></action>
+            <action method="addJs"><script>mirasvit/code/rma/lib/amcharts-3.4.5/serial.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="rma/adminhtml_report_rma" template="mst_rma/report/rma/grid/container.phtml" name="report.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="rma/adminhtml_report_rma_filter" name="grid.filter.form">
+                </block>
+                <block type="rma/adminhtml_report_rma_chart" template="mst_rma/report/rma/grid/chart.phtml" name="grid.chart"/>
+            </block>
+        </reference>
+    </rmaadmin_adminhtml_report_rma_index>
+</layout>

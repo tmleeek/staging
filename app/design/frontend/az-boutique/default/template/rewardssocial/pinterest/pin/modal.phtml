@@ -1,0 +1,75 @@
+
+<div id="rewards_pinterest_pinItButton_modal" style="display: none;">
+    <div class="rewards-modal block">
+        <div class="head block-title">
+            <strong style="display: inline-block;"><?php echo $this->__("Pin It for Points!") ?></strong>
+            <a href="javascript://" title="Close" class="btn-remove" style="margin-top: 3px;"><?php echo $this->__("Close") ?></a>
+        </div>
+        <div class="content block-content">
+            <div id="rewards_pinterest_username_message" class="message"></div>
+            <div class="modal-step">
+                <?php echo $this->__("<b>Step 1 -</b> Pin it.") ?>
+            </div>
+            <div class="modal-step">
+                <?php echo $this->__("<b>Step 2 -</b> Enter your <i>Pinterest</i> username:") ?> <br/>
+                <div class="pinterest-username-container">
+                    <input type="text" id="rewardssocial_pinterest_modal_username" placeholder="<?php echo $this->__("Username") ?>" value="<?php echo $this->getCustomerPinterestUsername() ?>" <?php echo $this->getCustomerPinterestUsername() ? 'disabled' : '' ?> />
+                </div>
+            </div>
+            <div class="modal-step">
+                <?php echo $this->__("<b>Step 3 -</b> Click below to get rewarded for pinning:") ?> <br/>
+                <div class="pinterest-submit-container">
+                    <button id="rewards_pinterest_username_submit" class="button">
+                        <span><?php echo $this->__("Reward Me!") ?></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rewards_modal_mask" class="rewards-modal-mask"></div>
+</div>
+
+<script type="text/javascript">
+    Event.observe(document, 'dom:loaded', function() {
+        var modalSubmitButton = $('rewards_pinterest_username_submit');
+        var modalCloseButton = $$('#rewards_pinterest_pinItButton_modal .head .btn-remove')[0];
+        var modalMask = $('rewards_modal_mask');
+        var message = $('rewards_pinterest_username_message');
+        var modal = $('rewards_pinterest_pinItButton_modal');
+        var usernameInputbox = $('rewardssocial_pinterest_modal_username');
+
+        var closeModal = function()
+        {
+            enable(modalSubmitButton);
+            message.innerHTML = '';
+            message.style.display = 'none';
+            modal.style.display = 'none';
+        };
+
+        var disable = function(element)
+        {
+            element.disabled = true;
+            element.addClassName('disabled');
+            return element;
+        };
+
+        var enable = function(element)
+        {
+            element.removeAttribute('disabled');
+            element.removeClassName('disabled');
+            return element;
+        };
+
+        var pinterestReward = new PinterestPinReward(checkPinterestUri);
+        eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('d.m(4(6){n(5);1(!6.o){0.a=6.0;0.8.c=\'l\';k}9()});3 2=4(){1(i j==\'h\'){9()}q(5);0.a=\'\';0.8.c=\'v\';3 7=b.u;d.s(7)};g.f(b,\'x\',4(e){1(!e){3 e=t.r}1(e.w==y){2()}});g.f(5,\'p\',2);',35,35,'message|if|modalSubmitAction|var|function|modalSubmitButton|result|username|style|closeModal|innerHTML|usernameInputbox|display|pinterestReward||observe|Event|undefined|typeof|checkPinterestUri|return|block|addSuccessCallback|enable|success|click|disable|event|onPin|window|value|none|keyCode|keydown|13'.split('|'),0,{}));
+
+        Event.observe(modalCloseButton, 'click', function() {
+            closeModal();
+        });
+
+        Event.observe(modalMask, 'click', function() {
+            closeModal();
+        });
+    });
+</script>

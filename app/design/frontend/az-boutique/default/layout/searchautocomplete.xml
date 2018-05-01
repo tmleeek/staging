@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageWorx
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageWorx EULA that is bundled with
+ * this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.mageworx.com/LICENSE-1.0.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension
+ * to newer versions in the future. If you wish to customize the extension
+ * for your needs please refer to http://www.mageworx.com/ for more information
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @copyright  Copyright (c) 2011 MageWorx (http://www.mageworx.com/)
+ * @license    http://www.mageworx.com/LICENSE-1.0.html
+ */
+
+/**
+ * Search Autocomplete extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @author     MageWorx Dev Team
+ */
+-->
+<layout version="0.1.0">
+    <default>
+<!--        <reference name="top.search">            
+            <action method="setTemplate" ifconfig="mageworx_tweaks/searchautocomplete/enabled"><template>searchautocomplete/form.mini.phtml</template></action>            
+        </reference>-->
+        
+        <reference name="before_body_end">
+            <block type="core/template" name="searchautocomplete_search_wrapper" template="searchautocomplete/search_wrapper.phtml" ifconfig="mageworx_tweaks/searchautocomplete/enabled" />
+        </reference>
+
+        <reference name="lazyloading.javascript.files">
+
+        <!-- ifconfig="mageworx_tweaks/searchautocomplete/enabled" -->
+            <action method="addLink">
+                <path>mageworx/searchautocomplete.js</path>
+                <type>js</type>
+                <position>1</position>
+            </action>
+        </reference>
+
+
+        <reference name="head">
+            <action method="addCss" ifconfig="mageworx_tweaks/searchautocomplete/enabled"><stylesheet>css/mageworx/searchautocomplete.css</stylesheet></action>
+            <!--<action method="addJs" ifconfig="mageworx_tweaks/searchautocomplete/enabled"><script>mageworx/searchautocomplete.js</script></action>-->
+        </reference>
+    </default>
+
+    <!--<catalogsearch_result_index>
+        <reference name="content">
+
+              <remove name="search.resultnew" />
+            <block type="searchindex/results" name="search.result" as="search.result" template="searchindex/results_tabs.phtml">
+                <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+
+                <block type="searchindex/index_mage_catalog_category" name="searchindex_result_mage_catalog_category" template="searchindex/index/mage/catalog/category.phtml">
+                    <action method="setIsVisible"><value>1</value></action>
+                    <action method="setIndexCode"><value>mage_catalog_category</value></action>
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_external_wordpress_post" template="searchindex/index/external/wordpress/post.phtml">
+                    <action method="setIndexCode"><value>external_wordpress_post</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_mage_catalogsearch_query" template="searchindex/index/mage/catalogsearch/query.phtml">
+                    <action method="setIndexCode"><value>mage_catalogsearch_query</value></action>
+                    <action method="setIsVisible"><value>0</value></action>
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_mirasvit_action_action" template="searchindex/index/mirasvit/action/action.phtml">
+                    <action method="setIndexCode"><value>mirasvit_action_action</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_aw_blog_post" template="searchindex/index/aw/blog/post.phtml">
+                    <action method="setIndexCode"><value>aw_blog_post</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_mage_cms_page" template="searchindex/index/mage/cms/page.phtml">
+                    <action method="setIndexCode"><value>mage_cms_page</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_azebiz_support_kbarticle" template="searchindex/index/azebiz/support/kbarticle.phtml">
+                    <action method="setIndexCode"><value>azebiz_support_kbarticle</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_tm_knowledgebase_faq" template="searchindex/index/tm/knowledgebase/faq.phtml">
+                    <action method="setIndexCode"><value>tm_knowledgebase_faq</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_aw_kbase_article" template="searchindex/index/aw/kbase/article.phtml">
+                    <action method="setIndexCode"><value>aw_kbase_article</value></action>
+                    <block type="page/html_pager" name="pager" />
+                </block>
+
+                <block type="searchindex/index_template" name="searchindex_result_mage_catalog_attribute" template="searchindex/index/mage/catalog/attribute.phtml">
+                    <action method="setIsVisible"><value>1</value></action>
+                    <action method="setIndexCode"><value>mage_catalog_attribute</value></action>
+                </block>
+
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+    </catalogsearch_result_index>-->
+</layout>

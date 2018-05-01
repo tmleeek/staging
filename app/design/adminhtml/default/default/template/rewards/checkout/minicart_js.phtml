@@ -1,0 +1,128 @@
+
+<script type="text/javascript">
+    slider_ajax_timeout = false;
+    slider_ajax_timeout_delay = 500;
+    last_slider_ajax_request = false;
+    changePointsSpendingUri = '<?php echo Mage::getModel('adminhtml/url')->getUrl('rewardsadmin/adminhtml_sales_order/changePointsSpending', array('_forced_secure' => $this->getRequest()->isSecure())) ?>';
+
+    isPointsSliderChanged = false;
+    isPointsSliderSliding = false;
+    isPointsAjaxDone = false;
+
+    updateTotalsDueToSpendings = function(new_spending_amount) {
+        if(last_slider_ajax_request) {
+            last_slider_ajax_request.options.onSuccess = function(t) { /* do nothing because a new request has started */};
+        }
+
+        last_slider_ajax_request = new Ajax.Request(
+            changePointsSpendingUri, 
+            {
+                parameters: { points_spending: new_spending_amount  },
+                onSuccess: function(t) {
+                    if (isPointsSliderChanged) {
+                        isPointsSliderChanged = false;
+                        isPointsSliderSliding = false;
+                        order.itemsUpdate();
+                    } else if (isPointsSliderSliding) {
+                        isPointsSliderSliding = false;
+                        isPointsAjaxDone = true;
+                    }
+                } 
+            }
+        );
+    };
+    /**
+     * Sets the value in the input box and what is displayed to the user.
+     * @param val
+     * @return
+     */
+    RedemptionSlider.prototype.setExternalValue = function(val) {
+        var pts = val*this.points_per_use;
+        if(pts == 1) {
+            this.sliderCaption.innerHTML = CAPTION_YOU_WILL_SPEND + ": " + val +
+                " " + CAPTION_POINT;
+        } else {
+            this.sliderCaption.innerHTML = CAPTION_YOU_WILL_SPEND + ": " + val +
+                " " + CAPTION_POINTS;
+        }
+        if(this.sliderValuebox.value != this.getUses()) {
+            this.sliderValuebox.value = this.getUses();
+            if(slider_ajax_timeout) {
+                clearTimeout(slider_ajax_timeout);
+            }
+            slider_ajax_timeout = setTimeout("updateTotalsDueToSpendings("+pts+")", slider_ajax_timeout_delay);
+            if(rSlider.isMaxed()) {
+                $('use_all_points').checked = true;
+            } else {
+                $('use_all_points').checked = false;
+            }
+            // TODO also update giant cart points block if it's there
+        }
+    };
+
+    toggleUseAllPoints = function(checked) {
+        if(checked) {
+            rSlider.maximize();
+        } else {
+            rSlider.slider.setValue(0);
+        }
+    };
+    
+    
+    (function() {
+        var onload = function() {
+            // Hack: use a timeout to make sure that this runs AFTER the js from slider.phtml
+            setTimeout(function() {
+                var handlerOnCreate = varienLoaderHandler.handler.onCreate;
+                varienLoaderHandler.handler.onCreate = function(request, xhr) {
+                    console.log(request);
+                    if (request.url == (changePointsSpendingUri + "?isAjax=true")) {
+                        return;
+                    }
+
+                    handlerOnCreate(request, xhr);
+                };
+
+                rSlider.onChange(function() {
+                    if (isPointsAjaxDone) {
+                        isPointsAjaxDone = false;
+                        order.itemsUpdate();
+                    } else {
+                        isPointsSliderChanged = true;
+                        varienLoaderHandler.handler.onCreate({options: {loaderArea: true}});
+                    }
+                });
+                rSlider.onSlide(function() {
+                    isPointsSliderSliding = true;
+                    isPointsAjaxDone = false;
+                });
+
+                <?php if (Mage::getSingleton('rewards/session')->isCartOverspent()): ?>
+                    disableElements('save');
+                <?php endif; ?>
+            }, 100);
+        };
+
+        if (document.loaded) {
+            onload();
+        } else {
+            document.observe("dom:loaded", onload);
+        }
+    })();
+	
+    toggleCartRule = function(checkbox_elem) {
+        var add_rule_url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('rewardsadmin/adminhtml_sales_order/cartadd', array('_forced_secure' => $this->getRequest()->isSecure())); ?>';
+        var remove_rule_url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('rewardsadmin/adminhtml_sales_order/cartremove', array('_forced_secure' => $this->getRequest()->isSecure())); ?>';
+        var url = '';
+        var rid = checkbox_elem.value;
+        checkbox_elem.disabled =  true;
+        if(checkbox_elem.checked) {
+            url = add_rule_url + 'rids/' + rid;
+        } else {
+            url = remove_rule_url + 'rids/' + rid;
+        }
+        $(checkbox_elem).next().innerHTML = CAPTION_REFRESHING_CART;
+        window.location = url;
+        return true;
+    };
+</script>

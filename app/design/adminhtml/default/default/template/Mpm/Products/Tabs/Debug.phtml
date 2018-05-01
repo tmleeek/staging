@@ -1,0 +1,21 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<?php //echo $this->getHumanExplanations(); ?>
+
+<p>&nbsp;</p>
+
+<script type="application/javascript">
+    pricer =
+    {
+        debug: '<?php echo $this->getDebug() ?>',
+        rule_url: '<?php echo Mage::helper('adminhtml')->getUrl('*/Mpm_Rules/Edit/', array('id' => '[rule_id]')); ?>'
+    };
+</script>
+<link rel="stylesheet" type="text/css" href="/skin/adminhtml/default/default/Mpm/pricer/debug.css" />
+<script type="text/javascript" src="/js/mdn/pricer/debug.js"></script>
+<div id="debug" style="position: relative; margin: auto;"></div>
+<script type="application/javascript">
+    window.onload= init();
+</script>
+

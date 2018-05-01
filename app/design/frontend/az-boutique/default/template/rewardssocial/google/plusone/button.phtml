@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    // Callback handler for GooglePlus; allows multiple callbacks to be set at any time.
+    rewardsPlusOne = (function() {
+        var _callbacks = [];
+        return {
+            addCallback: function(fn)
+            {
+                _callbacks.push(fn);
+                return this;
+            },
+            emit: function(event)
+            {
+                for (var i = 0; i < _callbacks.length; i += 1) {
+                    _callbacks[i](event);
+                }
+                return this;
+            }
+        };
+    })();
+
+    // Silly Google+ apparently can't call an object method, so we have to create this global function.
+    rewardsPlusOneEmit = function(event) {
+        rewardsPlusOne.emit(event);
+        return;
+    };
+
+    (function() {
+        if (typeof GooglePlusoneReward === 'undefined') {
+            return this;
+        }
+        var gplusReward = new GooglePlusoneReward('<?php echo $this->getPlusOneProcessingUrl() ?>');
+        var _0x4d9d=["\x34\x2E\x35\x28\x36\x28\x61\x29\x7B\x30\x28\x61\x2E\x31\x3D\x3D\x27\x33\x27\x29\x7B\x32\x2E\x37\x28\x29\x7D\x38\x20\x30\x28\x61\x2E\x31\x3D\x3D\x27\x39\x27\x29\x7B\x32\x2E\x62\x28\x29\x7D\x7D\x29\x3B","\x7C","\x73\x70\x6C\x69\x74","\x69\x66\x7C\x73\x74\x61\x74\x65\x7C\x67\x70\x6C\x75\x73\x52\x65\x77\x61\x72\x64\x7C\x6F\x6E\x7C\x72\x65\x77\x61\x72\x64\x73\x50\x6C\x75\x73\x4F\x6E\x65\x7C\x61\x64\x64\x43\x61\x6C\x6C\x62\x61\x63\x6B\x7C\x66\x75\x6E\x63\x74\x69\x6F\x6E\x7C\x6F\x6E\x50\x6C\x75\x73\x7C\x65\x6C\x73\x65\x7C\x6F\x66\x66\x7C\x7C\x6F\x6E\x55\x6E\x50\x6C\x75\x73","\x72\x65\x70\x6C\x61\x63\x65","","\x5C\x77\x2B","\x5C\x62","\x67"];eval(function (_0x3952x1,_0x3952x2,_0x3952x3,_0x3952x4,_0x3952x5,_0x3952x6){_0x3952x5=function (_0x3952x3){return _0x3952x3.toString(_0x3952x2);} ;if(!_0x4d9d[5][_0x4d9d[4]](/^/,String)){while(_0x3952x3--){_0x3952x6[_0x3952x5(_0x3952x3)]=_0x3952x4[_0x3952x3]||_0x3952x5(_0x3952x3);} ;_0x3952x4=[function (_0x3952x5){return _0x3952x6[_0x3952x5];} ];_0x3952x5=function (){return _0x4d9d[6];} ;_0x3952x3=1;} ;while(_0x3952x3--){if(_0x3952x4[_0x3952x3]){_0x3952x1=_0x3952x1[_0x4d9d[4]]( new RegExp(_0x4d9d[7]+_0x3952x5(_0x3952x3)+_0x4d9d[7],_0x4d9d[8]),_0x3952x4[_0x3952x3]);} ;} ;return _0x3952x1;} (_0x4d9d[0],12,12,_0x4d9d[3][_0x4d9d[2]](_0x4d9d[1]),0,{}));
+    })();
+</script>
+
+<!-- Place this tag where you want the +1 button to render. -->
+<script type="text/javascript">
+    //<![CDATA[
+    document.write('<div class="g-plusone" data-size="medium" data-callback="rewardsPlusOneEmit" <?php echo $this->isCounterEnabled() ? '' :  'data-annotation="none"' ?>></div>');
+    //]]>
+</script>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>

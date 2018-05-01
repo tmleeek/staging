@@ -1,0 +1,38 @@
+ <?php $data = $this->getRequest()->getParams();?>
+<form action="<?php echo $this->getUrl('productproblem/index/form');?>" id="productproblemform" method="post">
+    <div class="fieldset">
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><em>*</em>Full Name</label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="Name" value="" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><em>*</em>Email</label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="Email" value="" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="comment" class="required"><em>*</em>Message</label>
+                <div class="input-box">
+                    <textarea  style="width:400px;" name="comment" id="comment" title="Comment" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+            <input type="hidden" name="productid" value="<?php echo $data['productid']?>">
+        </ul>
+    </div>
+    <div class="buttons-set" style="padding: 0px; margin: 0px;">
+        <p class="required">* Required Fields</p>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="Submit" onsubmit="jQuery.fancybox.close()" class="button"><span><span>Submit</span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var productproblemForm = new VarienForm('productproblemform', true);
+//]]>
+</script>

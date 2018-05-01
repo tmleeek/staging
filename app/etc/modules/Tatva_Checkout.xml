@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Tatva_Checkout>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tatva_Checkout>
+    </modules>
+</config>

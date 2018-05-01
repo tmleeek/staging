@@ -1,0 +1,529 @@
+
+<config>
+    <sections>
+        <rewards translate="label" module="rewardssocial">
+            <groups>
+                <transferComments>
+                    <fields>
+                        <facebookLike translate="label comment">
+                            <label><![CDATA[Facebook Like]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebookLike>
+                        <facebookProductShare translate="label comment">
+                            <label><![CDATA[Facebook Product Share]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>171</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebookProductShare>
+                        <twitterTweet translate="label comment">
+                            <label><![CDATA[Twitter Tweet]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>172</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitterTweet>
+                        <pinterestPin translate="label comment">
+                            <label><![CDATA[Pinterest Pin]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>173</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pinterestPin>
+                        <googlePlusOne translate="label comment">
+                            <label><![CDATA[Google +1]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>174</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </googlePlusOne>
+                        <twitterFollow translate="label comment">
+                            <label><![CDATA[Twitter Follow]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>175</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitterFollow>
+                        <referralShare translate="label comment">
+                            <label><![CDATA[Shares Referral Link]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>176</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </referralShare>
+                        <purchaseShareOnFacebook translate="label comment">
+                            <label><![CDATA[Shares Purchase on Facebook]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </purchaseShareOnFacebook>
+                        <purchaseShareOnTwitter translate="label comment">
+                            <label><![CDATA[Shares Purchase on Twitter]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>183</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </purchaseShareOnTwitter>
+                    </fields>
+                </transferComments>
+                <InitialTransferStatus translate="label">
+                    <fields>
+                        <AfterFacebookLike translate="label">
+                            <label>Facebook Like</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterFacebookLike>
+                        <AfterFacebookProductShare translate="label">
+                            <label>Facebook Product Share</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterFacebookProductShare>
+                        <AfterTwitterTweet translate="label">
+                            <label>Twitter Tweet</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterTwitterTweet>
+                        <AfterPinterestPin translate="label">
+                            <label>Pinterest Pin</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterPinterestPin>
+                        <AfterGooglePlusOne translate="label">
+                            <label>Google +1</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterGooglePlusOne>
+                        <AfterTwitterFollow translate="label">
+                            <label>Twitter Follow</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterTwitterFollow>
+                        <AfterReferralShare translate="label">
+                            <label>Shares Referral Link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterReferralShare>
+                        <afterPurchaseShareOnFacebook translate="label">
+                            <label>Purchase Share on Facebook</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </afterPurchaseShareOnFacebook>
+                        <afterPurchaseShareOnTwitter translate="label">
+                            <label>Purchase Share on Twitter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>93</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </afterPurchaseShareOnTwitter>
+                    </fields>
+                </InitialTransferStatus>
+                <referral translate="label">
+                    <fields>
+                        <referral_share_button>
+                            <label>Referral Share Button On Frontend</label>
+                            <comment><![CDATA[If enabled, will show a button similar to Twitter's Tweet or Facebook's Like through which users can easily share their referral link.<br />You can create a rule to reward users for sharing their referral link on social networks.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>81</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </referral_share_button>
+                        <show_social_share translate="label comment">
+                            <label>Enable Sharing On Social Networks</label>
+                            <comment><![CDATA[Enable customers to share their referral link on social networks: Twitter and Facebook, for now.]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>83</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_social_share>
+                         <maxShareRewardsPerDay translate="label comment">
+                            <label>Maximum Share Rewards Per Day</label>
+                            <comment><![CDATA[If greater than zero, Sweet Tooth will limit the number of times a customer can SHARE their referral link and get rewarded for it within a span of 24-hours. The customer can still get rewarded for sharing his link after they've reached the limit, but they will not get rewarded until 24 hours have passed since the last 'share'.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>86</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxShareRewardsPerDay>
+                        <minSecondsBetweenShares translate="label comment">
+                            <label>Minimum Time Between Shares</label>
+                            <comment><![CDATA[In seconds, this is the minimum amount of time that must elapse between two different 'shares' in order for a customer to be rewarded.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>89</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minSecondsBetweenShares>
+                    </fields>
+                </referral>
+                <facebook translate="label">
+                    <label>Facebook Rewards Settings</label>
+                    <sort_order>110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enableFacebookLike>
+                            <label>Facebook Like Button On Frontend</label>
+                            <comment><![CDATA[If enabled, Facebook Like button will be shown on the front-end. You can further configure on which pages to show the button from RETAIL EVOLVED > Facebook Like Button > Default Button Visibility.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableFacebookLike>
+                        <maxLikeRewardsPerDay translate="label comment">
+                            <label>Maximum Like Rewards Per Day</label>
+                            <comment><![CDATA[If greater than zero, Sweet Tooth will limit the number of times a customer can LIKE something on the site and get rewarded for it within a span of 24-hours. The customer can still get rewarded for liking products on Facebook after they've reached the limit, but they will not get rewarded until 24 hours have passed since the last 'like'.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableFacebookLike>1</enableFacebookLike></depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxLikeRewardsPerDay>
+                        <minSecondsBetweenLikes translate="label comment">
+                            <label>Minimum Time Between Likes</label>
+                            <comment><![CDATA[In seconds, this is the minimum amount of time that must elapse between two different Facebook 'likes' in order for a customer to be rewarded.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableFacebookLike>1</enableFacebookLike></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minSecondsBetweenLikes>
+                        <enableFacebookProductShare>
+                            <label>Facebook Share Product Button On Frontend</label>
+                            <comment><![CDATA[If enabled, customers will be able to share products on Facebook with their friends.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableFacebookProductShare>
+                        <maxProductShareRewardsPerDay translate="label comment">
+                            <label>Maximum Product Share Rewards Per Day</label>
+                            <comment><![CDATA[If greater than zero, Sweet Tooth will limit the number of times a customer can SHARE products on Facebook and get rewarded for it within a span of 24-hours. The customer can still get rewarded for sharing products on Facebook after they've reached the limit, but they will not get rewarded until 24 hours have passed since the last 'share'.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableFacebookProductShare>1</enableFacebookProductShare></depends>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxProductShareRewardsPerDay>
+                        <minSecondsBetweenShares translate="label comment">
+                            <label>Minimum Time Between Product Shares</label>
+                            <comment><![CDATA[In seconds, this is the minimum amount of time that must elapse between two different Facebook 'shares' in order for a customer to be rewarded.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableFacebookProductShare>1</enableFacebookProductShare></depends>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minSecondsBetweenShares>
+                    </fields>
+                </facebook>
+                <twitter translate="label">
+                    <label>Twitter Rewards Settings</label>
+                    <sort_order>111</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enableTwitterFollow>
+                            <label>Twitter Follow Button on Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableTwitterFollow>
+                        <storeTwitterUsername translate="label comment">
+                            <label>Store Twitter Username</label>
+                            <comment><![CDATA[Enter your store's Twitter username to start rewarding customers for following you on Twitter. Each customer can receive a follow reward only once. <br/>Make sure the Twitter feed is not protected and that your Magento cron is working.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableTwitterFollow>1</enableTwitterFollow></depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </storeTwitterUsername>
+                        <showCount>
+                            <label>Followers Count Display</label>
+                            <comment><![CDATA[If set to 'Show', followers count will be displayed near the Twitter Follow button.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <depends><enableTwitterFollow>1</enableTwitterFollow></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showCount>
+                        <showUsername>
+                            <label>Username On Follow Button</label>
+                            <comment><![CDATA[If set to 'Show', your Twitter username will be displayed on Follow button.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <depends><enableTwitterFollow>1</enableTwitterFollow></depends>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showUsername>
+                        <enableTwitterTweet>
+                            <label>Twitter Tweet Button On Frontend</label>
+                            <comment><![CDATA[If enabled, Twitter Tweet button will be shown on the front-end.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableTwitterTweet>
+                        <enableTweetCount>
+                            <label>Twitter Tweet Counts On Frontend</label>
+                            <comment><![CDATA[If enabled, Twitter Tweet count will be shown on the front-end.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <depends><enableTwitterTweet>1</enableTwitterTweet></depends>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableTweetCount>
+                        <tweetedMessage translate="label comment">
+                            <label><![CDATA[Twitter Tweet Message]]></label>
+                            <comment><![CDATA[Configure the default message when tweeting about a CMS page, product or category.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableTwitterTweet>1</enableTwitterTweet></depends>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tweetedMessage>
+                        <maxTweetRewardsPerDay translate="label comment">
+                            <label>Maximum Tweet Rewards Per Day</label>
+                            <comment><![CDATA[If greater than zero, Sweet Tooth will limit the number of times a customer can TWEET something on the site and get rewarded for it within a span of 24-hours. The customer can still get rewarded for tweeting products on Twitter after they've reached the limit, but they will not get rewarded until 24 hours have passed since the last 'tweet'.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableTwitterTweet>1</enableTwitterTweet></depends>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxTweetRewardsPerDay>
+                        <minSecondsBetweenTweets translate="label comment">
+                            <label>Minimum Time Between Tweets</label>
+                            <comment><![CDATA[In seconds, this is the minimum amount of time that must elapse between two different Twitter 'tweets' in order for a customer to be rewarded.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableTwitterTweet>1</enableTwitterTweet></depends>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minSecondsBetweenTweets>
+                    </fields>
+                </twitter>
+                <pinterest translate="label">
+                    <label>Pinterest Rewards Settings</label>
+                    <sort_order>112</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enablePinterestPin>
+                            <label>Pinterest Pin Button On Frontend</label>
+                            <comment><![CDATA[If enabled, Pinterest Pin button will be shown on the front-end.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablePinterestPin>
+                         <enablePinterestPinCount>
+                            <label>Pinterest Pin Count On Frontend</label>
+                            <comment><![CDATA[If enabled, Pinterest Pin count will be shown on the front-end.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <depends><enablePinterestPin>1</enablePinterestPin></depends>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablePinterestPinCount>
+                        <maxPinRewardsPerDay translate="label comment">
+                            <label>Maximum Pin Rewards Per Day</label>
+                            <comment><![CDATA[If greater than zero, Sweet Tooth will limit the number of times a customer can Pin something on the site and get rewarded for it within a span of 24-hours. The customer can still get rewarded for pinning products on Pinterest after they've reached the limit, but they will not get rewarded until 24 hours have passed since the last 'pin'.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enablePinterestPin>1</enablePinterestPin></depends>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxPinRewardsPerDay>
+                        <minSecondsBetweenPins translate="label comment">
+                            <label>Minimum Time Between Pins</label>
+                            <comment><![CDATA[In seconds, this is the minimum amount of time that must elapse between two different Pinterest 'pins' in order for a customer to be rewarded.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enablePinterestPin>1</enablePinterestPin></depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minSecondsBetweenPins>
+                    </fields>
+                </pinterest>
+                <google translate="label">
+                    <label>Google+ Rewards Settings</label>
+                    <sort_order>113</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enableGooglePlus>
+                            <label>Google +1 Button On Frontend</label>
+                            <comment><![CDATA[If enabled, Google +1 button will be shown on the front-end.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableGooglePlus>
+                         <enableGooglePlusCount>
+                            <label>Google +1 Count On Frontend</label>
+                            <comment><![CDATA[If enabled, Google +1 count will be shown on the front-end.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <depends><enableGooglePlus>1</enableGooglePlus></depends>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableGooglePlusCount>
+                        <maxPlusOneRewardsPerDay translate="label comment">
+                            <label>Maximum +1 Rewards Per Day</label>
+                            <comment><![CDATA[If greater than zero, Sweet Tooth will limit the number of times a customer can +1 something on the site and get rewarded for it within a span of 24-hours. The customer can still get rewarded for +1'ing products on Google+ after they've reached the limit, but they will not get rewarded until 24 hours have passed since the last +1.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableGooglePlus>1</enableGooglePlus></depends>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </maxPlusOneRewardsPerDay>
+                        <minSecondsBetweenPlusOnes translate="label comment">
+                            <label>Minimum Time Between +1's</label>
+                            <comment><![CDATA[In seconds, this is the minimum amount of time that must elapse between two different +1's in order for a customer to be rewarded.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends><enableGooglePlus>1</enableGooglePlus></depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minSecondsBetweenPlusOnes>
+                    </fields>
+                </google>
+                <purchase_share translate="label">
+                    <label>Purchase Rewards Settings</label>
+                    <sort_order>114</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Purchase Share Feature</label>
+                            <comment><![CDATA[If enabled, customers will have the ability to share their purchase with
+                                their friends on social networks, as configured below.<br/ ><b>Note:</b> To reward the
+                                user for sharing a purchase, please create a <i>Customer Behavioral Rule</i> for each
+                                social network.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <enableFacebookShare translate="label comment">
+                            <label>Purchase Share on Facebook</label>
+                            <comment><![CDATA[If enabled, customers will have the option of sharing their purchase on
+                                Facebook.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends><enable>1</enable></depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableFacebookShare>
+                        <enableTwitterTweet translate="label comment">
+                            <label>Purchase Share on Twitter</label>
+                            <comment><![CDATA[If enabled, customers will have the option of sharing their purchase on
+                                Twitter.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <depends><enable>1</enable></depends>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableTwitterTweet>
+                    </fields>
+                </purchase_share>
+            </groups>
+        </rewards>
+    </sections>
+</config>

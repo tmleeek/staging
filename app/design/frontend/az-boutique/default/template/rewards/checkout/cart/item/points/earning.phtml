@@ -1,0 +1,21 @@
+<?php 
+    // Fetch points earning data
+    $hasEarned = $this->hasEarnings();
+	$earn_list_id = 'points-list-earned-'.  $this->getItem()->getId();
+	$earned_points_data = $this->getEarningData();
+	
+?>
+       
+<?php if ($hasEarned) : ?>
+    <div class="item-points-earned-section">
+	    <span class="item-points-header-earned"> 
+	    	<?php echo $this->__('Earning') ?>  
+		    <?php foreach ($earned_points_data as $earned_line): ?>
+	            	<?php echo $earned_line; ?>
+		    <?php endforeach; ?>
+    	     <?php echo $this->__('For This Item') ?>  
+		</span>
+	</div>
+<?php endif; ?>
+    
+    

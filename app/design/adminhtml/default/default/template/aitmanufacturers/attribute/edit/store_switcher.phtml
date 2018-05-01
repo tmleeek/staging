@@ -1,0 +1,124 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+* @copyright  Copyright (c) 2009 AITOC, Inc. 
+*/
+?>
+
+<?php $aStoreList = array();   ?>
+
+<?php if (!Mage::app()->isSingleStoreMode()): ?>
+    <?php $_websiteCollection = $this->getWebsiteCollection() ?>
+    <?php if ($_websiteCollection->getSize()): ?>
+    <p class="switcher"><label for="store_switcher"><?php echo $this->__('Choose Store View') ?>:</label>
+    <select name="store_switcher" id="store_switcher" class="left-col-block" onchange="return StoreConfigSwitch.switchStore(this);">
+        <option value="default_0"><?php echo $this->getDefaultStoreName() ?></option>
+        <?php foreach ($_websiteCollection as $_website): ?>
+            <?php $aStoreList['website_'.$_website->getId()] = $_website->getName(); ?>
+            <option style="background:#ccc; font-weight:bold;" value="website_<?php echo $_website->getId() ?>"<?php if($this->getStoreId() == $_website->getId()): ?> selected="selected"<?php endif; ?>>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_website->getName() ?></option>
+            <?php foreach ($this->getGroupCollection($_website) as $_group): ?>
+                <?php $showGroup=false; ?>
+                <?php foreach ($this->getStoreCollection($_group) as $_store): ?>
+                    <?php if ($showGroup == false): ?>
+                        <?php $showGroup = true; ?>
+                        <optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_group->getName() ?>">
+                    <?php endif; ?>
+                    <?php $aStoreList['store_'.$_store->getId()] = $_store->getName(); ?>
+                    <option value="store_<?php echo $_store->getId() ?>"<?php if($this->getStoreId() == $_store->getId()): ?> selected="selected"<?php endif; ?>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_store->getName() ?></option>
+                <?php endforeach; ?>
+                <?php if ($showGroup): ?>
+                    </optgroup>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
+    </select>
+    </p>
+    <?php endif; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+
+var StoreConfigSwitch = 
+{
+    storesList: Array(<?php if(!empty($aStoreList)) { echo "'".implode("','",array_keys($aStoreList))."'"; } ?>),
+    requiredFields: Array('attribute_code', 'url_prefix', 'url_pattern', 'columns_num', 'brief_num'),
+    
+    switchStore: function (obj){
+        this.showConfigPage(obj.value);
+    },
+    
+    showConfigPage: function (id)
+    {
+        this.hideConfigPages();
+        $$('#'+id+'_aitmanufacturers_config').invoke('show');
+    },
+    
+    hideConfigPages:function ()
+    {
+        for (i=0; i<=this.storesList.length;i++)
+        {
+            $$('#'+this.storesList[i]+'_aitmanufacturers_config').invoke('hide');
+        }
+    },
+    
+    hideInactivePages:function()
+    {
+          for (i=0; i<=this.storesList.length;i++)
+          {
+              this.switchActiveConfig(this.storesList[i]);
+              this.switchDefaultConfig(this.storesList[i]);
+          }
+    },
+    
+    switchActiveConfig:function(scopeid)
+    {
+         if (($(scopeid+'_is_active').value == '0') || ((scopeid != 'default_0') && ($(scopeid+'_use_default').value == '1')))
+         {
+             $$('#'+scopeid+'_aitmanufacturers_form').invoke('hide');
+             this.requiredFields.each(function(name){
+                 if ( $(''+scopeid+'_'+name) ) {
+                     $(''+scopeid+'_'+name).removeClassName('required-entry');
+                 }
+             });
+         }
+         else
+         {
+             $$('#'+scopeid+'_aitmanufacturers_form').invoke('show');
+             this.requiredFields.each(function(name){
+                 if ( $(''+scopeid+'_'+name) ) {
+                     $(''+scopeid+'_'+name).addClassName('required-entry');
+                 }
+             });
+         }
+    },
+    
+    switchDefaultConfig:function(scopeid)
+    {
+         if ($(scopeid+'_use_default').value == '1')
+         {
+             $$('#'+scopeid+'_is_active').invoke('hide');
+             $$('#'+scopeid+'_aitmanufacturers_activate_form').invoke('hide');
+         }
+         else
+         {
+             $$('#'+scopeid+'_is_active').invoke('show');
+             $$('#'+scopeid+'_aitmanufacturers_activate_form').invoke('show');
+             this.switchActiveConfig(scopeid);
+         }
+    }
+}    
+document.observe("dom:loaded", function() {
+    StoreConfigSwitch.hideConfigPages();
+    StoreConfigSwitch.storesList.push('default_0');
+    StoreConfigSwitch.hideInactivePages();
+});
+
+</script>

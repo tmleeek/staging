@@ -1,0 +1,50 @@
+
+<div id="rewards_referral_share_modal" style="display: none;">
+    <div class="rewards-modal block">
+        <div class="head block-title">
+            <strong style="display: inline-block;"><?php echo $this->__("Share your referral link!") ?></strong>
+            <a href="javascript://" title="Close" class="btn-remove" style="margin-top: 3px;"><?php echo $this->__("Close") ?></a>
+        </div>
+        <div class="content block-content">
+            <div class="modal-step">
+                <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) : ?>
+                    <?php echo $this->getChildHtml('referral_share'); ?>
+                <?php else : ?>
+                    <?php echo $this->getNotLoggedInMessage(); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <div id="rewards_modal_mask" class="rewards-modal-mask"></div>
+</div>
+
+<script type="text/javascript">
+    Event.observe(document, 'dom:loaded', function() {
+        var modalCloseButton = $$('#rewards_referral_share_modal .head .btn-remove')[0];
+        var modalMask = $('rewards_modal_mask');
+        var modal = $('rewards_referral_share_modal');
+
+        var closeModal = function()
+        {
+            modal.style.display = 'none';
+        };
+
+        Event.observe(window, 'keydown', function(e) {
+            if (!e) { var e = window.event; }
+
+            // Escape key is pressed
+            if (e.keyCode == 27) {
+                closeModal();
+            }
+        });
+
+        Event.observe(modalCloseButton, 'click', function() {
+            closeModal();
+        });
+
+        Event.observe(modalMask, 'click', function() {
+            closeModal();
+        });
+    });
+</script>

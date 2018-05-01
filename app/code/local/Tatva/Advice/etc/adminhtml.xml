@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<adminhtml>
+	    <routers>
+			<advice>
+				<use>standard</use>
+				<args>
+					<module>Tatva_Advice</module>
+					<frontName>advice</frontName>
+				</args>
+			</advice>
+		</routers>
+		<translate>
+			<modules>
+				<Tatva_Advice>
+					<files>
+						<default>Tatva_Catalog.csv</default>
+					</files>
+				</Tatva_Advice>
+			</modules>
+		</translate>
+		<layout>
+			<updates>
+				<advice>
+					<file>advice.xml</file>
+				</advice>
+			</updates>
+		</layout>
+		<menu>
+			<tatva>
+				<children>
+					<advice translate="title" module="advice">
+						<title>Add Advice</title>
+						<sort_order>60</sort_order>
+						<action>advice/adminhtml_advice</action>
+					</advice>
+				</children>
+			</tatva>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<azboutique>
+							<children>
+								<advice translate="title" module="advice">
+									<title>Add Advice</title>
+									<sort_order>60</sort_order>
+								</advice>
+							</children>
+						</azboutique>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+</adminhtml>

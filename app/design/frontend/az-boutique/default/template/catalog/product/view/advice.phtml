@@ -1,0 +1,48 @@
+﻿<?php $product = Mage::registry('current_product'); ?>
+<?php $material=''; $material_data=array(); ?>
+<?php if($product): ?>
+       <?php $material=$product['materiaux']; ?>
+       <?php if($material!=''):?>
+       <?php $material_data[]=explode(",",$material); ?>
+        <?php else: ?>
+            <?php echo $this->__('There is no advice available for this product. For any suggestions, do not hesitate to '); ?><a href="<?php echo $this->getUrl('contacts'); ?>"><?php echo $this->__('Contact Us'); ?></a>
+          <?php endif; ?>
+<?php endif; ?>
+
+<!-- store -->
+<?php  $store_id=Mage::app()->getStore()->getId(); ?>
+<?php  $advice_store_data=''; ?>
+
+
+<?php
+   $advice = $this->getadviceCollection($material_data,$store_id);
+   if($advice)
+   {
+ ?>
+                            <div id="care_below_<?php echo $product->getId()?>" class="tabcontent">
+                                <div class="content_down">
+                                    <div class="liste-puce-blanche bigger-line-height">
+                                        <ul>
+                                            <?php
+                                                foreach($advice as $_advice)
+                                                {
+                                                
+                                            ?>
+                                                <li><?php echo $_advice; ?></li>
+                                            <?php
+                                                }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                             </div>
+ <?php
+     }
+     else
+     {  ?> 
+           <?php echo $this->__('There is no advice available for this product. For any suggestions, do not hesitate to '); ?><a href="<?php echo $this->getUrl('contacts'); ?>"><?php echo $this->__('Contact Us'); ?>.</a>
+  <?php  }
+ ?>
+
+
+

@@ -1,0 +1,86 @@
+<div class="entry-edit">
+<div class="entry-edit-head"><h4><?php echo Mage::helper('email')->__('Per Trigger') ?></h4></div>
+<fieldset> 
+ <div id="bytriggerchart" style="width: 100%; height: 350px;"></div>
+ <script type="text/javascript">
+    var chart;
+    var byTriggerData = [];
+    <?php foreach ($this->getCollection() as $_trigger): ?>
+        byTriggerData.push({
+            title         : '<?php echo $_trigger->getTitle() ?>',
+            sent          : <?php echo intval($_trigger->getSent()) ?>,
+            opens         : <?php echo intval($_trigger->getOpens()) ?>,
+            readers       : <?php echo intval($_trigger->getReaders()) ?>,
+            unique_clicks : <?php echo intval($_trigger->getUniqueClicks()) ?>,
+            unsubscribed  : <?php echo intval($_trigger->getUnsubscribed()) ?>
+        });
+    <?php endforeach ?>
+
+    AmCharts.ready(function () {
+        chart = new AmCharts.AmSerialChart();
+        chart.dataProvider        = byTriggerData;
+        chart.categoryField       = "title";
+        chart.startDuration       = 1;
+        chart.depth3D             = 10;
+        chart.angle               = 30;
+        chart.plotAreaBorderColor = "#DADADA";
+        chart.plotAreaBorderAlpha = 1;
+        chart.rotate              = false;
+
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.dashLength    = 5;
+        categoryAxis.gridPosition  = "start";
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField  = "sent";
+        graph.title       = "Sent";
+        graph.balloonText = "Sent: [[value]]";
+        graph.type        = "column";
+        graph.lineAlpha   = 0;
+        graph.fillAlphas  = 0.8;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "opens";
+        graph.title = "Opens";
+        graph.balloonText = "Opens: [[value]]";
+        graph.type = "column";
+        graph.lineAlpha = 0;
+        graph.fillAlphas = 0.8;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "readers";
+        graph.title = "Readers";
+        graph.balloonText = "Readers: [[value]]";
+        graph.type = "column";
+        graph.lineAlpha = 0;
+        graph.fillAlphas = 0.8;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "unique_clicks";
+        graph.title = "Unique Clicks";
+        graph.balloonText = "Unique Clicks: [[value]]";
+        graph.type = "column";
+        graph.lineAlpha = 0;
+        graph.fillAlphas = 0.8;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "unsubscribed";
+        graph.title = "Unsubscribed";
+        graph.balloonText = "Unsubscribed: [[value]]";
+        graph.type = "column";
+        graph.lineAlpha = 0;
+        graph.fillAlphas = 0.8;
+        chart.addGraph(graph);
+
+        var legend = new AmCharts.AmLegend();
+        chart.addLegend(legend);
+
+        chart.write("bytriggerchart");
+    });
+</script>
+</fieldset>
+</div>

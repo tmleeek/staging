@@ -1,0 +1,116 @@
+<?php
+/**
+ * @copyright	Copyright (c) 2016 MageBackup (http://www.magebackup.com). All rights reserved.
+ * @license		http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+$profile	= $this->getProfile();
+?>
+
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">
+			<?php echo Mage::helper('magebackup')->__('Files/Folders Exclusion'); ?>
+		</h4>
+	</div>
+	<fieldset>
+		<input type="hidden" name="data[excluded_files]" id="data_excluded_files" value="<?php echo $profile->getValue('excluded_files'); ?>" />
+		<input type="hidden" name="data[skipped_dirs]" id="data_skipped_dirs" value="<?php echo $profile->getValue('skipped_dirs'); ?>" />
+		<input type="hidden" name="data[skipped_files]" id="data_skipped_files" value="<?php echo $profile->getValue('skipped_files'); ?>" />
+		<div id="filetree-container"></div>
+	</fieldset>
+</div>
+
+<script type="text/javascript">
+
+MageBackup.$(document).ready( function() {
+	var toggleCheck = function($el, values) {
+		values	= values.trim() == '' ? [] : values.split(',');
+
+		var value			= $el.attr('data-value');
+
+		if (MageBackup.$.inArray(value, values) < 0) {
+			$el.addClass('mb-button-active');
+			values.push($el.attr('data-value'));
+		} else {
+			$el.removeClass('mb-button-active');
+
+			while (values.indexOf(value) != -1) {
+				values.splice(values.indexOf(value), 1);
+			}
+		}
+
+		return values.join(',');
+	};
+
+	var toggleClass = function($el, values) {
+		values	= values.trim() == '' ? [] : values.split(',');
+
+		var value			= $el.attr('data-value');
+
+		if (MageBackup.$.inArray(value, values) < 0) {
+			$el.removeClass('mb-button-active');
+		} else {
+			$el.addClass('mb-button-active');
+		}
+	};
+
+	MageBackup.$('#filetree-container').mbFileTree({
+		root: 			'',
+		script:			'<?php echo $this->getLoadFileUrl(); ?>' + '?isAjax=true',
+		formKey:		'<?php echo $this->getFormKey(); ?>',
+
+		afterLoad:		function(el) {
+			console.log(el);
+			var $el	= MageBackup.$(el);
+
+			$el.find('.mb-button').mbtooltip({
+				html:		true,
+				container:	'body',
+				trigger:	'hover'
+			});
+
+			// excluded files
+			var excluded_files	= MageBackup.$('#data_excluded_files').val();
+
+			$el.find('.jqueryFileTree .mb-folder-exclude, .jqueryFileTree .mb-file-exclude').each(function() {
+				toggleClass(MageBackup.$(this), excluded_files);
+			});
+
+			$el.find('ul .mb-folder-exclude, ul .mb-file-exclude').bind('click', function() {
+				var values	= toggleCheck(MageBackup.$(this), MageBackup.$('#data_excluded_files').val());
+
+				MageBackup.$('#data_excluded_files').val(values);
+			});
+
+			// skipped dirs
+			var skipped_dirs	= MageBackup.$('#data_skipped_dirs').val();
+
+			$el.find('ul .mb-subfolders-skip').each(function() {
+				toggleClass(MageBackup.$(this), skipped_dirs);
+			});
+
+			$el.find('ul .mb-subfolders-skip').bind('click', function() {
+				var values	= toggleCheck(MageBackup.$(this), MageBackup.$('#data_skipped_dirs').val());
+
+				MageBackup.$('#data_skipped_dirs').val(values);
+			});
+			
+			// skipped files
+			var skipped_files	= MageBackup.$('#data_skipped_files').val();
+
+			$el.find('ul .mb-files-skip').each(function() {
+				toggleClass(MageBackup.$(this), skipped_files);
+			});
+
+			$el.find('ul .mb-files-skip').bind('click', function() {
+				var values	= toggleCheck(MageBackup.$(this), MageBackup.$('#data_skipped_files').val());
+
+				MageBackup.$('#data_skipped_files').val(values);
+			});
+		}
+	});
+});
+
+</script>
+

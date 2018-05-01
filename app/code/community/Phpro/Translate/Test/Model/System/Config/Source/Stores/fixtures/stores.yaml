@@ -1,0 +1,14 @@
+scope:
+  store: # Initializes store views
+   - store_id: 2
+      website_id: 1
+      group_id: 0
+      code: fr
+      name: French Store
+      is_active: 1
+   - store_id: 3
+      website_id: 1
+      group_id: 0
+      code: de
+      name: German Store
+      is_active: 1

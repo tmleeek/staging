@@ -1,0 +1,47 @@
+<?php
+    /** @var $this Ess_M2ePro_Block_Adminhtml_Common_Amazon_Configuration_General_Form */
+    $businessMode = Mage::helper('M2ePro/Component_Amazon_Business')->isEnabled();
+?>
+
+<div class="entry-edit" id="magento_block_common_amazon_configuration_general_business" collapseable="no">
+
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('M2ePro')->__('Business (B2B)'); ?></h4>
+    </div>
+
+    <div class="fieldset">
+        <div class="hor-scroll">
+
+            <table class="form-list" cellspacing="0" cellpadding="0">
+
+                <colgroup class="label"></colgroup>
+                <colgroup class="value"></colgroup>
+
+                <tbody>
+
+                    <tr>
+                        <td class="label">
+                            <label><?php echo Mage::helper('M2ePro')->__('Price, QTY Discounts'); ?>: </label>
+                        </td>
+                        <td class="value">
+                            <select id="business_mode" name="business_mode">
+                                <option value="0" <?php if (0 == $businessMode) echo ' selected="selected"'; ?>><?php echo Mage::helper('M2ePro')->__('Disabled'); ?></option>
+                                <option value="1" <?php if (1 == $businessMode) echo ' selected="selected"'; ?>><?php echo Mage::helper('M2ePro')->__('Enabled'); ?></option>
+                            </select>
+                            <p class="note">
+                                <span><?php echo Mage::helper('M2ePro')->__('
+                                    After you <strong>Enable</strong> this option, you can provide the settings for <strong>Business Price</strong> and <strong >Quantity Discounts</strong> within M2E Pro Selling Format Policy.<br />
+                                    <strong>Note:</strong> your Business Account must be approved by Amazon.'
+                                ); ?></span>
+                            </p>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>

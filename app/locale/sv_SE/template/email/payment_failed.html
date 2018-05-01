@@ -1,0 +1,71 @@
+{* This is a comment block
+
+Use vars: {{var var_name}}
+*}<!--@subject Avbruten betalningstransaktion @-->
+<!--@vars
+{"var reason":"Transaction Failed Reason",
+"var checkoutType":"Checkout Type",
+"var customerEmail":"Customer Email",
+"var customer":"Customer Name",
+"var items":"Shopping Cart Items",
+"var total":"Total",
+"var billingAddress.format('html')":"Billing Address",
+"var shippingAddress.format('html')":"Shipping Address",
+"var shippingMethod":"Shipping Method",
+"var paymentMethod":"Payment Method",
+"var dateAndTime":"Date and Time of Transaction"}
+@-->
+
+<table>
+    <thead>
+        <tr>
+            <th>Avbruten betalningstransaktion.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    <b>Orsak</b><br />
+                    {{var reason}}
+                </p>
+                <p>
+                    <b>Typ av utceckning</b><br />
+                    {{var checkoutType}}
+                </p>
+                <p>
+                    <b>Kund:</b><br />
+                    <a href="mailto:{{var customerEmail}}">{{var customer}}</a> &lt;{{var customerEmail}}&gt;
+                </p>
+                <p>
+                    <b>Artiklar</b><br />
+                    {{var items}}
+                </p>
+                <p>
+                    <b>Totalt:</b><br />
+                    {{var total}}
+                </p>
+                <p>
+                    <b>Fakturaadress:</b><br />
+                    {{var billingAddress.format('html')}}
+                </p>
+                <p>
+                    <b>Leveransadress:</b><br />
+                    {{var shippingAddress.format('html')}}
+                </p>
+                <p>
+                    <b>Fraktmetod:</b><br />
+                    {{var shippingMethod}}
+                </p>
+                <p>
+                    <b>Betalningsmetod:</b><br />
+                    {{var paymentMethod}}
+                </p>
+                <p>
+                    <b>Tid och datum:</b><br />
+                    {{var dateAndTime}}
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>

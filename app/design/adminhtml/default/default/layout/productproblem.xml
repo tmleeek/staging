@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout>
+    <productproblem_adminhtml_productproblem_edit>
+        <update handle="editor"/>
+    </productproblem_adminhtml_productproblem_edit>
+
+    <productproblem_adminhtml_productproblem_index>
+        <reference name="content">
+            <block type="productproblem/adminhtml_productproblem" name="productproblem" />
+        </reference>
+    </productproblem_adminhtml_productproblem_index>
+
+   <productproblem_adminhtml_productproblem_popup>
+        <reference name="content">
+            <block type="productproblem/adminhtml_mailform" name="productproblem.adminhtml.mailform"/>
+        </reference>
+    </productproblem_adminhtml_productproblem_popup>
+</layout>

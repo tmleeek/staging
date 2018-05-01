@@ -1,0 +1,26 @@
+<?php $fields = $this->getFieldsToMap(); ?>
+<?php if(is_array($fields)): ?>
+<table>
+    <tbody>
+        <?php foreach($fields as $v): ?>
+            <?php $k = strtolower($v); ?>
+            <tr>
+                <td class="label">
+                    <label for="<?php echo $k; ?>"><?php echo $v; ?></label>
+                </td>
+                <td class="value">
+                    <select type="select" id="<?php echo $k; ?>" name="groups[mapping][fields][<?php echo $k; ?>][value]">
+                        <option></option>
+                        <?php foreach(Mage::helper('Mpm/Carl')->getCatalogFields() as $attribute): ?>
+                            <?php $selected = (Mage::getStoreConfig('mpm/mapping/'.$k) == $attribute) ? 'selected' : ''; ?>
+                            <option value="<?php echo $attribute; ?>" <?php echo $selected; ?>><?php echo str_replace('attributes.global.', '', $attribute); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php else: ?>
+    <?php echo Mage::Helper('Mpm')->__('Not authorized'); ?>
+<?php endif; ?>

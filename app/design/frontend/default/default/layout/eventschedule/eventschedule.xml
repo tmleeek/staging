@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/eventschedule/eventschedule.css</stylesheet></action>
+        </reference>
+    </default>
+    <eventschedule_index_index>
+        <reference name="content">
+            <block type="eventschedule/eventschedule" name="eventschedule" template="eventschedule/eventschedule.phtml" />
+        </reference>
+    </eventschedule_index_index>
+</layout>

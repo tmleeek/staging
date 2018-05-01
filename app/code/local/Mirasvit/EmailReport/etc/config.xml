@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Mirasvit_EmailReport>
+            <version>1.0.0</version>
+        </Mirasvit_EmailReport>
+    </modules>
+    <global>
+        <models>
+            <emailreport>
+                <class>Mirasvit_EmailReport_Model</class>
+                <resourceModel>emailreport_resource</resourceModel>
+            </emailreport>
+
+            <emailreport_resource>
+                <class>Mirasvit_EmailReport_Model_Resource</class>
+                <entities>
+                    <click>
+                        <table>m_emailreport_click</table>
+                    </click>
+                    <open>
+                        <table>m_emailreport_open</table>
+                    </open>
+                </entities>
+            </emailreport_resource>
+        </models>
+        <helpers>
+            <emailreport>
+                <class>Mirasvit_EmailReport_Helper</class>
+            </emailreport>
+        </helpers>
+        <resources>
+            <emailreport_setup>
+                <setup>
+                    <module>Mirasvit_EmailReport</module>
+                </setup>
+            </emailreport_setup>
+        </resources>
+        <blocks>
+            <emailreport>
+                <class>Mirasvit_EmailReport_Block</class>
+            </emailreport>
+        </blocks>     
+        
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <emailreport_predispatch>
+                        <type>singleton</type>
+                        <class>Mirasvit_EmailReport_Model_Observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </emailreport_predispatch>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <emailreport module="emailreport">
+                    <file>mirasvit_emailreport.xml</file>
+                </emailreport>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <emailreport>
+                <use>admin</use>
+                <args>
+                    <module>Mirasvit_EmailReport</module>
+                    <frontName>emailreport</frontName>
+                </args>
+            </emailreport>
+        </routers>
+    </admin>
+</config>

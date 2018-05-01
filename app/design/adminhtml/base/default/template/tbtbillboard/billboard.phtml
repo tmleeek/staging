@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/tbtbillboard/billboard.css') ?>" />
+
+<div id="billboard" class="dashboard-container">
+    <div class="switcher" style="background-image: url('<?php echo $this->getSkinUrl($this->getLogoPath()) ?>');">
+        <h3><?php echo $this->getTitle() ?></h3>
+    </div>
+    <div id="content">
+        <?php foreach ($this->getSections() as $section): ?>
+            <?php echo $section->toHtml() ?>
+        <?php endforeach ?>
+    </div>
+</div>

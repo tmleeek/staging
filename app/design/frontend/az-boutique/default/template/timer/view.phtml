@@ -1,0 +1,133 @@
+<?php
+/**
+ * Contus Support Interactive.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file PRICE COUNTDOWN-LICENSE.txt.
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento 1.4.x, 1.5.x, 1.6.x and 1.7.x COMMUNITY edition
+ * Contus Support does not guarantee correct work of this package
+ * on any other Magento edition except Magento 1.4.x, 1.5.x, 1.6.x and 1.7.x COMMUNITY edition.
+ * =================================================================
+ */
+?>
+<?php
+/* Count for timer calculation declared here */
+$count = 1;
+$_product = $this->getProduct();
+$toDate = $_product->getSpecialTODate();
+
+/* Admin Controllers for timer are declared here */
+$timer_active = Mage::getStoreConfig('timer/general/activate_apptha_timer');
+$timer_head_active = Mage::getStoreConfig('timer/general/activate_apptha_heading');
+$timer_desc_active = Mage::getStoreConfig('timer/general/activate_apptha_description');
+$desc_color = Mage::getStoreConfig('timer/apptha_timer_color/description');
+$timer_color = Mage::getStoreConfig('timer/apptha_timer_color/text');
+$head_color = Mage::getStoreConfig('timer/apptha_timer_color/heading_text_color');
+$timer_head = Mage::getStoreConfig('timer/general/heading');
+?>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+<ul class="add-to-links addto-gaps-right">
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+
+	<li>
+        <a class="feature feature-icon-hover first v-centered-content" rel="nofollow" href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" title="<?php echo $this->__('Add to Wishlist') ?>">
+			<span class="v-center">
+				<span class="icon i-wishlist-bw icon-color-productview"></span>
+			</span>
+            <span class="v-center"><?php echo $this->__('Add to Wishlist') ?></span>
+		</a>
+	</li>
+
+<?php endif; ?>
+<?php
+    $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+?>
+<?php if($_compareUrl) : ?>
+
+	<li>
+        <a class="feature feature-icon-hover first v-centered-content" rel="nofollow" href="<?php echo $_compareUrl ?>" title="<?php echo $this->__('Add to Compare') ?>">
+			<span class="v-center">
+				<span class="icon i-compare-bw icon-color-productview"></span>
+			</span>
+            <span class="v-center"><?php echo $this->__('Add to Compare') ?></span>
+		</a>
+	</li>
+
+<?php endif; ?>
+<?php if ($this->canEmailToFriend()): ?>
+
+	<li>
+    	<a class="feature feature-icon-hover first v-centered-content" rel="nofollow" href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" title="<?php echo $this->__('Email to a Friend') ?>">
+			<span class="v-center">
+				<span class="icon i-recommend-bw icon-color-productview"></span>
+			</span>
+			<span class="v-center"><?php echo $this->__('Email to a Friend') ?></span>
+		</a>
+	</li>
+
+<?php endif; ?>
+
+<?php echo $this->getChildHtml("productalert_price_timer"); ?>
+<?php echo $this->getChildHtml("productalert_stock_timer"); ?>
+
+<li>
+    	<a class="feature feature-icon-hover a-ask-a-question first v-centered-content" rel="nofollow" href="#" onclick='event.preventDefault();jQuery("#tab-yreviews>a").trigger("click");
+
+jQuery(".write-question-button > .yotpo-icon-button-text ").trigger("click");
+
+jQuery("html, body").animate({
+    scrollTop: jQuery("#tab-yreviews").offset().top
+}, 1000); ' title="<?php echo $this->__('Ask a Question') ?>">
+			<span class="v-center">
+				<span class="icon i-ask-a-question-bw icon-color-productview"></span>
+			</span>
+			<span class="v-center"><?php echo $this->__('Ask a Question') ?></span>
+		</a>
+	</li>
+</ul>
+
+<!--Condition for Timer Controllers goes here-->
+<?php if ($timer_active == 1) : ?>
+<?php if ($_product->getPrice() > $_product->getSpecialPrice()) : ?>
+<?php if ($_product->getSpecialPrice() != 0 || $_product->getSpecialPrice() != "") : ?>
+<?php if ($timer_head_active == 'showall' || $timer_head_active == 'viewpage' && $timer_head_active != 'hideall' && $timer_head != '') : ?>
+                        <div id="heading<?php echo $count; ?>" style="color:#<?php echo $head_color; ?>; font-size: 18px; font-weight:bold;padding-top:15px;padding-bottom:15px;clear: both;"><?php echo $timer_head ?></div>
+<?php endif; ?>
+                        <div id="countbox_<?php echo $count; ?>" class="timer-view"></div>
+<?php if ($timer_desc_active == 'showall' || $timer_desc_active == 'viewpage' && $timer_desc_active != 'hideall') : ?>
+                        <div class='clear'></div><div class='timerdate' id="caption<?php echo $count; ?>"><span class='hour' style='margin:1px 23px 0 0px'><?php echo $this->__('Days') ?></span><span class='hour' style='margin:1px 19px 0 15px'><?php echo $this->__('Hours') ?></span><span class='min'  style='margin:1px 20px 0 7px'><?php echo $this->__('Minutes') ?></span><span class='sec' style='margin:1px 0 0 2px'><?php echo $this->__('Seconds') ?></span></div>
+<?php endif;endif;endif; ?>
+
+<?php if ($_product->getPrice() > $_product->getSpecialPrice()) : ?>
+<?php if ($_product->getSpecialPrice() != 0 || $_product->getSpecialPrice() != "") : ?>
+        <script type="text/javascript">
+            var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)).' 11:59:00 PM'; ?>");
+            start = "<?php echo Date("m/d/y h:i:s A", strtotime(Mage_Core_Model_Locale::date(null, null, "en_US", true))); ?>";
+            start_date = Date.parse(start);
+            var dnow<?php echo $count; ?> = new Date(start_date);
+            if(CountStepper>0)
+                ddiff= new Date((dnow<?php echo $count; ?>)-(dthen<?php echo $count; ?>));
+            else
+                ddiff = new Date((dthen<?php echo $count; ?>)-(dnow<?php echo $count; ?>));
+            gsecs<?php echo $count; ?> = Math.floor(ddiff.valueOf()/1000);
+
+            var iid<?php echo $count; ?> = "countbox_<?php echo $count; ?>";
+            CountBack(gsecs<?php echo $count; ?>,"countbox_"+j, j);
+            j++;
+        </script>
+<?php $count = $count + 1; ?>
+<?php endif;endif;endif; ?>
+
+<!--Dynamic style changes goes here-->
+<style>
+    .timer-view{float: left;padding-bottom:10px;color: #<?php echo $timer_color; ?>;font-size: 40px; font-family: arial;font-weight: bold;}
+    .timerdate{float: left;padding:0 0 15px 10px;color: #<?php echo $desc_color; ?>;font-size: 13px;}
+</style>

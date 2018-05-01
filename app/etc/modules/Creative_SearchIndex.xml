@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Creative_SearchIndex>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Creative_SearchIndex>
+    </modules>
+</config>

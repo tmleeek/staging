@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_RewardsLoyalty>
+            <version>0.2.0.0</version>
+        </TBT_RewardsLoyalty>
+    </modules>
+
+    <frontend>
+        <routers>
+            <rewardsloyalty>
+                <use>standard</use>
+                <args>
+                    <module>TBT_RewardsLoyalty</module>
+                    <frontName>rewardsloyalty</frontName>
+                </args>
+            </rewardsloyalty>
+        </routers>
+        <secure_url>
+            <rewardsloyalty>/rewardsloyalty/</rewardsloyalty>
+        </secure_url>
+    </frontend>
+
+    <global>
+        <blocks>
+            <rewardsloyalty>
+                <class>TBT_RewardsLoyalty_Block</class>
+            </rewardsloyalty>
+        </blocks>
+        <helpers>
+            <rewardsloyalty>
+                <class>TBT_RewardsLoyalty_Helper</class>
+            </rewardsloyalty>
+        </helpers>
+        <models>
+            <rewardsloyalty>
+                <class>TBT_RewardsLoyalty_Model</class>
+            </rewardsloyalty>
+        </models>
+        <events>
+            <controller_action_postdispatch_rewardsadmin_manage_config_platform_connect>
+                <observers>
+                    <rewardsloyalty_rewards_controller_manage_config_platform_connect_postdispatch>
+                        <type>singleton</type>
+                        <class>rewardsloyalty/rewards_controller_manage_config_platform_observer</class>
+                        <method>connectPostDispatch</method>
+                    </rewardsloyalty_rewards_controller_manage_config_platform_connect_postdispatch>
+                </observers>
+            </controller_action_postdispatch_rewardsadmin_manage_config_platform_connect>
+            <controller_action_postdispatch_rewardsadmin_manage_config_platform_disconnect>
+                <observers>
+                    <rewardsloyalty_rewards_controller_manage_config_platform_disconnect_postdispatch>
+                        <type>singleton</type>
+                        <class>rewardsloyalty/rewards_controller_manage_config_platform_observer</class>
+                        <method>disconnectPostDispatch</method>
+                    </rewardsloyalty_rewards_controller_manage_config_platform_disconnect_postdispatch>
+                </observers>
+            </controller_action_postdispatch_rewardsadmin_manage_config_platform_disconnect>
+        </events>
+    </global>
+
+    <tbtcommon>
+        <loyalty>
+            <rewards>
+                <module>rewardsloyalty</module>
+                <helper>loyalty</helper>
+            </rewards>
+        </loyalty>
+    </tbtcommon>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Gls_Unibox>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <MDN_Colissimo />
+            </depends>
+        </Gls_Unibox>
+    </modules>
+</config> 

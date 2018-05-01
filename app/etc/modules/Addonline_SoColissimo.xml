@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- 
+/** 
+ * Addonline_SoColissimo
+ *
+ * @category Addonline
+ * @package Addonline_SoColissimo
+ * @copyright Copyright (c) 2014 Addonline 
+ * @author Addonline (http://www.addonline.fr) 
+ */ 
+-->
+<config>
+	<modules>
+		<Addonline_SoColissimo>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+				<Mage_Shipping />
+			</depends>
+		</Addonline_SoColissimo>
+	</modules>
+</config>

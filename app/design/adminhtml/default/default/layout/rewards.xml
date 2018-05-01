@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addCss"><name>rewards/css/skin.css</name></action>
+        </reference>
+    </default>
+    <rewardsadmin_manage_transfer_index>
+        <reference name="content">
+            <block type="rewards/manage_transfer" name="transfer" />
+        </reference>
+    </rewardsadmin_manage_transfer_index>
+
+    <rewardsadmin_manage_transfer_distribution_index>
+        <reference name="content">
+            <block type="rewards/manage_transfer_distribution" name="distribution" />
+        </reference>
+    </rewardsadmin_manage_transfer_distribution_index>
+    <rewardsadmin_manage_transfer_redemption_index>
+        <reference name="content">
+            <block type="rewards/manage_transfer_redemption" name="redemption" />
+        </reference>
+    </rewardsadmin_manage_transfer_redemption_index>
+    <rewardsadmin_manage_transfer_other_index>
+        <reference name="content">
+            <block type="rewards/manage_transfer_other" name="other" />
+        </reference>
+    </rewardsadmin_manage_transfer_other_index>
+
+    <rewardsadmin_manage_currency_index>
+        <reference name="content">
+            <block type="rewards/manage_currency" name="currency" template= "rewards/currency.phtml"/>
+        </reference>
+    </rewardsadmin_manage_currency_index>
+
+    <rewardsadmin_manage_special_index>
+        <reference name="content">
+            <block type="rewards/manage_special" name="special" />
+        </reference>
+    </rewardsadmin_manage_special_index>
+
+    <adminhtml_sales_order_view>
+        <reference name="left">
+            <reference name="sales_order_tabs">
+                <action method="addTab" ifconfig="rewards/general/layoutsactive">
+                    <name>points</name>
+                    <block>rewards/adminhtml_sales_order_view_tab_points</block>
+                </action>
+            </reference>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <adminhtml_sales_order_view>
+        <reference name="order_totals">
+            <block type="rewards/sales_order_print_points" name="order_points" as="order_points" template="rewards/sales/order/print/points.phtml" >
+                <action method="setColSpan">
+                    <value>1</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <adminhtml_sales_order_print>
+        <reference name="order_totals">
+            <block type="rewards/sales_order_print_points" name="order_points" as="order_points" template="rewards/sales/order/print/points.phtml" >
+                <action method="setColSpan">
+                    <value>1</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_print>
+
+    <adminhtml_sales_order_invoice_new>
+        <reference name="invoice_totals">
+            <block type="rewards/sales_order_invoice_points" name="invoice_points_discount" as="invoice_points_discount"
+                    template="rewards/sales/order/invoice/points.phtml" >
+                <action method="setColSpan">
+                    <value>1</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+
+    <adminhtml_sales_order_invoice_view>
+        <reference name="invoice_totals">
+            <block type="rewards/sales_order_invoice_points" name="invoice_points_discount" as="invoice_points_discount"
+                    template="rewards/sales/order/invoice/points.phtml" >
+                <action method="setColSpan">
+                    <value>1</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+
+
+    <adminhtml_sales_order_invoice_print>
+        <reference name="invoice_totals">
+            <block type="rewards/sales_order_invoice_points" name="invoice_points_discount" as="invoice_points_discount"
+                    template="rewards/sales/order/invoice/points.phtml" >
+                <action method="setColSpan">
+                    <value>1</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_print>
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <block type="core/template" name="tbtcommon.admin.msg" output="toHtml" template="rewards/config/message.phtml" />
+        </reference>
+    </adminhtml_system_config_edit>
+
+    <adminhtml_dashboard_index>
+        <reference name="dashboard">
+            <block type="rewards/manage_dashboard" name="rewards_dashboard" as="rewards_dashboard" template="rewards/dashboard/dashboard.phtml">
+                <block type="rewards/manage_dashboard_usage" name="rewards_dashboard_usage" as="rewards_dashboard_usage" template="rewards/dashboard/usage.phtml" />
+            </block>
+        </reference>
+    </adminhtml_dashboard_index>
+
+    <rewards_charts_head>
+        <reference name="head">
+            <action method="addCss"><name>rewards/css/nv.d3.css</name></action>
+            <action method="addCss"><name>rewards/css/metrics.css</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>rewards/js/d3.v3.js</name></action> -->
+            <action method="addItem"><type>skin_js</type><name>rewards/js/d3.v3.min.js</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>rewards/js/nv.d3.js</name></action> -->
+            <action method="addItem"><type>skin_js</type><name>rewards/js/nv.d3.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/tooltip.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/utils.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/legend.js</name></action>
+        </reference>
+    </rewards_charts_head>
+    <rewards_charts_pie_head>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/pie.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/pieChart.js</name></action>
+        </reference>
+    </rewards_charts_pie_head>
+    <rewards_charts_line_head>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/axis.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/scatter.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/line.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>rewards/js/models/lineWithFocusChart.js</name></action>
+        </reference>
+    </rewards_charts_line_head>
+    <rewardsadmin_manage_metrics_numberofmembers>
+        <update handle="rewards_charts_head" />
+        <update handle="rewards_charts_line_head" />
+
+        <reference name="content">
+            <block type="rewards/manage_metrics_numberOfMembers" template="rewards/metrics/grid/container.phtml" name="rewards.metrics.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="rewards/manage_metrics_filter_form" name="grid.filter.form">
+                    <action method="setFieldVisibility">
+                        <field>report_type</field>
+                        <visibility>0</visibility>
+                    </action>
+                    <action method="setFieldVisibility">
+                        <field>show_transfer_statuses</field>
+                        <visibility>0</visibility>
+                    </action>
+                    <action method="setFieldVisibility">
+                        <field>transfer_statuses</field>
+                        <visibility>0</visibility>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </rewardsadmin_manage_metrics_numberofmembers>
+
+    <rewardsadmin_manage_metrics_revenue>
+        <update handle="rewards_charts_head" />
+        <update handle="rewards_charts_line_head" />
+
+        <reference name="content">
+            <block type="rewards/manage_metrics_revenue" template="rewards/metrics/grid/container.phtml" name="rewards.metrics.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="rewards/manage_metrics_filter_form" name="grid.filter.form">
+                    <action method="setFieldVisibility">
+                        <field>report_type</field>
+                        <visibility>0</visibility>
+                    </action>
+                    <action method="setFieldVisibility">
+                        <field>show_transfer_statuses</field>
+                        <visibility>0</visibility>
+                    </action>
+                    <action method="setFieldVisibility">
+                        <field>transfer_statuses</field>
+                        <visibility>0</visibility>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </rewardsadmin_manage_metrics_revenue>
+
+    <rewardsadmin_manage_metrics_redemptionrate>
+        <update handle="rewards_charts_head" />
+        <update handle="rewards_charts_line_head" />
+
+        <reference name="content">
+            <block type="rewards/manage_metrics_redemptionRate" template="rewards/metrics/grid/container.phtml" name="rewards.metrics.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="rewards/manage_metrics_filter_form" name="grid.filter.form">
+                    <action method="setFieldVisibility">
+                        <field>report_type</field>
+                        <visibility>0</visibility>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </rewardsadmin_manage_metrics_redemptionrate>
+
+    <rewardsadmin_manage_metrics_earnings>
+        <update handle="rewards_charts_head" />
+        <update handle="rewards_charts_pie_head" />
+
+        <reference name="content">
+            <block type="rewards/manage_metrics_earnings" template="rewards/metrics/grid/container.phtml" name="rewards.metrics.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="rewards/manage_metrics_filter_form" name="grid.filter.form">
+                    <action method="setFieldVisibility">
+                        <field>report_type</field>
+                        <visibility>0</visibility>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </rewardsadmin_manage_metrics_earnings>
+</layout>

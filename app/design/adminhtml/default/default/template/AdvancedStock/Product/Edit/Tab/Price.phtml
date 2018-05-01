@@ -1,0 +1,62 @@
+<script>
+	var taxRate = <?php echo $this->getPricerTaxRate(); ?>;
+</script>
+<div class="entry-edit-head">
+	<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Price'); ?></h4> 
+</div>
+<div class="entry-edit">    
+        <div class="grid">
+	        <div align="right">
+                <a href="<?php echo $this->getUrl('adminhtml/system_config/edit/section/purchase/'); ?>"><i><?php echo $this->__('Used tax rate : ').$this->getPricerTaxRate().'%'; ?></i></a>
+            </div>
+            <table class="data" cellspacing="0" width="100%">
+            	<thead>
+	                <tr class="headings">
+	                    <th class="a-center"><?php echo $this->__('Buy Price (Cost)')?></th>
+	                    <th class="a-center"><?php echo $this->__('Sell Price Excl. tax')?></th>
+	                    <th class="a-center"><?php echo $this->__('Sell Price All taxes included')?></th>
+	                    <th class="a-center"><?php echo $this->__('Margin %')?></th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr>
+	                    <td class="a-center">
+                            <font color="black"><?php echo $this->getProductCost(); ?><input type="hidden" id="cost" name="cost" value="<?php echo $this->getProductCost(); ?>"></font>
+                        </td>
+	                    <td class="a-center">
+	                    	<input size="5" type="text" id="price" name="price" value="<?php if (!mage::getStoreConfig('tax/calculation/price_includes_tax')) { echo $this->getProductCurrentPrice(); } ?>">
+                            <img src="<?php echo $this->getSkinUrl('images/fam_refresh.gif'); ?>" onclick="refreshPrices('price');">
+	                    	<?php 
+	                    		if (!mage::getStoreConfig('tax/calculation/price_includes_tax')){
+	                    			echo '<br><i>'.$this->__('Stored value').'</i>';                                    
+                                    if($this->getProductCurrentSpecialPrice()>0){
+                                        echo '<br><i>'.$this->__('Real price').' '.$this->getProductPrice().'</i>';
+	                    			}
+                                    //echo '<br><i>'.$this->__('debug').' '.$this->debugSpecialPrice().'</i>';                                    
+                                }
+	                    	?>
+	                    </td>
+	                    <td class="a-center">
+	                    	<input size="5" type="text" id="price_ttc" name="price_ttc" value="<?php if (mage::getStoreConfig('tax/calculation/price_includes_tax')) { echo $this->getProductCurrentPrice(); } ?>">
+                            <img src="<?php echo $this->getSkinUrl('images/fam_refresh.gif'); ?>" onclick="refreshPrices('price_ttc');">
+	                    	<?php 
+	                    		if (mage::getStoreConfig('tax/calculation/price_includes_tax'))
+	                    			echo '<br><i>'.$this->__('Stored value').'</i>';
+	                    	?>
+	                    </td>
+	                    <td class="a-center">
+                            <input size="5" type="text" id="margin_percent" name="margin_percent">
+                            <img src="<?php echo $this->getSkinUrl('images/fam_refresh.gif'); ?>" onclick="refreshPrices('margin');">
+                        </td>
+	                </tr>
+	            </tbody>
+			</table>
+		</div>
+</div>
+<script>
+<?php if (mage::getStoreConfig('tax/calculation/price_includes_tax')): ?>
+	refreshPrices('price_ttc');
+<?php else: ?>
+	refreshPrices('price');
+<?php endif; ?>
+</script>

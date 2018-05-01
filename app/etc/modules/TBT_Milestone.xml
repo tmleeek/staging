@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_Milestone>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core />
+                <Mage_Customer />
+                <Mage_Sales />
+                <Mage_Log />
+                <TBT_Common />
+                <TBT_Rewards />
+            </depends>
+        </TBT_Milestone>
+    </modules>
+</config>

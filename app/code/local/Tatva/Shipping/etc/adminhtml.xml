@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<adminhtml>
+    <acl>
+    	<resources>
+    		<admin>
+    			<children>
+    				<tatva translate="title"  module="tatvashipping">
+    					<title>Tatva</title>
+    					<sort_order>20</sort_order>
+    						<children>
+    							<tatvashipping module="tatvashipping">
+    								<title>Transport</title>
+    								<sort_order>20</sort_order>
+    								<children>
+    									<tatvashippingzone module="tatvashipping">
+    										<title>Areas</title>
+    										<sort_order>10</sort_order>
+    									</tatvashippingzone>
+                                        <tatvashippingapimethod module="tatvashipping">
+    						                <title>ShippingMethod / ApiMethod</title>
+    						                <sort_order>20</sort_order>
+    						                <action>tatvashipping/adminhtml_apimethod</action>
+    					                </tatvashippingapimethod>
+    								    <tatvashippingrules translate="title">
+    	                                    <title>Grid price / weight</title>
+    	                                    <sort_order>30</sort_order>
+    	                                    <children>
+    	                                    	<tatvashippingrules_colissimo module="tatvashipping">
+    												<title>Colissimo</title>
+    												<sort_order>10</sort_order>
+    											</tatvashippingrules_colissimo>
+    	                                    </children>
+    	                                </tatvashippingrules>
+                                   </children>
+    							</tatvashipping>
+    						</children>
+    				</tatva>
+    				<system>
+    					<children>
+    						<config>
+    							<children>
+    								<tatva translate="title" module="tatvashipping">
+    									<title>Tatva Setting</title>
+    								</tatva>
+                                    <marketplace_shipping translate="title" module="tatvashipping">
+    									<title>MarketPlace Shipping Setting</title>
+    								</marketplace_shipping>
+    							</children>
+    						</config>
+    					</children>
+    				</system>
+    			</children>
+    		</admin>
+    	</resources>
+    </acl>
+    <translate>
+        <modules>
+            <Tatva_Shipping>
+                <files>
+                    <default>Tatva_Shipping.csv</default>
+                </files>
+            </Tatva_Shipping>
+        </modules>
+    </translate>
+</adminhtml>

@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   azboutique_custom
+ * @package    Sqli
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+$products = $this->getProducts();
+$promoHelper = $this->helper('promotions');
+$nouveautesHelper = $this->helper('nouveautes');
+$i=1;
+$brand_url = 'marque';
+$storeCode = Mage::app()->getStore()->getCode(); 
+if($storeCode != 'profr' && $storeCode != 'fr')
+	$brand_url = 'brand';
+?>
+<?php if($products && $products->getSize() > 0) :?>
+	<div class="titre-degrade-noir"><strong><span class="small-caps"><?php echo $this->__('Customers who bought this product also bought')?>...</span></strong></div>
+	<div class="bloc-ont-aime-aussi">
+	<?php foreach($products as $_product) : ?>
+	<?php $brand = $this->getBrand($_product->getMarque()); ?>
+	<div class="produit-item-liste<?php if ($i%4 == 0): ?> produit-item-liste-dernier<?php endif; ?>"><div class="contenu-produit-item-liste">
+		<div class="titre-gris-petit">
+			<table cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<td>
+						<strong><?php echo ($_product->getGammeCollection() != "")?$_product->getGammeCollection():"&nbsp;"; ?></strong>
+						<?php if($brand): ?>
+						<?php $admin_set_brand_url = Mage::getModel('bm/manage')->load($brand->getId())->getBrandUrlFr(); ?>
+						<a href="<?php echo $this->getUrl('/',array($brand_url=>$admin_set_brand_url)) ?>"><strong><?php echo $brand->getValue() ?></strong></a>
+						<?php else: ?>
+							<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a>
+						<?php endif; ?>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="image-produit-item-liste">
+			<a    href="<?php echo $_product->getProductUrl()?>"   >
+				<?php $percent = $promoHelper->getDiscountPercent($_product);
+
+                                 $promotion_type = $promoHelper->getPromotype($_product);
+                                ?>
+				<?php $isNew = $nouveautesHelper->isNew($_product)?>
+				<?php if( $percent || $isNew || $promotion_type ): ?>
+					<span class="bandeau-sur-image-low">
+						<?php if( $percent ): ?>
+							<span class="bandeau-promo-<?php echo $percent ?>">
+								<span>-<?php echo $percent ?>%</span>
+							</span>
+						<?php endif;?>
+						<?php if( $isNew ): ?>
+							<span class="bandeau-nouveau"></span>
+						<?php endif;?>
+                        <?php echo Mage::Helper("sqlicatalogrule")->getPromotionTypeHtml($this->getSkinUrl("img"),$promotion_type,$_product->getStatusStock()); ?>
+					</span>
+					
+				<?php endif;?>
+                                <?php $category_traverse=Mage::helper('catalog/product')->getCategoryTraverse(Mage::registry('current_category'));
+
+                                $product_alt=$_product->getName();
+
+                                if($category_traverse)
+                                    $product_alt=$category_traverse.":-".$product_alt;
+
+                                ?>
+				<img alt="<?php echo $product_alt;?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(168, 168); ?>" width="168" height="168"/>
+			</a>
+			<br class="cache" /><div class="lien-zoom"><a href="#" onmouseover="afficherImageZoomee(this)" onmouseout="cacherImageZoomee(this)" onclick="return false"><span><?php echo $this->__('Zoom image')?></span></a></div><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300, 300); ?>" alt="" class="image-zoomee<?php if ($i%4 == 0): ?>2<?php else:?>9<?php endif;?>" style="display:none" height="300" width="300"/></div>
+		<div class="produit-detail-item-liste">
+			<div class="titre-produit-item-liste"><h1><a   href="<?php echo $_product->getProductUrl()?>"   ><?php echo $this->htmlEscape($_product->getName())?></a></h1></div>
+			<div class="titre-noir"><strong><?php echo $_product->getStatusStock() ?></strong></div>
+			<div class="prix-produit-item-liste"><table cellspacing="0"><tr><td>
+				<?php if ($_product->getTypeId() == "configurable"): ?><div class="prix-a-partir-de"><?php echo $this->__('from') ?></div><?php endif; ?>
+				<?php echo $this->getPriceHtml($_product, true) ?>
+			</td></tr></table></div>
+				
+		</div><br class="cache" />
+		<div class="liens-produit-item-liste">
+			<div class="lien-fond-rose bordure-noire-d"><a   href="<?php echo $_product->getProductUrl()?>"    ><?php echo $this->__('Details') ?></a></div>
+			<div class="lien-fond-rose"><a   onclick="a_click('<?php echo $this->getAddToCartUrl($_product) ?>')" style="cursor: pointer;"  ><?php echo  $this->helper('catalog')->__('Add to Cart') ?></a></div>
+			<div class="clear-both"></div>
+		</div>
+	</div></div>
+	<?php if ($i%4 == 0): ?><div class="clear-both"></div><?php endif; ?>
+	<?php $i++; endforeach; ?>
+	<div class="clear-both"></div>
+	</div>
+<?php endif;?>

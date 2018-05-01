@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <ekomiflagupdate_adminhtml_ekomiflagupdate_index>
+        <reference name="content">
+            <block type="ekomiflagupdate/adminhtml_ekomiflagupdate" name="ekomiflagupdate" />
+        </reference>
+    </ekomiflagupdate_adminhtml_ekomiflagupdate_index>
+    <ekomiflagupdate_adminhtml_ekomiflagupdate_edit>
+        <update handle="editor"/>
+    </ekomiflagupdate_adminhtml_ekomiflagupdate_edit>
+</layout>

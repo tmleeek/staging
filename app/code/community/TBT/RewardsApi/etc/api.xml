@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Sales
+ * @copyright   Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <api>
+        <resources>
+            <rewards translate="title" module="rewardsapi">
+                <model>rewardsapi/api</model>
+                <title>Sweet Tooth API</title>
+                <acl>rewards</acl>
+                <methods>
+                    <getcustomeridbyemail translate="title" module="rewardsapi">
+                        <title>Fetch the customer ID by the e-mail and website id</title>
+                        <method>getCustomerIdByEmail</method>
+                        <acl>rewards/getcustomeridbyemail</acl>
+                    </getcustomeridbyemail>
+                    <getbalancebyemail translate="title" module="rewardsapi">
+                        <title>Get the points balance for a user by e-mail</title>
+                        <method>getBalanceByEmail</method>
+                        <acl>rewards/getbalance</acl>
+                    </getbalancebyemail>
+                    <getbalancebyid translate="title" module="rewardsapi">
+                        <title>Get the points balance for a user by customer id</title>
+                        <method>getBalanceById</method>
+                        <acl>rewards/getbalance</acl>
+                    </getbalancebyid>
+                    <list translate="title" module="rewardsapi">
+                        <title>Get a list of transfers</title>
+                        <method>getTransferList</method>
+                        <acl>rewards/list</acl>
+                    </list>
+                    <maketransfer translate="title" module="rewardsapi">
+                        <title>Transfer points to or from a user</title>
+                        <method>makeTransfer</method>
+                        <acl>rewards/maketransfer</acl>
+                    </maketransfer>
+                </methods>
+                <faults module="rewardsapi">
+                    <no_such_customer>
+                        <code>200</code>
+                        <message>Customer not found</message>
+                    </no_such_customer>
+                    <transfer_exception>
+                        <code>201</code>
+                        <message>An error occured while trying to make make or modify a points transfer</message>
+                    </transfer_exception>
+                    <api_usage_exception>
+                        <code>202</code>
+                        <message>A problem with your Sweet Tooth installation.</message>
+                    </api_usage_exception>
+                </faults>
+            </rewards>
+            <rewards_sales_order translate="title" module="rewardsapi">
+                <model>rewardsapi/sales_order_api</model>
+                <title>Sweet Tooth Sales API</title>
+                <acl>rewards_sales_order</acl>
+                <methods>
+                    <list translate="title" module="rewardsapi">
+                        <title>Get a list of orders</title>
+                        <method>items</method>
+                        <acl>rewards_sales_order/list</acl>
+                    </list>
+                </methods>
+                <faults module="rewardsapi">
+                    <api_usage_exception>
+                        <code>500</code>
+                        <message>There was a problem with the rewards_sales_order API</message>
+                    </api_usage_exception>
+                    <filters_invalid>
+                        <code>101</code>
+                        <message>Invalid filters given for rewards_sales_order. Details in error message.</message>
+                    </filters_invalid>
+                </faults>
+            </rewards_sales_order>
+        </resources>
+        <resources_alias>
+            <rewards>rewards</rewards>
+            <rewards_sales_order>rewards_sales_order</rewards_sales_order>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <rewards>rewards</rewards>
+                <rewards_sales_order>rewards_sales_order</rewards_sales_order>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <rewards translate="title" module="rewardsapi">
+                    <title>Sweet Tooth API</title>
+                    <sort_order>3</sort_order>
+                    <getcustomeridbyemail translate="title" module="rewardsapi">
+                        <title>Fetch the customer ID by the e-mail and website id</title>
+                    </getcustomeridbyemail>
+                    <getbalance translate="title" module="rewardsapi">
+                        <title>Get the points balance for a user</title>
+                    </getbalance>
+                    <list translate="title" module="rewardsapi">
+                        <title>Fetch a list of transfers</title>
+                    </list>
+                    <maketransfer translate="title" module="rewardsapi">
+                        <title>Transfer points to/from a user</title>
+                    </maketransfer>
+                </rewards>
+                <rewards_sales_order translate="title" module="rewardsapi">
+                    <title>Sweet Tooth Sales API</title>
+                    <sort_order>4</sort_order>
+                    <list translate="title" module="rewardsapi">
+                        <title>Fetch a list of orders</title>
+                    </list>
+                </rewards_sales_order>
+            </resources>
+        </acl>
+    </api>
+</config>

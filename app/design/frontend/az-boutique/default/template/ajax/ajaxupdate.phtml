@@ -1,0 +1,24 @@
+<?php
+if($_SERVER['HTTPS'] == "on")
+{
+    
+?>
+<script type="text/javascript">
+ var url_topcart = "<?php echo $this->getUrl('ajax/ajax/headercart',array("_secure"=>true));?>";
+</script>
+<?php }else{?>
+<script type="text/javascript">
+ var url_topcart = "<?php echo $this->getUrl('ajax/ajax/headercart');?>";
+</script>
+<?php } ?>
+<div class="addtocart_popup" id="addtocart_popup" style="position:absolute;display:none;">
+	<div class="popup-text"></div>
+	<div class="popup-buttons" >
+		<div class="contine_shopping_btn">
+			<button onclick="jQuery.fancybox.close();" class="button btn-shop" title="<?php echo $this->__('Continue Shopping'); ?>" type="button"><span><span><?php echo $this->__('Continue Shopping'); ?></span></span></button>
+		</div>
+		<div class="proceed_checkout_btn">
+                    <a href="<?php echo $this->getUrl('checkout/cart');?>"><button class="button btn-shop" title="<?php echo $this->__('Proceed to Checkout'); ?>" type="button"><span><span><?php echo $this->__('View cart & checkout'); ?></span></span></button></a>
+		</div>
+	</div>
+</div>

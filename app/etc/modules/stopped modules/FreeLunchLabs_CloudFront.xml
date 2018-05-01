@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <FreeLunchLabs_CloudFront>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <ET_CurrencyManager />
+            </depends>
+
+        </FreeLunchLabs_CloudFront>
+    </modules>
+</config>

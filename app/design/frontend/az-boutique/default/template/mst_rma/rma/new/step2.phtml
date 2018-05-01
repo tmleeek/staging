@@ -1,0 +1,162 @@
+<?php
+$order = $this->getOrder();
+?>
+<div class="page-title">
+    <h1><?php echo $this->__("New Return for Order #%s", $order->getIncrementId()) ?></h1>
+</div>
+<form action="<?php echo $this->getStep2PostUrl()?>" method="POST" enctype="multipart/form-data"    id="rma-form-validate" >
+<input name="order_id" type="hidden" value="<?php echo $order->getId() ?>">
+
+<div class="fieldset">
+    <h2 class="legend"><?php echo $this->__("Request Information") ?></h2>
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>
+                    <b><?php echo $this->__("Customer Name") ?>:</b> <?php echo $order->getCustomerName() ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b><?php echo $this->__("Email Address") ?>:</b> <?php echo $order->getCustomerEmail() ?>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <b><?php echo $this->__("Order Shipping Address") ?>:</b> <br><?php echo $order->getShippingAddress()->format("html") ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="rma_placeholder"></div>
+
+<button id="rma_add_item" class="button rma-add-item"><span><span>&#43;&nbsp;<?php echo $this->__("Add Item") ?></span></span></button>
+
+<div class="clearfix"></div>
+
+<div class="fieldset">
+    <ul class="form-list">
+        <?php foreach ($this->getCustomFields() as $field): ?>
+        <li class="control">
+            <?php echo Mage::helper('rma/field')->getInputHtml($field)?>
+            <label for="<?php echo $field->getCode()?>" <?php echo $field->getIsRequiredCustomer()?'class="required"><em>*</em>':'>'?><?php echo $this->__($field->getName()) ?></label>
+            <p><?php echo $field->getDescription() ?></p>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<div class="fieldset">
+    <h2 class="legend"><?php echo $this->__("Additional Information") ?></h2>
+    <ul class="form-list">
+        <li class="wide">
+            <div class="input-box">
+                <textarea name="comment" id="comment" class="input-text"></textarea>
+            </div>
+        </li>
+        <li class="wide">
+            <label for="attachment"><?php echo $this->__("Attach files") ?></label>
+            <div class="input-box">
+                <?php echo Mage::helper('mstcore/attachment')->getFileInputHtml() ?>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<?php if ($this->getPolicyIsActive()) : ?>
+<div class="fieldset">
+    <h2 class="legend"><?php echo $this->getPolicyTitle() ?></h2>
+    <ul class="form-list">
+        <li class="wide">
+            <?php echo $this->getPolicyContent() ?>
+        </li>
+        <li class="control">
+            <div class="input-box">
+                 <input id='agree' type='checkbox' class='required-entry checkbox'> <label for='agree'><?php echo $this->__("I agree") ?></label>
+            </div>
+        </li>
+    </ul>
+</div>
+<?php endif; ?>
+
+<div class="buttons-set">
+    <p class="required"><?php echo $this->__("* Required Fields") ?></p>
+    <button type="submit" title="<?php echo $this->__("Submit Request") ?>" class="button"><span><span><?php echo $this->__("Submit Request") ?></span></span></button>
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm("rma-form-validate", true);
+//]]>
+</script>
+
+<style type="text/css">
+    #rma_remove_item1 {
+        display: none;
+    }
+</style>
+
+<div id="rma_item_template" class="rma-item-template">
+    <div id="rma_item__index__">
+        <div class="fieldset">
+            <h2 class="legend"><?php echo $this->__("Item to return") ?></h2>
+            <button class="button remove" id="rma_remove_item__index__" data-id="__index__"><span><span data-id="__index__">&times;&nbsp;Remove</span></span></button>
+            <ul class="form-list">
+                <li class="fields">
+                    <div class="field">
+                        <label for="order_item_id__index__"><?php echo $this->__("Item") ?></label>
+                        <div class="input-box">
+                            <select name="items[__index__][order_item_id]" id="order_item_id__index__" class="required-entry">
+                                <option value=""><?php echo $this->__("-- Select an Order Item --")?></option>
+                                <?php foreach ($this->getOrderItemCollection() as $item): ?>
+                                <?php if ($item->getParentItem()) continue; ?>
+                                <option value="<?php echo $item->getId()?>"><?php echo Mage::helper('rma')->getOrderItemLabel($item) ?></option>
+                                <?php endforeach;?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="qty_requested__index__" class="required"><em>*</em><?php echo $this->__("Quantity To Return") ?></label>
+                        <div class="input-box">
+                            <input name="items[__index__][qty_requested]" id="qty_requested__index__" class="input-text required-entry">
+                        </div>
+                    </div>
+                </li>
+                <li class="wide">
+                    <label for="reason_id__index__" class="required"><em>*</em><?php echo $this->__("Reason") ?></label>
+                    <div class="input-box">
+                        <select name="items[__index__][reason_id]" id="reason_id__index__" class="required-entry">
+                            <option value=""><?php echo $this->__("-- Select a Reason --")?></option>
+                            <?php foreach ($this->getReasonCollection() as $reason): ?>
+                            <option value="<?php echo $reason->getId()?>"?><?php echo $reason->getName() ?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </li>
+                <li class="wide">
+                    <label for="condition_id__index__" class="required"><em>*</em><?php echo $this->__("Condition") ?></label>
+                    <div class="input-box">
+                        <select name="items[__index__][condition_id]" id="condition_id__index__" class="required-entry">
+                            <option value=""><?php echo $this->__("-- Select a Condition --")?></option>
+                            <?php foreach ($this->getConditionCollection() as $condition): ?>
+                            <option value="<?php echo $condition->getId()?>"><?php echo $condition->getName() ?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </li>
+                <li class="wide">
+                    <label for="resolution_id__index__" class="required"><em>*</em><?php echo $this->__("Resolution") ?></label>
+                    <div class="input-box">
+                        <select name="items[__index__][resolution_id]" id="resolution_id__index__" class="required-entry">
+                            <option value=""><?php echo $this->__("-- Select a Resolution --")?></option>
+                            <?php foreach ($this->getResolutionCollection() as $resolution): ?>
+                            <option value="<?php echo $resolution->getId()?>"><?php echo $resolution->getName() ?></option>
+                            <?php endforeach;?>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

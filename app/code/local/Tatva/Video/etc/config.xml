@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Video>
+            <version>0.1.0</version>
+        </Tatva_Video>
+    </modules>
+
+    <!-- GLOBAL  -->
+	<global>
+		<!-- Resources  -->
+        <resources>
+            <tatvavideo_setup>
+                <setup>
+                    <module>Tatva_Video</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tatvavideo_setup>
+            <tatvavideo_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tatvavideo_write>
+            <tatvavideo_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tatvavideo_read>
+        </resources>
+        
+        <!-- Helpers  -->
+		<helpers>
+            <tatvavideo>
+                <class>Tatva_Video_Helper</class>
+            </tatvavideo>
+        </helpers> 
+        
+        <!-- Blocks  -->
+		<blocks>
+            <tatvavideo>
+                <class>Tatva_Video_Block</class>
+            </tatvavideo>
+            <adminhtml>
+        		<rewrite>
+        			<catalog_product_edit_tabs>Tatva_Video_Block_Rewrite_AdminhtmlCatalogProductEditTabs</catalog_product_edit_tabs>
+        		</rewrite>
+	       </adminhtml>
+        </blocks>    
+        
+        <!-- Models  -->      
+        <models>
+        	<tatvavideo>
+        		<class>Tatva_Video_Model</class>
+        		<resourceModel>tatvavideo_mysql4</resourceModel>
+        	</tatvavideo>
+            <tatvavideo_mysql4>
+                <class>Tatva_Video_Model_Mysql4</class>
+                <entities>
+                    <video_item>
+                        <table>tatva_video_item</table>
+                    </video_item>
+                </entities>
+            </tatvavideo_mysql4>      	
+        </models> 
+        
+        <!-- Reecriture des urls  -->
+		<rewrite>
+			<video_adminhtml_init_grid>
+				<from><![CDATA[#^/?admin/catalog_product/videoAndSupplier#]]></from>
+               	<to>/tatvavideo/adminhtml_video/videoAndSupplier</to>
+			</video_adminhtml_init_grid>
+			<video_adminhtml_reload_grid>
+				<from><![CDATA[#^/?admin/catalog_product/gridOnlyVideoAndSupplier#]]></from>
+               	<to>/tatvavideo/adminhtml_video/gridOnlyVideoAndSupplier</to>
+			</video_adminhtml_reload_grid>
+			<video_adminhtml_edit>
+				<from><![CDATA[#^/?admin/catalog_product/videoEdit#]]></from>
+               	<to>/tatvavideo/adminhtml_video/edit</to>
+			</video_adminhtml_edit>
+		</rewrite>
+		
+		 
+        
+        
+    </global>
+    
+    <!-- Admin  -->
+    <adminhtml>
+		<routers>
+			<tatvavideo>
+				<use>standard</use>
+				<args>
+					<module>Tatva_Video</module>
+					<frontName>tatvavideo</frontName>
+				</args>
+			</tatvavideo>
+		</routers>  
+		<layout>
+			<updates>
+				<tatvavideo>
+					<file>tatvavideo.xml</file>
+				</tatvavideo>
+			</updates>
+		</layout>	
+        <translate>
+            <modules>
+                <Tatva_Video>
+                    <files>
+                        <default>Tatva_Video.csv</default>
+                    </files>
+                </Tatva_Video>
+            </modules>
+        </translate>
+       
+ 	  <acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<tatvavideo translate="title" module="tatvavideo">
+											<title>Tatva Video</title>
+										</tatvavideo>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+	    </acl>  	
+    </adminhtml>   
+    
+    <!-- Frontend  -->
+    <frontend>
+        <routers>
+			<tatvavideo>
+				<use>standard</use>
+				<args>
+					<module>Tatva_Video</module>
+					<frontName>tatvavideo</frontName>
+				</args>
+			</tatvavideo>
+		</routers>   
+		<layout>
+			<updates>
+				<tatvavideo>
+					<file>tatvavideo.xml</file>
+				</tatvavideo>
+			</updates>
+		</layout>		
+        <translate>
+            <modules>
+                <Tatva_Video>
+                    <files>
+                        <default>Tatva_Video.csv</default>
+                    </files>
+                </Tatva_Video>
+            </modules>
+        </translate>	
+         
+    </frontend>   
+    <admin>
+		<routers>
+			<sqli_video>
+				<use>admin</use>
+				<args>
+					<module>Tatva_Video</module>
+					<frontName>tatvavideo</frontName>
+				</args>
+			</sqli_video>
+		</routers>
+	</admin>
+</config>

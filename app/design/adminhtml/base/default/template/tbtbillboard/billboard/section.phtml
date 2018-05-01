@@ -1,0 +1,17 @@
+
+<div class="billboard-section <?php echo $this->getDivClass() ?>">
+    <?php if ($this->getImagePath() !== null): ?>
+        <img class="billboard-image" src="<?php echo $this->getSkinUrl($this->getImagePath()) ?>" />
+        <span style="clear:both;"></span>
+    <?php endif ?>
+    
+    <?php if ($this->getHeading() !== null): ?>
+        <span class="billboard-heading"><?php echo $this->getHeading() ?></span> <br/>
+    <?php endif ?>
+    
+    <?php if ($this->getContent() !== null): ?>
+        <div class="billboard-content" style="<?php if ($this->getImagePath()): ?>width:305px;<?php endif ?>">
+            <?php echo $this->getContent() ?>
+        </div>
+    <?php endif ?>
+</div>

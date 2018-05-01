@@ -1,0 +1,26 @@
+<!-- // WDCA CODE BEGINS:  // -->
+<?php 
+    // Fetch points redmeption data
+    $hasRedeemed = $this->hasRedemptions();
+	$redeem_list_id = 'points-list-redeemed-'.  $this->getItem()->getId();
+	$redeemed_points_data = $this->getRedemptionData();
+?>
+
+<?php if ($hasRedeemed) : ?>
+    <div class="item-points-redeemed-section">
+    	<span class="item-points-header-redeemed"> 
+	    	 <?php echo $this->__('Points Spending') ?>: 
+		</span>
+		<ul class='item-points-list-redeemed' id='<?php echo $redeem_list_id ?>'>
+		    <?php  foreach ($redeemed_points_data as $rl): ?>
+		    	<li>
+	            	<?php echo $this->__("%s, %s off", $rl['points_str'], $rl['discount']); ?>
+	            	<?php echo $rl['img_html']; ?>
+	            </li>
+		    <?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>
+    
+<!-- // WDCA CODE ENDS // -->
+    

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <adminhtml_catalog_product_simple>
+		<reference name="head">
+            <action method="addJs"><script>tatva/adminhtml/product/video.js</script></action>
+        </reference>
+
+	</adminhtml_catalog_product_simple>
+</layout>

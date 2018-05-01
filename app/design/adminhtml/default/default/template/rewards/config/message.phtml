@@ -1,0 +1,7 @@
+<script type="text/javascript">
+    if($('advanced_modules_disable_output') != undefined ) {
+         $('advanced_modules_disable_output').getElementsBySelector('#TBT_Common').first().insert({
+          after: "<p class='note' style='color:red'><?php echo $this->helper("rewards")->__("Please do not disable TBT_Common, even if you completely disable output for a specific store. For more info, please check <a href='https://support.sweettoothrewards.com/entries/21067863--I-disabled-Sweet-Tooth-through-the-backend-configuration-but-there-are-still-happening-with-Sweet-T' target='_blank'>here.</a>");?></p>"
+     });
+    }
+</script>

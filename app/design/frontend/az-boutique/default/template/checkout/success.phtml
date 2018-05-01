@@ -1,0 +1,288 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+    <?php if ($this->getCanViewOrder()) :?>
+        <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+    <?php  else :?>
+        <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+    <?php endif;?>
+        <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+    <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+        <p>
+        <?php /*echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl())*/ ?>
+            <?php echo $this->getChildHtml() ?>
+        </p>
+    <?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+    <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+    <ul class="disc">
+        <?php foreach($profiles as $profile):?>
+            <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+            <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+        <?php endforeach;?>
+    </ul>
+<?php endif;?>
+
+<p>
+<?php
+if(isset($_SESSION['sucess_msg']))
+{
+  echo $_SESSION['sucess_msg'].'<br />'.$_SESSION['sucess_msg_1']; 
+}
+?>
+</p>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+<!-- adwords -->
+<script type="text/javascript">
+<?php 
+//-------------------------------------------
+// START ADWORDS CONVERSION VALUE TRACKING CODE
+//-------------------------------------------
+$order_details = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
+$adwords_saleamt = $order_details->subtotal; 
+?>
+
+/* <![CDATA[ */
+var google_conversion_id = 102831261;
+var google_conversion_language = "en";
+var google_conversion_format = "2";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "lB_ECPrb7wEQppyr6gM";
+var google_conversion_value = <?php echo $adwords_saleamt; ?>;
+/* ]]> */
+
+</script>
+
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
+
+<noscript>
+
+    <div style="display:inline;">
+	    <img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/102831261/?label=lB_ECPrb7wEQppyr6gM&guid=ON&script=0"/>
+    </div>
+
+</noscript>
+<!-- adwords -->
+
+
+<!-- analytics -->
+<?php
+$order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
+$total = $order->getGrandTotal();
+$shipping = $order->getShippingAmount();
+$tax = $order->getTaxAmount();
+$store = Mage::app()->getStore();
+$base_total = $order->getBaseSubtotal();
+$name = $store->getName();
+
+
+$website_store_id = Mage::app()->getWebsite()->getStoreFbdId();
+$website_name = Mage::app()->getWebsite()->getName();
+$items = $order->getAllItems();
+$itemcount = count($items);
+$item_details = array() ;
+$fbd_array = array();
+$total_item_order = 1;
+?>
+
+
+
+<script>
+dataLayer = [{
+    'transactionId': '<?php echo $this->getOrderId(); ?>', // Transaction ID - Type:String - Required
+    //'transactionAffiliation': '[Server Variable]', // store name - Type:String - Optional to use
+    'transactionTotal': <?php echo $base_total; ?>, //total revenue - Type:Numeric - Required
+    'transactionTax': <?php echo $tax ?>, // Tax amount for transaction - Type:Numeric - Optional to use
+    'transactionShipping': <?php echo $shipping ?>, // Shipping cost - Type:Numeric - Optional to use
+    'transactionProducts': [
+    <?php
+    foreach($items as $item)
+    {
+        $det = array() ;
+
+        $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
+        if($website_name == "az-boutique.fr")
+            $fbd_array['product_id'][] = $product->getLengowId();
+        else
+            $fbd_array['product_id'][] = $item->getProductId();
+
+        $fbd_array['sku'][] = $item->getSku();
+        $fbd_array['name'][] = $item->getName();
+        $fbd_array['category'][] = get_category_name($item->getProductId());
+        $fbd_array['price'][] = $item->getPrice();
+        $fbd_array['quantity'][] = number_format($item->getQtyOrdered(), 0);
+
+
+        $det['product_id'] = $item->getProductId();
+        $det['sku'] = $item->getSku();
+        $det['name'] = $item->getName();
+        $det['category'] = get_category_name($item->getProductId());
+        $det['price'] = $item->getPrice();
+        $det['quantity'] = number_format($item->getQtyOrdered(), 0);
+        array_push($item_details, $det);
+        ?>
+        {
+            'sku': '<?php echo $det['sku']; ?>', // Product SKU - Type:String - Required
+            'name': '<?php echo $det['name']; ?>', // Product Name - Type:String - Required
+            'category': '<?php echo $det['category'];?>', // Product Category - Type:String - Optional to use
+            'price': <?php echo $det['price'];?>, // Product Price - Type:Numeric - Required
+            'quantity': <?php echo $det['quantity'];?> // Product Quantity - Type:Numeric - Required
+        }
+        <?php
+        if($total_item_order < $itemcount)
+        {
+        ?>
+            ,
+        <?php
+        }
+        $total_item_order = $total_item_order +1;
+     }
+    ?>
+    ]
+}];
+</script>
+<?php
+
+function get_category_name($productId)
+{
+    $product = Mage::getModel('catalog/product')->load($productId);
+    $category_name = "" ;
+    $cats = $product->getCategoryIds();
+
+    $cnt = 0 ;
+    foreach ($cats as $category_id)
+    {
+        $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+        $cnt++ ;
+
+        if($cnt == count($cats))
+            $category_name.=$_cat->getName() ;
+        else
+            $category_name.=$_cat->getName()."," ;
+    }
+    return $category_name ;
+}
+
+function getItemJs(&$transId, &$item) {
+return <<<HTML
+ga('ecommerce:addItem', {
+'id': '$transId',
+'name': '{$item['name']}',
+'sku': '{$item['sku']}',
+'category': '{$item['category']}',
+'price': '{$item['price']}',
+'quantity': '{$item['quantity']}'
+});
+HTML;
+}
+?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-11704388-1', 'auto');
+  ga('send', 'pageview');
+
+// Include the ecommerce plugin
+ga('require', 'ecommerce', 'ecommerce.js');
+
+// Initialize the transaction
+ga('ecommerce:addTransaction', {
+             id: '<?php echo $this->getOrderId(); ?>',     // Transaction ID*
+    affiliation: '<?php echo $name ?>', // Store Name
+        revenue: '<?php echo $total; ?>',       // Total
+       shipping: '<?php echo $shipping; ?>',          // Shipping
+            tax: '<?php echo $tax; ?>'         // Tax
+});
+
+// Add a few items
+<?php
+foreach ($item_details as &$item)
+{
+    echo getItemJs($this->getOrderId(), $item);
+}
+?>
+ga('ecommerce:send');
+</script>
+<?php
+/*echo "<pre>";
+print_r($fbd_array);
+echo "</pre>";*/
+
+$fbd_product_id = implode("|",$fbd_array['product_id']);
+$fbd_product_qty = implode("|",$fbd_array['quantity']);
+$fbd_product_price = implode("|",$fbd_array['price']);
+?>
+<img src="https://tracker.beezup.com/SO?StoreId=<?php echo $website_store_id;?>&OrderMerchantId=<?php echo $this->getOrderId(); ?>&TotalCost=<?php echo $base_total; ?>&ValidPayement=TRUE&ListProductId=<?php echo $fbd_product_id;?>&ListProductQuantity=<?php echo $fbd_product_qty;?>&ListProductUnitPrice=<?php echo $fbd_product_price;?>" />
+<!-- analytics -->
+<img src="https://affiliation.touslesprix.com/affilie.php?idb=2691&numcom=<?php echo $this->getOrderId(); ?>&montant=<?php echo $total; ?>" border="0" />
+<!-- <script type="text/javascript">
+
+var page ='confirmation' // #TYPE DE PAGE#
+var order_amt = '<?php echo $total; ?>'; // #MONTANT COMMANDE#
+var order_id = '<?php echo $this->getOrderId(); ?>'; // #ID COMMANDE#
+var product_ids = '<?php echo $sku; ?>'; // #ID PRODUCT#
+var basket_products = '<?php echo $bkd; ?>'; // #LISTING PRODUCTS IN BASKET#
+var ssl = 'True'; // #SSL#
+//var id_categorie = ''; // #ID CATEGORIE EN COURS#
+//var login = ''; // #LOGIN CLIENT#
+//var email = ''; // #EMAIL CLIENT#
+ 
+(function() {
+    function async_load(){
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://tracking.lengow.com/tagcapsule.js?lengow_id=4372&idGroup=8334';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    }
+    if (window.attachEvent)
+        window.attachEvent('onload', async_load);
+    else
+        window.addEventListener('load', async_load, false);
+})();
+</script> -->

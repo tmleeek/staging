@@ -1,0 +1,29 @@
+<?php
+
+$completeLink = $this->getUrl("*/adminhtml_wizard_removedEbay3rdParty/complete");
+
+?>
+
+<div class="wizard-note">
+
+    <a class="wizard-close" href="javascript:void(0);" onclick="WizardHandlerObj.complete('<?php echo $completeLink; ?>');" title="<?php echo Mage::helper('M2ePro')->__('Close') ?>">&times;</a>
+
+    <div>
+        <?php echo Mage::helper('M2ePro')->__('
+            eBay 3rd Party Synchronization was <strong>Removed</strong> from current version of M2E Pro.
+
+            Unfortunately, there is no way to import all the product information during the 3rd Party Listings import
+            (e.g. Quantity for each Variation, etc.). Thus, some of the Items after their import can be
+            in unworkable state. The 3rd party Listings should be used as a transport layer between channel
+            and M2E Pro Listing to be correctly updated then.
+
+            So, the ability to synchronize the 3rd Party Listing was removed from M2E Pro.
+            Now, you should map the imported Items to Magento Products (can be done using the Automatic mapping)
+            and Move them into M2E Pro Listings for further management and automatic updating.
+            <br/>
+            <a href="javascript:void(0);" onclick="WizardHandlerObj.complete(\'%url_1%\');">Hide message.</a>
+        ', $completeLink
+        );?>
+    </div>
+
+</div>

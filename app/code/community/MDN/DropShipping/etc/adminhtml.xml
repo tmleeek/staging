@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+    
+    <secure_url>
+        <quote>/DropShipping/</quote>
+    </secure_url>
+    
+    <menu>
+        <erp>
+            <children>
+                <purchasing>
+                    <children>
+                        <dropshipping translate="title" module="DropShipping">
+                            <title>DropShipping</title>
+                            <action>DropShipping/Admin/Grid</action>
+                            <sort_order>90</sort_order>
+                        </dropshipping>
+                    </children>
+                </purchasing>
+            </children>
+        </erp>
+    </menu>
+    
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <erp>
+                        <children>
+                            <purchasing>
+                                <children>
+                                    <dropshipping translate="title" module="DropShipping">
+                                        <title>DropShipping</title>
+                                        <action>DropShipping/Admin/Grid</action>
+                                        <sort_order>90</sort_order>
+                                    </dropshipping>
+                                </children>
+                            </purchasing>
+                            <tools>
+                                <children>
+                                    <dropshipping translate="title" module="DropShipping">
+                                        <title>Drop Shipped Orders</title>
+                                        <action>DropShipping/Admin/GridDropShippingPO</action>
+                                        <sort_order>999</sort_order>
+                                    </dropshipping>
+                                </children>
+                            </tools>
+                        </children>
+                    </erp>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <dropshipping module="DropShipping">
+                                        <title>Drop Shipping</title>
+                                    </dropshipping>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+        
+    <layout>
+        <updates>
+            <DropShipping>
+                <file>DropShipping.xml</file>
+            </DropShipping>
+        </updates>
+    </layout>
+    
+    <translate>
+        <modules>
+            <MDN_DropShipping>
+                <files>
+                    <default>MDN_DropShipping.csv</default>
+                </files>
+            </MDN_DropShipping>
+        </modules>
+    </translate>
+    
+</config>

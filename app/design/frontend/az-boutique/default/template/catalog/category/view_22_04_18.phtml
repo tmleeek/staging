@@ -1,0 +1,141 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+
+$paging =  $this->getRequest()->getParam('p');
+?>
+ <?php
+ if($paging < 2)
+ {
+    echo '<div class="page-title category-title">';
+ }
+ else
+ {
+      echo '<div class="page-title">';
+ }
+?>
+    <?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+        <a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+    <?php endif; ?>
+    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+</div>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>
+
+<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+    <div class="category-description std">
+        <?php
+        if($paging < 2)
+        {
+        ?>
+            <div class="text-overflow">
+                <?php
+                    echo $desc = $_helper->categoryAttribute($_category, $_description, 'description');
+                    //$desc = preg_replace("#<span(.+?)>(.+?)</span>#is", "$2", $desc);
+                    //echo $desc = preg_replace("#<p(.+?)>(.+?)</p>#is", "$2", $desc);
+                ?>
+            </div>
+            <a class="btn-overflow pinktext" href="#"><?php echo $this->__("View more...") ?></a>
+        <?php
+        }
+        ?>
+
+    </div>
+    <?php endif; ?>
+
+<?php if($this->isContentMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+
+<?php elseif($this->isMixedMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+    <?php echo $this->getProductListHtml() ?>
+
+<?php else: ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php endif; ?>
+<?php
+if($paging < 2)
+{
+?>
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function()
+{
+    var text = jQuery('.text-overflow'),
+         btn = jQuery('.btn-overflow');
+           h = text[0].scrollHeight;
+
+    if(h > 51)
+    {
+    	btn.addClass('less');
+    	btn.css('display', 'block');
+    }
+
+    btn.click(function(e)
+    {
+      e.stopPropagation();
+
+      if (btn.hasClass('less'))
+      {
+          btn.removeClass('less');
+          btn.addClass('more');
+          btn.text('<?php echo $this->__("Reduce...") ?>');
+
+          text.animate({'height': h});
+      }
+      else
+      {
+          btn.addClass('less');
+          btn.removeClass('more');
+          btn.text('<?php echo $this->__("View more...") ?>');
+          text.animate({'height': '51px'});
+      }
+    });
+});
+</script>
+<?php
+}
+?>
+

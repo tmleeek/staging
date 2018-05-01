@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+
+    </default>
+    <catalog_category_default>
+       <reference name="head">
+             <action method="addJs"><script>timer.js</script></action>
+             <action method="addCss"><stylesheet>timer/timer.css</stylesheet></action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_product_view>
+        <update handle="content"/>
+	<reference name="product.info.addto">
+            <block type="timer/view" name="view" as="view" />
+             <block type="productalert/product_view" name="productalert.price.timer" as="productalert_price_timer" template="productalert/product/view.phtml">
+                        <action method="preparePriceAlertData"/>
+                        <action method="setHtmlClass"><value>alert-price link-price-alert</value></action>
+                        <action method="setSignupLabel" translate="value"><value>Sign up for price alert</value></action>
+                    </block>
+                    <block type="productalert/product_view" name="productalert.stock.timer" as="productalert_stock_timer" template="productalert/product/view.phtml">
+                        <action method="prepareStockAlertData"/>
+                        <action method="setHtmlClass"><value>alert-stock link-stock-alert</value></action>
+                        <action method="setSignupLabel" translate="value"><value>Sign up to get notified when this product is back in stock</value></action>
+                    </block>
+	</reference>
+    <reference name="head">
+             <action method="addJs"><script>timer.js</script></action>
+             <action method="addCss"><stylesheet>timer/timer.css</stylesheet></action>
+        </reference>
+    </catalog_product_view>
+
+    <!--<catalog_product_compare_index>
+        <update handle="content"/>
+	<reference name="catalog.compare.list">
+            <block type="timer/compare" name="compare" as="compare" />
+	</reference>
+    </catalog_product_compare_index>-->
+
+    <catalogsearch_advanced_result>
+    <reference name="head">
+             <action method="addJs"><script>timer.js</script></action>
+             <action method="addCss"><stylesheet>timer/timer.css</stylesheet></action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <catalogsearch_result_index>
+    <reference name="head">
+             <action method="addJs"><script>timer.js</script></action>
+             <action method="addCss"><stylesheet>timer/timer.css</stylesheet></action>
+        </reference>
+    </catalogsearch_result_index>
+
+</layout>

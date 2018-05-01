@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_Billboard>
+            <version>0.1.0.0</version>
+        </TBT_Billboard>
+    </modules>
+    
+    <admin>
+        <routers>
+            <tbtbillboard>
+                <use>admin</use>
+                <args>
+                    <module>TBT_Billboard</module>
+                    <frontName>tbtbillboard</frontName>
+                </args>
+            </tbtbillboard>
+        </routers>
+    </admin>
+    
+    <global>
+        <blocks>
+            <tbtbillboard>
+                <class>TBT_Billboard_Block</class>
+            </tbtbillboard>
+        </blocks>
+    </global>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <tbtbillboard>
+                    <file>tbtbillboard.xml</file>
+                </tbtbillboard>
+            </updates>
+        </layout>
+        <translate>
+              <modules>
+                  <TBT_Billboard>
+                      <files>
+                          <default>TBT_Billboard.csv</default>
+                      </files>
+                  </TBT_Billboard>
+              </modules>
+        </translate>
+    </adminhtml>
+</config>

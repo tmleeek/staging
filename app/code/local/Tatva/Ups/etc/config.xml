@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Ups>
+			<version>0.7.0</version>
+        </Tatva_Ups>
+    </modules>
+    <global>
+         <models>
+            <ups>
+                <class>Tatva_Ups_Model</class>
+            </ups>
+        </models>
+	   <resources>
+            <ups_setup>
+                <setup>
+                    <module>Tatva_Ups</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ups_setup>
+            <ups_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ups_read>
+        </resources>
+       
+    </global>
+    <default>
+        <carriers>
+        <upsexpress>
+                <access_license_number backend_model="adminhtml/system_config_backend_encrypted"/>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <allowed_methods>1DM,1DML,1DA,1DAL,1DAPI,1DP,1DPL,2DM,2DML,2DA,2DAL,3DS,GND,GNDCOM,GNDRES,STD,XPR,WXS,XPRL,XDM,XDML,XPD</allowed_methods>
+                <container>CP</container>
+                <cutoff_cost></cutoff_cost>
+                <dest_type>RES</dest_type>
+                <free_method>GND</free_method>
+                <gateway_url>http://www.ups.com/using/services/rave/qcostcgi.cgi</gateway_url>
+                <gateway_xml_url>https://www.ups.com/ups.app/xml/Rate</gateway_xml_url>
+                <handling>0</handling>
+                <model>ups/shipping_carrier_upsexpress</model>
+                <pickup>CC</pickup>
+                <title>United Parcel Service</title>
+                <tracking_xml_url>https://www.ups.com/ups.app/xml/Track</tracking_xml_url>
+                <unit_of_measure>LBS</unit_of_measure>
+                <username backend_model="adminhtml/system_config_backend_encrypted"/>
+                <password backend_model="adminhtml/system_config_backend_encrypted"/>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <max_package_weight>150</max_package_weight>
+                <handling_type>F</handling_type>
+                <handling_action>O</handling_action>
+                <negotiated_active>0</negotiated_active>
+            </upsexpress>
+			<upssaver>
+                <access_license_number backend_model="adminhtml/system_config_backend_encrypted"/>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <allowed_methods>1DM,1DML,1DA,1DAL,1DAPI,1DP,1DPL,2DM,2DML,2DA,2DAL,3DS,GND,GNDCOM,GNDRES,STD,XPR,WXS,XPRL,XDM,XDML,XPD</allowed_methods>
+                <container>CP</container>
+                <cutoff_cost></cutoff_cost>
+                <dest_type>RES</dest_type>
+                <free_method>GND</free_method>
+                <gateway_url>http://www.ups.com/using/services/rave/qcostcgi.cgi</gateway_url>
+                <gateway_xml_url>https://www.ups.com/ups.app/xml/Rate</gateway_xml_url>
+                <handling>0</handling>
+                <model>ups/shipping_carrier_upssaver</model>
+                <pickup>CC</pickup>
+                <title>United Parcel Service</title>
+                <tracking_xml_url>https://www.ups.com/ups.app/xml/Track</tracking_xml_url>
+                <unit_of_measure>LBS</unit_of_measure>
+                <username backend_model="adminhtml/system_config_backend_encrypted"/>
+                <password backend_model="adminhtml/system_config_backend_encrypted"/>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <max_package_weight>150</max_package_weight>
+                <handling_type>F</handling_type>
+                <handling_action>O</handling_action>
+                <negotiated_active>0</negotiated_active>
+            </upssaver>
+        </carriers>
+    </default>
+</config>

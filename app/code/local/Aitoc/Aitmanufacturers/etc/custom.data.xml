@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+    <template>
+        <frontend>
+            <file path="design--frontend--base--default--template--catalog--product--view"></file>
+        </frontend>
+    </template>
+</config><!--
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->

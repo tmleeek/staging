@@ -1,0 +1,91 @@
+<?php
+?>
+<?php $type = $this->getRequest()->getParam("type"); ?>
+<?php if ($type!='domicile' && $type!='rdv' ) : /* on n'affiche pas la carte pour les livraison à domicile est sur rdv */ ?>
+<div id="socolissimo-map" >
+	<div>
+		<div class="soco_map-header">
+			<h3>
+			<span>Choisissez Votre lieu de livraison</span>
+			</h3>
+			<div class="soco_haut-droite">
+                <span class="soco_close layer_socolissimo_close"></span>
+			</div>
+			<div class="soco_contenu">
+				<div class="soco_ligne1">
+					<input type="hidden" id="socolissimo_street" name="street"
+						type="text" value="<?php echo $this->getShippingStreet() ?>"
+						class="soco_adresse" />
+					<div class="soco_col soco_cp">
+						<label>Votre code postal</label>
+						<input id="socolissimo_postcode" name="postcode" type="text" value="<?php echo $this->getShippingPostcode() ?>" class="soco_cp" />
+					</div>
+					<span id="socolissimo_city" style="display:none;"><?php echo $this->getShippingCity() ?></span>
+					<input id="socolissimo_city_select" name="Commune" type="hidden" value=""/>
+					<!-- liste chargée en javascript -->
+
+
+					<input id="socolissimo_country" name="country" type="hidden" value="<?php echo $this->getShippingCountry() ?>" />
+					<button type="button" id="btn_modifierAdresse"
+						onclick="geocodeAdresse()" class="soco_button">
+						<span>&nbsp;</span>
+					</button>
+				</div>
+				<div class="soco_ligne2">
+	                <div class="soco_choix soco_choix2" id="filtre_poste">
+	                	<input id="check_poste" name="check_poste" type="checkbox" value="poste" onchange="changeMap()" <?php if ($type=='poste' ) : ?>checked="checked"<?php endif; ?>/>
+	                	<div class="soco_txt2">
+
+	                    </div>
+	                </div>
+	                <div class="soco_choix soco_choix3"  id="filtre_commercant">
+	                	<input id="check_commercant" name="check_commercant" type="checkbox" value="commercant" onchange="changeMap()" <?php if ($type=='commercant' ) : ?>checked="checked"<?php endif; ?>/>
+	                	<div class="soco_txt2">
+
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+		</div>
+		<div class="soco_adresses">
+			<div class="soco_loader-wrapper" style="display: none;">
+				<div class="soco_loader"></div>
+				<div class="soco_loader-wheel">
+					<img
+						src="<?php echo $this->getSkinUrl('images/socolissimo/loader.gif') ?>" />
+					chargement...
+				</div>
+			</div>
+			<div class="soco_colgauche">
+				<div class="soco_liste" id="adresses_socolissimo">
+					<?php echo $this->getChildHtml('listrelais') ?>
+				</div>
+			</div>
+			<div class="soco_coldroite" id="map_canvas"></div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+<div id="socolissimo-telephone" <?php if ($type!='domicile') : ?>style="display:none;"<?php endif;?> >
+	<div>
+		<div class="soco_title-tel">Renseignez votre téléphone</div>			
+		<label class="soco_portable" >
+			<form id="socolissimo-telephone-form" >
+			<?php if ($type=='poste' || $type=='commercant') : ?>
+				<span class="soco_poste" <?php if ($type!='poste') : ?>style="display: none;"<?php endif;?> >Pour la livraison en bureau de poste, nous avons obligatoirement besoin d'un numéro de téléphone mobile pour vous informer de la disponibilité de votre colis. Merci de vérifier le numéro saisi ici :</span>
+				<span class="soco_commercant" <?php if ($type!='commercant') : ?>style="display: none;"<?php endif;?> >Pour la livraison chez un commerçant, nous avons obligatoirement besoin d'un numéro de téléphone mobile pour vous informer de la disponibilité de votre colis. Merci de vérifier le numéro saisi ici :</span>
+			<?php endif;?>
+			<?php if ($type=='domicile' ) : ?>
+				<span class="soco_domicile" >Pour la livraison à domicile, nous avons besoin d'un numéro de téléphone mobile pour vous contacter. Merci de vérifier le numéro saisi ici :</span>
+			<?php endif;?>
+			<input type="text" name="tel_socolissimo" class="required-entry length_12 valid-telephone-portable<?php if ($this->getShippingCountry()=='BE') :?>-belgique<?php endif;?>" maxlength="12" value="<?php echo $this->getTelephone(); ?>" />
+			<button type="button" class="btn_socolissimoChoisir button" onclick="validerTelephone()"  >Valider</button>
+			</form>
+			 <script type="text/javascript">
+			    //<![CDATA[
+			        var socolissimoTelephoneForm = new VarienForm('socolissimo-telephone-form');
+			    //]]>
+			</script>
+		</label>					
+	</div>
+</div>

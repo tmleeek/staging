@@ -1,0 +1,10 @@
+tables:
+  core/translate:
+   - string: Size
+     store_id: 0
+     translate: differentString
+     locale: en_US
+   - string: Weight
+     store_id: 0
+     translate: Weight
+     locale: en_US

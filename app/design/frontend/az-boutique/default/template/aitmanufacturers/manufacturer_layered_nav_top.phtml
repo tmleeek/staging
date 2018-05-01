@@ -1,0 +1,21 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+$manufacturer = Mage::getModel('aitmanufacturers/aitmanufacturers')->load($this->getRequest()->getParam('id'))->getManufacturerId();
+$attribute = Mage::getModel('aitmanufacturers/config')->getAttributeIdByOption($manufacturer);
+$productIds = Mage::getModel('aitmanufacturers/aitmanufacturers')->getProductsByManufacturer($manufacturer, Mage::app()->getStore()->getId(), $attribute);
+
+if (Mage::helper('aitmanufacturers')->canUseLayeredNavigation(Mage::registry('shopby_attribute'), true) && $productIds != array())
+{
+    if (Mage::helper('aitmanufacturers')->isLNPEnabled() && version_compare(Mage::helper('aitmanufacturers')->getLNPVersion(),'2.5.0','>=')) {
+        echo $this->getLayout()->createBlock('adjnav/catalog_layer_params', 'aitmanufacturers.adjnav', array('template' => 'adjnav/layer/params.phtml'))->toHtml();
+        echo $this->getLayout()->createBlock('adjnav/catalog_layer_view_top', 'aitmanufacturers.adjnav', array('template' => 'adjnav/layer/top.phtml'))->toHtml();
+    }
+}

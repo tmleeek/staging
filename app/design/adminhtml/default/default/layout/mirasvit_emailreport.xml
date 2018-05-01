@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout version="1.0">
+    <emailreport_adminhtml>
+        <reference name="head">
+            <action method="addCss"><script>mirasvit/emailreport.css</script></action>
+            <action method="addJs"><script>mirasvit/core/amcharts-3.4.5/amcharts.js</script></action>
+            <action method="addJs"><script>mirasvit/core/amcharts-3.4.5/serial.js</script></action>
+            <action method="addJs"><script>mirasvit/core/amcharts-3.4.5/pie.js</script></action>
+        </reference>
+    </emailreport_adminhtml>
+
+    <emailreport_adminhtml_recipient_single>
+        <update handle="emailreport_adminhtml" />
+    </emailreport_adminhtml_recipient_single>
+
+    <emailreport_adminhtml_email_analysis>
+        <update handle="emailreport_adminhtml" />
+    </emailreport_adminhtml_email_analysis>
+
+    <emailreport_adminhtml_recipient_trend>
+        <update handle="emailreport_adminhtml" />
+    </emailreport_adminhtml_recipient_trend>
+
+    <emailreport_adminhtml_dashboard_index>
+        <update handle="emailreport_adminhtml" />
+    </emailreport_adminhtml_dashboard_index>
+</layout>

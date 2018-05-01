@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    //<![CDATA[
+    function check() {
+        new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+            method:     'get',
+            onSuccess: function(transport){
+
+                if (transport.responseText == 1){
+                    alert('Api Online');
+                }else{
+                    alert('Api Offline');
+                }
+            }
+        });
+    }
+    //]]>
+</script>
+
+<?php echo $this->getButtonHtml() ?>

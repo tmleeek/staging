@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+  <acl>
+    <resources>
+      <admin>
+        <children>
+          <system>
+            <children>
+              <config>
+                <children>
+                  <ajax translate="title" module="ajax">
+				   <title>Ajax for Catalog</title>
+				  </ajax>
+                                    <commercial_invoice translate="title" module="ajax">
+                                        <title>Commercial Invoice Settings</title>
+                                    </commercial_invoice>
+                </children>
+              </config>
+            </children>
+          </system>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>

@@ -1,0 +1,296 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Checkout') ?></h1>
+</div>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+</script>
+<ol class="opc" id="checkoutSteps">
+<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+        <div class="step-title">
+            <span class="number"><?php echo $i ?></span>
+            <h2><?php echo $_stepInfo['label'] ?></h2>
+            <a href="#"><?php echo $this->__('Edit') ?></a>
+        </div>
+        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+            <?php echo $this->getChildHtml($_stepId) ?>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
+<script type="text/javascript">
+//<![CDATA[
+    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+    <?php if($this->getActiveStep()): ?>
+    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+    <?php endif ?>
+    var checkout = new Checkout(accordion,{
+        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+    );
+//]]>
+</script>
+<div id="popin1" >
+
+</div>
+
+<div id="popinmondialrelay" >
+
+</div>
+
+
+<!-- loading image start-->
+
+<div id="popinloadingimg" style="display:none;">
+    <div class="bloc-popin" style="position: fixed; text-align: center; top: 50%; width: 800px; z-index: 100000041; left: 25%; margin-left: 0;">
+        <div>
+            <img src="<?php echo $this->getSkinUrl('images/tatva_ajax/ajax_loader.gif');?>" id="bloc-popin" style='position:absolute;top:25%;left:50%;margin-left:-33px;z-index:889'/>
+            <br/>
+            <?php echo $this->__('Please wait ...'); ?>
+        </div>
+    </div>
+    <div class="cache-page"></div>
+</div>
+
+<!-- loading image end-->
+
+<!-- confirmation pop up start-->
+
+<input type="hidden" name="shipping_method_name" id="shipping_method_name" />
+<div id="popin2" style="display:none;" >
+    <div class="bloc-popin" style="left:16%;top:40%; position: fixed; z-index: 1002">
+        <div>
+            <div class="chmar">
+                <div class="chbg">
+                    <div class="title-fond-rose big-text">
+                        <div class="hdtxt">
+                            <strong>
+                                <span class="small-caps"><?php echo $this->__('Confirm your choice');?></span>
+                            </strong>
+                        </div>
+                        <div class="closebtn">
+                            <a href="#"><img src="<?php echo $this->getSkinUrl('images/tatva/close.png');?>" alt="" border="0" onclick="return closepopup('popin2',document.getElementById('shipping_method_name').value);"/></a>
+                        </div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="popupcon">
+                        <div class="pophd"><?php echo $this->__('You choose the following relay');?> :
+                        </div>
+                        <div class="popadd">
+                            <strong>
+                                <span id="span_relay_name"></span>
+                            </strong>
+                            <br />
+                            <span id="span_relay_address"></span>
+                            <span id="span_relay_city"></span>
+                        </div>
+                        <div class="btns">
+                            <div class="confrmbtn">
+                                <form id="confirmrelay" action="" method="post">
+                                    <input type="hidden" name="relay_type" id="relay_type" value="" />
+                                    <input type="hidden" name="relay_name" id="relay_name" value="" />
+                                    <input type="hidden" name="relay_address" id="relay_address" value="" />
+                                    <input type="hidden" name="relay_address2" id="relay_address2" value="" />
+                                    <input type="hidden" name="relay_address3" id="relay_address3" value="" />
+                                    <input type="hidden" name="relay_city" id="relay_city" value="" />
+                                    <input type="hidden" name="relay_postalcode" id="relay_postalcode" value="" />
+                                    <input type="hidden" name="relay_id" id="relay_id" value="" />
+                                    <input type="hidden" name="relay_code" id="relay_code" value="" />
+                                    <input type="hidden" name="shipping_address_id"  id="shipping_address_id" value="" />
+                                    <input type="hidden" name="selected_ship_method" id="selected_ship_method" value="" />
+                                    <input type="hidden" name="shipping_method" id="shipping_method" value="" />
+                                    <button type="submit" class="uppercase button" style="width:97px;" name="confirmrelay" onclick="confirm_relay.save(); cacherPopin('popin2');"><span><span><?php echo $this->__('Confirm');?></span></span></button>
+                                </form>
+                            </div>
+                            <div class="modifybtn">
+                                <button type="button" class="uppercase button" style="width:97px;" name="connexion" onclick="openchoicepopupmodify('popin1',1);"><span><span><?php echo $this->__('Modify');?></span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cache-page"></div>
+</div>
+
+<!-- confirmation pop up end-->
+
+<!-- mobile pop up start -->
+
+<div id="popin3" style="display:none;">
+    <div class="bloc-popin" style="left:18%;top:40%; position: fixed; z-index: 1003">
+        <div>
+            <div class="chmar1">
+                <div class="chbg">
+                    <div class="title-fond-rose big-text">
+                        <div class="hdtxt">
+                            <strong>
+                                <span class="small-caps">
+                                    <?php echo $this->__('Mobile phone');?>
+                                </span>
+                            </strong>
+                        </div>
+                        <div class="closebtn">
+                            <a href="#">
+                                <img src="<?php echo $this->getSkinUrl('images/tatva/close.png');?>" alt="" border="0" onclick="return closepopup('popin3',document.getElementById('shipping_method_name').value)"/>
+                            </a>
+                        </div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="popupcon1">
+                        <div class="pophd1"><?php echo $this->__('A mobile phone number is always mandatory for the delivery at home made by appointment. Please indicate or confirm your mobile phone number'); ?> : </div>
+                        <form action="" id="appointmentform" method="post">
+                            <div class="popadd1">
+                                <div class="ptxtbx">
+                                    <input name="tatva_mobile_phone" id="tatva_mobile_phone" type="text" class="chtxtbx required-entry validate-mobileno" style="width:85px;" value=""/>
+                                </div>
+                                <div class="err">
+                                    <div class="waricn">
+                                        <img src="<?php echo $this->getSkinUrl('images/tatva/warning.png');?>" width="21" height="17" alt="" />
+                                    </div>
+                                    <div class="wartxt"><?php echo $this->__('your mobile number must begin by 06 or 07 and contain 10 characters');?></div>
+                                </div>
+                            </div>
+                            <div class="btns1">
+                                <div class="confrmbtn">
+                                    <input type="hidden" name="shipping_method" id="shipping_method" value="colissimoappointment_colissimoappointment" />
+                                    <button type="submit" class="uppercase button" style="width:97px; font-size: 11px;" name="connexion2" onclick="appointment_form.save();" /><span><span><?php echo $this->__('Confirm');?></span></span></button>
+                                </div>
+                                <div class="modifybtn1">
+                                    <form action="">
+                                        <button type="button" class="uppercase button" style="width:250px; font-size: 11px;" name="connexion" onclick="return closepopup('popin3',document.getElementById('shipping_method_name').value)"><span><span><?php echo $this->__('Change Your Shipping Method');?></span></span></button>
+                          			</form>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="cache-page"></div>
+</div>
+
+<!-- mobile pop up end -->
+
+<!-- mondial confirm popup start -->
+
+<div id="mondialconfirmpopup" style="display:none;" >
+    <div class="bloc-popin" style="left:16%;top:40%; position: fixed; z-index: 1002">
+        <div>
+            <div class="chmar">
+                <div class="chbg">
+                    <div class="title-fond-rose big-text">
+                        <div class="hdtxt">
+                            <strong>
+                                <span class="small-caps"><?php echo $this->__('Confirm your choice');?></span>
+                            </strong>
+                        </div>
+                        <div class="closebtn">
+                            <a href="#"><img src="<?php echo $this->getSkinUrl('images/tatva/close.png');?>" alt="" border="0" onclick="return closepopup('mondialconfirmpopup',document.getElementById('shipping_method_name').value);"/></a>
+                        </div>
+                        <div class="clear-both"></div>
+                    </div>
+                    <div class="popupcon">
+                        <div class="pophd"><?php echo $this->__('You choose the following relay');?> :
+                        </div>
+                        <div class="popadd"><strong><span id="span_relay_name_mondial"></span></strong><br />
+				              <span id="span_relay_address_mondial"></span>
+
+				              <span id="span_relay_city_mondial"></span>
+
+                         </div>
+                        <div class="btns">
+                            <div class="confrmbtn">
+                                <form id="confirmrelaymondial" action="" method="post">
+                                    <input type="hidden" name="relay_name_mondial" id="relay_name_mondial" value="" />
+                                    <input type="hidden" name="relay_address_mondial" id="relay_address_mondial" value="" />
+                                    <input type="hidden" name="relay_address2_mondial" id="relay_address2_mondial" value="" />
+                                    <input type="hidden" name="relay_address3_mondial" id="relay_address3_mondial" value="" />
+                                    <input type="hidden" name="relay_city_mondial" id="relay_city_mondial" value="" />
+                                    <input type="hidden" name="relay_postalcode_mondial" id="relay_postalcode_mondial" value="" />
+                                    <input type="hidden" name="relay_id_mondial" id="relay_id_mondial" value="" />
+                                    <input type="hidden" name="shipping_method" id="shipping_method" value="pointsrelais_pointsrelais" />
+									<input type="hidden" name="shipping_address_id_mondial"  id="shipping_address_id_mondial" value="" />
+                                    <button type="submit" class="uppercase button" style="width:97px;" name="confirmrelaymondial" onclick="confirm_relay_mondial.save(); cacherPopin('mondialconfirmpopup');"><span><span><?php echo $this->__('Confirm');?></span></span></button>
+                                </form>
+                            </div>
+                            <div class="modifybtn">
+                                <button type="button" class="uppercase button" style="width:97px;" name="connexion" onclick="openmondialrelaypopupmodify('popinmondialrelay',1);"><span><span><?php echo $this->__('Modify');?></span></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cache-page"></div>
+</div>
+<!-- mondial confirm popup end -->
+
+<script type="text/javascript">
+    //<![CDATA[
+        var confirm_relay = new ShippingMethod('confirmrelay', "<?php echo $this->getUrl('checkout/onepage/confirmrelay/') ?>");
+        var appointment_form = new ShippingMethod('appointmentform', "<?php echo $this->getUrl('checkout/onepage/tatvamobilepopup/') ?>");
+
+        var confirm_relay_mondial = new ShippingMethod('confirmrelaymondial', "<?php echo $this->getUrl('checkout/onepage/confirmrelaymondial/') ?>");
+    //]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('appointmentform');
+
+    Validation.addAllThese(
+    [
+           ['validate-mobileno', '<?php echo $this->__('your mobile number must begin by 06 or 07 and contain 10 characters.');?>', function(v) {
+                if(v.length != 10)
+                {
+                    return false;
+                }
+                else if(/^([0]{1}[67]{1}[0-9]{8})$/.test(v) == false)
+                {
+                    return false;
+                }
+                else
+                {
+                    cacherPopin('popin3');
+                    return true;
+                }
+            }],
+    ]
+    );
+//]]>
+</script>
+

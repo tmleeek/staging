@@ -1,0 +1,76 @@
+<?php
+    $cannotUsePoints = $this->getMinSpendablePoints() == $this->getMaxSpendablePoints()
+        && $this->getMinSpendablePoints() == 0;
+?>
+
+<?php if($this->hasCartPointsData()): ?>
+    <?php if($this->showPointsSlider()): ?>
+        <!-- Cart Slider -->
+        <?php if($this->hasNonDbpsCartRules()): ?>
+            <h5 class="minicart-slider-header"><?php echo $this->__('Choose how many points to spend'); ?>: </h5>
+        <?php endif; ?>
+
+        <?php if($this->customerHasUsablePoints() && !$cannotUsePoints): ?>
+            <div class="cartSlider">
+                <?php echo $this->getChildHtml('points_slider'); ?>
+            </div>
+            <input type="checkbox" name="use_all_points" id="use_all_points" onclick="toggleUseAllPoints(this.checked)"/>&nbsp;
+            <label for="use_all_points"><?php echo $this->__('Maximize discount with points'); ?></label>
+        <?php else: ?>
+            <?php if ($cannotUsePoints): ?>
+                <span class="points_slider_msg"><?php echo $this->__("The customer can't spend any more points in this cart."); ?></span>
+            <?php else: ?>
+                <span class="no_points_to_spend"><?php echo $this->__("The customer doesn't currently have any points to spend."); ?></span>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if($this->hasNonDbpsCartRules()): /* has non "discount_by_points_spent" (slider) rules: */?>
+        <!-- All other rules -->
+       	<?php $redemption_list = $this->collectShoppingCartRedemptions($this->getQuote()); ?>
+        <div class="more-ways-to-spend <?php if($this->showPointsSlider()): ?> more-ways-to-spend-also<?php endif; ?>" >
+            <?php if($this->showPointsSlider()): ?>
+                <h5 class="more-ways-to-spend-header"><?php echo $this->__('More ways to spend points'); ?>: </h5>
+            <?php endif; ?>
+
+            <!-- Applied Rule Listing -->
+            <?php foreach ($redemption_list['sorted_applied'] as $redemption):?>
+                <?php if($redemption['is_dbps']): ?>
+                    <?php continue; ?>
+                <?php endif; ?>
+
+                <div class="cart_redemption_item">
+                    <input type="checkbox" name="applied_cart_rule[]" id="applied_cart_rule[]" 
+                        value="<?php echo (string)$redemption['rule_id']; ?>" onclick="toggleCartRule(this)" checked="checked"/>&nbsp;
+                    <label for="applied_cart_rule[]">
+                    	<?php if(isset($redemption['caption']) && !empty($redemption['caption'])): ?>
+                    		<?php echo $redemption['caption']; ?>
+                    	<?php else: ?>
+                        	<?php echo $this->__('Spend <b>%s</b>, Get <b>%s</b>', $redemption['points_cost'], $redemption['action_str']) ?>
+						<?php endif; ?>
+                    </label>
+                </div>
+            <?php endforeach;?>
+            
+            <!-- Applicable Rule Listing -->
+            <?php foreach ($redemption_list['sorted_applicable'] as $redemption):?>
+                <?php if($redemption['is_dbps']): ?>
+                    <?php continue; ?>
+                <?php endif; ?>
+
+                <div class="cart_redemption_item">
+                    <input type="checkbox" name="applicable_cart_rule[]" id="applicable_cart_rule[]" 
+                        value="<?php echo (string)$redemption['rule_id']; ?>" onclick="toggleCartRule(this)" />&nbsp;
+                    <label for="applicable_cart_rule[]">
+                    	<?php if(isset($redemption['caption']) && !empty($redemption['caption'])): ?>
+                    		<?php echo $redemption['caption']; ?>
+                    	<?php else: ?>
+                        	<?php echo $this->__('Spend <b>%s</b>, Get <b>%s</b>', $redemption['points_cost'], $redemption['action_str']) ?>
+                    	<?php endif; ?>
+                    </label>
+                </div>
+            <?php endforeach;?>
+        </div>
+    <?php endif; ?>
+    <?php echo $this->getChildHtml('minicart_js'); ?>
+<?php endif; ?>

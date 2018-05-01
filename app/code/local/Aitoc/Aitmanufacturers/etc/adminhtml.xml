@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ */
+-->
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <aitmanufacturers translate="title" module="aitmanufacturers">
+                    <title>Manage Attributes Pages</title>
+                    <sort_order>3</sort_order>               
+                    <action>brandsadmin/adminhtml_aitmanufacturers/attribute</action>
+                </aitmanufacturers>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children> 
+                            <aitmanufacturers translate="title">
+                                <title>Manage Attributes Pages</title>
+                                <sort_order>1</sort_order>
+                            </aitmanufacturers>
+                        </children> 
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
+
+<!--
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->

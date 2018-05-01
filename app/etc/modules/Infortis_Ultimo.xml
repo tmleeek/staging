@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category	Infortis
+ * @package		Infortis_Ultimo
+ * @author		Infortis
+ * @copyright	Copyright 2012 Infortis
+ */
+ -->
+<config>
+    <modules>
+        <Infortis_Ultimo>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+				<Infortis_Infortis/>
+				<Infortis_Brands/>
+				<Infortis_CloudZoom/>
+				<Infortis_UltraMegamenu/>
+				<Infortis_UltraSlideshow/>
+			</depends>
+        </Infortis_Ultimo>
+    </modules>
+</config> 

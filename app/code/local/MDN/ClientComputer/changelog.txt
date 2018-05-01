@@ -1,0 +1,17 @@
+
+- Add url indication in system > configuration > client computer
+
+_____________________________________________________________________________________________________________
+v1.3
+
+- Add multi user mode
+- Add settings form in windows application (no need to manually edit pref.xml)
+- exchangeDirectory cant be choosen, it's included in archive and path is imposed
+- Display exception in system > config > client computer if exchange directory doesn't exist or is not writeable
+- Improve windows client ressources use
+
+_____________________________________________________________________________________________________________
+v1.1
+
+- Add adminhtml.xml
+- Add missing column cco_result

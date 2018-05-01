@@ -1,0 +1,106 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+* @copyright  Copyright (c) 2009 AITOC, Inc. 
+*/
+?>
+
+<?php if (!$this->getIsTree()): ?>
+
+    <?php
+    /**
+    * @desc CATEGORIES: LIST VIEW
+    */
+    ?>
+    <?php $_categories=$this->getCategories() ?>
+    <?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+    <?php if($_count): ?>
+    <div class="block block-layered-nav aitcategory">
+    
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Browse By') ?></span></strong>
+        </div>    
+        <div class="block-content">
+            <div class="narrow-by">
+                <dl id="narrow-by-list">
+                    <dt><?php echo $this->__('Category') ?></dt>
+                    <dd>
+                        <ol>
+                        <?php foreach ($_categories as $_category): ?>
+                            <?php if($_category->getIsActive()): ?>
+                            <li>
+                                <a href="<?php echo $this->getCategoryUrl($_category) ?>"><?php echo $this->htmlEscape($_category->getName()) ?></a>
+                            </li>
+                            <?php endif; ?>
+                        <?php endforeach ?>
+                        </ol>
+                    </dd>
+                </dl><script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+
+
+<?php else: ?>
+
+
+
+    <?php
+    /**
+    * @desc CATEGORIES: TREE VIEW
+    */
+    ?>
+    <?php 
+
+    $treeList = $this->getCategoryTreeList();
+
+    if ($treeList):
+    
+    ?>
+    <div class="block block-layered-nav aitcategorytree">
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Browse By') ?></span></strong>
+        </div>    
+        
+         <div class="block-content">
+            <div class="narrow-by">
+                <dl id="narrow-by-list">
+                    <dt><?php echo $this->__('Category') ?></dt>
+                    <dd>
+                        <ol>
+                            <?php 
+                            foreach ($treeList as $category): 
+                                $_category = Mage::getModel('catalog/category')->load($category['id']);
+                            ?>
+                                <?php if($_category->getIsActive()): ?>
+                                <li style="padding-left: <?php echo 12 * $category['level']; ?>px;">
+                                    <?php if ($category['is_link']): ?>
+                                        <a href="<?php echo $this->getCategoryUrl($_category) ?>">
+                                    <?php endif; ?>
+                                    <?php echo $this->htmlEscape($_category->getName()) ?>
+                                    <?php if ($category['is_link']): ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ol>
+                    </dd>
+                </dl><script type="text/javascript">decorateDataList('narrow-by-list')</script>
+            </div>
+        </div>
+    </div>
+
+    <?php endif; ?>
+
+<?php endif; ?>

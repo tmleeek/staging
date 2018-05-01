@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWMPAction>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewmpaction">
+						            <label>Bulk Product Updating</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewmpaction translate="label comment ewhelp" module="ewmpaction">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewmpaction">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>100</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>0</show_in_website>
+						                    <show_in_store>0</show_in_store>
+						                    <fields>
+						                    	<status translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Enable or disable the product actions]]></comment>
+						                        </status>
+						                        <description_alert_status translate="label comment ewhelp">
+						                            <label>Description Alert</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Enable or disable alert of action description]]></comment>
+						                        	<ewhelp><![CDATA[The description alert is the alert box that appears when you first select a product mass action. If you are still new to Bulk Product Updating, then it is recommended to enable this.]]></ewhelp>
+						                        </description_alert_status>
+						                        <confirmation_status translate="label comment ewhelp">
+						                            <label>Confirmation Alert</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Enable or disable action cofirmation prior to running the action]]></comment>
+						                            <ewhelp><![CDATA[The confirmation alert asks if you really want to execute the action. Usually it is a good idea to enable this.]]></ewhelp>
+						                        </confirmation_status>
+						                        <category_tree_status translate="label comment ewhelp">
+						                            <label>Category Tree</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Enable to show a category tree instead of manually inputting category IDs]]></comment>
+						                        	<ewhelp><![CDATA[Show a select box of all categories for actions that require selecting a category. If this is disabled you will be presented with a text box and you must enter a comma separated list of category IDs.]]></ewhelp>
+						                        </category_tree_status>
+						                        <disabled_actions translate="label comment ewhelp">
+						                            <label>Disabled Actions</label>
+						                            <frontend_type>multiselect</frontend_type>
+						                            <source_model>ewmpaction/adminhtml_config_data_option_action</source_model>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <can_be_empty>1</can_be_empty>
+						                            <comment><![CDATA[Select any actions you wish to disable. Use CTRL-Click to select more than one.]]></comment>
+						                        </disabled_actions>
+						                         <custom_price_attributes translate="label comment ewhelp">
+						                            <label>Custom Price Attributes</label>
+						                            <frontend_model>ewmpaction/adminhtml_config_form_field_attributes</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>60</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>1</splittable_min_items>
+						                            			<splittable_max_items>1</splittable_max_items>
+						                            			<splittable_item_types>string</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[If you have any price-like attributes you can add them here and they will be added to the list of available actions.]]></comment>
+						                        </custom_price_attributes>
+											</fields>
+										</general>
+									</groups>
+								</ewmpaction>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWMPAction>
+	</modules>
+</config>

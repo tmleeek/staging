@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * LaPoste_ExpeditorINet
+ * 
+ * @category    LaPoste
+ * @package     LaPoste_ExpeditorINet
+ * @copyright   Copyright (c) 2010 La Poste
+ * @author 	    Smile (http://www.smile.fr) & Jibé
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <sections>
+        <expeditorinet>
+            <label>La Poste Expeditor Inet</label>
+            <tab>sales</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>2000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <export translate="label">
+                    <label>Export Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <file_extension translate="label">
+                            <label>File Extension</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>expeditorinet/config_source_fileExtension</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </file_extension>
+                        <file_charset translate="label">
+                            <label>File Charset</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>expeditorinet/config_source_fileCharset</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </file_charset>
+                        <endofline_character translate="label">
+                            <label>End Of Line Character</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>expeditorinet/config_source_endOfLineCharacter</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </endofline_character>
+                        <field_delimiter translate="label">
+                            <label>Field Delimiter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>expeditorinet/config_source_fieldDelimiter</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </field_delimiter>
+                        <field_separator translate="label">
+                            <label>Field Separator</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>expeditorinet/config_source_fieldSeparator</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </field_separator>
+                        <company_commercial_name translate="label comment">
+                            <label>Company commercial name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This value is used as commercial name of company for Expeditor Inet</comment>
+                        </company_commercial_name>
+                    </fields>
+                </export>
+                <import translate="label">
+                    <label>Import Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <default_tracking_title translate="label comment">
+                            <label>Default Tracking Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This value can be changed in the import form</comment>
+                        </default_tracking_title>
+                        <send_email translate="label comment">
+                            <label>Send an e-mail</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Send shipping confirmation to the customer</comment>
+                        </send_email>
+                        <shipping_comment translate="label comment">
+                            <label>Shipping Comment</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Internal comment, can be left empty</comment>
+                        </shipping_comment>
+                        <include_comment translate="label comment">
+                            <label>Include comment into e-mail</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Only applies if the shipping comment is set</comment>
+                        </include_comment>
+                        <carrier_code translate="label comment">
+                            <label>Carrier code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>By default, the tracking number will be associated to the "custom" code. If you want to associate it with your carrier code, put it here.</comment>
+                        </carrier_code>                        
+                    </fields>
+                </import>
+            </groups>
+        </expeditorinet>
+    </sections>
+</config>

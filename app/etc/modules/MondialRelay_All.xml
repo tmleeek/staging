@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<MondialRelay_Pointsrelais>
+			<active>true</active>
+			<codePool>community</codePool>
+		</MondialRelay_Pointsrelais>
+	</modules>
+</config>

@@ -1,0 +1,45 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+* @copyright  Copyright (c) 2009 AITOC, Inc. 
+*/
+?>
+<?php $manufacturer = $this->getManufacturer();
+$aitio_model =Mage::getModel('aitmanufacturers/aitmanufacturers')->getCollection();
+$collectionarray = array();
+$current_url = explode("/",$this->helper('core/url')->getCurrentUrl());
+$additional = array();
+foreach($aitio_model as $data)
+{
+    
+    if(in_array($data['url_key'],$current_url))
+    {
+        $brandname = $data['title'];
+    }
+}
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="category-head">
+<h2><?php echo $manufacturer->getManufacturer()?> <?php echo $brandname;?> </h2>
+</div>
+<?php if ($image = $manufacturer->getImage()): ?>
+<img src="<?php echo Mage::helper('aitmanufacturers/image')->getUrl($image) ?>" alt="<?php echo $this->htmlEscape($manufacturer->getTitle()) ?>" title="<?php echo $this->htmlEscape($manufacturer->getTitle()) ?>" style="float: left; padding: 0 10px 10px 0" />
+<?php endif ?>
+<?php if ($content = $manufacturer->getContent()): ?>
+<?php echo $content ?>
+<br /><br />
+<?php endif ?>
+<div style="clear:both;"></div>
+<?php if ($productList = $this->getChildHtml('product_list')): ?>
+    <?php echo $productList;?>
+<?php else: ?>
+    <?php echo Mage::helper('aitmanufacturers')->__('There are no products matching the selection.') ?>
+<?php endif ?>

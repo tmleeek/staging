@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <colissimo module="colissimo">
+                                        <title>Colissimo Shipment</title>
+                                    </colissimo>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <layout>
+        <updates>
+            <colissimo>
+                <file>MDN_Colissimo.xml</file>
+            </colissimo>
+        </updates>
+    </layout>
+    <routers>
+        <colissimo>
+            <use>admin</use>
+            <args>
+                <module>MDN_Colissimo</module>
+                <frontName>colissimo</frontName>
+            </args>
+        </colissimo>
+    </routers>
+</config>

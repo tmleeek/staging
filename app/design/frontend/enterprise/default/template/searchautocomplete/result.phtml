@@ -1,0 +1,86 @@
+<div class="page-head">
+    <h3><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogSearch')->getEscapedQueryText()) ?></h3>
+    <?php echo $this->getChildHtml('search_result_container') ?>
+</div>
+<?php if($this->getResultCount()): ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
+<div class="page-head">
+    <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
+        <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-feed"><?php echo $this->__('Subscribe to Feed') ?></a>
+    <?php endif; ?>
+    <h4><?php echo $this->__("Products"); ?></h4>
+</div>
+    <?php if ($messages = $this->getNoteMessages()):?>
+    <div class="note-msg">
+        <?php foreach ($messages as $message):?>
+        <?php echo $message?><br />
+        <?php endforeach;?>
+    </div>
+    <?php endif; ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php else: ?>
+<div class="page-head">
+    <h4><?php echo $this->__("Products"); ?></h4>
+</div>
+    <div class="note-msg">
+        <?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('There are no results.') ?>
+        <?php if ($messages = $this->getNoteMessages()):?>
+            <?php foreach ($messages as $message):?>
+            <br /><?php echo $message?>
+            <?php endforeach;?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+<div class="clear"><p></p></div>
+<?php if (Mage::helper('searchautocomplete')->isSearchCms()): ?>
+    <div class="page-head">
+        <h4><?php echo $this->__("CMS Pages"); ?></h4>
+    </div>
+    <?php if($this->getPageResultCount()): ?>
+            <?php $pageCollection = $this->_getPageCollection(); ?>
+            <ul>
+            <?php foreach ($pageCollection as $page) : ?>
+                            <li><a href="<?php echo rtrim(Mage::getUrl($page->getIdentifier() == Mage::getStoreConfig('web/default/cms_home_page') ? '/' : $page->getIdentifier()),'/') ?>"><?php echo $page->getTitle(); ?></a><p><?php echo $this->_sanitizeContent($page); ?></p></li>
+            <?php endforeach; ?>
+            </ul>
+    <?php else: ?>
+        <div class="note-msg">
+            <?php echo $this->__('There are no results.') ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if (Mage::helper('searchautocomplete')->isSearchBlog()): ?>
+    <div class="page-head">
+        <h4><?php echo $this->__("Blog Posts"); ?></h4>
+    </div>
+    <?php $blogCollection = $this->_getBlogCollection(); ?>
+    <?php if(count($blogCollection)): ?>
+            <ul>
+            <?php foreach ($blogCollection as $post) : ?>
+                            <li><a href="<?php echo rtrim(Mage::getUrl('blog/'.$post->getIdentifier()),'/') ?>"><?php echo $post->getTitle(); ?></a><p><?php echo $this->_sanitizeContent($post); ?></p></li>
+            <?php endforeach; ?>
+            </ul>
+    <?php else: ?>
+        <div class="note-msg">
+            <?php echo $this->__('There are no results.') ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if (Mage::helper('searchautocomplete')->isSearchCmspro()): ?>
+    <div class="page-head">
+        <h4><?php echo $this->__("News Pages"); ?></h4>
+    </div>
+    <?php $news = $this->_getNewsCollection(); ?>
+    <?php if(count($news)): ?>
+            <ul>
+            <?php foreach ($news as $n) : ?>
+                <?php $url = Mage::getModel('core/url_rewrite')->load($n->getUrlRewriteId());?>
+                <li><a href="<?php echo Mage::getBaseUrl().$url->getRequestPath();?>"><?php echo $n->getTitle(); ?></a><p><?php echo $this->_sanitizeContent($n); ?></p></li>
+            <?php endforeach; ?>
+            </ul>
+    <?php else: ?>
+        <div class="note-msg">
+            <?php echo $this->__('There are no results.') ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

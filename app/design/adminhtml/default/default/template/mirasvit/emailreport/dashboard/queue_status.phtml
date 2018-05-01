@@ -1,0 +1,55 @@
+<div class="entry-edit">
+<div class="entry-edit-head"><h4><?php echo Mage::helper('email')->__('Email Queue Status') ?></h4></div>
+<fieldset>  
+    <div id="queuestatuschart" style="width: 100%; height: 500px;"></div>
+    <script>
+        <?php $_status = $this->getQueueStatus() ?>
+        var chart;
+        var legend;
+
+        var chartData = [
+        {
+            metric : "<?php echo Mage::helper('email')->__('Pending') ?>",
+            value  : <?php echo $_status['pending'] ?>
+        },
+        {
+            metric : "<?php echo Mage::helper('email')->__('Delivered') ?>",
+            value  : <?php echo $_status['delivered'] ?>
+        },
+        {
+            metric : "<?php echo Mage::helper('email')->__('Canceled') ?>",
+            value  : <?php echo $_status['canceled'] ?>
+        },
+        {
+            metric : "<?php echo Mage::helper('email')->__('Unsubscribed') ?>",
+            value  : <?php echo $_status['unsubscribed'] ?>
+        },
+        {
+            metric : "<?php echo Mage::helper('email')->__('Error') ?>",
+            value  : <?php echo $_status['error'] ?>
+        },
+        {
+            metric : "<?php echo Mage::helper('email')->__('Missed') ?>",
+            value  : <?php echo $_status['missed'] ?>
+        },];
+
+        AmCharts.ready(function() {
+            chart = new AmCharts.AmPieChart();
+            chart.dataProvider = chartData;
+            chart.titleField = "metric";
+            chart.valueField = "value";
+            chart.outlineColor = "#FFFFFF";
+            chart.outlineAlpha = 0.8;
+            chart.outlineThickness = 2;
+            chart.depth3D = 15;
+            chart.angle = 30;
+            legend = new AmCharts.AmLegend();
+            legend.align = "center";
+            legend.markerType = "circle";
+            chart.addLegend(legend);
+
+            chart.write("queuestatuschart");
+        });
+    </script>
+</fieldset>
+</div>

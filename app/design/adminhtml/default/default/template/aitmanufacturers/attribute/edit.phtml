@@ -1,0 +1,52 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+$switcher = $this->getChild('attribute_store_switch');
+echo $switcher->toHtml();
+if ($values = $this->getFormValues('default', 0))
+{
+    echo $this->getForm()->setValues($values)->toHtml();
+}
+else
+{
+    echo $this->getForm()->toHtml();
+}
+
+if (!Mage::app()->isSingleStoreMode())
+{
+    $_websiteCollection = $switcher->getWebsiteCollection();
+    foreach ($_websiteCollection as $_website)
+    {
+        if ($values = $this->getFormValues('website', $_website->getId()))
+        {
+            echo $this->getBlankForm('website', $_website->getId())->setValues($values)->toHtml();
+        }
+        else
+        {
+            echo $this->getBlankForm('website', $_website->getId())->toHtml();
+        }
+        foreach ($switcher->getGroupCollection($_website) as $_group)
+        {
+             foreach ($switcher->getStoreCollection($_group) as $_store)
+             {
+                if ($values = $this->getFormValues('store', $_store->getId()))
+                {
+                    echo $this->getBlankForm('store', $_store->getId())->setValues($values)->toHtml();
+                }
+                else
+                {
+                    echo $this->getBlankForm('store', $_store->getId())->toHtml();
+                }
+            }
+        }
+    }
+}
+
+?>

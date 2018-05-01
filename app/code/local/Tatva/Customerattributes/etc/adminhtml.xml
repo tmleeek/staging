@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+    <adminhtml>
+		<menu>
+			<customer module="customer">
+				<children>
+					<items module="customer">
+						<title>Manage Customer Attributes</title>
+						<children>
+							<items1>
+								<title>Customer Attribute</title>
+								<sort_order>150</sort_order>
+								<action>customerattributes/adminhtml_customerattributes</action>
+							</items1>
+							<items2>
+								<title>Customer Address Attribute</title>
+								<sort_order>151</sort_order>
+								<action>customerattributes/adminhtml_customeraddress</action>
+							</items2>
+						</children>                                                     						
+					</items>
+				</children>
+			</customer>
+		</menu>
+    	<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+          			<children>
+          				<system>
+          					<children>
+          						<config>
+          							<children>
+          								<customerattributes translate="title" module="customerattributes">
+          									<title>CustomerAttributes Configuration</title>
+          								</customerattributes>
+          							</children>
+          						</config>
+          					</children>
+          				</system>
+                        <Tatva_customerattributes>
+          					<title>Customerattributes</title>
+          					<sort_order>11</sort_order>
+          				</Tatva_customerattributes>
+          			</children>
+      		    </admin>
+			</resources>
+		</acl>
+		<!--<layout>
+			<updates>
+				<customerattributes>
+					<file>customerattributes.xml</file>
+				</customerattributes>
+			</updates>
+		</layout>-->
+    </adminhtml>

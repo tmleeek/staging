@@ -1,0 +1,30 @@
+<!-- BEGIN reward notification preferences fieldset -->
+<?php if($this->showPreferences()) : ?>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-customer-view"><?php echo $this->__('Customer Point Notification Preferences') ?></h4>
+</div>
+<fieldset>
+    <table cellspacing="2" class="box-left">
+        <tr>
+            <td>
+                <?php $customer = $this->getCustomer(); ?>
+                <ul>
+                    <li>
+                        <div class="urlcode-checkbox">
+                            <input type="hidden" name="rewards_points_notification_save" value="1" />
+                            <input type="checkbox" name="rewards_points_notification" 
+                                    <?php if($customer->getRewardsPointsNotification()): ?>checked="checked" <?php endif; ?>
+                                    value="1" 
+                                    title="<?php echo $this->__('Send me my points summary statement monthly') ?>" 
+                                    class="checkbox" id="rewards_points_notification" />
+                            <label for="rewards_points_notification>"><?php echo $this->__('Send me my points summary statement monthly') ?></label>
+                        </div>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+
+<?php endif; ?>
+<!-- END reward notification preferences fieldset -->

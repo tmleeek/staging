@@ -1,0 +1,91 @@
+<div class="entry-edit">
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Supplier notification'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__("Communication mode"); ?></td>
+                <td class="input-ele">
+                    <select>
+                            <option value="email" >Email</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__("Packing slip file format"); ?></td>
+                <td class="input-ele">
+                    <select name="sup_dropshipping_export_type" id="sup_dropshipping_export_type">
+                        <?php foreach ($this->getAttachmentTypes() as $k => $v): ?>
+                            <option value="<?php echo $k; ?>" <?php echo ($this->getSupplier()->getsup_dropshipping_export_type() == $k ? ' selected ' : '') ?>><?php echo $v; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p class="note"><span>Select the attachment file format we send to supplier with customer order information.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__("Default shipping fees"); ?></td>
+                <td class="input-ele">
+                    <input type="text" name="sup_dropshipping_default_shipping_fees" id="sup_dropshipping_default_shipping_fees" value="<?php echo $this->getSupplier()->getsup_dropshipping_default_shipping_fees(); ?>" />
+                    <p class="note"><span>Shipping fees to apply by default for new drop shipping purchase order.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__("Apply shipping fees per item"); ?></td>
+                <td class="input-ele">
+                    <select name="sup_dropshipping_mulitply_shipping_fees" id="sup_dropshipping_mulitply_shipping_fees">
+                        <?php $yesNo = array('0' => $this->__('No'), '1' => $this->__('Yes')); ?>
+                        <?php foreach ($yesNo as $k => $v): ?>
+                            <option value="<?php echo $k; ?>" <?php echo ($this->getSupplier()->getsup_dropshipping_mulitply_shipping_fees() == $k ? ' selected ' : '') ?>><?php echo $v; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p class="note"><span>If enabled, default shipping fees are multiplied with the number of products in the purchse order.</span></p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>    
+
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('CSV file template'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Order row') ?></td>
+                <td class="input-ele">                
+                    <textarea rows="3" cols="100" name="sup_dropshipping_tpl_order" id="sup_dropshipping_tpl_order"><?php echo $this->getSupplier()->getsup_dropshipping_tpl_order(); ?></textarea>
+                    <p class="note"><span>Use available codes arrounded with {}, ie : {order.increment_id}, {order.customer_email}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Order items row') ?></td>
+                <td class="input-ele">                
+                    <textarea rows="3" cols="100" name="sup_dropshipping_tpl_order_item" id="sup_dropshipping_tpl_order_item"><?php echo $this->getSupplier()->getsup_dropshipping_tpl_order_item(); ?></textarea>
+                    <p class="note"><span>Use available codes arrounded with {}, ie : {order_item.qty};{order_item.sku}</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Csv Preview') ?></td>
+                <td class="input-ele">
+                    <p>&nbsp;</p>
+                    <div style="border-style: 1px solid black;"><pre><?php echo $this->getPreview(); ?></pre></span>
+                    <p>&nbsp;</p>
+                    </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Available codes') ?></td>
+                <td class="input-ele">                
+                    <p><i>Sample datas are extracted from the newest shipment in magento : </i></p>
+                    <?php foreach($this->getTemplateCodes() as $k => $v): ?>
+                        <?php if (is_object($v)) {continue;} ?>
+                        <b><?php echo $k; ?></b> : <?php echo $v; ?>,&nbsp;
+                    <?php endforeach; ?>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    
+    
+</div>

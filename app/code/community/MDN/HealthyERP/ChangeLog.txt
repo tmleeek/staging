@@ -1,0 +1,14 @@
+
+------------------------------------------------------------------------
+0.0.3
+- "UnconsistantWaitingFordeliveryQty" : Speed up + avoid out of memory
+- Check views : Avoid potential crash if No autorization to check INFORMATION_SCHEMA
+- "Unconsistant Availability Status" handle correctly backorders items
+
+------------------------------------------------------------------------
+0.0.2
+- Fix View recreation when table prefix is present
+
+------------------------------------------------------------------------
+0.0.1
+ - Initial version

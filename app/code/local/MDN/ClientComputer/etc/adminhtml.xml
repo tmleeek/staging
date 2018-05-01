@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config>
+<menu>
+            <erp>
+            	<children>
+            		<tools>
+		                <children>
+		                    <client_computer_log translate="title" module="ClientComputer">
+		                        <title>Client computer</title>
+		                        <action>ClientComputer/Admin/Grid</action>
+		                        <sort_order>900</sort_order>
+		                    </client_computer_log>
+		                </children>
+		            </tools>
+		         </children>
+             </erp>
+        </menu>
+		<acl>
+	        <resources>
+	            <admin>
+	                <children>
+	                	<erp>
+	                		<children>
+	                			<tools>
+	                				<children>
+				                		 <client_computer_log module="ClientComputer">
+				                		 	<title>Client computer</title>
+				                		 </client_computer_log>		
+	                				</children>
+	                			</tools>
+	                		</children>
+	                	</erp>
+	                    <system>
+	                        <children>
+	                            <config>
+	                                <children>
+	                                    <clientcomputer module="ClientComputer">
+											<title>Client Computer</title>
+	                                    </clientcomputer>
+	                                </children>
+	                            </config>
+	                        </children>
+	                    </system>
+	                </children>
+	            </admin>
+	         </resources>
+	    </acl>
+         <translate>
+            <modules>
+                <MDN_ClientComputer>
+                    <files>
+                        <default>MDN_ClientComputer.csv</default>
+                    </files>
+                </MDN_ClientComputer>
+            </modules>
+        </translate>
+		<layout>
+            <updates>
+                <ClientComputer>
+                    <file>ClientComputer.xml</file>
+                </ClientComputer>
+            </updates>
+        </layout>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Pektsekye_OptionImages>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Pektsekye_OptionImages>
+    </modules>
+</config> 

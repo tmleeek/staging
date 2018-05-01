@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <colissimo translate="label">
+            <tab>sales</tab>
+            <label>So Colissimo Labels</label>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <account_shipment translate="label">
+                    <label>Colissimo Shipment</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <is_active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Activate connection between Colissimo and Magento</comment>
+                        </is_active>
+                        <username translate="label">
+                            <label>Contract Number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>2</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number </validate>
+                        </username>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password>
+                        <wsdl translate="label,comment">
+                            <label>WSDL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-url</validate>
+                        </wsdl>
+                        <supervision translate="label,comment">
+                            <label>Supervision URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-url</validate>
+                        </supervision>
+                        <verify_supervision translate="label">
+                            <label>Check if WebService is Online</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>colissimo/Adminhtml_System_Config_Form_Button</frontend_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </verify_supervision>
+                        <force_colissimo_on_methods translate="label">
+                            <label>Force Colissimo usage on selected shipping methods</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>colissimo/system_config_Allmethods</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Shipping methods to use with Colissimo Shipments</comment>
+                        </force_colissimo_on_methods>
+                        <pdf_overloading translate="label">
+                            <label>PackingSlip pdf overloading</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pdf_overloading>
+                    </fields>
+                </account_shipment>
+                <!--<account_return translate="label">-->
+                    <!--<label>Colissimo Return</label>-->
+                    <!--<sort_order>2</sort_order>-->
+                    <!--<show_in_default>1</show_in_default>-->
+                    <!--<show_in_website>1</show_in_website>-->
+                    <!--<show_in_store>0</show_in_store>-->
+                    <!--<fields>-->
+                        <!--<is_active translate="label">-->
+                            <!--<label>Enabled</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>1</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>1</show_in_store>-->
+                            <!--<comment>Activate connection between Colissimo and Magento</comment>-->
+                        <!--</is_active>-->
+                        <!--<username translate="label">-->
+                            <!--<label>Contract Number</label>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>2</sort_order>-->
+                            <!--<show_in_default>2</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                            <!--<validate>validate-number </validate>-->
+                        <!--</username>-->
+                        <!--<password translate="label">-->
+                            <!--<label>Password</label>-->
+                            <!--<frontend_type>password</frontend_type>-->
+                            <!--<sort_order>3</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</password>-->
+                        <!--<wsdl translate="label,comment">-->
+                            <!--<label>WSDL</label>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>4</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                            <!--<validate>validate-url</validate>-->
+                        <!--</wsdl>-->
+                        <!--<service_type translate="label">-->
+                            <!--<label>Colissimo Return </label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>colissimo/System_Config_ServiceType</source_model>-->
+                            <!--<sort_order>5</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</service_type>-->
+                    <!--</fields>-->
+                <!--</account_return>-->
+                <config_shipment translate="label">
+                    <label>Colissimo Shipping Configuration</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <recommendation translate="label, comment">
+                            <label>Recommandation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Will activate Recommendation parameters in shipment.</comment>
+                        </recommendation>
+                        <categorie translate="label">
+                            <label>Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>colissimo/System_Config_Categorie</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </categorie>
+                        <deliverymode translate="label">
+                            <label>Delivery Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>colissimo/System_Config_DeliveryMode</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </deliverymode>
+                        <parcel_type translate="label">
+                            <label>Parcel Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>colissimo/System_Config_ParcelType</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </parcel_type>
+                    </fields>
+                </config_shipment>
+                <shipper translate="label">
+                    <label>Shipper Informations</label>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <companyname translate="label">
+                            <label>Company Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </companyname>
+                        <name translate="label">
+                            <label>Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </name>
+                        <surname translate="label">
+                            <label>Surname</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </surname>
+                        <civility translate="label">
+                            <label>Civility</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </civility>
+                        <line0 translate="label,comment">
+                            <label>Address 2 (optional)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Floor, hallway, staircase, apartment No.</comment>
+                        </line0>
+                        <line1 translate="label,comment">
+                            <label>Address 1 (optional)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Entrance, building, building block</comment>
+                        </line1>
+                        <line2 translate="label,comment">
+                            <label>Address 0</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Street number and label</comment>
+                        </line2>
+                        <line3 translate="label,comment">
+                            <label>Address 3 (optional)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Other special mention</comment>
+                        </line3>
+                        <phone translate="label">
+                            <label>Phone</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone>
+                        <mobilephone translate="label">
+                            <label>Mobile Phone</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </mobilephone>
+                        <country translate="label">
+                            <label>Country</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>colissimo/System_Config_Country</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </country>
+                        <city translate="label">
+                            <label>City</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </city>
+                        <postalcode translate="label">
+                            <label>Postal Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </postalcode>
+                        <email translate="label">
+                            <label>Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-email</validate>
+                        </email>
+                    </fields>
+                </shipper>
+                <labels translate="label">
+                    <label>Shipping Labels options</label>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                        <fields>
+                            <labels_lifetime translate="label">
+                                <label>Label storage time (days)</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>1</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                            </labels_lifetime>
+                            <label_width translate="label">
+                                <label>Labels Width (mm)</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>1</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                            </label_width>
+                            <label_height translate="label">
+                                <label>Label Height (mm)</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>2</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                            </label_height>
+                            <label_x translate="label">
+                                <label>Label x</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>3</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                            </label_x>
+                            <label_y translate="label">
+                                <label>Label y</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>4</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                            </label_y>
+                            <label_new_width translate="label,comment">
+                                <label>New height</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>5</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                                <comment>This will resize the original label to fit the new one</comment>
+                            </label_new_width>
+                            <label_new_height translate="label,comment">
+                                <label>New width</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>6</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <validate>validate-number</validate>
+                                <comment>This will resize the original label to fit the new one</comment>
+                            </label_new_height>
+                            <label_path translate="label,comment">
+                                <label>Labels save path</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>12</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>0</show_in_store>
+                                <comment>First folder must be at magento's root</comment>
+                            </label_path>
+                        </fields>
+                </labels>
+                <packing_slip translate="label">
+                    <label>Packing Slip formatting options</label>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <qty_cell translate="label">
+                            <label>Product table qty cell width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </qty_cell>
+                        <sku_cell translate="label">
+                            <label>Product table sku cell width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </sku_cell>
+                        <name_cell translate="label">
+                            <label>Product table name cell width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </name_cell>
+                        <separator_x_pos translate="label">
+                            <label>Vertical separator x position</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </separator_x_pos>
+                        <title_x_pos translate="label">
+                            <label>Title x position</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </title_x_pos>
+                        <shipto_x_pos translate="label">
+                            <label>Ship to address x position</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </shipto_x_pos>
+                        <label_x_pos translate="label">
+                            <label>Label x position</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </label_x_pos>
+                        <label_y_pos translate="label">
+                            <label>Label y position</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-number</validate>
+                        </label_y_pos>
+                    </fields>
+                </packing_slip>
+            </groups>
+        </colissimo>
+    </sections>
+</config>

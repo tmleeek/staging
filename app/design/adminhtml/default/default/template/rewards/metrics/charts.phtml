@@ -1,0 +1,11 @@
+
+
+    <?php foreach ($this->getSortedChildren() as $name): ?>
+        <?php $block = $this->getLayout()->getBlock($name); ?>
+
+        <?php if (!$block): ?>
+            <?php Mage::throwException(Mage::helper('core')->__('Invalid block: %s', $name)); ?>
+        <?php endif; ?>
+
+        <?php echo $block->toHtml(); ?>
+    <?php endforeach ?>

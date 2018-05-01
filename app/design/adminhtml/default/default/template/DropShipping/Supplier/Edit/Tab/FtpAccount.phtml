@@ -1,0 +1,211 @@
+<?php //todo : modifier en js le action du form de ERP   ?>
+<script type="Text/Javascript">
+    
+    // kind of observer to get the event if user attach a file
+    function checkAttachedFile(){
+        
+        var attachedInput = document.getElementById('attached_file');
+        
+        if( attachedInput.value != "" ){
+            modifyActionForm();
+        }
+        else {
+            getUrlImportAction();
+        }
+    }
+    
+    // modify the targeted url of the main form
+    function modifyActionForm(){
+        var mainForm = document.getElementById('edit_form');
+        mainForm.enctype = 'multipart/form-data';
+        mainForm.action = '<?php echo $this->getImportStockUrl(); ?>';  
+        mainForm.submit();
+    }
+    
+    function getUrlImportAction(){ 
+        document.location.href='<?php echo $this->getImportStockUrl(); ?>';
+    }
+    
+</script>
+<div class="entry-edit">
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Drop shipping settings'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__("Packing slip file format"); ?></td>
+                <td class="input-ele">
+                    <select name="sup_dropshipping_export_type" id="sup_dropshipping_export_type">
+                        <?php foreach ($this->getAttachmentTypes() as $k => $v): ?>
+                            <option value="<?php echo $k; ?>" <?php echo ($this->getSupplier()->getsup_dropshipping_export_type() == $k ? ' selected ' : '') ?>><?php echo $v; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p class="note"><span>Select the attachment file format we send to supplier with customer order information.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__("Default shipping fees"); ?></td>
+                <td class="input-ele">
+                    <input type="text" name="sup_dropshipping_default_shipping_fees" id="sup_dropshipping_default_shipping_fees" value="<?php echo $this->getSupplier()->getsup_dropshipping_default_shipping_fees(); ?>" />
+                    <p class="note"><span>Shipping fees to apply by default for new drop shipping purchase order.</span></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__("Multiply shipping fees with product count"); ?></td>
+                <td class="input-ele">
+                    <select name="sup_dropshipping_mulitply_shipping_fees" id="sup_dropshipping_mulitply_shipping_fees">
+                        <?php $yesNo = array('0' => $this->__('No'), '1' => $this->__('Yes')); ?>
+                        <?php foreach ($yesNo as $k => $v): ?>
+                            <option value="<?php echo $k; ?>" <?php echo ($this->getSupplier()->getsup_dropshipping_mulitply_shipping_fees() == $k ? ' selected ' : '') ?>><?php echo $v; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <p class="note"><span>If enabled, default shipping fees are multiplied with the number of products in the purchse order.</span></p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>    
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Import Stock File'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__("Select file to import"); ?></td>
+                <td><input type="file" name="attached_file" id="attached_file"></td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    <pre>  <br />  <button id="import" class="scalable" style="" onclick="checkAttachedFile();" type="button"><?php echo $this->__("Import"); ?></button>
+                    </pre>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('FTP Account'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Host'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_host" name="sup_ftp_host" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_host(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Port'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_port" name="sup_ftp_port" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_port(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Login'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_login" name="sup_ftp_login" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_login(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Password'); ?></td>
+                <td class="input-ele"><input type="text" id="sup_ftp_password" name="sup_ftp_password" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_password(); ?>"></td>
+
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('File Path'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_file_path" name="sup_ftp_file_path" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_file_path(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Enabled'); ?></td>
+                <td class="input-ele">
+                    <select  id="sup_ftp_enabled" name="sup_ftp_enabled">
+                        <?php if ($this->getSupplier()->getsup_ftp_enabled()): ?> 
+                            <?php
+                            echo '<option value="1" select="selected">';
+                            echo $this->__('Enable');
+                            echo '</option>';
+                            ?>
+                            <?php
+                            echo '<option value="0">';
+                            echo $this->__('Disable');
+                            echo '</option>';
+                            ?>
+                        <?php else: ?>
+                            <?php
+                            echo '<option value="0" select="selected">';
+                            echo $this->__('Disable');
+                            echo '</option>';
+                            ?>
+    <?php
+    echo '<option value="1">';
+    echo $this->__('Enable');
+    echo '</option>';
+    ?>
+<?php endif; ?>
+                    </select>
+                </td>
+            </tr>              
+        </table>
+    </fieldset>
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('File Settings') ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Field Separator') ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_csv_field_separator" name="sup_csv_field_separator" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_field_separator(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Field Delimiter') ?></td>
+                <td class="input-ele"><input type="text" id="sup_csv_field_delimiter" name="sup_csv_field_delimiter" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_field_delimiter(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Skip First Line') ?></td>
+                <td class="input-ele">
+                    <select  id="sup_csv_skip_first_line" name="sup_csv_skip_first_line">
+<?php if ($this->getSupplier()->getsup_csv_skip_first_line() == true): ?>
+                            <option value="1" select="selected"><?php echo $this->__('Yes'); ?></option>
+                            <option value="0"><?php echo $this->__('No'); ?></option>
+<?php else : ?> 
+                            <option value="0" select="selected"><?php echo $this->__('No'); ?></option>  
+                            <option value="1" ><?php echo $this->__('Yes'); ?></option>  
+<?php endif; ?>
+                    </select>
+                </td>
+            </tr> 
+            <tr>
+                <td class="label"><?php echo $this->__('Sku Column Number') ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_csv_sku_col_num" name="sup_csv_sku_col_num" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_sku_col_num(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Quantity Column Number') ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_csv_qty_col_num" name="sup_csv_qty_col_num" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_qty_col_num(); ?>"></td>
+            </tr>        
+            <tr>
+                <td class="label"><?php echo $this->__('Unit Cost Price Column Number') ?></td>
+                <td class="input-ele"><input type="text"  id="sup_csv_cost_col_num" name="sup_csv_cost_col_num" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_cost_col_num(); ?>"></td>
+            </tr> 
+        </table>
+    </fieldset>
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Miscellaneous') ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Target Warehouse') ?></td>
+                <td class="input-ele">                 
+                    <select  id="sup_target_warehouse" name="sup_target_warehouse">
+<?php foreach ($this->getWarehouses() as $warehouse): ?>
+    <?php if ($this->getSupplier()->getsup_target_warehouse() == $warehouse["value"]): ?>
+                                <option  selected  value="<?php echo $warehouse["value"]; ?>"><?php echo $warehouse["label"]; ?></option>
+    <?php else : ?>
+                                <option value="<?php echo $warehouse["value"]; ?>"><?php echo $warehouse["label"]; ?></option>
+    <?php endif; ?>
+<?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>  
+        </table>
+    </fieldset>
+</div>

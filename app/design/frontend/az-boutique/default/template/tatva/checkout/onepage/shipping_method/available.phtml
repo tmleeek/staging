@@ -1,0 +1,838 @@
+	<script type="text/javascript">
+	jQuery(function(){
+		jQuery.superbox.settings = {
+			    boxId: "superbox",
+			    boxClasses: "",
+			    overlayOpacity: 0.8,
+			    boxWidth: "900",
+			    boxHeight: "530",
+			    loadTxt: "Chargement ...",
+			    closeTxt: "Fermer",
+			    prevTxt: "Précédent",
+			    nextTxt: "Suivant"
+			};
+		jQuery.superbox();
+	});
+
+	function fenetreCent(url,nom,largeur,hauteur,options) {
+		var haut=(screen.height-hauteur)/2;
+		var Gauche=(screen.width-largeur)/2;
+		fencent=window.open(url,nom,"top="+haut+",left="+Gauche+",width="+largeur+",height="+hauteur+","+options);
+	}
+
+	var lastPrice='';
+	</script>
+
+
+
+    	<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+<?php
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://ws.colissimo.fr/supervision-wspudo/supervision.jsp');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $contents = curl_exec ($ch);
+    $_web_service_enable = 1;
+    if(trim($contents) != "[OK]")
+    {
+        $_web_service_enable = 0;
+    }
+
+    curl_close ($ch);
+
+    $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
+    $model = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->deleteOldData($customer_id);
+	
+?>
+
+
+<?php
+    if($_web_service_enable != 0)
+    {
+        $address = $this->getAddress();
+        $address_id = $address->getId();
+        $street1 = $address->getStreet();
+        $street = $street1[0];
+        $postcode = $address->getPostcode();
+        $city = $address->getCity();
+        $countryName = Mage::getModel('directory/country')->load($address->getCountry())->getName();
+        $weight = $address->getWeight();
+        $shipping_date = date('d/m/Y');
+        $shipping_method_id = 's_method_'.$address_id.'_colissimo_colissimo';
+
+        //echo "<br/>"."postcode = ".$postcode."<br/>"."city = ".$city."<br/>"."street = ".$street."<br/>"."countryName = ".$countryName."<br/>"."weight = ".$weight."<br/>"."shipping_date = ".$shipping_date;
+        $countryId = $address->getCountry();
+        $params = array(
+                    'accountNumber'     => Mage::getStoreConfig('tatva/tatva_settings/account'),
+                    'password'          => Mage::getStoreConfig('tatva/tatva_settings/password'),
+                    'address'           => $street,
+                    'zipCode'           => $postcode,
+                    'city'              => $city,
+                    'weight'            => $weight*1000,
+                    'shippingDate'      => $shipping_date,
+                    'filterRelay'       => '1',
+                    'requestId '        => '1234567890ABCDEFGHIJ1234567890',
+					'countryCode' => $countryId,
+					'optionInter' => '1',
+					'lang' => 'FR'
+                );
+
+        $model = Mage::getModel('tatvashipping/tempcolissimowebservicedata')->getWebserviceData($params);
+       $rdv = Mage::getModel('tatvashipping/tempcolissimowebservicedata')->getWebserviceRdvData($params);
+        
+    }
+?>
+<script type="text/javascript">
+   document.getElementById('shipping_method_name').value = '<?php echo $shipping_method_id;?>';
+</script>
+
+<?php $notes = $this->getCustomerNotes()?>
+<?php $_shippingRateGroups = $this->getShippingRates();
+
+
+//Mage::log(print_r($_shippingRateGroups->getData(),true),null,shipping_method.log);
+
+?>
+<?php if (!$_shippingRateGroups): ?>
+    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else: ?>
+
+     <?php $shippingCodePrice = array(); ?>
+     <?php $_sole = count($_shippingRateGroups) == 1;
+		$quote = Mage::getSingleton('checkout/session')->getQuote(); ?>
+        <?php $_leftshippingRateGroups=array(); $_rightshippingRateGroups=array();
+
+            foreach ($_shippingRateGroups as $code => $_rates)
+            {
+
+            Mage::log("rategroup code: ".$code,null,shipping_method.log);
+             if(Mage::getStoreConfig("carriers/$code/active")=='1')
+             {
+              $configValue=''; $enable=1;
+              $configValue = Mage::getStoreConfig("carriers/$code/side");
+             foreach ($_rates as  $_rate)
+              {
+                            Mage::log("rate code: ".$_rate->getCode(),null,shipping_method.log);
+
+
+                $country = $_rate->getAddress()->getCountry(); ?>
+
+
+
+
+                <?php  if( preg_match('/tnt_/', $code) == 0) { ?> <!-- tnt start -->
+                         <?php  $countrylist = Mage::getStoreConfig('carriers/'.$code.'/specificcountry');
+                       if($_rate->getAddress()->getRegionCode() == 'GP' || $_rate->getAddress()->getRegionCode() == 'MQ' || $_rate->getAddress()->getRegionCode() == 'GF' || $_rate->getAddress()->getRegionCode() == 'RE' || $_rate->getAddress()->getRegionCode() == 'PM' || $_rate->getAddress()->getRegionCode() == 'YT' || $_rate->getAddress()->getRegionCode() == 'TF' || $_rate->getAddress()->getRegionCode() == 'WF' || $_rate->getAddress()->getRegionCode() == 'PF' || $_rate->getAddress()->getRegionCode() == 'NC' || $_rate->getAddress()->getRegionCode() == 'MC')
+                       {
+                          if(!strpos($countrylist,$_rate->getAddress()->getRegionCode()))
+                          {
+                               $enable = 0;
+                          }
+                       }
+                  } ?> <!-- tnt end -->
+
+                <?php if($code == 'pointsrelais'){
+                  $mondial_price = Mage::getResourceModel('pointsrelais/carrier_pointsrelais')->getmondialratefromcsv($_rate->getAddress()->getCountry(),$_rate->getAddress()->getWeight());
+                       if($_rate->getAddress()->getPostcode() == 13128 || $_rate->getAddress()->getPostcode() == 13998 || $_rate->getAddress()->getPostcode() == 29240 || $_rate->getAddress()->getPostcode() == 30998 || $_rate->getAddress()->getPostcode() == 31998 ||  $_rate->getAddress()->getPostcode() == 33998 || $_rate->getAddress()->getPostcode() == 35998 || $_rate->getAddress()->getPostcode() == 45998 || $_rate->getAddress()->getPostcode() == 50115 || $_rate->getAddress()->getPostcode() == 56998 || $_rate->getAddress()->getPostcode() == 57998 || $_rate->getAddress()->getPostcode() == 59998 || $_rate->getAddress()->getPostcode() == 69998 || $_rate->getAddress()->getPostcode() == 83800 || $_rate->getAddress()->getPostcode() == 83998 || $_rate->getAddress()->getPostcode() == 13128 || $_rate->getAddress()->getPostcode() == 87998 || substr($_rate->getAddress()->getPostcode(),0,2) == 20 || $mondial_price == 1)
+{ 
+$enable = 0;
+}
+
+      if($enable == 1)
+      {
+           $params = array(
+             'Enseigne'     => Mage::getStoreConfig('carriers/pointsrelais/enseigne'),
+             'Pays'         => $_rate->getAddress()->getCountry(),
+             'CP'           => $_rate->getAddress()->getPostcode(),
+           );
+
+        
+             $code_1 = implode("",$params);
+             $code_1 .= Mage::getStoreConfig('carriers/pointsrelais/cle');
+
+
+             $params["Security"] = strtoupper(md5($code_1));
+			           $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
+			           $model = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->deleteMondialRelayData($customer_id);
+
+                       $model = Mage::getModel('tatvashipping/tempcolissimowebservicedata')->insertMondialRelay($params);
+         }     }    /*pointsrelais end */
+
+         if($code == 'gls')
+         {
+           $enable = 1;
+           $allowspecific = Mage::getStoreConfig('carriers/'.$code.'/sallowspecific');
+           if($allowspecific == 1)
+           {
+                     $countrylist = Mage::getStoreConfig('carriers/'.$code.'/specificcountry');
+                     if($_rate->getAddress()->getRegionCode() == 'GP' || $_rate->getAddress()->getRegionCode() == 'MQ' || $_rate->getAddress()->getRegionCode() == 'GF' || $_rate->getAddress()->getRegionCode() == 'RE' || $_rate->getAddress()->getRegionCode() == 'PM' || $_rate->getAddress()->getRegionCode() == 'YT' || $_rate->getAddress()->getRegionCode() == 'TF' || $_rate->getAddress()->getRegionCode() == 'WF' || $_rate->getAddress()->getRegionCode() == 'PF' || $_rate->getAddress()->getRegionCode() == 'NC' || $_rate->getAddress()->getRegionCode() == 'MC')
+                     {
+                        if(!strpos($countrylist,$_rate->getAddress()->getRegionCode()))
+                        {
+                             $enable = 0;
+                        }
+                     }
+                 }
+             }
+            /* gls end && collsimo start */
+             if($code == 'colissimopostoffice' || $code == 'colissimocityssimo' || $code == 'colissimolocalstore' )
+            {
+                if($this->helper('customer')->isLoggedIn())
+                {
+                    if($_web_service_enable != 0)
+                    {
+                        $allowspecific = Mage::getStoreConfig('carriers/'.$code.'/sallowspecific');
+
+                        if($allowspecific == 1)
+                        {
+                            $countrylist = Mage::getStoreConfig('carriers/'.$code.'/specificcountry');
+                            if($_rate->getAddress()->getRegionCode() == 'GP' || $_rate->getAddress()->getRegionCode() == 'MQ' || $_rate->getAddress()->getRegionCode() == 'GF' || $_rate->getAddress()->getRegionCode() == 'RE' || $_rate->getAddress()->getRegionCode() == 'PM' || $_rate->getAddress()->getRegionCode() == 'YT' || $_rate->getAddress()->getRegionCode() == 'TF' || $_rate->getAddress()->getRegionCode() == 'WF' || $_rate->getAddress()->getRegionCode() == 'PF' || $_rate->getAddress()->getRegionCode() == 'NC' || $_rate->getAddress()->getRegionCode() == 'MC')
+                            {
+                               if(!strpos($countrylist,$_rate->getAddress()->getRegionCode()))
+                               {
+                                    $enable = 0;
+                               }
+                            }
+
+                        }
+                        if($_rate->getAddress()->getPostcode() == 13128 || $_rate->getAddress()->getPostcode() == 13998 || $_rate->getAddress()->getPostcode() == 29240 || $_rate->getAddress()->getPostcode() == 30998 || $_rate->getAddress()->getPostcode() == 31998 ||  $_rate->getAddress()->getPostcode() == 33998 || $_rate->getAddress()->getPostcode() == 35998 || $_rate->getAddress()->getPostcode() == 45998 || $_rate->getAddress()->getPostcode() == 50115 || $_rate->getAddress()->getPostcode() == 56998 || $_rate->getAddress()->getPostcode() == 57998 || $_rate->getAddress()->getPostcode() == 59998 || $_rate->getAddress()->getPostcode() == 69998 || $_rate->getAddress()->getPostcode() == 83800 || $_rate->getAddress()->getPostcode() == 83998 || $_rate->getAddress()->getPostcode() == 13128 || $_rate->getAddress()->getPostcode() == 87998 || substr($_rate->getAddress()->getPostcode(),0,2) == 20)
+                        {
+                            $enable = 0;
+                        }
+                     }
+                   }
+                 }
+
+                 /* colossimo appointment */
+                 if($code == 'colissimoappointment')
+               {
+                if($this->helper('customer')->isLoggedIn())
+                {
+                    if($rdv == 1)
+                    {
+                        $enable = 1;
+                        $allowspecific = Mage::getStoreConfig('carriers/'.$code.'/sallowspecific');
+
+                        if($allowspecific == 1)
+                        {
+                            $countrylist = Mage::getStoreConfig('carriers/'.$code.'/specificcountry');
+                            if($_rate->getAddress()->getRegionCode() == 'GP' || $_rate->getAddress()->getRegionCode() == 'MQ' || $_rate->getAddress()->getRegionCode() == 'GF' || $_rate->getAddress()->getRegionCode() == 'RE' || $_rate->getAddress()->getRegionCode() == 'PM' || $_rate->getAddress()->getRegionCode() == 'YT' || $_rate->getAddress()->getRegionCode() == 'TF' || $_rate->getAddress()->getRegionCode() == 'WF' || $_rate->getAddress()->getRegionCode() == 'PF' || $_rate->getAddress()->getRegionCode() == 'NC' || $_rate->getAddress()->getRegionCode() == 'MC')
+                            {
+                               if(!strpos($countrylist,$_rate->getAddress()->getRegionCode()))
+                               {
+                                    $enable = 0;
+                               }
+                            }
+                           }
+                       }
+                    }
+                 }
+				 
+				  if($code == 'colissimo')
+                {
+                 if($this->helper('customer')->isLoggedIn())
+                 {
+                    
+                        $enable = 1;
+                        $allowspecific = Mage::getStoreConfig('carriers/'.$code.'/sallowspecific');
+
+                        if($allowspecific == 1)
+                        {
+                            $countrylist = Mage::getStoreConfig('carriers/'.$code.'/specificcountry');
+                            if($_rate->getAddress()->getRegionCode() == 'GP' || $_rate->getAddress()->getRegionCode() == 'MQ' || $_rate->getAddress()->getRegionCode() == 'GF' || $_rate->getAddress()->getRegionCode() == 'RE' || $_rate->getAddress()->getRegionCode() == 'PM' || $_rate->getAddress()->getRegionCode() == 'YT' || $_rate->getAddress()->getRegionCode() == 'TF' || $_rate->getAddress()->getRegionCode() == 'WF' || $_rate->getAddress()->getRegionCode() == 'PF' || $_rate->getAddress()->getRegionCode() == 'NC' || $_rate->getAddress()->getRegionCode() == 'MC')
+                            {
+                               if(!strpos($countrylist,$_rate->getAddress()->getRegionCode()))
+                               {
+                                    $enable = 1;
+                               }
+                            }
+                         
+                       }
+                    }
+                 }
+
+               if(($configValue=='1') && ($_rate->getCode() != 'tnt_JD'))
+                {
+                  if($enable=='1')
+                  {
+                     if($_rate->getCode()=='tnt_J')
+                     {
+
+                     $_leftshippingRateGroups[]=array( 'code' => $code , 'rates' => $_rates);
+                     }
+                     else
+                     {
+                       $_leftshippingRateGroups[]=array( 'code' => $code , 'rates' => $_rates);
+                     }
+
+                   }
+                 }
+
+                else
+                {
+                  if($enable=='1')
+                  {
+                     if($_rate->getCode()=='tnt_JD')
+                     {
+                     $_rightshippingRateGroups[]= array( 'code' => $code , 'rates' => $_rates);
+                     }
+                     else
+                     {
+                       $_rightshippingRateGroups[]= array( 'code' => $code , 'rates' => $_rates);
+                     }
+
+                  }
+                }
+
+              }
+             }
+           }
+		   
+          ?>
+
+
+
+
+
+<div class="shipping-box">
+       <div class="shipping-box-left">
+          <div class="shipping-title clearfix"><?php echo $this->__('At home or at your workplace'); ?></div>
+            <?php $i=0 ;foreach($_leftshippingRateGroups as $key => $value)
+                    {
+						foreach ($value['rates'] as $_rate)
+                        {
+                        	if($_rate->getCode() != 'tnt_JD')
+						    {
+                            $code = $value['code'];  ?>
+
+            <?php if ($_rate->getErrorMessage()): ?>
+                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li></ul></li></ul>
+            <?php else: ?>
+
+            <div class="shipping-blog<?php if($i%2==0): ?> alt<?php else: ?> nrl<?php endif; ?> left_<?php echo $_rate->getCode(); ?>">
+
+            <div class="brand-logo"> <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"  <?php if(($i==0) && ($_rate->getCode()!='tnt_J')): ?>checked="checked"<?php endif; ?> <?php if(preg_match('/tnt/', $code) != 0){ ?>onClick="radioCheck()"  <?php } ?> <?php if($code=='colissimoappointment'){ ?>onclick=afficherPopin3('popin3'); <?php  } ?>/>
+
+<label for="s_method_<?php echo $_rate->getCode() ?>">
+<span>
+
+           <?php  
+		   $delivery = "";
+		   if( preg_match('/tnt_/', $_rate->getCode()) != 0) {
+            $tmp_desc = explode('|||', $_rate->getMethodDescription());   ?>
+                   <img src="<?php echo $this->getSkinUrl("images/tnt/".$tmp_desc['2']); ?>" alt="<?php echo $_rate->getMethodTitle() ?>" style="float:left;margin-right:10px;" />
+
+
+           <?php } elseif($code=='pointsrelais') { ?>
+          <img src="<?php echo $this->getSkinUrl(Mage::getModel('pointsrelais/carrier_'.$code)->getPicture()) ?>" alt="" />
+         <?php $delivery = Mage::getModel('pointsrelais/carrier_pointsrelais')->getDeliveryTimes($country,'carriers/pointsrelais/delivery_text'); ?>
+          <?php } elseif($code=='gls') {   ?>
+            <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+            <?php  $delivery = Mage::getModel('tatvashipping/carrier_gls')->getDeliveryTimes($country,'carriers/gls/delivery_text'); ?>
+           <?php } elseif($code=='colissimo') {   ?>
+		   <?php $country_id=$country; ?>
+		  <?php  if($_rate->getAddress()->getRegionCode() == 'GP' || $_rate->getAddress()->getRegionCode() == 'MQ' || $_rate->getAddress()->getRegionCode() == 'GF' || $_rate->getAddress()->getRegionCode() == 'RE' || $_rate->getAddress()->getRegionCode() == 'PM' || $_rate->getAddress()->getRegionCode() == 'YT' || $_rate->getAddress()->getRegionCode() == 'TF' || $_rate->getAddress()->getRegionCode() == 'WF' || $_rate->getAddress()->getRegionCode() == 'PF' || $_rate->getAddress()->getRegionCode() == 'NC' || $_rate->getAddress()->getRegionCode() == 'MC'){
+		   $country_id=$_rate->getAddress()->getRegionCode(); 	
+		  } ?>
+           <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+           <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country_id,'carriers/colissimo/delivery_text'); ?>
+           <?php } elseif($code=='colissimoappointment') {   ?>
+           <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+           <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/colissimo/delivery_text'); ?>
+           <?php } elseif($code == 'colissimopostoffice' || $code == 'colissimocityssimo' || $code == 'colissimolocalstore' ){  ?>
+           <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+           <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/colissimo/delivery_text'); ?>
+            <?php } elseif($code=='upssaver' || $code=='upsexpress' || $code=='ups'){ ?>
+                <img src="<?php echo $this->getSkinUrl('images/logo_little_ups.png'); ?>" alt="" />
+                <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/ups/delivery_text'); ?>
+            <?php } elseif($code=='retrait'){ ?>
+                <?php $delivery = Mage::getStoreConfig('carriers/retrait/description'); ?>
+           <?php } else{  ?>
+
+           <?php } ?>
+         </span>
+         </label>
+
+         <label for="s_method_<?php echo $_rate->getCode() ?>">
+         <span><?php if($_rate->getMethodTitle()=="TNT 24h Entreprise : Votre colis livré demain matin à l'adresse indiquée."): ?><?php echo Mage::getStoreConfig('carriers/tnt/tnt_enterprise'); ?><?php else: ?><?php echo $_rate->getMethodTitle(); ?><?php endif; ?>
+            <?php if($code == 'colissimopostoffice' || $code == 'colissimocityssimo' || $code == 'colissimolocalstore' || $code=='colissimo' || $code=='colissimoappointment'){ ?>
+         <?php  if(($_rate->getAddress()->getCountry() == 'FR' && ($_rate->getAddress()->getRegionCode() != 'GP' && $_rate->getAddress()->getRegionCode() != 'MQ' && $_rate->getAddress()->getRegionCode() != 'GF' && $_rate->getAddress()->getRegionCode() != 'RE' && $_rate->getAddress()->getRegionCode() != 'PM' && $_rate->getAddress()->getRegionCode() != 'YT' && $_rate->getAddress()->getRegionCode() != 'TF' && $_rate->getAddress()->getRegionCode() != 'WF' && $_rate->getAddress()->getRegionCode() != 'PF' && $_rate->getAddress()->getRegionCode() != 'NC')) || $_rate->getAddress()->getCountry() == 'AD')
+           { ?>
+           <img src="<?php echo $this->getSkinUrl('images/socol_picto.png'); ?>"  />
+        <?php
+          }
+         }?>
+       </span>
+
+
+      </label>
+</div>
+   <?php if($_rate->getCode()!='tnt_JD'){$i++; }?>
+         <script type="text/javascript">
+                            //<![CDATA[
+                                lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+                            //]]>
+                        </script>
+
+      <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+       <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+      <p><span><?php echo $this->__('rate'); ?></span> :
+      <span class="price">
+      <?php if($_rate->getPrice() > 0){ ?><?php echo $_excl; ?><?php }else{ ?><?php echo $this->__('Free'); ?><?php } ?>
+      <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+      (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+      <?php endif; ?>
+      </span></p>
+     <!-- <p><span>Date de livraison estimée :</span> <span class="price">30/05/2014 *</span></p>       -->
+      <?php if($delivery): ?>
+       <b><?php echo $delivery; ?></b>
+       <?php endif; ?>
+	   
+	   
+      <?php if(preg_match('/tnt/', $_rate->getCode()) != 0 ){  ?>
+         <b><?php echo Mage::getStoreConfig('carriers/'.$code.'/description');   ?> </b>
+
+        <?php echo Mage::getStoreConfig('carriers/tnt/'.$_rate->getCode().'_description');   ?>
+
+     <?php  }else{ ?>
+
+        <?php echo Mage::getStoreConfig('carriers/'.$code.'/description');   ?>
+      <?php } ?>
+
+           <?php if( preg_match('/tnt_/', $_rate->getCode()) != 0) {
+								$telephone = $quote->getShippingAddress()->getTelephone();
+								$telephone = str_replace(' ', '', $telephone);
+								$telephone = str_replace('-', '', $telephone);
+								$telephone = str_replace('.', '', $telephone);
+								$telephone = str_replace('/', '', $telephone);
+								$telephone = str_replace('+33', '0', $telephone);
+
+								$style_tel = "block";
+								if( substr($telephone, 0, 2) == '06' || substr($telephone, 0, 2) == '07' ) {
+									$style_tel = "none";
+						    	} else {
+						    		$telephone = '';
+						    	} ?>
+							<div id="tnt_cp" style="display:none" >
+								<div id="villes"></div>
+								<div id="comp_domicile" style="display:none">
+									<span>Pour assurer une livraison dans les meilleures conditions, merci de renseigner les champs ci-dessous qui vous concernent.</span>
+									<div class="clr-left" style="display:<?php echo $style_tel; ?>;"><label class="required"><em>*</em>Téléphone portable :</label> <input type="text" id="portable" name="portable" maxlength="10" value="<?php echo $telephone; ?>" class="" /> <span>Ex : 0602030405</span></div>
+									<div class="clr-left"><label>Code porte :</label> <input type="text" id="code" name="code" maxlength="7" class="" /><span>Ex : A8120</span></div>
+									<div class="clr-left"><label>Etage :</label> <input type="text" id="etage" name="etage" maxlength="2" class="" /><span>Ex : 4</span></div>
+									<div class="clr-left"><label>Bâtiment :</label> <input type="text" id="batiment" name="batiment" maxlength="3"  class=""/><span>Ex : B37</span></div>
+									<div class="clr-left"></div>
+								</div>
+								<div id="comp_entreprise" style="display:none">
+									<span>Pour assurer une livraison dans les meilleures conditions, merci de renseigner les champs ci-dessous qui vous concernent.</span>
+									<div class="clr-left">
+										<label>Instruction complémentaire de livraison :</label>
+										<br />
+										<textarea rows="3" cols="45" name="compl" id="compl" onkeyup="this.value = this.value.slice(0, 60)" onchange="this.value = this.value.slice(0, 60)"></textarea>
+										<br />
+										<span>(60 caractères maximum)<br />
+										Ex : Déposer le colis au comptoir d'accueil de l'entreprise</span>
+									</div>
+								</div>
+								<div class="input-box">
+									<input id="street" name="street" type="hidden" value="<?php echo $quote->getShippingAddress()->getStreetFull(); ?>"/>
+									<input id="zipcode" name="zipcode" type="hidden" value="<?php echo $quote->getShippingAddress()->getPostcode(); ?>"/>
+									<input id="city" name="city" type="hidden" value="<?php echo $quote->getShippingAddress()->getCity(); ?>"/>
+									<input id="company" name="company" type="hidden" value="<?php echo $quote->getShippingAddress()->getcompany(); ?>"/>
+                                                                        <?php 
+                                                                        if($_SERVER['HTTPS'] == "on")
+                                                                        {
+                                                                          $url = Mage::getUrl('tnt/tnt/ville',array("_secure"=>true));  
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                         $url = Mage::getUrl('tnt/tnt/ville');  
+                                                                        }
+                                                                        ?>
+									<input id="city_url" name="city_url" type="hidden" value="<?php echo substr($url,0,-1); ?>"/>
+								</div>
+							    <span id="loadingvilleswait" style="display:none;">
+							    	<img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="" class="v-middle" /> <?php echo $this->__('Vérification des informations...') ?>
+							    </span>
+							</div>
+<?php } ?>
+
+ 
+
+           </div>
+            <?php endif; ?>
+			      <?php } ?>
+            <?php } ?>
+            <?php } ?>
+      </div>  <!-- left box nd -->
+
+
+      <div class="shipping-box-left"> <!-- right start -->
+        <div class="shipping-title clearfix"><?php echo $this->__('Nearest you or your workplace'); ?></div>
+
+         <?php $i=0 ;foreach($_rightshippingRateGroups as $key => $value)
+                    {
+						foreach ($value['rates'] as $_rate)
+                        {
+                        	if($_rate->getCode() != 'tnt_J' && $_rate->getCode() != 'tnt_JZ')
+						    {
+                            $code = $value['code']; ?>
+							
+            <?php if ($_rate->getErrorMessage()): ?>
+                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li></ul></li></ul>
+            <?php else: ?>
+
+
+          <div class="shipping-blog<?php  if($i%2==0): ?> alt<?php else: ?> nrl<?php endif; ?> right_<?php echo $_rate->getCode(); ?>">
+          <?php if($_rate->getCode()!='tnt_J'){$i++; }
+           $condition='';
+           if($code=='pointsrelais')
+           {
+              $condition = "onclick = openpopupmondial_relay('popinmondialrelay','".$_rate->getCode()."',0)";
+           }
+           ?>
+           <?php if($code == 'colissimopostoffice' || $code == 'colissimocityssimo' || $code == 'colissimolocalstore')
+           {
+             $condition = "onclick = openchoicepopup('popin1','".$_rate->getCode()."',0)";
+           } ?>
+           <?php if($code=='colissimoappointment')
+           {
+            $condition = "onclick=afficherPopin3('popin3')";
+           }  ?>
+
+           <?php if(preg_match('/tnt/', $code) != 0){ $condition = "onclick=radioCheckRight()"; } ?>
+
+          <div class="brand-logo"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" <?php if(preg_match('/tnt/', $code) != 0){ ?>id="s_method_tnt_JD"<?php }else{ ?>id="s_method_<?php echo $this->getAddress()->getId() ?>_<?php echo $_rate->getCode() ?>" <?php } ?> <?php echo $condition;?> />
+
+
+
+             <label for="<?php if(preg_match('/tnt/', $code) != 0){ ?>s_method_tnt_JD<?php }else{ ?>s_method_<?php echo $this->getAddress()->getId() ?>_<?php echo $_rate->getCode(); } ?>">
+
+
+         <span>
+
+           <?php  
+		   $delivery = "";
+		   if( preg_match('/tnt_/', $_rate->getCode()) != 0) {
+            $tmp_desc = explode('|||', $_rate->getMethodDescription());   ?>
+                   <img src="<?php echo $this->getSkinUrl("images/tnt/".$tmp_desc['2']); ?>" alt="<?php echo $_rate->getMethodTitle() ?>" style="float:left;margin-right:10px;" />
+
+          <?php } elseif($code=='pointsrelais') { ?>
+          <img src="<?php echo $this->getSkinUrl(Mage::getModel('pointsrelais/carrier_'.$code)->getPicture()) ?>" alt="" />
+         <?php $delivery = Mage::getModel('pointsrelais/carrier_pointsrelais')->getDeliveryTimes($country,'carriers/pointsrelais/delivery_text'); ?>
+          <?php } elseif($code=='gls') {   ?>
+            <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+            <?php  $delivery = Mage::getModel('tatvashipping/carrier_gls')->getDeliveryTimes($country,'carriers/gls/delivery_text'); ?>
+           <?php } elseif($code=='colissimo') {   ?>
+           <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+           <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/colissimo/delivery_text'); ?>
+           <?php } elseif($code=='colissimoappointment') {   ?>
+           <input type="hidden" name="mobile_phone_no" id="mobile_phone_no" value="<?php echo $_rate->getAddress()->getMobilephone();?>" />
+           <input type="hidden" name="tatva_mobile_phone" id="tatva_mobile_phone" value="<?php echo $_rate->getAddress()->getMobilephone();?>" />
+           <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+           <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/colissimo/delivery_text'); ?>
+           <?php } elseif($code == 'colissimopostoffice' || $code == 'colissimocityssimo' || $code == 'colissimolocalstore' ){  ?>
+           <img src="<?php echo $this->getSkinUrl(Mage::getModel('tatvashipping/carrier_'.$code)->getPicture()) ?>" alt="" />
+           <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/colissimo/delivery_text'); ?>
+            <?php } elseif($code=='upssaver' || $code=='upsexpress' || $code=='ups'){ ?>
+                <img src="<?php echo $this->getSkinUrl('images/logo_little_ups.png'); ?>" alt="" />
+                <?php $delivery = Mage::getModel('tatvashipping/carrier_colissimo')->getDeliveryTimes($country,'carriers/ups/delivery_text'); ?>
+                <?php } elseif($code=='retrait'){ ?>
+                 <img src="<?php echo $this->getSkinUrl('images/logo_little_enlevement.png'); ?>" alt="" />
+
+                <?php } elseif(preg_match('/tnt/', $code) != 0){ ?> 
+                <?php $delivery = Mage::getStoreConfig('carriers/tnt/specificerrmsg'); ?>
+           <?php } else{  ?>
+
+           <?php } ?>
+         </span>
+
+                     </label>
+
+                                  <label for="<?php if(preg_match('/tnt/', $code) != 0){ ?>s_method_tnt_JD<?php }else{ ?>s_method_<?php echo $this->getAddress()->getId() ?>_<?php echo $_rate->getCode(); } ?>">
+         <span><?php if($_rate->getMethodTitle()=='TNT 24h en Relais Colis® '): ?><?php echo Mage::getStoreConfig('carriers/tnt/tnt_relais'); ?><?php else: ?><?php echo $_rate->getMethodTitle(); ?><?php endif; ?>
+         <?php if($code == 'colissimopostoffice' || $code == 'colissimocityssimo' || $code == 'colissimolocalstore' || $code=='colissimo' || $code=='colissimoappointment'){ ?>
+         <?php  if(($_rate->getAddress()->getCountry() == 'FR' && ($_rate->getAddress()->getRegionCode() != 'GP' && $_rate->getAddress()->getRegionCode() != 'MQ' && $_rate->getAddress()->getRegionCode() != 'GF' && $_rate->getAddress()->getRegionCode() != 'RE' && $_rate->getAddress()->getRegionCode() != 'PM' && $_rate->getAddress()->getRegionCode() != 'YT' && $_rate->getAddress()->getRegionCode() != 'TF' && $_rate->getAddress()->getRegionCode() != 'WF' && $_rate->getAddress()->getRegionCode() != 'PF' && $_rate->getAddress()->getRegionCode() != 'NC')) || $_rate->getAddress()->getCountry() == 'AD')
+           { ?>
+           <img src="<?php echo $this->getSkinUrl('images/socol_picto.png'); ?>"  />
+        <?php
+          }
+         }?>  </span>
+
+         </label>
+</div>
+
+       <script type="text/javascript">
+                            //<![CDATA[
+                                lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+                            //]]>
+                        </script>
+       <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+       <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+      <p><span><?php echo $this->__('rate'); ?></span> :<span class="price">
+      <?php if($_rate->getPrice() > 0): ?><?php echo $_excl; ?><?php else: ?><?php echo $this->__('Free'); ?><?php endif; ?>
+      <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+      (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+      <?php endif; ?>
+      </span></p>
+      <!--<p><span>Date de livraison estimée : </span> <span class="price">05/06/2014 *</span></p>      -->
+       <?php if($delivery): ?>
+       <b><?php echo $delivery; ?></b>
+       <?php endif; ?>
+
+      <?php if(preg_match('/tnt/', $_rate->getCode()) != 0 ){  ?>
+         <b><?php echo Mage::getStoreConfig('carriers/'.$code.'/description');   ?> </b>
+
+        <?php echo Mage::getStoreConfig('carriers/tnt/'.$_rate->getCode().'_description');   ?>
+
+     <?php  }else{ ?>
+
+        <?php echo Mage::getStoreConfig('carriers/'.$code.'/description');   ?>
+      <?php } ?>
+ 			
+	  			 <?php  if($_rate->getCode() == 'tnt_JD') {  ?>
+						<input name="tnt_relais" type="hidden" id="tnt_relais1" class="radio" value="" />
+                        <div id="tnt_pr" style="display:none">
+<?php						if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false) {
+								if (intval(substr($_SERVER['HTTP_USER_AGENT'], strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE')+5)) <= 8) { ?>
+							<a href="javascript:fenetreCent('<?php echo Mage::getBaseUrl ('skin');  ?>/frontend/default/default/tnt_relaisColis.php?cp=<?php echo $quote->getShippingAddress()->getPostcode(); ?>', 'popup_tnt' ,'900', '530','scrollbars=no,location:no,menubar=no,status=no,resizable=no');" onclick="javascript:fenetreCent('<?php echo Mage::getBaseUrl ('skin');  ?>/frontend/default/default/tnt_relaisColis.php?cp=<?php echo $quote->getShippingAddress()->getPostcode(); ?>', 'popup_tnt' ,'900', '530','scrollbars=no,location:no,menubar=no,status=no,resizable=no');" id="openRelais">Choisissez votre Relais Colis®</a>
+<?php 							} else { ?>
+							<a href="<?php echo Mage::getBaseUrl ('skin');  ?>/frontend/default/default/tnt_relaisColis.php?cp=<?php echo $quote->getShippingAddress()->getPostcode(); ?>" rel="superbox[iframe]" id="openRelais">Choisissez votre Relais Colis®</a>
+<?php 							}
+							} else { ?>
+                        	<a href="<?php echo Mage::getBaseUrl ('skin');  ?>/frontend/default/default/tnt_relaisColis.php?cp=<?php echo $quote->getShippingAddress()->getPostcode(); ?>" rel="superbox[iframe]" id="openRelais">Choisissez votre Relais Colis®</a>
+<?php 						} ?>
+                        </div>
+                        <div id="tnt_pr_choix" style="display:none"></div>
+<?php                   } ?>	  
+	          
+      </div>
+       <?php endif; ?>
+       <?php } ?>
+       <?php } ?>
+       <?php } ?>
+	   
+
+       <!-- right cmomment box start -->
+
+
+      <!-- right comment box ends -->
+
+
+      </div> <!-- right ends -->
+      </div>
+
+        <!-- instruction start -->
+       <div style="clear: both">
+       <div class="shipping-box-left">
+          <div class="shipping-title clearfix"><?php echo $this->__('Any instructions to AZ Boutique'); ?></div>
+          <div class="shipping-blog textareabg nrl">
+           <textarea name="customer_notes" cols="" rows=""></textarea>
+          <!-- <div class="actions clearer"> <button  class="button btn-cart" title="Ajouter au panier" type="reset"><span><span>Effacer</span></span></button></div> -->
+         </div>
+      </div>
+
+
+       <div class="shipping-box-left">
+         <div class="shipping-title clearfix"><?php echo $this->__('Any instructions to Carrier'); ?><span><div id='CharCountLabel1'></div><?php echo $this->__('70 character (s) remaining (s)'); ?></span></div>
+        <div class="shipping-blog textareabg nrl">
+        <textarea name="ship_customer_carrier_instructions" rows="8" cols="80" style="height:65px;" id="ship_customer_carrier_instructions" maxlength='70' ></textarea>
+        <!-- <div class="actions clearer"> <button onclick="" class="button btn-cart" title="Ajouter au panier" type="reset"><span><span>Effacer</span></span></button></div> -->
+      </div>
+      </div>
+      </div> 
+        <!-- instruction ends -->
+
+
+
+
+<?php endif; ?>
+
+<script type="text/javascript" language="javascript">
+    jQuery(function($)
+    {
+
+       if(jQuery('#s_method_tnt_JZ').attr('checked'))
+       {
+          jQuery("#s_method_tnt_JZ").trigger("click");
+          jQuery( "#portable" ).addClass( "required-entry" );
+         
+       }
+
+       if(jQuery('#s_method_tnt_J').attr('checked'))
+       {
+          jQuery("#s_method_tnt_J").trigger("click");
+       }
+
+       jQuery("input:radio[name=shipping_method]").click(function() {
+
+        var id= jQuery(this).attr('id');
+        if(id=='s_method_tnt_JZ')
+        {
+          jQuery( "#portable" ).addClass( "required-entry" );
+          
+        }
+        else
+        {
+           jQuery( "#portable" ).removeClass( "required-entry" );
+         
+        }
+
+    });
+     });
+    var customForm = new VarienForm('appointment_form',true);
+
+    function afficherPopin3(idPopin)
+    {
+       //alert("hi");
+        document.getElementById('tatva_mobile_phone').value = document.getElementById('mobile_phone_no').value;
+	    document.getElementById(idPopin).style.display="block";
+	    return false;
+    }
+
+    function afficherPopin(idPopin)
+    {
+	    document.getElementById(idPopin).style.display="block";
+	    return false;
+    }
+
+    function cacherPopin(idPopin)
+    {
+	    document.getElementById(idPopin).style.display="none";
+	    return false;
+    }
+
+    function openchoicepopupmodify(idPopin,modify)
+    {
+	    cacherPopin('popin2');
+        code = document.getElementById("selected_ship_method").value;
+	    openchoicepopup(idPopin,code,modify);
+    }
+
+    function openchoicepopup(idPopin,code,modify)
+    {
+        jQuery("#popinloadingimg").css("display","block");
+        var reloadurl = '<?php echo $this->getUrl('checkout/onepage/tatvachoicepopup/') ?>';
+        jQuery.ajax({
+            url: reloadurl,
+            data: 'shipping_method='+code+'&modify='+modify,
+	        type: "GET",
+	        success: function(string, variable)
+            {
+
+			    document.getElementById(idPopin).style.display="block";
+                jQuery('#popinloadingimg').css("display","none");
+                jQuery('#popin1').html(string);
+
+	        }
+        });
+
+    }
+
+	function openmondialrelaypopupmodify(idPopin){
+
+	   cacherPopin('mondialconfirmpopup');
+
+	   openpopupmondial_relay(idPopin,'pointsrelais_pointsrelais');
+    }
+
+	function openpopupmondial_relay(idPopin,code)
+	{
+
+		jQuery('#popinloadingimg').css("display","block");
+		//jQuery('#popin1').html('loading popup...');
+		var reloadurl = '<?php echo $this->getUrl('checkout/onepage/mondialrelaypopup/') ?>';
+		    jQuery.ajax({
+		        url: reloadurl,
+		        data: 'shipping_method='+code,
+			type: "GET",
+			success: function(string, variable){
+			  /*if(variable === "success"){
+				    alert(string);
+				}
+				else{
+				    alert(string);
+				}*/
+		        document.getElementById(idPopin).style.display="block";
+			    jQuery('ResponseDiv_mondial').innerHTML = "";
+		        jQuery('#popinmondialrelay').html(string);
+		        jQuery('#popinloadingimg').css("display","none");
+
+
+			}
+		});
+
+
+		}
+
+		function mondialrelaysearch(search_button)
+		{
+		var address1 = encodeURI(document.getElementById('shipaddress').value);
+		var city = document.getElementById('shipcity').value;
+		var postcode = document.getElementById('shippostcode').value;
+
+		if(postcode == "")
+		{
+		  alert("Please insert Zipcode.");
+		  return false;
+		}
+		var reloadurl = '<?php echo $this->getUrl('checkout/onepage/mondialrelaydetail/') ?>';
+		    jQuery.ajax({
+		        url: reloadurl,
+		        data: 'address='+address1+'&city='+city+'&postcode='+postcode+'&search='+search_button,
+			type: "GET",
+			success: function(string, variable){
+		        jQuery('#ResponseDiv_mondial').html(string);
+
+			}
+		});
+
+
+		}
+
+
+    function test(search_button)
+    {
+        if(search_button == 1)
+    	{
+    	   document.getElementById('txtsearch').value = 1;
+
+        }
+        var address1 = document.getElementById('shipaddress').value;
+        var city = document.getElementById('shipcity').value;
+        var postcode = document.getElementById('shippostcode').value;
+        if(postcode == "")
+        {
+          alert("<?php echo $this->__('Please insert zipcode.') ?>");
+          return false;
+        }
+        if(city == "")
+        {
+          alert("<?php echo $this->__('Please insert city.') ?>");
+          return false;
+        }
+
+        var ship_local_code = document.getElementById('chklocalstore').checked;
+        var ship_post_code = document.getElementById('chkpostoffice').checked;
+        var ship_cityssimo_code = document.getElementById('chkcityssimo').checked;
+        var chk_mobility = document.getElementById('chkmobility').checked;
+
+        var reloadurl = '<?php echo $this->getUrl('checkout/onepage/tatvapopup/') ?>';
+        jQuery.ajax({
+            url: reloadurl,
+            data: 'address='+address1+'&city='+city+'&postcode='+postcode+'&local='+ship_local_code+'&postoffice='+ship_post_code+'&cityssimo='+ship_cityssimo_code+'&mobility='+chk_mobility+'&search='+search_button+'&searchdata='+document.getElementById('txtsearch').value,
+	        type: "GET",
+	        success: function(string, variable)
+            {
+                jQuery('#ResponseDiv').html(string);
+        	}
+        });
+    }
+
+    function closepopup(idPopin,shipping_method_id)
+    {
+        document.getElementById(idPopin).style.display="none";
+        document.getElementById(shipping_method_id).checked = "checked";
+        return false;
+    }
+
+</script>

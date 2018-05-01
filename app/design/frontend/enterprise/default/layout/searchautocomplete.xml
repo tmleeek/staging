@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageWorx
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageWorx EULA that is bundled with
+ * this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.mageworx.com/LICENSE-1.0.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension
+ * to newer versions in the future. If you wish to customize the extension
+ * for your needs please refer to http://www.mageworx.com/ for more information
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @copyright  Copyright (c) 2011 MageWorx (http://www.mageworx.com/)
+ * @license    http://www.mageworx.com/LICENSE-1.0.html
+ */
+
+/**
+ * Search Autocomplete extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @author     MageWorx Dev Team
+ */
+-->
+<layout version="0.1.0">
+    <default>
+<!--        <reference name="top.search">            
+            <action method="setTemplate" ifconfig="mageworx_tweaks/searchautocomplete/enabled"><template>searchautocomplete/form.mini.phtml</template></action>            
+        </reference>-->
+        
+        <reference name="before_body_end">
+            <block type="core/template" name="searchautocomplete_search_wrapper" template="searchautocomplete/search_wrapper.phtml" ifconfig="mageworx_tweaks/searchautocomplete/enabled" />
+        </reference>
+        
+        <reference name="head">
+            <action method="addCss" ifconfig="mageworx_tweaks/searchautocomplete/enabled"><stylesheet>css/mageworx/searchautocomplete.css</stylesheet></action>
+            <action method="addJs" ifconfig="mageworx_tweaks/searchautocomplete/enabled"><script>mageworx/searchautocomplete.js</script></action>
+        </reference>
+    </default>
+    
+    <catalogsearch_result_index>
+        <reference name="content">
+            <remove name="search.result" />
+            <block type="searchautocomplete/result" name="searchautocomplete.result" template="searchautocomplete/result.phtml">
+                <block type="catalog/product_list" name="search_result_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>empty</layout>
+                        <count>6</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>one_column</layout>
+                        <count>5</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>two_columns_left</layout>
+                        <count>4</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>two_columns_right</layout>
+                        <count>4</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>three_columns</layout>
+                        <count>3</count>
+                    </action>
+                    <action method="setToolbarBlockName">
+                        <name>product_list_toolbar</name>
+                    </action>
+                </block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/> 
+                <action method="setListCollection"/>
+            </block>
+        </reference>
+    </catalogsearch_result_index>
+</layout>

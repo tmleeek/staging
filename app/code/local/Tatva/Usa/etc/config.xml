@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Usa>
+            <version>0.1.0</version>
+        </Tatva_Usa>
+    </modules>
+    <global>
+        <models>
+            <tatvausa>
+                <class>Tatva_Usa_Model</class>
+            </tatvausa>
+
+            <usa>
+            	<rewrite>
+            		<shipping_carrier_ups>Tatva_Usa_Model_Shipping_Carrier_Ups</shipping_carrier_ups>
+            	</rewrite>
+            </usa>
+        </models>
+        <blocks>
+			<tatvausa>
+                <class>Tatva_Usa_Block</class>
+            </tatvausa>
+        </blocks>
+    </global>
+</config>

@@ -1,0 +1,58 @@
+<div id="block_notice_amazon_accounts_shipping_settings" class="block_notices_module" title="<?php echo Mage::helper('M2ePro')->__('Shipping Settings'); ?>">
+    <?php echo Mage::helper('M2ePro')->__(
+        'There are several modes available for working with Shipping settings on Amazon:<br /><br />
+
+            &nbsp;&nbsp;Global settings with the ability to override the configurations for the particular Product(s) (Shipping Override Policy);<br />
+
+            &nbsp;&nbsp;Shipping Templates which allow identifying settings for the particular Product(s).<br /><br />
+
+        M2E Pro supports both of the Amazon Shipping configurations. So, on this page you should select the Mode which is enabled in your Amazon Account configurations.'
+    ); ?>
+</div>
+
+<?php
+    $formData = Mage::helper('M2ePro/Data_Global')->getValue('temp_data') ? Mage::helper('M2ePro/Data_Global')->getValue('temp_data')->toArray() : array();
+
+    $defaults = array(
+        'shipping_mode' => Ess_M2ePro_Model_Amazon_Account::SHIPPING_MODE_TEMPLATE
+    );
+
+    $formData = array_merge($defaults, $formData);
+    $isEdit = !!$this->getRequest()->getParam('id');
+?>
+
+<script type="text/javascript">
+</script>
+
+<div class="entry-edit" id="magento_block_amazon_accounts_shipping_settings_general">
+
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('M2ePro')->__('General'); ?></h4>
+    </div>
+
+    <div class="fieldset">
+        <div class="hor-scroll">
+
+            <table class="form-list" cellspacing="0" cellpadding="0">
+
+                <tr>
+                    <td class="label">
+                        <label for="shipping_mode"><?php echo Mage::helper('M2ePro')->__('Mode'); ?>: <span class="required">*</span></label>
+                    </td>
+                    <td class="value">
+                        <select id="shipping_mode" name="shipping_mode" class="required-entry">
+                            <option value="<?php echo Ess_M2ePro_Model_Amazon_Account::SHIPPING_MODE_TEMPLATE; ?>" <?php if($formData['shipping_mode'] == Ess_M2ePro_Model_Amazon_Account::SHIPPING_MODE_TEMPLATE) echo ' selected="selected" '; ?>><?php echo Mage::helper('M2ePro')->__('Based on Templates'); ?></option>
+                            <option value="<?php echo Ess_M2ePro_Model_Amazon_Account::SHIPPING_MODE_OVERRIDE; ?>" <?php if($formData['shipping_mode'] == Ess_M2ePro_Model_Amazon_Account::SHIPPING_MODE_OVERRIDE) echo ' selected="selected" '; ?>><?php echo Mage::helper('M2ePro')->__('Based on Overrides'); ?></option>
+                        </select>
+                        <p class="note">
+                            <span><?php echo Mage::helper('M2ePro')->__('The Mode should be selected according to the configurations of your Amazon Account. Otherwise, Amazon might return you errors.'); ?></span>
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <translate_translations_index>
+        <reference name="head">
+            <action method="setTitle" translate="title"><title>Manage translations</title></action>
+            <action method="addJs"><script>phpro/translate.js</script></action>
+            <action method="addCss"><stylesheet>phpro/gridfix.css</stylesheet></action>
+        </reference>
+        <!--<reference name="content">
+            <block type="translate/adminhtml_translate" name="translate_container">
+             	<block type="translate/adminhtml_form" name="test" /> 
+            </block>
+        </reference>-->
+<!--        <reference name="left">
+            <block type="translate/adminhtml_tabs" name="menu_translate">
+             	<block type="page/html_wrapper" name="test" /> 
+            </block>
+        </reference>-->
+    </translate_translations_index>
+    
+    <translate_translations_edit>
+<!--         <reference name="head"> -->
+<!--             <action method="setTitle" translate="title"><title>Edit Translation</title></action> -->
+<!--         </reference> -->
+<!-- 		<remove name="header" /> -->
+        <reference name="content">
+        </reference>
+    </translate_translations_edit>
+</layout>

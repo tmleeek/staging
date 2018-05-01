@@ -1,0 +1,14 @@
+<!-- // WDCA CODE BEGINS:  // -->
+<?php if($this instanceof TBT_Rewards_Block_Checkout_Cart_Item_Renderer): /* Failsafe to make sure that the parent functions exist before outputting anything. */ ?>
+       
+    <?php if($this->showPointsColumn()): ?>
+        <div align="left" class="item-points-undername">
+            <span class='item-points-block'>
+                <?php echo $this->getChildrenHtml(); ?>
+        	</span>
+        </div>
+    <?php endif; ?>
+    
+<?php endif; /* END Failsafe to make sure that the parent functions exist before outputting anything. */ ?>
+<!-- // WDCA CODE ENDS // -->
+    

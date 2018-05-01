@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<config>
+	<default>
+		<glsbox translate="label" module="glsbox">
+			<account translate="label" module="glsbox">
+				<kundennummer translate="label"></kundennummer>
+			</account>
+			<labels translate="label" module="glsbox">
+				<autoinserttracking translate="label">0
+				</autoinserttracking>
+				<savetodisk translate="label">0</savetodisk>
+				<storage_folder translate="label"></storage_folder>
+				<file_name_prefix translate="label"></file_name_prefix>
+				<papersize translate="label">A4</papersize>
+				<beginx translate="label">0</beginx>
+				<beginy translate="label">0</beginy>
+			</labels>
+		</glsbox>
+		<carriers>
+			<gls>
+				<active>1</active>
+				<model>glsbox/shipping_carrier_gls</model>
+				<title>GLS</title>
+			</gls>
+		</carriers>
+	</default>
+	<modules>
+		<Gls_Unibox>
+			<version>0.7.6</version>
+		</Gls_Unibox>
+	</modules>
+	<global>
+		<models>
+			<glsbox>
+				<class>Gls_Unibox_Model</class>
+				<resourceModel>glsbox_mysql4</resourceModel>
+			</glsbox>
+			<glsbox_mysql4>
+				<class>Gls_Unibox_Model_Mysql4</class>
+				<entities>
+					<shipment>
+						<table>gls_unibox_shipment</table>
+					</shipment>
+					<client>
+						<table>gls_unibox_client</table>
+					</client>
+				</entities>
+			</glsbox_mysql4>
+		</models>
+		<resources>
+			<glsbox_setup>
+				<setup>
+					<module>Gls_Unibox</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</glsbox_setup>
+			<glsbox_write>
+				<use>core_write</use>
+			</glsbox_write>
+			<glsbox_read>
+				<use>core_read</use>
+			</glsbox_read>
+		</resources>
+		<helpers>
+			<glsbox>
+				<class>Gls_Unibox_Helper</class>
+			</glsbox>
+		</helpers>
+		<blocks>
+			<adminhtml>
+				<rewrite>
+					<sales_order_shipment_view>Gls_Unibox_Block_Adminhtml_Sales_Order_Shipment_View</sales_order_shipment_view>
+					<sales_order_shipment_view_form>Gls_Unibox_Block_Adminhtml_Sales_Order_Shipment_View_Form</sales_order_shipment_view_form>
+				</rewrite>
+			</adminhtml>
+			<glsbox>
+				<class>Gls_Unibox_Block</class>
+			</glsbox>
+		</blocks>
+		<sales>
+			<shipping>
+				<carriers>
+					<gls>
+						<class>Gls_Unibox_Model_Shipping_Carrier_Gls</class>
+					</gls>
+				</carriers>
+			</shipping>
+		</sales>
+	</global>
+	<adminhtml>
+		<layout>
+			<updates>
+				<glsbox>
+					<file>Gls_Unibox.xml</file>
+				</glsbox>
+			</updates>
+		</layout>
+		<menu>
+			<glsbox module="glsbox">
+				<title>GLS</title>
+				<sort_order>50</sort_order>
+				<children>
+					<shipment module="glsbox">
+						<title>Sendungen verwalten</title>
+						<sort_order>0</sort_order>
+						<action>adminhtml/glsshipment</action>
+					</shipment>
+					<client module="glsbox">
+						<title>Mandanten Pflegen</title>
+						<sort_order>1</sort_order>
+						<action>adminhtml/glsclient</action>
+					</client>
+				</children>
+			</glsbox>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<glsbox module="glsbox">
+							<title>Gls Unibox</title>
+							<sort_order>200</sort_order>
+							<children>
+								<shipment module="glsbox">
+									<title>Sendungen verwalten</title>
+									<sort_order>0</sort_order>
+								</shipment>
+								<client module="glsbox">
+									<title>Mandanten verwalten</title>
+									<sort_order>1</sort_order>
+								</client>
+							</children>
+						</glsbox>
+						<system>
+							<children>
+								<config>
+									<children>
+										<glsbox>
+											<title>GLS Unibox</title>
+										</glsbox>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+    	<translate>
+      		<modules>
+		        <Gls_Unibox>
+		          <files>
+		            <default>Gls_Unibox.csv</default>
+		          </files>
+		        </Gls_Unibox>
+		      </modules>
+		</translate>
+	</adminhtml>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Gls_Unibox before="Mage_Adminhtml">Gls_Unibox_Adminhtml</Gls_Unibox>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+</config>

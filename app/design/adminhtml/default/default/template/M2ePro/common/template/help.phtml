@@ -1,0 +1,39 @@
+<div id="block_notice_common_sellingFormat_templates" class="block_notices_module" title="<?php echo Mage::helper('M2ePro')->__('Policies'); ?>">
+    <?php echo Mage::helper('M2ePro')->__('
+        In this Section you can Create, Edit and Delete Selling Format, Synchronization, Description, Shipping Template, Shipping Override, Product Tax Code Policies.<br/><br/>
+        <strong>Selling Format Policy</strong> is used to work with values related to the formation of your Offers on the Channel, such as
+        Price, Quantity and similar parameters.<br/><br/>
+        In the <strong>Synchronization Policy</strong> you can set the Rules under which the dynamic data exchange between Channel and Magento will be performed.<br /><br />
+        <strong>Description Policy</strong> is used to provide necessary settings for Creating new ASIN/ISBN in Amazon Catalog
+        or Update the Product Information of the existing Amazon Item.<br/><br/>
+        <strong>Shipping Template Policy</strong> is used to apply the Amazon Shipping Templates to your Products within M2E Pro Listings.<br /><br />
+        <strong>Shipping Override Policy</strong> is used to specify settings for Shipping Services, Locale and Shipping Cost.<br/><br/>
+        <strong>Product Tax Code Policy</strong> allows applying the Amazon Tax Codes to your Products within M2E Pro Listings.
+
+');
+
+    $components = Mage::helper('M2ePro/View_Common_Component')->getActiveComponents();
+    if (count($components) == 1) : ?>
+        <?php
+        $component = array_shift($components);
+            if ($component == Ess_M2ePro_Helper_Component_Amazon::NICK) {
+                $url = Mage::helper("M2ePro/Module_Support")->getDocumentationUrl(NULL, NULL, "x/7oIVAQ");
+            } else {
+                $url = Mage::helper('M2ePro/Module_Support')->getDocumentationUrl($component, 'Policies');
+            }
+        ?>
+        <?php echo Mage::helper('M2ePro')->__('
+            <br/><br/>More detailed information about ability to work with this Page you can find <a href="%url%" target="_blank">here</a>.',
+            $url
+        ); ?>
+    <?php else : ?>
+        <?php echo Mage::helper('M2ePro')->__('
+            <br/><br/>More detailed information about ability to work with this page you can find on <a target="_blank" href="%url1%">%amazon%</a> and
+            <a target="_blank" href="%url2%">%buy%</a>.',
+            Mage::helper('M2ePro/Module_Support')->getDocumentationUrl(NULL, NULL, 'x/7oIVAQ'),
+            Mage::helper('M2ePro/Component_Amazon')->getTitle(),
+            Mage::helper('M2ePro/Module_Support')->getDocumentationUrl(NULL, NULL, 'x/2IMVAQ'),
+            Mage::helper('M2ePro/Component_Buy')->getTitle()
+        ); ?>
+    <?php endif; ?>
+</div>

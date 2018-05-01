@@ -1,0 +1,9 @@
+<?php $_code = $this->getMethodCode(); ?>
+<?php $_method = $this->getMethod(); ?>
+<td class="logo-mode-livraison"><label for="p_method_<?php echo $_code ?>"><img src="<?php echo $this->getSkinUrl('images/illustration_mandatcash.png') ?>" alt="<?php echo $this->htmlEscape($_method->getTitle()) ?>" /></label></td>
+<td class="x-small-text align-justify">
+	<label for="p_method_<?php echo $_code ?>">
+		<span><strong><?php echo $this->htmlEscape($_method->getTitle()) ?></strong></span><br class="cache" />
+		<?php echo $this->getCmsBlock() ?>
+	</label>
+</td>

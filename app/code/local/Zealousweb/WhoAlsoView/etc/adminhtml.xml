@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+                <who_also_view translate="title" module="whoalsoview">
+                    <sort_order>10</sort_order>
+                    <title>Also Bought</title>
+                    <action>adminhtml/whoalsoview</action>
+                </who_also_view>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <who_also_view translate="title" module="whoalsoview">
+                                        <title>Customer Who Viewed This Item Also Viewed</title>
+                                        <sort_order>0</sort_order>
+                                    </who_also_view>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

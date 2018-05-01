@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MDN_AdvancedStock>
+            <version>1.8.9</version>
+            <depends>
+                <MDN_Purchase />
+            </depends>
+        </MDN_AdvancedStock>
+    </modules>
+    <global>
+        <helpers>
+            <AdvancedStock>
+                <class>MDN_AdvancedStock_Helper</class>
+            </AdvancedStock>
+            <ProductReturn>
+                <rewrite>
+                    <Stock>MDN_AdvancedStock_Helper_ProductReturn_Stock</Stock>
+                    <Reservation>MDN_AdvancedStock_Helper_ProductReturn_Reservation</Reservation>
+                </rewrite>
+            </ProductReturn>
+            <PointOfSales>
+                <rewrite>
+                    <Stock>MDN_AdvancedStock_Helper_PointOfSales_Stock</Stock>
+                    <Barcode>MDN_AdvancedStock_Helper_PointOfSales_Barcode</Barcode>
+                </rewrite>
+            </PointOfSales>
+        </helpers>
+        <blocks>
+            <AdvancedStock>
+                <class>MDN_AdvancedStock_Block</class>
+            </AdvancedStock>
+           	
+            <adminhtml>
+                <rewrite>
+                    <sales_order_grid>MDN_AdvancedStock_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
+                    <catalog_product_edit_tab_inventory>MDN_AdvancedStock_Block_Adminhtml_Catalog_Product_Edit_Tab_Inventory</catalog_product_edit_tab_inventory>
+                    <catalog_product_edit>MDN_AdvancedStock_Block_Adminhtml_Catalog_Product_Edit</catalog_product_edit>
+                   <!--  <catalog_product_grid>MDN_AdvancedStock_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid> -->
+                    <sales_order_create_search_grid>MDN_AdvancedStock_Block_Adminhtml_Sales_Order_Create_Search_Grid</sales_order_create_search_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <models>
+   	   		            
+            <AdvancedStock>
+                <class>MDN_AdvancedStock_Model</class>
+                <resourceModel>AdvancedStock_mysql4</resourceModel>
+            </AdvancedStock>
+
+            <sales>
+                <rewrite>
+                    <!--<order>MDN_AdvancedStock_Model_Sales_Order</order>-->
+                    <order_item>MDN_AdvancedStock_Model_Sales_Order_Item</order_item>
+                    <order_shipment>MDN_AdvancedStock_Model_Sales_Order_Shipment</order_shipment>
+                    <order_creditmemo>MDN_AdvancedStock_Model_Sales_Order_Creditmemo</order_creditmemo>
+                </rewrite>
+            </sales>
+
+            <sales_resource>
+                <rewrite>
+                    <order_item_collection>MDN_AdvancedStock_Model_Sales_Resource_Order_Item_Collection</order_item_collection>
+                </rewrite>
+            </sales_resource>
+	   	   	
+            <sales_mysql4>
+                <rewrite>
+                    <order_item_collection>MDN_AdvancedStock_Model_Sales_Mysql4_Order_Item_Collection</order_item_collection>
+                </rewrite>
+            </sales_mysql4>
+            
+            <cataloginventory_resource>
+                <rewrite>
+                    <stock>MDN_AdvancedStock_Model_CatalogInventory_Resource_Stock</stock>
+                    <stock_item>MDN_AdvancedStock_Model_CatalogInventory_Resource_Stock_Item</stock_item>
+                    <stock_status>MDN_AdvancedStock_Model_CatalogInventory_Resource_Stock_Status</stock_status>
+                </rewrite>
+            </cataloginventory_resource>
+            
+            <cataloginventory_mysql4>
+                <rewrite>
+                    <stock>MDN_AdvancedStock_Model_CatalogInventory_Mysql4_Stock</stock>
+                    <stock_item>MDN_AdvancedStock_Model_CatalogInventory_Mysql4_Stock_Item</stock_item>
+                    <stock_status>MDN_AdvancedStock_Model_CatalogInventory_Mysql4_Stock_Status</stock_status>
+                </rewrite>
+            </cataloginventory_mysql4>
+            
+            <catalog>
+                <rewrite>
+                    <product>MDN_AdvancedStock_Model_Catalog_Product</product>
+                </rewrite>
+            </catalog>
+            
+            <cataloginventory>
+                <rewrite>
+                    <stock_item>MDN_AdvancedStock_Model_CatalogInventory_Stock_Item</stock_item>
+                </rewrite>
+            </cataloginventory>
+            
+            <AdvancedStock_mysql4>
+                <class>MDN_AdvancedStock_Model_Mysql4</class>
+                <entities>
+                    <Warehouse>
+                        <table>cataloginventory_stock</table>
+                    </Warehouse>
+                    <StockMovement>
+                        <table>stock_movement</table>
+                    </StockMovement>
+                    <Assignment>
+                        <table>cataloginventory_stock_assignment</table>
+                    </Assignment>
+                    <StockError>
+                        <table>stock_errors</table>
+                    </StockError>
+                    <CatalogProductEntityVarchar>
+                        <table>catalog_product_entity_varchar</table>
+                    </CatalogProductEntityVarchar>
+                    <CatalogProductVarchar>
+                        <table>catalog_product_entity_varchar</table>
+                    </CatalogProductVarchar>
+                    <CatalogProductInt>
+                        <table>catalog_product_entity_int</table>
+                    </CatalogProductInt>
+                    <ProductBarcode>
+                        <table>purchase_product_barcodes</table>
+                    </ProductBarcode>
+                    <ProductSerial>
+                        <table>purchase_product_serial</table>
+                    </ProductSerial>
+                    <SalesHistory>
+                        <table>erp_sales_history</table>
+                    </SalesHistory>
+                    <StockTransfer>
+                        <table>erp_stock_transfer</table>
+                    </StockTransfer>
+                    <StockTransfer_Product>
+                        <table>erp_stock_transfer_products</table>
+                    </StockTransfer_Product>
+                    <SalesFlatOrderItem>
+                        <table>erp_sales_flat_order_item</table>
+                    </SalesFlatOrderItem>
+                    <Inventory>
+                        <table>erp_inventory</table>
+                    </Inventory>
+                    <Inventory_Product>
+                        <table>erp_inventory_product</table>
+                    </Inventory_Product>
+                    <Inventory_StockPicture>
+                        <table>erp_inventory_stock_picture</table>
+                    </Inventory_StockPicture>
+                    <Inventory_MissedLocation>
+                        <table>erp_inventory_missed_location</table>
+                    </Inventory_MissedLocation>
+                </entities>
+            </AdvancedStock_mysql4>
+            
+        </models>
+        <resources>
+            <AdvancedStock_setup>
+                <setup>
+                    <module>MDN_AdvancedStock</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </AdvancedStock_setup>
+            <AdvancedStock_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </AdvancedStock_write>
+            <AdvancedStock_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </AdvancedStock_read>
+        </resources>
+      
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <AdvancedStock>
+                        <type>singleton</type>
+                        <class>AdvancedStock/Observer</class>
+                        <method>sales_order_afterPlace</method>
+                    </AdvancedStock>
+                </observers>
+            </sales_order_place_after>
+            <sales_order_invoice_pay>
+                <observers>
+                    <AdvancedStock>
+                        <type>singleton</type>
+                        <class>AdvancedStock/Observer</class>
+                        <method>sales_order_invoice_pay</method>
+                    </AdvancedStock>
+                </observers>
+            </sales_order_invoice_pay>
+            <productreturn_reservationgrid_preparecolumns>
+                <observers>
+                    <AdvancedStock>
+                        <type>singleton</type>
+                        <class>AdvancedStock/Observer</class>
+                        <method>productreturn_reservationgrid_preparecolumns</method>
+                    </AdvancedStock>
+                </observers>
+            </productreturn_reservationgrid_preparecolumns>
+            <advancedstock_sales_history_change>
+                <observers>
+                    <AdvancedStock>
+                        <type>singleton</type>
+                        <class>AdvancedStock/Observer</class>
+                        <method>advancedstock_sales_history_change</method>
+                    </AdvancedStock>
+                </observers>
+            </advancedstock_sales_history_change>
+
+            <!--
+            <sales_quote_item_qty_set_after>
+                <observers>
+                    <AdvancedStock>
+                        <class>AdvancedStock/Observer</class>
+                        <method>checkQuoteItemQty</method>
+                    </AdvancedStock>
+                </observers>
+            </sales_quote_item_qty_set_after>
+            -->
+            
+            <catalog_product_delete_before>
+                <observers>
+                    <AdvancedStock>
+                        <type>singleton</type>
+                        <class>AdvancedStock/Observer</class>
+                        <method>catalog_product_delete_before</method>
+                    </AdvancedStock>
+                </observers>
+            </catalog_product_delete_before>
+
+            <controller_action_predispatch_adminhtml_sales_order_view>
+                <observers>
+                    <AdvancedStock>
+                        <type>singleton</type>
+                        <class>AdvancedStock/Observer</class>
+                        <method>controller_action_predispatch_adminhtml_sales_order_view</method>
+                    </AdvancedStock>
+                </observers>
+            </controller_action_predispatch_adminhtml_sales_order_view>
+            
+        </events>
+        
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <AdvancedStock>
+                    <file>AdvancedStock.xml</file>
+                </AdvancedStock>
+            </updates>
+        </layout>
+        
+
+        <translate>
+            <modules>
+                <MDN_AdvancedStock>
+                    <files>
+                        <default>MDN_AdvancedStock.csv</default>
+                    </files>
+                </MDN_AdvancedStock>
+            </modules>
+        </translate>
+
+    </adminhtml>
+    <frontend>
+        <routers>
+            <AdvancedStock>
+                <use>standard</use>
+                <args>
+                    <module>MDN_AdvancedStock</module>
+                    <frontName>AdvancedStock</frontName>
+                </args>
+            </AdvancedStock>
+        </routers>
+
+        <layout>
+            <updates>
+                <AdvancedStock>
+                    <file>AdvancedStock.xml</file>
+                </AdvancedStock>
+            </updates>
+        </layout>
+        
+
+        <translate>
+            <modules>
+                <MDN_AdvancedStock>
+                    <files>
+                        <default>MDN_AdvancedStock.csv</default>
+                    </files>
+                </MDN_AdvancedStock>
+            </modules>
+        </translate>
+        
+    </frontend>
+       
+    <admin>
+        <routers>
+            <AdvancedStock>
+                <use>admin</use>
+                <args>
+                    <module>MDN_AdvancedStock</module>
+                    <frontName>AdvancedStock</frontName>
+                </args>
+            </AdvancedStock>
+        </routers>
+    </admin>
+    
+    <crontab>
+        <jobs>
+       <update_stocks>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+<!--                                        <cron_expr>* */1 * * *</cron_expr>-->
+                </schedule>
+                <run>
+                    <model>AdvancedStock/Observer::UpdateStocksForOrders</model>
+                </run>
+            </update_stocks>
+
+			<!-- update sales history every sunday at 2am -->
+            <update_sales_history>
+                <schedule>
+                    <cron_expr>0 2 * * 0</cron_expr>
+                </schedule>
+                <run>
+                    <model>AdvancedStock/Observer::updateAllSalesHistory</model>
+                </run>
+            </update_sales_history>
+        </jobs>
+    </crontab>
+    
+    <default>
+        <advancedstock>
+            <erp>
+                <is_installed>1</is_installed>
+            </erp>
+            <valid_orders>
+                <require_payment_validated>1</require_payment_validated>
+            </valid_orders>
+            <general>
+                <auto_validate_payment>1</auto_validate_payment>
+                <restore_isinstock>1</restore_isinstock>
+                <replace_magento_inventory_tab>1</replace_magento_inventory_tab>
+            </general>
+            <cron>
+                <order_update_stocks_max>10</order_update_stocks_max>
+            </cron>
+            <barcode_labels>
+                <paper_width>21</paper_width>
+                <paper_height>29.7</paper_height>
+                <vertical_inter_margin>0</vertical_inter_margin>
+                <horizontal_inter_margin>0</horizontal_inter_margin>
+                <labels_per_row>3</labels_per_row>
+                <top_margin>2</top_margin>
+                <left_margin>1</left_margin>
+                <right_margin>1</right_margin>
+                <bottom_margin>2</bottom_margin>
+                <row_count>6</row_count>
+            </barcode_labels>
+            <router>
+                <priority>1</priority>
+                <default_warehouse>1</default_warehouse>
+            </router>
+            <sales_history>
+                <period_1>5</period_1>
+                <period_2>15</period_2>
+                <period_3>30</period_3>
+            </sales_history>
+            <prefered_stock_level>
+                <calculation_weeks>10</calculation_weeks>
+                <formula>round(((s1 / w1) + (s2 / w2) + (s3 / w3)) * (duration / 3))</formula>
+                <minimum_levels_to_apply>1</minimum_levels_to_apply>
+                <ideal_stock_default_value>1</ideal_stock_default_value>
+                <substract_percent_to_calculate_warning_stock_level>30</substract_percent_to_calculate_warning_stock_level>
+            </prefered_stock_level>
+            <stock_errors>
+                <check_stock_values>1</check_stock_values>
+                <check_purchase_values>1</check_purchase_values>
+            </stock_errors>
+            <stock_take>
+                <prevent_to_edit_a_close_stocktake>1</prevent_to_edit_a_close_stocktake>
+                <display_quantity_buttons>1</display_quantity_buttons>
+            </stock_take>
+        </advancedstock>
+    </default>
+    
+</config> 

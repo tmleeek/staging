@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customerattributes_adminhtml_customerattributes_index>
+        <reference name="content">
+            <block type="customerattributes/adminhtml_customerattributes" name="customerattributes" />
+        </reference>
+    </customerattributes_adminhtml_customerattributes_index>
+    <customerattributes_adminhtml_customerattributes_edit>
+        <reference name="left">
+            <block type="customerattributes/adminhtml_customerattributes_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="customerattributes/adminhtml_customerattributes_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="catalog/product/attribute/js.phtml"></block>
+        </reference>
+    </customerattributes_adminhtml_customerattributes_edit>
+	<customerattributes_adminhtml_customeraddress_index>
+        <reference name="content">
+            <block type="customerattributes/adminhtml_customeraddress" name="customeraddress" />
+        </reference>
+    </customerattributes_adminhtml_customeraddress_index>
+	<customerattributes_adminhtml_customeraddress_edit>
+        <reference name="left">
+            <block type="customerattributes/adminhtml_customeraddress_edit_tabs" name="attribute_edit_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="customerattributes/adminhtml_customeraddress_edit" name="attribute_edit_content"></block>
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" name="attribute_edit_js" template="catalog/product/attribute/js.phtml"></block>
+        </reference>
+    </customerattributes_adminhtml_customeraddress_edit>
+</layout>

@@ -1,0 +1,14 @@
+<config>
+   <modules>
+      <Extendware_EWCacheBackend>
+         <active>false</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Performance Cache Backends</name>
+         </extendware>
+      </Extendware_EWCacheBackend>
+   </modules>
+</config>

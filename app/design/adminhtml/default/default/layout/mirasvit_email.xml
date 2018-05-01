@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<layout version="1.0">
+    <email_adminhtml>
+        <reference name="head">
+            <action method="addCss"><script>mirasvit/email.css</script></action>
+            <action method="addJs"><script>mirasvit/code/email/adminhtml/trigger.js</script></action>
+            <action method="addJs"><script>mirasvit/code/email/adminhtml/trigger/chain.js</script></action>
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadRulesJs"><flag>1</flag></action>
+        </reference>
+    </email_adminhtml>
+
+    <email_adminhtml_trigger_new>
+        <update handle="email_adminhtml" />
+    </email_adminhtml_trigger_new>
+
+    <email_adminhtml_trigger_edit>
+        <update handle="email_adminhtml" />
+    </email_adminhtml_trigger_edit>
+
+    <email_adminhtml_queue_preview>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>mirasvit/email/queue/preview.phtml</template>
+            </action>
+            <block type="email/adminhtml_queue_preview" name="preview_form" />
+        </reference>
+    </email_adminhtml_queue_preview>
+
+</layout>

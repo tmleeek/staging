@@ -1,0 +1,558 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <tatvamarketplaces translate="label" module="tatvamarketplaces">
+            <label>Multi-channel selling</label>
+            <sort_order>160</sort_order>
+        </tatvamarketplaces>
+    </tabs>
+    <sections>
+    	<!-- Configuration par défaut -->
+        <tatvamarketplaces_orders translate="label" module="tatvamarketplaces">
+            <class>separator-top</class>
+            <label>Orders</label>
+            <tab>tatvamarketplaces</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <configuration translate="label" module="tatvamarketplaces">
+                    <label>Configuration</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+	                   <storeview translate="label">
+	                      <label>Store view by default</label>
+	                      <frontend_type>select</frontend_type>
+	                      <source_model>adminhtml/system_config_source_store</source_model>
+	                      <sort_order>10</sort_order>
+	                      <show_in_default>1</show_in_default>
+		                  <show_in_website>0</show_in_website>
+		                  <show_in_store>0</show_in_store>
+	                  </storeview>
+	                  <sender_errors translate="label" module="tatvamarketplaces">
+                           <label>Sender of errors</label>
+                           <frontend_type>select</frontend_type>
+                           <source_model>adminhtml/system_config_source_email_identity</source_model>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </sender_errors>
+                      <receiver_errors translate="label" module="tatvamarketplaces">
+                           <label>Receiver of errors</label>
+                           <frontend_type>select</frontend_type>
+                           <source_model>adminhtml/system_config_source_email_identity</source_model>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </receiver_errors>
+                    </fields>
+                </configuration>
+             </groups>
+        </tatvamarketplaces_orders>
+        
+        <!-- 2xmoinscher -->
+        <tatvamarketplaces_2xmoinscher translate="label" module="tatvamarketplaces">
+ 			<class>separator-top</class>
+            <label>2xmoinscher</label>
+            <tab>tatvamarketplaces</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>       
+            <groups>
+                <orders translate="label" module="tatvamarketplaces">
+                    <label>Orders</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<filename translate="label" module="tatvamarketplaces">
+                           <label>Filename</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</filename>
+                      	<pseudo translate="label" module="tatvamarketplaces">
+                           <label>Pseudo</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>11</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</pseudo>
+                    	<path translate="label" module="tatvamarketplaces">
+                           <label>Path</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+		                   <comment>Directory must end with /</comment>
+                      </path>
+	                  <sender_mail translate="label" module="tatvamarketplaces">
+                           <label>Sender of mails</label>
+                           <frontend_type>select</frontend_type>
+                           <source_model>adminhtml/system_config_source_email_identity</source_model>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </sender_mail>
+                      <receiver_name_order_canceled translate="label" module="tatvamarketplaces">
+                           <label>Receiver's name of the mail order cancellation</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>40</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </receiver_name_order_canceled>
+                      <receiver_email_order_canceled translate="label" module="tatvamarketplaces">
+                           <label>Receiver's mail of the mail order cancellation</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>40</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </receiver_email_order_canceled>
+                      <email_send_template_order_canceled translate="label" module="tatvamarketplaces">
+                           <label>Template of mail sent in the cancellation of an order</label>
+                           <frontend_type>select</frontend_type>
+                           <source_model>adminhtml/system_config_source_email_template</source_model>
+                           <sort_order>50</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </email_send_template_order_canceled>
+                    </fields>
+                </orders>
+                
+                <shipping_methods translate="label" module="tatvamarketplaces">
+                    <label>Shipping methods</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<mapping translate="label" module="tatvamarketplaces">
+                            <label>Mapping</label>
+                            <frontend_model>tatvamarketplaces/adminhtml_system_config_shippingMethods</frontend_model>
+							<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                           	<frontend_type>text</frontend_type>
+                           	<sort_order>10</sort_order>
+                           	<show_in_default>1</show_in_default>
+		                   	<show_in_website>0</show_in_website>
+		                   	<show_in_store>0</show_in_store>
+                      	</mapping>
+                    </fields>
+                </shipping_methods>           
+            </groups>
+        </tatvamarketplaces_2xmoinscher>
+ 		
+ 		<!-- priceminister -->
+        <tatvamarketplaces_priceminister translate="label" module="tatvamarketplaces">
+ 			<class>separator-top</class>
+            <label>PriceMinister</label>
+            <tab>tatvamarketplaces</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>30</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>       
+            <groups>
+                <configuration translate="label" module="tatvamarketplaces">
+                    <label>Configuration</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<ftp_adress translate="label" module="tatvamarketplaces">
+                           <label>Adress FTP server</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</ftp_adress>
+                    	<customer_account translate="label" module="tatvamarketplaces">
+                           <label>Customer account</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </customer_account>
+                      <password translate="label" module="tatvamarketplaces">
+                           <label>Password</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </password>
+                      <vendor_login translate="label" module="tatvamarketplaces">
+                           <label>Vendor login</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>40</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </vendor_login>
+                    </fields>
+                </configuration>
+                
+                <shipping_methods translate="label" module="tatvamarketplaces">
+                    <label>Shipping methods</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<mapping translate="label" module="tatvamarketplaces">
+                            <label>Mapping</label>
+                            <frontend_model>tatvamarketplaces/adminhtml_system_config_shippingMethods</frontend_model>
+							<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                           	<frontend_type>text</frontend_type>
+                           	<sort_order>10</sort_order>
+                           	<show_in_default>1</show_in_default>
+		                   	<show_in_website>0</show_in_website>
+		                   	<show_in_store>0</show_in_store>
+                      	</mapping>
+                    </fields>
+                </shipping_methods>           
+            </groups>
+        </tatvamarketplaces_priceminister>   
+        
+		<!-- rueducommerce -->
+        <tatvamarketplaces_rueducommerce translate="label" module="tatvamarketplaces">
+ 			<class>separator-top</class>
+            <label>RueDuCommerce</label>
+            <tab>tatvamarketplaces</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>40</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>       
+            <groups>
+                <get_order translate="label" module="tatvamarketplaces">
+                    <label>Récupération des commandes</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                       <active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<url translate="label" module="tatvamarketplaces">
+                           <label>Connexion URL</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</url>
+                    	<login translate="label" module="tatvamarketplaces">
+                           <label>Login</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </login>
+                      <password translate="label" module="tatvamarketplaces">
+                           <label>Password</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </password>
+                    </fields>
+                </get_order>
+                 <set_order translate="label" module="tatvamarketplaces">
+                    <label>Remontée des commandes</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<url translate="label" module="tatvamarketplaces">
+                           <label>Connexion URL</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</url>
+                    	<login translate="label" module="tatvamarketplaces">
+                           <label>Login</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </login>
+                      <password translate="label" module="tatvamarketplaces">
+                           <label>Password</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </password>
+                    </fields>
+                </set_order>               
+                <shipping_methods translate="label" module="tatvamarketplaces">
+                    <label>Shipping methods</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                    	<mapping translate="label" module="tatvamarketplaces">
+                            <label>Mapping</label>
+                            <frontend_model>tatvamarketplaces/adminhtml_system_config_shippingMethods</frontend_model>
+							<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                           	<frontend_type>text</frontend_type>
+                           	<sort_order>10</sort_order>
+                           	<show_in_default>1</show_in_default>
+		                   	<show_in_website>0</show_in_website>
+		                   	<show_in_store>0</show_in_store>
+                      	</mapping>
+                    </fields>
+                </shipping_methods>           
+            </groups>
+        </tatvamarketplaces_rueducommerce>
+		
+        <!-- fbd -->
+        <tatvamarketplaces_fbd translate="label" module="tatvamarketplaces">
+ 			<class>separator-top</class>
+            <label>FBD SYSTEM</label>
+            <tab>tatvamarketplaces</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>50</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <get_order translate="label" module="tatvamarketplaces">
+                    <label>Récupération des commandes</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                       <active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<ftp_adress translate="label" module="tatvamarketplaces">
+                           <label>Adress FTP server</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</ftp_adress>
+                    	<login translate="label" module="tatvamarketplaces">
+                           <label>Login</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </login>
+                      <password translate="label" module="tatvamarketplaces">
+                           <label>Password</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </password>
+                      <port translate="label" module="tatvamarketplaces">
+                           <label>Port</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>40</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </port>
+                    </fields>
+                </get_order>
+                <set_order translate="label" module="tatvamarketplaces">
+                    <label>Récupération des commandes</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                       <active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<ftp_adress translate="label" module="tatvamarketplaces">
+                           <label>Adress FTP server</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</ftp_adress>
+                    	<login translate="label" module="tatvamarketplaces">
+                           <label>Login</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </login>
+                      <password translate="label" module="tatvamarketplaces">
+                           <label>Password</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </password>
+                      <port translate="label" module="tatvamarketplaces">
+                           <label>Port</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>40</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </port>
+                    </fields>
+                </set_order>
+            </groups>
+        </tatvamarketplaces_fbd>
+		<!-- prixmania -->
+        <tatvamarketplaces_pixmania translate="label" module="tatvamarketplaces">
+ 			<class>separator-top</class>
+            <label>PIXmania</label>
+            <tab>tatvamarketplaces</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>60</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>       
+            <groups>   
+                 <orders translate="label" module="tatvamarketplaces">
+                    <label>Orders</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                      <active translate="label">
+							<label>Active</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                    	<url translate="label" module="tatvamarketplaces">
+                           <label>URL</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>10</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      	</url>
+                    	<key translate="label" module="tatvamarketplaces">
+                           <label>Clè</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>20</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+		                   <comment>Serial key fournie lors de l'inscription chez pixmania</comment>
+                      	</key>                      	
+                    	<login translate="label" module="tatvamarketplaces">
+                           <label>Login</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>30</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </login>
+                      <password translate="label" module="tatvamarketplaces">
+                           <label>Password</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>40</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </password>
+                      <default_transport translate="label" module="tatvamarketplaces">
+                           <label>Mode de transport par défaut (MT-defaut)</label>
+                           <frontend_type>text</frontend_type>
+                           <sort_order>50</sort_order>
+                           <show_in_default>1</show_in_default>
+		                   <show_in_website>0</show_in_website>
+		                   <show_in_store>0</show_in_store>
+                      </default_transport>                      
+                    </fields>
+                </orders>               
+            </groups>
+        </tatvamarketplaces_pixmania>          
+    </sections>
+</config>

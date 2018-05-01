@@ -1,0 +1,14 @@
+<config>
+   <modules>
+      <Extendware_EWCrawler>
+         <active>false</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Cache Warmer</name>
+         </extendware>
+      </Extendware_EWCrawler>
+   </modules>
+</config>

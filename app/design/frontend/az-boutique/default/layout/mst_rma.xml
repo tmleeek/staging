@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/mst/rma/rma.css</stylesheet></action>
+            <!--<action method="addJs"><script>mirasvit/core/jquery.min.js</script></action>-->
+            <action method="addJs"><script>mirasvit/code/rma/frontend/customer.js</script></action>
+        </reference>
+
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="rma">
+                <label>Request Return</label>
+                <url helper="rma/getNewRmaGuestUrl" />
+                <title>Request Return</title>
+            </action>
+        </reference>
+    </default>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="rma" ><name>rma</name><path>rma/rma</path><label>My Returns</label></action>
+        </reference>
+    </customer_account>
+
+    <rma_rma_index translate="label"  module="rma">
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="rma/rma_list" name="rma.rma.list" template="mst_rma/rma/list.phtml"></block>
+        </reference>
+    </rma_rma_index>
+
+    <rma_rma_view>
+        <reference name="head">
+            <action method="addJs"><script>mirasvit/core/jquery.min.js</script></action>
+            <action method="addJs"><script>mirasvit/core/jquery.MultiFile.js</script></action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="rma/rma_view" name="rma.rma.view" as="rma.rma.view" template="mst_rma/rma/view.phtml">
+            </block>
+        </reference>
+    </rma_rma_view>
+
+    <rma_rma_new>
+        <reference name="head">
+            <action method="addJs"><script>mirasvit/core/jquery.min.js</script></action>
+            <action method="addJs"><script>mirasvit/core/jquery.MultiFile.js</script></action>
+        </reference>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="rma/rma_new" name="rma.rma.new" as="rma.rma.new" template="mst_rma/rma/new.phtml">
+                <block type="rma/rma_new" name="rma.new.step1" as="rma.new.step1" template="mst_rma/rma/new/step1.phtml"/>
+                <block type="rma/rma_new" name="rma.new.step2" as="rma.new.step2" template="mst_rma/rma/new/step2.phtml"/>
+            </block>
+        </reference>
+    </rma_rma_new>
+
+    <rma_rma_print translate="label">
+        <reference name="content">
+            <block type="rma/rma_print" name="rma.rma.print" template="mst_rma/rma/print.phtml">
+            </block>
+        </reference>
+    </rma_rma_print>
+
+    <rma_guest_new translate="label"  module="rma">
+        <reference name="head">
+            <action method="addJs"><script>mirasvit/core/jquery.min.js</script></action>
+            <action method="addJs"><script>mirasvit/core/jquery.MultiFile.js</script></action>
+        </reference>
+        <update handle="page_one_column"/>
+        <reference name="content">
+            <block type="rma/rma_guest_new" name="rma.rma.new" as="rma.rma.new" template="mst_rma/rma/new.phtml">
+                <block type="rma/rma_guest_new" name="rma.new.step1" as="rma.new.step1" template="mst_rma/rma/guest/step1.phtml"/>
+                <block type="rma/rma_guest_new" name="rma.new.step2" as="rma.new.step2" template="mst_rma/rma/new/step2.phtml"/>
+            </block>
+        </reference>
+    </rma_guest_new>
+
+    <rma_guest_view>
+        <reference name="head">
+            <action method="addJs"><script>mirasvit/core/jquery.min.js</script></action>
+            <action method="addJs"><script>mirasvit/core/jquery.MultiFile.js</script></action>
+        </reference>
+        <update handle="page_one_column"/>
+        <reference name="content">
+            <block type="rma/rma_guest_view" name="rma.rma.view" as="rma.rma.view" template="mst_rma/rma/view.phtml">
+            </block>
+        </reference>
+    </rma_guest_view>
+
+    <rma_guest_print translate="label">
+        <reference name="content">
+            <block type="rma/rma_print" name="rma.rma.print" template="mst_rma/rma/print.phtml">
+            </block>
+        </reference>
+    </rma_guest_print>
+</layout>

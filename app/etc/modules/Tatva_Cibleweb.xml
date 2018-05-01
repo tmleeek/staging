@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Cibleweb>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends />
+        </Tatva_Cibleweb>
+    </modules>
+</config>

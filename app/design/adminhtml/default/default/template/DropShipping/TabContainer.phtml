@@ -1,0 +1,38 @@
+<script>
+
+        var cronUrl = '<?php echo $this->getCronUrl(); ?>';
+        var cancelDropShipUrl = '<?php echo $this->getCancelDropShipUrl(); ?>';
+        var confirmDropShipRequestUrl = '<?php echo $this->getConfirmDropShipRequestUrl(); ?>';
+        var confirmDropShipShippingUrl = '<?php echo $this->getConfirmDropShipShippingUrl(); ?>';
+        var applyDropShippableActionUrl = '<?php echo $this->getApplyDropShippableActionUrl(); ?>';
+        var applyPendingPriceResponseActionUrl = '<?php echo $this->getApplyPendingPriceResponseActionUrl(); ?>';
+
+        
+</script>
+
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td width="60%"><h3><?php echo $this->__('Drop Shipping') ?></h3></td>
+            <td align="right"  width="20%">
+                <!--
+	            <button onclick="dropShip();" class="scalable save" type="button"><span><?php echo $this->__('Process')?></span></button>	
+                    <button onclick="dropShipCron();" class="scalable" type="button"><span><?php echo $this->__('Launch automatic processing'); ?></span></button>
+                -->
+            </td>
+        </tr>
+    </table>
+</div>
+
+<?php
+    //echo Mage::helper('adminhtml')->getUrl('DropShipping/Test/Test');
+?>
+
+<form name="form_dropshipping" id="form_dropshipping" method="POST" action="<?php echo $this->getUrl('DropShipping/Admin/DropShip'); ?>">
+<input id="form_key" name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+
+<?php echo $this->getChildHtml('tabs'); ?>
+
+<div id="dropshipping_tab_content"></div>
+
+</form>

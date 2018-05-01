@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Niveus_ProductVideo>
+            <active>false</active>
+            <codePool>community</codePool>
+        </Niveus_ProductVideo>
+    </modules>
+</config>

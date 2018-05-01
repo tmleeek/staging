@@ -1,0 +1,4 @@
+config:
+  default/translate/general/translation_logging: 0
+  default/translate/general/locales: en_US
+  default/translate/general/translation_interfaces: frontend,adminhtml

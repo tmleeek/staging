@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MagestyApps
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to https://www.magestyapps.com for more information or
+ * send an email to office@magestyapps.com .
+ *
+ * @category    MagestyApps
+ * @package     MagestyApps_AdvancedBreadcrumbs
+ * @copyright   Copyright (c) 2016 MagestyApps (https://www.magestyapps.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <MagestyApps_AdvancedBreadcrumbs>
+            <version>1.6.0</version>
+        </MagestyApps_AdvancedBreadcrumbs>
+    </modules>
+
+    <global>
+        <blocks>
+            <crumbs>
+                <class>MagestyApps_AdvancedBreadcrumbs_Block</class>
+            </crumbs>
+        </blocks>
+        <helpers>
+            <crumbs>
+                <class>MagestyApps_AdvancedBreadcrumbs_Helper</class>
+            </crumbs>
+        </helpers>
+        <models>
+            <crumbs>
+                <class>MagestyApps_AdvancedBreadcrumbs_Model</class>
+            </crumbs>
+        </models>
+        <resources>
+            <crumbs_setup>
+                <setup>
+                    <module>MagestyApps_AdvancedBreadcrumbs</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </crumbs_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <MagestyApps_AdvancedBreadcrumbs>
+                    <files>
+                        <default>MagestyApps_AdvancedBreadcrumbs.csv</default>
+                    </files>
+                </MagestyApps_AdvancedBreadcrumbs>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <crumbs>
+                    <file>magestyapps_advancedbreadcrumbs.xml</file>
+                </crumbs>
+            </updates>
+        </layout>
+        <events>
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <crumbs>
+                        <class>crumbs/observer</class>
+                        <method>addAdditionalPagesBreadcrumbs</method>
+                    </crumbs>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+        </events>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <MagestyApps_AdvancedBreadcrumbs>
+                    <files>
+                        <default>MagestyApps_AdvancedBreadcrumbs.csv</default>
+                    </files>
+                </MagestyApps_AdvancedBreadcrumbs>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <crumbs>
+                        <class>crumbs/observer</class>
+                        <method>renderAttrDefaultBreadcrumbs</method>
+                    </crumbs>
+                </observers>
+            </core_block_abstract_to_html_before>
+        </events>
+    </adminhtml>
+
+    <default>
+        <crumbs>
+            <general>
+                <enabled>1</enabled>
+                <force_full_path>0</force_full_path>
+                <search_crumb_enabled>1</search_crumb_enabled>
+                <account_crumbs_enabled>1</account_crumbs_enabled>
+                <one_path>1</one_path>
+                <hide_duplicates>0</hide_duplicates>
+            </general>
+            <additional_pages>
+                <cms_pages>Magento has a standard setting for this. You can find it in "System > Configuration > Web > Default Pages"</cms_pages>
+            </additional_pages>
+        </crumbs>
+    </default>
+</config>

@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+
+    <modules>
+        <TBT_Rewardssocial>
+            <version>1.0.0.8</version>
+        </TBT_Rewardssocial>
+    </modules>
+    <admin>
+        <routers>
+            <rewardssocialadmin>
+                <use>admin</use>
+                <args>
+                    <module>TBT_Rewardssocial</module>
+                    <frontName>rewardssocialadmin</frontName>
+                </args>
+            </rewardssocialadmin>
+        </routers>
+    </admin>
+
+    <frontend>
+        <routers>
+            <rewardssocial>
+                <use>standard</use>
+                <args>
+                    <module>TBT_Rewardssocial</module>
+                    <frontName>rewardssocial</frontName>
+                </args>
+            </rewardssocial>
+        </routers>
+
+        <layout>
+            <updates>
+                <rewardssocial>
+                    <file>rewardssocial.xml</file>
+                </rewardssocial>
+            </updates>
+        </layout>
+
+        <translate>
+              <modules>
+                  <TBT_Rewardssocial>
+                      <files>
+                          <default>TBT_Rewardssocial.csv</default>
+                      </files>
+                  </TBT_Rewardssocial>
+              </modules>
+        </translate>
+    </frontend>
+
+    <global>
+
+        <events>
+            <rewardssocial_facebook_like_action>
+                <observers>
+                    <tbt_rewardssocial_model_facebook_like_observer>
+                        <type>singleton</type>
+                        <class>rewardssocial/facebook_like_observer</class>
+                        <method>facebookLikeAction</method>
+                    </tbt_rewardssocial_model_facebook_like_observer>
+                </observers>
+            </rewardssocial_facebook_like_action>
+            <controller_action_predispatch_rewardsadmin_manage_special_save>
+                <observers>
+                    <rewardssocial_facebook_customer_behavior_rule_pre_dispatch>
+                        <type>singleton</type>
+                        <class>rewardssocial/facebook_like_observer</class>
+                        <method>checkFacebookSettings</method>
+                    </rewardssocial_facebook_customer_behavior_rule_pre_dispatch>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_special_save>
+            <controller_action_predispatch_rewardsadmin_manage_special_save>
+                <observers>
+                    <rewardssocial_facebook_share_customer_behavior_rule_pre_dispatch>
+                        <type>singleton</type>
+                        <class>rewardssocial/facebook_share_observer</class>
+                        <method>checkFacebookShareSettings</method>
+                    </rewardssocial_facebook_share_customer_behavior_rule_pre_dispatch>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_special_save>
+            <controller_action_predispatch_rewardsadmin_manage_special_save>
+                <observers>
+                    <rewardssocial_twitter_follow_customer_behavior_rule_pre_dispatch>
+                        <type>singleton</type>
+                        <class>rewardssocial/twitter_follow_observer</class>
+                        <method>checkFollowSettings</method>
+                    </rewardssocial_twitter_follow_customer_behavior_rule_pre_dispatch>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_special_save>
+            <rewardsref_referral_subscribe>
+                <observers>
+                    <rewardssocial_rewardsref_referral_subscribe>
+                        <type>singleton</type>
+                        <class>rewardssocial/rewardsref_referral_observer</class>
+                        <method>subscribe</method>
+                    </rewardssocial_rewardsref_referral_subscribe>
+                </observers>
+            </rewardsref_referral_subscribe>
+        </events>
+
+        <resources>
+            <rewardssocial_setup>
+                <setup>
+                    <module>TBT_Rewardssocial</module>
+                    <class>TBT_Rewardssocial_Model_Resource_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </rewardssocial_setup>
+            <rewardssocial_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </rewardssocial_write>
+            <rewardssocial_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </rewardssocial_read>
+        </resources>
+
+        <blocks>
+            <rewardssocial>
+                <class>TBT_Rewardssocial_Block</class>
+            </rewardssocial>
+        </blocks>
+        <helpers>
+            <rewardssocial>
+                <class>TBT_Rewardssocial_Helper</class>
+            </rewardssocial>
+            <rewardsfb>
+                <class>TBT_Rewardssocial_Helper_Facebook</class>
+            </rewardsfb>
+        </helpers>
+        <models>
+            <rewardssocial>
+                <class>TBT_Rewardssocial_Model</class>
+                <resourceModel>rewardssocial_mysql4</resourceModel>
+            </rewardssocial>
+            <rewardsfb>
+                <class>TBT_Rewardssocial_Model_Facebook_Api</class>
+            </rewardsfb>
+            <rewardssocial_mysql4>
+                <class>TBT_Rewardssocial_Model_Mysql4</class>
+                <entities>
+                    <facebook_like>
+                        <table>rewardssocial_facebook_like</table>
+                    </facebook_like>
+                    <twitter_tweet>
+                        <table>rewardssocial_twitter_tweet</table>
+                    </twitter_tweet>
+                    <pinterest_pin>
+                        <table>rewardssocial_pinterest_pin</table>
+                    </pinterest_pin>
+                    <referral_share>
+                        <table>rewardssocial_referral_share</table>
+                    </referral_share>
+                    <google_plusone>
+                        <table>rewardssocial_google_plusone</table>
+                    </google_plusone>
+                    <referral_share>
+                        <table>rewardssocial_referral_share</table>
+                    </referral_share>
+                    <customer>
+                        <table>rewardssocial_customer</table>
+                    </customer>
+                    <facebook_share>
+                        <table>rewardssocial_facebook_share</table>
+                    </facebook_share>
+                    <purchase_share>
+                        <table>rewardssocial_purchase_share</table>
+                    </purchase_share>
+                </entities>
+            </rewardssocial_mysql4>
+        </models>
+
+        <events>
+            <rewards_transfer_vestation>
+                <observers>
+                    <tbt_rewardssocial_model_facebook_like_rewards_observer>
+                        <type>singleton</type>
+                        <class>rewardssocial/facebook_like_rewards_observer</class>
+                        <method>transferVestation</method>
+                    </tbt_rewardssocial_model_facebook_like_rewards_observer>
+                </observers>
+            </rewards_transfer_vestation>
+
+        </events>
+    </global>
+
+    <default>
+        <evlike>
+            <evlike>
+                <ev_facebook_type>0</ev_facebook_type>
+                <ev_facebook_layout>button_count</ev_facebook_layout>
+                <ev_facebook_send>0</ev_facebook_send>
+            </evlike>
+            <evlike_category>
+                <ev_like_category_layout>button_count</ev_like_category_layout>
+                <ev_like_category_send>0</ev_like_category_send>
+            </evlike_category>
+            <evlike_cms>
+                <ev_like_cms_layout>button_count</ev_like_cms_layout>
+                <ev_like_cms_send>0</ev_like_cms_send>
+            </evlike_cms>
+            <evlike_grid>
+                <ev_like_grid_layout>button_count</ev_like_grid_layout>
+                <ev_like_grid_send>0</ev_like_grid_send>
+            </evlike_grid>
+            <evlike_list>
+                <ev_like_list_layout>button_count</ev_like_list_layout>
+                <ev_like_list_send>0</ev_like_list_send>
+            </evlike_list>
+        </evlike>
+        <rewards>
+            <InitialTransferStatus>
+                <AfterFacebookLike>3</AfterFacebookLike>
+                <AfterFacebookProductShare>3</AfterFacebookProductShare>
+                <AfterTwitterTweet>3</AfterTwitterTweet>
+                <AfterTwitterFollow>3</AfterTwitterFollow>
+                <AfterPinterestPin>3</AfterPinterestPin>
+                <AfterReferralShare>3</AfterReferralShare>
+                <AfterGooglePlusOne>3</AfterGooglePlusOne>
+                <afterPurchaseShareOnFacebook>3</afterPurchaseShareOnFacebook>
+                <afterPurchaseShareOnTwitter>3</afterPurchaseShareOnTwitter>
+            </InitialTransferStatus>
+            <transferComments>
+                <facebookLike><![CDATA[Points received for liking something on Facebook.]]></facebookLike>
+                <facebookProductShare><![CDATA[Points received for sharing a product on Facebook.]]></facebookProductShare>
+                <twitterTweet><![CDATA[Points received for tweeting something on Twitter.]]></twitterTweet>
+                <twitterFollow><![CDATA[Points received for following us on Twitter.]]></twitterFollow>
+                <pinterestPin><![CDATA[Points received for pinning a page on Pinterest.]]></pinterestPin>
+                <referralShare><![CDATA[Points received for sharing a referral link.]]></referralShare>
+                <googlePlusOne><![CDATA[Points received for +1'ing a page on Google+.]]></googlePlusOne>
+                <purchaseShareOnFacebook><![CDATA[Points received for sharing a purchase on Facebook.]]></purchaseShareOnFacebook>
+                <purchaseShareOnTwitter><![CDATA[Points received for sharing a purchase on Twitter.]]></purchaseShareOnTwitter>
+            </transferComments>
+            <referral>
+                <referral_share_button>1</referral_share_button>
+                <show_social_share>1</show_social_share>
+                <maxShareRewardsPerDay>5</maxShareRewardsPerDay>
+                <minSecondsBetweenShares>1</minSecondsBetweenShares>
+            </referral>
+            <facebook>
+                <enableFacebookLike>1</enableFacebookLike>
+                <maxLikeRewardsPerDay>5</maxLikeRewardsPerDay>
+                <minSecondsBetweenLikes>1</minSecondsBetweenLikes>
+                <enableFacebookProductShare>1</enableFacebookProductShare>
+                <maxProductShareRewardsPerDay>5</maxProductShareRewardsPerDay>
+                <minSecondsBetweenShares>1</minSecondsBetweenShares>
+            </facebook>
+            <twitter>
+                <enableTwitterFollow>1</enableTwitterFollow>
+                <showCount>1</showCount>
+                <showUsername>1</showUsername>
+                <enableTwitterTweet>1</enableTwitterTweet>
+                <enableTweetCount>1</enableTweetCount>
+                <tweetedMessage><![CDATA[Check this out!]]></tweetedMessage>
+                <maxTweetRewardsPerDay>5</maxTweetRewardsPerDay>
+                <minSecondsBetweenTweets>1</minSecondsBetweenTweets>
+            </twitter>
+            <pinterest>
+                <enablePinterestPin>1</enablePinterestPin>
+                <enablePinterestPinCount>1</enablePinterestPinCount>
+                <maxPinRewardsPerDay>5</maxPinRewardsPerDay>
+                <minSecondsBetweenPins>1</minSecondsBetweenPins>
+            </pinterest>
+            <referral>
+                <maxShareRewardsPerDay>5</maxShareRewardsPerDay>
+                <minSecondsBetweenShares>1</minSecondsBetweenShares>
+            </referral>
+            <google>
+                <enableGooglePlus>1</enableGooglePlus>
+                <enableGooglePlusCount>1</enableGooglePlusCount>
+                <maxPlusOneRewardsPerDay>5</maxPlusOneRewardsPerDay>
+                <minSecondsBetweenPlusOnes>1</minSecondsBetweenPlusOnes>
+            </google>
+            <purchase_share>
+                <enable>1</enable>
+                <enableFacebookShare>1</enableFacebookShare>
+                <enableTwitterTweet>1</enableTwitterTweet>
+            </purchase_share>
+        </rewards>
+    </default>
+
+    <rewards>
+        <special>
+            <social_referral_share>
+                <config>rewardssocial/referral_share_special_config</config>
+            </social_referral_share>
+            <social_facebook_like>
+                <config>rewardssocial/facebook_like_special_config</config>
+            </social_facebook_like>
+            <social_twitter_tweet>
+                <config>rewardssocial/twitter_tweet_special_config</config>
+            </social_twitter_tweet>
+            <social_twitter_follow>
+                <config>rewardssocial/twitter_follow_special_config</config>
+            </social_twitter_follow>
+            <social_google_plusOne>
+                <config>rewardssocial/google_plusOne_special_config</config>
+            </social_google_plusOne>
+            <social_pinterest_pin>
+                <config>rewardssocial/pinterest_pin_special_config</config>
+            </social_pinterest_pin>
+            <social_facebook_share>
+                <config>rewardssocial/facebook_share_special_config</config>
+            </social_facebook_share>
+            <social_purchase_facebook_share>
+                <config>rewardssocial/purchase_share_facebook_special_config</config>
+            </social_purchase_facebook_share>
+            <social_purchase_twitter_share>
+                <config>rewardssocial/purchase_share_twitter_special_config</config>
+            </social_purchase_twitter_share>
+        </special>
+
+        <transfer>
+            <reference>
+                <facebook_like>rewardssocial/facebook_like_reference</facebook_like>
+                <facebook_share>rewardssocial/facebook_share_reference</facebook_share>
+                <twitter_tweet>rewardssocial/twitter_tweet_reference</twitter_tweet>
+                <pinterest_pin>rewardssocial/pinterest_pin_reference</pinterest_pin>
+                <referral_share>rewardssocial/referral_share_reference</referral_share>
+                <google_plusOne>rewardssocial/google_plusOne_reference</google_plusOne>
+                <purchase_facebook_share>rewardssocial/purchase_share_facebook_reference</purchase_facebook_share>
+                <purchase_twitter_share>rewardssocial/purchase_share_twitter_reference</purchase_twitter_share>
+            </reference>
+            <reason>
+                <facebook_like>rewardssocial/facebook_like_reason</facebook_like>
+                <twitter_follow>rewardssocial/twitter_follow_reason</twitter_follow>
+                <facebook_share>rewardssocial/facebook_share_reason</facebook_share>
+            </reason>
+        </transfer>
+
+        <probational_behaviors>
+            <social_facebook_like />
+            <social_twitter_tweet />
+            <social_twitter_follow />
+            <social_pinterest_pin />
+            <social_referral_share />
+            <social_google_plusOne />
+            <social_facebook_share />
+            <social_purchase_share_facebook />
+            <social_purchase_share_twitter />
+        </probational_behaviors>
+    </rewards>
+</config>

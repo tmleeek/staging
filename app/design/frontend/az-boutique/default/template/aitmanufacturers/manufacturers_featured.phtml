@@ -1,0 +1,26 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+* @copyright  Copyright (c) 2009 AITOC, Inc. 
+*/
+?>
+<?php $manufacturers = $this->getItems() ?>
+<?php if (count($manufacturers)): ?>
+<div class="page-head">
+<h3><?php echo $this->__($this->getFeaturedAttributeName())?></h3>
+</div>
+<div>
+<?php foreach($manufacturers as $manufacturer): ?>
+<div style="float: left; margin: 0 7px 7px 0;"></span><a href="<?php echo $manufacturer->getUrl() ?>"><img src="<?php echo Mage::helper('aitmanufacturers/image')->getUrl($manufacturer->getImage()) ?>" title="<?php echo $this->htmlEscape($manufacturer->getManufacturer()) ?>" alt="<?php echo $this->htmlEscape($manufacturer->getManufacturer()) ?>" /></a></div>
+<?php endforeach ?>
+</div>
+<div style="clear: both;">&nbsp;</div>
+<?php endif ?>

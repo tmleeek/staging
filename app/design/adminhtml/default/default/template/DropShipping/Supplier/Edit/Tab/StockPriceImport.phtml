@@ -1,0 +1,195 @@
+<script type="Text/Javascript">
+    
+    // kind of observer to get the event if user attach a file
+    function checkAttachedFile(){
+        
+        var attachedInput = document.getElementById('attached_file');
+        
+        if( attachedInput.value != "" ){
+            modifyActionForm();
+        }
+    }
+    
+    // modify the targeted url of the main form
+    function modifyActionForm(){
+        var mainForm = document.getElementById('edit_form');
+        mainForm.enctype = 'multipart/form-data';
+        mainForm.action = '<?php echo $this->getImportStockUrl(); ?>';  
+        mainForm.submit();
+    }
+    
+</script>
+
+<div class="entry-edit">
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Enable automatic import'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Enable cron'); ?></td>
+                <td class="input-ele">
+                    <select  id="sup_ftp_enabled" name="sup_ftp_enabled">
+                        <?php if ($this->getSupplier()->getsup_ftp_enabled()): ?> 
+                            <?php
+                            echo '<option value="1" select="selected">';
+                            echo $this->__('Enable');
+                            echo '</option>';
+                            ?>
+                            <?php
+                            echo '<option value="0">';
+                            echo $this->__('Disable');
+                            echo '</option>';
+                            ?>
+                        <?php else: ?>
+                            <?php
+                            echo '<option value="0" select="selected">';
+                            echo $this->__('Disable');
+                            echo '</option>';
+                            ?>
+    <?php
+    echo '<option value="1">';
+    echo $this->__('Enable');
+    echo '</option>';
+    ?>
+<?php endif; ?>
+                    </select>
+                    <p class="note"><span>If enabled, stock is imported automatically according to the cron schedule.</span></p>
+                </td>
+            </tr>              
+    
+        </table>
+    </fieldset>
+    
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('FTP Account'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Host'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_host" name="sup_ftp_host" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_host(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Port'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_port" name="sup_ftp_port" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_port(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Login'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_login" name="sup_ftp_login" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_login(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Password'); ?></td>
+                <td class="input-ele"><input type="password" id="sup_ftp_password" name="sup_ftp_password" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_password(); ?>"></td>
+
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('File Path'); ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_ftp_file_path" name="sup_ftp_file_path" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_ftp_file_path(); ?>"></td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Csv file Settings') ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Field Separator') ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_csv_field_separator" name="sup_csv_field_separator" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_field_separator(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Field Delimiter') ?></td>
+                <td class="input-ele"><input type="text" id="sup_csv_field_delimiter" name="sup_csv_field_delimiter" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_field_delimiter(); ?>"></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Skip First Line') ?></td>
+                <td class="input-ele">
+                    <select  id="sup_csv_skip_first_line" name="sup_csv_skip_first_line">
+<?php if ($this->getSupplier()->getsup_csv_skip_first_line() == true): ?>
+                            <option value="1" select="selected"><?php echo $this->__('Yes'); ?></option>
+                            <option value="0"><?php echo $this->__('No'); ?></option>
+<?php else : ?> 
+                            <option value="0" select="selected"><?php echo $this->__('No'); ?></option>  
+                            <option value="1" ><?php echo $this->__('Yes'); ?></option>  
+<?php endif; ?>
+                    </select>
+                </td>
+            </tr> 
+            <tr>
+                <td class="label"><?php echo $this->__('Sku Column index') ?></td>
+                <td class="input-ele">
+                    <input type="text" class="input-text" id="sup_csv_sku_col_num" name="sup_csv_sku_col_num" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_sku_col_num(); ?>">
+                    <p class="note"><span>Position of the sku column in the file, indexes start from 1.</span></p>
+                
+                </td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__('Quantity Column index') ?></td>
+                <td class="input-ele"><input type="text" class="input-text" id="sup_csv_qty_col_num" name="sup_csv_qty_col_num" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_qty_col_num(); ?>"><p class="note"><span>Position of the stock column in the file, indexes start from 1.</span></p></td>
+            </tr>        
+            <tr>
+                <td class="label"><?php echo $this->__('Unit Cost Price Column index') ?></td>
+                <td class="input-ele"><input type="text"  id="sup_csv_cost_col_num" name="sup_csv_cost_col_num" style="width:400px;" value="<?php echo $this->getSupplier()->getsup_csv_cost_col_num(); ?>"><p class="note"><span>Position of the cost column in the file, indexes start from 1.</span></p></td>
+            </tr> 
+            <tr>
+                <td class="label"><?php echo $this->__('Product matching method') ?></td>
+                <td class="input-ele">
+                    <select name="sup_dropshipping_match_mode">
+                        <?php foreach($this->getMatchModes() as $k => $v): ?>
+                            <option value="<?php echo $k; ?>" <?php echo ($k == $this->getSupplier()->getsup_dropshipping_match_mode() ? ' selected ' : ''); ?>><?php echo $v; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr> 
+        </table>
+    </fieldset>
+
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Miscellaneous') ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__('Target Warehouse') ?></td>
+                <td class="input-ele">                 
+                    <select  id="sup_target_warehouse" name="sup_target_warehouse">
+<?php foreach ($this->getWarehouses() as $warehouse): ?>
+    <?php if ($this->getSupplier()->getsup_target_warehouse() == $warehouse["value"]): ?>
+                                <option  selected  value="<?php echo $warehouse["value"]; ?>"><?php echo $warehouse["label"]; ?></option>
+    <?php else : ?>
+                                <option value="<?php echo $warehouse["value"]; ?>"><?php echo $warehouse["label"]; ?></option>
+    <?php endif; ?>
+<?php endforeach; ?>
+                    </select>
+                    <p class="note"><span>Select the warehouse to update stock levels when importing supplier csv file.</span></p>
+                </td>
+            </tr>  
+        </table>
+    </fieldset>
+    
+
+    
+    <div class="entry-edit-head"> 
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Test file import'); ?></h4> 
+    </div>
+    <fieldset id="my-fieldset">
+        <table cellspacing="0" class="form-list">
+            <tr>
+                <td class="label"><?php echo $this->__("Download from FTP and import file"); ?></td>
+                <td><button id="import" class="scalable" style="" onclick="document.location.href = '<?php echo Mage::helper('adminhtml')->getUrl('DropShipping/SupplierStockImport/FtpImport', array('sup_id' => $this->getSupplier()->getId())); ?>'" type="button"><?php echo $this->__("Process"); ?></button></td>
+            </tr>
+            <tr>
+                <td class="label"><?php echo $this->__("Manually import file"); ?></td>
+                <td>
+                    <p><input type="file" name="file_path" id="attached_file"></p>
+                    <p><button id="import" class="scalable" style="" onclick="checkAttachedFile();" type="button"><?php echo $this->__("Process"); ?></button></p>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    
+</div>

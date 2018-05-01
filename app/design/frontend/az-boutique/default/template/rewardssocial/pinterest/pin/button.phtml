@@ -1,0 +1,10 @@
+
+<script type="text/javascript">
+    //<![CDATA[
+    document.write('<a data-pin-config="<?php echo ($this->isCounterEnabled()) ?  'beside' :  'none'  ?>" href="//pinterest.com/pin/create/button/?url=<?php echo $this->getRequestUriEncoded() ?>&media=<?php echo $this->getPinnableMediaUriEncoded() ?>&description=" data-pin-do="buttonPin"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>');
+    //]]>
+</script>
+
+<?php if ($this->isCounterEnabled()) : ?>
+    <span class="_pin_it_button_count" id="_pin_count_0" style="display: none;"><i></i>0</span>
+<?php endif; ?>

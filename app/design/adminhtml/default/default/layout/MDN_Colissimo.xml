@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+
+    <adminhtml_sales_order_shipment_new>
+
+    	<reference name="head">
+    		<action method="addJs">
+                <script>colissimo/adminhtml/sales/order/shipment/new.js</script>
+            </action>
+    	</reference>
+
+        <reference name="form">
+            <action method="setTemplate">
+                <template>colissimo/sales/order/shipment/create/form.phtml</template>
+            </action>
+
+            <block type="colissimo/Adminhtml_Sales_Order_Shipment_Create_Form_Colissimo" name="form_create_colissimoshipment" template="colissimo/sales/order/shipment/create/form/colissimo.phtml">
+            </block>
+        </reference>
+
+    </adminhtml_sales_order_shipment_new>
+
+    <adminhtml_sales_order_shipment_view>
+
+        <remove name="shipment_packaging" />
+
+        <reference name="form">
+
+            <block type="adminhtml/sales_order_shipment_packaging" name="shipment_packed" template="colissimo/sales/order/shipment/packaging/packed.phtml"/>
+        </reference>
+
+    </adminhtml_sales_order_shipment_view>
+
+</layout>

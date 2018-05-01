@@ -1,0 +1,204 @@
+____________________________________________________________________________________________________________________
+v2.8.2
+
+- Fix qty displayed in Preparation Document (PickingList mode order by order) when same product was in many order.
+
+____________________________________________________________________________________________________________________
+v2.8.1
+
+Features :
+- Order prepration grid : Add mode Single user option
+- Order prepration grid : Display SKUs
+- Order prepration grid : Improve Bundle and configuranel sub product display
+- Order prepration grid : JS Popup to prevent clicking on order preparation button if no order selected 
+- Order prepration grid : Prevent to add order if order was already added
+- Packing : Multi Barcode Management
+- Packing screen : add logs in a popup to monitor was has been done during an order packing 
+- Packing screen : add column barcode to help user if they encounter a scanning issue + option set this it
+- Packing screen : color full line when expected qty is reach + remove Checked image + fix the fact that when qty was decremented, the checked was not removed
+- Packing Screen : add group options
+- Packing Screen : add option to display or not column barcode (by default no to avoid non fair packing)
+- Packing Screen : Enable to select an order to pack manually 
+- Packing screen : Improve serial number management
+- Packing screen : Add new option in system > configuration > order prepration > Create shipment and invoices Options > create shipments
+- Packing screen : Add "ask for parcel count" in system > configuration > packing options to fill the parcel count after packing commit
+- Packing screen : Add new options in system > configuraiton > order preparation > packing to dscan serial numbers during packing step
+- Shipping label : display the number of selected orders matching per shipping method to limit misunderstanding
+- Shipping label : can't write a tracking number if no shipment created 
+- Carrier template : add all order field in carrier template generation and display
+- Carrier template : Enable CRBT
+- Add carrier template for geodis
+- Notify customer is now configurable with 2 options
+- OrderPreparation : Picking List : Mode order by order : 
+ -> implement sub product display option + (display reference sub product if present)
+ -> implement Display product without stock management option
+ -> implement sort by Shelf location 
+ -> NB product present + Qty depend of the place the PDf is printed
+- Better font size on qty field on picking list and Documents
+- Header and footer PDF are customizable at store level
+- new options to hide notify & finish button in system > configuration > order prepration > steps
+
+Fixes :
+- Fix : add session key in URL on packing icon links
+- Fix : save serials from "prepration" tab in sales order view
+- Avoid crash when click on Downlaod invoice after packing if no invoice was created
+- Selected order screen : fix the filtering and display of the order of the type 10000012-1 
+- Picking List : sort by location was sometime not accurate due to ascii order (Number -> Uppercase -> Lowercase)
+- Picking List : Fix crash when manufacturer attribute does not exist + not set in System Config to ovverride
+- Avoid potential crash if no carrier software selected
+- Scanner fix JS crash on orderPreparation screen 
+- Carrier Template  : Fix code issue and shipping label options code are displayed in a JS pop up 
+- OrderPreparation PDF : display reserved Qty instead of ordered Qty, which is more accurate
+- Fix Logo crash on PDF print is no logo defined 
+- Add State in all addresses
+
+
+____________________________________________________________________________________________________________________
+v2.8.0
+
+- Add new option to automatically add order to selected orders when order barcode is scanned in packing step
+- Create invoice when packing is commited (only shipment was created)
+- Fix : the packing document displays only products to ship (in case of a partial shipment)
+- New option in system > configuration > order preparation > picking list > mode : to print one merged picking list for all orders or one page per order
+- Remove unused parameter in system > configuraiton > order preparaiton > general > order management delay
+- New option in selected orders to manually remove 1 product from preparation
+- Highlight current step in order preparation
+- Finetune ACL permissions for order preparation
+- Capture selection automatically done in order preparation (option removed in system > configuration > order preparation)
+- New feature to do partial invoice in order preparation (option available in system > configuration > order preparation > create shipment and invoice)
+
+____________________________________________________________________________________________________________________
+v2.7.9
+
+- Fix issue on packing (products was not displayed)
+- Fix tracking title when added from order preparation screen
+- Fix issue in packing screen for products without stock management
+
+____________________________________________________________________________________________________________________
+v2.7.8
+
+- Add Exapaq carrier
+- In order preparation / selected orders, display configurable & bundle products in italic
+- Fix issue on partial shipment for configurable product
+- Add fedex carrier template
+- Fix issues with UPS carrier template + tracking number import
+- Add new step in order preparation to process packing using barcodes
+- In step "tracking number" in order preparation, new column to manually fill the tracking numbers
+- customer notification (invoice & shipment) are low priority tasks
+- New option to hide "create shipments and invoices" button in order preparation (system > configuration > order preparation)
+- translations enhancement
+
+____________________________________________________________________________________________________________________
+v2.7.7
+
+- Export fields for So colissimo
+- Fix : order was not dispatch inorder preparation screen after cancelation
+- Fix : error on order preparation when current user doesnt have allow_scope_change permission
+- Fix : export profiles are now in advanced profiles
+- Prevent to add order in select orders if no product available
+- Fix : if an order contained only backorderd product, it was not visible in order preparation
+
+____________________________________________________________________________________________________________________
+v2.7.5
+
+- Improve order preparation tab
+- Add new permission to hide stockless / ignored orders and operator / warehouse dropdown menus in order preparation tabs
+- Fix : issue with PDF when text is set for footer
+
+____________________________________________________________________________________________________________________
+v2.7.4
+
+- Add field in carrier template to set label when importing tracking
+
+____________________________________________________________________________________________________________________
+v2.7.3
+
+- Code pool is now community
+- add orderpreparation_order_added_to_download_document event when building pdf that merges invoices & shipments
+- Fix : issue in carrier template using date format modifier
+- Fix : exported file name for carrier template
+- New feature : select preparation warehouse in Order preparation screen at user level
+- New feature : Order preparation process allow multi operator
+- Improvement : add message box confirmation when customers are notified
+
+____________________________________________________________________________________________________________________
+v2.6.6.1
+
+- Fix issue when printing order preparation documents
+- Prevent anormal caracters in shipment reference when importing trackings
+- Fix : issue in order preparation when adding a stockless order containing a configurable product
+- Fix : issue when creating invoice (payment method was duplicated and threw an error in sales order grid)
+
+____________________________________________________________________________________________________________________
+v2.6.6
+
+- UPS worldship export
+- Add massactionin order preparation screen to change order shipping method
+- New feature to change shipping method from preparation tab in sales order sheet
+- Fix : option system > configuration > orderpreparation > picking_list > display_product_without_stock_management was not working
+
+____________________________________________________________________________________________________________________
+v2.6.5
+
+- New method OrderToPrepare::addAdditionalAttributes to add custom attributes to selected order collection
+- Add LateOrders helper
+- Add event orderpreparation_before_print_order_documents
+- Add shelf location in order sheet preparation tab & PDF & process order tab in order preparation
+- Add shelf location in picking list
+- Add barcode picture on picking list
+- Improve picking list
+- remove class SelectedOrdersProductsSummaryPdf
+- fix issue when filtering on shipping name in selected orders grid in order preparation screen
+- Add table in import tracking step in order preparation to mass fill weight and custom shipping information for selected orders
+- Fix: notify customers button doesn't work from "import trackings step"
+- Improve order preparation settings to use mass or order by order mode (settings in system > configuration >order preparation > order preparziton steps)
+- Add new paramater in system > configuration > order preparation > picking to select sort mode for products in picking list
+- Fix : product colors in order preparation screen
+- New option in system > configuration > order preparation > printing options to merge order preparation document in "download document" pdf
+
+____________________________________________________________________________________________________________________
+v2.6.4
+
+- New option in system > configuration > order preparation > misc to not create invoices from order preparation when click on "Create shipment & invoice" button
+
+____________________________________________________________________________________________________________________
+v2.6.3
+
+- Fix : error on magento 1.4.1.1 when "download picking list" or "download preparation pdf" from the order preparation screen
+- Fix : in orderpreparation screen, selected tab, display correct product name
+- Add picking list helper (and move function isItemDisplayedInPickingList)
+- Split part of ordertoprepare model into Shipment & Invoice helper
+
+____________________________________________________________________________________________________________________
+v2.6.2
+
+- Fix 404 error when trying to sort or filter ignored orders list
+- Merge branches 1.4 & 1.4.1
+- New option in system > configuration > order preparation > misc to capture invoice on creation
+
+____________________________________________________________________________________________________________________
+v2.6.1
+
+- Improve background task schedule
+- Dispatch order when cancelled
+- Dispatch order when is_valid or payment_validated change
+
+____________________________________________________________________________________________________________________
+v2.6
+
+- Fix issue when calling unknown method productAvailableQty
+- Sales order are now dispatched in order preparation screen when placed
+- Fix : reserve / release links in sales order preparation tabs raised a 404 error
+- Fix : dispatch order when reserved qty change
+
+____________________________________________________________________________________________________________________
+v2.5
+
+- Add adminhtml.xml
+- Add new that can be overriden to define custom sort for pending orders (fullstock, stockless, ignored)
+____________________________________________________________________________________________________________________
+v2.4
+
+- Multi stock management : create stock movment for shipment depending of preparation warehouse
+- Display preparation warehouse in order's grid
+- Menu has moved to ERP > Orderpreparation

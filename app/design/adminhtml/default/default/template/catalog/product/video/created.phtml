@@ -1,0 +1,26 @@
+<script type="text/javascript">
+function addVideo(closeAfter) {
+    if(window.opener!=null) {
+        window.opener.videoJsObject.doFilter()
+
+    }
+    if(closeAfter)
+    {
+        closeWindow();
+    }
+}
+
+function closeWindow()
+{
+    if (window.opener) {
+        window.opener.focus();
+    }
+    window.close();
+}
+
+addVideo(false);
+setTimeout(closeWindow, 3000);
+</script>
+<div class="a-center">
+<?php echo $this->getCloseButtonHtml() ?>
+</div>

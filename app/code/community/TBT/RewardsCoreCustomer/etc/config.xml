@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_RewardsCoreCustomer>
+            <version>1.0.0.0</version>
+        </TBT_RewardsCoreCustomer>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <rewardscustomer>
+                    <file>rewardscustomer.xml</file>
+                </rewardscustomer>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <rewardscustomer>
+                    <file>rewardscustomer.xml</file>
+                </rewardscustomer>
+            </updates>
+        </layout>
+        <menu>
+            <rewards module="rewards" translate="title">
+                <children>
+                    <customer module="rewards" translate="title">
+                        <action>rewardsadmin/manage_customer_points</action>
+                        <children>
+                            <customer module="rewards" translate="title">
+                                <title>Customer Point Balances</title>
+                                <sort_order>10</sort_order>
+                                <action>rewardsadmin/manage_customer_points</action>
+                            </customer>
+                        </children>
+                    </customer>
+                </children>
+            </rewards>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <rewards module="rewards" translate="title">
+                            <children>
+                                <customer module="rewards" translate="title">
+                                    <children>
+                                        <customer module="rewards" translate="title">
+                                            <title>Customer Point Balances</title>
+                                            <sort_order>10</sort_order>
+                                        </customer>
+                                    </children>
+                                </customer>
+                            </children>
+                        </rewards>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+    </adminhtml>
+
+    <global>
+        <index>
+            <indexer>
+                <rewards_transfer>
+                    <model>rewards/customer_indexer_points</model>
+                </rewards_transfer>
+            </indexer>
+        </index>
+        <events>
+
+            <!-- // BEGIN Indexer events // -->
+            <rewards_transfer_save_commit_after>
+                <observers>
+                    <tbt_rewards_model_transfer_save_after>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateUsablePointsBalance</method>
+                    </tbt_rewards_model_transfer_save_after>
+                </observers>
+            </rewards_transfer_save_commit_after>
+
+            <sales_convert_quote_to_order>
+                <observers>
+                    <tbt_rewards_model_customer_indexer_points_update_beforesave>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateIndexBeforeOrderSave</method>
+                    </tbt_rewards_model_customer_indexer_points_update_beforesave>
+                </observers>
+            </sales_convert_quote_to_order>
+
+            <rewards_order_points_transfer_after_create>
+                <observers>
+                    <tbt_rewards_model_customer_indexer_points_update_afterOrder>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateIndexAfterOrderPointsCreated</method>
+                    </tbt_rewards_model_customer_indexer_points_update_afterOrder>
+                </observers>
+            </rewards_order_points_transfer_after_create>
+
+            <rewards_order_points_transfer_after_approved>
+                <observers>
+                    <tbt_rewards_model_customer_indexer_points_update_afterPointsApproved>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateIndexAfterOrderPointsApproved</method>
+                    </tbt_rewards_model_customer_indexer_points_update_afterPointsApproved>
+                </observers>
+            </rewards_order_points_transfer_after_approved>
+
+            <rewards_sales_order_transfer_ajuster_done>
+                <observers>
+                    <tbt_rewards_model_customer_indexer_points_update_afterOrderCanceled>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateIndexAfterOrderCanceled</method>
+                    </tbt_rewards_model_customer_indexer_points_update_afterOrderCanceled>
+                </observers>
+            </rewards_sales_order_transfer_ajuster_done>
+
+            <rewards_sales_order_payment_automatic_cancel_done>
+                <observers>
+                    <tbt_rewards_model_customer_indexer_points_update_afterPaymentCanceled>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateIndexAfterPaymentCanceled</method>
+                    </tbt_rewards_model_customer_indexer_points_update_afterPaymentCanceled>
+                </observers>
+            </rewards_sales_order_payment_automatic_cancel_done>
+
+            <rewards_new_customer_create>
+                <observers>
+                    <tbt_rewards_model_customer_indexer_observer_newcustomer>
+                        <type>singleton</type>
+                        <class>rewards/customer_indexer_observer</class>
+                        <method>updateIndexOnNewCustomer</method>
+                    </tbt_rewards_model_customer_indexer_observer_newcustomer>
+                </observers>
+            </rewards_new_customer_create>
+            <!-- // END Indexer events // -->
+
+            <!-- // BEGIN Add "My Points and Rewards" link in Customer Dashboard -->
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <tbt_rewards_model_customer_observer>
+                        <type>singleton</type>
+                        <class>rewardscustomer/customer_observer</class>
+                        <method>addCustomerDashboardLink</method>
+                    </tbt_rewards_model_customer_observer>
+                </observers>
+            </core_block_abstract_to_html_before>
+            <!-- // END Add "My Points and Rewards" link in Customer Dashboard -->
+
+        </events>
+        <models>
+            <rewardscustomer>
+                <class>TBT_RewardsCoreCustomer_Model</class>
+            </rewardscustomer>
+        </models>
+        <blocks>
+            <rewardscustomer>
+                <class>TBT_RewardsCoreCustomer_Block</class>
+            </rewardscustomer>
+        </blocks>
+        <helpers>
+            <rewardscustomer>
+                <class>TBT_RewardsCoreCustomer_Helper</class>
+            </rewardscustomer>
+        </helpers>
+    </global>
+
+</config>

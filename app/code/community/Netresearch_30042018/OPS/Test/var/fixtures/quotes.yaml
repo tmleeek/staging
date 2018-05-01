@@ -1,0 +1,24 @@
+tables:
+  sales/quote:
+   - entity_id:           1
+     increment_id:        100000001
+     base_grand_total:    119.00
+     grand_total:         119.00
+     currency:            'EUR'
+     customer_gender:     1
+     shipping_method:     'flatrate_flatrate'
+
+   - entity_id:           2
+     increment_id:        100000002
+     base_grand_total:    119.00
+     grand_total:         200.00
+     currency:            '$'
+     customer_gender:     1
+     shipping_method:     'flatrate_flatrate'
+
+  sales/quote_payment:
+   - id:                      1
+     entity_id:               1
+     parent_id:               1
+     quote_id:                1
+     method:                  'ops_cc'

@@ -1,0 +1,94 @@
+<?php
+/**
+ * @copyright	Copyright (c) 2013 MageBackup (http://www.magebackup.com). All rights reserved.
+ * @license		http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+?>
+<script>
+	MageBackup.$(document).ready(function() {
+		MageBackup.initTimer();
+		MageBackup.ajaxBackup('<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/magebackup_backup/ajax'); ?>', '<?php echo Mage::helper('magebackup')->__('Ajax request error'); ?>');
+	});
+</script>
+
+<div id="backup-complete-container">
+	<div class="content-header">
+		<h3 class="icon-head">
+			<?php echo $this->__('Backup Completed Successfully'); ?>
+		</h3>
+	</div>
+	<div class="backup-complete-info">
+		<h3>
+			<?php echo $this->__('Backup Completed Successfully'); ?>
+		</h3>
+		<div>
+			<p>
+				<?php echo $this->__('Congratulations! The backup process has completed successfully.<br />You can now navigate to another page.'); ?>
+			</p>
+			<button onclick="setLocation('<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/magebackup_backup'); ?>');">
+				<span><?php echo $this->__('Manage Backups'); ?></span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div id="backup-error-container">
+	<div class="content-header">
+		<h3 class="icon-head">
+			<?php echo $this->__('Backup Failed'); ?>
+		</h3>
+	</div>
+	<div class="backup-error-info">
+		<h3>
+			<?php echo $this->__('Backup Failed'); ?>
+		</h3>
+		<div>
+			<p>
+				<?php echo $this->__('The backup operation has been halted because an error was detected.<br />The last error message was:'); ?>
+			</p>
+			<p id="backup-error-message"></p>
+			<button onclick="setLocation('<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/magebackup_backup'); ?>');">
+				<span><?php echo $this->__('Manage Backups'); ?></span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div id="backup-progress-container">
+	<div id="message">
+		<ul class="messages">
+			<li class="notice-msg">
+				<ul>
+					<li>
+						<span><?php echo $this->__('Please do not browse to another page unless you see a completion or error message.'); ?></span>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="content-header">
+		<h3 class="icon-head">
+			<?php echo $this->__('Backup Progress'); ?>
+		</h3>
+	</div>
+
+	<?php $first	= true; ?>
+	<div id="backup-steps">
+		<?php foreach ($this->getSteps() as $step => $label) : ?>
+			<div class="backup-step<?php echo $first ? ' backup-step-progress' : ''; ?>" id="backup-step-<?php echo $step; ?>">
+				<?php echo $label; ?>
+			</div>
+			<?php $first	= false; ?>
+		<?php endforeach; ?>
+	</div>
+
+	<div id="backup-status"><?php echo $this->__('Start backing up'); ?></div>
+
+	<div class="backup-progress">
+		<div id="backup-progress-bar"></div>
+	</div>
+
+	<div><?php echo $this->__('Last server response <span id="backup-last-response">0</span>s ago'); ?></div>
+	<div><?php echo $this->__('Backing up time: <span id="backup-time">0</span>s'); ?></div>
+</div>

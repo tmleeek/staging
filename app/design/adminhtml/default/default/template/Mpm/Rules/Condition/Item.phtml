@@ -1,0 +1,20 @@
+<div id="<?php echo $this->getConditionId(); ?>">
+<table style="width:100%">
+    <tbody>
+        <tr>
+            <td style="width:15%"><?php echo $this->getFieldName(); ?></td>
+            <td style="width:45%"><?php echo $this->renderField(); ?></td>
+            <td style="text-align:right;vertical-align:middle;">
+                <button class="scalable delete" type="button" onclick='Condition.remove("<?php echo $this->getConditionId(); ?>");'>
+                    <span>
+                        <span>
+                            <span>Remove</span>
+                        </span>
+                    </span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+</div>

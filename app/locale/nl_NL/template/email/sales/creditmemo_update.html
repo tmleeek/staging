@@ -1,0 +1,34 @@
+<!--@subject {{var order.getStoreGroupName()}}: Creditnota # {{var creditmemo.increment_id}} update @-->
+<style type="text/css">body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }</style>
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+        <tr>
+            <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var order.getStoreGroupName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+        </tr>
+        </table>
+
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+        <tr>
+            <td valign="top">
+                <p>
+                    <strong>Beste {{var order.getCustomerName()}}</strong>,<br/>
+<br/>
+                    <strong>{{var order.getStatusLabel()}}</strong>.
+                </p>
+                <p>U kunt de status van uw order controleren door <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">in te loggen op uw account</a>.</p>
+              <p>{{var comment}}</p>
+                <p>Indien u vragen heeft, neem dan gerust contact op via <a href="mailto:contact@vul_uw_email_in.com" style="color:#1E7EC8;">contact@vul_uw_email_in.com</a> of telefonisch <span class="nobr">0031 000 000000.</span></p>
+              		<p>Met vriendelijke groet,</p>
+                    <p><strong>{{var order.getStoreGroupName()}}</strong></p>
+            </td>
+        </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,25 @@
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4><?php echo Mage::helper('email')->__('Engagement & Activity') ?></h4></div>
+    <fieldset>
+        <div class="grid np">
+        <table class="data-table" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><?php echo Mage::helper('email')->__('Total Sends') ?></td>
+                <td><?php echo intval($this->getTotalSends()) ?></td>
+            </tr>
+            <tr>
+                <td><?php echo Mage::helper('email')->__('Glanced or Unread Percentage') ?></td>
+                <td><?php echo 100 - $this->getReadRate() ?>%</td>
+            </tr>
+            <tr>
+                <td><?php echo Mage::helper('email')->__('Read Percentage') ?></td>
+                <td><?php echo $this->getReadRate() ?>%</td>
+            </tr>
+            <tr>
+                <td><?php echo Mage::helper('email')->__('Click Percentage') ?></td>
+                <td><?php echo $this->getClickRate() ?>%</td>
+            </tr>
+        </table>
+        </div>
+    </fieldset>
+</div>

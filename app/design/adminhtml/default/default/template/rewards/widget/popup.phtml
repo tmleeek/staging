@@ -1,0 +1,53 @@
+
+<script type="text/javascript">
+//<![CDATA[
+    
+    var rewardsOrderCancelPopupClosed = true;
+    function openRewardsOrderCancelPopup() {
+        var height = $('html-body').getHeight();
+        $('message-popup-window-mask').setStyle({'height':height+'px'});
+        toggleSelectsUnderBlock($('message-popup-window-mask'), false);
+        Element.show('message-popup-window-mask');
+        $('message-popup-window').addClassName('show');
+        rewardsOrderCancelPopupClosed = false;
+    }
+    
+    function closeRewardsOrderCancelPopup() {
+        toggleSelectsUnderBlock($('message-popup-window-mask'), true);
+        Element.hide('message-popup-window-mask');
+        $('message-popup-window').removeClassName('show');
+        rewardsOrderCancelPopupClosed = true;
+    }
+    
+    Event.observe(window, 'keyup', function(evt) {
+        if(rewardsOrderCancelPopupClosed) return;
+        var code;
+        if (evt.keyCode) code = evt.keyCode;
+        else if (evt.which) code = evt.which;
+        if (code == Event.KEY_ESC) {
+            closeRewardsOrderCancelPopup();
+        }
+    });
+//]]>
+</script>
+<?php echo $this->getPreJavaScript() ?>
+
+<div id="message-popup-window-mask" style="display: none;"></div>
+<div id="message-popup-window" class="message-popup">
+    <div class="message-popup-head">
+        <h2><?php echo $this->getTitle() ?></h2>
+    </div>
+    <div class="message-popup-content">
+        <div class="message">
+            <span class="message-icon message-notice" style="background-image:url(<?php echo $this->getIconUri() ?>);"><?php echo $this->getIconCaption() ?></span>
+            <p class="message-text" style="min-height: 0px;">
+                <?php echo $this->getPopupContent() ?>
+            </p>
+        </div>
+        <p style="text-align: right; margin-top: 10px; white-space: nowrap;">
+            <?php echo $this->getButtonBar() ?>
+        </p>
+    </div>
+</div>
+
+<?php echo $this->getPostJavaScript() ?>

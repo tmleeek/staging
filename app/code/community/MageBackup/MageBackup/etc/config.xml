@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @copyright	Copyright (c) 2016 MageBackup (http://www.magebackup.com). All rights reserved.
+ * @license		http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+
+<config>
+	<modules>
+		<MageBackup_MageBackup>
+			<version>2.2.4</version>
+		</MageBackup_MageBackup>
+	</modules>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<MageBackup_MageBackup after="Mage_Adminhtml">MageBackup_MageBackup_Adminhtml</MageBackup_MageBackup>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<stores>
+		<admin>
+			<design>
+				<theme>
+					<default>magebackup</default>
+				</theme>
+			</design>
+		</admin>
+	</stores>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<magebackup>
+					<file>magebackup.xml</file>
+				</magebackup>
+			</updates>
+		</layout>
+
+		<translate>
+			<modules>
+				<MageBackup_MageBackup>
+					<files>
+						<default>MageBackup_MageBackup.csv</default>
+					</files>
+				</MageBackup_MageBackup>
+			</modules>
+		</translate>
+	</adminhtml>
+
+	<global>
+		<models>
+			<magebackup>
+				<class>MageBackup_MageBackup_Model</class>
+				<resourceModel>magebackup_resource</resourceModel>
+			</magebackup>
+			<magebackup_resource>
+				<class>MageBackup_MageBackup_Model_Resource</class>
+				<entities>
+					<backup>
+						<table>magebackup_backups</table>
+					</backup>
+					<profile>
+						<table>magebackup_profiles</table>
+					</profile>
+					<data>
+						<table>magebackup_profile_data</table>
+					</data>
+					<db></db>
+				</entities>
+			</magebackup_resource>
+		</models>
+
+		<resources>
+			<magebackup_setup>
+				<setup>
+					<module>MageBackup_MageBackup</module>
+				</setup>
+			</magebackup_setup>
+		</resources>
+
+		<blocks>
+			<magebackup>
+				<class>MageBackup_MageBackup_Block</class>
+			</magebackup>
+		</blocks>
+
+		<helpers>
+			<magebackup>
+				<class>MageBackup_MageBackup_Helper</class>
+			</magebackup>
+		</helpers>
+
+		<events>
+			<default>
+				<observers>
+					<build_cron>
+						<type>model</type>
+						<model>magebackup/observer</model>
+						<method>buildCron</method>
+					</build_cron>
+				</observers>
+			</default>
+		</events>
+	</global>
+</config>

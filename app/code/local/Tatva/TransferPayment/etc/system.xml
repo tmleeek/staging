@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<sections>
+		<payment>
+			<groups>
+				<transferpayment translate="label">
+					<label>Transfer payment</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<order_status translate="label">
+							<label>New order status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status_new</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</order_status>
+						<sort_order translate="label">
+							<label>Sort order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<allowspecific translate="label">
+							<label>Payment from applicable countries</label>
+							<frontend_type>allowspecific</frontend_type>
+							<sort_order>50</sort_order>
+							<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+							<label>Payment from Specific countries</label>
+							<frontend_type>multiselect</frontend_type>
+							<sort_order>51</sort_order>
+							<source_model>adminhtml/system_config_source_country</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</specificcountry>
+						<min_order_total translate="label">
+							<label>Minimum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>98</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</min_order_total>
+						<max_order_total translate="label">
+							<label>Maximum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>99</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</max_order_total>
+						<cmsblock translate="label">
+							<label>CMS block</label>
+							<frontend_type>select</frontend_type>
+							<source_model>transferpayment/system_config_source_cmsblock</source_model>
+							<sort_order>1000</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cmsblock>
+						<rib_file translate="label">
+							<label>Rib file</label>
+							<frontend_type>file</frontend_type>
+							<backend_model>transferpayment/system_config_backend_file</backend_model>
+							<upload_dir config="system/filesystem/media" scope_info="1">rib</upload_dir>
+							<base_url type="media" scope_info="1">rib</base_url>
+							<sort_order>1100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</rib_file>
+						<model>
+						</model>
+					</fields>
+				</transferpayment>
+
+                   <rueducommerce translate="label">
+					<label>RueDuCommerce</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                                                <display translate="label">
+							<label>Dispaly in Frontend</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display>
+						<order_status translate="label">
+							<label>New order status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status_new</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</order_status>
+						<sort_order translate="label">
+							<label>Sort order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<allowspecific translate="label">
+							<label>Payment from applicable countries</label>
+							<frontend_type>allowspecific</frontend_type>
+							<sort_order>50</sort_order>
+							<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+							<label>Payment from Specific countries</label>
+							<frontend_type>multiselect</frontend_type>
+							<sort_order>51</sort_order>
+							<source_model>adminhtml/system_config_source_country</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</specificcountry>
+						<min_order_total translate="label">
+							<label>Minimum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>98</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</min_order_total>
+						<max_order_total translate="label">
+							<label>Maximum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>99</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</max_order_total>
+					</fields>
+				</rueducommerce>
+                                
+                <pixmania translate="label">
+					<label>PIXmania</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                                                 <display translate="label">
+							<label>Dispaly in Frontend</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display>
+						<order_status translate="label">
+							<label>New order status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status_new</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</order_status>
+						<sort_order translate="label">
+							<label>Sort order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<allowspecific translate="label">
+							<label>Payment from applicable countries</label>
+							<frontend_type>allowspecific</frontend_type>
+							<sort_order>50</sort_order>
+							<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+							<label>Payment from Specific countries</label>
+							<frontend_type>multiselect</frontend_type>
+							<sort_order>51</sort_order>
+							<source_model>adminhtml/system_config_source_country</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</specificcountry>
+						<min_order_total translate="label">
+							<label>Minimum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>98</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</min_order_total>
+						<max_order_total translate="label">
+							<label>Maximum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>99</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</max_order_total>
+						
+					</fields>
+				</pixmania>
+
+                <mandatadministratif translate="label">
+					<label>Mandat Administratif</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                                                 <display translate="label">
+							<label>Dispaly in Frontend</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display>
+						<order_status translate="label">
+							<label>New order status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status_new</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</order_status>
+						<sort_order translate="label">
+							<label>Sort order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<allowspecific translate="label">
+							<label>Payment from applicable countries</label>
+							<frontend_type>allowspecific</frontend_type>
+							<sort_order>50</sort_order>
+							<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+							<label>Payment from Specific countries</label>
+							<frontend_type>multiselect</frontend_type>
+							<sort_order>51</sort_order>
+							<source_model>adminhtml/system_config_source_country</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</specificcountry>
+						<min_order_total translate="label">
+							<label>Minimum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>98</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</min_order_total>
+						<max_order_total translate="label">
+							<label>Maximum Order Total</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>99</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</max_order_total>
+                        	<cmsblock translate="label">
+							<label>CMS block</label>
+							<frontend_type>select</frontend_type>
+							<source_model>transferpayment/system_config_source_cmsblock</source_model>
+							<sort_order>1000</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cmsblock>
+						
+					</fields>
+				</mandatadministratif>
+			</groups>
+		</payment>
+	</sections>
+</config>

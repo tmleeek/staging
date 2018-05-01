@@ -1,0 +1,835 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WDCA - Sweet Tooth
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the WDCA SWEET TOOTH POINTS AND REWARDS
+ * License, which extends the Open Software License (OSL 3.0).
+ * The Sweet Tooth License is available at this URL:
+ *      https://www.sweettoothrewards.com/terms-of-service
+ * The Open Software License is available at this URL:
+ *      http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * By adding to, editing, or in any way modifying this code, WDCA is
+ * not held liable for any inconsistencies or abnormalities in the
+ * behaviour of this code.
+ * By adding to, editing, or in any way modifying this code, the Licensee
+ * terminates any agreement of support offered by WDCA, outlined in the
+ * provided Sweet Tooth License.
+ * Upon discovery of modified code in the process of support, the Licensee
+ * is still held accountable for any and all billable time WDCA spent
+ * during the support process.
+ * WDCA does not guarantee compatibility with any other framework extension.
+ * WDCA is not responsbile for any inconsistencies or abnormalities in the
+ * behaviour of this code if caused by other framework extension.
+ * If you did not receive a copy of the license, please send an email to
+ * support@sweettoothrewards.com or call 1.855.699.9322, so we can send you a copy
+ * immediately.
+ *
+ * @category   [TBT]
+ * @package    [TBT_Rewards]
+ * @copyright  Copyright (c) 2014 Sweet Tooth Inc. (http://www.sweettoothrewards.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+
+/**
+ * Helper Config
+ *
+ * @category   TBT
+ * @package    TBT_Rewards
+ * * @author     Sweet Tooth Inc. <support@sweettoothrewards.com>
+ */
+-->
+
+<config>
+    <tabs>
+        <tbtall translate="label" module="rewards">
+            <label>Sweet Tooth</label>
+            <sort_order>100</sort_order>
+        </tbtall>
+    </tabs>
+   <sections>
+        <rewards translate="label" module="rewards">
+            <label><![CDATA[<span class="stadmin-config_menu">Sweet Tooth Rewards</span>]]></label>
+            <tab>tbtall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>140</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <platform translate="label">
+                    <label>Sweet Tooth Account Details</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <login_message>
+                            <frontend_model>rewards/system_config_platform_messageLogin</frontend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </login_message>
+                        <username translate="label">
+                            <label>Username</label>
+                            <frontend_model>rewards/system_config_platform_signup</frontend_model>
+                            <backend_model>rewards/system_config_backend_platformUsername</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </username>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_model>rewards/system_config_platform_signup</frontend_model>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password>
+                        <forgot_password>
+                            <frontend_model>rewards/system_config_platform_forgotPassword</frontend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </forgot_password>
+                        <dev_mode translate="label comment">
+                            <label>Developer Mode</label>
+                            <comment><![CDATA[If Yes, we will connect to your Sweet Tooth <b>staging</b> account for testing and development.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>rewards/system_config_platform_devMode</frontend_model>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dev_mode>
+                        <connect_button>
+                            <frontend_type>export</frontend_type>
+                            <frontend_model>rewards/system_config_platform_connect</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </connect_button>
+
+                        <display_details>
+                            <frontend_model>rewards/system_config_platform_details</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_details>
+                        <disconnect_button>
+                            <frontend_type>export</frontend_type>
+                            <frontend_model>rewards/system_config_platform_disconnect</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </disconnect_button>
+
+                        <devmode_notice>
+                            <frontend_model>rewards/system_html_devMode</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </devmode_notice>
+
+                        <notice>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>rewards/system_html</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notice>
+                    </fields>
+                </platform>
+
+                <general translate="label">
+                    <label>General Settings</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <shopping_cart_rule_earn_after_discount translate="label comment">
+                            <label>Give Shopping Cart Distribution Points Based on Subtotal</label>
+                            <comment><![CDATA[If enabled, customers will only be rewarded shopping cart distribution rule points based on the subtotal after any applied redemptions or discounts.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_beforeAfterDiscounts</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </shopping_cart_rule_earn_after_discount>
+                        <rewards_custom_email translate="label comment">
+                            <label>Sender Email</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                       </rewards_custom_email>
+                    </fields>
+                </general>
+                <display translate="label">
+                    <label>Display Settings</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <showCartDistributionsWhenZero translate="label comment">
+                            <label>Show Zero Cart Earnings</label>
+                            <comment>Show cart distributions total row when no distributions are present.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showCartDistributionsWhenZero>
+                        <noPointsCaption translate="label comment">
+                            <label>Zero Points Caption</label>
+                            <comment>What to show when the customer has 0 (zero) points.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </noPointsCaption>
+                        <showWarningTextMessage translate="label comment">
+                            <label>Show Warning Text Message</label>
+                            <comment>Show warning text mesage on cart and order review page for Guests, if there are rules applying for Not Logged in Customer Group.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showWarningTextMessage>
+                        <showEarningGraphic translate="label comment">
+                            <label>Show the Earning Graphic in the Catalog</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showEarningGraphic>
+                    </fields>
+                </display>
+                <pointSummaryEmails translate="label">
+                    <label>Points Summary Emails</label>
+                    <sort_order>33</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                         <allow_points_summary_email translate="label comment">
+                            <label>Send Points Summary Email</label>
+                            <comment><![CDATA[If enabled, a monthly points summary email will be sent to customers. Customers can set their preference whether to receive the email in the their <strong>My Points & Rewards</strong> section.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allow_points_summary_email>
+                        <point_summary_email_template translate="label comment">
+                            <label>Customer Points Summary Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allow_points_summary_email>1</allow_points_summary_email></depends>
+                        </point_summary_email_template>
+                        <send_email_with_no_points translate="label comment">
+                            <label>Send Email To Users With No Points</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allow_points_summary_email>1</allow_points_summary_email></depends>
+                        </send_email_with_no_points>
+                        <customer_group translate="label">
+                            <label>Send Email To The Following Customer Groups</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>rewards/system_config_source_customer_group_multiselect</source_model>
+                            <backend_model>rewards/system_config_pointSummaryEmails_customerGroup</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><allow_points_summary_email>1</allow_points_summary_email></depends>
+                        </customer_group>
+                    </fields>
+                </pointSummaryEmails>
+                <birthday translate="label">
+                    <label>Birthday Emails</label>
+                    <sort_order>34</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <email_template translate="label comment">
+                            <label>Birthday Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </email_template>
+                     </fields>
+                </birthday>
+                <autointegration translate="label">
+                    <label>Integrated Content</label>
+                    <sort_order>35</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[
+                        <b>Please Read:</b> If 'yes' is selected, these options will <i>attempt</i> to integrate into your store view theme.
+                        If this does not work for your theme, or if you want to put the integrated
+                        content somewhere other than the default location,
+                        then set the option to 'no' and follow the manual integration
+                        instructions provided. <br />
+                        <b>There are more integrated content spots than shown here.</b>
+                        <a href="https://support.sweettoothrewards.com/entries/21063317-integration-guide" target="Integration_Guide">
+                        Please follow the complete integration guide to see all integrated content available.</a>
+                    ]]></comment>
+                    <fields>
+                        <product_listing translate="label comment">
+                            <label>Catalog Product Listing</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21135282-display-points-in-the-catalog-product-listing-pages" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>28</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </product_listing>
+
+                        <product_view_page_product_points translate="label comment">
+                            <label>Product Earned/Spent Section on Product Info Pages</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21224811-manually-integrating-product-view-page-earned-and-redeemable-points-block" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>20</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </product_view_page_product_points>
+
+                        <product_view_page_review_points translate="label comment">
+                            <label>Points Earned for Writing a Review in the Product Info Pages</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21244563-display-points-in-the-product-info-page" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>30</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </product_view_page_review_points>
+
+                        <form_review_points translate="label comment">
+                            <label>Points Earned for Writing a Review in the Review Listing Pages</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21508927-manually-integrating-product-rating-and-review-points-blocks" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>40</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </form_review_points>
+
+                        <product_view_page_tag_points translate="label comment">
+                            <label>Points Earned for Tagging a Product in the Product Info Pages</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21244563-display-points-in-the-product-info-page" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>50</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </product_view_page_tag_points>
+
+                        <shopping_cart_item_points translate="label comment">
+                            <label>Points Earned/Spent Listing on Each Item Row in Shopping Cart</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21651447-show-catalog-points-earned-spent-in-shopping-cart" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>55</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shopping_cart_item_points>
+
+                        <predict_birthday_points translate="label comment">
+                            <label>Predict Points Earned on Birthday Occasion</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21646372-predict-points-earned-on-birthday-occasion" target="window">
+                                Click here
+                                </a> for manual integration instructions
+                            ]]></comment>
+                            <sort_order>80</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </predict_birthday_points>
+
+                    </fields>
+                </autointegration>
+                <InitialTransferStatus translate="label">
+                    <label>Initial Transfer Statuses</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<strong>Note: You can set points to be automatically approved in the Order Fulfillment settings below.</strong>]]></comment>
+                    <fields>
+                        <AfterOrder translate="label">
+                            <label>After Order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterOrder>
+                        <AfterReview translate="label">
+                            <label>After Review</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterReview>
+                        <AfterRating translate="label">
+                            <label>After Rating</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterRating>
+                        <AfterPoll translate="label">
+                            <label>After Poll</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterPoll>
+                        <AfterSendFriend translate="label">
+                            <label>After Send Friend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterSendFriend>
+                        <AfterTag translate="label">
+                            <label>After Tag</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterTag>
+                        <AfterNewsletter translate="label">
+                            <label>After Newsletter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterNewsletter>
+                        <AfterSignup translate="label">
+                            <label>After Sign-Up</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterSignup>
+                        <AfterBirthday translate="label">
+                            <label>After Birthday</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterBirthday>
+                    </fields>
+                </InitialTransferStatus>
+                <orders translate="label">
+                    <label>Order Fulfillment</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <shouldRemovePointsOnCancelledOrder translate="label comment">
+                            <label>Automatically Remove Points on Failed Checkouts and Mass Order Cancellations</label>
+                            <comment><![CDATA[Automatically revoke/cancell point transfers associated with an order, when it's cancelled because of a failed payment during checkout process or the admin makes a mass admin order cancellation. <br />
+                                <a href="https://support.sweettoothrewards.com/entries/21067993-what-happens-when-i-cancel-an-order" target="window">
+                                    Click here
+                                </a> for more information on this.]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shouldRemovePointsOnCancelledOrder>
+                        <shouldApprovePointsOnInvoice translate="label comment">
+                            <label>Automatically Approve Points on Invoice</label>
+                            <comment>Automatically approve all related point transfers when the customer pays for the order.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shouldApprovePointsOnInvoice>
+                        <shouldApprovePointsOnShipment translate="label comment">
+                            <label>Automatically Approve Points on Shipment</label>
+                            <comment>Automatically approve all related point transfers when the order has been shipped.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shouldApprovePointsOnShipment>
+                    </fields>
+                </orders>
+                <transferComments translate="label">
+                    <label>Transfer Comments</label>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<strong>
+                    Note: These comments are what appears in the points transfer earning/spending history for customers and what appears in the points transfer history and management screens for the administrator. <br />
+                    Note: The order of each "%s" wildcard string matters.
+                    </strong>]]></comment>
+                    <fields>
+                        <orderEarned translate="label comment">
+                            <label>Points Earned from Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </orderEarned>
+                        <reviewOrRatingEarned translate="label comment">
+                            <label>Points Earned for Writing a Review or Rating a Product</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviewOrRatingEarned>
+                        <pollEarned translate="label comment">
+                            <label>Points Earned for Participating in a Poll</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pollEarned>
+                        <tellAFriendEarned translate="label comment">
+                            <label>Points Earned for Telling a Friend About a Product</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tellAFriendEarned>
+                        <tagEarned translate="label comment">
+                            <label>Points Earned for Tagging a Product</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tagEarned>
+                        <newsletterEarned translate="label comment">
+                            <label>Points Earned for Signing Up to the Newsletter</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </newsletterEarned>
+                        <signupEarned translate="label comment">
+                            <label>Points Earned for Signing Up to the Site</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </signupEarned>
+                        <defaultMassTransferComment translate="label comment">
+                            <label>Default Message for Mass Transfers</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </defaultMassTransferComment>
+                    </fields>
+                </transferComments>
+                <notifications translate="label">
+                    <label><![CDATA[Admin Notifications]]></label>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <showUsageNotification translate="label comment">
+                            <label>Account Usage Notifications</label>
+                            <comment><![CDATA[If enabled, Sweet Tooth will notify you on your Magento dashboard as you approach your usage limit.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </showUsageNotification>
+                    </fields>
+                </notifications>
+                <platform_sync translate="label">
+                    <label><![CDATA[SweetToothApp.com Reports Data Sync - BETA]]></label>
+                    <comment><![CDATA[<i>By enabling the data sync, SweetToothApp.com will gain access to your order data over the Magento SOAP API to provide you with information about your loyalty campaign.<br /> In order to revoke API access, go into System > Web Services > Roles > Role Resources, find the "Sweet Tooth" role, and change the Resource Access.</i>]]></comment>
+                    <sort_order>330</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Data Sync</label>
+                            <comment><![CDATA[If enabled, Sweet Tooth will sync your order data with SweetToothApp.com.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <backend_model>rewards/system_config_platform_sync_enable</backend_model>
+                            <frontend_model>rewards/system_config_platform_sync_enable</frontend_model>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable>
+                        <status translate="label">
+                            <label><![CDATA[Status]]></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>rewards/system_config_platform_sync_status</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </status>
+                    </fields>
+                </platform_sync>
+                <migration translate="label">
+                    <label>Migration Utilities</label>
+                    <sort_order>350</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment><![CDATA[<i>Please Note: You should only run these functions if you really know what you're doing or you are advised by a Sweet Tooth representative.</i>]]></comment>
+                    <fields>
+                        <exportcampaign translate="label comment">
+                            <label>Export Campaign</label>
+                            <comment>This will export point currencies, rules and Sweet Tooth configuration.</comment>
+                            <frontend_type>export</frontend_type>
+                            <frontend_model>rewards/system_config_exportall</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </exportcampaign>
+                        <importcampaign translate="label comment">
+                            <label>Import Campaign</label>
+                            <comment>WARNING: THIS WILL ALSO DELETE ALL YOUR SWEET TOOTH RULES! - Select a .stcampaign file and click 'Save Config' to import.</comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>rewards/system_config_backend_import</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </importcampaign>
+                        <deleteall translate="label comment">
+                            <label>Delete Campaign</label>
+                            <comment>Deletes all Sweet Tooth rules</comment>
+                            <frontend_type>export</frontend_type>
+                            <frontend_model>rewards/system_config_deleteall</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </deleteall>
+                        <importpoints translate="label comment">
+                            <label>Import Points</label>
+                            <comment><![CDATA[Select a .csv file and click 'Save Config' to import. <br/> See guide on importing points from a CSV file <a href="https://support.sweettoothrewards.com/entries/21128548-import-points-from-csv-file" target="_blank" title="Import points from CSV file">here</a>]]></comment>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>rewards/system_config_backend_import</backend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </importpoints>
+                    </fields>
+                </migration>
+                <help translate="label">
+                    <label><![CDATA[Diagnostics & Support Tools]]></label>
+                    <sort_order>400</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment><![CDATA[<i>Please Note: You should only run these functions if you really know what you're doing or you are advised by a Sweet Tooth representative.</i>]]></comment>
+                    <fields>
+                        <reinstalldb translate="label comment">
+                            <label>Re-run Database Scripts</label>
+                            <comment><![CDATA[When clicked, this will attempt to remove Magento's memory of the Sweet Tooth database components ever being installed. Magento will then attempt to re-install the database from scratch upon next access.  This may help resolve issues with an abnormal installation or inconsistent database migration.]]></comment>
+                            <frontend_type>export</frontend_type>
+                            <frontend_model>rewards/system_config_reinstalldb</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </reinstalldb>
+                        <rundiagnostics translate="label comment">
+                            <label><![CDATA[Run 'Test Sweet' Diagnostics]]></label>
+                            <comment><![CDATA[When clicked, this will run a diagnostics utility that will tell you information about your store and check for any common problems that may occur on your store. When contacting our software support team, you should have this report handy.]]></comment>
+                            <frontend_type>export</frontend_type>
+                            <frontend_model>rewards/system_config_rundiagnostics</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </rundiagnostics>
+                        <showDashboardStPanel translate="label comment">
+                            <label>Display Sweet Tooth Panel In The Dashboard</label>
+                            <comment><![CDATA[If No, Sweet Tooth will hide it's display block from the Magento administrative dashboard]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </showDashboardStPanel>
+                    </fields>
+                </help>
+                <developer translate="label">
+                    <label><![CDATA[Developer]]></label>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <apiurl translate="label">
+                            <label><![CDATA[API Base URI]]></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>rewards/system_config_developer_apiUrl</frontend_model>
+                            <backend_model>rewards/system_config_developer_apiUrl</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </apiurl>
+                        <dev_mode translate="label">
+                            <label><![CDATA[Developer Mode]]></label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>rewards/system_config_developer_devMode</frontend_model>
+                            <backend_model>rewards/system_config_developer_devMode</backend_model>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dev_mode>
+                        <api_key translate="label">
+                            <label><![CDATA[API Key]]></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>rewards/system_config_developer_apiKey</frontend_model>
+                            <backend_model>rewards/system_config_developer_apiKey</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </api_key>
+                        <secret_key translate="label">
+                            <label><![CDATA[Secret Key]]></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>rewards/system_config_developer_secretKey</frontend_model>
+                            <backend_model>rewards/system_config_developer_secretKey</backend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </secret_key>
+                        <debug_mode translate="label">
+                            <label><![CDATA[Debug Logging Mode]]></label>
+                            <comment><![CDATA[If Enabled, we will log a lot of data, such as all API calls sent up to platform.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </debug_mode>
+                    </fields>
+                </developer>
+            </groups>
+        </rewards>
+        <advanced>
+            <groups>
+                <modules_disable_output translate="label">
+                    <comment><![CDATA[<strong>Note: Disabling output will not turn off module functionality and it will only turn off the _DISPLAY_ of the module(s).</strong>]]></comment>
+                </modules_disable_output>
+            </groups>
+        </advanced>
+    </sections>
+</config>

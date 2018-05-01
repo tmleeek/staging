@@ -1,0 +1,16 @@
+
+<?php if ($this->displayUsage()): ?>
+    <div id="rewards_dashboard_usage">
+        <div class="stpUsage">
+            <span class="<?php if ($this->getPercentComplete() > 100): ?>usageExceeded<?php endif; ?>" style="width:<?php if ($this->getPercentComplete() >= 100): ?>100%<?php else: ?><?php echo (($this->getPercentComplete())) ?>%<?php endif; ?>;"><?php echo $this->getPercentComplete(); ?>%
+            </span>
+        </div>
+        <p class="stpStat">You've made <strong><?php echo $this->getTransactionsUsed(); ?></strong> transactions during your current billing period. <br />
+            <?php if ($this->displayBillingPeriod()): ?>
+                Billing Period: Starts <strong><?php echo $this->getBillingPeriodStart(); ?></strong> and ends <strong><?php echo $this->getBillingPeriodEnd(); ?></strong> <br />
+            <?php endif; ?>
+        </p>
+    </div>
+<?php endif; ?>
+
+<?php echo $this->getNotificationsHtml(); ?>

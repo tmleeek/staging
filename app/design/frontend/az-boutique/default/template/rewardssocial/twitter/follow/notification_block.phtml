@@ -1,0 +1,14 @@
+<?php
+$predictedPoints = $this->getPredictedFollowPointsString();
+?>
+<div class="rewardssocial-twitter-follow rewardssocial-twitter-follow-notification<?php echo $this->getClass(); ?>">
+    <?php if (!$this->getHasFollowed() && $this->getHasPredictedFollowPoints()): ?>
+        <?php if ($this->getIsCustomerLoggedIn()): ?>
+            <?php echo $this->__("Earn <B>%s</B> for following us on Twitter.", $predictedPoints ); ?>
+        <?php else: ?>
+            <?php echo $this->getTextWithLoginLinks( $this->__("[login_link]Log-in or create an account[/login_link] to earn <B>%s</B> for following us on Twitter.", $predictedPoints) ); ?>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>
+<div id="rewardssocial-twitter-follow-verification-spin" style="display:none;"></div>
+<div id="rewardssocial-twitter-follow-verification"></div>

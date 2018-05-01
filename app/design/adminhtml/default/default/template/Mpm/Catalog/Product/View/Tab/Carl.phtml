@@ -1,0 +1,65 @@
+<script>
+    var mpmProductId = <?php echo $this->getProduct()->getId(); ?>;
+</script>
+
+<?php if ($this->_error): ?>
+    <center><font color="red">An error happened : <?php echo $this->_error; ?></font></center>
+<?php endif; ?>
+
+<?php if (Mage::helper('Mpm/Carl')->checkCredentials()): ?>
+
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Summary'); ?></h4>
+        </div>
+        <fieldset id="carl_offers_summary">
+
+            <?php
+                echo $this->getOffersSummary();
+            ?>
+        </fieldset>
+    </div>
+
+
+    <?php if (Mage::getStoreConfig('mpm/repricing/enable')): ?>
+        <?php foreach($this->getChannels() as $channel): ?>
+            <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Pricing for %s', $channel->channelLabel); ?></h4>
+                </div>
+                <fieldset>
+                    <?php
+
+                        $channelCode = $channel->channelCode;
+                        $url = $this->getUrl('adminhtml/Mpm_Carl/loadCarlTabPricing', array('mpm_channel' => $channelCode, 'currency' => $channel->currency, 'product_id' => $this->getProduct()->getId()));
+
+                        $loaderJs =  $this->getJsUrl() . "mage/adminhtml/loader.js";
+                        $loaderGifUrl = $this->getSkinUrl('images/ajax-loader-tr.gif');
+                        $ajaxScriptToLoadPricingBlock = '<div id="carl_tab_pricing_' . $channelCode . '_content">'.
+                                    '<script src="'.$loaderJs.'" type="text/javascript"></script>' .
+                            '<div id="loadingmask" align="center"><div class="loader" id="loading-mask-loader"><img src="'.$loaderGifUrl.'" alt="Loading"/></div><div id="loading-mask"></div>'
+                        .'</div></div>
+            <script>new Ajax.Updater("carl_tab_pricing_' . $channelCode . '_content","' . $url . '", { evalScripts: true });</script>';
+
+
+                    echo $ajaxScriptToLoadPricingBlock;
+
+                    ?>
+                </fieldset>
+            </div>
+        <?php endforeach;?>
+    <?php endif; ?>
+
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('All Offers'); ?></h4>
+        </div>
+        <fieldset id="carl_offers_grid">
+            <?php echo $this->getAllOffersGrid(); ?>
+        </fieldset>
+    </div>
+
+
+<?php else: ?>
+    <p><?php echo $this->__('Unable to reach server, please check your credentials'); ?></p>
+<?php endif; ?>

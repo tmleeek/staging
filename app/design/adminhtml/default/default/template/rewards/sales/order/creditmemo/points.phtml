@@ -1,0 +1,63 @@
+
+<script type="text/javascript" src="<?php echo $this->getJsUrl('tbt/rewards/sales/order/creditmemo/points.js') ?>"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+    originalSpendings = parseInt('<?php echo $this->getPointsSpent() ?>', 10);
+    originalEarnings = parseInt('<?php echo $this->getPointsEarned() ?>', 10);
+    customerPointsBalance = parseInt('<?php echo $this->getCustomerBalance() ?>', 10);
+
+//]]>
+</script>
+
+<table cellspacing="0" style="<?php echo $this->getStyle() ?>" id="rewards_adjust_points_table">
+    <col />
+    <col width="1" />
+    <tbody>
+        <tr class="points_lbl">
+            <td class="label" style="padding-bottom: 6px;">
+                <?php echo $this->__("Points Spent") ?>
+            </td>
+            <td style="width: 66px;">
+                <span class="price" style="padding: 2px;"><?php echo $this->getPointsSpent() ?></span>
+            </td>
+        </tr>
+        <tr class="points_lbl">
+            <td class="label" style="padding-bottom: 6px;">
+                <?php echo $this->__("Points Earned") ?>
+            </td>
+            <td style="width: 66px;">
+                <span class="price" style="padding: 2px;"><?php echo $this->getPointsEarned() ?></span>
+            </td>
+        </tr>
+        <tr class="points_adjust" style="display: none;">
+            <td class="label" style="white-space: normal; padding: 3px 10px 3px 20px;">
+                <?php echo $this->__("Points Spent") ?>
+            </td>
+            <td style="padding: 3px 20px 3px 10px;">
+                <input type="number" name="<?php echo $this->getFieldWrapper() ?>[adjustment_points_spent]"
+                    value="<?php echo $this->getPointsSpent() ?>"
+                    class="input-text not-negative-amount" style="width: 60px; text-align: right;" id="points_spent"
+                    min="0" max="<?php echo ($this->getCustomerBalance() + $this->getPointsSpent()) ?>"
+                    onchange="checkSpendingsAgainstBalance();" />
+            </td>
+        </tr>
+        <tr class="points_adjust" style="display: none;">
+            <td class="label" style="white-space: normal; padding: 3px 10px 3px 20px;">
+                <?php echo $this->__("Points Earned") ?>
+            </td>
+            <td style="padding: 3px 20px 3px 10px;">
+                <input type="number" name="<?php echo $this->getFieldWrapper() ?>[adjustment_points_earned]"
+                    value="<?php echo $this->getPointsEarned() ?>"
+                    class="input-text not-negative-amount" style="width: 60px; text-align: right;"
+                    id="points_earned" min="0" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<span class="points_adjust_lnk" style="padding-right: 20px;">
+    <a href="javascript://" onclick="enablePointsFields();"><?php echo $this->__("Click Here to Adjust Points") ?></a>
+</span>
+<span id="points_adjust_error" style="padding-right: 20px; font-weight: bold; color: #FF0000; display: none;">
+    <?php echo $this->__("This exceeds the customer's balance of %s.", $this->getCustomerBalanceString()) ?>
+</span>

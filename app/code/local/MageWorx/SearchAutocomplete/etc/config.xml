@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageWorx
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageWorx EULA that is bundled with
+ * this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.mageworx.com/LICENSE-1.0.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension
+ * to newer versions in the future. If you wish to customize the extension
+ * for your needs please refer to http://www.mageworx.com/ for more information
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @copyright  Copyright (c) 2013 MageWorx (http://www.mageworx.com/)
+ * @license    http://www.mageworx.com/LICENSE-1.0.html
+ */
+
+/**
+ * Search Autocomplete extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @author     MageWorx Dev Team
+ */
+-->
+<config>
+    <modules>
+        <MageWorx_SearchAutocomplete>
+            <version>1.5.4</version>
+        </MageWorx_SearchAutocomplete>
+    </modules>
+    <frontend>
+        <routers>
+            <searchautocomplete>
+                <use>standard</use>
+                <args>
+                    <module>MageWorx_SearchAutocomplete</module>
+                    <frontName>searchautocomplete</frontName>
+                </args>
+            </searchautocomplete>
+        </routers>
+        <translate>
+            <modules>
+                <MageWorx_SearchAutocomplete>
+                    <files>
+                        <default>MageWorx_SearchAutocomplete.csv</default>
+                    </files>
+                </MageWorx_SearchAutocomplete>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <searchautocomplete>
+                    <file>searchautocomplete.xml</file>
+                </searchautocomplete>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <events>
+            <catalog_category_save_after>
+                <observers>
+                    <searchautocomplete>
+                        <class>searchautocomplete/observer</class>
+                        <method>addCategoryToSearchIndex</method>
+                    </searchautocomplete>
+                </observers>
+            </catalog_category_save_after>
+            <catalog_category_delete_after>
+                <observers>
+                    <searchautocomplete>
+                        <class>searchautocomplete/observer</class>
+                        <method>removeCategoryFromSearchIndex</method>
+                    </searchautocomplete>
+                </observers>
+            </catalog_category_delete_after>
+            
+            <cms_page_save_after>
+                <observers>
+                    <searchautocomplete>
+                        <type>singleton</type>
+                        <class>searchautocomplete/observer</class>
+                        <method>regenerateCmsPageIndex</method>
+                    </searchautocomplete>
+                </observers>
+            </cms_page_save_after>
+            <cms_page_delete_after>
+                <observers>
+                    <searchautocomplete>
+                        <type>singleton</type>
+                        <class>searchautocomplete/observer</class>
+                        <method>cleanCmsPageIndex</method>
+                    </searchautocomplete>
+                </observers>
+            </cms_page_delete_after>
+            <store_add>
+                <observers>
+                    <searchautocomplete>
+                        <type>singleton</type>
+                        <class>searchautocomplete/observer</class>
+                        <method>regenerateStoreIndex</method>
+                    </searchautocomplete>
+                </observers>
+            </store_add>
+            
+            <catalogsearch_index_process_start>
+                <observers>
+                    <searchautocomplete>
+                        <class>searchautocomplete/observer</class>
+                        <method>catalogsearchIndexProcessStart</method>
+                    </searchautocomplete>
+                </observers>
+            </catalogsearch_index_process_start>
+            <catalog_controller_product_init>
+                <observers>
+                    <searchautocomplete>
+                        <class>searchautocomplete/observer</class>
+                        <method>catalogControllerProductInit</method>
+                    </searchautocomplete>
+                </observers>
+            </catalog_controller_product_init>
+            <cms_page_load_after>
+                <observers>
+                    <searchautocomplete>
+                        <class>searchautocomplete/observer</class>
+                        <method>cmsPageLoadAfter</method>
+                    </searchautocomplete>
+                </observers>
+            </cms_page_load_after>
+        </events>
+        <blocks>
+            <searchautocomplete>
+                <class>MageWorx_SearchAutocomplete_Block</class>
+            </searchautocomplete>
+            <review>
+                <rewrite>
+                    <helper>MageWorx_SearchAutocomplete_Block_Review_Helper</helper>
+                </rewrite>
+            </review>
+        </blocks>
+        <rewrite>
+            <searchautocomplete>
+                <from><![CDATA[#^/catalogsearch/ajax/#]]></from>
+                <to>/searchautocomplete/ajax/</to>
+            </searchautocomplete>
+        </rewrite>
+        <models>
+            <catalogsearch>
+                <rewrite>
+                    <query>MageWorx_SearchAutocomplete_Model_CatalogSearch_Query</query>
+                </rewrite>
+            </catalogsearch>
+            <searchautocomplete>
+                <class>MageWorx_SearchAutocomplete_Model</class>
+                <resourceModel>searchautocomplete_mysql4</resourceModel>
+            </searchautocomplete>
+            <searchautocomplete_mysql4>
+                <class>MageWorx_SearchAutocomplete_Model_Mysql4</class>
+                <entities>
+                    <fulltext>
+                        <table>cmspage_fulltext</table>
+                    </fulltext>
+                    <result>
+                        <table>cmspage_result</table>
+                    </result>
+                    <blog_fulltext>
+                        <table>aw_blog_fulltext</table>
+                    </blog_fulltext>
+                    <blog_result>
+                        <table>aw_blog_result</table>
+                    </blog_result>
+                    <cmspro_fulltext>
+                        <table>cmspro_news_fulltext</table>
+                    </cmspro_fulltext>
+                    <cmspro_result>
+                        <table>cmspro_news_result</table>
+                    </cmspro_result>
+                </entities>
+            </searchautocomplete_mysql4>
+        </models>
+        <resources>
+            <searchautocomplete_setup>
+                <setup>
+                    <module>MageWorx_SearchAutocomplete</module>
+                    <class>MageWorx_SearchAutocomplete_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </searchautocomplete_setup>
+            <searchautocomplete_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </searchautocomplete_write>
+            <searchautocomplete_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </searchautocomplete_read>
+        </resources>
+        <helpers>
+            <searchautocomplete>
+                <class>MageWorx_SearchAutocomplete_Helper</class>
+            </searchautocomplete>
+        </helpers>
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mageworx_tweaks translate="title" module="searchautocomplete">
+                                            <title>MageWorx &gt; Search	Autocomplete</title>
+                                            <sort_order>100</sort_order>
+                                            <children>
+                                                <searchautocomplete>
+                                                    <title>Search Autocomplete</title>
+                                                    <sort_order>100</sort_order>
+                                                </searchautocomplete>
+                                            </children>
+                                        </mageworx_tweaks>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <MageWorx_SearchAutocomplete>
+                    <files>
+                        <default>MageWorx_SearchAutocomplete.csv</default>
+                    </files>
+                </MageWorx_SearchAutocomplete>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <mageworx_tweaks>
+            <searchautocomplete>
+                <enabled>1</enabled>
+                <popup_delay>500</popup_delay>
+                <highlighting_enabled>1</highlighting_enabled>
+                <separator_enabled>0</separator_enabled>
+                <suggested_searches>1</suggested_searches>
+                <suggested_searches_results>8</suggested_searches_results>
+                
+                <search_products>1</search_products>
+                <show_product_results_grouped_by_categories>0</show_product_results_grouped_by_categories>
+                <product_image_size>80x80</product_image_size>
+                <product_search_results>5</product_search_results>
+                <product_search_results_sort_order>relevance</product_search_results_sort_order>
+                <product_search_result_fields>product_name,product_image,short_description,price</product_search_result_fields>                
+                <product_short_description_size>20</product_short_description_size>
+                <product_title_size>20</product_title_size>
+                
+                <search_categories>0</search_categories>
+                <category_search_results>3</category_search_results>                
+                
+                <search_cms>0</search_cms>
+                <filter_cms_pages>no-route,enable-cookies</filter_cms_pages>
+                <cms_search_result_fields>cms_title,cms_description</cms_search_result_fields>
+
+                <search_blog>0</search_blog>
+                <search_cmspro>0</search_cmspro>
+                <search_cmspro_result_fields>cmspro_title,cmspro_summary</search_cmspro_result_fields>
+            </searchautocomplete>
+        </mageworx_tweaks>
+    </default>
+</config>

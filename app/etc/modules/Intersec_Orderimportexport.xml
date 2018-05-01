@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Intersec_Orderimportexport>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Intersec_Orderimportexport>
+    </modules>
+	<depends>
+		<Mage_Payment />
+	</depends>
+</config>

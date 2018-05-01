@@ -1,0 +1,28 @@
+<?php
+/**
+ * MagestyApps
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to alex@magestyapps.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension to newer
+ * versions in the future. If you wish to customize this extension for your
+ * needs please refer to http://www.magestyapps.com/ for more information.
+ *
+ * @category    MagestyApps
+ * @package     MagestyApps_All
+ * @copyright   Copyright (c) 2015 MagestyApps Inc. (https://www.magestyapps.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+class MagestyApps_All_Helper_Data extends Mage_Core_Helper_Abstract
+{
+
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+    <adminhtml>
+		<menu>
+			<sales module="ekomiflagupdate">
+				<title>Sales</title>
+				<sort_order>20</sort_order>               
+				<children>
+					<ekomiflagupdate module="ekomiflagupdate">
+						<title>Update Ekomiflag</title>
+						<sort_order>600</sort_order>
+						<action>ekomiflagupdate/adminhtml_ekomiflagupdate</action>				
+					</ekomiflagupdate>
+				</children>
+			</sales>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<sales translate="title"  module="ekomiflagupdate">
+							<title>Sales</title>
+							<sort_order>20</sort_order>
+								<children>
+									<ekomiflagupdate module="ekomiflagupdate">
+										<title>Update Ekomiflagupdate</title>
+										<sort_order>20</sort_order>
+									</ekomiflagupdate>
+								</children>
+						</sales>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ekomi module="ekomiflagupdate">
+                                            <title>Ekomi Configuration</title>
+                                        </ekomi>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+        <translate>
+            <modules>
+                <Tatva_Ekomiflagupdate>
+                    <files>
+                        <default>Tatva_Ekomiflagupdate.csv</default>
+                    </files>
+                </Tatva_Ekomiflagupdate>
+            </modules>
+        </translate>
+      	<layout>
+			<updates>
+				<ekomiflagupdate>
+					<file>ekomiflagupdate.xml</file>
+				</ekomiflagupdate>
+			</updates>
+		</layout>
+
+    </adminhtml>

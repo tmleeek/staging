@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0"> 
+    <pointsrelais_index_index>
+	    <reference name="head">
+            <block type="page/html" name="baseurl" template="pointsrelais/baseurl.phtml" />
+            <action method="addItem"><type>skin_js</type><name>js/pointsrelais.js</name></action>
+            <action method="addCss"><stylesheet>css/pointsrelais.css</stylesheet></action>
+            <action method="addItem"><type>skin_css</type><name>css/iepointsrelais.css</name><params/><if>lt IE 7</if></action>
+        </reference> 
+        <block type="pointsrelais/info" name="root" output="toHtml" template="pointsrelais/info.phtml" />
+    </pointsrelais_index_index>
+</layout>

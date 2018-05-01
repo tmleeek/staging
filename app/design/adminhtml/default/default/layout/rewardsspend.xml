@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_sales_order_create_index>
+        <update handle="redemption_near_coupons" />
+    </adminhtml_sales_order_create_index>
+
+    <adminhtml_sales_order_create_load_block_items>
+        <update handle="redemption_near_coupons" />
+    </adminhtml_sales_order_create_load_block_items>
+
+    <redemption_near_coupons>
+        <reference name="head">
+            <action method="addCss"><file>rewards/css/slider.css</file></action>
+            <action method="addJs"><file>tbt/rewards/util.js</file></action>
+            <action method="addJs"><file>tbt/scriptaculous/adminhtml/SmoothSlider.js</file></action>
+            <action method="addJs"><file>tbt/rewards/adminhtml/points/RedemptionSlider.js</file></action>
+        </reference>
+        <reference name="content">
+            <reference name="items">
+                <reference name="items_grid">
+                    <reference name="coupons">
+
+                        <block type="rewards/checkout_cart" name="rewards_redemption" template="rewards/checkout/redemption.phtml">
+                            <block type="core/template" name="rewards_js_points_captions" as="rewards_cartpoints_spender_js"
+                                template="rewards/js/captions.phtml" />
+                            <block type="rewards/checkout_cart" name="rewards_points_cart_minibox" as="rewards_cartpoints_spender"
+                                template="rewards/checkout/cartmini.phtml">
+                                <block type="rewards/checkout_cart_slider" name="points_cart_box.slider" as="points_slider"
+                                    template="rewards/checkout/cart/slider.phtml" />
+                                <block type="core/template" name="points_cart_box.js" as="minicart_js"
+                                    template="rewards/checkout/minicart_js.phtml" />
+                            </block>
+                        </block>
+
+                    </reference>
+                </reference>
+            </reference>
+        </reference>
+    </redemption_near_coupons>
+</layout>

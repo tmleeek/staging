@@ -1,0 +1,45 @@
+Translate,Traduire
+Search &amp; translate,Chercher &amp; traduire
+Untranslated strings,Texte non traduit
+Translation stats,Statistiques traduction
+About PHPro,Sur PHPro
+About,Sur
+PHPro Translate module,PHPro module de traduire
+Search for:,Chercher:
+Search string,Chercher texte:
+Enter a string (e.g. "My account") and click "Submit search",Tapez du texte (par exemple "Mon compte") et cliquez sur "Rechercher"
+Search original strings,Cherche texte orginal
+Only list untranslated,Lister seulement non traduit
+Locale,Langue
+Options:,Options:
+Case sensitive,Sensible &agrave; la casse
+In Modules:,Dans modules:
+In Interface:,Dans interface:
+Frontend,Frontend
+Admin HTML,Admin HTML
+Results:,R&eacute;sultats:
+Truncate log table,Tronquer la registre du texte
+Remove duplicates in log table,Eliminer des doublons dans la registre du texte
+Submit Search,Rechercher
+Search results for:,R&eacute;sultats de cherche pour:
+Translated string,Texte traduit
+Origin string,Texte original
+Source,Origine
+Translation Statistics,Statistiques traduction
+Translated strings in %s,Texte traduit en %s
+%d strings in modules,%d en modules
+%d strings in theme,%d en th&egrave;me
+%d strings in database,%d en base de donn&eacute;es
+%d untranslated strings,%d non traduit
+This data is cached. Please flush the Magento cache to refresh this data.,Ces donn&eacute;es sont mises en cache. S'il vous pla&icirc;t vider le cache de Magento pour rafra&icirc;chir ces donn&eacute;es.
+Attention! 100% translation can mean either a fully translated locale or simply no logged untranslated strings!,Attention! 100% traduction peut signifier une langue enti&egrave;rement traduit ou tout simplement pas de texte non traduites d&eacute;tect&eacute;e!
+Original,Original
+Item information,Information
+Extra Information:,Extra Information:
+Edit Item,Editer
+Save Item,Sauvegarder
+No results found.,Pas de r&eacute;sultats trouv&eacute;.
+Remove all the records from the &quot;untransalated strings&quot; table,Supprimer toutes les enregistrements de la table texte non traduite
+Remove duplicate strings that are in the system and &quot;untranslated strings&quot; table, Supprimer des doublons qui sont dans le syst&egrave;me et la table texte non traduite
+Table truncated,Table tronqué
+Following duplicates are found and removed:,Les doublons suivante sont trouv&eactue; et supprim&eactue;:

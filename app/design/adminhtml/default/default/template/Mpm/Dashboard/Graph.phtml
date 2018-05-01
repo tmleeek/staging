@@ -1,0 +1,102 @@
+<script>
+    if (typeof(Translator) == 'undefined') {
+        var Translator = new Translate(<?php echo $this->getTranslateJson(); ?>);
+    } else {
+        Translator.add(<?php echo $this->getTranslateJson(); ?>);
+    }
+    var clientCurrency = '<?php echo $this->getClientCurrency(); ?>';
+</script>
+
+<?php
+
+$colors = array(
+    '#967ca3', '#240a66',
+    '#ffd24d', '#b38600',
+    '#81ac73', '#007c43',
+    '#ec6a75', '#a71622',
+    '#8faec3', '#406278',
+    '#f3af73', '#bd6110',
+    '#f405f6', '#f6b5f6',
+    '#ff0000', '#f66464',
+    '#ffe700', '#f4ea80',
+);
+
+$bbw = $this->getBbw();
+
+$days = array();
+$channels = array();
+$types = array();
+foreach($bbw as $type => $statsType) {
+    foreach($bbw->$type as $stats) {
+        $types[$type] = $type;
+        $days[$stats->created_at][$type][$stats->channel] = $stats->bbw;
+        $channels[$stats->channel] = $stats->channel;
+    }
+}
+
+ksort($days);
+
+$listSeries = array();
+foreach($days as $date => $statsPerType) {
+    foreach($types as $type) {
+        if ($type == 'target_position')
+            continue;
+        foreach($channels as $channel) {
+            if(empty($statsPerType[$type][$channel])) {
+                $statsPerType[$type][$channel] = 0;
+            }
+            $label = Mage::helper('Mpm/Carl')->getChannelLabel($channel);   // . ' - ' . $this->__($type);
+            $listSeries[$label][] = $statsPerType[$type][$channel];
+        }
+    }
+}
+
+ksort($listSeries);
+
+$highcharts = array();
+foreach($listSeries as $name => $series) {
+    $highcharts[] = array(
+        'name'  => $name,
+        'data'  => $series,
+        'color' => array_shift($colors),
+    );
+}
+
+?>
+
+<script type="application/javascript">
+    jQuery().ready(function($) {
+        $(function () {
+            $('#container').highcharts({
+                title: {
+                    text: Translator.translate('Buy box trend'),
+                    x: -20
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories: <?= json_encode(array_keys($days)); ?>
+                },
+                yAxis: {
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    valueSuffix: ' bbw'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                },
+                series: <?= json_encode($highcharts); ?>
+            });
+        });
+    });
+</script>
+<div id="container"></div>

@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <dropshipping translate="label" module="DropShipping">
+            <label>Drop Shipping</label>
+            <tab>ERP</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                
+                <dropship_request>
+                    <label>Drop ship Request Email</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>7</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <email_identity translate="label">
+                            <label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email_identity>
+                        <email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email_template>
+                        <cc_to translate="label">
+                            <label>Copy To</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cc_to>
+                        <disable_supplier_notification translate="label">
+                            <label>Disable supplier notification</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </disable_supplier_notification>
+                        <attach_po_pdf translate="label">
+                            <label>Attach PO PDF</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comments>If enabled, attach PO PDF to the email sent to supplier</comments>
+                        </attach_po_pdf>
+                        <attach_packing_slip translate="label">
+                            <label>Attach packing slip</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comments>If enabled, attach the packing slip according to the supplier configuration (supplier view > Drop Shipping)</comments>
+                        </attach_packing_slip>
+                    </fields>
+                </dropship_request>
+                
+                <misc>
+                    <label>Miscellaneous</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <notify_customer_on_drop_ship translate="label">
+                            <label>Notify customer on drop ship</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Send the shipment email to customer when order is drop shipped</comment>
+                        </notify_customer_on_drop_ship>
+                        
+                        <!--
+                        <notify_customer_when_filling_tracking translate="label">
+                            <label>Notify customer when filling tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Send the shipment email to customer when you save the tracking numbers</comment>
+                        </notify_customer_when_filling_tracking>
+                        -->
+                        
+                        <create_invoice_on_dropship translate="label">
+                            <label>Create invoice on drop ship</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>The invoice is generated when you process the drop ship</comment>
+                        </create_invoice_on_dropship>
+                        
+                        <!--
+                        <create_invoice_when_filling_tracking_number translate="label">
+                            <label>Create invoice when tracking number is set</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>The invoice is generated when you fill the tracking numbers</comment>
+                        </create_invoice_when_filling_tracking_number>     
+                        -->
+                                           
+                        <display_comments_textarea translate="label">
+                            <label>Display comments textarea</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_comments_textarea>
+                    </fields>
+                </misc>
+                
+                <dropship_file_import_settings>
+                    <label>Drop Shipping File import settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <file_extensions translate="label">
+                            <label>Allowed file extensions</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>must be separated by comma : csv,txt,doc</comment>
+                        </file_extensions>
+                        <prune_logs_delay translate="label">
+                            <label>Prune logs delay</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Choose the delay in day to automatically prune old logs</comment>
+                        </prune_logs_delay>
+                    </fields>
+                </dropship_file_import_settings>
+                
+                <drop_shippable_order>
+                    <label>Drop shippable orders</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <display_order_with_status translate="label">
+                            <label>Display Order With Status</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>DropShipping/System_Config_Source_OrderStatus</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_order_with_status>
+
+
+                        
+                        <email_report translate="label">
+                            <label>Error email report</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>leave empty in order to disable this feature</comment>                            
+                        </email_report>
+                        
+                        <default_dropship_mode translate="label">
+                            <label>Default Dropship Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>DropShipping/Source_Config_DefaultDropShipMode</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </default_dropship_mode>
+   
+
+                        <check_supplier_stock translate="label">
+                            <label>Check supplier stock</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If enable, you'll be able to drop ship only product having "stock" greater than zero in product / supplier association</comment>
+                        </check_supplier_stock>
+                        <display_orders_with_stock  translate="label">
+                            <label>Display orders with stock</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If enable, you'll be able to drop ship order even if you have the product in stock</comment>
+                        </display_orders_with_stock>
+                        <require_dropshippable translate="label">
+                            <label>Require drop shippable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If enable, you'll be able to drop ship only product having "drop ship" enable in product / supplier association</comment>
+                        </require_dropshippable>
+                        
+                    </fields>
+                </drop_shippable_order>
+                
+                <auto_send_order>
+                    <label>Automatic submit drop shippable orders</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        
+                        <automatic_dropship_mode translate="label">
+                            <label>Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>DropShipping/Source_Config_DefaultDropShipMode</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </automatic_dropship_mode>
+
+                        <automaticaly_send_po translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Submit frop ship every hours</comment>
+                        </automaticaly_send_po>
+                        
+                    </fields>
+                </auto_send_order>
+                
+                <price_request>
+                    <label>Price request Email</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <email_identity translate="label">
+                            <label>Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email_identity>
+                        <email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email_template>
+                        <cc translate="label">
+                            <label>Copy To</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </cc>
+                    </fields>
+                </price_request>
+                <available_actions>
+                    <label>Available actions for drop shippable tab</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <create_purchase_order translate="label">
+                            <label>Create purchase order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </create_purchase_order>
+                        <pricerequest translate="label">
+                            <label>Price request</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </pricerequest>
+                        <dropship translate="label">
+                            <label>Drop ship</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dropship>
+                        <dropship_request translate="label">
+                            <label>Drop ship request</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dropship_request>
+                    </fields>
+                </available_actions>
+                <tabs>
+                    <label>Tabs to display</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <display_pending_supplier_response translate="label">
+                            <label>Display pending supplier response</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_pending_supplier_response>
+                        <display_pending_price_response translate="label">
+                            <label>Display pending price response</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_pending_price_response>
+                        <display_pending_supplier_delivery translate="label">
+                            <label>Display Shipping Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_pending_supplier_delivery>
+                        <!--
+                        <display_pending_tracking_number translate="label">
+                            <label>Display pending tracking number</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_pending_tracking_number>
+                        -->
+                        <display_dropshipped_history translate="label">
+                            <label>Display drop shipped history</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_dropshipped_history>
+                    </fields>
+                </tabs>
+                
+                <price_response_confirmation>
+                    <label>Price response confirmation</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <action translate="label">
+                            <label>Action</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>DropShipping/System_Config_Source_PriceResponseConfirmationAction</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </action>
+                    </fields>
+                </price_response_confirmation>
+                
+            </groups>
+        </dropshipping>
+    </sections>
+</config>

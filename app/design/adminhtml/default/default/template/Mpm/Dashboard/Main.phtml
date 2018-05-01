@@ -1,0 +1,23 @@
+<div style="float:left;width:30%;">
+    <?php echo $this->getChildHtml('mpm_dashboard_matching'); ?>
+</div>
+
+<div style="float:right;width:65%;">
+    <?php echo $this->getChildHtml('mpm_dashboard_graph'); ?>
+</div>
+
+<div style="clear:both;"></div>
+
+<div id="smartprice_dashboard_index_tab" class="columns">
+    <div id="smartprice_dashboard_index_tab_menu" class="side-col">
+        <?php echo $this->getChildHtml('mpm_dashboard_tabs'); ?>
+    </div>
+    <div class="main-col">
+        <div class="main-col-inner">
+            <div id="smartprice_dashboard_index_tab_content"></div>
+        </div>
+    </div>
+</div>
+
+<div style="clear:both;"></div>
+

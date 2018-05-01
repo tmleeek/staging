@@ -1,0 +1,1909 @@
+<?xml version="1.0"?>
+<!-- /** * Addonline_SoColissimo * * @category Addonline * @package Addonline_SoColissimo
+	* @copyright Copyright (c) 2011 Addonline * @author Addonline (http://www.addonline.fr)
+	*/ -->
+<config>
+	<tabs>
+		<addonline translate="label">
+			<label>Addonline config</label>
+			<sort_order>201</sort_order>
+		</addonline>
+	</tabs>
+	<sections>
+		<carriers>
+			<groups>
+				<socolissimo translate="label" module="socolissimo">
+					<label>Colissimo</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>18</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<informations translate="label">
+							<label>Informations</label>
+							<frontend_model>socolissimo/adminhtml_system_config_form_field_informations</frontend_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</informations>
+						<socolissimobox translate="label">
+							<label>Colissimo Box</label>
+							<frontend_model>socolissimo/adminhtml_system_config_button_colissimobox</frontend_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</socolissimobox>
+						<license_active>
+							<!-- This fields permit to know which license have the user and hide the useless fields for him (using <depends/>) -->
+							<label>Type of license active</label>
+              <frontend_type>select</frontend_type>
+              <source_model>socolissimo/adminhtml_system_config_source_licensetype</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+							<!-- We use a <depends/> on an unexisting fields to always hide this field as users shouldn't change the value of this one -->
+							<depends><hide_field>This is used to always hide the field</hide_field></depends>
+						</license_active>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<domicile_signature translate="label">
+							<label>Livraison à domicile</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_domicilesignature</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>{A l'international seule la livraison à domicile avec signature est proposée}</comment>
+						</domicile_signature>
+						<international translate="label">
+							<label>Option international</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_optioninternationnal</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>{Permet de filtrer ou non les points situés à l’étranger}</comment>
+						</international>
+						<config translate="label">
+							<label>Configuration</label>
+							<frontend_model>socolissimo/adminhtml_system_config_form_field_config</frontend_model>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</config>
+                        <api_url translate="label">
+							<label>API URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_url>
+                        <api_account translate="label">
+							<label>API Account</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_account>
+                        <api_key translate="label">
+							<label>API KEY</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_key>
+
+						<tracking_view_url translate="label">
+							<label>Tracking URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tracking_view_url>
+						<debug translate="label comment">
+							<label>Debug</label>
+							<comment>{debug_help}</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</debug>
+						<display_when_unavailable translate="label">
+							<label>Display when unavailable</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_when_unavailable>
+						<stop_to_first_match translate="label">
+							<label>Stop to first match</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</stop_to_first_match>
+						<shipping_period translate="label comment">
+							<label>Shipping period</label>
+							<comment>Délai pour calculer les relais ouverts à la date de
+								livraison = date du jour + délai</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</shipping_period>
+						<id_socolissimo_flexibilite translate="label">
+							<label>Identifiant Colissimo en web service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><license_active>webservices</license_active></depends>
+						</id_socolissimo_flexibilite>
+						<password_socolissimo_flexibilite
+							translate="label">
+							<label>Password Colissimo en web service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><license_active>webservices</license_active></depends>
+						</password_socolissimo_flexibilite>
+						<rep_fichier_liberte translate="label">
+							<label>Répertoire des fichiers Colissimo par fichier de points</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>socolissimo/adminhtml_system_config_form_field_liberte</frontend_model>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Répertoire (chemin absolu) où sont uploadés les fichiers
+								Colissimo par fichier de points</comment>
+							<depends><license_active>files</license_active></depends>
+						</rep_fichier_liberte>
+
+						<etiquettage_via_api_actif translate="label">
+							<label>Gestion des étiquettes par Web Services</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_Etiquettageapiactif</source_model>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><license_active>webservices</license_active></depends>
+						</etiquettage_via_api_actif>
+
+						<!-- Champ non utilisé !!
+						<date_previsionnelle_de_depot translate="label">
+							<depends><etiquettage_via_api_actif>1</etiquettage_via_api_actif></depends>
+							<label>Date prévisionnelle de dépôt</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_Dateprevisionnellededepot</source_model>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</date_previsionnelle_de_depot>
+						-->
+                        <fixed_costs translate="label">
+							<label>Fixed Costs</label>
+							<comment>{fixed_costs_help}</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>19</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fixed_costs>
+                        <description translate="label">
+		                    <label>Description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>20</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </description>
+                        <socolissimo_domicile_fr translate="label">
+                            <label>Colissimo Domicile Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_domicile_fr>
+						<socolissimo_domicile_fr_description translate="label">
+		                    <label>Colissimo Domicile Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>22</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </socolissimo_domicile_fr_description>
+                        <socolissimo_domicile_fr_delivery translate="label">
+		                    <label>Colissimo Domicile Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>23</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </socolissimo_domicile_fr_delivery>
+                        <socolissimo_domicile_sign_fr translate="label">
+                            <label>Colissimo Domicile Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_domicile_sign_fr>
+						<socolissimo_domicile_sign_fr_description translate="label">
+		                    <label>Colissimo Domicile Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>25</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </socolissimo_domicile_sign_fr_description>
+                        <socolissimo_domicile_sign_fr_delivery translate="label">
+		                    <label>Colissimo Domicile Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>26</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </socolissimo_domicile_sign_fr_delivery>
+                        <socolissimo_outre-mer_offert translate="label">
+                            <label>Colissimo DOM TOM Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_outre-mer_offert>
+						<socolissimo_outre-mer_offert_description translate="label">
+		                    <label>Colissimo DOM TOM Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>28</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </socolissimo_outre-mer_offert_description>
+                        <socolissimo_outre-mer_offert_delivery translate="label">
+		                    <label>Colissimo DOM TOM Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>29</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_outre-mer_offert_delivery>
+                        <socolissimo_dhl_express_zone1 translate="label">
+                            <label>DHL Express Zone1 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone1>
+						<socolissimo_dhl_express_zone1_description translate="label">
+		                    <label>DHL Express Zone1 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>31</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </socolissimo_dhl_express_zone1_description>
+                        <socolissimo_dhl_express_zone1_delivery translate="label">
+		                    <label>DHL Express Zone1 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>32</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone1_delivery>
+                        <socolissimo_dhl_eco_zone1 translate="label">
+                            <label>DHL Eco Zone1 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone1>
+						<socolissimo_dhl_eco_zone1_description translate="label">
+		                    <label>DHL Eco Zone1 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>34</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone1_description>
+                        <socolissimo_dhl_eco_zone1_delivery translate="label">
+		                    <label>DHL Eco Zone1 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>35</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone1_delivery>
+                        <socolissimo_dhl_eco_zone1_free translate="label">
+                            <label>DHL Eco Zone1 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone1_free>
+						<socolissimo_dhl_eco_zone1_free_description translate="label">
+		                    <label>DHL Eco Zone1 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>37</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone1_free_description>
+                        <socolissimo_dhl_eco_zone1_free_delivery translate="label">
+		                    <label>DHL Eco Zone1 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>38</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone1_free_delivery>
+                        <socolissimo_dhl_eco_es translate="label">
+                            <label>DHL Eco ES Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_es>
+						<socolissimo_dhl_eco_es_description translate="label">
+		                    <label>DHL Eco ES Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_es_description>
+                        <socolissimo_dhl_eco_es_delivery translate="label">
+		                    <label>DHL Eco ES Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>41</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_es_delivery>
+                        <socolissimo_dhl_eco_es_free translate="label">
+                            <label>DHL Eco ES Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_es_free>
+						<socolissimo_dhl_eco_es_free_description translate="label">
+		                    <label>DHL Eco ES Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>43</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_es_free_description>
+                        <socolissimo_dhl_eco_es_free_delivery translate="label">
+		                    <label>DHL Eco ES Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>44</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_es_free_delivery>
+                        <socolissimo_dhl_express_zone2 translate="label">
+                            <label>DHL Express Zone2 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone2>
+						<socolissimo_dhl_express_zone2_description translate="label">
+		                    <label>DHL Express Zone2 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>46</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone2_description>
+                        <socolissimo_dhl_express_zone2_delivery translate="label">
+		                    <label>DHL Express Zone2 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>47</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone2_delivery>
+                        <socolissimo_dhl_eco_zone2 translate="label">
+                            <label>DHL Eco Zone2 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>48</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone2>
+						<socolissimo_dhl_eco_zone2_description translate="label">
+		                    <label>DHL Eco Zone2 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>49</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone2_description>
+                        <socolissimo_dhl_eco_zone2_delivery translate="label">
+		                    <label>DHL Eco Zone2 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>50</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone2_delivery>
+                        <socolissimo_dhl_eco_zone2_free translate="label">
+                            <label>DHL Eco Zone2 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone2_free>
+						<socolissimo_dhl_eco_zone2_free_description translate="label">
+		                    <label>DHL Eco Zone2 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>52</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone2_free_description>
+                        <socolissimo_dhl_eco_zone2_free_delivery translate="label">
+		                    <label>DHL Eco Zone2 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>53</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone2_free_delivery>
+                        <socolissimo_dhl_express_zone3 translate="label">
+                            <label>DHL Express Zone3 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>54</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone3>
+						<socolissimo_dhl_express_zone3_description translate="label">
+		                    <label>DHL Express Zone3 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>55</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone3_description>
+                        <socolissimo_dhl_express_zone3_delivery translate="label">
+		                    <label>DHL Express Zone3 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>56</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone3_delivery>
+                        <socolissimo_dhl_eco_zone3 translate="label">
+                            <label>DHL Eco Zone3 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>57</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3>
+						<socolissimo_dhl_eco_zone3_description translate="label">
+		                    <label>DHL Eco Zone3 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>58</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_description>
+                        <socolissimo_dhl_eco_zone3_delivery translate="label">
+		                    <label>DHL Eco Zone3 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>59</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_delivery>
+                        <socolissimo_dhl_eco_zone3_island translate="label">
+                            <label>DHL Eco Zone3 MT CY Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_island>
+						<socolissimo_dhl_eco_zone3_island_description translate="label">
+		                    <label>DHL Eco Zone3 MT CY Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>61</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_island_description>
+                        <socolissimo_dhl_eco_zone3_island_delivery translate="label">
+		                    <label>DHL Eco Zone3 MT CY Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>62</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_island_delivery>
+                        <socolissimo_dhl_eco_zone3_island_free translate="label">
+                            <label>DHL Eco Zone3 MT CY FREE Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>63</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_island_free>
+						<socolissimo_dhl_eco_zone3_island_free_description translate="label">
+		                    <label>DHL Eco Zone3 MT CY FREE Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>64</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_island_free_description>
+                        <socolissimo_dhl_eco_zone3_island_free_delivery translate="label">
+		                    <label>DHL Eco Zone3 MT CY FREE Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>65</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone3_island_free_delivery>
+                        <socolissimo_dhl_express_zone4 translate="label">
+                            <label>DHL Express Zone4 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>66</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone4>
+						<socolissimo_dhl_express_zone4_description translate="label">
+		                    <label>DHL Express Zone4 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>67</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone4_description>
+                        <socolissimo_dhl_express_zone4_delivery translate="label">
+		                    <label>DHL Express Zone4 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>68</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone4_delivery>
+                        <socolissimo_dhl_eco_zone4 translate="label">
+                            <label>DHL Eco Zone4 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>69</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone4>
+						<socolissimo_dhl_eco_zone4_description translate="label">
+		                    <label>DHL Eco Zone4 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>70</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone4_description>
+                        <socolissimo_dhl_eco_zone4_delivery translate="label">
+		                    <label>DHL Eco Zone4 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>71</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone4_delivery>
+                        <socolissimo_dhl_eco_zone4_free translate="label">
+                            <label>DHL Eco Zone4 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>72</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone4_free>
+						<socolissimo_dhl_eco_zone4_free_description translate="label">
+		                    <label>DHL Eco Zone4 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>73</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone4_free_description>
+                        <socolissimo_dhl_eco_zone4_free_delivery translate="label">
+		                    <label>DHL Eco Zone4 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>74</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_eco_zone4_free_delivery>
+                        <socolissimo_dhl_express_zone5 translate="label">
+                            <label>DHL Express Zone5 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone5>
+						<socolissimo_dhl_express_zone5_description translate="label">
+		                    <label>DHL Express Zone5 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>76</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone5_description>
+                        <socolissimo_dhl_express_zone5_delivery translate="label">
+		                    <label>DHL Express Zone5 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>77</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone5_delivery>
+                        <socolissimo_dhl_express_zone5_free translate="label">
+                            <label>DHL Express Zone5 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>78</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone5_free>
+						<socolissimo_dhl_express_zone5_free_description translate="label">
+		                    <label>DHL Express Zone5 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>79</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone5_free_description>
+                        <socolissimo_dhl_express_zone5_free_delivery translate="label">
+		                    <label>DHL Express Zone5 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>80</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone5_free_delivery>
+                        <socolissimo_dhl_express_zone6 translate="label">
+                            <label>DHL Express Zone6 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>81</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone6>
+						<socolissimo_dhl_express_zone6_description translate="label">
+		                    <label>DHL Express Zone6 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>82</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone6_description>
+                        <socolissimo_dhl_express_zone6_delivery translate="label">
+		                    <label>DHL Express Zone6 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>83</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone6_delivery>
+                        <socolissimo_dhl_express_zone6_free translate="label">
+                            <label>DHL Express Zone6 Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>84</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone6_free>
+						<socolissimo_dhl_express_zone6_free_description translate="label">
+		                    <label>DHL Express Zone6 Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>85</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone6_free_description>
+                        <socolissimo_dhl_express_zone6_free_delivery translate="label">
+		                    <label>DHL Express Zone6 Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>86</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone6_free_delivery>
+                        <socolissimo_dhl_express_zone7 translate="label">
+                            <label>DHL Express Zone7 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>87</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7>
+						<socolissimo_dhl_express_zone7_description translate="label">
+		                    <label>DHL Express Zone7 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>88</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_description>
+                        <socolissimo_dhl_express_zone7_delivery translate="label">
+		                    <label>DHL Express Zone7 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>89</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_delivery>
+                        <socolissimo_dhl_express_zone7_ru translate="label">
+                            <label>DHL Express Zone7 RU Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_ru>
+						<socolissimo_dhl_express_zone7_ru_description translate="label">
+		                    <label>DHL Express Zone7 RU Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>91</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_ru_description>
+                        <socolissimo_dhl_express_zone7_ru_delivery translate="label">
+		                    <label>DHL Express Zone7 RU Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>92</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_ru_delivery>
+                        <socolissimo_dhl_express_zone7_ru_free translate="label">
+                            <label>DHL Express Zone7 RU Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>93</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_ru_free>
+						<socolissimo_dhl_express_zone7_ru_free_description translate="label">
+		                    <label>DHL Express Zone7 RU Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>94</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_ru_free_description>
+                        <socolissimo_dhl_express_zone7_ru_free_delivery translate="label">
+		                    <label>DHL Express Zone7 RU Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>95</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone7_ru_free_delivery>
+                        <socolissimo_dhl_express_zone8 translate="label">
+                            <label>DHL Express Zone8 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>96</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8>
+						<socolissimo_dhl_express_zone8_description translate="label">
+		                    <label>DHL Express Zone8 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>97</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_description>
+                        <socolissimo_dhl_express_zone8_delivery translate="label">
+		                    <label>DHL Express Zone8 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>98</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_delivery>
+                        <socolissimo_dhl_express_zone8_bis translate="label">
+                            <label>DHL Express Zone8 bis AU NZ Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>99</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_bis>
+						<socolissimo_dhl_express_zone8_bis_description translate="label">
+		                    <label>DHL Express Zone8 bis AU NZ Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>100</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_bis_description>
+                        <socolissimo_dhl_express_zone8_bis_delivery translate="label">
+		                    <label>DHL Express Zone8 bis AU NZ Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>101</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_bis_delivery>
+                        <socolissimo_dhl_express_zone8_bis_free translate="label">
+                            <label>DHL Express Zone8 bis AU NZ FREE Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>102</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_bis_free>
+						<socolissimo_dhl_express_zone8_bis_free_description translate="label">
+		                    <label>DHL Express Zone8 bis AU NZ FREE Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>103</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_bis_free_description>
+                        <socolissimo_dhl_express_zone8_bis_free_delivery translate="label">
+		                    <label>DHL Express Zone8 bis AU NZ FREE Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>104</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_dhl_express_zone8_bis_free_delivery>
+                        <socolissimo_imx_gb translate="label">
+                            <label>Royal Mail Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>105</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_gb>
+						<socolissimo_imx_gb_description translate="label">
+		                    <label>Royal Mail Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>106</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_gb_description>
+                        <socolissimo_imx_gb_delivery translate="label">
+		                    <label>Royal Mail Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>107</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_gb_delivery>
+                        <socolissimo_imx_gb_free translate="label">
+                            <label>Royal Mail FREE Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>108</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_gb_free>
+						<socolissimo_imx_gb_free_description translate="label">
+		                    <label>Royal Mail FREE Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>109</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_gb_free_description>
+                        <socolissimo_imx_gb_free_delivery translate="label">
+		                    <label>Royal Mail FREE Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>110</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_gb_free_delivery>
+                        <socolissimo_imx_be translate="label">
+                            <label>Bpost Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>111</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_be>
+						<socolissimo_imx_be_description translate="label">
+		                    <label>Bpost Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>112</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_be_description>
+                        <socolissimo_imx_be_delivery translate="label">
+		                    <label>Bpost Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>113</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_be_delivery>
+                        <socolissimo_imx_be_free translate="label">
+                            <label>Bpost Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>114</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_be_free>
+						<socolissimo_imx_be_free_description translate="label">
+		                    <label>Bpost Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>115</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_be_free_description>
+                        <socolissimo_imx_be_free_delivery translate="label">
+		                    <label>Bpost Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>116</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_be_free_delivery>
+                        <socolissimo_imx_de translate="label">
+                            <label>Deutsche Post Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>117</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_de>
+						<socolissimo_imx_de_description translate="label">
+		                    <label>Deutsche Post Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>118</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_de_description>
+                        <socolissimo_imx_de_delivery translate="label">
+		                    <label>Deutsche Post Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>119</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_de_delivery>
+                        <socolissimo_imx_de_free translate="label">
+                            <label>Deutsche Post Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_de_free>
+						<socolissimo_imx_de_free_description translate="label">
+		                    <label>Deutsche Post Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>121</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_de_free_description>
+                        <socolissimo_imx_de_free_delivery translate="label">
+		                    <label>Deutsche Post Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>122</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_de_free_delivery>
+                        <socolissimo_imx_nl translate="label">
+                            <label>PostNL Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>123</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_nl>
+						<socolissimo_imx_nl_description translate="label">
+		                    <label>PostNL Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>124</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_nl_description>
+                        <socolissimo_imx_nl_delivery translate="label">
+		                    <label>PostNL Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>125</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_nl_delivery>
+                        <socolissimo_imx_nl_free translate="label">
+                            <label>PostNL Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>126</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_nl_free>
+						<socolissimo_imx_nl_free_description translate="label">
+		                    <label>PostNL Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>127</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_nl_free_description>
+                        <socolissimo_imx_nl_free_delivery translate="label">
+		                    <label>PostNL Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>128</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_nl_free_delivery>
+                        <socolissimo_imx_lu translate="label">
+                            <label>Post Luxembourg Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>129</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_lu>
+						<socolissimo_imx_lu_description translate="label">
+		                    <label>Post Luxembourg Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>130</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_lu_description>
+                        <socolissimo_imx_lu_delivery translate="label">
+		                    <label>Post Luxembourg Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>131</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_lu_delivery>
+                        <socolissimo_imx_lu_free translate="label">
+                            <label>Post Luxembourg Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>132</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_lu_free>
+						<socolissimo_imx_lu_free_description translate="label">
+		                    <label>Post Luxembourg Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>133</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_lu_free_description>
+                        <socolissimo_imx_lu_free_delivery translate="label">
+		                    <label>Post Luxembourg Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>134</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_lu_free_delivery>
+                        <socolissimo_imx_dk translate="label">
+                            <label>PostNord Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>135</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_dk>
+						<socolissimo_imx_dk_description translate="label">
+		                    <label>PostNord Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>136</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_dk_description>
+                        <socolissimo_imx_dk_delivery translate="label">
+		                    <label>PostNord Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>137</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_dk_delivery>
+                        <socolissimo_imx_at translate="label">
+                            <label>Post AG Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>138</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_at>
+						<socolissimo_imx_at_description translate="label">
+		                    <label>Post AG Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>139</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_at_description>
+                        <socolissimo_imx_at_delivery translate="label">
+		                    <label>Post AG Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>140</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_at_delivery>
+                        <socolissimo_imx_pt translate="label">
+                            <label>CTT Correios Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>141</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_pt>
+						<socolissimo_imx_pt_description translate="label">
+		                    <label>CTT Correios Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>142</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_pt_description>
+                        <socolissimo_imx_pt_delivery translate="label">
+		                    <label>CTT Correios Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>143</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_pt_delivery>
+                        <socolissimo_sda translate="label">
+                            <label>Poste Italiane Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>144</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_sda>
+						<socolissimo_sda_description translate="label">
+		                    <label>Poste Italiane Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>145</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_sda_description>
+                        <socolissimo_sda_delivery translate="label">
+		                    <label>Poste Italiane Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>146</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_sda_delivery>
+                        <socolissimo_sda_free translate="label">
+                            <label>Poste Italiane Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>147</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_sda_free>
+						<socolissimo_sda_free_description translate="label">
+		                    <label>Poste Italiane Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>148</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_sda_free_description>
+                        <socolissimo_sda_free_delivery translate="label">
+		                    <label>Poste Italiane Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>149</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_sda_free_delivery>
+                        <socolissimo_imx_ie translate="label">
+                            <label>An Post Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_ie>
+						<socolissimo_imx_ie_description translate="label">
+		                    <label>An Post Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>151</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_ie_description>
+                        <socolissimo_imx_ie_delivery translate="label">
+		                    <label>An Post Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>152</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_ie_delivery>
+                        <socolissimo_imx_no translate="label">
+                            <label>Posten Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>153</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_no>
+						<socolissimo_imx_no_description translate="label">
+		                    <label>Posten Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>154</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_no_description>
+                        <socolissimo_imx_no_delivery translate="label">
+		                    <label>Posten Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>155</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_no_delivery>
+                        <socolissimo_colissimo_ch translate="label">
+                            <label>La Poste - Colissimo Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>156</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_ch>
+						<socolissimo_colissimo_ch_description translate="label">
+		                    <label>La Poste - Colissimo Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>157</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_ch_description>
+                        <socolissimo_colissimo_ch_delivery translate="label">
+		                    <label>La Poste - Colissimo Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>158</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_ch_delivery>
+                        <socolissimo_colissimo_ch_free translate="label">
+                            <label>La Poste - Colissimo Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>159</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_ch_free>
+						<socolissimo_colissimo_ch_free_description translate="label">
+		                    <label>La Poste - Colissimo Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>160</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_ch_free_description>
+                        <socolissimo_colissimo_ch_free_delivery translate="label">
+		                    <label>La Poste - Colissimo Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>161</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_ch_free_delivery>
+                        <socolissimo_imx_zone1 translate="label">
+                            <label>IMX ZONE1 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>162</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone1>
+						<socolissimo_imx_zone1_description translate="label">
+		                    <label>IMX ZONE1 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>163</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone1_description>
+                        <socolissimo_imx_zone1_delivery translate="label">
+		                    <label>IMX ZONE1 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>164</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone1_delivery>
+                        <socolissimo_imx_zone2 translate="label">
+                            <label>IMX ZONE2 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>165</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone2>
+						<socolissimo_imx_zone2_description translate="label">
+		                    <label>IMX ZONE2 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>166</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone2_description>
+                        <socolissimo_imx_zone2_delivery translate="label">
+		                    <label>IMX ZONE2 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>167</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone2_delivery>
+                        <socolissimo_imx_zone3 translate="label">
+                            <label>IMX ZONE3 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>168</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone3>
+						<socolissimo_imx_zone3_description translate="label">
+		                    <label>IMX ZONE3 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>169</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone3_description>
+                        <socolissimo_imx_zone3_delivery translate="label">
+		                    <label>IMX ZONE3 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>170</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone3_delivery>
+                        <socolissimo_imx_zone4 translate="label">
+                            <label>IMX ZONE4 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>171</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone4>
+						<socolissimo_imx_zone4_description translate="label">
+		                    <label>IMX ZONE4 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>172</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone4_description>
+                        <socolissimo_imx_zone4_delivery translate="label">
+		                    <label>IMX ZONE4 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>173</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone4_delivery>
+                        <socolissimo_imx_zone5 translate="label">
+                            <label>IMX ZONE5 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>174</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone5>
+						<socolissimo_imx_zone5_description translate="label">
+		                    <label>IMX ZONE5 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>175</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone5_description>
+                        <socolissimo_imx_zone5_delivery translate="label">
+		                    <label>IMX ZONE5 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>176</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone5_delivery>
+                        <socolissimo_imx_zone6 translate="label">
+                            <label>IMX ZONE6 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>177</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone6>
+						<socolissimo_imx_zone6_description translate="label">
+		                    <label>IMX ZONE6 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>178</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone6_description>
+                        <socolissimo_imx_zone6_delivery translate="label">
+		                    <label>IMX ZONE6 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>179</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone6_delivery>
+                        <socolissimo_imx_zone7 translate="label">
+                            <label>IMX ZONE7 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone7>
+						<socolissimo_imx_zone7_description translate="label">
+		                    <label>IMX ZONE7 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>181</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone7_description>
+                        <socolissimo_imx_zone7_delivery translate="label">
+		                    <label>IMX ZONE7 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>182</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone7_delivery>
+                        <socolissimo_imx_zone8 translate="label">
+                            <label>IMX ZONE8 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>183</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone8>
+						<socolissimo_imx_zone8_description translate="label">
+		                    <label>IMX ZONE8 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>184</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone8_description>
+                        <socolissimo_imx_zone8_delivery translate="label">
+		                    <label>IMX ZONE8 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>185</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone8_delivery>
+                        <socolissimo_imx_zone9 translate="label">
+                            <label>IMX ZONE9 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>186</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone9>
+						<socolissimo_imx_zone9_description translate="label">
+		                    <label>IMX ZONE9 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>187</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone9_description>
+                        <socolissimo_imx_zone9_delivery translate="label">
+		                    <label>IMX ZONE9 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>188</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone9_delivery>
+                        <socolissimo_imx_zone10 translate="label">
+                            <label>IMX ZONE10 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>189</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone10>
+						<socolissimo_imx_zone10_description translate="label">
+		                    <label>IMX ZONE10 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>190</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone10_description>
+                        <socolissimo_imx_zone10_delivery translate="label">
+		                    <label>IMX ZONE10 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>191</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone10_delivery>
+                        <socolissimo_imx_zone11 translate="label">
+                            <label>IMX ZONE11 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>192</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone11>
+						<socolissimo_imx_zone11_description translate="label">
+		                    <label>IMX ZONE11 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>193</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone11_description>
+                        <socolissimo_imx_zone11_delivery translate="label">
+		                    <label>IMX ZONE11 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>194</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone11_delivery>
+                        <socolissimo_imx_zone12 translate="label">
+                            <label>IMX ZONE12 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>195</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone12>
+						<socolissimo_imx_zone12_description translate="label">
+		                    <label>IMX ZONE12 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>196</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone12_description>
+                        <socolissimo_imx_zone12_delivery translate="label">
+		                    <label>IMX ZONE12 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>197</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone12_delivery>
+                        <socolissimo_imx_zone13 translate="label">
+                            <label>IMX ZONE13 Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>198</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone13>
+						<socolissimo_imx_zone13_description translate="label">
+		                    <label>IMX ZONE13 Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>199</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone13_description>
+                        <socolissimo_imx_zone13_delivery translate="label">
+		                    <label>IMX ZONE13 Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>200</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_imx_zone13_delivery>
+                        <socolissimo_colissimo_zone3 translate="label">
+                            <label>Colissimo - Local post Zone3 EUR Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>201</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone3>
+						<socolissimo_colissimo_zone3_description translate="label">
+		                    <label>Colissimo - Local post Zone3 EUR Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>202</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone3_description>
+                        <socolissimo_colissimo_zone3_delivery translate="label">
+		                    <label>Colissimo - Local post Zone3 EUR Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>203</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone3_delivery>
+                        <socolissimo_colissimo_zone3_free translate="label">
+                            <label>Colissimo - Local post Zone3 EUR Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>204</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone3_free>
+						<socolissimo_colissimo_zone3_free_description translate="label">
+		                    <label>Colissimo - Local post Zone3 EUR Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>205</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone3_free_description>
+                        <socolissimo_colissimo_zone3_free_delivery translate="label">
+		                    <label>Colissimo - Local post Zone3 EUR Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>206</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone3_free_delivery>
+                        <socolissimo_colissimo_zone4 translate="label">
+                            <label>Colissimo - Local post Zone4 INTER Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>207</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4>
+						<socolissimo_colissimo_zone4_description translate="label">
+		                    <label>Colissimo - Local post Zone4 INTER Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>208</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_description>
+                        <socolissimo_colissimo_zone4_delivery translate="label">
+		                    <label>Colissimo - Local post Zone4 INTER Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>209</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_delivery>
+                        <socolissimo_colissimo_zone4_free translate="label">
+                            <label>Colissimo - Local post Zone4 INTER Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_free>
+						<socolissimo_colissimo_zone4_free_description translate="label">
+		                    <label>Colissimo - Local post Zone4 INTER Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>211</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_free_description>
+                        <socolissimo_colissimo_zone4_free_delivery translate="label">
+		                    <label>Colissimo - Local post Zone4 INTER Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>212</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_free_delivery>
+                        <socolissimo_colissimo_zone4_eur translate="label">
+                            <label>Colissimo - Local post Zone4 EUR Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>213</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_eur>
+						<socolissimo_colissimo_zone4_eur_description translate="label">
+		                    <label>Colissimo - Local post Zone4 EUR Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>214</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_eur_description>
+                        <socolissimo_colissimo_zone4_eur_delivery translate="label">
+		                    <label>Colissimo - Local post Zone4 EUR Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>215</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_eur_delivery>
+                        <socolissimo_colissimo_zone4_eur_free translate="label">
+                            <label>Colissimo - Local post Zone4 EUR Free Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>216</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_eur_free>
+						<socolissimo_colissimo_zone4_eur_free_description translate="label">
+		                    <label>Colissimo - Local post Zone4 EUR Free Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>217</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_eur_free_description>
+                        <socolissimo_colissimo_zone4_eur_free_delivery translate="label">
+		                    <label>Colissimo - Local post Zone4 EUR Free Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>218</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_colissimo_zone4_eur_free_delivery>
+                        <socolissimo_retrait_entrepot_06 translate="label">
+                            <label>Retrait entrepôt Vallauris Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>219</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </socolissimo_retrait_entrepot_06>
+						<socolissimo_retrait_entrepot_06_description translate="label">
+		                    <label>Retrait entrepôt Vallauris Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>220</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_retrait_entrepot_06_description>
+                        <socolissimo_retrait_entrepot_06_delivery translate="label">
+		                    <label>Retrait entrepôt Vallauris Delivery Time</label>
+		                    <frontend_type>text</frontend_type>
+		                    <sort_order>221</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+                        </socolissimo_retrait_entrepot_06_delivery>
+                        <side translate="label">
+                            <label>Choose Specific side</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                            <sort_order>222</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </side>
+						<api_key_google_maps translate="label">
+							<label>API key Google Maps</label>
+							<comment>{google_maps_help}</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>223</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_key_google_maps>
+                         <sort_order translate="label">
+							<label>Sort Order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>221</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+					</fields>
+				</socolissimo>
+			</groups>
+		</carriers>
+		<socolissimo translate="label" module="socolissimo">
+			<label>Colissimo</label>
+			<tab>addonline</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>100</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<licence translate="label" module="socolissimo">
+					<label>Licence</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<serial translate="label" module="socolissimo">
+							<label>Serial</label>
+							<frontend_type>text</frontend_type>
+							<comment>Set here the serial number, for multi-stores set the serial number in the default configuration, and active Colissimo in each store configuration scope</comment>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</serial>
+					</fields>
+				</licence>
+			</groups>
+		</socolissimo>
+	</sections>
+</config>

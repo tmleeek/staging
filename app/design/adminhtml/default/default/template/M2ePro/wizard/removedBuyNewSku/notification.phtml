@@ -1,0 +1,23 @@
+<?php
+
+$completeLink = $this->getUrl("*/adminhtml_wizard_removedBuyNewSku/complete");
+
+?>
+
+<div class="wizard-note">
+
+    <a class="wizard-close" href="javascript:void(0);" onclick="WizardHandlerObj.complete('<?php echo $completeLink; ?>');" title="<?php echo Mage::helper('M2ePro')->__('Close') ?>">&times;</a>
+
+    <div>
+        <?php echo Mage::helper('M2ePro')->__('
+            Ability to create new Rakuten.com SKU was removed from M2E Pro because of lack of minimum required technical base on Rakuten.com which lead to partial working of M2E Pro Rakuten.com Integration.<br />
+
+            The New SKU Policy and ability to assign the New Rakuten.com SKU creation were removed either.<br />
+
+            Our Team tried all possible solutions from our side, but this functionality cannot work properly because of Rakuten.com marketplace technical specifics.
+            <a href="javascript:void(0);" onclick="WizardHandlerObj.complete(\'%url_1%\');">Hide message</a>
+        ', $completeLink
+        );?>
+    </div>
+
+</div>

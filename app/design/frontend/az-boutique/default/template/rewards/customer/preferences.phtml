@@ -1,0 +1,35 @@
+<!-- BEGIN reward notification preferences fieldset -->
+<?php if($this->showPreferences()) : ?>
+<?php $customer = $this->getRewardsCustomer(); ?>
+<div class="box-account box-info mypoints-summary">
+    <div class="box-head">
+        <h2><?php echo $this->__("Notification Preferences") ?></h2>
+    </div>
+    <form action="<?php echo $this->getUrl('rewards/customer_notifications/savePref/') ?>" method="post" id="form-validate">
+        <fieldset class="group-select my_referrals-urlcode_group">
+            <ul>
+                <li>
+                    <div class="urlcode-checkbox">
+                        <input type="checkbox" name="rewards_points_notification" 
+                            <?php if($customer->getRewardsPointsNotification()): ?>checked="checked" <?php endif; ?>
+                            value="1" 
+                            title="<?php echo $this->__('Send me my points summary statement monthly') ?>" 
+                            class="checkbox" id="rewards_points_notification" />
+                            
+                        <label for="rewards_points_notification">
+                            <?php echo $this->__('Send me my points summary statement monthly') ?>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="button-set" style="margin-top:0px">
+            	<button type="submit" title="<?php echo $this->__('Save Preferences') ?>" class="button">
+            		<span><span><?php echo $this->__('Save Preferences') ?></span></span>
+            	</button>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+<?php endif; ?>
+<!-- END reward notification preferences fieldset -->

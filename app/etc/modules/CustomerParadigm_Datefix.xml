@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <CustomerParadigm_Datefix>
+            <active>true</active>
+            <codePool>local</codePool>
+        </CustomerParadigm_Datefix>
+    </modules>
+</config>

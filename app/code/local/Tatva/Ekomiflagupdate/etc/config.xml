@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Ekomiflagupdate>
+            <version>0.1.0</version>
+        </Tatva_Ekomiflagupdate>
+    </modules>
+    
+    <!-- GLOBAL -->
+	<global>
+		<!-- Resources -->
+        <resources>
+            <ekomiflagupdate_setup>
+                <setup>
+                    <module>Tatva_Ekomiflagupdate</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ekomiflagupdate_setup>
+            <ekomiflagupdate_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ekomiflagupdate_write>
+            <ekomiflagupdate_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ekomiflagupdate_read>
+        </resources>
+        
+        <!-- Helpers -->
+		<helpers>
+            <ekomiflagupdate>
+                <class>Tatva_Ekomiflagupdate_Helper</class>
+            </ekomiflagupdate>
+        </helpers> 
+        
+        <!-- Blocks  -->
+		<blocks>
+            <ekomiflagupdate>
+                <class>Tatva_Ekomiflagupdate_Block</class>
+            </ekomiflagupdate>
+        </blocks>   
+    </global>
+    
+    <!-- Admin -->
+    <adminhtml>
+		<menu>
+			<sales module="ekomiflagupdate">
+				<title>Sales</title>
+				<sort_order>20</sort_order>               
+				<children>
+					<ekomiflagupdate module="ekomiflagupdate">
+						<title>Update Ekomiflag</title>
+						<sort_order>600</sort_order>
+						<action>ekomiflagupdate/adminhtml_ekomiflagupdate</action>				
+					</ekomiflagupdate>
+				</children>
+			</sales>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<sales translate="title"  module="ekomiflagupdate">
+							<title>Sales</title>
+							<sort_order>20</sort_order>
+								<children>
+									<ekomiflagupdate module="ekomiflagupdate">
+										<title>Update Ekomiflagupdate</title>
+										<sort_order>20</sort_order>
+									</ekomiflagupdate>
+								</children>
+						</sales>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+        <translate>
+            <modules>
+                <Tatva_Ekomiflagupdate>
+                    <files>
+                        <default>Tatva_Ekomiflagupdate.csv</default>
+                    </files>
+                </Tatva_Ekomiflagupdate>
+            </modules>
+        </translate>	
+      	<layout>
+			<updates>
+				<ekomiflagupdate>
+					<file>ekomiflagupdate.xml</file>
+				</ekomiflagupdate>
+			</updates>
+		</layout>
+
+    </adminhtml>
+	<admin>
+		<routers>
+			<tatva_ekomiflagupdate>
+				<use>admin</use>
+				<args>
+					<module>Tatva_Ekomiflagupdate</module>
+					<frontName>ekomiflagupdate</frontName>
+				</args>
+			</tatva_ekomiflagupdate>
+        </routers>
+    </admin>
+</config>

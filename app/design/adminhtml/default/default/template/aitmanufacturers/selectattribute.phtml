@@ -1,0 +1,25 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+?>
+<div class="entry-edit">
+    <?php
+        echo $this->getFormHtml();
+    ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var productTemplateSyntax = /(^|.|\r|\n)({{(\w+)}})/;
+    function setSettings(urlTemplate, attElement) {
+        var template = new Template(urlTemplate, productTemplateSyntax);
+        setLocation(template.evaluate({attributecode:$F(attElement)}));
+    }
+//]]>
+</script>

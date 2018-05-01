@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <placeholders>
+        <rewards_header_customer_balance>
+            <block>rewards/integrated_special_header</block>
+            <name>rewards.top.links.points_balance</name>
+            <placeholder>REWARDS_HEADER_CUSTOMER_BALANCE</placeholder>
+            <container>TBT_Rewards_Model_PageCache_Container_HeaderCustomerBalance</container>
+            <cache_lifetime>86400</cache_lifetime>
+        </rewards_header_customer_balance>
+    </placeholders>
+</config>

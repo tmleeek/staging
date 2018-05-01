@@ -1,0 +1,12 @@
+diff -aurBb /home/httpd/htdocs/users2/rastorguev/mfin14/var/ait_patch_orig/compare28012664905424b7d1cae2c684 /home/httpd/htdocs/users2/rastorguev/mfin14/var/ait_patch_modif/compare28012664905424b7d1cae2c684
+--- /home/httpd/htdocs/users2/rastorguev/mfin14/var/ait_patch_orig/compare28012664905424b7d1cae2c684	2010-02-18 12:55:42 +0200
++++ /home/httpd/htdocs/users2/rastorguev/mfin14/var/ait_patch_modif/compare28012664905424b7d1cae2c684	2010-02-18 12:55:42 +0200
+@@ -52,6 +52,8 @@
+                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+             </div>
+ 
++            <h4><?php echo Mage::helper('aitmanufacturers')->getManufacturerLink($_product);?></h4>
++            
+             <?php if ($this->canEmailToFriend()): ?>
+                 <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+             <?php endif; ?>

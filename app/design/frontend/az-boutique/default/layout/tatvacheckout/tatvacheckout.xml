@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/tatva/tatva.css</stylesheet></action><!--
+            <action method="addItem"><type>skin_js</type><name>js/tatva/jquery-1.6.4.js</name></action>-->
+            <action method="addItem"><type>skin_js</type><name>js/tatva/region.js</name></action>
+        </reference>
+    </default>
+
+    <checkout_onepage_tatvapopup>
+        <reference name="root">
+            <action method="setTemplate"><template>tatva/page/1columnsocollisimo.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+        </reference>
+        <reference name="content">
+            <block type="tatvacheckout/onepage_tatvapopup"  name="checkout.tatvapopup" as="checkout.tatvapopup" template="tatva/checkout/onepage/tatvapopup.phtml"/>
+        </reference>
+    </checkout_onepage_tatvapopup>
+
+    <checkout_onepage_tatvachoicepopup>
+        <reference name="root">
+            <action method="setTemplate"><template>tatva/page/1columnsocollisimo.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+        </reference>
+        <reference name="content">
+            <block type="tatvacheckout/onepage_tatvachoicepopup"  name="checkout.tatvachoicepopup" as="checkout.tatvachoicepopup" template="tatva/checkout/onepage/tatvachoicepopup.phtml">
+                <block type="tatvacheckout/onepage_tatvapopup"  name="checkout.tatvapopup" as="checkout.tatvapopup" template="tatva/checkout/onepage/tatvapopup.phtml"/>
+            </block>
+        </reference>
+    </checkout_onepage_tatvachoicepopup>
+	<checkout_onepage_mondialrelaypopup>
+        <reference name="root">
+            <action method="setTemplate"><template>tatva/page/1columnsocollisimo.phtml</template></action>
+            <action method="setIsHandle"><applied>1</applied></action>
+        </reference> 
+		<reference name="content">
+            <block type="tatvacheckout/onepage_mondialrelaypopup"  name="checkout.mondialrelaypopup" as="checkout.mondialrelaypopup" template="tatva/checkout/onepage/mondialrelay.phtml">
+                 <block type="tatvacheckout/onepage_mondialrelaypopupdetail"  name="checkout.mondialrelaypopupdetail" template="tatva/checkout/onepage/mondialrelaydetail.phtml"/>
+			</block>
+        </reference>       
+    </checkout_onepage_mondialrelaypopup>
+	
+	<checkout_onepage_mondialrelaydetail>
+	     <reference name="root">
+	            <action method="setTemplate"><template>tatva/page/1columnsocollisimo.phtml</template></action>
+				<action method="setIsHandle"><applied>1</applied></action>
+	     </reference>
+	    <reference name="content">
+	      <block type="tatvacheckout/onepage_mondialrelaypopupdetail"  name="checkout.mondialrelaypopupdetail" template="tatva/checkout/onepage/mondialrelaydetail.phtml"/>
+	    </reference>
+    </checkout_onepage_mondialrelaydetail>
+
+    <checkout_onepage_index>
+        <reference name="checkout.onepage">
+            <action method="setTemplate"><template>tatva/checkout/onepage.phtml</template></action>
+        </reference>
+        <reference name="checkout.onepage.login">
+            <action method="setTemplate"><template>tatva/checkout/onepage/login.phtml</template></action>
+        </reference>
+        <reference name="checkout.onepage.billing">
+            <action method="setTemplate"><template>tatva/checkout/onepage/billing.phtml</template></action>
+        </reference>
+        <reference name="checkout.onepage.shipping">
+            <action method="setTemplate"><template>tatva/checkout/onepage/shipping.phtml</template></action>
+        </reference>
+        <reference name="checkout.progress">
+            <!--<action method="setTemplate"><template>tatva/checkout/onepage/progress.phtml</template></action>-->
+        </reference>
+        <reference name="checkout.onepage.shipping_method.available">
+            <!--<action method="setTemplate"><template>tatva/checkout/onepage/shipping_method/available.phtml</template></action>-->
+        </reference>
+    </checkout_onepage_index>
+
+  <!-- <checkout_onepage_progress>
+        <reference name="root">
+            <action method="setTemplate"><template>tatva/checkout/onepage/progress.phtml</template></action>
+        </reference>
+    </checkout_onepage_progress>-->
+
+    <!--comment by nisha <checkout_onepage_shippingmethod>
+        <reference name="root">
+            <action method="setTemplate"><template>tatva/checkout/onepage/shipping_method/available.phtml</template></action>
+        </reference>
+    </checkout_onepage_shippingmethod>-->
+
+    <customer_account_create>
+    <reference name="lazyloading.javascript.files">
+            <action method="addLink">
+                <path>tatva/shipping_related.js</path>
+                <type>js</type>
+                <position>1</position>
+            </action>
+        </reference>
+        <reference name="customer_form_register">
+            <action method="setTemplate"><template>tatva/customer/form/register.phtml</template></action>
+        </reference>
+    </customer_account_create>
+
+    <customer_address_form>
+        <reference name="lazyloading.javascript.files">
+            <action method="addLink">
+                <path>tatva/shipping_related.js</path>
+                <type>js</type>
+                <position>1</position>
+            </action>
+        </reference>
+        <reference name="customer_address_edit">
+            <action method="setTemplate"><template>tatva/customer/address/edit.phtml</template></action>
+        </reference>
+    </customer_address_form>
+
+    <sales_order_print>
+        <reference name="sales.order.print">
+            <action method="setTemplate"><template>tatva/sales/order/print.phtml</template></action>
+        </reference>
+    </sales_order_print>
+
+    <sales_order_printinvoice>
+        <reference name="sales.order.print.invoice">
+            <action method="setTemplate"><template>tatva/sales/order/print/invoice.phtml</template></action>
+        </reference>
+    </sales_order_printinvoice>
+
+    <sales_order_printshipment>
+        <reference name="sales.order.print.shipment">
+            <action method="setTemplate"><template>tatva/sales/order/print/shipment.phtml</template></action>
+        </reference>
+    </sales_order_printshipment>
+
+    <sales_order_printcreditmemo>
+        <reference name="sales.order.print">
+            <action method="setTemplate"><template>tatva/sales/order/print/creditmemo.phtml</template></action>
+        </reference>
+    </sales_order_printcreditmemo>
+
+    <checkout_cart_index>
+        <reference name="lazyloading.javascript.files">
+            <action method="addLink">
+                <path>tatva/shipping_related.js</path>
+                <type>js</type>
+                <position>1</position>
+            </action>
+        </reference>
+        <reference name="checkout.cart.shipping">
+            <action method="setTemplate"><template>tatva/checkout/cart/shipping.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
+
+</layout>

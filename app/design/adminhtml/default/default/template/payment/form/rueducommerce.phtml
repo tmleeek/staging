@@ -1,0 +1,9 @@
+<ul id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none">
+    <li>
+        <div class="input-box">
+            <label for="p_method_<?php echo $this->getMethod()->getCode() ?>">
+				<span><strong><?php echo $this->htmlEscape($this->getMethod()->getTitle()) ?></strong></span><br class="cache" />
+			</label>
+        </div>
+    </li>
+</ul>

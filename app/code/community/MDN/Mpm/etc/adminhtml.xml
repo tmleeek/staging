@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<config>
+
+    <menu>
+        <bmsperformance translate="title" module="Mpm">
+            <title>Smart price</title>
+            <sort_order>900</sort_order>
+            <children>
+                <dashboard translate="title" module="Mpm">
+                    <title>Dashboard</title>
+                    <action>adminhtml/Mpm_Dashboard</action>
+                    <sort_order>1</sort_order>
+                </dashboard>
+                <products translate="title" module="Mpm">
+                    <title>Pricing wizard</title>
+                    <action>adminhtml/Mpm_Products</action>
+                    <sort_order>5</sort_order>
+                </products>
+                <rules translate="title" module="Mpm">
+                    <title>Rules</title>
+                    <action>adminhtml/Mpm_Rules</action>
+                    <sort_order>10</sort_order>
+                </rules>
+                <shippings translate="title" module="Mpm">
+                    <title>Shippings</title>
+                    <action>adminhtml/Mpm_Shippings</action>
+                    <sort_order>50</sort_order>
+                </shippings>
+                <config translate="title" module="Mpm">
+                    <title>Configuration</title>
+                    <action>adminhtml/system_config/edit/section/mpm</action>
+                    <sort_order>100</sort_order>
+                </config>
+            </children>
+        </bmsperformance>
+    </menu>
+
+    <translate>
+        <modules>
+            <MDN_Cdiscount>
+                <files>
+                    <default>MDN_Mpm.csv</default>
+                </files>
+            </MDN_Cdiscount>
+        </modules>
+    </translate>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <bmsperformance module="Mpm">
+                        <title>Smart price</title>
+                        <children>
+                            <dashboard>
+                                <title>Dashboard</title>
+                            </dashboard>
+                            <products>
+                                <title>Pricing wizard</title>
+                            </products>
+                            <rules>
+                                <title>Rules</title>
+                            </rules>
+                            <shippings>
+                                <title>Shippings</title>
+                            </shippings>
+                            <config>
+                                <title>Configuration</title>
+                            </config>
+                        </children>
+                    </bmsperformance>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mpm translate="title">
+                                        <title>Smart price</title>
+                                    </mpm>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

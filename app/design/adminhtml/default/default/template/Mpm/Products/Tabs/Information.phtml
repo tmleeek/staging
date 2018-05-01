@@ -1,0 +1,66 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<?php $data = $this->getOfferInformation(); ?>
+<?php if ($data): ?>
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Information from %s', $this->getChannelLabel()); ?></h4>
+        </div>
+        <fieldset>
+
+            <table border="0" width="100%">
+                <tr>
+                    <td><a href="<?php echo $data->_source->url;?>" target="_blank"><img width="100" height="100" src="<?php echo $this->getImage($data); ?>"></a></td>
+                    <td>
+                        <h1><?php echo $data->_source->name; ?></h1>
+                        <p><a href="<?php echo $data->_source->url;?>" target="_blank"><?php echo $data->_id; ?></a></p>
+                        <p><?php echo $data->_source->manufacturer; ?></p>
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+    </div>
+<?php endif; ?>
+
+
+
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Information from Magento'); ?></h4>
+    </div>
+    <fieldset>
+
+
+        <?php $productEntityId = $this->getIdMagento($this->getProduct()->getProductId()); ?>
+        <?php if ($productEntityId > 0): ?>
+
+            <table border="0" width="100%">
+                <tr>
+
+                    <td><a
+                            href="<?php echo $this->getUrl('adminhtml/catalog_product/edit', array('id' => $productEntityId));?>"
+                            target="_blank">
+
+                            <img width="100" height="100" src="<?php echo $this->getImageMagento($this->getProduct()->getProductId()) ?>">
+                        </a>
+                    </td>
+                    <td>
+                        <h1><?php echo $this->getProduct()->getName(); ?></h1>
+
+                        <p>Sku :
+                            <a href="<?php echo $this->getUrl('adminhtml/catalog_product/edit', array('id' => $productEntityId));?>" target="_blank">
+                                <?php echo $this->getProduct()->getProductId(); ?>
+                            </a>
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+        <?php else: ?>
+            <p>This product doesnt exist in Magento !</p>
+        <?php endif; ?>
+    </fieldset>
+</div>

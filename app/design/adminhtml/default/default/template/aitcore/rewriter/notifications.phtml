@@ -1,0 +1,20 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+ * @var $this Aitoc_Aitsys_Block_Rewriter_Notifications
+ */ 
+if ($this->isShow()) { ?>
+<div class="notification-global">
+    <strong><?php echo $this->helper('aitsys')->__('Class Rewrites cache is disabled.') ?></strong>
+    <?php echo $this->helper('aitsys')->__('It is strongly recommended to turn it on! Do not turn it off except for development purposes!') ?>
+    <?php echo $this->helper('aitsys')->__('Click here to go to <a href="%s">Cache Management</a> and enable Class Rewrites cache.', $this->getManageUrl());?>
+</div>
+<?php } ?>

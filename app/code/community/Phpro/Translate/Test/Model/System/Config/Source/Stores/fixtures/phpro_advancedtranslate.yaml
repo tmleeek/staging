@@ -1,0 +1,14 @@
+tables:
+  translate/translate:
+   - translate_id: 1
+     string: Empty
+     module: Mage_Page::Empty
+     store_id: 0
+     locale: en_US
+     interface: front_end
+   - translate_id: 2
+     string: Empty
+     module: Mage_Page::Empty
+     store_id: 2
+     locale: fr_FR
+     interface: front_end

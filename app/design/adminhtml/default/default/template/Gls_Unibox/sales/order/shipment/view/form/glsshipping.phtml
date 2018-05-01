@@ -1,0 +1,137 @@
+<?php
+    /**
+     *  TODO: translate, remove style, Design
+     */
+?>
+<style>
+    #gls_unibox_formfields label {
+        width: 120px;
+        float: left;
+        clear: both;
+    }
+    #gls_unibox_formfields select, #gls_unibox_formfields input {
+        float: left;
+        width: 260px;
+    }
+</style>
+<div id="gls_unibox_formfields" style="float:left;width:400px;">
+    <label for="glsservice">Service:</label>
+    <select name="glsservice" id="glsservice" class="select">
+        <option value="business">GLS Business</option>
+        <?php if ($this->getExpressPossible($this->getRequest()->getParam('shipment_id'))): ?>
+            <option value="express">GLS Express</option>
+        <?php endif; ?>
+    </select>
+    <label for="shipfrom">Versenden von:</label>
+    <select id="shipfrom" name="shipfrom" class="select">
+        <?php $model = Mage::getModel('glsbox/client')->getCollection()->addFieldToFilter('status', '1'); ?>
+        <?php foreach ($model as $item): ?>
+            <option value="<?php echo $item->getId(); ?>"><?php echo $item->getDisplayName(); ?></option>
+        <?php endforeach; ?>
+    </select>
+    <label for="weight">Gewicht (kg):</label>
+    <input  id="weight" type="text" name="weight" value="0.10"/>
+    <?php if ($this->getFrankaturNeeded($this->getRequest()->getParam('shipment_id'))):?>
+        <label for="frankatur">Frankatur:</label>
+        <select id="frankatur" name="frankatur" class="select">
+            <option value="10">(10) Frei Haus, verzollt, versteuert (DDP)</option>
+            <option value="20">(20) Frei Haus, unverzollt, unverstuert (DDU)</option>
+            <option value="30">(30) Frei Haus, verzollt, unversteuert (DDP, VAT unpaid)</option>
+            <option value="40">(40) Frei Haus, ohne Zoll, ohne Steuern (DDU, cleared)</option>
+            <option value="50">(50) Frei Haus, ohne Zoll, Freischreibung (DDP)</option>
+        </select>
+    <?php else: ?>
+        <input type="hidden" name="frankatur" value="0"/>
+    <?php endif; ?>
+    <label for="notiz">Notiz:</label>
+    <input id="notiz" type="text" name="notiz" value=""/>
+    <input type="hidden" name="shipment_id" value="<?php echo $this->getRequest()->getParam('shipment_id'); ?>"/>
+
+    <?php if ($this->getExpressPossible($this->getRequest()->getParam('shipment_id'))):?>
+        <label for="expressart">Express Produktart (Nur bei Expressversand):</label>
+        <select id="expressart" name="expressart" class="select">
+            <option value="TN">(TN) 17:00 - Service</option>
+            <option value="TE">(TE) 12:00-Service</option>
+            <option value="T1">(T1) 10:00-Service</option>
+            <option value="T9">(T9) 9:00-Service</option>
+            <option value="T8">(T8) 8:00-Service</option>
+            <option value="SE">(SE) Saturday 12:00-Service</option>
+            <option value="S1">(S1) Saturday 10:00-Service</option>
+        </select>
+        <label for="alternativzustellung">Alternativzustellung erlaubt:</label>
+        <select id="alternativzustellung" name="alternativzustellung" class="select">
+            <option value="J">Ja</option>
+            <option value="N">Nein</option>
+        </select>
+    <?php else: ?>
+        <input type="hidden" name="expressart" value="0"/>
+        <input type="hidden" name="alternativzustellung" value="0"/>
+    <?php endif; ?>
+    <label for="paketsum">Paket-Gesamtanzahl:</label>
+    <input id="paketsum" type="text" name="paketsum" value=""/>
+    <label for="paketnumber">Paket-Teilnummer:</label>
+    <input id="paketnumber" type="text" name="paketnumber" value=""/>
+</div>
+<div style="clear:both;"></div>
+<div style="float:left;">
+    <?php echo $this->getGlsButtonSaveHtml(); ?>
+</div>
+<div style="clear:both;"></div>
+<div class="field-row grid" id="shipment_tracking_info">
+    <table cellspacing="0" class="data">
+        <col width="100"/>
+        <col width="40"/>
+        <col width="40"/>
+        <col width="40"/>
+        <col width="80"/>
+        <col width="40"/>
+        <col width="40"/>
+        <tbody>
+            <tr class="even">
+                <td><strong>Notiz</strong></td>
+                <td><strong>Service</strong></td>
+                <td><strong>Gewicht</strong></td>
+                <td><strong>Paketnummer(Tracking)</strong></td>
+                <td><strong>Paket x von y</strong></td>
+                <td><strong>Druck</strong></td>
+                <td><strong>Storno</strong></td>
+            </tr>
+            <?php
+                $current_shipment_id = $this->getRequest()->getParam('shipment_id');
+                $model = Mage::getModel('glsbox/shipment')->getCollection()->addFieldToFilter('shipment_id', $current_shipment_id);
+                $i = 0;
+                foreach ($model as $item): ?>
+                    <tr class="<?php echo ($i % 2 == 0)? "odd" : "even";$i++;?>">
+                        <td><?php echo $item->getNotes(); ?></td>
+                        <td><?php echo $item->getService(); ?></td>
+                        <td><?php echo $item->getWeight(); ?></td>
+                        <td><?php echo Mage::helper('glsbox')->getTagValue($item->getGlsMessage(), '400'); ?></td>
+                        <td><?php echo Mage::helper('glsbox')->getTagValue($item->getGlsMessage(), '8904').'/'.Mage::helper('glsbox')->getTagValue($item->getGlsMessage(), '8905'); ?></td>
+                        <td>
+                            <?php if ($item->getStorniert() == 0): ?>
+                                <a href="<?php echo $this->getLabelUrl($item->getId(), Mage::helper('glsbox')->getTagValue($item->getGlsMessage(), '400')); ?>">drucken</a>
+                            <?php elseif ($item->getStorniert() == 1): ?>
+                                <a style="text-decoration:line-through;" href="#" onclick="alert('Sie können ein storniertes Label nicht drucken');return false;">drucken</a>
+                            <?php endif; ?>
+                        </td>
+                        <?php if ($item->getStorniert() == 0): ?>
+                            <td>
+                                <a href="" onclick="deleteGlsShipping('<?php echo $this->getLabelDeleteUrl($item->getId()); ?>');return false;">stornieren</a>
+                            </td>
+                        <?php elseif ($item->getStorniert() == 1):?>
+                            <td>storniert</td>
+                        <?php endif; ?>
+                    </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    function deleteGlsShipping(url) {
+        if (confirm('Are you sure?')) {
+            submitAndReloadArea($('shipment_gls_info'), url)
+        }
+    }
+    //]]>
+</script>

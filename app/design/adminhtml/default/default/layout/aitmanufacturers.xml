@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <aitmanufacturers_admin_adminhtml_aitmanufacturers_index>
+        <reference name="content">
+            <block type="aitmanufacturers/adminhtml_aitmanufacturers" name="aitmanufacturers" template="aitmanufacturers/manufacturers.phtml">
+	            <block type="aitmanufacturers/adminhtml_store_switcher" name="store_switcher" as="store_switcher">
+	            	<action method="setUseConfirm"><params>0</params></action>
+	            </block>
+            </block>
+        </reference>
+    </aitmanufacturers_admin_adminhtml_aitmanufacturers_index>
+    <aitmanufacturers_admin_adminhtml_aitmanufacturers_edit>
+    	<update handle="editor"/>
+    </aitmanufacturers_admin_adminhtml_aitmanufacturers_edit>
+    
+    <aitmanufacturers_admin_adminhtml_aitmanufacturers_attribute>
+        <reference name="content">
+            <block type="aitmanufacturers/adminhtml_attribute_select" name="aitmanufacturers_select" template="aitmanufacturers/selectattribute.phtml"></block>
+        </reference>
+    </aitmanufacturers_admin_adminhtml_aitmanufacturers_attribute>
+</layout>
+<!--
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->
