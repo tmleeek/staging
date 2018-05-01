@@ -1,0 +1,56 @@
+<?php
+namespace MageBackup\Aws\ConfigService;
+
+use MageBackup\Aws\AwsClient;
+
+/**
+ * This client is used to interact with AWS Config.
+ *
+ * @method \MageBackup\Aws\Result deleteConfigRule(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise deleteConfigRuleAsync(array $args = [])
+ * @method \MageBackup\Aws\Result deleteDeliveryChannel(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise deleteDeliveryChannelAsync(array $args = [])
+ * @method \MageBackup\Aws\Result deliverConfigSnapshot(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise deliverConfigSnapshotAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeComplianceByConfigRule(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeComplianceByConfigRuleAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeComplianceByResource(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeComplianceByResourceAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeConfigRuleEvaluationStatus(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeConfigRuleEvaluationStatusAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeConfigRules(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeConfigRulesAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeConfigurationRecorderStatus(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeConfigurationRecorderStatusAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeConfigurationRecorders(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeConfigurationRecordersAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeDeliveryChannelStatus(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeDeliveryChannelStatusAsync(array $args = [])
+ * @method \MageBackup\Aws\Result describeDeliveryChannels(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise describeDeliveryChannelsAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getComplianceDetailsByConfigRule(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getComplianceDetailsByConfigRuleAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getComplianceDetailsByResource(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getComplianceDetailsByResourceAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getComplianceSummaryByConfigRule(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getComplianceSummaryByConfigRuleAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getComplianceSummaryByResourceType(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getComplianceSummaryByResourceTypeAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getResourceConfigHistory(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getResourceConfigHistoryAsync(array $args = [])
+ * @method \MageBackup\Aws\Result listDiscoveredResources(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise listDiscoveredResourcesAsync(array $args = [])
+ * @method \MageBackup\Aws\Result putConfigRule(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise putConfigRuleAsync(array $args = [])
+ * @method \MageBackup\Aws\Result putConfigurationRecorder(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise putConfigurationRecorderAsync(array $args = [])
+ * @method \MageBackup\Aws\Result putDeliveryChannel(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise putDeliveryChannelAsync(array $args = [])
+ * @method \MageBackup\Aws\Result putEvaluations(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise putEvaluationsAsync(array $args = [])
+ * @method \MageBackup\Aws\Result startConfigurationRecorder(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise startConfigurationRecorderAsync(array $args = [])
+ * @method \MageBackup\Aws\Result stopConfigurationRecorder(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise stopConfigurationRecorderAsync(array $args = [])
+ */
+class ConfigServiceClient extends AwsClient {}

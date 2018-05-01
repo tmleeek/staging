@@ -1,0 +1,58 @@
+<?php
+namespace MageBackup\Aws\Lambda;
+
+use MageBackup\Aws\AwsClient;
+
+/**
+ * This client is used to interact with AWS Lambda
+ *
+ * @method \MageBackup\Aws\Result addPermission(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise addPermissionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result createAlias(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise createAliasAsync(array $args = [])
+ * @method \MageBackup\Aws\Result createEventSourceMapping(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise createEventSourceMappingAsync(array $args = [])
+ * @method \MageBackup\Aws\Result createFunction(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise createFunctionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result deleteAlias(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise deleteAliasAsync(array $args = [])
+ * @method \MageBackup\Aws\Result deleteEventSourceMapping(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise deleteEventSourceMappingAsync(array $args = [])
+ * @method \MageBackup\Aws\Result deleteFunction(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise deleteFunctionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getAlias(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getAliasAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getEventSourceMapping(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getEventSourceMappingAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getFunction(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getFunctionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getFunctionConfiguration(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getFunctionConfigurationAsync(array $args = [])
+ * @method \MageBackup\Aws\Result getPolicy(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise getPolicyAsync(array $args = [])
+ * @method \MageBackup\Aws\Result invoke(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise invokeAsync(array $args = [])
+ * @method \MageBackup\Aws\Result invokeAsync(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise invokeAsyncAsync(array $args = [])
+ * @method \MageBackup\Aws\Result listAliases(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise listAliasesAsync(array $args = [])
+ * @method \MageBackup\Aws\Result listEventSourceMappings(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise listEventSourceMappingsAsync(array $args = [])
+ * @method \MageBackup\Aws\Result listFunctions(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise listFunctionsAsync(array $args = [])
+ * @method \MageBackup\Aws\Result listVersionsByFunction(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise listVersionsByFunctionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result publishVersion(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise publishVersionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result removePermission(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise removePermissionAsync(array $args = [])
+ * @method \MageBackup\Aws\Result updateAlias(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise updateAliasAsync(array $args = [])
+ * @method \MageBackup\Aws\Result updateEventSourceMapping(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise updateEventSourceMappingAsync(array $args = [])
+ * @method \MageBackup\Aws\Result updateFunctionCode(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise updateFunctionCodeAsync(array $args = [])
+ * @method \MageBackup\Aws\Result updateFunctionConfiguration(array $args = [])
+ * @method \MageBackup\GuzzleHttp\Promise\Promise updateFunctionConfigurationAsync(array $args = [])
+ */
+class LambdaClient extends AwsClient {}
