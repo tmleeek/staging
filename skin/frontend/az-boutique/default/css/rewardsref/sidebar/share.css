@@ -1,0 +1,21 @@
+
+.rewardsref-sidebar-share .content {
+    padding-left: 9px;
+    font-size: 11px;
+    padding-bottom: 6px;
+    padding-top: 7px;
+    padding-right: 9px;
+}
+
+.rewardsref-sidebar-share .content .label {
+    font-weight: bold;
+}
+
+.rewardsref-sidebar-share .actions {
+    text-align: center;
+}
+
+.rewardsref-share-widget {
+    display: inline-block;
+    vertical-align: top;
+}

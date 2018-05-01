@@ -1,0 +1,26 @@
+.clear,
+dl.accordion dt,
+.grid thead th a,
+.entry-edit .entry-edit-head,
+{ zoom:1; }
+
+.clear { display:block; clear:both; height:0; font-size:0; line-height:0; overflow:hidden; }
+
+input.input-file { padding:2px; }
+input.checkbox,
+input.radio { width:13px; height:13px; }
+button.disabled,
+button.disabled:hover,
+button.disabled:active { filter:alpha(opacity=80); }
+
+/* Scalable Button Override */
+button, .form-button            { width:auto; margin-left:5px; overflow:visible; }
+.massaction button              { width:auto; height: 20px; margin-left:0; overflow:hidden; }
+
+/* Grid Filter Override */
+.grid tr.filter th              { padding-top:3px; padding-bottom:3px; }
+.grid tr.filter th input        { margin-right: -10px; }
+.grid tr.filter th .range input { margin-right: 2px; }
+button.icon-btn                 { width:31px; }
+
+.content-header {zoom:1;}

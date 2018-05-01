@@ -1,0 +1,31 @@
+.rewards-charts-container {
+    margin: 0 auto;
+    width: 1060px;
+}
+
+.rewards-charts #chart {
+    min-width: 830px;
+    float: left;
+}
+
+.rewards-charts .box {
+    float: right;
+    width: 225px;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.rewards-charts .box fieldset {
+    border: none;
+    margin: 0;
+}
+
+.rewards-charts .box .note {
+    padding-left: .4em;
+    font-style: italic;
+    background: #eee;
+}
+
+.rewards-charts .box .entry-edit-head {
+    font-size: 1.1em;
+}

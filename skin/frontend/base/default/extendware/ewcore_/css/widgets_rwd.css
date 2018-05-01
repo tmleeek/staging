@@ -1,0 +1,11 @@
+.actions img {
+	display: inline;
+}
+
+.actions .pager {
+	float: none;
+}
+
+.actions button span span {
+	color: white;
+}

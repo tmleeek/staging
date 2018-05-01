@@ -1,0 +1,42 @@
+<div class="cmspagecontent">
+              <div class="contactinfomain">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact_information')->toHtml() ?>
+                <div class="contactform">
+                  <h2><?php echo $this->__('Contact Us Form'); ?></h2>
+                  <p><?php echo $this->__('Send an email. All fields with an '); ?><span class="mandatory">*</span><?php echo $this->__(' are required.'); ?></p>
+                  <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
+                  <div class="contactusformmain">
+                    <div class="contactuslabel"<?php echo Mage::helper('contacts')->__('Name') ?><span class="mandatory">*</span></div>
+                    <div class="contactusfiled">
+                      <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                  </div>
+                  <div class="contactusformmain">
+                    <div class="contactuslabel"><?php echo Mage::helper('contacts')->__('Email Address') ?><span class="mandatory">*</span></div>
+                    <div class="contactusfiled">
+                     <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                  </div>
+                  <div class="contactusformmain">
+                    <div class="contactuslabel"><?php echo Mage::helper('contacts')->__('Telephone') ?><span class="mandatory">*</span></div>
+                    <div class="contactusfiled">
+                     <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+
+                    </div>
+                  </div>
+                  <div class="contactusformmain">
+                    <div class="contactuslabel"><?php echo Mage::helper('contacts')->__('Comments') ?><span class="mandatory">*</span></div>
+                    <div class="contactusfiled">
+                      <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <div class="contactusformmain last">
+                  	<input type="submit" name="button" id="button" value="Submit" class="inputsubmitbtn" />
+                  </div>
+                  </form>
+                </div>
+              </div>
+              <div class="contactmap"><iframe width="490" height="778" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Murrayfield+Forum+Cnr+Rubida+%26+Rossouw+St+Murrayfield+Pretoria&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=29.550175,67.631836&amp;ie=UTF8&amp;hq=Murrayfield+Forum+Cnr+Rubida+%26+Rossouw+St+Murrayfield+Pretoria&amp;hnear=&amp;radius=15000&amp;ll=-25.755879,28.306147&amp;spn=0.071946,0.144874&amp;t=m&amp;output=embed"></iframe></div>
+            </div>
+
+           

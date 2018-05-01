@@ -1,0 +1,91 @@
+
+div#debug {
+    position: relative;
+    margin: auto;
+    width: 996px;
+}
+
+div.pricer_container {
+    width: 100%;
+}
+
+div.pricer_next {
+    height: 2px;
+    width: 100%;
+    border-bottom: 4px dashed #f0ad4e;
+    margin: 10px 0;
+}
+
+div.pricer_node {
+    border: 2px solid white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 308px;
+    padding: 5px;
+    font-family: "Arial", "sans-serif";
+    color: #000;
+    font-size: 14px;
+    min-height: 100px;
+    margin: 5px;
+    line-height: 20px;
+}
+
+div.pricer_node h4 {
+    margin: 0 0 3px 0;
+    font-size: 13px;
+}
+
+div.pricer_node .small {
+    font-size: 11px;
+}
+
+div.pricer_node.pricer_cost {
+    border: 2px solid #9bd292;
+    float: left;
+}
+div.pricer_node.pricer_cost h4 {
+    color: #9bd292;
+}
+div.pricer_node.pricer_cost h4 a {
+    color: #9bd292;
+}
+
+div.pricer_node.pricer_behavior {
+    border: 2px solid #5bc0de;
+    float: left;
+}
+div.pricer_node.pricer_behavior h4 {
+    color: #5bc0de;
+}
+div.pricer_node.pricer_behavior h4 a {
+    color: #5bc0de;
+}
+
+div.pricer_node.pricer_final_cost {
+    background-color: #9bd292;
+}
+
+div.pricer_node.pricer_target {
+    background-color: #5bc0de;
+}
+
+div.pricer_node.pricer_final_price {
+    background-color: #f0ad4e;
+}
+
+div.pricer_node.pricer_final_cost,
+div.pricer_node.pricer_target,
+div.pricer_node.pricer_final_price {
+    margin: auto;
+    color: white;
+    text-align: right;
+    height: auto;
+    margin: 10px auto;
+    padding: 5px 10px;
+    width: 300px;
+}
+
+div.clear {
+    clear:both;
+}

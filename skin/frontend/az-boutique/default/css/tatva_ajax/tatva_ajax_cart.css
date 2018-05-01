@@ -1,0 +1,75 @@
+
+/*Updated Changes in style.css*/
+.page-empty{padding:15px 0px;}
+
+/* fancybox options property start */
+.product-shop-options{float:left;width: 462px;}
+.product-image-options{float:left;width: 150px;margin-right:10px;}
+.product-name-options {font-size: 1em;font-weight: normal; margin: 0;float:left;width: 300px;}
+/* fancybox options property end */
+
+/* header cart property start */
+.product-header-name{float:left !important;width:30% !important;text-align:left}
+.product-main-content{float:left;width:70%}
+
+.product-qty{float:right;width:100%;}
+#truncated{float:right;height:12px;}
+.product-links{float:right;height:10px;width:100%;margin-bottom:10px;}
+#btn-update{background-image: url('../../images/tatva_ajax/btn_update.jpg');}
+
+.qty-price{float:right}
+/* header cart property end */
+
+#ajax_topcart .truncated .show .item-options {left: -53px;top: 56px;text-align: left;}
+
+.top-block-cart { font-size:11px; line-height:1.25; background:#fff; z-index: 1000;}
+.top-block-cart .block-title strong {  background-position:0 0; background-repeat:no-repeat; padding-left:21px; }
+
+/* Mini Products List */
+.top-block-cart .mini-products-list .product-image { float:left; width:50px; border:1px solid #a9a9a9; }
+.top-block-cart .mini-products-list .product-details { margin-left:60px; }
+.top-block-cart .mini-products-list .product-details .product-name,
+.top-block-cart .mini-products-list .product-details .nobr small { word-wrap:break-word; }
+.top-block-cart .mini-products-list .product-details .nobr { white-space:normal !important; }
+
+/* Block: TopCart */
+.top-block-cart .block-title { /*border-bottom:0;*/ }
+/*.top-block-cart .block-title strong { background-image:url(../images/i_block-cart.gif); }*/
+.top-block-cart .summary { background:#fff; padding:2px 0px 8px; margin:-1px 0 0; position:relative; z-index:1; }
+.top-block-cart .amount { margin:0; }
+.top-block-cart .amount a { font-weight:bold; }
+.top-block-cart .subtotal { margin:5px 0 0; padding:2px 0; background:#F3F3F3; text-align:center; }
+.top-block-cart .subtotal .price { font-weight:bold; }
+.top-block-cart .actions { border-bottom:1px solid #c2c2c2; }
+.top-block-cart .actions .paypal-logo { float:left; width:100%; margin:3px 0 0; text-align:right; }
+.top-block-cart .actions .paypal-logo .paypal-or { clear:both; display:block; padding:0 55px 8px 0; }
+
+.close-j2t-ajax-top {position:absolute; top:5px; left:10px;}
+.close-j2t-ajax-top:hover {/*cursor:default;*/}
+
+.block.top-block-cart .actions { padding: 6px 9px; text-align: right;}
+.block.top-block-cart .block-subtitle { margin: 0; padding: 5px 9px; font-size: 1em; font-weight: bold; }
+.block.top-block-cart .block-content li.item { padding: 7px 9px; display:block; }
+.block.top-block-cart .block-content {background: #fff; color:#000; padding: 6px 6px;}
+.quick-access .links .block.top-block-cart a, .header .links .block.top-block-cart li { background-image: none;}
+.header .links .block.top-block-cart li {width:233px; display:block;}
+
+.quick-access .links .block.top-block-cart a { color: #000;}
+.quick-access .links .block.top-block-cart a {padding:0px;}
+.block.top-block-cart .block-content a.btn-remove, .header .links .block.top-block-cart .block-content li a.btn-remove {background-image: url('../../images/tatva_ajax/btn_remove.gif'); background-position-x: 0; background-position-y: 0; background-repeat: none; width: 16px; height: 16px; background-repeat: no-repeat;}
+.block.top-block-cart .block-content a.btn-edit, .header .links .block.top-block-cart .block-content li a.btn-edit {background-image: url('../../images/tatva_ajax/btn_edit.gif'); background-position-x: 0; background-position-y: 0; background-repeat: none; width: 16px; height: 16px; background-repeat: no-repeat;}
+
+/* For Layered Navigation Filter Ajax*/
+div.category-products{
+	-webkit-transition: background-color 300ms ease-in 200ms; 
+    -moz-transition: background-color 300ms ease-in 200ms;
+    -o-transition: background-color 300ms ease-in 200ms;
+    transition: background-color 300ms ease-in 200ms;
+}
+div.page-loading{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity:0.5
+    }
