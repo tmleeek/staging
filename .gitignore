@@ -40,4 +40,11 @@
 !/var/package
 /var/package/*
 !/var/package/*.xml
-
+/pma_12333312/*
+/Old_dev_22/*
+/error_log
+/var/*
+/var/session/*
+azboutik_azboutique_22_04_18.sql
+error_log
+/include/*
