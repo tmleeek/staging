@@ -1,0 +1,14 @@
+<?php
+
+//grab the social base config array from system config (if exists)
+$socialBase = Mage::getStoreConfig('socialbase');
+
+//Determine what version of retail evolved is being called from layout, show nothing otherwise
+if ($this->getREVersion() == 1 && is_null($socialBase)) { //V1
+    include 'notification_block.phtml';    
+} else if ($this->getREVersion() == 2 && !is_null($socialBase)) {    //V2
+    $this->setClass(' facebook-like-rewards-notification-2');
+    include 'notification_block.phtml';
+} 
+
+?>

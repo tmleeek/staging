@@ -1,0 +1,126 @@
+<?php  
+    $ship_code = $_REQUEST['shipping_method'];
+    $address = $this->getAddress();
+    $address_id = $address->getId();
+    $street1 = $address->getStreet();
+    $street = $street1[0];
+    $postcode = $address->getPostcode();
+    $city = $address->getCity();
+    $countryName = Mage::getModel('directory/country')->load($address->getCountry())->getName();
+    $shipping_method_id = 's_method_colissimo_colissimo';   
+?>
+
+<div class="bloc-popin" style="position:absolute; top:30%; z-index:1001;left:19%;">
+    <div>
+        <div class="chmar">
+            <div class="chbg">
+                <div class="title-fond-rose big-text">
+                    <div class="hdtxt">
+                        <strong>
+                            <span class="small-caps"><?php echo $this->__('Near from which address would you like to be delivered?'); ?></span>
+                        </strong>
+                    </div>
+                    <div class="closebtn">
+                        <a href="#">
+                            <img src="<?php echo $this->getSkinUrl('images/tatva/close.png');?>" alt="" border="0" onclick="return closepopup('popin1','<?php echo $shipping_method_id;?>')"/>
+                        </a>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
+                <form name="choicepopup_form" id="choicepopup_form">
+                    <div class="incon">
+                        <div class="home">
+                            <a href="#">
+                                <img src="<?php echo $this->getSkinUrl('images/tatva/house.png');?>" alt="" border="0" />
+                            </a>
+                        </div>
+                        <div class="chtxt">
+                            <h1><?php echo $this->__('Address');?></h1>
+                            <input name="shipaddress" id="shipaddress" type="text" class="chtxtbx" style="width:320px;" value="<?php echo $street;?>"/>
+                        </div>
+                        <div class="chtxt">
+                            <h1><?php echo $this->__('Zip Code');?> <span>*</span></h1>
+                            <input name="shippostcode" id="shippostcode" type="text" class="chtxtbx required-entry" style="width:102px;" value="<?php echo $postcode;?>"/>
+                        </div>
+                        <div class="chtxt">
+                            <h1><?php echo $this->__('City');?> <span>*</span></h1>
+                            <input name="shipcity" id="shipcity" type="text" class="chtxtbx" style="width:130px;" value="<?php echo $city;?>" />
+                        </div>
+                        <div class="btn">
+                            <button type="button" class="uppercase button" style="width:97px;" name="connexion" onclick="test(1);"><span><span><?php echo $this->__('search');?></span></span></button>
+                            <input type="hidden" name="txtsearch" id="txtsearch"/>
+                        </div>
+                    </div>
+                </form>
+                <div class="title-fond-rose big-text" style="float:left; margin:10px 0px 0px 0px;">
+                    <div class="hdtxt" style="width:872px">
+                        <strong>
+                            <span class="small-caps"><?php echo $this->__('Refine your search by pick up place');?></span>
+                        </strong>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
+                <div class="incon1">
+                    <div class="inconbx">
+                        <div class="inconbschk">
+                            <input name="chklocalstore" type="checkbox" value="" id="chklocalstore" <?php echo $ship_code == 'colissimolocalstore_colissimolocalstore' ? 'checked' : '';?> onclick="test(0);"/>
+                        </div>
+                        <div class="inconbsicn">
+                            <a href="#"><img src="<?php echo $this->getSkinUrl('images/tatva/logo_little_colissimolocalstore.png');?>" alt="" border="0" /></a>
+                        </div>
+                        <div class="inconbxtx">
+                            <div class="inconbxtxh"><?php echo $this->__('my local store');?></div>
+                            <div class="inconbxtxt"><?php echo $this->__('Local store with large opening times range');?></div>
+                        </div>
+                    </div>
+                    <div class="inconbx">
+                        <div class="inconbschk">
+                            <input name="chkpostoffice" type="checkbox" value="" id="chkpostoffice" <?php echo $ship_code == 'colissimopostoffice_colissimopostoffice' ? 'checked' : '';?> onclick="test(0);"/>
+                        </div>
+                        <div class="inconbsicn">
+                            <a href="#">
+                                <img src="<?php echo $this->getSkinUrl('images/tatva/logo_little_colissimopostoffice.png');?>" alt="" border="0" />
+                            </a>
+                        </div>
+                        <div class="inconbxtx">
+                            <div class="inconbxtxh"><?php echo $this->__('my post office');?></div>
+                            <div class="inconbxtxt"><?php echo $this->__('Post office opening hours');?></div>
+                        </div>
+                    </div>
+                    <div class="inconbx">
+                        <div class="inconbschk">
+                            <input name="chkcityssimo" type="checkbox" value="" id="chkcityssimo" <?php echo $ship_code == 'colissimocityssimo_colissimocityssimo' ? 'checked' : '';?> onclick="test(0);"/>
+                        </div>
+                        <div class="inconbsicn">
+                            <a href="#">
+                                <img src="<?php echo $this->getSkinUrl('images/tatva/logo_little_colissimocityssimo.png');?>" alt=""  border="0" />
+                            </a>
+                        </div>
+                        <div class="inconbxtx">
+                            <div class="inconbxtxh"><?php echo $this->__('my cityssimo space');?></div>
+                            <div class="inconbxtxt"><?php echo $this->__('Parcel places available 7d/7 - 24h/24');?></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="incon1">
+                    <div class="inconbx1">
+                        <div class="inconbschk" style="margin-top:1px;">
+                            <input name="chkmobility" id="chkmobility" type="checkbox" value="" onclick="test(0);"/>
+                        </div>
+                        <div class="inconbxtxt1" style="margin-top:4px;"><?php echo $this->__('Only display the pick-up places with an access to people with restricted mobility');?></div>
+                        <div class="disimg">
+                            <img src="<?php echo $this->getSkinUrl('images/tatva/dis.png');?>" alt="" border="0" height="21px"/>
+                        </div>
+                    </div>
+                    <div class="updtbtn">
+                        <button type="button" class="uppercase button" style="width:198px;" name="connexion" onclick="test(0);"><span><span><?php echo $this->__('Update the map');?></span></span></button>
+                    </div>
+                </div>
+                <div id="ResponseDiv">
+                    <?php echo $this->getChildHtml('checkout.tatvapopup');?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cache-page"></div>

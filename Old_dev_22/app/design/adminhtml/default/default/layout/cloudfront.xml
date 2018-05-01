@@ -1,0 +1,7 @@
+<layout>
+    <adminhtml_cdnmanagement_index>
+        <reference name="content">
+            <block type="freelunchlabs_cloudfront/adminhtml_cdnmanagement" name="cdnmanagement" template="cloudfront/cdnmanagement.phtml"></block>
+        </reference>
+    </adminhtml_cdnmanagement_index>
+</layout>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Directory>
+            <version>0.1.0</version>
+        </Tatva_Directory>
+    </modules>
+
+    <admin />
+       
+    <global>
+        <models>
+            <tatvadirectory>
+                <class>Tatva_Directory_Model</class>
+            </tatvadirectory>
+            <directory>
+            	<rewrite>
+					<currency_import_webservicex>Tatva_Directory_Model_Currency_Import_Webservicex</currency_import_webservicex>
+            	</rewrite>
+            </directory>
+        </models>
+    </global>
+    
+    <adminhtml />
+
+    <frontend />
+</config>
+

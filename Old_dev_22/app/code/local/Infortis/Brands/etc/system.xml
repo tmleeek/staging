@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <infortis translate="label">
+            <label>Infortis Extensions</label>
+            <sort_order>152</sort_order>
+        </infortis>
+    </tabs>
+    <sections>
+        <brands translate="label">
+			<label>Brands</label>
+			<tab>infortis</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>300</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+            <groups>
+				<general translate="label">
+                    <label>General</label>
+					<comment><![CDATA[<strong>IMPORTANT:</strong><br/>This is the directory to store brand images: media/wysiwyg/infortis/brands/<br/>In the previous version images were stored in: media/infortis/attributes/.<br/>If you have updated the theme, please move all your brand images to the new directory.<br/><br/>]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <!--<product_view_enabled translate="label">
+							<label>Brand on Product Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</product_view_enabled>-->
+						<attr_id translate="label">
+                            <label>Brand Attribute Code</label>
+							<comment><![CDATA[Identifier of the attribute which contains the information about brands in your store. Search for that code in <em>Catalog > Attributes > Manage Attributes</em>.]]></comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-code</validate>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </attr_id>
+						<image_extension translate="label">
+                            <label>Brand Image File Extension</label>
+							<comment>Without the leading dot.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_extension>
+						<link_search_enabled translate="label">
+							<label>Brand Logo is a Link to Search Results</label>
+							<comment><![CDATA[E.g. Apple logo can be a link to this search results page:<br/><strong>example.com/catalogsearch/result/?q=apple</strong>]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</link_search_enabled>
+						<page_base_path translate="label">
+                            <label>Base Path to Brand's Pages</label>
+							<comment><![CDATA[This path can be used only when option <strong>Brand Logo is a Link to Search Results</strong> is disabled. Path will be appended with the brand's name to create a link to the brand's page.<br/>- Path is relative to the store root.<br/>- No leading or trailing slashes.<br/>- Enter "/" (single slash, without brackets), if no base path is needed.<br/>- Leave empty if you don't need a link for brand logo.<br/>
+								- For more details please refer to the user guide.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<link_search_enabled>0</link_search_enabled>
+							</depends>
+                        </page_base_path>
+						<append_category_suffix translate="label">
+							<label>Append Category URL Suffix</label>
+							<comment><![CDATA[If <strong>Category URL Suffix</strong> exists (in System > Configuration > Catalog), it can be appended at the end of the URL of the brand's page. For example: www.example.com/brands/apple<strong style="color:red">.html</strong> (assuming that <strong style="color:red">.html</strong> was set as <strong>Category URL Suffix</strong>).]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<link_search_enabled>0</link_search_enabled>
+							</depends>
+						</append_category_suffix>
+					</fields>
+				</general>
+				<product_view translate="label">
+                    <label>Brand on Product Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enable translate="label">
+							<label>Brand on Product Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enable>
+						<show_image translate="label">
+							<label>Show Brand Image</label>
+							<comment>If set to "No", brand image will be replaced by brand name.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</show_image>
+					</fields>
+				</product_view>
+				<slider translate="label">
+                    <label>Brand Slider</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <!-- Global switcher removed -->
+                        <!--<enable translate="label">
+							<label>Brand Sliders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enable>-->
+						<all_brands translate="label">
+							<label>Show All Brands</label>
+							<comment><![CDATA[If set to "Yes", slider will display all existing brands. Otherwise slider will display only those brands, which are currently assigned to products.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</all_brands>
+						<!--<easing translate="label">
+							<label>Easing Method</label>
+							<comment>The type of easing applied to the transition animation.</comment>
+                            <frontend_type>select</frontend_type>
+							<source_model>infortis/system_config_source_js_jquery_easing</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</easing>-->
+						<timeout translate="label">
+                            <label>Timeout</label>
+							<comment>To enable automatic scrolling, specify time (in milliseconds) between slide transitions. Leave empty to disable automatic scrolling. Note that 1000 miliseconds = 1 second.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </timeout>
+						<speed translate="label">
+                            <label>Speed</label>
+							<comment>Duration (in milliseconds) of scrolling animation. Applied to scrolling with arrows (and touch swipe).</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </speed>
+                        <auto_speed translate="label">
+                            <label>Automatic Scrolling Speed</label>
+                            <comment><![CDATA[Duration (in milliseconds) of scrolling animation. Applied to automatic scrolling (if <strong>Timeout</strong> was specified) and to scrolling with pagination.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_speed>
+						<pause translate="label">
+							<label>Pause on Hover</label>
+							<comment>If enabled, when the slider is mouseovered then the automatic transition functionality will pause.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</pause>
+						<loop translate="label">
+							<label>Loop</label>
+							<comment>If enabled, animation will loop.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</loop>
+                        <lazy translate="label">
+                            <label>Lazy Loading</label>
+                            <comment>Delays loading of images to speed up page loading. Images outside of viewport will not be loaded before user scrolls to them.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lazy>
+					</fields>
+				</slider>
+            </groups>
+        </brands>
+    </sections>
+</config>

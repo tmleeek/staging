@@ -1,0 +1,344 @@
+<script type="text/javascript">
+//<![CDATA[
+
+  opHeadingTemplate =    '<th class="type-image"><?php echo Mage::helper('optionimages')->__('Image') ?></th>';
+  opButtonTemplate =    '&nbsp;<?php echo $this->getUploadButtonHtml() ?>';
+
+  opRowTemplate     =     '<td>'+
+											'<div class="files" style="width:135px;">'+
+												'<div  id="{{id}}_{{select_id}}_uploader_place-holder" onmouseover="instOptionImages.loadUploader(\'{{id}}\',\'{{select_id}}\')">' +
+													'<span>{{roll_over}}</span>' +
+												'</div>' +			
+												'<div id="{{id}}_{{select_id}}_uploader_row" style="display:none"  class="hide_uploader_row">'+				
+													'<div class="row" >'+
+														'<input type="hidden" class="validate-optionimages-file" id="optionimages_link_{{id}}_{{select_id}}_file_save" name="product[options][{{id}}][values][{{select_id}}][image]" value="" />'+
+														'<div id="optionimages_link_{{id}}_{{select_id}}_file" class="uploader">'+
+															'<div id="optionimages_link_{{id}}_{{select_id}}_file-old" class="file-row-info"></div>'+
+															'<div id="optionimages_link_{{id}}_{{select_id}}_file-new" class="file-row-info new-file"></div>'+
+															'<div class="buttons">'+
+																'<div id="optionimages_link_{{id}}_{{select_id}}_file-install-flash" style="display:none">'+
+																	'<?php echo Mage::helper('optionimages')->__('This content requires last version of Adobe Flash Player. <a href="%s">Get Flash</a>', 'http://www.adobe.com/go/getflash/') ?>'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+														'<div id="optionimages_link_{{id}}_{{select_id}}_file_save_advice"></div>'+	
+													'</div>'+
+												'</div>'+												
+											'</div>'+			
+										'</td>';
+OptionImages = Class.create();
+OptionImages.prototype = {
+    uploaderObj : $H({}),
+    headingTemplate : opHeadingTemplate,
+    buttonTemplate : opButtonTemplate,	
+    opRowTemplate : opRowTemplate,	
+    templatePattern : /(^|.|\r|\n)({{(\w+)}})/,	
+    rowTemplate : null,
+	config : [],
+	initialize : function(config){
+		this.config = config;
+		this.rowTemplate = new Template(this.opRowTemplate, this.templatePattern);		
+	},
+    setUploaderObj : function(type, key, obj){
+        if (!this.uploaderObj.get(type)) {
+            this.uploaderObj.set(type, $H({}));
+        }
+        this.uploaderObj.get(type).set(key, obj);
+    },
+    getUploaderObj : function(type, key){
+        try {
+            return this.uploaderObj.get(type).get(key);
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    },
+    unsetUploaderObj : function(type, key){
+        try {
+            this.uploaderObj.get(type).unset(key);
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    },
+    massUploadByType : function(type){
+        try {
+				this.uploaderObj.get(type).each(function(item){
+				row = item.value.container.up('div.hide_uploader_row');					
+                container = item.value.container.up('tr');
+				div = item.value.container.up('div.option-box');
+				if(row.visible()){
+					if (container.visible() && !container.hasClassName('no-display') && !div.hasClassName('no-display')) {
+						item.value.upload();
+					} else {
+						this.unsetUploaderObj(type, item.key);
+					}
+				}
+            }.bind(this));
+        } catch (e) {
+          //  try {
+                //console.log(e);
+          //  } catch (e2) {
+              //  alert(e.name + '\n' + e.message);
+           // }
+        }
+    },
+    loadImage : function(id, imagesrc){
+		$(id+'_img').src = imagesrc;
+		$(id+'_img').show();
+		$(id+'_place-holder').hide();		
+    },
+    loadUploader : function(id, select_id){	
+		$(id+'_'+select_id+'_uploader_place-holder').hide();
+		$(id+'_'+select_id+'_uploader_row').show();		
+		if (this.config[id] && this.config[id][select_id]){
+			image = this.config[id][select_id][0];
+			imageId = 'optionimages_link_'+id+'_'+select_id+'_file';
+			this.loadImage(imageId, image.url);
+		}			
+    },
+    insertHeading : function(body){
+		table = body.down('table.border');
+		w = table.getStyle('width');
+		w.sub(/[0-9]+/, function(match){
+			  w = parseInt(match[0]);
+		 });
+		w += 150;
+		w += 'px';
+		table.setStyle({'width': w}); 
+		Element.insert(body.down('th.last'), {'before' : this.headingTemplate});				
+		Element.insert(body.down('tfoot').down('td'), {'bottom' : this.buttonTemplate});			 
+	},	
+	 insertRow : function(table, id, select_id){
+				
+		if (this.config[id] && this.config[id][select_id]){
+			image = this.config[id][select_id];
+			roll_over = '<?php echo Mage::helper('optionimages')->__('Roll Over for Preview') ?>';
+		} else {
+			image = [];
+			roll_over = '<?php echo Mage::helper('optionimages')->__('Roll Over for Uploader') ?>';
+		}
+		
+		Element.insert(table.down('td.last'), {'before' : this.rowTemplate.evaluate({
+				'id' : id,
+				'select_id' : select_id,
+				'roll_over' : roll_over						
+			})});
+			
+		linkUrl = $('optionimages_link_'+id+'_'+select_id+'_file');
+
+		new OptionImages.FileUploader(
+			'links',
+			'links_'+id+'_'+select_id,
+			linkUrl.up('td'),
+			'optionimages[link]['+id+'_'+select_id+']',
+			image,
+			'optionimages_link_'+id+'_'+select_id+'_file',
+			<?php echo $this->getConfigJson() ?>
+		);		
+	}
+};
+
+
+var uploaderOITemplate = '<div class="no-display" id="[[idName]]-template">' +
+                            '<div id="{{id}}" class="file-row file-row-narrow">' +
+                                '<span class="file-info">' +
+                                    '<span class="file-info-name">{{name}}</span>' +
+                                    ' ' +
+                                    '<span class="file-info-size">({{size}})</span>' +
+                                '</span>' +
+                                '<span class="progress-text"></span>' +
+                                '<div class="clear"></div>' +
+                            '</div>' +
+                        '</div>' +
+                            '<div class="no-display" id="[[idName]]-template-progress">' +
+                            '{{percent}}% {{uploaded}} / {{total}}' +
+                            '</div>';
+
+var fileListOITemplate =  '<div class="place-holder" id="{{id}}_place-holder" onmouseover="instOptionImages.loadImage(\'{{id}}\',\'{{url}}\')">' +
+										'<span><?php echo Mage::helper('optionimages')->__('Roll Over for Preview') ?></span>' +
+									'</div>' +
+									'<img src="<?php echo $this->getSkinUrl('images/spacer.gif')?>" id="{{id}}_img" width="40" style="display:none;" alt="" />';
+
+
+
+
+OptionImages.FileUploader = Class.create();
+OptionImages.FileUploader.prototype = {
+    type : null,
+    key : null, //key, identifier of uploader obj
+    elmContainer : null, //insert Flex object and templates to elmContainer
+    fileValueName : null, //name of field of JSON data of saved file
+    fileValue : null,
+    idName : null, //id name of elements for unique uploader
+    uploaderText: uploaderOITemplate,
+    uploaderSyntax : /(^|.|\r|\n)(\[\[(\w+)\]\])/,
+    uploaderObj : $H({}),
+    config : null,
+    initialize: function (type, key, elmContainer, fileValueName, fileValue ,idName, config) {
+        this.type = type;
+        this.key = key;
+        this.elmContainer = elmContainer;
+        this.fileValueName = fileValueName;
+        this.fileValue = fileValue;
+        this.idName = idName;
+        this.config = config;
+        uploaderOITemplate = new Template(this.uploaderText, this.uploaderSyntax);
+
+        Element.insert(
+            elmContainer,
+            {'top' : uploaderOITemplate.evaluate({
+                    'idName' : this.idName,
+                    'fileValueName' : this.fileValueName,
+                    'uploaderObj' : 'instOptionImages.getUploaderObj(\''+this.type+'\', \''+this.key+'\')'
+                })
+            }
+        );
+        if ($(this.idName+'_save')) {
+            $(this.idName+'_save').value = Object.toJSON(this.fileValue);
+        }
+        instOptionImages.setUploaderObj(
+            this.type,
+            this.key,
+            new Flex.Uploader(this.idName, '<?php echo $this->getSkinUrl('media/uploaderSingle.swf') ?>', this.config)
+        );
+		
+        if (varienGlobalEvents) {
+            varienGlobalEvents.attachEventHandler('tabChangeBefore', instOptionImages.getUploaderObj(type, key).onContainerHideBefore);
+        }
+        new OptionImages.FileList(this.idName, instOptionImages.getUploaderObj(type, key));
+
+    }
+}
+
+OptionImages.FileList = Class.create();
+OptionImages.FileList.prototype = {
+    file: [],
+    containerId: '',
+    container: null,
+    uploader: null,
+    fileListOITemplate: fileListOITemplate,
+    templatePattern : /(^|.|\r|\n)({{(\w+)}})/,
+    listTemplate : null,
+    initialize: function (containerId, uploader) {
+        this.containerId  = containerId,
+        this.container = $(this.containerId);
+        this.uploader = uploader;
+        this.uploader.onFilesComplete = this.handleUploadComplete.bind(this);
+        this.file = this.getElement('save').value.evalJSON();
+        this.listTemplate = new Template(this.fileListOITemplate, this.templatePattern);
+        this.updateFiles();
+        this.uploader.onFileRemoveAll = this.handleFileRemoveAll.bind(this);
+        this.uploader.onFileSelect = this.handleFileSelect.bind(this);
+    },
+    handleFileRemoveAll: function(fileId) {
+        $(this.containerId+'-new').hide();
+        $(this.containerId+'-old').show();
+    },
+    handleFileSelect: function() {
+        $(this.containerId+'_type').checked = true;
+    },
+    getElement: function (name) {
+        return $(this.containerId + '_' + name);
+    },
+    handleUploadComplete: function (files) {
+        files.each(function(item) {
+           if (!item.response.isJSON()) {
+             alert('Your session has been expired. Please, reload the page and upload images if necessary');
+             return;
+           }
+           var response = item.response.evalJSON();
+           if (response.error) {
+               return;
+           }
+           var newFile = {};
+           newFile.file = response.file;
+           newFile.name = response.name;
+           newFile.size = response.size;
+           newFile.status = 'new';
+		   newFile.url = response.url; 
+           this.file[0] = newFile;
+           this.uploader.removeFile(item.id);
+        }.bind(this));
+        this.updateFiles();
+    },
+    updateFiles: function() {
+        this.getElement('save').value = Object.toJSON(this.file);
+        this.file.each(function(row){
+			row.id = this.containerId;
+            $(this.containerId + '-old').innerHTML = this.listTemplate.evaluate(row);
+            $(this.containerId + '-new').hide();
+            $(this.containerId + '-old').show();
+        }.bind(this));
+    }
+}
+
+var alertAlreadyDisplayed = false;
+
+Validation.addAllThese([
+    ['validate-optionimages-file', '<?php echo Mage::helper('optionimages')->__('Please upload an image.') ?>', function(v,element) {
+			newFileContainer = element.up(0).down('div.new-file');		
+            if ((v == '' || v == '[]') && !newFileContainer.empty() && newFileContainer.visible()) {
+                if (!alertAlreadyDisplayed ) {
+                    alertAlreadyDisplayed = true;
+                    alert('<?php echo Mage::helper('optionimages')->__('There are images that were selected but not uploaded yet. Please upload or remove them first') ?>');
+                }
+					 element.advaiceContainer = element.id + '_advice';					 
+                return false;
+            }
+            return true;
+        }]
+    ]);
+
+
+instOptionImages = new OptionImages(<?php echo $this->getOptionImages(); ?>);
+
+Element._oiInsert = Element.insert;
+Element.insert = function (element, insertions) {
+	this._oiInsert(element, insertions);
+	element = $(element);
+	if (element.id){
+		optionRegex = /^product_option_\d+$/;
+		optionRowRegex = /^select_option_type_row_\d+$/;
+		if (element.id.match(optionRegex)){
+			regex = /product_option_(\d+)_type_select/;
+			ids = insertions.after.match(regex);
+			if (ids){
+				if (!selectOptionType._add){
+					selectOptionType._add = selectOptionType.add;
+					selectOptionType.add = function (data) {
+						previous = this.itemCount;
+						this._add(data);
+					  if (data.target || data.srcElement) {
+							element = $(Event.findElement(data, 'button'));
+							id = element.readAttribute('id').sub('add_select_row_button_', '');
+							select_id = previous;
+					  } else {
+							id = data.option_id;						  
+							select_id = data.option_type_id;
+					  }
+						if (this.itemCount <= previous)
+							this.itemCount = previous + 1;					
+					}
+				} 
+				body = $(ids[0]);
+				instOptionImages.insertHeading(body);
+			}
+		}	 else if(element.id.match(optionRowRegex)){
+			regex = /product_option_(\d+)_select_(\d+)/;
+			ids  = insertions.bottom.match(regex);
+			if(ids){			
+				table = $(element.lastChild);
+				instOptionImages.insertRow(table, ids[1], ids[2]);	
+			}
+		}	
+	}	
+ }
+//]]>  
+</script>

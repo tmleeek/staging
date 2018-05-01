@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<order>
+  <header>
+    <order_fbd_id>000000192</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>3</item_count>
+    <created_at>2016-11-13 22:07:40</created_at>
+    <total_amount>52.7000</total_amount>
+    <total_discount>0.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-5@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_azcollisimo</code>
+    <amount>6.5800</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Adrien</firstname>
+      <lastname>Silvert</lastname>
+      <company/>
+      <address1>42 Rue Saint Henri</address1>
+      <address2>Compl&#xE9;ment d'adresse</address2>
+      <postal_code>59110</postal_code>
+      <city>La madeleine</city>
+      <country>FR</country>
+      <phone>0687238106</phone>
+    </billing>
+    <shipping>
+      <firstname>Adrien</firstname>
+      <lastname>Silvert</lastname>
+      <company/>
+      <address1>42 Rue Saint Henri</address1>
+      <address2>Compl&#xE9;ment d'adresse</address2>
+      <postal_code>59110</postal_code>
+      <city>La madeleine</city>
+      <country>FR</country>
+      <phone>0687238106</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>302</id>
+      <fbd_sku>az-boutique_BOAL00753</fbd_sku>
+      <supplier_sku>BOAL00753</supplier_sku>
+      <qty>2.0000</qty>
+      <packing/>
+      <amount>
+        <price>10.9000</price>
+        <total>21.8000</total>
+        <discount>0.0000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+        <sequence>
+          <id>2</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>304</id>
+      <fbd_sku>az-boutique_BI911S</fbd_sku>
+      <supplier_sku>BI911S</supplier_sku>
+      <qty>1.0000</qty>
+      <packing/>
+      <amount>
+        <price>30.9000</price>
+        <total>30.9000</total>
+        <discount>0.0000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

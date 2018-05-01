@@ -1,0 +1,126 @@
+<?php
+/**
+ * Html form for package generation
+ * @author Arnaud P <arnaud@boostmyshop.com>
+ * @version 1.2.0
+ * @see MDN_colissimo_Block_Adminhtml_Sales_Order_Shipment_Create_Form_colissimo_Package
+ */
+
+$_index = $this->getPackageIndex();
+$_countrycode = $this->getshippingcountry();
+?>
+
+<div class="package" id="package<?php echo $_index; ?>">
+    <div>
+        <b><?php echo Mage::helper('colissimo')->__('Package') ?>  #<?php echo $_index; ?> :</b>
+    </div>
+
+    <div class="grid" style="margin-bottom: 5px">
+        <table class="data" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr class="headings">
+                    <th>
+                        <label for="colissimo_container"><?php echo Mage::helper('colissimo')->__('Package container') ?></label>
+                    </th>
+                    <th id="regateth[<?php echo $_index ?>]" <?php echo (Mage::helper('colissimo/shipment')->authorizeRegate(Mage::getStoreConfig('colissimo/config_shipment/deliverymode')) == false ? 'style="display:none;"' : '') ?>>
+                        <label for="colissimo_regatecode"><?php echo Mage::helper('colissimo')->__('Relay Point') ?></label>
+                    </th>
+                    <th class="last">
+                        <label for="colissimo_container"><?php echo Mage::helper('colissimo')->__('Shipment Type') ?></label>
+                    </th>
+                    <th class="last">
+                        <label for="colissimo_container"><?php echo Mage::helper('colissimo')->__('Parcel Type') ?></label>
+                    </th>
+                </tr>    
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="a-center">
+                        <select class="select" name="colissimo[package][<?php echo $_index; ?>][deliverymode]" id="colissimo_deliverymode" onchange="updateRegate(this.value, <?php echo $_index ?>);">
+                            <?php foreach (Mage::getModel('colissimo/System_Config_DeliveryMode')->toOptionArray() as $code => $desc): ?>
+                                <option value="<?php echo $code ?>" <?php echo (Mage::getStoreConfig('colissimo/config_shipment/deliverymode')==$code ? 'selected' : '') ?>><?php echo Mage::helper('colissimo')->__($desc) ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </td>
+                    <td class="a-center" id="regatetd[<?php echo $_index ?>]" <?php echo (Mage::helper('colissimo/shipment')->authorizeRegate(Mage::getStoreConfig('colissimo/config_shipment/deliverymode')) == false ? 'style="display:none;"' : '') ?>><input class="input-text" type="text" name="colissimo[package][<?php echo $_index; ?>][regatecode]" id="colissimo_regatecode"></td>
+                    <td class="a-center">
+                        <select class="select" name="colissimo[package][<?php echo $_index; ?>][shipmenttype]" id="colissimo_shipmenttype">
+                            <?php foreach (Mage::getModel('colissimo/System_Config_Categorie')->toOptionArray() as $code => $desc): ?>
+                                <option value="<?php echo $code ?>" <?php echo (Mage::getStoreConfig('colissimo/config_shipment/categorie')==$code ? 'selected' : '') ?>><?php echo Mage::helper('colissimo')->__($desc) ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </td>
+                    <td class="a-center last">
+                        <select class="select" name="colissimo[package][<?php echo $_index; ?>][parceltype]" onchange="updateFields(<?php echo $_index; ?>)" id="colissimo_parceltype[<?php echo $_index; ?>]">
+                            <?php foreach (Mage::getModel('colissimo/System_Config_ParcelType')->toOptionArray() as $code => $desc): ?>
+                                <option value="<?php echo $code ?>"  <?php echo (Mage::getStoreConfig('colissimo/config_shipment/parcel_type')==$code ? 'selected' : '') ?>><?php echo Mage::helper('colissimo')->__($desc) ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>                
+    </div>
+    <?php if(Mage::getStoreConfig('colissimo/config_shipment/recommendation') == true && $this->_countrycode != 'BE'): ?>
+        <div>
+            <div class="grid">
+                <table class="data" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr class="headings">
+                        <th><?php echo Mage::helper('colissimo')->__('Recommandation Amount') ?> €</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input class="input-text" type="text" name="colissimo[package][1][recommendationamount]"">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div>
+        <div class="grid">
+            <table class="data" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr class="headings">
+                        <th><?php echo Mage::helper('colissimo')->__('Weight') ?> (Kg)</th>
+                        <th><?php echo Mage::helper('colissimo')->__('Length') ?> (cm)</th>
+                        <th id="width[<?php echo $_index; ?>]"><?php echo Mage::helper('colissimo')->__('Width') ?> (cm)</th>
+                        <th style="display:none;" class="last" id="diam[<?php echo $_index; ?>]"><?php echo Mage::helper('colissimo')->__('Diameter (cm)') ?> (cm)</th>
+                        <th class="last" id="height[<?php echo $_index; ?>]"><?php echo Mage::helper('colissimo')->__('Height') ?> (cm)</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><input id="weight_value_field" class="input-text required-entry" type="text" name="colissimo[package][<?php echo $_index; ?>][weight]"></td>
+                        <td>
+                            <input class="input-text" type="text" name="colissimo[package][<?php echo $_index; ?>][length]">
+                        </td>
+                        <td>
+                            <input class="input-text" type="text" name="colissimo[package][<?php echo $_index; ?>][width]" id="width[<?php echo $_index; ?>]">
+                        </td>
+                        <td class="last" style="display:none;">
+                            <input class="input-text" type="text" name="colissimo[package][<?php echo $_index; ?>][diam]" id="diam[<?php echo $_index; ?>]">
+                        </td>
+                        <td class="last">
+                            <input class="input-text" type="text" name="colissimo[package][<?php echo $_index; ?>][height]" id="height[<?php echo $_index; ?>]">
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="a-center last" style="padding: 8px;">
+                            <button onclick="removePackage(<?php echo $_index; ?>)" class="scalable" type="button" title="<?php echo Mage::helper('colissimo')->__('Remove Package') ?>"><span><span><span><?php echo Mage::helper('colissimo')->__('Remove Package') ?></span></span></span></button>
+                        </td>
+                    </tr>
+                </tfoot>
+                
+            </table>
+        </div>
+    </div>
+</div>

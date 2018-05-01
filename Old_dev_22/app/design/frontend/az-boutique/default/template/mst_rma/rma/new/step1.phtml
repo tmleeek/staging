@@ -1,0 +1,27 @@
+<div class="page-title">
+    <h1><?php echo $this->__("Request new Return") ?></h1>
+</div>
+<form action="<?php echo $this->getStep1PostUrl()?>" method="GET" id="rma-form-validate" >
+<div class='fieldset'>
+    <h2 class="legend"><?php echo $this->__("Please, select an order") ?></h2>
+    <ul class="form-list">
+        <li class="wide">
+            <label for="order_id" class="required"><em>*</em><?php echo $this->__("Order") ?></label>
+            <div class="input-box">
+                <select name="order_id" id='order_id' class="required-entry">
+                    <option value=""><?php echo $this->__('-- Select an Order --')?></option>
+                    <?php foreach ($this->getOrderCollection() as $order): ?>
+                    <option value="<?php echo $order->getId()?>"><?php echo Mage::helper('rma')->getOrderLabel($order)?></option>
+                    <?php endforeach;?>
+                </select>
+            </div>
+        </li>
+    </ul>
+    <button type="submit" title="<?php echo $this->__("Next") ?>" class="button"><span><span><?php echo $this->__("Next") ?></span></span></button>
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('rma-form-validate', true);
+//]]>
+</script>

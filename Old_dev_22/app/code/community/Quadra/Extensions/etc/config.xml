@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * 1997-2012 Quadra Informatique
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0) that is available
+ * through the world-wide-web at this URL: http://www.opensource.org/licenses/OSL-3.0
+ * If you are unable to obtain it through the world-wide-web, please send an email
+ * to ecommerce@quadra-informatique.fr so we can send you a copy immediately.
+ *
+ *  @author Quadra Informatique <ecommerce@quadra-informatique.fr>
+ *  @copyright 1997-2012 Quadra Informatique
+ *  @version Release: $Revision: 1.0.1 $
+ *  @license http://www.opensource.org/licenses/OSL-3.0  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Quadra_Extensions>
+            <version>1.0.1</version>
+        </Quadra_Extensions>
+    </modules>
+    <global>
+        <helpers>
+            <extensions>
+                <class>Quadra_Extensions_Helper</class>
+            </extensions>
+        </helpers>
+        <models>
+            <checkout>
+                <rewrite>
+                    <type_multishipping>Quadra_Extensions_Model_Checkout_Type_Multishipping</type_multishipping>
+                </rewrite>
+            </checkout>
+            <sales>
+                <rewrite>
+                    <!--nisha <order>Quadra_Extensions_Model_Sales_Order</order>-->
+                    <order_config>Quadra_Extensions_Model_Sales_Order_Config</order_config>
+                </rewrite>
+            </sales>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <extensions>
+                <use>standard</use>
+                <args>
+                    <module>Quadra_Extensions</module>
+                    <frontName>extensions</frontName>
+                </args>
+            </extensions>
+        </routers>
+    </frontend>
+</config>

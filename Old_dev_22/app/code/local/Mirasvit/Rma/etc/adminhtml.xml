@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <menu>
+        <rma module="rma">
+            <title>RMA</title>
+            <sort_order>70</sort_order>
+            <children>
+            <rma module="rma">
+                <title>RMA</title>
+                <sort_order>10</sort_order>
+                <action>rmaadmin/adminhtml_rma</action>
+            </rma>
+            <dictionary module="rma">
+                <title>Dictionaries</title>
+                <sort_order>20</sort_order>
+                <children>
+                <status module="rma">
+                    <title>Statuses</title>
+                    <sort_order>10</sort_order>
+                    <action>rmaadmin/adminhtml_status</action>
+                </status>
+                <reason module="rma">
+                    <title>Reasons</title>
+                    <sort_order>20</sort_order>
+                    <action>rmaadmin/adminhtml_reason</action>
+                </reason>
+                <condition module="rma">
+                    <title>Conditions</title>
+                    <sort_order>30</sort_order>
+                    <action>rmaadmin/adminhtml_condition</action>
+                </condition>
+                <resolution module="rma">
+                    <title>Resolutions</title>
+                    <sort_order>40</sort_order>
+                    <action>rmaadmin/adminhtml_resolution</action>
+                </resolution>
+                <field module="rma">
+                    <title>Custom Fields</title>
+                    <sort_order>50</sort_order>
+                    <action>rmaadmin/adminhtml_field</action>
+                </field>
+                </children>
+            </dictionary>
+            <report_rma module="rma">
+                <title>Report</title>
+                <sort_order>30</sort_order>
+                <action>rmaadmin/adminhtml_report_rma</action>
+            </report_rma>
+            <settings module="rma">
+                <title>Settings</title>
+                <sort_order>40</sort_order>
+                <action>adminhtml/system_config/edit/section/rma</action>
+            </settings>
+            </children>
+        </rma>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                <rma module="rma">
+                    <title>RMA</title>
+                    <sort_order>70</sort_order>
+                    <children>
+                    <rma module="rma">
+                        <title>RMA</title>
+                        <sort_order>10</sort_order>
+                        <action>rmaadmin/adminhtml_rma</action>
+                    </rma>
+                    <dictionary module="rma">
+                        <title>Dictionaries</title>
+                        <sort_order>20</sort_order>
+                        <children>
+                        <status module="rma">
+                            <title>Statuses</title>
+                            <sort_order>10</sort_order>
+                            <action>rmaadmin/adminhtml_status</action>
+                        </status>
+                        <reason module="rma">
+                            <title>Reasons</title>
+                            <sort_order>20</sort_order>
+                            <action>rmaadmin/adminhtml_reason</action>
+                        </reason>
+                        <condition module="rma">
+                            <title>Conditions</title>
+                            <sort_order>30</sort_order>
+                            <action>rmaadmin/adminhtml_condition</action>
+                        </condition>
+                        <resolution module="rma">
+                            <title>Resolutions</title>
+                            <sort_order>40</sort_order>
+                            <action>rmaadmin/adminhtml_resolution</action>
+                        </resolution>
+                        <field module="rma">
+                            <title>Custom Fields</title>
+                            <sort_order>50</sort_order>
+                            <action>rmaadmin/adminhtml_field</action>
+                        </field>
+                        </children>
+                    </dictionary>
+                    <report_rma module="rma">
+                        <title>Report</title>
+                        <sort_order>30</sort_order>
+                        <action>rmaadmin/adminhtml_report_rma</action>
+                    </report_rma>
+                    <settings module="rma">
+                        <title>Settings</title>
+                        <sort_order>40</sort_order>
+                        <action>adminhtml/system_config/edit/section/rma</action>
+                    </settings>
+                    </children>
+                </rma>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <rma translate="title" module="rma">
+                                        <title>Mirasvit RMA</title>
+                                    </rma>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

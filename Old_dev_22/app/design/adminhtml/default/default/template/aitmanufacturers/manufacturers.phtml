@@ -1,0 +1,40 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+?>
+<!--<div class="content-header">
+<table cellspacing="0">
+    <tr>
+        <td style="width:50%;"><h3 class="icon-head head-products"><?php echo Mage::helper('aitmanufacturers')->__('Brands Pages Manager') ?></h3></td>
+        <td class="a-right">
+            <?php echo $this->getAddNewButtonHtml() ?>
+        </td>
+    </tr>
+</table>
+</div>
+-->
+<div class="content-header">
+
+    <table cellspacing="0">
+        <tr>
+            <td style="width:50%;"><h3 class="icon-head head-adminhtml-aitmanufacturers"><?php echo Mage::helper('aitmanufacturers')->__('Attributes Pages Manager') ?></h3></td>
+            <td class="form-buttons">
+            	<?php echo $this->getBackButtonHtml() ?>
+            	<?php echo $this->getFillOutButtonHtml() ?>
+            	<?php echo $this->getAddNewButtonHtml() ?>
+        </tr>
+    </table>
+</div>
+<?php if( !$this->isSingleStoreMode() ): ?>
+<?php echo $this->getChildHtml('store_switcher');?>
+<?php endif;?>
+<div>
+    <?php echo $this->getGridHtml() ?>
+</div>

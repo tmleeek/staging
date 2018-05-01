@@ -1,0 +1,101 @@
+﻿# Website Sitemap
+Sitemap: https://www.az-boutique.fr/sitemap/fr/sitemap.xml
+Sitemap: https://www.az-boutique.co.uk/sitemap/uk/sitemap.xml
+Sitemap: https://www.az-boutique.com/sitemap/us/sitemap.xml
+Sitemap: https://www.az-boutique.ch/sitemap/ch/sitemap.xml
+Sitemap: https://www.az-boutique.be/sitemap/be-fr/sitemap.xml
+
+# Crawlers Setup
+User-agent: *
+# Files
+Disallow: /*collection/
+Disallow: /*marque/
+Disallow: /*brand/
+Disallow: /*matériaux/
+Disallow: /*material/
+Disallow: /*colour/
+Disallow: /*prix/
+Disallow: /*price/
+Disallow: /cron.php
+Disallow: /cron.sh
+Disallow: /error_log
+Disallow: /install.php
+Disallow: /LICENSE.html
+Disallow: /LICENSE.txt
+Disallow: /LICENSE_AFL.txt
+Disallow: /STATUS.txt
+Disallow: /changelog.txt
+Disallow: /script.php
+
+# Paths (no clean URLs)
+Disallow: /*.php$
+Disallow: /*?p=*&
+Disallow: /*?SID= 
+Disallow: /*?limit=all
+Disallow: /*___from_store=
+Disallow: /*___store=
+Disallow: /*?dir=*
+Disallow: /*&dir=*
+Disallow: /*?mode=*
+Disallow: /*&mode=*
+Disallow: /*?price=*
+Disallow: /*?colour=*
+Disallow: /*?materiaux=*
+
+# Directories
+Disallow: /404/
+Disallow: /app/
+Disallow: /cgi-bin/
+Disallow: /downloader/
+Disallow: /errors/
+Disallow: /includes/
+#Disallow: /js/
+Disallow: /lib/
+Disallow: /magento/
+Disallow: /pkginfo/
+Disallow: /report/
+Disallow: /scripts/
+Disallow: /shell/
+Disallow: /stats/
+Disallow: /var/
+# Paths (clean URLs)
+Disallow: /catalogsearch/
+Disallow: /catalog/product_compare/
+Disallow: /catalog/category/view/
+Disallow: /catalog/product/view/
+Disallow: /catalogsearch/
+Disallow: /checkout/
+Disallow: /control/
+Disallow: /contacts/
+Disallow: /customer/
+Disallow: /customize/
+Disallow: /newsletter/
+Disallow: /poll/
+Disallow: /review/
+Disallow: /sendfriend/
+Disallow: /tag/
+Disallow: /wishlist/
+Disallow: /index.php/catalogsearch/result/
+Disallow: /index.php/catalog/product_compare/
+Disallow: /index.php/catalog/category/view/
+Disallow: /index.php/catalog/product/view/
+Disallow: /index.php/catalogsearch/
+Disallow: /index.php/checkout/
+Disallow: /index.php/control/
+Disallow: /index.php/contacts/
+Disallow: /index.php/customer/
+Disallow: /index.php/customize/
+Disallow: /index.php/newsletter/
+Disallow: /index.php/poll/
+Disallow: /index.php/review/
+Disallow: /index.php/sendfriend/
+Disallow: /index.php/tag/
+Disallow: /index.php/wishlist/
+
+Allow: /catalog/seo_sitemap/category/
+Allow: /catalog/seo_sitemap/product/
+Allow: /catalog/seo_sitemap/attributes/
+
+User-agent: AhrefsBot
+Disallow: /
+ 

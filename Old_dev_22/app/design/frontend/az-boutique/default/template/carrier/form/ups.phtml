@@ -1,0 +1,77 @@
+<tr class="<?php if($this->getId()%2 != 0) :?>ligne-paire<?php endif;?>">
+	<td class="align-center">	
+		<input name="shipping_method[<?php echo $this->getAddressId() ?>]" type="radio" 
+			value="<?php echo $this->htmlEscape($this->getRate()->getCode()) ?>" 
+			id="s_method_<?php echo $this->getAddressId() ?>_<?php echo $this->getRate()->getCode() ?>"
+			<?php if($this->getRate()->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> 
+			onchange="majFraisPort(<?php echo $this->getAddressId(); ?>, 
+				'<?php echo $this->getRate()->getCode() ?>')"	
+		/>
+	</td>
+	<td class="logo-mode-livraison" align="center">
+		<label for="s_method_<?php echo $this->getAddressId() ?>_<?php echo $this->getRate()->getCode() ?>">
+			<img src="<?php echo $this->getSkinUrl($this->getPicture()) ?>" alt="<?php echo $this->getRate()->getCarrierTitle() ?>" />
+		</label>
+	</td>
+	<td class="x-small-text">
+		<label for="s_method_<?php echo $this->getAddressId() ?>_<?php echo $this->getRate()->getCode() ?>">
+			<strong><?php echo $this->getRate()->getCarrierTitle() ?></strong><br />
+		</label>
+			<br />
+			<?php $countryName = $this->getAddress()->getCountryModel()->getName()?>
+			<?php if($countryName) :?>
+				<?php echo $countryName?>
+				<br />
+			<?php endif;?>
+	
+			<?php echo $this->getAddress()->getWeight()?> kg<br />
+			<strong>
+<?php if($this->getRate()->getPrice() == 0) :?>
+	<?php echo $this->helper('tatvashipping')->__('Rate')?>: <?php echo $this->__('Free')?>
+<?php else :?>
+
+                        
+	<?php $_excl = $this->getShippingPrice($this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+	<?php $_incl = $this->getShippingPrice(true); ?>
+	<?php //$_excl =  $this->getRate()->getPrice()?>
+	<?php echo $this->helper('tatvashipping')->__('Rate')?>: 
+	<?php if ($this->helper('tax')->displayShippingPriceExcludingTax() || $this->getHasTax($this->getAddress(), $this->getRate()->getPrice(), true)): ?>
+		<?php echo $_excl; ?> <?php echo $this->helper('tax')->__('Excl. Tax'); ?>
+	<?php elseif ($this->helper('tax')->displayShippingPriceIncludingTax()): ?>
+		<?php echo $_incl; ?> <?php echo $this->helper('tax')->__('Incl. Tax'); ?>
+	<?php elseif ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+		<?php echo $_excl; ?> <?php echo $this->helper('tax')->__('Excl. Tax'); ?>
+		(<?php echo $_incl; ?> <?php echo $this->helper('tax')->__('Incl. Tax'); ?>)
+	<?php endif; ?>
+<?php endif; ?>
+
+<?php if($this->getRate()->getAmountBeforeDiscount() > 0 &&  $this->getRate()->getAmountBeforeDiscount() > $this->getRate()->getPrice()) :?>
+	<?php $_exclAmountBeforeDiscount = $this->getShippingPriceBeforeDiscount($this->getAddress(), $this->getRate()->getAmountBeforeDiscount(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+	<?php $_inclAmountBeforeDiscount = $this->getShippingPriceBeforeDiscount($this->getAddress(), $this->getRate()->getAmountBeforeDiscount(), true); ?>
+	<?php if ($this->helper('tax')->displayShippingPriceExcludingTax()): ?>
+		<div class="prix-au-lieu-de">
+			<span><?php echo $this->helper('tatvashipping')->__('instead of')?> </span><span class="prix-barre"><?php echo $_exclAmountBeforeDiscount; ?></span>
+		</div>
+	<?php elseif ($this->helper('tax')->displayShippingPriceIncludingTax()): ?>	
+		<div class="prix-au-lieu-de" >
+			<span><?php echo $this->helper('tatvashipping')->__('instead of')?> </span><span class="prix-barre"><?php echo $_inclAmountBeforeDiscount; ?></span>
+		</div>
+	<?php elseif ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+		<div class="prix-au-lieu-de" >
+			<span><?php echo $this->helper('tatvashipping')->__('instead of')?> </span><span class="prix-barre" style="float:left;"> <?php echo $_exclAmountBeforeDiscount; ?> <?php echo $this->__('Excl. Tax'); ?>
+				(<?php echo $_inclAmountBeforeDiscount; ?> <?php echo $this->__('Incl. Tax'); ?>)
+			</span>
+		</div>
+	<?php endif; ?>
+<?php endif; ?>
+	
+				<br />
+				<?php $delivery = $this->getDeliveryTimes()?>
+				<?php if($delivery) :?>
+					<?php echo $delivery ?>
+					<br />
+				<?php endif;?>
+			</strong>
+	</td>
+</tr>
+

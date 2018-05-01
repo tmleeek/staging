@@ -1,0 +1,763 @@
+/**
+ * Override CSS components
+ */
+
+
+
+/* Itemslider %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Buttons aligned at the bottom */
+.itemslider.equal-height .item { position: static; padding-bottom: 50px; }
+.itemslider.equal-height .actions { position: absolute; bottom: 0; }
+
+/**
+ * Override modules
+ */
+
+
+
+/* Megamenu %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Home link
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+#nav #nav-home a.level-top .icon,
+#nav #homelink-icon a.level-top .icon {
+	margin-top: -2px;
+}
+/**
+ * Theme-specific styles
+ */
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   Override/extend styles.css %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+.wrapper { border-top-style:solid; border-top-width:5px; }
+.main { padding:30px 0 40px; }
+
+/* Additional margin for main sidebars
+-------------------------------------------------------------- */
+.col-left > * { margin-right: 15px; }
+.col-right > * { margin-left: 15px; }
+
+
+
+/* Global Styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Form
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Fieldset
+-------------------------------------------------------------- */
+/* Common styles for fieldsets and blocks in Multiple Addresses Checkout and Generic Info Set */
+.fieldset,
+.multiple-checkout .col2-set,
+.multiple-checkout .col3-set,
+.info-set {
+    margin:0 0 10px;
+    padding:0 15px 15px;
+}
+.fieldset .legend,
+.multiple-checkout .col2-set h2.legend,
+.info-set h2.legend {
+	margin:0 -15px 10px -15px;
+	padding-left:15px; padding-right:15px;
+}
+
+/* Buttons set
+-------------------------------------------------------------- */
+.buttons-set { margin:10px 15px; }
+/* Note: buttons and "required" have equal right margin */
+.buttons-set button.button { margin-left:0; margin-right:5px; margin-bottom:5px; }
+.buttons-set p.required { margin:0 5px 5px 0; }
+
+
+
+/* Page Heading
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.page-title h1,
+.page-title h2 { margin:0; min-height:1.3125em; /* 42px. Has to ba aligned with ".block .block-title" */ }
+.category-title { margin-bottom:0; }
+
+
+/* Global Messages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.note-msg.empty-catalog {
+	background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1354548618/27/empty-catalog.png) 10px 10px no-repeat transparent !important;
+	color:inherit;
+	min-height:70px;
+	padding:40px 20px 40px 160px !important;
+}
+
+
+/* BreadCrumbs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.breadcrumbs { line-height:1.5em; /*18px*/ margin:0 0 5px; }
+/* Breadcrumbs on product page */
+.catalog-product-view .breadcrumbs { margin-bottom:10px; }
+
+
+
+/* Header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Line breaker */
+.user-menu .line-break-after { clear:both; margin-bottom: 1px; }
+
+/* Quick search: skins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Search: inline
+-------------------------------------------------------------- */
+.search-wrapper-inline .form-search .input-text { min-width: 180px; }
+
+
+/* Quick search: positions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Position 0 */
+.search-wrapper-p0 { float: right; }
+.search-wrapper-p0 .form-search .input-text { min-width: 220px; }
+
+/* Position 1 - right side of top links */
+.search-wrapper-p1 { float: right; }
+.search-wrapper-p1 .form-search .input-text { min-width: 220px; }
+
+/* Position 2 - right side of top links */
+.search-wrapper-p2 { float: right; }
+.search-wrapper-p2 .form-search .input-text { min-width: 220px; }
+
+/* Position 3 - right side of top links */
+.search-wrapper-p3 { float: right; }
+.search-wrapper-p3 .form-search .input-text { min-width: 220px; }
+
+/* Position 4 - right side of top links */
+.search-wrapper-p4 { float: right; }
+.search-wrapper-p4 .form-search .input-text { min-width: 220px; }
+
+/* Position 5 - right side of top links */
+.search-wrapper-p5 { float: right; }
+.search-wrapper-p5 .form-search .input-text { min-width: 220px; }
+
+
+/* Mini-cart
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/*#mini-cart { margin-bottom:-8px; }*/
+
+
+
+/* Sidebar %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Block lists
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.block-viewed .block-content ol,
+.block-compare .block-content ol,
+.block-compared .block-content ol {
+	padding-left: 0;
+	list-style: none;
+}
+.block-viewed .block-content li.item,
+.block-compare .block-content li.item,
+.block-compared .block-content li.item {
+	background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1346248624/cf/bullet.png) no-repeat 0 10px;
+	padding-left:10px;
+}
+
+
+/* Block: Related
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Align block title with the tabs on product page */
+.block-related .section-title { padding-top: 19px; }
+.block-related-thumbnails .owl-wrapper { margin-top:15px; }
+
+
+/* Block: Account
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.block-account .block-title { background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1328817534/3f/ic-account.png) 5px 2px no-repeat; padding-left:42px !important; }
+.block-account .block-content { padding:10px 0 0; }
+.block-account li > * { padding: 2px; }
+.block-account li.current strong { font-weight:bold; }
+
+
+
+/* Category view %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+.products-grid .item { -webkit-tap-highlight-color: transparent; }
+
+
+
+/* Product view elements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Availability
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.availability { float:right; margin:15px 0; }
+
+
+
+/* Product page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Prices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Bundle product */
+.price-box-bundle {
+	border-bottom:1px solid #e5e5e5;
+	margin:-10px 0 15px; /* Move up to align with the main price box */
+	padding-bottom:15px;
+}
+
+
+/* Main containers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Margin before price box */
+.product-view .space-before-avail { margin:0 0 15px; height:0; line-height:0; }
+
+/* Upper part of the container */
+.product-view .product-type-data > .price-box {
+	border-top-style:solid;
+	border-top-width:1px;
+	margin:15px 0 0;
+	padding:10px 0;
+}
+
+/* Other
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Add to cart button */
+.product-view .btn-cart span span { padding:5px 40px; }
+
+/* Reviews */
+.product-view .box-reviews .buttons-set { margin-left:0; margin-right:0; }
+
+
+/* New elements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.product-view .sku { margin: 15px 0; }
+.product-view .sku span { font-weight: bold; }
+
+
+/* Product type specific data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.product-view .is-type-grouped .availability { margin-top:0; margin-bottom:0; }
+.product-view .grouped-items-table input.input-text { height: 26px; padding:4px; /* Decrease default height and padding */ }
+
+
+
+/* My Account %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/*.my-account .pager { margin: -1px 0 20px; }*/
+
+
+
+/* Footer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Footer primary
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.footer-primary .section { padding-top: 20px; padding-bottom: 20px; }
+
+
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   Misc %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Accordion & Collapsible %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Accordion - Style 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.accordion-style1 li a {
+	border-bottom-color:#eee;
+	border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.accordion-style1 li a:hover {
+	background-color:rgba(0,0,0, 0.03);
+}
+
+/* Opener
+-------------------------------------------------------------- */
+.accordion-style1 .opener {
+	background-color:rgba(0,0,0, 0.03);
+}
+
+
+
+/* Other modifications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Nav container:
+   with outline (if nav container has background color) or without outline (stretched)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* With outline
+-------------------------------------------------------------- */
+/* Add top and bottom margin */
+.nav.has-outline > .grid-full { margin-top: 1%; margin-bottom: 1%; }
+.nav.has-outline #mobnav { margin-bottom: 0; } /* Trigger has no bottom margin */
+
+/* Without outline
+-------------------------------------------------------------- */
+/* If menu stretched, no top and bottom margin. Important: added "container" class to make the selector more specific */
+.container.nav.stretched > .grid-full { margin-top: 0; margin-bottom: 0; }
+/*.nav > .grid-full { float:left; }*/
+
+
+/* Cart
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+/* Collateral boxes - stretch */
+.cart-left-column .grid-full,
+.cart-right-column .grid-full { width:100%; }
+
+
+/* Interface icons
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* Icons with no background
+-------------------------------------------------------------- */
+/* Toolbar */
+.sorter .view-mode a,
+.sorter .sort-by .category-asc,
+.sorter .sort-by .category-desc,
+.pager .pages li a,
+
+/* Add-to links */
+.add-to-links.addto-icons a,
+
+/* Slider arrows (for zoom thumbnails) */
+.slider-arrows3 .owl-controls .owl-buttons div,
+.slider-arrows3 .owl-controls.clickable .owl-buttons div.disabled:hover,
+
+	/* Deprecated */
+	.gen-slider-arrows3 .direction-nav a,
+	.gen-slider-arrows3 .direction-nav a.disabled:hover
+{
+	background-color:transparent;
+}
+
+/* Other icons
+-------------------------------------------------------------- */
+/* Add-to links icons in product grid */
+.products-grid .addto-links-icons span.icon { border-radius: 0; }
+
+/* Pager */
+.pager .pages li a { background-color:#f5f5f5; }
+
+/* Add-to links */
+.addto-links-icons span.icon,
+.add-to-links.addto-icons a, /* Obsolete */
+
+/* Slideshow directional arrows */
+.gen-slider-arrows2 .direction-nav a,
+.gen-slider-arrows2 .direction-nav a.disabled:hover { background-color:#fff; }
+
+
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   Built-in static blocks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Deprecated: Header top - help block */
+.header-top .phone { background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1338310336/32/ic-phone.png) 0 center no-repeat; padding:0 0 0 24px; }
+
+.block_category_above_collection { margin:10px 0; }
+.block_category_below_collection { margin:10px 0; }
+.block_category_above_empty_collection { margin:10px 0; }
+
+/*.block_product_primary_bottom {}
+.block_product_secondary_bottom {}
+.block_product_replace_related {}
+.block_product_replace_upsell {}
+	
+.block_cart_below_totals {}
+.block_cart_below_table {}*/
+
+.block_mini_cart_above_products { margin:0 0 10px; }
+
+.block_opc_below_progress { margin:15px 0; }
+
+.block_cms_page_top { margin:0 0 15px; }
+
+/*.block_header_top_left {}
+.block_header_top_left2 {}
+.block_header_top_right {}
+.block_header_top_right2 {}
+
+.block_footer_primary_bottom_left {}
+.block_footer_primary_bottom_right {}*/
+.block_footer_payment { margin-right:10px; margin-bottom:10px; margin-left:20px; }
+
+/* Sample block content
+-------------------------------------------------------------- */
+.sample-block {
+	color:#999;
+	margin-top:10px;
+	padding: 0 !important;
+	transition:			color 300ms ease-in-out, background-color 300ms ease-in-out;
+	-moz-transition:	color 300ms ease-in-out, background-color 300ms ease-in-out;
+	-webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+	-o-transition:		color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+.sample-block:hover { color:#333; }
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   High-resolution-ready (retina-ready) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (   min--moz-device-pixel-ratio: 1.5),
+only screen and (     -o-min-device-pixel-ratio: 3/2),
+only screen and (    -ms-min-device-pixel-ratio: 1.5),
+only screen and (        min-device-pixel-ratio: 1.5)
+{
+
+	/* Rating */
+	.rating-box,
+	.rating-box .rating { background-image:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1370279562/f0/rating@2x.png); background-size:14px 43px; }
+	
+	/* Theme icons
+	-------------------------------------------------------------- */
+	/* To top */
+	#scroll-to-top,
+	
+	/* Search button */
+	.header .form-search .button span,
+	
+	/* All icons from icons-theme.css */
+	/* Row 1: */
+	.icon.i-wishlist,
+	.icon.i-wishlist-w,
+	.icon.i-wishlist-bw,
+	.icon.i-wishlist-wb,
+	
+	.icon.i-compare,
+	.icon.i-compare-w,
+	.icon.i-compare-bw,
+	.icon.i-compare-wb,
+	
+	.icon.i-recommend,
+	.icon.i-recommend-w,
+	.icon.i-recommend-bw,
+	.icon.i-recommend-wb,
+	
+	.icon.i-lowstock,
+	.icon.i-lowstock-w,
+	.icon.i-lowstock-bw,
+	.icon.i-lowstock-wb,
+	
+	.icon.i-cart,
+	.icon.i-cart-w,
+	.icon.i-cart-bw,
+	.icon.i-cart-wb,
+	
+	/* Row 2: */
+	.icon.i-home,
+	.icon.i-home-w,
+	.icon.i-home-bw,
+	.icon.i-home-wb,
+	
+	.icon.i-left,
+	.icon.i-left-w,
+	.icon.i-left-bw,
+	.icon.i-left-wb,
+	
+	.icon.i-right,
+	.icon.i-right-w,
+	.icon.i-right-bw,
+	.icon.i-right-wb,
+	
+	.icon.i-top,
+	.icon.i-top-w,
+	.icon.i-top-bw,
+	.icon.i-top-wb,
+	
+	.icon.i-bottom,
+	.icon.i-bottom-w,
+	.icon.i-bottom-bw,
+	.icon.i-bottom-wb /* Last selector without trailing coma */
+	
+	{ background-image:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1381234028/ac/sprite@2x.png); background-size:500px 200px; }
+	
+	
+	/* All icons from icons-social.css
+	-------------------------------------------------------------- */
+	/* Row 1: */
+	.icon.i-telephone,
+	.icon.i-telephone-w,
+	
+	.icon.i-mobile,
+	.icon.i-mobile-w,
+
+	.icon.i-skype,
+	.icon.i-skype-w,
+	
+	.icon.i-letter,
+	.icon.i-letter-w,
+
+	.icon.i-location,
+	.icon.i-location-w,
+	
+	/* Row 2: */
+	.icon.i-twitter,
+	.icon.i-twitter-w,
+	
+	.icon.i-facebook,
+	.icon.i-facebook-w,
+	
+	.icon.i-googleplus,
+	.icon.i-googleplus-w,
+	
+	.icon.i-youtube,
+	.icon.i-youtube-w,
+	
+	.icon.i-vimeo,
+	.icon.i-vimeo-w,
+	
+	.icon.i-wordpress,
+	.icon.i-wordpress-w,
+	
+	.icon.i-pinterest,
+	.icon.i-pinterest-w,
+		
+	.icon.i-linkedin,
+	.icon.i-linkedin-w,
+	
+	.icon.i-blogger,
+	.icon.i-blogger-w,
+
+	.icon.i-envato,
+	.icon.i-envato-w /* Last selector without trailing coma */
+	
+	{ background-image:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1373553790/fa/sprite-icons-social@2x.png); background-size:500px 200px; }
+
+} /* end: media query */
+
+/*
+ * 12-column grid system
+ */
+
+
+
+/* Container */
+.container {
+	margin-left:auto;
+	margin-right:auto;
+}
+.nested-container {
+	width:102%;
+	margin-left:-1%;
+}
+
+/* Grid units */
+.grid12-1,
+.grid12-2,
+.grid12-3,
+.grid12-4,
+.grid12-5,
+.grid12-6,
+.grid12-7,
+.grid12-8,
+.grid12-9,
+.grid12-10,
+.grid12-11,
+.grid12-12,
+.grid-full, /* Alias for full-width unit */
+
+/* Special grid units */
+.grid-col2-sidebar,
+.grid-col2-main
+{ 
+	/*position:relative;*/
+	display:inline;
+	float:left;
+	margin-left:1%;
+	margin-right:1%;
+}
+
+/* Basic grid units width */
+.grid12-1	{ width:6.33%; }
+.grid12-2	{ width:14.66%; }
+.grid12-3	{ width:23%; }
+.grid12-4	{ width:31.33%; }
+.grid12-5	{ width:39.67%; }
+.grid12-6	{ width:48%; }
+.grid12-7	{ width:56.33%; }
+.grid12-8	{ width:64.67%; }
+.grid12-9	{ width:73%; }
+.grid12-10	{ width:81.33%; }
+.grid12-11	{ width:89.67%; }
+.grid12-12,
+.grid-full	{ width:98%; }
+
+/* Grid units without left gutter (margin) */
+.no-left-gutter.grid12-1	{ margin-left:0; width:7.33%; }
+.no-left-gutter.grid12-2	{ margin-left:0; width:15.66%; }
+.no-left-gutter.grid12-3	{ margin-left:0; width:24%; }
+.no-left-gutter.grid12-4	{ margin-left:0; width:32.33%; }
+.no-left-gutter.grid12-5	{ margin-left:0; width:40.67%; }
+.no-left-gutter.grid12-6	{ margin-left:0; width:49%; }
+.no-left-gutter.grid12-7	{ margin-left:0; width:57.33%; }
+.no-left-gutter.grid12-8	{ margin-left:0; width:65.67%; }
+.no-left-gutter.grid12-9	{ margin-left:0; width:74%; }
+.no-left-gutter.grid12-10	{ margin-left:0; width:82.33%; }
+.no-left-gutter.grid12-11	{ margin-left:0; width:90.67%; }
+.no-left-gutter.grid12-12,
+.no-left-gutter.grid-full	{ margin-left:0; width:99%; }
+
+/* Grid units without right gutter (margin) */
+.no-right-gutter.grid12-1	{ margin-right:0; width:7.33%; }
+.no-right-gutter.grid12-2	{ margin-right:0; width:15.66%; }
+.no-right-gutter.grid12-3	{ margin-right:0; width:24%; }
+.no-right-gutter.grid12-4	{ margin-right:0; width:32.33%; }
+.no-right-gutter.grid12-5	{ margin-right:0; width:40.67%; }
+.no-right-gutter.grid12-6	{ margin-right:0; width:49%; }
+.no-right-gutter.grid12-7	{ margin-right:0; width:57.33%; }
+.no-right-gutter.grid12-8	{ margin-right:0; width:65.67%; }
+.no-right-gutter.grid12-9	{ margin-right:0; width:74%; }
+.no-right-gutter.grid12-10	{ margin-right:0; width:82.33%; }
+.no-right-gutter.grid12-11	{ margin-right:0; width:90.67%; }
+.no-right-gutter.grid12-12,
+.no-right-gutter.grid-full	{ margin-right:0; width:99%; }
+
+/* Grid units without any gutter (margin) */
+.no-gutter.grid12-1		{ margin-left:0; margin-right:0; width:8.33%; }
+.no-gutter.grid12-2		{ margin-left:0; margin-right:0; width:16.66%; }
+.no-gutter.grid12-3		{ margin-left:0; margin-right:0; width:25%; }
+.no-gutter.grid12-4		{ margin-left:0; margin-right:0; width:33.33%; }
+.no-gutter.grid12-5		{ margin-left:0; margin-right:0; width:41.67%; }
+.no-gutter.grid12-6		{ margin-left:0; margin-right:0; width:50%; }
+.no-gutter.grid12-7		{ margin-left:0; margin-right:0; width:58.33%; }
+.no-gutter.grid12-8		{ margin-left:0; margin-right:0; width:66.67%; }
+.no-gutter.grid12-9		{ margin-left:0; margin-right:0; width:75%; }
+.no-gutter.grid12-10	{ margin-left:0; margin-right:0; width:83.33%; }
+.no-gutter.grid12-11	{ margin-left:0; margin-right:0; width:91.67%; }
+.no-gutter.grid12-12,
+.no-gutter.grid-full	{ margin-left:0; margin-right:0; width:100%; }
+
+/* Special grid units: basic structure of pages with 1 and 2 sidebars
+-------------------------------------------------------------- */
+/* 2 columns: fixed-width sidebar unit and fluid main unit.
+   Sidebar unit has the same width for all screen sizes equal or greater than 1280px.
+   Width of the main unit is fluid.
+*/
+.grid-col2-sidebar	{ width:23%; }
+.grid-col2-main		{ width:73%; }
+
+/* Another 2 columns inside ".grid-col2-main": fixed-width sidebar unit and fluid main unit */
+.grid-col3-sidebar 		{ width:31.52%; }
+.grid-col3-main			{ width:65.90%; }
+
+/* Vertically aligned grid
+-------------------------------------------------------------- */
+.v-grid-container {
+	display:table;
+	width:100%;
+}
+.v-grid {
+	float:none;
+	display:table-cell;
+	vertical-align:middle;
+}
+
+/* Utility classes
+-------------------------------------------------------------- */
+/* Units with no gutter (margin): alpha - first unit in a row, omega - last unit in a row */
+.alpha { margin-left:0; }
+.omega { margin-right:0; }
+
+/* Hide element if screen width is lower than the width specified in the class name */
+/*.hide-below-1680 { display:none !important; }
+.hide-below-1440 { display:none !important; }
+.hide-below-1360 { display:none !important; }
+.hide-below-1280 { display:none !important; }*/
+
+/* Container: stretched, without side margin 
+-------------------------------------------------------------- */
+/* Remove padding from stretched container (it is added for narrow screens via media queries) */
+.container.stretched { width:96%; padding-left:0; padding-right:0; }
+
+/* Stretch inner grid unit (full width) */
+.container.stretched > .grid-full { width:100%; margin-left:0; margin-right:0; }
+
+/* Grid units container: clears floats
+   (place grid units inside "div" with this class)
+-------------------------------------------------------------- */
+.grid-container { *zoom: 1; clear: both; }
+.grid-container:before,
+.grid-container:after { display: table; line-height: 0; content: ""; }
+.grid-container:after { clear: both; }
+
+/* Grid unit container: clears floats and adds vertical margin between units
+-------------------------------------------------------------- */
+.grid-container-spaced { *zoom: 1; clear: both; }
+.grid-container-spaced:before,
+.grid-container-spaced:after { display: table; line-height: 0; content: ""; }
+.grid-container-spaced:after { clear: both; }
+.grid-container-spaced .grid12-1,
+.grid-container-spaced .grid12-2,
+.grid-container-spaced .grid12-3,
+.grid-container-spaced .grid12-4,
+.grid-container-spaced .grid12-5,
+.grid-container-spaced .grid12-6,
+.grid-container-spaced .grid12-7,
+.grid-container-spaced .grid12-8,
+.grid-container-spaced .grid12-9,
+.grid-container-spaced .grid12-10,
+.grid-container-spaced .grid12-11,
+.grid-container-spaced .grid12-12,
+.grid-container-spaced .grid-full
+{
+	margin-bottom: 2%;
+}
+
+/* Grid presentation
+-------------------------------------------------------------- */
+.show-grid [class*="grid12-"] {
+	background-color: #eee;
+	text-align: center;
+	min-height: 40px;
+	line-height: 40px;
+	transition:			all 300ms ease-in-out;
+	-moz-transition:	all 300ms ease-in-out;
+	-webkit-transition:	all 300ms ease-in-out;
+	-o-transition:		all 300ms ease-in-out;
+}
+.show-grid [class*="grid12-"]:hover {
+	background-color: #F08080;
+}
+

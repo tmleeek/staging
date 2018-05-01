@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    function confirmClearAllLogs()
+    { 
+        var reader = confirm("<?php echo $this->__("Are you sure you want to delete all logs?"); ?>");
+        
+        if (reader == true)
+        {
+            document.location.href='<?php echo $this->getDeleteUrl() ?>';
+        }
+     
+    }
+</script>
+<div class="entry-edit">
+    <div class="content-header">
+        <table cellspacing="0" class="grid-header">
+            <tr>
+                <td><h3><?php echo $this->__('Auto Cancel Order : Logs') ?></h3></td>
+                <td align="right">
+                    <button onclick="document.location.href='<?php echo $this->getBackUrl() ?>'" class="scalable back" type="button"><span><?php echo $this->__('Return to config') ?></span></button>
+                    <button onclick="confirmClearAllLogs()" class="scalable delete" type="button"><span><?php echo $this->__('Clear All Logs') ?></span></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <?php echo $this->getGridParentHtml() ?>
+
+</div>

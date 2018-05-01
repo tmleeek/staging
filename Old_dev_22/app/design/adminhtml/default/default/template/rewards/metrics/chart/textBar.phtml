@@ -1,0 +1,18 @@
+<?php if ($this->getDisplayChart()) : ?>
+    <?php $data = $this->getChartData() ?>
+    <?php if (isset($data)) : ?>
+        <div class="box">
+            <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4><?php echo $data['title'] ?></h4>
+                </div>
+                <fieldset class="a-center bold">
+                    <span class="nowrap" style="font-size:26px;"><?php echo $data['content'] ?></span>
+                </fieldset>
+                <?php if (isset($data['note'])) : ?>
+                    <div class="note"><?php echo $data['note'] ?></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif ?>

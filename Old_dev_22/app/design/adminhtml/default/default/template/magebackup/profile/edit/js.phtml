@@ -1,0 +1,61 @@
+<?php
+/**
+ * @copyright	Copyright (c) 2016 MageBackup (http://www.magebackup.com). All rights reserved.
+ * @license		http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+
+<script>
+
+MageBackup.$(document).ready(function() {
+	MageBackup.$('.mb-help').mbtooltip({
+		html:		true,
+		container:	'body'
+	});
+
+	var toggleCron	= function() {
+		var val	= MageBackup.$('#cron_enable').val();
+
+		if (val > 0) {
+			MageBackup.$('#cron_frequency, #cron_hour').closest('tr').show(200);
+		} else {
+			MageBackup.$('#cron_frequency, #cron_hour').closest('tr').hide(200);
+		}
+	};
+
+	MageBackup.$('#cron_enable').change(function() {
+		toggleCron();
+	});
+
+	toggleCron();
+
+	var toggleCloud = function() {
+		var val = MageBackup.$('#cloud_engine').val();
+
+		// hide fields
+		MageBackup.$('#cloud-basic').nextAll().hide(200);
+
+		//
+		if (val !== '0') {
+			MageBackup.$('#cloud_delete_local').closest('tr').show(200);
+
+			var $section	= MageBackup.$('#' + val + '-config');
+
+			if ($section.length) {
+				$section.show(200);
+				$section.prev('.entry-edit-head').show(200);
+			}
+		} else {
+			MageBackup.$('#cloud_delete_local').closest('tr').hide(200);
+		}
+	};
+
+
+	MageBackup.$('#cloud_engine').change(function() {
+		toggleCloud();
+	});
+
+	toggleCloud();
+});
+
+</script>

@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<config>
+
+    <modules>
+        <TBT_Common>
+            <version>0.1.0.0</version>
+        </TBT_Common>
+    </modules>
+    
+    <admin>
+        <routers>
+            <tbtcommonadmin>
+                <use>admin</use>
+                <args>
+                    <module>TBT_Common</module>
+                    <frontName>tbtcommonadmin</frontName>
+                </args>
+            </tbtcommonadmin>
+        </routers>
+    </admin>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <tbtcommon>
+                    <file>tbtcommon.xml</file>
+                </tbtcommon>
+            </updates>
+        </layout>
+        <routers>
+            <tbtcommon>
+                <use>standard</use>
+                <args>
+                    <module>TBT_Common</module>
+                    <frontName>tbtcommon</frontName>
+                </args>
+            </tbtcommon>
+        </routers>
+    </frontend>
+    
+    <global>
+        <models>
+            <tbtcommon>
+                <class>TBT_Common_Model</class>
+                <resourceModel>tbtcommon_mysql4</resourceModel>
+            </tbtcommon>
+            <tbtcommon_mysql4>
+                <class>TBT_Common_Model_Mysql4</class>
+                <entities>
+                </entities>
+            </tbtcommon_mysql4>
+        </models>
+    
+        <resources>
+            <tbtcommon_setup>
+                <setup>
+                    <module>TBT_Common</module>
+                    <class>TBT_Common_Model_Resource_Mysql4_Setup</class>
+                </setup>
+            </tbtcommon_setup>
+            <tbtcommon_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tbtcommon_write>
+            <tbtcommon_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tbtcommon_read>
+        </resources>
+        <helpers>
+            <tbtcommon>
+                <class>TBT_Common_Helper</class>
+            </tbtcommon>
+        </helpers>
+        <blocks>
+            <tbtcommon>
+                <class>TBT_Common_Block</class>
+            </tbtcommon>
+            <adminhtml>
+                <rewrite>
+
+<!--                rewrite conflict
+                used this class as extend in Ess_M2ePro_Block_Adminhtml_Magento_Menu-->
+                    <page_menu>TBT_Common_Block_Adminhtml_Page_Menu</page_menu>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <tbtcommon>
+                <class>TBT_Common_Helper</class>
+            </tbtcommon>
+        </helpers>
+    </global>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <tbtcommon>
+                    <file>tbtcommon.xml</file>
+                </tbtcommon>
+            </updates>
+        </layout>
+        <translate>
+              <modules>
+                  <TBT_Common>
+                      <files>
+                          <default>TBT_Common.csv</default>
+                      </files>
+                  </TBT_Common>
+              </modules>
+        </translate>
+    </adminhtml>
+    
+    <tbtcommon>
+        <default>
+            <license>tbtcommon</license>
+        </default>
+        <billboard>
+            <default>
+                <message><![CDATA[An unknown error has occurred. Please contact WDCA for more information at contact@wdca.ca.]]></message>
+            </default>
+            <noLicenseFiles>
+                <message><![CDATA[The license files for the '%s' module cannot be found. Please contact WDCA for more information at contact@wdca.ca.]]></message>
+            </noLicenseFiles>
+            <noLicense>
+                <block><![CDATA[tbtcommon/billboard_noLicense]]></block>
+                <message><![CDATA[Please verify the %s license is correct in the <a href='%s'>Magento Configuration</a>. For more help please contact WDCA at contact@wdca.ca.]]></message>
+            </noLicense>
+        </billboard>
+    </tbtcommon>
+    
+</config>

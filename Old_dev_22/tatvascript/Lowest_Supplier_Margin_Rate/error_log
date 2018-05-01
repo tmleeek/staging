@@ -1,0 +1,31 @@
+[01-Jul-2017 02:00:03 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[01-Jul-2017 02:00:03 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[01-Jul-2017 02:30:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[01-Jul-2017 02:30:21 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[02-Jul-2017 02:00:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[02-Jul-2017 02:00:01 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[02-Jul-2017 02:30:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[02-Jul-2017 02:30:01 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[03-Jul-2017 02:00:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[03-Jul-2017 02:00:01 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[03-Jul-2017 02:30:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[03-Jul-2017 02:30:01 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[04-Jul-2017 02:00:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[04-Jul-2017 02:00:01 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[04-Jul-2017 02:30:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[04-Jul-2017 02:30:01 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[03-Sep-2017 07:21:27 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 18
+[03-Sep-2017 07:30:12 UTC] PHP Fatal error:  Call to undefined method Aitoc_Aitmanufacturers_Model_Rewrite_CatalogModelResourceEavMysql4ProductCollection::getEntityId() in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 39
+[03-Sep-2017 07:31:52 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 12
+[03-Sep-2017 07:32:48 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 12
+[03-Sep-2017 07:33:06 UTC] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 12
+[03-Sep-2017 07:44:07 UTC] PHP Fatal error:  Call to a member function getSelect() on null in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 40
+[03-Sep-2017 07:44:41 UTC] PHP Fatal error:  Call to a member function getModelInstance() on null in /data/devazb/public_html/app/Mage.php on line 463
+[03-Sep-2017 07:45:10 UTC] PHP Fatal error:  Call to a member function getModelInstance() on null in /data/devazb/public_html/app/Mage.php on line 463
+[03-Sep-2017 07:45:13 UTC] PHP Fatal error:  Call to a member function getModelInstance() on null in /data/devazb/public_html/app/Mage.php on line 463
+[03-Sep-2017 07:45:41 UTC] PHP Fatal error:  Call to a member function getSelect() on null in /data/devazb/public_html/tatvascript/Lowest_Supplier_Margin_Rate/marginrate-update.php on line 46
+[23-Feb-2018 09:41:02 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[23-Feb-2018 09:42:09 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[23-Feb-2018 09:46:59 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[23-Feb-2018 09:49:31 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[23-Feb-2018 10:17:46 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0

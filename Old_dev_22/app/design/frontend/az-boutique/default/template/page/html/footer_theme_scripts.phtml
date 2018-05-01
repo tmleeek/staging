@@ -1,0 +1,56 @@
+<?php
+	//Get grid configuration array
+	$theme = $this->helper('ultimo');
+	$gc = $theme->getCfgGroup('category_grid');
+
+/* string(7) "#ffffff"
+bool(true)
+Array
+(
+    [column_count] => 4
+    [column_count_768] => 3
+    [column_count_640] => 3
+    [column_count_480] => 3
+    [equal_height] => 1
+    [hover_effect] => 1
+    [disable_hover_effect] => 320
+    [hide_addto_links] => 480
+    [centered] => 1
+    [elements_size] =>
+    [display_name] => 2
+    [display_name_single_line] => 0
+    [display_price] => 2
+    [display_rating] => 2
+    [display_addtocart] => 2
+    [display_addtolinks] => 1
+    [addtolinks_simple] => 1
+)
+
+
+      */
+
+?>
+<script type="text/javascript">
+
+var theme_color = "<?php echo $theme->getCfgDesign('main/inner_bg_color'); ?>";
+var theme_true = <?php echo $theme->isColor($theme->getCfgDesign('main/inner_bg_color')); ?>;
+
+var gc_column_count = <?php echo $gc['column_count']?$gc['column_count']:'0'; ?>;
+var gc_column_count_768 = <?php echo $gc['column_count_768']?$gc['column_count_768']:'0'; ?>;
+var gc_column_count_640 = <?php echo $gc['column_count_640']?$gc['column_count_640']:'0'; ?>;
+var gc_column_count_480 = <?php echo $gc['column_count_480']?$gc['column_count_480']:'0'; ?>;
+var gc_equal_height = <?php echo $gc['equal_height']?$gc['equal_height']:'0'; ?>;
+var gc_hover_effect = <?php echo $gc['hover_effect']?$gc['hover_effect']:'0'; ?>;
+var gc_disable_hover_effect = <?php echo $gc['disable_hover_effect']?$gc['disable_hover_effect']:'0'; ?>;
+var gc_hide_addto_links = <?php echo $gc['hide_addto_links']?$gc['hide_addto_links']:'0'; ?>;
+var gc_centered = <?php echo $gc['centered']?$gc['centered']:'0'; ?>;
+var gc_elements_size = <?php echo $gc['elements_size']?$gc['elements_size']:'0'; ?>;
+var gc_display_name = <?php echo $gc['display_name']?$gc['display_name']:'0'; ?>;
+var gc_display_name_single_line = <?php echo $gc['display_name_single_line']?$gc['display_name_single_line']:'0'; ?>;
+var gc_display_price = <?php echo $gc['display_price']?$gc['display_price']:'0'; ?>;
+var gc_display_rating = <?php echo $gc['display_rating']?$gc['display_rating']:'0'; ?>;
+var gc_display_addtocart = <?php echo $gc['display_addtocart']?$gc['display_addtocart']:'0'; ?>;
+var gc_display_addtolinks = <?php echo $gc['display_addtolinks']?$gc['display_addtolinks']:'0'; ?>;
+var gc_addtolinks_simple = <?php echo $gc['addtolinks_simple']?$gc['addtolinks_simple']:'0'; ?>;
+
+</script>

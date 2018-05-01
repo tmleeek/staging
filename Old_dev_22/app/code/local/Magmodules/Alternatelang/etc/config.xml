@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Magmodules.eu - http://www.magmodules.eu - info@magmodules.eu
+ * =============================================================
+ * NOTICE OF LICENSE [Single domain license]
+ * This source file is subject to the EULA that is
+ * available through the world-wide-web at:
+ * http://www.magmodules.eu/license-agreement/
+ * =============================================================
+ * @category    Magmodules
+ * @package     Magmodules_Alternatelang
+ * @author      Magmodules <info@magmodules.eu>
+ * @copyright   Copyright (c) 2016 (http://www.magmodules.eu)
+ * @license     http://www.magmodules.eu/license-agreement/  
+ * =============================================================
+ */
+ -->
+<config>
+	<modules>
+		<Magmodules_Alternatelang>
+			<version>1.3.0</version>
+		</Magmodules_Alternatelang>
+	</modules>
+	<global>
+		<helpers>
+			<alternatelang>
+				<class>Magmodules_Alternatelang_Helper</class>
+			</alternatelang>
+		</helpers>		
+        <models>
+            <alternatelang>
+				<class>Magmodules_Alternatelang_Model</class>
+            </alternatelang>
+        </models>
+		<blocks>
+			<alternatelang>
+				<class>Magmodules_Alternatelang_Block</class>
+			</alternatelang>
+            <adminhtml>
+                <rewrite>
+                    <cms_page_edit>Magmodules_Alternatelang_Block_Adminhtml_Cms_Page_Edit</cms_page_edit>
+                    <cms_page_grid>Magmodules_Alternatelang_Block_Adminhtml_Cms_Page_Grid</cms_page_grid>
+				</rewrite>
+            </adminhtml>			
+		</blocks>        
+		<events>
+            <adminhtml_cms_page_edit_tab_main_prepare_form>
+                <observers>
+                    <alternatelang_page_edit_tab_main>
+                        <type>singleton</type>
+                        <class>Magmodules_Alternatelang_Model_Observer</class>
+                        <method>addExtraField</method>
+                    </alternatelang_page_edit_tab_main>
+                </observers>
+            </adminhtml_cms_page_edit_tab_main_prepare_form>
+            <admin_system_config_changed_section_alternatelang>
+                <observers>
+                    <alternatelang>
+                        <type>singleton</type>
+                        <class>Magmodules_Alternatelang_Model_Observer</class>
+                        <method>addMessage</method>
+                    </alternatelang>
+                </observers>
+            </admin_system_config_changed_section_alternatelang>
+        </events>
+		<resources>
+            <alternatelang_setup>
+                <setup>
+                    <module>Magmodules_Alternatelang</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </alternatelang_setup>
+            <alternatelang_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </alternatelang_write>
+            <alternatelang_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </alternatelang_read>
+        </resources>
+	</global>
+	<frontend>
+        <layout>
+            <updates>
+                <alternatelang>
+                    <file>magmodules_alternatelang.xml</file>
+                </alternatelang>
+            </updates>
+        </layout>
+	</frontend>
+	<adminhtml>
+        <layout>
+            <updates>
+                <alternatelang>
+                    <file>magmodules_alternatelang.xml</file>
+                </alternatelang>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <magmodules_alternatelang>
+                    <files>
+                        <default>Magmodules_Alternatelang.csv</default>
+                    </files>
+                </magmodules_alternatelang>
+            </modules>
+        </translate>
+        <events>				
+            <core_config_data_save_after>
+                <observers>
+                    <has_value_for_alternatelang_configuration_changed>
+                        <type>model</type>
+                        <class>Magmodules_Alternatelang_Model_System_Config_Model_Enable</class>
+                        <method>has_value_for_configuration_changed</method>
+                    </has_value_for_alternatelang_configuration_changed>
+                </observers>
+            </core_config_data_save_after>
+            <cms_page_prepare_save>
+                <observers>
+                    <magmodules_alternatelang>
+                        <type>singleton</type>
+                        <class>alternatelang/observer</class>
+                        <method>cms_page_prepare_save</method>
+                    </magmodules_alternatelang>
+                </observers>
+            </cms_page_prepare_save>
+        </events>          
+    </adminhtml>
+	<default>
+		<alternatelang>
+			<general>
+				<enabled>0</enabled>
+			</general>
+			<config>
+				<product>0</product>
+				<homepage>0</homepage>
+				<cms>0</cms>
+				<cms_categories>1</cms_categories>
+				<debug>1</debug>
+			</config>	
+		</alternatelang>
+	</default>
+</config>

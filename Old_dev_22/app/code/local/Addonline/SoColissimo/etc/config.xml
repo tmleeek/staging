@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<!-- /** * Addonline_SoColissimo * * @category Addonline * @package Addonline_SoColissimo
+	* @copyright Copyright (c) 2013 Addonline * @author Addonline (http://www.addonline.fr)
+	*/ -->
+<config>
+	<modules>
+		<Addonline_SoColissimo>
+			<version>2.2.1</version>
+			<depends>
+				<Mage_Shipping />
+			</depends>
+		</Addonline_SoColissimo>
+	</modules>
+
+	<global>
+		<blocks>
+    	<adminhtml>
+      	<rewrite>
+        	<sales_order_shipment_view>Addonline_SoColissimo_Block_Adminhtml_Sales_Order_View</sales_order_shipment_view>
+         </rewrite>
+         </adminhtml>
+			<socolissimo>
+				<class>Addonline_SoColissimo_Block</class>
+			</socolissimo>
+			<onestepcheckout>
+				<rewrite>
+					<checkout>Addonline_SoColissimo_Block_OneStepCheckout_Checkout</checkout>
+				</rewrite>
+			</onestepcheckout>
+		</blocks>
+		<helpers>
+			<socolissimo>
+				<class>Addonline_SoColissimo_Helper</class>
+			</socolissimo>
+			<onestepcheckout>
+				<rewrite>
+					<checkout>Addonline_SoColissimo_Helper_OneStepCheckout_Checkout</checkout>
+				</rewrite>
+			</onestepcheckout>
+		</helpers>
+		<models>
+			<socolissimo>
+				<class>Addonline_SoColissimo_Model</class>
+				<resourceModel>socolissimo_mysql4</resourceModel>
+			</socolissimo>
+			<socolissimo_mysql4>
+				<class>Addonline_SoColissimo_Model_Mysql4</class>
+				<entities>
+					<liberte_relais>
+						<table>socolissimoliberte_relais</table>
+					</liberte_relais>
+					<liberte_horairesOuverture>
+						<table>socolissimoliberte_horaire_ouverture</table>
+					</liberte_horairesOuverture>
+					<liberte_periodesFermeture>
+						<table>socolissimoliberte_periode_fermeture</table>
+					</liberte_periodesFermeture>
+				</entities>
+			</socolissimo_mysql4>
+			<shipping>
+				<rewrite>
+					<rate_result>Addonline_SoColissimo_Model_Shipping_Rate_Result</rate_result>
+				</rewrite>
+			</shipping>
+		</models>
+		<resources>
+			<socolissimo_setup>
+				<setup>
+					<module>Addonline_SoColissimo</module>
+					<class>Mage_Sales_Model_Mysql4_Setup</class>
+				</setup>
+			</socolissimo_setup>
+		</resources>
+		<events>
+			<sales_order_place_after>
+				<observers>
+					<socolissimo_observer>
+						<type>model</type>
+						<class>socolissimo/observer</class>
+						<method>backCheckoutEventSocodata</method>
+					</socolissimo_observer>
+				</observers>
+			</sales_order_place_after>
+			<checkout_type_onepage_save_order>
+				<observers>
+					<socolissimo_observer>
+						<type>singleton</type>
+						<class>socolissimo/observer</class>
+						<method>addSocoAttributesToOrder</method>
+					</socolissimo_observer>
+				</observers>
+			</checkout_type_onepage_save_order>
+<!-- 			<admin_user_authenticate_after> -->
+<!-- 				<observers> -->
+<!-- 					<Addonline_SoColissimo_Model_Observer> -->
+<!-- 						<type>singleton</type> -->
+<!-- 						<class>socolissimo/observer</class> -->
+<!-- 						<method>_9cd4777ae76310fd6977a5c559c51820</method> -->
+<!-- 					</Addonline_SoColissimo_Model_Observer> -->
+<!-- 				</observers> -->
+<!-- 			</admin_user_authenticate_after> -->
+			<controller_front_init_before>
+				<observers>
+					<wssocolissimo_autoloader>
+						<class>socolissimo/observer</class>
+						<method>addAutoloader</method>
+					</wssocolissimo_autoloader>
+				</observers>
+			</controller_front_init_before>
+		</events>
+	</global>
+
+	<frontend>
+		<layout>
+			<updates>
+				<socolissimo module="Addonline_SoColissimo">
+					<file>socolissimo.xml</file>
+				</socolissimo>
+			</updates>
+		</layout>
+		<secure_url>
+			<socolissimo>/socolissimo/ajax/</socolissimo>
+		</secure_url>
+		<routers>
+			<socolissimo>
+				<use>standard</use>
+				<args>
+					<module>Addonline_SoColissimo</module>
+					<frontName>socolissimo</frontName>
+				</args>
+			</socolissimo>
+		</routers>
+		<translate>
+			<modules>
+				<Addonline_SoColissimo>
+					<files>
+						<shipping>Mage_Shipping.csv</shipping>
+						<default>Addonline_SoColissimo.csv</default>
+					</files>
+				</Addonline_SoColissimo>
+			</modules>
+		</translate>
+		<events>
+			<sales_quote_collect_totals_before>
+				<observers>
+					<socolissimo_observer>
+						<type>model</type>
+						<class>socolissimo/observer</class>
+						<method>frontCheckoutEventSocodata</method>
+					</socolissimo_observer>
+				</observers>
+			</sales_quote_collect_totals_before>
+			<checkout_onepage_controller_success_action>
+				<observers>
+					<socolissimo_observer>
+						<type>singleton</type>
+						<class>socolissimo/observer</class>
+						<method>resetSession</method>
+					</socolissimo_observer>
+				</observers>
+			</checkout_onepage_controller_success_action>
+		</events>
+	</frontend>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<socolissimobatch before="Mage_Adminhtml">Addonline_SoColissimo_Adminhtml</socolissimobatch>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<layout>
+		    <updates>
+		        <addonline_socolissimo>
+		            <file>addonline_socolissimo.xml</file>
+		        </addonline_socolissimo>
+		    </updates>
+		</layout>
+		<translate>
+			<modules>
+				<Addonline_SoColissimo>
+					<files>
+						<shipping>Mage_Shipping.csv</shipping>
+						<default>Addonline_SoColissimo.csv</default>
+					</files>
+				</Addonline_SoColissimo>
+			</modules>
+		</translate>
+	</adminhtml>
+	<crontab>
+		<jobs>
+			<socolissimo_liberte_import>
+				<schedule>
+					<cron_expr>0 1 * * *</cron_expr>
+				</schedule>
+				<run>
+					<model>socolissimo/liberte_batch::run</model>
+				</run>
+			</socolissimo_liberte_import>
+		</jobs>
+	</crontab>
+	<default>
+		<carriers>
+			<socolissimo>
+				<active>0</active>
+				<title>Les modes de livraison</title>
+				<model>Addonline_SoColissimo_Model_Carrier_ShippingMethod</model>
+				<contrat>liberte</contrat>
+				<international>1</international>
+				<config><![CDATA[
+# Colissimo Livraison à domicile sans Signature (France, Monaco, Andorre) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - sans signature",
+	code: "domicile_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:5.38, 0.50:6.07, 0.75:6.80, 1.00:7.37, 2.00:8.17, 3.00:8.97, 4.00:9.78, 5.00:10.58, 6.00:11.39, 7.00:12.19, 8.00:12.99, 9.00:13.80, 10.00:14.60, 11.00:15.41, 12.00:16.21, 13.00:17.01, 14.00:17.82, 15.00:18.62, 16.00:19.43, 17.00:20.23, 18.00:21.03, 19.00:21.84, 20.00:22.64, 21.00:23.45, 22.00:24.25, 23.00:25.05, 24.00:25.86, 25.00:26.66, 26.00:27.47, 27.00:28.27, 28.00:29.07, 29.00:29.88, 30.00:30.68}",
+}
+
+# Colissimo Livraison à domicile avec Signature (France, Monaco, Andorre) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_sign_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:6.19, 0.50:7.00, 0.75:7.74, 1.00:8.30, 2.00:9.11, 3.00:9.91, 4.00:10.71, 5.00:11.52, 6.00:12.32, 7.00:13.13, 8.00:13.93, 9.00:14.73, 10.00:15.54, 11.00:16.34, 12.00:17.15, 13.00:17.95, 14.00:18.75, 15.00:19.56, 16.00:20.36, 17.00:21.17, 18.00:21.97, 19.00:22.77, 20.00:23.58, 21.00:24.38, 22.00:25.19, 23.00:25.99, 24.00:26.79, 25.00:27.60, 26.00:28.40, 27.00:29.21, 28.00:30.01, 29.00:30.81, 30.00:31.62}",
+}
+
+# Colissimo Livraison à domicile sans Signature (Allemagne, Belgique, Pays-Bas, Luxembourg) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - sans signature",
+	code: "domicile_zone1",
+	destination: "BE,NL,DE,LU",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:7.50, 0.50:7.50, 0.75:9.26, 1.00:9.26, 2.00:9.96, 3.00:10.72, 4.00:11.47, 5.00:12.17, 6.00:12.88, 7.00:13.58, 8.00:14.28, 9.00:14.99, 10.00:15.69, 11.00:19.71, 12.00:19.71, 13.00:19.71, 14.00:19.71, 15.00:19.71, 16.00:23.73, 17.00:23.73, 18.00:23.73, 19.00:23.73, 20.00:23.73, 21.00:27.75, 22.00:27.75, 23.00:27.75, 24.00:27.75, 25.00:27.75, 26.00:31.77, 27.00:31.77, 28.00:31.77, 29.00:31.77, 30.00:31.77}",
+}
+
+# Colissimo Livraison à domicile avec Signature (Inter Zone 1 : Allemagne, Belgique, Pays-Bas, Luxembourg.) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_sign_zone1",
+	destination: "BE,NL,DE,LU",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:8.00, 0.50:8.00, 0.75:9.76, 1.00:9.76, 2.00:10.46, 3.00:11.22, 4.00:11.97, 5.00:12.67, 6.00:13.38, 7.00:14.08, 8.00:14.78, 9.00:15.49, 10.00:16.19, 11.00:20.21, 12.00:20.21, 13.00:20.21, 14.00:20.21, 15.00:20.21, 16.00:24.23, 17.00:24.23, 18.00:24.23, 19.00:24.23, 20.00:24.23, 21.00:28.25, 22.00:28.25, 23.00:28.25, 24.00:28.25, 25.00:28.25, 26.00:32.27, 27.00:32.27, 28.00:32.27, 29.00:32.27, 30.00:32.27}",
+}
+
+# Colissimo Bureau de Poste (Inter Zone 1 : Belgique, Allemagne, Pays-Bas, Luxembourg) (Tarifs 2016)
+{
+	label: "Colissimo Point Retrait – à la Poste",
+	code: "poste_zone1",
+	destination: "BE,NL,DE,LU",
+	conditions: "{cart.weight}<20",
+	fees: "{domicile_zone1.fees}",
+}
+
+# Colissimo Commerçant (Inter Zone 1 : Belgique, Allemagne, Pays-Bas, Luxembourg) (Tarifs 2016)
+{
+	label: "Colissimo Point Retrait – en relais Pickup ou en consigne Pickup Station",
+	code: "commercant_zone1",
+	destination: "BE,NL,DE,LU",
+	conditions: "{cart.weight}<20",
+	fees: "{domicile_zone1.fees}",
+}
+
+# Colissimo Bureau de Poste (Inter Zone 2 : Royaume-Uni, Irlande, Italie, Espagne, Portugal, Suisse, Autriche) (Tarifs 2016)
+{
+	label: "Colissimo Point Retrait – à la Poste",
+	code: "poste_zone2",
+	destination: "GB,ES,IE,IT,PT,CH,AT",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:8.69, 0.50:8.69, 0.75:11.19, 1.00:11.19, 2.00:12.58, 3.00:13.43, 4.00:14.18, 5.00:14.99, 6.00:15.74, 7.00:16.60, 8.00:17.35, 9.00:18.10, 10.00:18.86, 11.00:23.03, 12.00:23.03, 13.00:23.03, 14.00:23.03, 15.00:23.03, 16.00:27.10, 17.00:27.10, 18.00:27.10, 19.00:27.10, 20.00:27.10}",
+}
+
+# Colissimo Commerçant (Inter Zone 2 : Royaume-Uni, Irlande, Italie, Espagne, Portugal, Suisse, Autriche) (Tarifs 2016)
+{
+	label: "Colissimo Point Retrait – en relais Pickup ou en consigne Pickup Station",
+	code: "commercant_zone2",
+	destination: "GB,ES,IE,IT,PT,CH,AT",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:8.69, 0.50:8.69, 0.75:11.19, 1.00:11.19, 2.00:12.58, 3.00:13.43, 4.00:14.18, 5.00:14.99, 6.00:15.74, 7.00:16.60, 8.00:17.35, 9.00:18.10, 10.00:18.86, 11.00:23.03, 12.00:23.03, 13.00:23.03, 14.00:23.03, 15.00:23.03, 16.00:27.10, 17.00:27.10, 18.00:27.10, 19.00:27.10, 20.00:27.10}",
+}
+
+# Colissimo Livraison à domicile sans Signature (Outre-Mer 1) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - sans signature",
+	code: "domicile_outremer1",
+	destination: "GP,GF,MQ,YT,RE,PM",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:8.81, 0.50:8.81, 0.75:13.36, 1.00:13.36, 2.00:18.20, 3.00:23.05, 4.00:27.91, 5.00:32.76, 6.00:37.62, 7.00:42.47, 8.00:47.49, 9.00:53.16, 10.00:58.94, 11.00:80.63, 12.00:80.63, 13.00:80.63, 14.00:80.63, 15.00:80.63, 16.00:108.49, 17.00:108.49, 18.00:108.49, 19.00:108.49, 20.00:108.49, 21.00:137.06, 22.00:137.06, 23.00:137.06, 24.00:137.06, 25.00:137.06, 26.00:165.63, 27.00:165.63, 28.00:165.63, 29.00:165.63, 30.00:165.63}",
+}
+
+# Colissimo Livraison à domicile avec Signature (Outre-Mer 1) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_sign_outremer1",
+	destination: "GP,GF,MQ,YT,RE,PM",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:12.47, 0.50:12.47, 0.75:15.42, 1.00:15.42, 2.00:20.77, 3.00:26.15, 4.00:31.52, 5.00:36.88, 6.00:42.26, 7.00:47.63, 8.00:52.99, 9.00:58.36, 10.00:63.73, 11.00:88.45, 12.00:88.45, 13.00:88.45, 14.00:88.45, 15.00:88.45, 16.00:115.29, 17.00:115.29, 18.00:115.29, 19.00:115.29, 20.00:115.29, 21.00:142.15, 22.00:142.15, 23.00:142.15, 24.00:142.15, 25.00:142.15, 26.00:168.99, 27.00:168.99, 28.00:168.99, 29.00:168.99, 30.00:168.99}",
+}
+
+# Colissimo Livraison à domicile sans Signature (Outre-Mer 2) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - sans signature",
+	code: "domicile_outremer2",
+	destination: "PF,WF,TF,NC",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:10.47, 0.50:10.47, 0.75:16.25, 1.00:16.25, 2.00:28.88, 3.00:41.51, 4.00:54.15, 5.00:66.78, 6.00:79.41, 7.00:92.04, 8.00:104.68, 9.00:117.31, 10.00:129.94, 11.00:193.87, 12.00:193.87, 13.00:193.87, 14.00:193.87, 15.00:193.87, 16.00:257.79, 17.00:257.79, 18.00:257.79, 19.00:257.79, 20.00:257.79, 21.00:321.72, 22.00:321.72, 23.00:321.72, 24.00:321.72, 25.00:321.72, 26.00:385.63, 27.00:385.63, 28.00:385.63, 29.00:385.63, 30.00:385.63}",
+}
+
+# Colissimo Livraison à domicile avec Signature (Outre-Mer 2) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_sign_outremer2",
+	destination: "PF,WF,TF,NC",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:18.30, 0.50:18.30, 0.75:22.64, 1.00:22.64, 2.00:35.22, 3.00:47.81, 4.00:60.39, 5.00:72.97, 6.00:85.55, 7.00:98.13, 8.00:110.72, 9.00:123.30, 10.00:135.88, 11.00:199.81, 12.00:199.81, 13.00:199.81, 14.00:199.81, 15.00:199.81, 16.00:263.73, 17.00:263.73, 18.00:263.73, 19.00:263.73, 20.00:263.73, 21.00:327.66, 22.00:327.66, 23.00:327.66, 24.00:327.66, 25.00:327.66, 26.00:391.57, 27.00:391.57, 28.00:391.57, 29.00:391.57, 30.00:391.57}",
+}
+
+# Colissimo Livraison à domicile avec Signature (Inter Zone 2 : Royaume-Uni, Espagne, Irlande, Italie, Portugal, Suisse, Autriche) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_sign_zone2",
+	destination: "GB,ES,IE,IT,PT,CH,AT",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:9.19, 0.50:9.19, 0.75:11.69, 1.00:11.69, 2.00:13.08, 3.00:13.93, 4.00:14.68, 5.00:15.49, 6.00:16.24, 7.00:17.10, 8.00:17.85, 9.00:18.60, 10.00:19.36, 11.00:23.53, 12.00:23.53, 13.00:23.53, 14.00:23.53, 15.00:23.53, 16.00:27.60, 17.00:27.60, 18.00:27.60, 19.00:27.60, 20.00:27.60, 21.00:31.67, 22.00:31.67, 23.00:31.67, 24.00:31.67, 25.00:31.67, 26.00:35.74, 27.00:35.74, 28.00:35.74, 29.00:35.74, 30.00:35.74}",
+}
+
+# Colissimo Livraison Expert (Inter Zone 3 : Suède, Danemark, Hongrie, Pologne, République-Tchèque, Slovaquie, Slovénie, Estonie, Lettonie, Lituanie) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_expert_zone3",
+	destination: "SE,DK,HU,PL,CZ,SK,SI,EE,LV,LT",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:11.24, 0.50:11.24, 0.75:13.73, 1.00:13.73, 2.00:15.23, 3.00:16.52, 4.00:18.08, 5.00:19.67, 6.00:25.58, 7.00:26.98, 8.00:28.29, 9.00:29.60, 10.00:30.90, 11.00:38.29, 12.00:38.29, 13.00:38.29, 14.00:38.29, 15.00:38.29, 16.00:45.58, 17.00:45.58, 18.00:45.58, 19.00:45.58, 20.00:45.58, 21.00:52.91, 22.00:52.91, 23.00:52.91, 24.00:52.91, 25.00:52.91, 26.00:55.00, 27.00:55.00, 28.00:55.00, 29.00:55.00, 30.00:55.00}",
+}
+
+# Colissimo Livraison Expert (Inter Zone 4 : Grèce, Islande, Finlande, Norvège, Turquie, Maghreb) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_expert_zone4",
+	destination: "GR,IS,FI,NO,TR,MA,DZ,TN",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:13.78, 0.50:13.78, 0.75:16.40, 1.00:16.40, 2.00:17.84, 3.00:19.37, 4.00:21.44, 5.00:25.50, 6.00:28.60, 7.00:32.30, 8.00:36.80, 9.00:39.40, 10.00:42.60, 11.00:56.90, 12.00:56.90, 13.00:56.90, 14.00:56.90, 15.00:56.90, 16.00:66.40, 17.00:66.40, 18.00:66.40, 19.00:66.40, 20.00:66.40, 21.00:78.30, 22.00:78.30, 23.00:78.30, 24.00:78.30, 25.00:78.30, 26.00:90.50, 27.00:90.50, 28.00:90.50, 29.00:90.50, 30.00:90.50}",
+}
+
+# Colissimo Livraison Expert (Inter Zone 5 : Etats-Unis, Canada, Australie, Chine, Japon, Hong kong, Singapour, Corée du Sud, Thaïlande, Taïwan, Viet Nam, Inde, Russie, Israël.) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_expert_zone5",
+	destination: "US,CA,AU,CN,JP,HK,SG,KR,TH,TW,VN,IN,RU,IL",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:21.01, 0.50:21.01, 0.75:23.23, 1.00:23.23, 2.00:31.86, 3.00:42.28, 4.00:44.78, 5.00:47.08, 6.00:65.23, 7.00:73.26, 8.00:81.18, 9.00:84.60, 10.00:88.83, 11.00:132.82, 12.00:132.82, 13.00:132.82, 14.00:132.82, 15.00:132.82, 16.00:142.42, 17.00:142.42, 18.00:142.42, 19.00:142.42, 20.00:142.42, 21.00:182.83, 22.00:182.83, 23.00:182.83, 24.00:182.83, 25.00:182.83, 26.00:210.70, 27.00:210.70, 28.00:210.70, 29.00:210.70, 30.00:210.70}",
+}
+
+# Colissimo Livraison Expert (Inter Zone 6 : Afrique (hors Maghreb), Moyen-Orient, Amériques (hors Etats-Unis et Canada), autre pays d’Asie, Océanie (hors Australie).) (Tarifs 2016)
+{
+	label: "Colissimo Domicile - avec signature",
+	code: "domicile_expert_zone6",
+	destination: "* - ( FR,BE,NL,DE,LU,GP,GF,MQ,YT,RE,PM,PF,WF,TF,NC,GB,ES,IE,IT,PT,CH,AT,SE,DK,HU,PL,CZ,SK,SI,EE,LV,LT,GR,IS,FI,NO,TR,MA,DZ,TN,US,CA,AU,CN,JP,HK,SG,KR,TH,TW,VN,IN,RU,IL)",
+	conditions: "{cart.weight}<30",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:24.41, 0.50:24.41, 0.75:28.71, 1.00:28.71, 2.00:39.43, 3.00:50.36, 4.00:61.07, 5.00:70.22, 6.00:80.67, 7.00:91.22, 8.00:101.67, 9.00:112.38, 10.00:122.83, 11.00:170.20, 12.00:170.20, 13.00:170.20, 14.00:170.20, 15.00:170.20, 16.00:218.59, 17.00:218.59, 18.00:218.59, 19.00:218.59, 20.00:218.59, 21.00:265.95, 22.00:265.95, 23.00:265.95, 24.00:265.95, 25.00:265.95, 26.00:313.31, 27.00:313.31, 28.00:313.31, 29.00:313.31, 30.00:313.31}",
+}
+]]></config>
+				<tracking_view_url>http://www.colissimo.fr/portail_colissimo/suivre.do?colispart={tracking_number}</tracking_view_url>
+				<display_when_unavailable>0</display_when_unavailable>
+				<stop_to_first_match>0</stop_to_first_match>
+				<shipping_period>1</shipping_period>
+				<testws_socolissimo_flexibilite>0</testws_socolissimo_flexibilite><!-- Developpers only : set 1 to use test WS URL -->
+				<rep_fichier_liberte>var/import/socolissimoliberte</rep_fichier_liberte>
+				<sort_order>1</sort_order>
+			</socolissimo>
+		</carriers>
+		<socolissimo>
+			<licence>
+				<serial>DISABLED</serial>
+			</licence>
+		</socolissimo>
+	</default>
+</config>

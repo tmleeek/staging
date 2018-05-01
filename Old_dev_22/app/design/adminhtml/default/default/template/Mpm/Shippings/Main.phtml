@@ -1,0 +1,89 @@
+<script>
+
+    if (typeof(Translator) == 'undefined') {
+        var Translator = new Translate(<?php echo $this->getTranslateJson(); ?>);
+    } else {
+        Translator.add(<?php echo $this->getTranslateJson(); ?>);
+    }
+    var clientCurrency = '<?php echo $this->getClientCurrency(); ?>';
+</script>
+
+
+<form id="form1" method="post" action="<?php echo $this->getSubmitUrl(); ?>">
+<input id="form_key" name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+<div class="entry-edit">
+
+    <div class="content-header">
+        <table cellspacing="0" class="grid-header">
+            <tr>
+                <td><h3><?php echo Mage::helper('Mpm')->__('Shipping grids')?></h3></td>
+                <td align="right">
+                    <input type="text" style="width: 150px" id="grid_name" name="grid_name" value="">
+                    <button onclick="addGrid()" class="scalable new" type="button">
+                        <span><?php echo Mage::helper('Mpm')->__('Create new grid')?></span>
+                    </button>
+                    <button onclick="submitShippingForm()" class="scalable create" type="button"><span><?php echo
+                            Mage::helper('Mpm')->__('Save')?></span></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="manage_shipping">
+        <?php foreach($this->getShippingsGrid() as $gridName): ?>
+            <div class="section-config">
+                <div class="entry-edit-head collapseable">
+                    <a id="grid_<?php echo md5($gridName); ?>-head" href="#" onclick="Fieldset.toggleCollapse('grid_<?php echo md5($gridName); ?>', '/magento/index.php/admin/system_config/state/'); return false;"><?php echo $gridName; ?></a>
+                </div>
+                <input id="grid_<?php echo md5($gridName); ?>-state" name="config_state[grid_<?php echo md5($gridName); ?>]" type="hidden" value="0" />
+                <fieldset class="config collapseable" id="grid_<?php echo md5($gridName); ?>">
+                    <div class="grid">
+                        <div class="hor-scroll">
+                        <table id="<?php echo md5($gridName); ?>" role="shippingGrid" cellspacing="0" width="100%" class="data">
+                            <thead>
+                                <tr class="headings">
+                                    <th bgcolor="#ddd" align="center"><b><?php echo $this->__('Weight') . ' ( ' . $this->__('Bigger than') . ' )' ?></b></th>
+                                    <th bgcolor="#ddd" align="center"><b><?php echo $this->__('Cost') . ' (' . $this->getClientCurrency() . ')';?></b></th>
+                                    <th bgcolor="#ddd" align="center"><b><?php echo $this->__('Action'); ?></b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i=0;?>
+                                <?php foreach(Mage::helper('Mpm/Carl')->getShippingRows($gridName) as $row): ?>
+                                    <?php
+                                        $rowClass = "pointer";
+                                        $i = ($i +1)%2;
+                                        if($i){
+                                            $rowClass .= " even";
+                                        }
+
+                                    ?>
+                                    <tr id="grid_row_<?php echo $row->id ?>" class="<?php echo $rowClass;?>">
+                                        <input type="hidden" style="width:90%" name="groups[shipping][fields][grid_<?php echo md5($gridName) ?>][name_<?php echo $row->id ?>][value]" value="<?php echo $row->name ?>">
+                                        <td align="center">
+                                            <input type="text" style="width:90%" name="groups[shipping][fields][grid_<?php echo md5($gridName) ?>][weight_<?php echo $row->id ?>][value]" value="<?php echo $row->weight ?>">
+                                        </td>
+                                        <td align="center">
+                                            <input type="text" style="width:90%" name="groups[shipping][fields][grid_<?php echo md5($gridName) ?>][price_<?php echo $row->id ?>][value]" value="<?php echo $row->price ?>">
+                                        </td>
+
+                                        <td align="center">
+                                            <a onclick="$('grid_row_<?php echo $row->id ?>').remove();"><?php echo
+                                                Mage::helper('Mpm')->__('Delete') ?></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+
+                        </table><br/>
+                        <span onclick="addGridRow('<?php echo $gridName ?>','<?php echo md5($gridName) ?>')"
+                              class="form-button right"> <?php echo Mage::helper('Mpm')->__('Add row') ?></span>
+                    </div>
+                    </div>
+                </fieldset>
+            </div>
+            <script type="text/javascript">Fieldset.applyCollapse('grid_<?php echo md5($gridName); ?>');</script>
+        <?php endforeach; ?>
+    </div>
+</div>
+</form>

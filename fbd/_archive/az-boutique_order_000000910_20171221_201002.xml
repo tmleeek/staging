@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000910</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-12-21 20:03:59</created_at>
+    <total_amount>63.8000</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-1329@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_tnt</code>
+    <amount>9.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>tallet</firstname>
+      <lastname>alain</lastname>
+      <company/>
+      <address1>144 chemin des veridas</address1>
+      <address2>144 chemin des veridas</address2>
+      <postal_code>69480</postal_code>
+      <city>Lachassagne</city>
+      <country>FR</country>
+      <phone>0680454452</phone>
+    </billing>
+    <shipping>
+      <firstname>tallet</firstname>
+      <lastname>alain</lastname>
+      <company/>
+      <address1>144 chemin des veridas</address1>
+      <address2>144 chemin des veridas</address2>
+      <postal_code>69480</postal_code>
+      <city>Lachassagne</city>
+      <country>FR</country>
+      <phone>0680454452</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>1692</id>
+      <fbd_sku>az-boutique_GL155</fbd_sku>
+      <supplier_sku>GL155</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>33.9000</price>
+        <total>33.9000</total>
+        <discount>26.5700</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>1693</id>
+      <fbd_sku>az-boutique_GL135</fbd_sku>
+      <supplier_sku>GL135</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>29.9000</price>
+        <total>29.9000</total>
+        <discount>23.4300</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

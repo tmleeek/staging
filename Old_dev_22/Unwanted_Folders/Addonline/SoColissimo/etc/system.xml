@@ -1,0 +1,316 @@
+<?xml version="1.0"?>
+<!-- /** * Addonline_SoColissimo * * @category Addonline * @package Addonline_SoColissimo
+	* @copyright Copyright (c) 2011 Addonline * @author Addonline (http://www.addonline.fr)
+	*/ -->
+<config>
+	<tabs>
+		<addonline translate="label">
+			<label>Addonline config</label>
+			<sort_order>201</sort_order>
+		</addonline>
+	</tabs>
+	<sections>
+		<carriers>
+			<groups>
+				<socolissimo translate="label" module="socolissimo">
+					<label>Colissimo</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>18</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<informations translate="label">
+							<label>Informations</label>
+							<frontend_model>socolissimo/adminhtml_system_config_form_field_informations</frontend_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</informations>
+						<socolissimobox translate="label">
+							<label>Colissimo Box</label>
+							<frontend_model>socolissimo/adminhtml_system_config_button_colissimobox</frontend_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</socolissimobox>
+						<license_active>
+							<!-- This fields permit to know which license have the user and hide the useless fields for him (using <depends/>) -->
+							<label>Type of license active</label>
+              <frontend_type>select</frontend_type>
+              <source_model>socolissimo/adminhtml_system_config_source_licensetype</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+							<!-- We use a <depends/> on an unexisting fields to always hide this field as users shouldn't change the value of this one -->
+							<depends><hide_field>This is used to always hide the field</hide_field></depends>
+						</license_active>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<domicile_signature translate="label">
+							<label>Livraison à domicile</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_domicilesignature</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>{A l'international seule la livraison à domicile avec signature est proposée}</comment>
+						</domicile_signature>
+						<international translate="label">
+							<label>Option international</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_optioninternationnal</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>{Permet de filtrer ou non les points situés à l’étranger}</comment>
+						</international>
+						<config translate="label">
+							<label>Configuration</label>
+							<frontend_model>socolissimo/adminhtml_system_config_form_field_config</frontend_model>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</config>
+						<tracking_view_url translate="label">
+							<label>Tracking URL</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</tracking_view_url>
+						<debug translate="label comment">
+							<label>Debug</label>
+							<comment>{debug_help}</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</debug>
+						<display_when_unavailable translate="label">
+							<label>Display when unavailable</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</display_when_unavailable>
+						<stop_to_first_match translate="label">
+							<label>Stop to first match</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</stop_to_first_match>
+						<shipping_period translate="label comment">
+							<label>Shipping period</label>
+							<comment>Délai pour calculer les relais ouverts à la date de
+								livraison = date du jour + délai</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</shipping_period>
+						<id_socolissimo_flexibilite translate="label">
+							<label>Identifiant Colissimo en web service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><license_active>webservices</license_active></depends>
+						</id_socolissimo_flexibilite>
+						<password_socolissimo_flexibilite
+							translate="label">
+							<label>Password Colissimo en web service</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><license_active>webservices</license_active></depends>
+						</password_socolissimo_flexibilite>
+						<rep_fichier_liberte translate="label">
+							<label>Répertoire des fichiers Colissimo par fichier de points</label>
+							<frontend_type>text</frontend_type>
+							<frontend_model>socolissimo/adminhtml_system_config_form_field_liberte</frontend_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>Répertoire (chemin absolu) où sont uploadés les fichiers
+								Colissimo par fichier de points</comment>
+							<depends><license_active>files</license_active></depends>
+						</rep_fichier_liberte>
+
+						<etiquettage_via_api_actif translate="label">
+							<label>Gestion des étiquettes par Web Services</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_Etiquettageapiactif</source_model>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends><license_active>webservices</license_active></depends>
+						</etiquettage_via_api_actif>
+
+						<!-- Champ non utilisé !!
+						<date_previsionnelle_de_depot translate="label">
+							<depends><etiquettage_via_api_actif>1</etiquettage_via_api_actif></depends>
+							<label>Date prévisionnelle de dépôt</label>
+							<frontend_type>select</frontend_type>
+							<source_model>socolissimo/adminhtml_system_config_source_Dateprevisionnellededepot</source_model>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</date_previsionnelle_de_depot>
+						-->
+                        <fixed_costs translate="label">
+							<label>Fixed Costs</label>
+							<comment>{fixed_costs_help}</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fixed_costs>
+                        <sort_order translate="label">
+							<label>Sort Order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+                        <side translate="label">
+                            <label>Choose Specific side</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </side>
+                        <description translate="label">
+		                    <label>Description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>18</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </description>
+						<tnt_JZ_description translate="label">
+		                    <label>TNT JZ Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>19</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </tnt_JZ_description>
+						<tnt_JD_description translate="label">
+		                    <label>TNT JD Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>20</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </tnt_JD_description>
+						<tnt_J_description translate="label">
+		                    <label>TNT J Short description</label>
+		                    <frontend_type>textarea</frontend_type>
+		                    <sort_order>21</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                </tnt_J_description>
+                        <tnt_enterprise translate="label">
+                            <label>Tnt Enterprise Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tnt_enterprise>
+                         <tnt_relais translate="label">
+                            <label>Tnt Relias Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tnt_relais>
+						<api_key_google_maps translate="label">
+							<label>API key Google Maps</label>
+							<comment>{google_maps_help}</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>24</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_key_google_maps>
+					</fields>
+				</socolissimo>
+			</groups>
+		</carriers>
+		<socolissimo translate="label" module="socolissimo">
+			<label>Colissimo</label>
+			<tab>addonline</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>100</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<licence translate="label" module="socolissimo">
+					<label>Licence</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<serial translate="label" module="socolissimo">
+							<label>Serial</label>
+							<frontend_type>text</frontend_type>
+							<comment>Set here the serial number, for multi-stores set the serial number in the default configuration, and active Colissimo in each store configuration scope</comment>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</serial>
+					</fields>
+				</licence>
+			</groups>
+		</socolissimo>
+	</sections>
+</config>

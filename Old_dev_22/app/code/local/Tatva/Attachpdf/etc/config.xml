@@ -1,0 +1,270 @@
+﻿<?xml version="1.0"?>
+
+<config>
+
+
+
+	<modules>
+
+		<Tatva_Attachpdf>
+
+			<version>0.2.0</version>
+
+		</Tatva_Attachpdf>
+
+	</modules>
+
+
+
+	<global>
+
+		<models>
+			<attachpdf>
+		    <class>Tatva_Attachpdf_Model</class>
+			</attachpdf>
+			<sales>
+
+				<rewrite>
+
+					<order_invoice>Tatva_Attachpdf_Model_Sales_Order_Invoice</order_invoice>
+					<order_payment>Tatva_Attachpdf_Model_Sales_Order_Payment</order_payment>
+
+					<order_pdf_invoice>Tatva_Attachpdf_Model_Sales_Order_Pdf_Invoice</order_pdf_invoice>
+					
+					<order_invoice_api>Tatva_Attachpdf_Model_Sales_Order_Invoice_Api</order_invoice_api>
+
+				   <!--	<order_shipment>Tatva_Attachpdf_Model_Sales_Order_Shipment</order_shipment>   -->
+
+					<order_pdf_shipment>Tatva_Attachpdf_Model_Sales_Order_Pdf_Shipment</order_pdf_shipment>
+
+					<!--<order_creditmemo>Tatva_Attachpdf_Model_Sales_Order_Creditmemo</order_creditmemo>  -->
+
+					<order_pdf_creditmemo>Tatva_Attachpdf_Model_Sales_Order_Pdf_Creditmemo</order_pdf_creditmemo>
+
+                	<!--<order>Tatva_Attachpdf_Model_Sales_Order</order>-->
+
+				</rewrite>
+
+			</sales>
+
+			<bundle>
+
+				<rewrite>
+
+					<sales_order_pdf_items_invoice>Tatva_Attachpdf_Model_Bundle_Sales_Order_Pdf_Items_Invoice</sales_order_pdf_items_invoice>
+
+					<sales_order_pdf_items_shipment>Tatva_Attachpdf_Model_Bundle_Sales_Order_Pdf_Items_Shipment</sales_order_pdf_items_shipment>
+
+					<sales_order_pdf_items_creditmemo>Tatva_Attachpdf_Model_Bundle_Sales_Order_Pdf_Items_Creditmemo</sales_order_pdf_items_creditmemo>
+
+				</rewrite>
+
+			</bundle>
+
+		</models>
+
+		<pdf>
+
+            <invoice>
+
+                <default>attachpdf/sales_order_pdf_items_invoice_default</default>
+
+                <grouped>attachpdf/sales_order_pdf_items_invoice_grouped</grouped>
+
+            </invoice>
+
+            <shipment>
+
+                <default>attachpdf/sales_order_pdf_items_shipment_default</default>
+
+            </shipment>
+
+            <creditmemo>
+
+                <default>attachpdf/sales_order_pdf_items_creditmemo_default</default>
+
+                <grouped>attachpdf/sales_order_pdf_items_creditmemo_grouped</grouped>
+
+            </creditmemo>
+
+            <order>
+
+                <default>attachpdf/sales_order_pdf_items_order_default</default>
+
+                <grouped>attachpdf/sales_order_pdf_items_order_grouped</grouped>
+
+            </order>
+
+		</pdf>
+
+		<helpers>
+
+			<attachpdf>
+
+				<class>Tatva_Attachpdf_Helper</class>
+
+			</attachpdf>
+
+		</helpers>
+       <events>
+            <adminhtml_controller_action_predispatch_start>
+				<observers>
+					<attachpdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>checkConfig</method>
+					</attachpdf>
+				</observers>
+			</adminhtml_controller_action_predispatch_start>
+            <sales_order_save_before>
+				<observers>
+					<create_custom_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>checkNewOrder</method>
+					</create_custom_pdf>
+				</observers>
+			</sales_order_save_before>
+			<sales_order_save_after>
+				<observers>
+					<create_custom_pdf_1>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>createNewOrder</method>
+					</create_custom_pdf_1>
+				</observers>
+			</sales_order_save_after>
+            <sales_order_invoice_save_before>
+				<observers>
+					<create_custom_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>checkNewInvoice</method>
+					</create_custom_pdf>
+				</observers>
+			</sales_order_invoice_save_before>
+			<sales_order_invoice_save_after>
+				<observers>
+					<create_custom_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>createNewInvoice</method>
+					</create_custom_pdf>
+				</observers>
+			</sales_order_invoice_save_after>
+			<sales_order_shipment_save_before>
+				<observers>
+					<create_custom_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>checkNewShipment</method>
+					</create_custom_pdf>
+				</observers>
+			</sales_order_shipment_save_before>
+			<sales_order_shipment_save_after>
+				<observers>
+					<create_custom_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>createNewShipment</method>
+					</create_custom_pdf>
+				</observers>
+			</sales_order_shipment_save_after>
+            <sales_order_creditmemo_save_before>
+				<observers>
+					<create_creditmemo_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>checkNewCreditmemo</method>
+					</create_creditmemo_pdf>
+				</observers>
+			</sales_order_creditmemo_save_before>
+			<sales_order_creditmemo_save_after>
+				<observers>
+					<create_creditmemo_pdf>
+						<type>singleton</type>
+						<class>attachpdf/observer</class>
+						<method>createNewCreditmemo</method>
+					</create_creditmemo_pdf>
+				</observers>
+			</sales_order_creditmemo_save_after>
+         </events>
+        </global>
+
+	<default>
+
+        <config_vars><!--config values --></config_vars>
+
+        <sales_email>
+
+            <order>
+
+                <attachpdf>0</attachpdf>
+
+            </order>
+
+            <invoice>
+
+                <attachpdf>0</attachpdf>
+
+            </invoice>
+
+            <invoice_comment>
+
+                <attachpdf>0</attachpdf>
+
+            </invoice_comment>
+
+            <shipment>
+
+                <attachpdf>0</attachpdf>
+
+            </shipment>
+
+            <shipment_comment>
+
+                <attachpdf>0</attachpdf>
+
+            </shipment_comment>
+
+            <creditmemo>
+
+                <attachpdf>0</attachpdf>
+
+            </creditmemo>
+
+            <creditmemo_comment>
+
+                <attachpdf>0</attachpdf>
+
+            </creditmemo_comment>
+
+        </sales_email>
+
+	</default>
+
+	<stores>
+
+        <admin>
+
+            <design>
+
+                <package>
+
+                    <name>default</name>
+
+                </package>
+
+                <theme>
+
+                    <default>i-store</default>
+
+                </theme>
+
+            </design>
+
+        </admin>
+
+    </stores>
+
+</config>

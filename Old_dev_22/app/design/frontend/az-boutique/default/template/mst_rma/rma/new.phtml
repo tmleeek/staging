@@ -1,0 +1,6 @@
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php if ($this->getOrder()): ?>
+    <?php echo $this->getChildHtml('rma.new.step2') ?>
+<?php else: ?>
+    <?php echo $this->getChildHtml('rma.new.step1') ?>
+<?php endif?>

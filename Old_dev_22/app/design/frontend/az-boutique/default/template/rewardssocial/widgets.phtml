@@ -1,0 +1,21 @@
+
+<div class="<?php echo $this->getWidgetClass(); ?>">
+    <?php foreach ($this->getSortedChildren() as $name): ?>
+        <?php $block = $this->getLayout()->getBlock($name); ?>
+        <?php if (!$block): ?>
+            <?php Mage::throwException(Mage::helper('core')->__('Invalid block: %s', $name)); ?>
+        <?php endif; ?>
+        <?php if ($this->getProduct()) : ?>
+            <?php $block->setProduct($this->getProduct()); ?>
+        <?php endif; ?>
+        <?php if ($this->getOrderId()) : ?>
+            <?php $block->setOrderId($this->getOrderId()); ?>
+        <?php endif; ?>
+
+        <?php if (!$block->getIsHidden()) : ?>
+            <?php echo $block->toHtml(); ?>
+        <?php endif; ?>
+    <?php endforeach ?>
+
+    <?php echo $this->getPointsNotificationBlock()->toHtml(); ?>
+</div>

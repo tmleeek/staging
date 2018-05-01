@@ -1,0 +1,47 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+* @copyright  Copyright (c) 2009 AITOC, Inc. 
+*/
+?>
+<?php $items = $this->getItems() ?>
+<div class="page-head">
+<h3><?php echo Mage::helper('aitmanufacturers')->__('All '.Mage::getModel('aitmanufacturers/config')->getAttributeName($this->getAttributeCode()).'s')?></h3>
+</div>
+<div class="content">
+<?php //$showListIcons = Mage::getStoreConfig('catalog/aitmanufacturers/manufacturers_show_list_image', Mage::app()->getStore()->getId()); ?>
+<?php $showListIcons = Mage::helper('aitmanufacturers')->getShowListImage($this->getAttributeCode(), Mage::app()->getStore()->getId()); ?>
+
+<?php if ($cols = count($items)): ?>
+<?php $width = floor(100/$cols) ?>
+<?php foreach($items as $letters): ?>
+<div style="float: left; width: <?php echo $width ?>%;">
+<?php foreach ($letters as $letter => $manufacturers): ?>
+<dl>
+    <dt><?php echo $letter ?></dt>
+    <dd>
+        <ul class="bare-list">
+        <?php foreach ($manufacturers as $manufacturer): ?>
+        	<?php if ($manufacturer['item']->getManufacturer()): ?>
+            <li>
+            	<?php if($showListIcons && $manufacturer['item']->getListImage() && $manufacturer['item']->getShowListImage()){ ?><a href="<?php echo $manufacturer['item']->getUrl() ?>" style="text-decoration:none;"><img src="<?php echo Mage::helper('aitmanufacturers/image')->getIconUrl($manufacturer['item']->getListImage()) ?>" alt="<?php echo $this->htmlEscape($manufacturer['item']->getManufacturer()) ?>" /></a> <?php } ?>
+                <a href="<?php echo Mage::helper('aitmanufacturers')->generateUrl($manufacturer['item']->getData('url_key'), $manufacturer['item']->getData('manufacturer_id')); ?>"><?php echo $this->htmlEscape($manufacturer['item']->getManufacturer()) ?> (<?php echo $manufacturer['number']?>)</a>
+            </li>
+            <?php endif ?>
+        <?php endforeach ?>
+        </ul>
+    </dd>
+</dl>
+<?php endforeach ?>
+</div>
+<?php endforeach ?>
+<?php endif ?>
+</div>

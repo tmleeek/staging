@@ -1,0 +1,39 @@
+<?php
+/**
+ *
+ */
+?>
+<?php $helper = Mage::helper('brands'); ?>
+<?php if ($helper->getCfg('product_view/enable')): ?>
+	<?php $_product = $this->getCurrentProductObject();?>
+	<?php $brandAttrId = $this->getBrandAttributeId(); ?>
+	<?php if ($_product->getData($brandAttrId)): //If brand attribute exists ?>
+    
+		<?php
+		$brand = $this->getBrand($_product); //Attr. value
+		$brandAttrLabel = $this->getBrandAttributeTitle(); //Attr. name
+		$brandPageUrl = $this->getBrandPageUrl($brand);
+		
+		$showImage = $helper->getCfg('product_view/show_image');
+		if ($showImage)
+		{
+			//If brand is a link, image's "title" tag has to be empty (otherwise it will override link's "title" tag)
+			$brandPageUrl ? $imgTitle='' : $imgTitle=$brandAttrLabel.': '.$brand;
+			$brandDetailsHtml = '<img src="'. $this->getBrandImageUrl($brand) .'" title="'. $imgTitle .'" alt="' . $brand . '" />';
+		}
+		else
+		{
+			$brandDetailsHtml = '<div class="brand-name attribute"><span class="label">'. $brandAttrLabel .':</span> '. $brand .'</div>';
+		}
+		?>
+        
+		<div class="box-brand">
+			<?php if ($brandPageUrl): ?>
+				<a class="fade-on-hover" href="<?php echo $brandPageUrl; ?>" title="<?php echo $this->__('Click to see more products from %s', $brand); ?>"><?php echo $brandDetailsHtml; ?></a>
+			<?php else: ?>
+            	<?php echo $brandDetailsHtml; ?>
+			<?php endif; ?>
+		</div>
+
+	<?php endif; ?>
+<?php endif; ?>

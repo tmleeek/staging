@@ -1,0 +1,436 @@
+<?php
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+
+	$_helper = $this->helper('catalog/output');
+	$_product = $this->getProduct();
+	$theme = $this->helper('ultimo');
+    $ait_model=Mage::getModel('aitmanufacturers/aitmanufacturers');
+     $storeId = Mage::app()->getStore()->getId();
+	//CSS classes based on product type
+	$productTypeId = $_product->getTypeId();
+	$productTypeClasses = '';
+	if ($productTypeId === 'grouped') {
+		$productTypeClasses .= ' is-type-grouped';
+	}
+    //$catalogRuleProducts=$ait_model->getCatalofruledata($_product);
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml();
+
+//echo $this->getMessagesBlock()->getSuccessmsg();
+ ?></div>
+<div class="product-view" itemscope itemtype="http://schema.org/Product">
+    <?php $_storeId = Mage::app()->getStore()->getId(); ?>
+    <?php $_isActive = Mage::getStoreConfig('outofstocksubscription/mail/active', $_storeId); ?>
+    <?php if(!$_product->isSaleable() && $_isActive): ?>
+    	<?php $_url = $this->getUrl('outofstocksubscription'); ?>
+    <?php else: ?>
+    	<?php //$_url = $this->getAddToCartUrl($_product); 
+        $_url = $this->getAddToCartUrl($_product);
+        if($_SERVER['HTTPS'] == "on")
+        {
+            $_url = $this->getAddToCartUrl($_product,array("_secure"=>true));
+        }
+        else
+        {
+            $_url = $this->getAddToCartUrl($_product); 
+        }
+        ?>
+    <?php endif; ?>
+    <form action="<?php echo $_url; ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        
+         <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+    	<?php echo $this->getBlockHtml('formkey'); ?>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+    	<?php
+			//Product collaterals
+			$section = array();
+
+			//Related products. $section['related'] is set only if related products (or replacement) exist
+			$replaceRelated = $theme->getCfg('product_page/replace_related');
+			if ($replaceRelated == 1) //don't replace with static block
+			{
+				if ($tmpHtml = trim($this->getChildHtml('catalog.product.related')))
+					$section['related'] = $tmpHtml;
+				//$section['related'] = trim($this->getChildHtml('catalog.product.related'));
+			}
+			elseif ($replaceRelated == 2) //if related is empty, replace with static block
+			{
+				if ($tmpHtml = trim($this->getChildHtml('catalog.product.related')))
+					$section['related'] = $tmpHtml;
+				else //related empty
+					if ($tmpHtml = $this->getChildHtml('block_product_replace_related'))
+						$section['related'] = '<div class="block_product_replace_related">'. $tmpHtml .'</div>';
+			}
+			elseif ($replaceRelated == 3) //replace with static block
+			{
+				if ($tmpHtml = $this->getChildHtml('block_product_replace_related'))
+					$section['related'] = '<div class="block_product_replace_related">'. $tmpHtml .'</div>';
+			}
+
+			//Up-sell products. $section['upsell'] is set only if up-sell products (or replacement) exist
+			$replaceUpsell = $theme->getCfg('product_page/replace_upsell');
+			if ($replaceUpsell == 1) //don't replace with static block
+			{
+
+
+				if ($tmpHtml = trim($this->getChildHtml('upsell_products')))
+					$section['upsell'] = $tmpHtml;
+
+                $free_gift_html = $this->getLayout()->createBlock('freegift/product')->setTemplate('freegift/product.phtml')->toHtml();
+
+                if(trim($free_gift_html))
+                	$section['upsell'] .= $free_gift_html;
+
+				//$section['upsell'] = $this->getChildHtml('upsell_products');
+			}
+			elseif ($replaceUpsell == 2) //if upsell is empty, replace with static block
+			{
+				if ($tmpHtml = trim($this->getChildHtml('upsell_products')) || $free_gift_html = trim($this->getLayout()->createBlock('freegift/product')->setTemplate('freegift/product.phtml')->toHtml()))
+					$section['upsell'] = $tmpHtml.$free_gift_html;
+				else //upsell empty
+					if ($tmpHtml = $this->getChildHtml('block_product_replace_upsell'))
+						$section['upsell'] = '<div class="block_product_replace_upsell">'. $tmpHtml .'</div>';
+			}
+			elseif ($replaceUpsell == 3) //replace with static block
+			{
+				if ($tmpHtml = $this->getChildHtml('block_product_replace_upsell'))
+					$section['upsell'] = '<div class="block_product_replace_upsell">'. $tmpHtml .'</div>';
+			}
+
+
+
+			//Assign related products to selected position
+			if (isset($section['related']))
+			{
+				$relatedPosition = $theme->getCfg('product_page/related_position');
+				//TODO:remove: $relatedPosition = 11;
+				switch ($relatedPosition)
+				{
+					case 10:
+						$p['secondaryCol'][0] = $section['related'];
+						break;
+					case 11:
+						$p['secondaryCol'][1] = $section['related'];
+						break;
+					case 20:
+						$p['collatSecondaryCol'] = $section['related'];
+						break;
+				}
+			}
+
+
+
+			//Width (in grid units) of product page sections
+			$imgColUnits					= $theme->getCfg('product_page/image_column');
+			$primaryColUnits				= $theme->getCfg('product_page/primary_column');
+			$secondaryColUnits				= $theme->getCfg('product_page/secondary_column');
+			$container2ColUnits				= $imgColUnits + $primaryColUnits;
+			$collatPrimaryColUnits			= $imgColUnits + $primaryColUnits;
+			$collatSecondaryColUnits		= $secondaryColUnits;
+
+			//If no secondary column
+			if (empty($secondaryColUnits))
+			{
+				$primaryColUnits			+= 12 - ($imgColUnits + $primaryColUnits);
+				$container2ColUnits			= $imgColUnits + $primaryColUnits;
+				$collatPrimaryColUnits		= 9;
+				$collatSecondaryColUnits	= 3;
+			}
+
+			//If no related products, stretch collateral primary column
+			if (!isset($section['related']))
+			{
+				$container2ColUnits			= 12;
+				$collatPrimaryColUnits		= 12;
+				$collatSecondaryColUnits	= 0;
+			}
+			elseif (!isset($p['secondaryCol']))
+			{
+				$container2ColUnits 		= 12;
+			}
+
+			//Grid classes
+			$imgColGridClass				= 'grid12-' . $imgColUnits;
+			$primaryColGridClass			= 'grid12-' . $primaryColUnits;
+			$secondaryColGridClass			= 'grid12-' . $secondaryColUnits;
+			$container2ColGridClass			= 'grid12-' . $container2ColUnits;
+			$collatPrimaryColGridClass		= 'grid12-' . $collatPrimaryColUnits;
+			$collatSecondaryColGridClass	= 'grid12-' . $collatSecondaryColUnits;
+			if (empty($secondaryColUnits))
+			{
+				$secondaryColGridClass	= '';
+			}
+		?>
+
+        <div class="product-img-column <?php echo $imgColGridClass; ?>">
+            <?php echo $this->getChildHtml('media') ?>
+            <?php //Product labels
+				echo $this->helper('ultimo/labels')->getLabels($_product);
+			?>
+        </div>
+        <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+ <?php
+                $array = $this->helper('yotpo/richSnippets')->getRichSnippet($this);
+                ?>
+        
+                <span itemprop="ratingValue"><?php //echo $array["average_score"]; ?></span>
+                <span itemprop="ratingCount"><?php //echo $array["reviews_count"]; ?></span>
+                <meta itemprop="bestRating" content="5">
+                <meta itemprop="worstRating" content="0">
+        </div>
+        <?php //echo "<pre>";print_r($_product->getData());?>
+        <div class="product-shop <?php echo $primaryColGridClass; ?>">
+<meta itemprop="name" content="<?php $brand = $this->getBrand($_product->getMarque()); ?><?php if($brand): ?><?php echo $brand->getValue() ?><?php echo ' - '; ?><?php endif;?><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><?php if($_product->getGammeCollectionNew()!=''): ?><?php $new_coll=''; ?><?php $new_coll=$ait_model->getGammeCollection($_product['gamme_collection_new'],$storeId); ?><?php echo ' - '; ?><?php echo $new_coll; ?><?php endif; ?><?php if($_product->getManufacturer()): ?><?php $brand_name = $ait_model->getManufacturerName($_product->getManufacturer(),$storeId); ?><?php echo ' - '; ?><?php echo $brand_name; ?><?php endif; ?>">
+<meta itemprop="sku" content="<?php echo $_product->getSku(); ?>">
+		<span class="product-name"><?php $brand = $this->getBrand($_product->getMarque()); ?><?php if($brand): ?><?php echo $brand->getValue() ?><?php echo ' - '; ?><?php endif;?><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><?php if($_product->getGammeCollectionNew()!=''): ?><?php $new_coll=''; ?><?php $new_coll=$ait_model->getGammeCollection($_product['gamme_collection_new'],$storeId); ?><?php echo ' - '; ?><?php echo $new_coll; ?><?php endif; ?><?php if($_product->getManufacturer()): ?><?php $brand_name = $ait_model->getManufacturerName($_product->getManufacturer(),$storeId); ?><?php echo ' - '; ?><?php echo $brand_name; ?><?php endif; ?></span>
+      <div class="clear"></div>  
+	  <span class="productview-ref"><?php echo $this->__('Ref :')?> <?php echo $_helper->productAttribute($_product, $this->htmlEscape($_product->getSku()), 'sku') ?> </span>
+            
+			<?php $attribute = $_product->getResource()->getAttribute('ean13');
+if ($attribute)
+{?>
+<meta itemprop="gtin13" content="<?php  echo $attribute_value = $attribute ->getFrontend()->getValue($_product); ?>" />
+    
+<?php }?>
+
+		 
+		
+			<?php 
+		 
+			
+			//echo number_format($this->getRatingSummary() / 20,1); // $this->getReviewsSummaryHtml($_product, false, true); //reviews ?>
+        
+		<div class="review-custom productview-review"> 
+
+<a href="#tab-yreviews">
+                <?php $this->helper('yotpo')->showBottomline($this, $_product); ?>
+                </a>
+        </div>
+        <?php //echo $this->getChildHtml('alert_urls'); //alerts
+            $_description = $this->getProduct()->getDescription();
+            $desc = $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description');
+
+            // strip tags to avoid breaking any html
+            //$string = strip_tags($desc);
+            $string = $desc;
+            if (strlen($string) > 300)
+            {
+                $stringCut = substr($string, 0, 300);
+                $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... ';
+            }
+            ?>
+
+            <div class="desc_view"> <?php echo $string; ?><br/><a href="#Refdesc" class="pinktext"><?php echo '   '.$this->__('View the full description and characteristics of the product')?></a></div>
+
+            <?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
+                <div class="extrahint-wrapper"><?php echo $extrahint_html; ?></div>
+            <?php endif; ?>
+<?php if($_product->getTypeId() == "bundle"):  ?>
+	<div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+ <?php  
+ 	 
+		 $pricemodel = Mage::getModel('bundle/product_price');
+		$_priceIncludingTax = $pricemodel::calculatePrice(
+            $_product->getData('price'),
+            $_product->getSpecialPrice(),
+            $_product->getSpecialPriceFrom(),
+            $_product->getSpecialPriceTo(),
+            false,
+            # Mage::app()->getStore()->getWebsite()->getId(),
+            Mage::app()->getStore()->getStoreId(),
+            Mage::getSingleton('customer/session')->getCustomer()->getGroupId(),
+            Mage::getSingleton('customer/session')->getCustomer()->getGroupId(),
+            $_product->getId()
+        );
+	 $_priceIncludingTax = Mage::helper('tax')->getPrice($_product, $_priceIncludingTax);
+	$currencyCode = Mage::app()->getStore()->getCurrentCurrencyCode();
+	$currencySymbol = Mage::app()->getLocale()->currency($currencyCode)->getSymbol(); 
+?>	
+    <?php //echo $currencySymbol;?><meta itemprop="lowPrice" content="<?php echo $_priceIncludingTax ;?>" />
+   <?php //echo $currencySymbol;?><meta itemprop="highPrice" content="<?php echo Mage::getModel('bundle/product_price')->getTotalPrices($_product,'max',1);?>" />
+
+	<meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?>" />
+        <meta itemprop="itemCondition" content="http://schema.org/NewCondition" />
+	 <?php 
+ 
+$productAvailabilityStatus = Mage::getModel('SalesOrderPlanning/ProductAvailabilityStatus')->load($_product->getId(), 'pa_product_id');
+	  if($productAvailabilityStatus->getIsSaleable())
+              { 
+              if ($_product->isAvailable())
+              { ?>
+	 <link itemprop="availability" href="http://schema.org/InStock" />
+	  <?php }
+          
+              }else{?>
+         <link itemprop="availability" href="http://schema.org/OutOfStock" />
+              <?php } ?>
+         
+	</div>
+    <?php endif; ?>        <div class="product-type-data<?php echo $productTypeClasses; ?>"><?php echo $this->getChildHtml('product_type_data'); ?></div>
+
+
+            <?php if(!$_product->isSaleable() && $_isActive): ?>
+            	<div class="product-options">
+            		<table width="100%">
+            			<tr>
+            				<td colspan="2" style="padding-bottom:5px;">
+            					<strong><?php echo $this->__('Product Out of Stock Subscription') ?></strong>
+            				</td>
+            			</tr>
+            			<tr>
+            				<td style="padding-bottom:5px;"><?php echo $this->__('Email: ') ?></td>
+            				<td>
+            					<input type="text" id="subscription_email" name="subscription_email" value=""  class="input-text required-entry validate-email" />
+            				</td>
+            			</tr>
+            			<tr>
+            				<td>&nbsp;</td>
+            				<td style="font-size:10px;">
+            					(<?php echo $this->__("Notify me when this product is back in stock") ?>)
+            				</td>
+            			</tr>
+            			<tr>
+            				<td style="">&nbsp;</td>
+            				<td>
+            					<button onclick="productAddToCartForm.submit();" class="button btn-cart" type="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            				</td>
+            			</tr>
+            		</table>
+            	</div>
+            <?php endif; ?>
+            <!-- product out of stock end -->
+            <?php if (!$this->hasOptions()): //add to cart when no options ?>
+                <?php
+
+				if($_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    </div>
+                <?php endif; ?>
+
+
+
+
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php endif; ?>
+
+            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
+                    <div class="container2-wrapper"><?php echo $container2_html; ?></div>
+                <?php endif; ?>
+
+            <?php endif;?>
+
+
+
+            <?php if ($addtoLinksHtml = $this->getChildHtml('addto')): //compare, wishlist, to friend ?>
+                <div class="action-box clearer">
+					<?php echo $addtoLinksHtml; ?>
+				</div>
+            <?php endif; ?>
+
+            <?php echo $this->getChildHtml('other'); ?>
+
+            <?php if ($tmpHtml = $this->getChildHtml('block_product_primary_bottom')): ?>
+            	<div class="feature-wrapper top-border block_product_primary_bottom"><?php echo $tmpHtml; ?></div>
+            <?php endif; ?>
+
+            <?php if ($tmpHtml = $this->getChildHtml('product_primary_bottom_placeholder')): //Placeholder for extensions ?>
+            	<div class="feature-wrapper top-border"><?php echo $tmpHtml; ?></div>
+            <?php endif; ?>
+
+        </div> <!-- end: product-shop -->
+
+        <?php if ($secondaryColUnits): //(!empty($secondaryColUnits)): ?>
+       
+            <div class="product-secondary-column <?php echo $secondaryColGridClass; ?> custom-sidebar-right">
+            	<div class="inner">
+                    <div class="brandlogodisplay"></div>
+					<?php //Placeholder for extensions ?>
+					<?php if ($tmpHtml = $this->getChildHtml('product_secondary_top_placeholder')): //Placeholder for extensions ?>
+						<div class="margin-bottom"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+
+                    <?php if (isset($p['secondaryCol'][0])): ?>
+						<?php echo $p['secondaryCol'][0]; ?>
+                    <?php endif; ?>
+
+                    <?php if ($tmpHtml = $this->getChildHtml('block_product_secondary_bottom')): ?>
+                        <div class="feature-wrapper top-border block_product_secondary_bottom"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+
+                    <?php if (isset($p['secondaryCol'][1])): ?>
+						<div class="margin-top"><?php echo $p['secondaryCol'][1]; ?></div>
+                    <?php endif; ?>
+
+                    <?php /*?>
+					<?php if (isset($section['related'])): ?>
+                    	<div class="margin-top"><?php echo $section['related']; ?></div>
+                    <?php endif; ?>
+                    <?php */?>
+
+				</div>
+            </div> <!-- end: product-secondary-column -->
+        <?php endif; ?>
+
+        <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+			<?php if ($container1_html = $this->getChildChildHtml('container1', '', true, true)): ?>
+        		<div class="box-additional <?php echo $container2ColGridClass; ?>">
+					<div class="container1-wrapper"><?php echo $container1_html; ?></div>
+				</div>
+        	<?php endif; ?>
+        <?php endif; ?>
+
+    </form>
+         <script type="text/javascript">
+            var cart_url= "<?php echo Mage::getUrl('checkout/cart',array('_secure'=>true)); ?>";
+            var estimateRegionId = "<?php echo $this->getEstimateRegionId() ?>";
+            var region_json = <?php echo $this->helper('directory')->getRegionJson() ?>;
+            var url_topcart = "<?php echo Mage::getUrl('ajax/ajax/headercart',array('_secure'=>true))?>";
+            var load_product_addto_cart_portion = true;
+        </script>
+ <div class="box-additional box-tabs <?php echo $collatPrimaryColGridClass; ?>">
+    	<?php $info_tabs_html = trim($this->getChildHtml('info_tabs'));
+			if ($info_tabs_html) echo $info_tabs_html; ?>
+
+		<?php //Open the "Reviews" tab, when "X Review(s)" or "Be the first to review this product" links are clicked ?>
+     <script src="<?php echo $this->getskinurl('js/productview-review.js')?>"></script>
+	<?php echo $this->getChildHtml('product_additional_data') ?>
+	</div> <!-- end: box-tabs -->
+
+
+
+    <?php if (isset($p['collatSecondaryCol'])): ?>
+		<div class="box-additional box-sidebar custom-sidebar-right <?php echo $collatSecondaryColGridClass; ?>">
+			<div class="inner"><?php echo $p['collatSecondaryCol']; ?></div>
+		</div>
+	<?php endif; ?>
+
+
+
+</div> <!-- end: product-view -->
+        <?php if (isset($section['upsell'])): ?>
+    	<div class="box-additional box-up-sell <?php echo $collatPrimaryColGridClass; ?>"><?php echo $section['upsell']; ?></div>
+    <?php endif; ?>
+<!-- Product Problem start -->
+
+
+<!-- Product Problem ends -->

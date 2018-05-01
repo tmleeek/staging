@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+	<!--<adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>alsobought</name>
+                <block>alsobought/adminhtml_catalog_product_tab</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>-->
+	<adminhtml_catalog_product_alsobought>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="alsobought/adminhtml_alsobought" name="catalog.product.edit.tab.alsobought"/>
+            <block type="adminhtml/widget_grid_serializer" name="alsobought_grid_serializer">
+                <reference name="alsobought_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>catalog.product.edit.tab.alsobought</grid_block_name>
+                        <data_callback>_getSelectedProducts</data_callback>
+                        <hidden_input_name>links[alsobought]</hidden_input_name>
+                        <reload_param_name>products_alsobought</reload_param_name>
+                    </action>
+                    <!--<action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>-->
+                </reference>
+            </block>
+        </block>
+    </adminhtml_catalog_product_alsobought>
+	<adminhtml_catalog_product_alsoboughtgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="alsobought/adminhtml_alsobought" name="catalog.product.edit.tab.alsobought"/>
+        </block>
+    </adminhtml_catalog_product_alsoboughtgrid>
+
+</layout>

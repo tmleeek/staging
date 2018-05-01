@@ -1,0 +1,43 @@
+<?php
+/**
+ * MageWorx
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageWorx EULA that is bundled with
+ * this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.mageworx.com/LICENSE-1.0.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension
+ * to newer versions in the future. If you wish to customize the extension
+ * for your needs please refer to http://www.mageworx.com/ for more information
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @copyright  Copyright (c) 2011 MageWorx (http://www.mageworx.com/)
+ * @license    http://www.mageworx.com/LICENSE-1.0.html
+ */
+
+/**
+ * Search Autocomplete extension
+ *
+ * @category   MageWorx
+ * @package    MageWorx_SearchAutocomplete
+ * @author     MageWorx Dev Team
+ */
+?>
+<?php if ($this->getReviewsCount()): ?>
+    <div class="s_ratings">
+        <?php if ($this->getRatingSummary()):?>
+            <span class="rating-box" style="overflow: auto;">
+                <div class="rating" style="margin-right: 3px; width:<?php echo $this->getRatingSummary() ?>%"></div>
+            </span>
+        <?php endif;?>
+    </div>
+    <span style="float:left;"><a href="<?php echo $this->getReviewsUrl() ?>" class="a_review" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a></span>
+<?php elseif ($this->getDisplayIfEmpty()): ?>
+    <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>
+<?php endif; ?>

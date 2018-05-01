@@ -1,0 +1,41 @@
+.referral-share-button {
+    display: inline-block;
+    max-width: 100%;
+    zoom: 1;
+}
+
+.referral-share-button .btn i {
+    left: 2px;
+    width: 16px;
+    height: 14px;
+    background: transparent url('../../../images/rewardssocial/referral/tell-a-friend.png') 0 0 no-repeat;
+    background-image: url('../../../images/rewardssocial/referral/tell-a-friend.png');
+}
+
+#rewards_referral_share_modal .my_referrals-urlcode_group {
+    padding: 5px 10px;
+    margin: 0;
+}
+
+#rewards_referral_share_modal .my_referrals-urlcode_group ul li {
+    padding-bottom: 15px;
+}
+
+#rewards_referral_share_modal .social-widgets {
+    text-align: right;
+}
+
+#rewards_referral_share_modal .urlcode_comment {
+    font-size: 8pt;
+    font-style: italic;
+    margin: 0 0 5px 0;
+}
+
+#rewards_referral_share_modal .urlcode-input-box input {
+    width: 98%;
+    padding: 5px;
+}
+
+#rewards_referral_share_modal .content {
+    padding: 10px;
+}

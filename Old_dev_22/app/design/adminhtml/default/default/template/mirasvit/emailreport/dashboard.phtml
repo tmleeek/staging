@@ -1,0 +1,25 @@
+<table cellspacing="25" width="100%">
+    <tr>
+        <td width="50%">
+            <?php echo $this->getLayout()->createBlock('emailreport/adminhtml_dashboard')
+                ->setTemplate('mirasvit/emailreport/dashboard/activity.phtml')
+                ->toHtml()
+            ?>
+            <?php echo $this->getLayout()->createBlock('emailreport/adminhtml_dashboard')
+                ->setTemplate('mirasvit/emailreport/dashboard/queue_status.phtml')
+                ->toHtml()
+            ?>
+            
+        </td>
+        <td width="50%">
+            <?php echo $this->getLayout()->createBlock('emailreport/adminhtml_recipient_trend')
+                ->setTemplate('mirasvit/emailreport/dashboard/recipient_trend.phtml')
+                ->toHtml()
+            ?>
+            <?php echo $this->getLayout()->createBlock('emailreport/adminhtml_email_analysis')
+                ->setTemplate('mirasvit/emailreport/dashboard/by_trigger.phtml')
+                ->toHtml()
+            ?>
+        </td>
+    </tr>
+</table>

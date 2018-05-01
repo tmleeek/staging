@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000425</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-09-05 19:49:38</created_at>
+    <total_amount>23.1000</total_amount>
+    <total_discount>23.1000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-627@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Lea</firstname>
+      <lastname>Denis</lastname>
+      <company>Cabinet de kinesitherapie</company>
+      <address1>201 route de Paris</address1>
+      <address2></address2>
+      <postal_code>76520</postal_code>
+      <city>Boos</city>
+      <country>FR</country>
+      <phone>0631511816</phone>
+    </billing>
+    <shipping>
+      <firstname>Lea</firstname>
+      <lastname>Denis</lastname>
+      <company>Cabinet de kinesitherapie</company>
+      <address1>201 route de Paris</address1>
+      <address2></address2>
+      <postal_code>76520</postal_code>
+      <city>Boos</city>
+      <country>FR</country>
+      <phone>0631511816</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>733</id>
+      <fbd_sku>az-boutique_BIVL2831</fbd_sku>
+      <supplier_sku>BIVL2831</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>16.9000</price>
+        <total>16.9000</total>
+        <discount>16.9000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>735</id>
+      <fbd_sku>az-boutique_PPLAN42521-16</fbd_sku>
+      <supplier_sku>PPLAN42521-16</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>6.2000</price>
+        <total>6.2000</total>
+        <discount>6.2000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

@@ -1,0 +1,53 @@
+a:4:{s:4:"hash";i:74321405;s:5:"mtime";i:1525188645;s:6:"expire";i:1625188644;s:4:"tags";a:3:{i:0;s:19:"d45_CATALOG_PRODUCT";i:1;s:14:"d45_BLOCK_HTML";i:2;s:8:"d45_MAGE";}}
+
+         
+            <div class="the-slideshow-wrapper-outer" >
+    
+            <div class="the-slideshow-wrapper">
+
+                <div class="the-slideshow grid12-9 no-left-gutter   slider-arrows2 slider-pagination2 pagination-pos-over-bottom-centered">
+                    <div id="slideshow-81728c5c79cac0f43d8d06db91db1303" class="slides">
+                                                                        <div class="item slide">
+                                <p><a href="https://dev.az-boutique.fr/livraison-et-transport/"> <img src="https://dev.az-boutique.fr/media/sliders/fr/transport-gratuit-fr.jpg" alt="Livraison offerte d&egrave;s 49 &euro; d'achats en point relais avec Mondial Relay" /> </a></p>                            </div>
+                                                                </div> <!-- end: slides -->
+                </div> <!-- end: the-slideshow -->
+
+                                                        <div class="the-slideshow-banners slideshow-banners grid12-3 no-right-gutter hide-below-768"><img src="https://dev.az-boutique.fr/media/extendware/ewimageopt/media/skin/46/8/paiement-securise-accueil.jpg">
+<img src="https://dev.az-boutique.fr/media/extendware/ewimageopt/media/skin/74/e/programme-fidelite-accueil.jpg">
+<img src="https://dev.az-boutique.fr/media/extendware/ewimageopt/media/skin/85/c/confiance-clients-accueil.jpg">
+</div>
+                
+            </div> <!-- end: the-slideshow-wrapper -->
+
+            </div> <!-- end: the-slideshow-wrapper-outer -->
+    
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function($) {
+        
+        var owl = $('#slideshow-81728c5c79cac0f43d8d06db91db1303');
+        owl.owlCarousel({
+
+            singleItem: true,
+
+                    slideSpeed: 200,
+        
+                    paginationSpeed: 500,
+        
+                    autoPlay: 3000,
+        
+                    stopOnHover: true,
+        
+                    rewindNav: true,
+            rewindSpeed: 600,
+        
+                    autoHeight: true,
+        
+        
+            navigation: true
+
+        }); //end: owl
+
+    });
+//]]>
+</script>

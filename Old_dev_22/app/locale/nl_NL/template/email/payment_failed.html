@@ -1,0 +1,64 @@
+{* This is a comment block
+
+Available vars in this template:
+  - name            Recipient name
+  - email           Recipient Email address
+  - product_name    Product name
+  - product_url     Url for product
+  - product_image   Url for product small image (75 px)
+  - message         Sender custom message
+  - sender_name     Sender name
+  - sender_email    Sender email
+
+Use vars: {{var var_name}}
+*}<!--@subject Herinnering: Een betalingstransactie is mislukt @-->
+
+<table>
+    <thead>
+        <tr>
+            <th>De volgende betaling is mislukt.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    <b>Reden:</b><br />
+                    {{var reason}}
+                </p>
+                <p>
+                    <b>Klant:</b><br />
+                    <a href="mailto:{{var customerEmail}}">{{var customer}}</a> &lt;{{var customerEmail}}&gt;
+                </p>
+                <p>
+                    <b>Producten</b><br />
+                    {{var items}}
+                </p>
+                <p>
+                    <b>Totaal:</b><br />
+                    {{var total}}
+                </p>
+                <p>
+                    <b>Factuuradres:</b><br />
+                    {{var billingAddress.format('html')}}
+                </p>
+                <p>
+                    <b>Verzendadres:</b><br />
+                    {{var shippingAddress.format('html')}}
+                </p>
+                <p>
+                    <b>Verzendmethode:</b><br />
+                    {{var shippingMethod}}
+                </p>
+                <p>
+                    <b>Betaalmethode:</b><br />
+                    {{var paymentMethod}}
+                </p>
+                <p>
+                    <b>Datum en Tijd:</b><br />
+                    {{var dateAndTime}}
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>

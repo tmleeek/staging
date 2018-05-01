@@ -1,0 +1,16 @@
+
+  <div class="ajax_after_delete" id="ajax_after_delete">
+        <div id="cart_content" class="cart_content">
+            <?php echo $this->TopCartLink(); ?>
+        </div>
+        <div class="ajax_header_content" id="ajax_header_content">
+            <?php echo $this->getChildHtml('cart_sidebar_ajax'); ?>
+        </div>
+        <div class="ajax_message">
+            <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        </div>
+
+        <div class="ajax_cart_content" id="ajax_cart_content">
+            <?php echo $this->getChildHtml('cart_content_ajax'); ?>
+        </div>
+  </div>

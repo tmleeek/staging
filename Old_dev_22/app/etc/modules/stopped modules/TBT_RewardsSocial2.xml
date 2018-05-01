@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <TBT_RewardsSocial2>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <TBT_Rewards />
+            </depends>
+        </TBT_RewardsSocial2>
+    </modules>
+</config>

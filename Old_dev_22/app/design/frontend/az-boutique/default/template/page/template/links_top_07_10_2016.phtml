@@ -1,0 +1,192 @@
+﻿<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+
+<?php
+	$theme = $this->helper('ultimo');
+
+   if (Mage::getSingleton('customer/session')->isLoggedIn()==0)
+	{
+		$mainTitle = $this->__('Log In');
+	}
+	else
+	{
+		$mainTitle = $this->__('My Account');
+	}
+
+    //Icon color suffix
+    $iconSuffix = ($theme->getCfgDesign('header/icon_color') == 'b') ? '' : '-'.$theme->getCfgDesign('header/icon_color');
+
+	$cartClasses = '';
+	if (Mage::getSingleton('customer/session')->isLoggedIn()==0)
+	{
+		$cartClasses .= ' is-empty';
+		if ($theme->getCfg('header/hide_on_mobile'))
+		{
+			$cartClasses .= ' hide-empty-cart';
+		}
+	}
+	else
+	{
+		$cartClasses .= ' is-not-empty';
+	}
+?>
+<?php //if (Extendware::helper('ewpagecache') !== false) echo Mage::helper('ewpagecache')->getBeginMarker('custom_login'); ?>
+<?php
+if((stripos($ua,'android') !== false) || (stripos($ua,'mobile') !== false) || (stripos($ua,'iphone') !== false))
+        { ?> 
+               <!-- <style type="text/css">
+                    .header-top-container
+                    {
+                        background: none;
+                    }
+                    .header-primary-container #mini-login
+                    {
+                        display: none;
+                    }
+                </style>-->
+                
+            <?php } ?>
+
+<div id="mini-login" class="dropdownlogin<?php echo $cartClasses; ?>">
+
+    <div class="dropdown-toggle cover" title="<?php echo $mainTitle; ?>">
+    <div class="feature-icon-hover">
+        <div class="logintextdiv hide-below-1280">
+		<?php if (Mage::getSingleton('customer/session')->isLoggedIn()!=0) : 
+		$customer = Mage::getModel('customer/customer')->load(Mage::getSingleton('customer/session')->getId());
+		
+		
+		
+		 ?>
+                              <div class="logintitle"><?php echo $customer->getFirstname(); ?><br>
+                               <?php echo $customer->getLastname(); ?></div>
+		  <?php else: ?>
+		  		<div class="logintitle"><?php echo $this->__('Login'); ?><br>
+                                <?php echo $this->__('Create an Account') ?></div>
+		  
+		  <?php endif; ?>	 					
+                              <span class="caret">&nbsp;</span></div>
+
+	</div> <!-- end: dropdown-toggle > div -->
+     <!-- end: dropdown-toggle -->
+     <!-- end: dropdown-toggle -->
+     <div class="feature-icon-hover">
+         <div class="logintextdiv1"><span class="comparearrow"><a href="<?php echo $this->getUrl('customer/account/'); ?>"><img src="<?php echo $this->getSkinUrl('images/user-icon-header.png'); ?>" alt=""/></a></span>
+          <?php if (Mage::getSingleton('customer/session')->isLoggedIn()!=0) : ?>
+              <div>
+                  <a style="width: 100%;" href="<?php echo $this->getUrl('customer/account/'); ?>"><?php echo $this->__('My Account'); ?></a>
+                  <!-- <a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo $this->__("Log Out");?></a> -->
+              </div> 
+         </div>
+          <?php else: ?>
+             <div>
+                 <a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo $this->__('My Account'); ?></a>
+                 <?php //echo "<br/>".$this->__("Log In");?>
+             </div> 
+     </div>
+          <?php endif; ?>
+
+
+    </div>
+    </div>
+
+      <?php if (Mage::getSingleton('customer/session')->isLoggedIn()!=0) : ?>
+    	<div class="dropdown-menu left-hand logout-block">
+        	<div class="block-content-inner">
+                    <div class="logout-popup-main">
+                       <div class="logout-popup-content-box">
+                             <h2><?php echo $this->__('My Account'); ?></h2>
+                             <p><a href="<?php echo $this->getUrl('customer/account/edit/'); ?>"><?php echo $this->__('Manage my account'); ?></a></p>
+                             <p><a href="<?php echo $this->getUrl('customer/address/'); ?>"><?php echo $this->__('Manage My Address Book'); ?></a></p>
+
+                       </div>
+                       <div class="logout-popup-content-box">
+                             <h2><?php echo $this->__('My Orders'); ?></h2>
+                             <p><a href="<?php echo $this->getUrl('sales/order/history/'); ?>"><?php echo $this->__('Follow my orders'); ?></a></p>
+                             <p><a href="<?php echo $this->getUrl('contacts'); ?>"><?php echo $this->__('Contact Us'); ?></a></p>
+                             <p><a href="<?php echo $this->getUrl('ProductReturn/Front/List/'); ?>"><?php echo $this->__('Return or exchange'); ?></a></p>
+                             <p><a href="#"><?php echo $this->__('Find my delivery point'); ?></a></p>
+
+                       </div>
+                       <div class="logout-popup-content-box">
+                             <h2><?php echo $this->__('My Services'); ?></h2>
+                             <p><a href="<?php echo $this->getUrl('wishlist'); ?>"><?php echo $this->__('Go to Wishlist'); ?></a></p>
+                             <p><a href="<?php echo $this->getUrl('oauth/customer_token/'); ?>"><?php echo $this->__('My applications'); ?></a></p>
+                             <p><a href="<?php echo $this->getUrl('newsletter/manage/'); ?>"><?php echo $this->__('Subscriptions to the newsletter'); ?></a></p>
+
+                       </div>
+                       <div class="logout-empty"><a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo $this->__('Log Out') ?></a></div>
+                    </div>
+
+
+            </div> <!-- end: block-content-inner -->
+		</div> <!-- end: dropdown-menu -->
+        <?php else: ?>
+        <div class="dropdown-menu left-hand block" id="focus">
+        	<div class="block-content-inner">
+              <div class="login-box">
+                  <h4><?php echo $this->__('My Account'); ?></h4>
+                  <form action="<?php echo $this->getUrl('customer/account/loginPost/'); ?>" method="post" id="login-form">
+                    <!-- for key genrate -->
+                      <?php $formKey = Mage::getSingleton('core/session')->getFormKey();  ?>
+                      <input type="hidden" name="form_key" value="<?php echo $formKey; ?>"  />
+                     <!-- form key genrat ends -->
+
+                      <div class="login-form-box email-box">
+                        <label><?php echo $this->__('Email'); ?>:</label>
+                        <input type="text" value="" name="login[username]" id="name" class="required-entry validate-email"/>
+                     </div>
+                    <div class="login-form-box password-box">
+                      <label><?php echo $this->__('Password'); ?>:</label>
+                      <div class="pass-field-box clearfix">
+                        <input type="password" value="" name="login[password]" id="pswd" class="input-text required-entry validate-email" />
+                        <button type="submit"><?php echo $this->__('Log In'); ?></button>
+                      </div>
+                    </div>
+                    </form>
+                    <a class="fpw" href="<?php echo $this->getUrl('customer/account/forgotpassword/'); ?>"><?php echo $this->__('Forgot Your Password?'); ?></a>
+                    <div class="reg-box clearfix">
+                      <label><?php echo $this->__('New Customer?'); ?></label>
+                      <a class="top-create-btn" href="<?php echo $this->getUrl('customer/account/create/'); ?>"><?php echo $this->__('Create an Acount') ?></a>
+
+                    </div>
+              </div>
+
+            </div> <!-- end: block-content-inner -->
+		</div>
+        <?php endif; ?>
+
+
+</div> <!-- end: mini-cart -->
+<?php //if (Extendware::helper('ewpagecache') !== false) echo Mage::helper('ewpagecache')->getEndMarker('custom_login'); ?>

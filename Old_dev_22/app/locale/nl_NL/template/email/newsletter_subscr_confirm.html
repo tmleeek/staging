@@ -1,0 +1,38 @@
+<!--@subject Nieuwsbrief aanmelding bevestiging @-->
+
+<style type="text/css">
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+</style>
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+    <table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+        <tr>
+            <td align="center" valign="top">
+                <!-- [ header starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p><a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var customer.store.website.name}}" border="0"/></a></p></td>
+                    </tr>
+                </table>
+
+                <!-- [ middle starts here] -->
+                <table cellspacing="0" cellpadding="0" border="0" width="650">
+                    <tr>
+                        <td valign="top">
+                            <p><strong>Beste {{var customer.firstname}}</strong>,<br/>
+                            Bedankt voor uw interesse in onze nieuwsbrief.</p>
+                            <p style="border:1px solid #BEBCB7; padding:13px 18px; background:#F8F7F5; ">Om de nieuwsbrief te ontvangen, dient u het abonnement te bevestigen door op de onderstaande link te klikken:<br />
+                            <a href="{{var subscriber.getConfirmationLink()}}" style="color:#1E7EC8;">{{var subscriber.getConfirmationLink()}}</a><p>
+
+                            <p>Met vriendelijke groet,</p>
+														<p><strong>{{var customer.store.website.name}}</strong></p>
+
+
+                      </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

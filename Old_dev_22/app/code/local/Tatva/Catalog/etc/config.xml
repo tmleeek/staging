@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Catalog>
+            <version>0.1.8</version>
+        </Tatva_Catalog>
+    </modules>
+    <global>
+        <!-- <models>
+            <catalog>
+				<rewrite>
+                   <product_link>Tatva_Catalog_Model_Product_Link</product_link>
+                    <product>Tatva_Catalog_Model_Product</product>
+ 				</rewrite>
+ 			</catalog>
+        </models>-->
+        <helpers>
+            <tatvacatalog>
+	        	<class>Tatva_Catalog_Helper</class>
+	        </tatvacatalog>
+        </helpers>
+    	<blocks>
+          <tatvacatalog>
+	        	<class>Tatva_Catalog_Block</class>
+	        </tatvacatalog>
+            <!--<catalog>
+    			<rewrite>
+                    <product_view>Tatva_Catalog_Block_Product_View</product_view>
+                </rewrite>
+    		</catalog>-->
+    	</blocks>
+     </global>
+</config>

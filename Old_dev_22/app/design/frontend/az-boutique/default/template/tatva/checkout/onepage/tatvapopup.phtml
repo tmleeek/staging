@@ -1,0 +1,442 @@
+<?php 
+    $location_list1 = "";
+    $location_list2 = "";
+    $location_list3 = "";
+    $ship_code = '';
+    if(isset($_REQUEST['shipping_method']))
+    {
+        $ship_code = $_REQUEST['shipping_method'];
+    }
+    $location_list = '';
+    $location_mobality = 0;
+    $var_mobility = "";
+    $data = array();
+
+    $address = $this->getAddress();
+    $address_id = $this->getAddress()->getId();
+    $street1 = $address->getStreet();
+    $street = $street1[0];
+    $postcode = $address->getPostcode();
+    $city = $address->getCity();
+    $countryName = Mage::getModel('directory/country')->load($address->getCountry())->getName();
+    if($ship_code != "")
+    {
+        if($ship_code == 'colissimolocalstore_colissimolocalstore')
+        {
+            $data[] = "type = 'local store'";
+            Mage::getSingleton('core/session')->setData('set_ship_method1',$ship_code);
+        }
+        if($ship_code == 'colissimopostoffice_colissimopostoffice')
+        {
+            $data[] = "type = 'post office'";
+            Mage::getSingleton('core/session')->setData('set_ship_method1',$ship_code);
+        }
+        if($ship_code == 'colissimocityssimo_colissimocityssimo')
+        {
+            $data[] = "type = 'cityssimo space'";
+            Mage::getSingleton('core/session')->setData('set_ship_method1',$ship_code);
+        }
+	   
+        $arr_relay = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->getWebservicearr($data,$var_mobility);
+    }
+    else
+    {
+        if($_REQUEST['local'] == 'true')
+        {
+            $data[] = "type = 'local store'";
+        }
+        if($_REQUEST['postoffice'] == 'true')
+        {
+            $data[] = "type = 'post office'";
+        }
+        if($_REQUEST['cityssimo'] == 'true')
+        {
+            $data[] = "type = 'cityssimo space'";
+        }
+        if($_REQUEST['mobility'] == 'true')
+        {
+            $var_mobility = "accespersonnemobilitereduite = '1'";
+        }
+
+        $street = $_REQUEST['address'];
+        $postcode = $_REQUEST['postcode'];
+        $city = $_REQUEST['city'];
+
+        if($_REQUEST['search'] == '1')
+        {
+            $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
+            $weight = $address->getWeight();
+            $shipping_date = date('d/m/Y');
+
+            $model = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedatasearchresult')->deleteOldData($customer_id);
+             $countryId = $address->getCountry();
+            $params = array(
+                        'accountNumber'     => Mage::getStoreConfig('tatva/tatva_settings/account'),
+                        'password'          => Mage::getStoreConfig('tatva/tatva_settings/password'),
+                        'address'           => $_REQUEST['address'],
+                        'zipCode'           => $_REQUEST['postcode'],
+                        'city'              => $_REQUEST['city'],
+                        'weight'            => $weight*1000,
+                        'shippingDate'      => $shipping_date,
+                        'filterRelay'       => '1',
+                        'requestId '        => '1234567890ABCDEFGHIJ1234567890',
+						'countryCode' => $countryId,
+						'optionInter' => '1',
+						'lang' => 'FR'
+          	        );
+
+
+            $model = Mage::getModel('tatvashipping/tempcolissimowebservicedatasearchresult')->getWebserviceData($params);
+            $arr_relay = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedatasearchresult')->getWebservicearr($data,$var_mobility);
+        }
+        else
+        {
+            if($_REQUEST['searchdata'] == 1)
+    		{
+    			$arr_relay = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedatasearchresult')->getWebservicearr($data,$var_mobility);
+    		}
+    		else
+    		{
+                $arr_relay = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->getWebservicearr($data,$var_mobility);
+            }
+    	}
+    }
+?>
+
+<div class="incon1">
+    <div class="inconbx2">
+        <div class="lftcolmn" style="height: 490px;overflow-y: scroll;padding-right:10px;">
+            <?php
+                $img_src = '';
+                $arrLat = array();
+                $arrLong = array();
+                $arrRelaytype =  array();
+                $arrContent = array();
+
+                if(count($arr_relay) > 0)
+                {
+                    for($i=0;$i<count($arr_relay);$i++)
+                    {
+                        $arrLat[$i] = $arr_relay[$i]['latitude'];
+                        $arrLong[$i] = $arr_relay[$i]['longitude'];
+                        $arrRelaytype[$i] = $arr_relay[$i]['type'];
+                        $arr_days = array();
+                        $arr_days = array(0=>'lundi',1=>'mardi',2=>'mercredi',3=>'jeudi',4=>'vendredi',5=>'samedi',6=>'dimanche');
+                        $var_content = '';
+                        $var_content = "<table width='210px' cellspacing='0' cellpadding='0'>";
+                        $var_content .= "<tr><td colspan='2'><div class='popadd2'><strong>".$arr_relay[$i]['name']."</strong><br />".$arr_relay[$i]['address']."<br />";
+                        if($arr_relay[$i]['address2'] != "")
+                        {
+                            $var_content .= $arr_relay[$i]['address2']."<br />";
+                        }
+                        if($arr_relay[$i]['address3'] != "")
+                        {
+                            $var_content .= $arr_relay[$i]['address3']."<br />";
+                        }
+                        $var_content .= $arr_relay[$i]['postalcode']."&nbsp;&nbsp;".$arr_relay[$i]['city']."</div></td></tr>";
+
+                        $var_type = $arr_relay[$i]['type'];
+                        $var_name = $arr_relay[$i]['name'];
+                        $var_address = addslashes($arr_relay[$i]['address']);
+                        $var_address2 = addslashes($arr_relay[$i]['address2']);
+                        $var_address3 = addslashes($arr_relay[$i]['address3']);
+                        $var_city = $arr_relay[$i]['city'];
+                        $var_postalcode = $arr_relay[$i]['postalcode'];
+                        $var_ship_method = Mage::getSingleton('core/session')->getData("set_ship_method1");
+                        $var_id = $arr_relay[$i]['identifiant'];
+                        $var_code = $arr_relay[$i]['relaycode'];
+                        $var_address_id = $this->getAddress()->getId();
+
+                        $load_fun = 'LoadConfirmpopup(\"'.$var_type.'\",\"'.$var_name.'\",\"'.$var_address.'\",\"'.$var_address2.'\",\"'.$var_address3.'\",\"'.$var_city.'\",\"'.$var_postalcode.'\",\"'.$var_ship_method.'\",\"'.$var_id.'\",\"'.$var_code.'\",\"'.$var_address_id.'\")';
+
+                        $var_content .= "<tr><td colspan='2'><div class='chbtn' style='float: left; padding: 0px'><button type='button' class='uppercase button' style='width:210px;' name='choose_relay'  onclick='".$load_fun."' ><span><span>".$this->__('Choose this pick-up place')."</span></span></button></div></td></tr><tr><td height='5px' colspan='2'></td></tr>";
+
+                        for($j=0;$j<count($arr_days);$j++)
+                        {
+                            $style = "style='background-color:#D0DCE1'";
+                            if($j%2 == 0)
+                            {
+                                $style= "style='background-color:#95B1BC'";
+                            }
+                            $opening_hours = "";
+                            $closing_hours = "";
+                            $var_arr_days =  array();
+                            if($arr_relay[$i][$arr_days[$j]] != "")
+                            {
+                                if(eregi(" ",$arr_relay[$i][$arr_days[$j]] ))
+                                {
+                                    $var_arr_days = explode(" ",$arr_relay[$i][$arr_days[$j]]);
+                                    if($var_arr_days[0] != '00:00-00:00')
+                                    {
+                                        $opening_hours = $var_arr_days[0];
+                                    }
+
+                                    if($var_arr_days[1] != '00:00-00:00')
+                                    {
+                                        $closing_hours = $var_arr_days[1];
+                                    }
+                                }
+                                if($opening_hours != '' || $closing_hours != '')
+                                {
+                                    $var_content .= "<tr ".$style." height='20px'><td width='30%' style='padding-left:5px;vertical-align:middle;' ><b>".$arr_days[$j]."</b></td><td  >".$opening_hours.'&nbsp;'.$closing_hours."</td></tr>";
+                                }
+                            }
+                        }
+                        $var_content .= "</table>";
+                        $arrContent[$i] = $var_content;
+
+                        if($arr_relay[$i]['type'] == 'local store')
+                        {
+                            $img_src = $this->getSkinUrl('images/tatva/logo_little_colissimolocalstore.png');
+                        }
+                        else if($arr_relay[$i]['type'] == 'post office')
+                        {
+                            $img_src = $this->getSkinUrl('images/tatva/logo_little_colissimopostoffice.png');
+                        }
+                        else if($arr_relay[$i]['type'] == 'cityssimo space')
+                        {
+                            $img_src = $this->getSkinUrl('images/tatva/logo_little_colissimocityssimo.png');
+                        }
+
+            ?>
+
+                <div class="lftbox" onMouseOver="this.className='lftbox1'" onMouseOut="this.className='lftbox'" onclick="javascript:myclick(<?php echo $i;?>)" style="cursor:pointer;" >
+                    <div class="lftbxhd">
+                        <div class="lftblhd"><?php echo $arr_relay[$i]['distance']. ' km';?></div>
+                        <div style="float:right;text-align:right;">
+                            <div class="inconbsicn" style="margin-right:0px;">
+                                <a href="#">
+                                    <img src="<?php echo $img_src;?>" alt=""  border="0" />
+                                </a>
+                            </div>
+                            <div class="inconbxtxh" style="margin-left:5px;width:auto;">
+                                <?php
+                                    $store_1 = 'my ' .$arr_relay[$i]['type'];
+                                    echo $this->__($store_1);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popadd2">
+                        <strong><?php echo $arr_relay[$i]['name'];?></strong>
+                        <br />
+                        <?php echo $arr_relay[$i]['address'];?><br />
+                        <?php
+                            if($arr_relay[$i]['address2'] != "")
+                            {
+                                echo $arr_relay[$i]['address2'].'<br />';
+                            }
+                            if($arr_relay[$i]['address3'] != "")
+                            {
+                                echo $arr_relay[$i]['address3'].'<br />';
+                            }
+                            echo $arr_relay[$i]['postalcode'].'&nbsp;&nbsp;'.$arr_relay[$i]['city'];
+                        ?>
+                    </div>
+                    <div class="chbtn">
+                        <button type="button" class="uppercase button" style="width:210px;" name="choose_relay" onclick="LoadConfirmpopup('<?php echo $arr_relay[$i]['type'];?>','<?php echo $arr_relay[$i]['name'];?>','<?php echo addslashes($arr_relay[$i]['address']);?>','<?php echo addslashes($arr_relay[$i]['address2']);?>','<?php echo addslashes($arr_relay[$i]['address3']);?>','<?php echo $arr_relay[$i]['city'];?>','<?php echo $arr_relay[$i]['postalcode'];?>','<?php echo $var_ship_method; ?>','<?php echo $arr_relay[$i]['identifiant'];?>','<?php echo $arr_relay[$i]['relaycode'];?>','<?php echo $var_address_id;?>')"><span><span><?php echo $this->__('Choose this pick-up place');?></span></span></button>
+    			    </div>
+                </div>
+
+            <?php
+
+                }
+            }
+            else
+            {
+            ?>
+                <div style="color:green;"><?php echo $this->__('We did not find any relay corresponding to your research. We invite you to select other types of relays or to modify your address.'); ?></div>
+            <?php
+            }
+            ?>
+        </div>
+        <div class="rtcolmn" id="map" style="width: 592px; height: 490px" ></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var addarrLat = new Array('<?php echo count($arrLat) > 0  ? implode("','",$arrLat) : '' ?>');
+    var addarrLong = new Array('<?php echo count($arrLong) > 0 ? implode("','",$arrLong) : ''; ?>');
+    var addarrContent = new Array("<?php echo count($arrContent) > 0 ? implode('","',$arrContent) : ''; ?>");
+    var addarrRelaytype = new Array('<?php echo count($arrRelaytype) > 0 ? implode("','",$arrRelaytype) : ''; ?>');
+
+    function LoadConfirmpopup(relay_type,relay_name,relay_address,relay_address2,relay_address3,relay_city,relay_postalcode,selected_ship_method,relay_id,relay_code,shipping_address_id)
+    {
+        document.getElementById("relay_type").value = relay_type;
+        document.getElementById("relay_name").value = relay_name;
+        document.getElementById("span_relay_name").innerHTML = relay_name;
+        var address_new = '';
+        if(relay_address2 != '')
+        {
+            address_new = relay_address2+'<br>';
+        }
+        if(relay_address3 != '')
+        {
+            address_new += relay_address3+'<br>';
+        }
+        document.getElementById("relay_address").value = relay_address;
+        document.getElementById("span_relay_address").innerHTML = relay_address+'<br>'+address_new;
+        document.getElementById("relay_address2").value = relay_address2;
+        document.getElementById("relay_address3").value = relay_address3;
+        document.getElementById("relay_city").value = relay_city;
+        document.getElementById("relay_postalcode").value = relay_postalcode;
+        document.getElementById("relay_id").value = relay_id;
+        document.getElementById("relay_code").value = relay_code;
+        document.getElementById("span_relay_city").innerHTML = relay_postalcode+'&nbsp;'+relay_city;
+        document.getElementById("selected_ship_method").value = selected_ship_method;
+        document.getElementById("shipping_address_id").value = shipping_address_id;
+
+        if(document.getElementById("relay_type").value == 'local store')
+        {
+            document.getElementById("shipping_method").value = 'colissimolocalstore_colissimolocalstore';
+        }
+        else if(document.getElementById("relay_type").value == 'post office')
+        {
+            document.getElementById("shipping_method").value = 'colissimopostoffice_colissimopostoffice';
+        }
+        else if(document.getElementById("relay_type").value == 'cityssimo space')
+        {
+            document.getElementById("shipping_method").value = 'colissimocityssimo_colissimocityssimo';
+        }
+      	cacherPopin('popin1');
+      	afficherPopin('popin2');
+    }
+
+    function change_class(obj)
+    {
+        obj.style.className = 'lftbox1';
+    }
+
+    var address1 = "<?php echo addslashes($street); ?>";
+    var city = "<?php echo addslashes($city); ?>";
+    var postcode = "<?php echo $postcode; ?>";
+    var country = '<?php echo $countryName; ?>';
+    var gmarkers = [];
+    var infowindow = new google.maps.InfoWindow(
+    {
+        size: new google.maps.Size(200,150)
+    });
+    //<![CDATA[
+    // this variable will collect the html which will eventually be placed in the side_bar
+    var side_bar_html = "";
+
+
+
+    // This function picks up the click and opens the corresponding info window
+    function myclick(i)
+    {
+    map.setZoom(11); 
+	google.maps.event.trigger(gmarkers[i],"click");
+	
+
+    }
+
+
+    function createMarker(latlng,name,html,pointType) {
+    var contentString = html;
+    var marker = new google.maps.Marker({
+        position: latlng,
+        icon: pointType,
+        map: map
+        });
+        // === Store the category and name info as a marker properties ===
+
+        gmarkers.push(marker);
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(contentString);
+        infowindow.open(map,marker);
+        });
+
+      return marker;
+    }
+
+    var geocoder;
+    var map;
+    var image = new google.maps.MarkerImage('<?php echo $this->getSkinUrl("images/tatva/house.png");?>',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(38, 35),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 35));
+
+    var iconLocal = new google.maps.MarkerImage('<?php echo $this->getSkinUrl("images/tatva/logo_little_colissimolocalstore.png");?>',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(22, 24),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 24));
+
+    var iconPost = new google.maps.MarkerImage('<?php echo $this->getSkinUrl("images/tatva/logo_little_colissimopostoffice.png");?>',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(24, 25),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 25));
+
+    var iconCityssimo = new google.maps.MarkerImage('<?php echo $this->getSkinUrl("images/tatva/logo_little_colissimocityssimo.png");?>',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(22, 24),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 24));
+
+    var myLatlng = new google.maps.LatLng(47.0000,2.0000);
+    geocoder = new google.maps.Geocoder();
+    var myOptions = {
+      zoom: 5,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+     google.maps.event.addListener(map, 'click', function() {
+        infowindow.close();
+        });
+    codeAddress(address1+','+city+','+postcode+','+country);
+    function codeAddress(address) {
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
+    var len = addarrLat.length;
+
+    for(var i=0;i<len;i++)
+    {
+        if(addarrLat[i] != '' && addarrLat[i] != 0)
+        {
+            //var point = new GLatLng(addarrLat[i],addarrLong[i]);
+            var point = new google.maps.LatLng(addarrLat[i],addarrLong[i]);
+            pointType = '';
+            if(addarrRelaytype[i] == 'local store')
+            {
+                pointType = iconLocal;
+            }
+            else if(addarrRelaytype[i] == 'post office')
+            {
+                pointType = iconPost;
+            }
+            else if(addarrRelaytype[i] == 'cityssimo space')
+            {
+                pointType = iconCityssimo;
+            }
+
+            var marker = createMarker(point,name,addarrContent[i],pointType);
+        }
+    }
+</script>

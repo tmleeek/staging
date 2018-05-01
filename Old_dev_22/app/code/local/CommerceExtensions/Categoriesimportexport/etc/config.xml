@@ -1,0 +1,34 @@
+<config>
+    <modules>
+        <CommerceExtensions_Categoriesimportexport>
+            <version>0.1.0</version>
+        </CommerceExtensions_Categoriesimportexport>
+    </modules>   
+    <global>
+        <models>
+            <commerceextensions_categoriesimportexport>
+                <class>CommerceExtensions_Categoriesimportexport_Model</class>
+            </commerceextensions_categoriesimportexport>
+        </models>
+        <resources><!--
+            <categoriesimportexport_setup>
+                <setup>
+                    <module>CommerceExtensions_Categoriesimportexport</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </categoriesimportexport_setup> -->
+            <categoriesimportexport_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </categoriesimportexport_write>
+            <categoriesimportexport_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </categoriesimportexport_read>
+        </resources>
+    </global>
+</config>

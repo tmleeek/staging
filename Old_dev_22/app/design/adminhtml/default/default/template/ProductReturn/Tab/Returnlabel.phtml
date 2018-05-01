@@ -1,0 +1,19 @@
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Return label'); ?></h4>
+</div>
+<fieldset id="my-fieldset">
+    <div class="field">
+        <div class="input-box">
+            <?php if (Mage::helper('ProductReturn/Returnlabel')->isExists($this->getRma())): ?>
+                <?php $filelabel= Mage::helper('ProductReturn/Returnlabel')->getReturnlabelUrl($this->getRma()); ?>
+
+                <a class="button" href="<?php echo $filelabel; ?>" target="_blank"><span><span><?php echo $this->__('Download return label'); ?></span></span></a><br />
+
+            <?php endif; ?>
+<br />
+            <label for="returnlabel"><?php echo $this->__('Upload return label') ?><span class="required">*</span></label><br/>
+            <input type="file" name="returnlabel" id="returnlabel" title="<?php echo $this->__('Label') ?>"
+                   class="required-entry input-text"/>
+        </div>
+    </div>
+</fieldset>

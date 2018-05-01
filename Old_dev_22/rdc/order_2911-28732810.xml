@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order id="28732810" morid="MOR-25805M28732810">
+  <utilisateur type="facturation">
+    <nom titre="">Bidard</nom>
+    <prenom>Edith</prenom>
+    <societe></societe>
+    <telhome>332 31 87 14 84</telhome>
+    <teloffice></teloffice>
+    <telfax></telfax>
+    <email>50000637-6@sc.rueducommerce.com</email>
+    <adresse type="facturation">
+      <rue1>LE MONTIVERT</rue1>
+      <rue2>chemin du ChâteauCHEMIN DU CHATEAU 559MONTIVERT</rue2>
+      <cpostal>14640</cpostal>
+      <ville>VILLERS SUR MER</ville>
+      <pays>France</pays>
+      <commentairefacturation></commentairefacturation>
+    </adresse>
+  </utilisateur>
+  <utilisateur type="livraison">
+    <nom titre="">Bidard</nom>
+    <prenom>Edith</prenom>
+    <societe></societe>
+    <telhome>332 31 87 14 84</telhome>
+    <teloffice></teloffice>
+    <telfax></telfax>
+    <email>50000637-6@sc.rueducommerce.com</email>
+    <adresse type="livraison">
+      <rue1>LE MONTIVERT</rue1>
+      <rue2>chemin du ChâteauCHEMIN DU CHATEAU 559MONTIVERT</rue2>
+      <cpostal>14640</cpostal>
+      <ville>VILLERS SUR MER</ville>
+      <pays>France</pays>
+      <commentairelivraison></commentairelivraison>
+    </adresse>
+  </utilisateur>
+  <infocommande>
+    <sitecommande>Rue du Commerce</sitecommande>
+    <refid>1200021201</refid>
+    <status>processing</status>
+    <montant devise="EUR">28.04</montant>
+    <date>06/09/2017 13:55:45</date>
+    <transport>
+      <nom>Colissimo</nom>
+      <montant devise="EUR">14.90</montant>
+    </transport>
+    <list nbproduit="6">
+      <produit ref="53519594" nb="6" modid="MOD-25805M39458180" delivery_rule="1" status="processing" gender="Unisexe" merchantOfferId="40265" merchantProductId="40265" brand="Bormioli Rocco" clothing_size="86" color="Noir,Or" ean13="8001023951623" price="2.19" ecotax="0" basePrice="2.19" discountPercentage="0" discountAmount="0" priceWithoutEcotax="2.19">Set de 2 couvercles 86mm pour bocaux à conserve 1 L et 1.5 L - Quattro Stagioni</produit>
+    </list>
+  </infocommande>
+  <paiement>
+    <type>carte</type>
+  </paiement>
+</order>

@@ -1,0 +1,23 @@
+<?php
+/**
+ * Initialize share referral link processing URL and set proper button classes for rewarding validation.
+ */
+?>
+<script type="text/javascript">
+    var processReferralShareUri = "<?php echo $this->getUrl('rewardssocial/index/referralShare') ?>",
+        referralTweetButton = $$('.my_referrals-urlcode_group')[0].select('.rewardssocial-referral-widgets .twitter-share-button')[0],
+        referralFacebookButton = $$('.my_referrals-urlcode_group')[0].select('.rewardssocial-referral-widgets .facebook-share-button')[0];
+
+    Event.observe(document, 'dom:loaded', function() {
+        referralTweetButton = $$('.my_referrals-urlcode_group')[0].select('.rewardssocial-referral-widgets .twitter-share-button')[0]
+        if (typeof referralTweetButton !== 'undefined') {
+            referralTweetButton.removeClassName('rewardssocial-rewardable');
+            referralTweetButton.addClassName('rewardssocial-referral-rewardable');
+        }
+
+        if (typeof referralFacebookButton !== 'undefined') {
+            referralFacebookButton.removeClassName('rewardssocial-rewardable');
+            referralFacebookButton.addClassName('rewardssocial-referral-rewardable');
+        }
+    });
+</script>

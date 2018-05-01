@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <autocompleteplus translate="label" module="autocompleteplus_autosuggest">
+                                        <title>AutocompletePlus</title>
+                                    </autocompleteplus>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <autocompleteplus translate="label" module="autocompleteplus_autosuggest">
+                        <title>InstantSearch+</title>
+                        <sort_order>999</sort_order>
+                    </autocompleteplus>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <autocompleteplus>
+            <title>InstantSearch+</title>
+            <sort_order>999</sort_order>
+            <action>adminhtml/redirect/goto</action>
+        </autocompleteplus>
+    </menu>
+</config>

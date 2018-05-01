@@ -1,0 +1,46 @@
+/* *****************************************************************************
+    Document   : autocancelorder
+    Created on : 20 juil. 2012, 15:49:04
+    Author     : benjamin
+    Description: style for log messages.
+***************************************************************************** */
+
+.aco-message-error{
+    color: red;
+}
+
+.aco-message-cancel-success{
+    color: #40a260;
+}
+
+.aco-message-unhold-success{
+    color: #2878bc;
+}
+
+/* *****************************************************************************
+    style for config section
+
+    skin/adminhtml/default/default/images/autocancelorder_logo.png 
+***************************************************************************** */
+
+ul.tabs a.autocancelorder-section,
+ul.tabs a.autocancelorder-section:hover {
+    background:url(images/tabs_span_bg.gif) repeat-x 0 100%; 
+    border-bottom:none; 
+    padding:0.3em 0.5em 0.28em 1.5em; 
+}
+
+ul.tabs a.autocancelorder-section:hover {
+    background-color:#d8e6e6; 
+}
+
+ul.tabs a.autocancelorder-section.active, ul.tabs a.autocancelorder-section.active:hover {
+    background-color:#fff; 
+}
+
+ul.tabs a.autocancelorder-section span,
+ul.tabs a.autocancelorder-section:hover span { 
+    background:url(images/autocancelorder_logo.png) no-repeat 0 0;
+    height:16px; 
+    padding-top:0px;
+}

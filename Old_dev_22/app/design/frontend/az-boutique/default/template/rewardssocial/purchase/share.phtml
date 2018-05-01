@@ -1,0 +1,9 @@
+<?php if ($this->getShowSharePurchase()) : ?>
+    <div class="chechout-purchase-share">
+        <div class="page-title">
+            <h1><?php echo $this->__('Earn rewards for sharing your purchase.'); ?></h1>
+        </div>
+
+        <?php echo $this->getChildHtml('rewardssocial.order.items'); ?>
+    </div>
+<?php endif; ?>

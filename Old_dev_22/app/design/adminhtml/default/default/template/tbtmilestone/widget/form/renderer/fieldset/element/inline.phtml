@@ -1,0 +1,23 @@
+<?php
+$_element = $this->getElement();
+$_note    = $_element->getNote();
+$_trId    = $_element->getHtmlContainerId();
+$_class   = $_element->getFieldsetHtmlClass();
+?>
+<?php if (!$_element->getNoDisplay()): ?>
+<tr<?php if($_trId): ?> id="<?php echo $_trId ?>"<?php endif; ?>>
+    <?php if ($_element->getType()=='hidden'): ?>
+    <td colspan="2" class="hidden"><?php echo trim($_element->getElementHtml()) ?></td>
+    <?php else: ?>
+    <td class="label<?php echo $_class ? " {$_class}-label" : ''?>">
+        <?php echo $this->insertElements(trim($_element->getLabelHtml()), $_element->getChildrenHtmlArray()) ?>
+    </td>
+    <td class="<?php echo $_element->hasValueClass() ? $_element->getValueClass() : 'value2' ?><?php echo $_class ? " {$_class}-value" : ''?>">
+        <?php echo $this->insertElements(trim($_element->getElementPlaceholder()), $_element->getChildrenHtmlArray()) ?>
+        <?php if ($_note): ?>
+            <p class="note<?php echo $_class ? " {$_class}-note" : ''?>" id="note_<?php echo $_element->getId()?>"><span><?php echo $_note ?></span></p>
+        <?php endif ?>
+    </td>
+    <?php endif ?>
+</tr>
+<?php endif; ?>

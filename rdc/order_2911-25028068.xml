@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order id="25028068" morid="MOR-637F0M25028068">
+  <utilisateur type="facturation">
+    <nom titre="M">DACCORD</nom>
+    <prenom>Bruno</prenom>
+    <societe/>
+    <telhome>0621594500</telhome>
+    <teloffice/>
+    <telfax/>
+    <email>22254903-16@sc.rueducommerce.com</email>
+    <adresse type="facturation">
+      <rue1>4, rue jean jaurès</rue1>
+      <rue2/>
+      <cpostal>87400</cpostal>
+      <ville>st léonard de noblat</ville>
+      <pays>France</pays>
+      <commentairefacturation> mobile: 0621594500</commentairefacturation>
+    </adresse>
+  </utilisateur>
+  <utilisateur type="livraison">
+    <nom titre="M">DACCORD</nom>
+    <prenom>Bruno</prenom>
+    <societe/>
+    <telhome>0621594500</telhome>
+    <teloffice/>
+    <telfax/>
+    <email>22254903-16@sc.rueducommerce.com</email>
+    <adresse type="livraison">
+      <rue1>4, rue jean jaurès</rue1>
+      <rue2/>
+      <cpostal>87400</cpostal>
+      <ville>st léonard de noblat</ville>
+      <pays>France</pays>
+      <commentairelivraison> mobile: 0621594500</commentairelivraison>
+    </adresse>
+  </utilisateur>
+  <infocommande>
+    <sitecommande>Rue du Commerce</sitecommande>
+    <refid>814348064</refid>
+    <status>processing</status>
+    <montant devise="EUR">15.84</montant>
+    <date>18/07/2016 07:55:15</date>
+    <transport>
+      <nom>Colissimo</nom>
+      <montant devise="EUR">9.90</montant>
+    </transport>
+    <list nbproduit="1">
+      <produit ref="6567818" nb="1" modid="MOD-637F0M34086448" delivery_rule="1" status="processing" gender="Unisexe" merchantProductId="6160" merchantOfferId="6160" brand="Paderno" ean13="8014808840272" basePrice="5.94" discountAmount="" discountPercentage="" ecotax="" price="5.9400" priceWithoutEcotax="5.94">Doseur à billes 3cl - Inox et plastique - Doseur à billes - Paderno</produit>
+    </list>
+  </infocommande>
+  <paiement>
+    <type>carte</type>
+  </paiement>
+</order>

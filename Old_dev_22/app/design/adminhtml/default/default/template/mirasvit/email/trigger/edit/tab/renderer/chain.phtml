@@ -1,0 +1,62 @@
+<?php
+    $_htmlHelper = Mage::helper('email/html');
+    $_collection = $this->getChainCollection();
+    $_parent     = $this->getParent();
+?>
+<div id="tabs_general_section_content" style=""><div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('email')->__('Email Chain') ?></h4>
+        <div class="form-buttons"></div>
+    </div>
+    <div class="fieldset" id="chain-container">
+        <ul class="chain">
+            <?php foreach ($_collection as $_item): ?>
+            <?php $_prefix = 'chain['.$_item->getId().']'; ?>
+            <li class="chain-row" style="<?php if (!$_item->getId()):?>display:none<?php endif ?>">
+                <a href="javascript:void(0)" class="chain-row-expand" title="Expand"><img src="<?php echo $this->getSkinUrl('images/accordion_open.png') ?>" alt="" class="v-middle"></a>
+                <a style="display:none" href="javascript:void(0)" class="chain-row-collapse" title="Collapse"><img src="<?php echo $this->getSkinUrl('images/accordion_close.png') ?>" alt="" class="v-middle"></a>
+                &nbsp;&nbsp;&nbsp;
+                <?php echo $this->__('After') ?> 
+                <span class="chain-param">
+                    <a href="javascript:void(0)" class="label">...</a>
+                    <span class="element">
+                        <input type="text" name="<?php echo $_prefix ?>[days]" value="<?php echo $_item->getDays() ?>" class="element-value-changer input-text">
+                    </span>
+                </span> <?php echo $this->__('days') ?>
+                <span class="chain-param">
+                    <a href="javascript:void(0)" class="label">...</a>
+                    <span class="element">
+                        <?php echo $_htmlHelper->getHourSelect($_prefix.'[hours]', $_item->getHours(), array('class' => 'element-value-changer')) ?>
+                    </span>
+                </span> <?php echo $this->__('hours') ?>
+                <span class="chain-param">
+                    <a href="javascript:void(0)" class="label">...</a>
+                    <span class="element">
+                        <?php echo $_htmlHelper->getMinuteSelect($_prefix.'[minutes]', $_item->getMinutes(), array('class' => 'element-value-changer')) ?>
+                    </span>
+                </span> <?php echo $this->__('minutes send') ?>
+                <span class="chain-param">
+                    <a href="javascript:void(0)" class="label">...</a>
+                    <span class="element">
+                        <?php echo $_htmlHelper->getTemplateSelect($_prefix.'[template_id]', $_item->getTemplateId(), array('class' => 'element-value-changer')) ?>
+                    </span>
+                </span> <?php echo $this->__('email') ?>
+                &nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0)" class="chain-row-remove" title="Remove">
+                    <img src="<?php echo $this->getSkinUrl('images/dashboard-close.gif') ?>" alt="" class="v-middle">
+                </a>
+                <div class="options">
+                    <?php echo $_parent->getCouponFieldset($_item) ?>
+                    <?php echo $_parent->getCrossSellFieldset($_item) ?>
+                </div>
+            </li>
+            <?php endforeach ?>
+        </ul>
+        <p style="margin-top:10px;">
+            <button onclick="return false;" class="chain-row-add button"><span><span><?php echo $this->__('Add Email') ?></span></span></button>
+        </p>
+    </div>
+</div>
+<script>
+var chain = new EmailTriggerChain('chain-container');
+</script>

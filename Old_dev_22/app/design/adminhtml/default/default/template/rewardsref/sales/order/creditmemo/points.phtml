@@ -1,0 +1,33 @@
+<script type="text/javascript" src="<?php echo $this->getJsUrl('tbt/rewardsref/sales/order/creditmemo/points.js') ?>"></script>
+<script type="text/javascript">
+//<![CDATA[
+    originalAffiliateEarnings = parseInt('<?php echo $this->getAffiliatePointsEarned() ?>', 10);
+
+//]]>
+</script>
+
+<table cellspacing="0" style="<?php echo $this->getStyle() ?>">
+    <col />
+    <col width="1" />
+    <tbody>
+        <tr class="points_lbl" id="affiliate_points_earned_row">
+            <td class="label" style="padding-bottom: 6px;">
+                <?php echo $this->__("Affiliate Points Earned") ?>
+            </td>
+            <td style="width: 66px;">
+                <span class="price" style="padding: 2px;"><?php echo $this->getAffiliatePointsEarned() ?></span>
+            </td>
+        </tr>
+        <tr class="points_adjust" style="display: none;" id="affiliate_points_earned_credit_memo_row">
+            <td class="label" style="white-space: normal; padding: 3px 10px 3px 20px;">
+                <?php echo $this->__("Affiliate Points Earned") ?>
+            </td>
+            <td style="padding: 3px 20px 3px 10px;">
+                <input type="number" name="<?php echo $this->getFieldWrapper() ?>[adjustment_affiliate_points_earned]"
+                    value="<?php echo $this->getAffiliatePointsEarned() ?>"
+                    class="input-text not-negative-amount" style="width: 60px; text-align: right;"
+                    id="affiliate_points_earned" min="0" />
+            </td>
+        </tr>
+    </tbody>
+</table>

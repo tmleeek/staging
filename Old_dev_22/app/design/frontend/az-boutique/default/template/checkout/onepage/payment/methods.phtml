@@ -1,0 +1,91 @@
+
+<?php
+    $methods = $this->getMethods();
+    $oneMethod = count($methods) <= 1;
+?>
+<?php if (empty($methods)): ?>
+    <dt>
+        <?php echo $this->__('No Payment Methods') ?>
+    </dt>
+<?php else:
+    $j=0;
+    foreach ($methods as $_method):
+       $_code = $_method->getCode();
+?>
+   <dt <?php if(($_code=='rueducommerce') || ($_code=='pixmania')): ?> style="display:none"<?php else: ?><?php if($j%2==0):?>class="odd"<?php else: ?>class="even"<?php endif; ?> <?php endif; ?>>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php elseif($_code=='cybermutforeign_payment'): ?>  checked="checked" <?php endif; ?> class="radio selradio" />
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+
+       <?php if($_code=='rueducommerce' || $_code=='pixmania'): ?>
+          <?php $j; ?>
+       <?php else: ?>
+         <?php $j++; ?>
+       <?php endif; ?>
+       <label for="p_method_<?php echo $_code ?>">
+       <?php if($_code=='transferpayment'){ ?>
+            <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_virement.png');  ?>" /></div>
+       <?php }elseif($_code=='checkmo'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_cheque.png');  ?>" /></div>
+       <?php }elseif($_code=='rueducommerce'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_virement.png');  ?>" /></div>
+       <?php }elseif($_code=='mandatcash'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_mandatcash.png');  ?>" /></div>
+       <?php }elseif($_code=='pixmania'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_virement.png');  ?>" /></div>
+       <?php }elseif($_code=='mandatadministratif'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/mandat_administratif.png');  ?>" /></div>
+       <?php }elseif($_code=='paypal_standard'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_paypal.jpg');  ?>" /></div>
+         <?php }elseif($_code=='cybermut_payment'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_cic.png');  ?>" /></div>
+         <?php }elseif($_code=='cybermutforeign_payment'){ ?>
+        <div class="payment-img"><img src="<?php echo $this->getSkinUrl('images/illustration_cic.png');  ?>"  /></div>
+       <?php }else{ ?>
+       <?php } ?>
+       </label>
+         <div class="payment-detail">
+         <label for="p_method_<?php echo $_code ?>" class="labletext"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?>
+         </label>
+
+           <?php if($_code=='transferpayment'){ ?>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paiement_virement')->toHtml() ?>
+           <?php }elseif($_code=='checkmo'){ ?>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paiement_cheque')->toHtml() ?>
+           <?php }elseif($_code=='rueducommerce'){ ?>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('ruedecommerce')->toHtml() ?>
+           <?php }elseif($_code=='mandatcash'){ ?>
+               <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paiement_mandatcash')->toHtml() ?>
+          <?php }elseif($_code=='pixmania'){ ?>
+               <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pixmania')->toHtml() ?>
+          <?php }elseif($_code=='mandatadministratif'){ ?>
+              <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paiement_mandatadministratif')->toHtml() ?>
+          <?php }elseif($_code=='paypal_standard'){ ?>
+              <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('paypal_standard')->toHtml() ?>
+                <?php }elseif($_code=='cybermut_payment'){ ?>
+              <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cybermut_payment')->toHtml() ?>
+                <?php }elseif($_code=='cybermutforeign_payment'){ ?>
+              <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cybermutforeign_payment')->toHtml() ?>
+         <?php }else{ ?>
+          <?php } ?>
+          
+       </div>
+    </dt>
+
+
+<?php endforeach;
+    endif;
+?>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php echo $this->getChildChildHtml('scripts'); ?>
+    payment.init();
+    <?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');
+        <?php endif; ?>
+    //]]>
+</script>

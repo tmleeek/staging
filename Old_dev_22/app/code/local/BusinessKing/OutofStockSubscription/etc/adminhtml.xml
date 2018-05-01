@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<adminhtml>
+    	<menu>
+            <tatva module="outofstocksubscription">
+		    <title>Tatvasoft</title>
+    		<sort_order>102</sort_order>
+    		<children>
+    			<items1 module="productproblem">
+    				<title>Out of Stock Subscribers</title>
+    				<sort_order>0</sort_order>
+    				<action>outofstocksubscription/adminhtml_subscriber</action>
+    			</items1>
+    		 </children>
+	     	</tatva>
+        </menu>
+		<acl>
+			<resources>
+	    		<admin translate="title" module="adminhtml">
+		             <children>
+						<outofstocksubscription>
+                        	<title>Subscribers</title>
+                        </outofstocksubscription>
+                        <system>
+	                        <children>
+	                            <config>
+	                                <children>
+	                                    <outofstocksubscription translate="title">
+	                                        <title>Out of Stock Subscription</title>
+	                                        <sort_order>200</sort_order>
+	                                    </outofstocksubscription>
+	                                </children>
+	                            </config>
+	                        </children>
+	                    </system>
+					 </children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>

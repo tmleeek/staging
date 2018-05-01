@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<adminhtml>
+		<menu>
+	    <tatva module="productproblem">
+		    <title>Tatvasoft</title>
+    		<sort_order>101</sort_order>
+    		<children>
+    		   <!--	<items module="productproblem">
+    				<title>Manage Productproblem</title>
+    				<sort_order>104</sort_order>
+    				<action>productproblem/adminhtml_productproblem</action>
+    			</items>-->
+				<tatvatest module="productproblem">
+    				<title>Transport</title>
+    				<sort_order>20</sort_order>
+    				<children>
+    					<tatvashippingzone module="productproblem">
+    						<title>Areas</title>
+    						<sort_order>10</sort_order>
+    						<action>tatvashipping/adminhtml_area</action>
+    					</tatvashippingzone>
+                        <tatvashippingapimethod module="productproblem">
+    						<title>Shipping/ApiMethod</title>
+    						<sort_order>20</sort_order>
+    						<action>tatvashipping/adminhtml_apimethod</action>
+    					</tatvashippingapimethod>
+                        <tatvashippingmarketmethod module="productproblem">
+    						<title>Shipping/MarketPlaceMethod</title>
+    						<sort_order>30</sort_order>
+    						<action>tatvashipping/adminhtml_marketmethod</action>
+    					</tatvashippingmarketmethod>
+    					<tatvashippingrules module="productproblem">
+    						<title>Grid price / weight</title>
+    						<sort_order>40</sort_order>
+    						<children>
+    							<tatvashippingrules_colissimo module="productproblem">
+    								<title>Colissimo</title>
+    								<sort_order>10</sort_order>
+    								<action>tatvashipping/adminhtml_rule_colissimo</action>
+    							</tatvashippingrules_colissimo>    
+    						</children>
+    					</tatvashippingrules>
+    				</children>
+    			</tatvatest>				
+    		</children>
+		</tatva>
+	</menu>
+    <acl>
+    	<resources>
+    		<all>
+    			<title>Allow Everything</title>
+    		</all>
+    		<admin>
+    			<children>
+					<children>
+						<Tatva_productproblem>
+							<title>Tatva Productproblem</title>
+							<sort_order>11</sort_order>
+						</Tatva_productproblem>
+					</children>
+                    <system>
+    					<children>
+    						<config>
+    							<children>
+    								<productproblem translate="title" module="productproblem">
+    									<title>Productproblem</title>
+    								</productproblem>
+    							</children>
+    						</config>
+    					</children>
+    				</system>
+                </children>
+    		</admin>
+    	</resources>
+    </acl>
+</adminhtml>

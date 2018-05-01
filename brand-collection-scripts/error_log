@@ -1,0 +1,37 @@
+[07-Jul-2015 04:52:13 UTC] PHP Fatal error:  require(): Failed opening required 'app/Mage.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /data/newdevazb/public_html/brand-collection-scripts/deletes.php on line 3
+[07-Jul-2015 05:25:55 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'index/view/id/5493' at line 1' in /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /data/newdevazb/public_html/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /data/newdevazb/public_html/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#3 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#4 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT * FROM `...', Array)
+#5 /data/newdevazb/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->quer in /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php on line 234
+[07-Jul-2015 05:38:34 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'index/view/id/7439' at line 1' in /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /data/newdevazb/public_html/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /data/newdevazb/public_html/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#3 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#4 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT * FROM `...', Array)
+#5 /data/newdevazb/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->quer in /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php on line 234
+[08-Jul-2015 08:59:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1065 Query was empty' in /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php:228
+Stack trace:
+#0 /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php(228): PDOStatement->execute(Array)
+#1 /data/newdevazb/public_html/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#2 /data/newdevazb/public_html/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#3 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#4 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('', Array)
+#5 /data/newdevazb/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('', Array)
+#6 /data/newdevazb/public_html/lib/Zend/Db/Adapter/Abstract.php(734): Varien_Db_Adapter_Pdo_Mysql->query(NULL, Array)
+#7 /data/newdevazb/public_html/brand in /data/newdevazb/public_html/lib/Zend/Db/Statement/Pdo.php on line 234
+[08-Jul-2015 09:41:15 UTC] PHP Fatal error:  Uncaught exception 'Varien_Exception' with message 'Invalid method MDN_AdvancedStock_Model_Catalog_Product::addStoreFilter(Array
+(
+    [0] => 4
+)
+)' in /data/newdevazb/public_html/lib/Varien/Object.php:653
+Stack trace:
+#0 /data/newdevazb/public_html/brand-collection-scripts/Collectionscript-global-usa.php(13): Varien_Object->__call('addStoreFilter', Array)
+#1 /data/newdevazb/public_html/brand-collection-scripts/Collectionscript-global-usa.php(13): MDN_AdvancedStock_Model_Catalog_Product->addStoreFilter(4)
+#2 {main}
+  thrown in /data/newdevazb/public_html/lib/Varien/Object.php on line 653

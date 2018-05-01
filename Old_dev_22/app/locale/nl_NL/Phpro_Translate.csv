@@ -1,0 +1,45 @@
+Translate,Vertalen
+Search &amp; translate,Zoeken &amp; vertalen
+Untranslated strings,Onvertaalde tekst
+Translation stats,Statistieken vertaling
+About PHPro,Over PHPro
+About,Over
+PHPro Translate module,PHPro Vertaal module
+Search for:,Zoeken naar:
+Search string,Zoek tekst
+Enter a string (e.g. "My account") and click "Submit search",Geef tekst in (b.v.: "Mijn Account") en klik op "Zoeken"
+Search original strings,Zoek in originele tekst
+Only list untranslated,Laat alleen onvertaald zien
+Locale,Taal
+Options:,Opties:
+Case sensitive,Hoofdlettergevoelig
+In Modules:,In modules:
+In Interface:,In interface:
+Frontend,Frontend
+Admin HTML,Admin HTML
+Results:,Resultaten:
+Truncate log table,Leeg de log tabel
+Remove duplicates in log table,Verwijder dubbels in de log tabel
+Submit Search,Zoeken
+Search results for:,Zoekresultaten voor:
+Translated string,Vertaalde tekst
+Origin string,Originele tekst
+Source,Bron
+Translation Statistics,Statistieken vertaling
+Translated strings in %s,Vertaalde strings in %s
+%d strings in modules,%d vertaald in modules
+%d strings in theme,%d vertaald in theme
+%d strings in database,%d vertaald in database
+%d untranslated strings,%d onvertaald
+This data is cached. Please flush the Magento cache to refresh this data.,Deze data wordt gecached. Leeg de Magento cache om deze data te verversen.
+Attention! 100% translation can mean either a fully translated locale or simply no logged untranslated strings!,"Opgelet! 100% vertaald kan een volledig vertaalde taal betekenen, maar ook simpelweg geen gevonden onvertaalde tekst."
+Original,Origineel
+Item information,Informatie
+Extra Information:,Extra informatie:
+Edit Item,Aanpassen
+Save Item,Bewaren
+No results found., Geen resultaten gevonden.
+Remove all the records from the &quot;untransalated strings&quot; table, Verwijder alle records uit de tabel met onvertaalde tekst
+Remove duplicate strings that are in the system and &quot;untranslated strings&quot; table, Verwijder dubbele tekst in het systeem en de onvertaalde tekst tabel
+Table truncated,Tabel geleegd
+Following duplicates are found and removed:,De volgende dubbels zijn gevonden en verwijderd:

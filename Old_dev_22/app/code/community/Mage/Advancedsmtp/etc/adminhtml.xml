@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento ArtsOnIt Advanced Smtp
+ *
+ * @category   ArtsOnIt
+ * @package    Mage_AdvanceSmtp
+ * @copyright  Copyright (c) 2008 ArtsOn.IT(http://www.ArtsOn.it)
+ * @author     Calore Luca Erico (l.calore@ArtsOn.it)
+ */
+-->
+
+<adminhtml>
+    <translate>
+        <modules>
+            <Mage_Advancedsmtp>
+                <files>
+                    <default>Mage_AdvanceSmtp.csv</default>
+                </files>
+            </Mage_Advancedsmtp>
+        </modules>
+    </translate>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <advancedsmtp>
+                                        <title>Advanced Smtp Settings</title>
+                                    </advancedsmtp>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>
+

@@ -1,0 +1,87 @@
+<script type="text/javascript">
+    $J(function(){$J("#pricing-tabs").tabs();});
+</script>
+
+<?php $channels = $this->getChannelsSubscribed(); ?>
+<?php if(is_array($channels)): ?>
+<div id="pricing-tabs" style="width:800px;">
+    <ul>
+        <?php foreach($channels as $channel): ?>
+            <?php $channelCode = $channel->organization.'_'.$channel->locale.'_'.$channel->subset; ?>
+            <li class=""><a href="#pricing-tabs-<?php echo $channelCode; ?>"><?php echo Mage::helper('Mpm/Carl')->getChannelLabel($channelCode); ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+<?php $attributes = Mage::getSingleton('Mpm/System_Config_Attributes')->getAllOptions(); ?>
+<?php foreach($channels as $channel): ?>
+    <?php $channelCode = $channel->organization.'_'.$channel->locale.'_'.$channel->subset; ?>
+    <div id="pricing-tabs-<?php echo $channelCode; ?>">
+    <table>
+        <tr>
+            <td class="label">
+                <label for="seller_id_<?php echo $channelCode; ?>"><?php echo $this->__('Your seller reference'); ?></label>
+            </td>
+            <td class="value">
+                <input class="input-text" type="text" id="seller_id_<?php echo $channelCode; ?>" name="groups[repricing][fields][seller_id_<?php echo $channelCode; ?>][value]"/>
+                <script type="text/javascript">
+                        $J("#seller_id_<?php echo $channelCode; ?>").tokenInput("<?php echo Mage::Helper('adminhtml')->getUrl('adminhtml/Mpm_Seller/tokenInput'); ?>", {
+                            theme: "facebook",
+                            prePopulate: <?php echo $this->getPrePopulate($channelCode); ?>,
+                            hintText: "",
+                            preventDuplicates: true,
+                            tokenLimit: 1
+                        });
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="price_attribute_<?php echo $channelCode; ?>"><?php echo $this->__('Store calculated price in attribute'); ?></label>
+            </td>
+            <td class="value">
+                <?php $currentValue = Mage::getStoreConfig('mpm/repricing/price_attributes_'.$channelCode); ?>
+                <select class="select" id="price_attribute_<?php echo $channelCode; ?>" name="groups[repricing][fields][price_attributes_<?php echo $channelCode; ?>][value]">
+                    <option></option>
+                    <?php foreach($attributes as $attr): ?>
+                        <?php $selected = ($currentValue == $attr['value']) ? 'selected': ''; ?>)
+                        <option <?php echo $selected; ?> value="<?php echo $attr['value']; ?>"><?php echo $attr['label']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="shipping_attribute_<?php echo $channelCode; ?>"><?php echo $this->__('Store calculated shipping in attribute'); ?></label>
+            </td>
+            <td class="value">
+                <?php $currentValue = Mage::getStoreConfig('mpm/repricing/shipping_attributes_'.$channelCode); ?>
+                <select class="select" id="shipping_attribute_<?php echo $channelCode; ?>" name="groups[repricing][fields][shipping_attributes_<?php echo $channelCode; ?>][value]">
+                    <option></option>
+                    <?php foreach($attributes as $attr): ?>
+                        <?php $selected = ($currentValue == $attr['value']) ? 'selected': ''; ?>)
+                        <option <?php echo $selected; ?> value="<?php echo $attr['value']; ?>"><?php echo $attr['label']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label for="store_id_<?php echo $channelCode; ?>"><?php echo $this->__('Store selection'); ?></label>
+            </td>
+            <td class="value">
+                <?php $currentValue = Mage::getStoreConfig('mpm/repricing/store_id_'.$channelCode); ?>
+                <select class="select" name="groups[repricing][fields][store_id_<?php echo $channelCode; ?>][value]" id="store_id_<?php echo $channelCode; ?>">
+                    <option></option>
+                    <?php foreach($this->getStores() as $k => $v): ?>
+                        <?php $selected = ($currentValue == $k) ? 'selected': ''; ?>)
+                        <option <?php echo $selected; ?> value="<?php echo $k; ?>"><?php echo $v; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </td>
+        <tr/>
+    </table>
+    </div>
+<?php endforeach; ?>
+</div>
+<?php else: ?>
+    <?php echo $channels; ?>
+<?php endif; ?>

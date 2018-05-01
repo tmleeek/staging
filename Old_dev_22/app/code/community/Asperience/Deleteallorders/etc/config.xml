@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   ASPerience
+ * @package    Asperience_Deleteallorders
+ * @author     ASPerience - www.asperience.fr
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+   <modules>
+      <Asperience_Deleteallorders>
+         <version>0.2.2</version>
+      </Asperience_Deleteallorders>
+   </modules>
+   
+	<global>
+		<helpers>
+            <deleteallorders>
+                <class>Asperience_Deleteallorders_Helper</class>
+            </deleteallorders>
+        </helpers>
+		<models>
+			<deleteallorders>
+				<class>Asperience_Deleteallorders_Model</class>
+			</deleteallorders>
+		</models>
+        <sales>
+             <order>
+                <statuses>
+                    <cicpaymentstatus translate="label"><label>Cancelled - payment refused</label></cicpaymentstatus>
+                </statuses>
+                <states>
+                    <cicpaymentstatus translate="label">
+                        <label>Cancelled - payment refused</label>
+                        <statuses>
+                            <cicpaymentstatus/>
+                        </statuses>
+                        <visible_on_front/>
+                    </cicpaymentstatus>
+                </states>
+                <statuses>
+                    <cicpaymentcustomercancelstatus translate="label"><label>Cancelled - customer cancellation</label></cicpaymentcustomercancelstatus>
+                </statuses>
+                <states>
+                    <cicpaymentcustomercancelstatus translate="label">
+                        <label>Cancelled - customer cancellation</label>
+                        <statuses>
+                            <cicpaymentcustomercancelstatus/>
+                        </statuses>
+                        <visible_on_front/>
+                    </cicpaymentcustomercancelstatus>
+                </states>
+                <statuses>
+                    <cicpaymenthold translate="label"><label>Hold - payment refused</label></cicpaymenthold>
+                </statuses>
+                <states>
+                    <cicpaymenthold translate="label">
+                        <label>Hold - payment refused</label>
+                        <statuses>
+                            <cicpaymenthold/>
+                        </statuses>
+                        <visible_on_front/>
+                    </cicpaymenthold>
+                </states>
+            </order>
+
+        </sales>
+	</global>
+	
+	<admin>
+		<routers>
+			<asperience_deleteallorders>
+				<use>admin</use>
+				<args>
+					<module>Asperience_Deleteallorders</module>
+					<frontName>deleteallorders</frontName>
+				</args>
+			</asperience_deleteallorders>
+		</routers>
+	</admin>
+    
+    <adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow delete</title>
+				</all>
+				<admin>
+					<children>
+						<sales>
+							<children>
+								<order>
+									<children>
+										<actions>
+											<children>
+												<delete>
+													<title>Delete Orders</title>
+												</delete>
+											</children>		
+										</actions>											
+									</children>
+								</order>
+							</children>
+						</sales>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+        <translate>
+            <modules>
+                <Asperience_DeleteOrders>
+                    <files>
+                        <default>Asperience_Deleteallorders.csv</default>
+                    </files>
+                </Asperience_DeleteOrders>
+            </modules>
+        </translate>
+        <events>
+        
+        	<adminhtml_block_html_before>
+                <observers>
+                    <asperience_deleteallorders>
+                        <class>deleteallorders/observer</class>
+                        <method>addOptionToSelect</method>
+                    </asperience_deleteallorders>
+                </observers>
+            </adminhtml_block_html_before>
+		</events>
+    </adminhtml>
+    
+    <default>
+        <sales>
+            <delete_order>
+                <is_active>1</is_active>
+                <delete_all>1</delete_all>
+                <order_status>closed,canceled</order_status>
+            </delete_order>
+        </sales>
+    </default>
+</config>

@@ -1,0 +1,77 @@
+<?php if ($this->getDisplayChart()) : ?>
+  <div id="chart" class='with-3d-shadow with-transitions'>
+      <svg style="height: 650px; width: 830px;"></svg>
+      <ul class="messages">
+          <li class="notice-msg">
+              <ul>
+                  <li>
+                  <?php echo Mage::helper('rewards')->__('Click and drag the small chart to zoom in / zoom out.
+                  Click again to revert to initial state.'); ?>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+  <script language="javascript" type="text/javascript">
+
+  nv.addGraph(function() {
+    var chart    = nv.models.lineWithFocusChart(),
+      xFormat    = "<?php echo $this->getChartDateFormat(); ?>",
+      yFormat    = "<?php echo $this->getChartYFormat(); ?>",
+      preSymbol  = "<?php echo $this->getPreSymbol(); ?>",
+      postSymbol = "<?php echo $this->getPostSymbol(); ?>",
+      data       = <?php echo $this->getChartData(); ?>;
+
+    /*
+    Custom formatter until D3 is updated to at least 3.2.4
+     */
+    var yFormatter = function(d) {
+      if (yFormat === "") return d;
+
+      var result = preSymbol + d3.format(yFormat)(d) + postSymbol;
+      if (result == preSymbol + postSymbol ) return '';
+
+      return result;
+    };
+
+    chart.lines
+      .xScale(d3.time.scale())
+      .yScale(d3.scale.linear())
+      .forceY([0, 1]);
+    chart.lines2
+      .xScale(d3.time.scale())
+      .yScale(d3.scale.linear())
+      .forceY([0, 1]);
+
+    chart
+      .margin({bottom: 80})
+      .margin2({top: 0, right: 30, bottom: 70, left: 60})
+      .height2(150);
+
+    chart.xAxis
+      .rotateLabels(-45)
+      .tickFormat(function(d) { return d3.time.format(xFormat)(new Date(+d)); });
+
+    chart.x2Axis
+      .rotateLabels(-45)
+      .tickFormat(function(d) { return d3.time.format(xFormat)(new Date(+d)); });
+
+    chart.yAxis
+      .tickFormat(yFormatter);
+
+    chart.y2Axis
+      .tickFormat(yFormatter);
+
+    d3.select('#chart svg')
+      .datum(data)
+      .transition().duration(1000)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  </script>
+
+<?php endif; ?>

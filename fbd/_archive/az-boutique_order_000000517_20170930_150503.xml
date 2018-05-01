@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000517</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-09-30 15:01:19</created_at>
+    <total_amount>50.8000</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-671@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_tnt</code>
+    <amount>9.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Emilie</firstname>
+      <lastname>Collier</lastname>
+      <company/>
+      <address1>LOTISSEMENT LE CLOS DES LYS</address1>
+      <address2></address2>
+      <postal_code>01140</postal_code>
+      <city>saint etienne sur chalaronne</city>
+      <country>FR</country>
+      <phone>0671136057</phone>
+    </billing>
+    <shipping>
+      <firstname>Emilie</firstname>
+      <lastname>Collier</lastname>
+      <company/>
+      <address1>LOTISSEMENT LE CLOS DES LYS</address1>
+      <address2></address2>
+      <postal_code>01140</postal_code>
+      <city>saint etienne sur chalaronne</city>
+      <country>FR</country>
+      <phone>0671136057</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>907</id>
+      <fbd_sku>az-boutique_60356</fbd_sku>
+      <supplier_sku>60356</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>28.9000</price>
+        <total>28.9000</total>
+        <discount>28.4400</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>908</id>
+      <fbd_sku>az-boutique_60319</fbd_sku>
+      <supplier_sku>60319</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>21.9000</price>
+        <total>21.9000</total>
+        <discount>21.5600</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

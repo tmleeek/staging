@@ -1,0 +1,17 @@
+<table border="0" cellspacing="10">
+    <tr>
+        <td>Location : </td>
+        <td><?php echo $this->getLocation(); ?></td>
+    </tr>
+    <tr>
+        <td>Expected qty : </td>
+        <td><?php echo $this->getTotalExpectedQty(); ?></td>
+    </tr>
+    <tr>
+        <td>Scanned qty : </td>
+        <td><div id="total_scanned_qty" style="display: inline;">0</div></td>
+    </tr>
+</table>
+
+<p><input type="button" class="touch-big-button red-button" value="Cancel" onclick="inventoryObj.cancel();" /></p>
+<p><input type="button" class="touch-big-button green-button" value="Commit" onclick="inventoryObj.commit();" /></p>

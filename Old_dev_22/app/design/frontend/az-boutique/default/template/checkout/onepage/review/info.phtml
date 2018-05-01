@@ -1,0 +1,251 @@
+﻿<?php
+  $payment_method_title='';  $shipping_title=' '; $_code=''; $payment_title='';  $shipping_method_data=array();
+  $checkout = Mage::getSingleton('checkout/session')->getQuote();
+  $blockplanning = $this->getLayout()->createBlock('SalesOrderPlanning/Planning_Cart');
+  $_code = $checkout->getPayment()->getMethodInstance()->getCode();
+  $payment_title = $checkout->getPayment()->getMethodInstance()->getTitle();
+  $country = Mage::getModel('directory/country');
+
+  $billing = $checkout->getBillingAddress();
+  $shipping = $checkout->getShippingAddress();
+
+  /*var_dump($billing->getData());
+  var_dump($shipping->getData());
+  exit;*/
+
+  $shipping_method=$shipping->getShippingMethod();
+  $shipping_method_data=explode('_',$shipping_method);
+  $code= $shipping_method_data[0];
+  $shipping_title =Mage::getStoreConfig("carriers/$code/title");
+  if(Mage::getStoreConfig("carriers/$code/name"))
+  {
+    $shipping_title= $shipping_title.' -'.Mage::getStoreConfig("carriers/$code/name");
+  }
+?>
+<?php $payment_method_title=Mage::getSingleton('checkout/session')->getQuote()->getPayment()->getMethodInstance()->getTitle(); ?>
+<div class="verification-content clearfix">
+    <div class="verification-left-box">
+        <div class="sub-step-title clearfix"><?php echo $this->__('Delivery'); ?> <span><a onclick="checkout.changeSection('opc-shipping');return false;" href="#shipping"><?php echo $this->__('Change'); ?></a></span> </div>
+        <div class="verification-info-box">
+            <p>
+                <span><?php echo $shipping->getName(); ?></span><br>
+			    <?php echo $shipping->getCompany(); if($shipping->getCompany()){echo '<br>'; } ?>
+                <?php echo $shipping->getStreet(1); if($shipping->getStreet(1)){echo '<br>'; } ?>
+                <?php echo $shipping->getStreet(2); if($shipping->getStreet(2)){echo '<br>'; } ?>
+                <?php echo $shipping->getStreet(3); if($shipping->getStreet(3)){echo '<br>'; } ?>
+                <?php echo $shipping->getStreet(4); if($shipping->getStreet(4)){echo '<br>';} ?>
+                <?php echo $shipping->getPostcode(); echo $this->__(' '); echo $shipping->getCity(); ?><br>
+                <?php echo $shipping->getRegion(); echo '<br>'; echo Mage::app()->getLocale()->getCountryTranslation($shipping->getCountry()); ?> </p>
+                <p>
+                    <?php if(!empty($shipping->getTelephone()))
+                    {
+                    ?>
+                        <span><?php echo $this->__('Phone Number :'); ?> </span> <?php echo $shipping->getTelephone(); ?><br>
+                    <?php
+                    }
+                    if(!empty($shipping->getMobilephone()))
+                    {
+                    ?>
+                        <span><?php echo $this->__('Mobile Phone Number :'); ?></span> <?php echo $shipping->getMobilephone(); ?>
+                    <?php
+                    }
+                    ?>
+                </p>
+                <p>
+                    <span><?php echo $this->__('Shipping Method :'); ?></span>
+                    <?php
+                    if($code == 'socolissimo')
+                    {
+                        echo Mage::getStoreConfig('carriers/socolissimo/'.$shipping_method);
+                    }
+                    else
+                    {
+                        echo $shipping_title;
+                    }
+                    ?>
+                </p>
+                <p>
+                    <span><?php echo $this->__('Estimated delivery date :'); ?></span>
+                    <span class="verification-date">
+                    <?php if ($blockplanning->getQuote()->getShippingAddress()->getShippingMethod())
+                    {
+                        $blockplanning->setProduct($this->getProduct());
+                        $blockplanning->setTemplate('checkout/planningcheckout.phtml');
+                        echo $blockplanning->toHtml();
+                    } ?>
+                    </span>
+                </p>
+          </div>
+        </div>
+        <div class="verification-left-box">
+            <div class="sub-step-title clearfix"><?php echo $this->__('Billing'); ?> <span><a onclick="checkout.changeSection('opc-billing');return false;" href="#billing"><?php echo $this->__('Change'); ?></a></span> </div>
+            <div class="verification-info-box">
+                <p>
+                    <span><?php echo $billing->getName(); ?></span><br>
+                    <?php echo $billing->getCompany();  if($billing->getCompany()){echo '<br>'; } ?>
+                    <?php echo $billing->getStreet(1);  if($billing->getStreet(1)){echo '<br>'; } ?>
+                    <?php echo $billing->getStreet(2); if($billing->getStreet(2)){echo '<br>'; } ?>
+                    <?php echo $billing->getStreet(3); if($billing->getStreet(3)){echo '<br>'; } ?>
+                    <?php echo $billing->getStreet(4); if($billing->getStreet(4)){echo '<br>';} ?>
+                    <?php echo $billing->getPostcode(); echo $this->__(' '); echo $billing->getCity(); ?><br>
+                    <?php echo $billing->getRegion(); echo '<br>'; echo Mage::app()->getLocale()->getCountryTranslation($billing->getCountry()); ?>
+                </p>
+                <p>
+                    <?php if(!empty($billing->getTelephone()))
+                    {
+                    ?>
+                        <span><?php echo $this->__('Phone Number :'); ?> </span> <?php echo $billing->getTelephone(); ?><br>
+                    <?php
+                    }
+                    if(!empty($billing->getMobilephone()))
+                    {
+                    ?>
+                        <span><?php echo $this->__('Mobile Phone Number :'); ?></span> <?php echo $billing->getMobilephone(); ?>
+                    <?php
+                    }
+                    ?>
+                </p>
+                <p>
+                    <span><?php echo $this->__('Mode of Payment :'); ?></span>
+                    <?php echo $payment_title; ?>
+                </p>
+                <?php
+                if (Mage::getSingleton('customer/session')->isLoggedIn())
+                {
+                    // Load the customer's data
+                    $customer = Mage::getSingleton('customer/session')->getCustomer();
+                    $Taxvat = $customer->getTaxvat();
+                }
+                if(!empty($Taxvat))
+                {
+                ?>
+                    <p>
+                        <span><?php echo $this->__('VAT identification number :'); ?></span>
+                        <?php echo $customer->getTaxvat();?>
+                    </p>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <?php echo $this->getChildHtml('items_before'); ?>
+
+    <div class="verification-step-review clearfix">
+        <div class="sub-step-title clearfix">
+            <?php echo $this->__('Order items'); ?>
+            <span>
+                <strong><?php echo $this->__('You forgot an item?'); ?></strong>
+                <a href="<?php echo $this->getUrl('checkout/cart'); ?>"><?php echo $this->__('Modify your Cart'); ?></a>
+            </span>
+        </div>
+        <div style="" class="step a-item" id="checkout-step-review">
+        <div id="checkout-review-load" class="order-review">
+            <div id="checkout-review-table-wrapper">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="checkout-review-table" class="data-table">
+                    <tr>
+                        <td align="center">&nbsp;</td>
+                        <td align="center"><?php echo $this->__('Product Name'); ?></td>
+                        <td align="center"><?php echo $this->__('Availability'); ?></td>
+                        <td align="center"><?php echo $this->__('Unit Price'); ?></td>
+                        <td align="center"><?php echo $this->__('Qty'); ?></td>
+                        <td align="center"><?php echo $this->__('Subtotal'); ?></td>
+                    </tr>
+                    <tr>
+                        <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                        <tr>
+                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        </tr>
+                        <?php endif; ?>
+
+                        <?php foreach($this->getItems() as $_item):
+                            echo $this->getItemHtml($_item);
+                        endforeach ?>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- subtotoal & instruction start -->
+<div class="instructions-box clearfix">
+    <div class="instructions-left-box">
+        <div class="sub-step-title clearfix">
+            <?php echo $this->__('Any instructions to AZ Boutique'); ?>
+            <span><a onclick="checkout.changeSection('opc-shipping_method'); return false;" href="#shipping_method"><?php echo $this->__('Change'); ?></a></span>
+        </div>
+    	<textarea disabled rows="3" cols="45" name="compl" id="compl" onkeyup="this.value = this.value.slice(0, 60)" onchange="this.value = this.value.slice(0, 60)"><?php echo  Mage::getSingleton('checkout/session')->getCustomerNotes();  ?></textarea>
+        <div class="sub-step-title clearfix">
+            <?php echo $this->__('Any instructions to Carrier'); ?>
+            <span><a onclick="checkout.changeSection('opc-shipping_method'); return false;" href="#shipping_method"><?php echo $this->__('Change'); ?></a></span>
+        </div>
+        <textarea disabled name="ship_customer_carrier_instructions" rows="8" cols="80" style="height:60px;" id="ship_customer_carrier_instructions" maxlength='70' ><?php echo  Mage::getSingleton('checkout/session')->getCustomerInstuction();  ?></textarea>
+    </div>
+
+    <div class="instructions-right-box cart">
+        <div class="totals alpha omega">
+            <div class="totals-inner"><?php echo $this->getChildHtml('totals'); ?></div>
+        </div>
+    </div>
+</div>
+
+<div class="instructions-box clearfix">
+    <div class="instructions-left-box"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('payment_review')->toHtml(); ?></div>
+    <div class="instructions-right-box cart">
+        <div class="sub-step-title clearfix"><?php echo $this->__('Loyalty Program - Summary'); ?></div>
+        <?php echo $this->getLayout()->createBlock('rewards/checkout_rewardearned')->setTemplate('rewards/checkout/rewardearned.phtml')->toHtml(); ?> </br>
+        <?php echo $this->getLayout()->createBlock('rewards/checkout_rewardspent')->setTemplate('rewards/checkout/rewardspent.phtml')->toHtml(); ?>
+        <?php if((Mage::app()->getStore()->getWebsiteId()=='2') || (Mage::app()->getStore()->getWebsiteId()=='3')): ?>
+            <p class="learntext"><?php echo $this->__('Learn'); ?>  <a id="cartpopup" href="<?php echo $this->getUrl('loyalty-program'); ?>" target="_blank"><img src="<?php echo $this->getSkinUrl('images/plus_small.jpg'); ?>" alt="Plus"/></a>  <?php  echo $this->__('about our loyalty program'); ?></p>
+        <?php else: ?>
+            <p class="learntext"><?php echo $this->__('Learn'); ?>  <a id="cartpopup" href="<?php echo $this->getUrl('programme-fidelite'); ?>" target="_blank"><img src="<?php echo $this->getSkinUrl('images/plus_small.jpg'); ?>" alt="Plus"/></a>  <?php  echo $this->__('about our loyalty program'); ?></p>
+        <?php endif; ?>
+    </div>
+</div>
+
+<div class="instructions-box clearfix">
+    <div class="sub-step-title clearfix">
+    <?php
+    $sName = Mage::app()->getStore()->getName();
+    if($sName == 'United Kingdom')
+    {
+        echo $this->__('Acceptance of the Terms of Sale');
+    }
+    else
+    {
+        echo $this->__('Acceptation des conditions générales de vente');
+    } ?>
+    </div>
+    <div class="instructions-payment-form">
+        <?php echo $this->getChildHtml('agreements') ?>
+        <p class="agree"></p>
+    </div>
+</div>
+<!-- subtotal & instrulction ends -->
+
+<?php echo $this->getChildHtml('items_after'); ?>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('checkout-review-table');
+    truncateOptions();
+//]]>
+</script>
+
+<div id="checkout-review-submit">
+    <div class="buttons-set" id="review-buttons-container"><?php echo $this->getChildHtml('button') ?></div>
+    <div class="order-btn">
+        <span class="please-wait" id="review-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>
+        </span>
+    </div>
+
+    <script type="text/javascript">
+    //<![CDATA[
+        review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder', array('form_key' => Mage::getSingleton('core/session')->getFormKey())) ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
+    //]]>
+    </script>
+</div>

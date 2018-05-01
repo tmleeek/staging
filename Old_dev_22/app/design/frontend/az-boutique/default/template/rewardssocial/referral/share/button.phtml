@@ -1,0 +1,19 @@
+<div class="referral-share-button rewardssocial-rewardable">
+    <a href="javascript://" class="btn">
+        <i></i>
+        <span class="label"><?php echo $this->__("Refer Friends"); ?></span>
+    </a>
+</div>
+
+<?php echo $this->getChildHtml('modal') ?>
+
+<script type="text/javascript">
+    Event.observe(document, 'dom:loaded', function() {
+        var shareItButton = $$('.referral-share-button')[0];
+        var modal = $('rewards_referral_share_modal');
+
+        Event.observe(shareItButton, 'click', function(e) {
+            modal.style.display = '';
+        });
+    });
+</script>

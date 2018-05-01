@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <phpro translate="label">
+            <label>PHPro Extensions</label>
+            <sort_order>350</sort_order>
+        </phpro>
+    </tabs>
+    <sections>
+        <translate translate="label" module="translate">
+            <label>PHPro Translate</label>
+            <tab>phpro</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>301</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <info>
+                    <label>Module information</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <module_version translate="label">
+                            <label>Module version</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>translate/system_config_info_module</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </module_version>
+                        <magento_version translate="label">
+                            <label>Magento version</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>translate/system_config_info_magento</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </magento_version>
+                    </fields>
+                </info>
+                <general translate="label">
+                    <label>Translate options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <translation_logging translate="label">
+                            <label>Enable Translation Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Log all untranslated strings in a database table.</comment>
+                        </translation_logging>
+                        <translation_interfaces translate="label">
+                            <label>Enable Translation Interface For</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>translate/system_config_source_interface
+                            </source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Select for which interfaces you want to enable logging.</comment>
+                        </translation_interfaces>
+                        <locales translate="label">
+                            <label>Locale</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>translate/system_config_source_store_locales
+                            </source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Which locales should be logged?</comment>
+                        </locales>
+                        <customer_groups translate="label">
+                            <label>Log For These Customer Groups Only</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>translate/system_config_source_groups
+                            </source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Select for which customer groups you want to enable logging.</comment>
+                        </customer_groups>
+                    </fields>
+                </general>
+            </groups>
+        </translate>
+    </sections>
+</config>

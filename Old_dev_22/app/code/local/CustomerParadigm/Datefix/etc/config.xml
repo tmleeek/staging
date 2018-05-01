@@ -1,0 +1,11 @@
+<config>
+    <global>
+        <models>
+            <eav>
+                <rewrite>
+                    <entity_attribute_backend_time_created>CustomerParadigm_Datefix_Model_Entity_Attribute_Backend_Time_Created</entity_attribute_backend_time_created>
+                </rewrite>
+            </eav>
+        </models>
+    </global>
+</config>

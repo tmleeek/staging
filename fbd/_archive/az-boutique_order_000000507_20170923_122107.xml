@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000507</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-09-23 12:17:53</created_at>
+    <total_amount>58.2500</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-785@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>7.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Nathalie</firstname>
+      <lastname>BUREAU</lastname>
+      <company>Mademoiselle</company>
+      <address1>10 rue des campanules, rés côté bleu appt B5</address1>
+      <address2>10 rue des campanules, rés côté bleu appt B5</address2>
+      <postal_code>11130</postal_code>
+      <city>Sigean</city>
+      <country>FR</country>
+      <phone>0651467093</phone>
+    </billing>
+    <shipping>
+      <firstname>Nathalie</firstname>
+      <lastname>BUREAU</lastname>
+      <company>Mademoiselle</company>
+      <address1>10 rue des campanules, rés côté bleu appt B5</address1>
+      <address2>10 rue des campanules, rés côté bleu appt B5</address2>
+      <postal_code>11130</postal_code>
+      <city>Sigean</city>
+      <country>FR</country>
+      <phone>0651467093</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>887</id>
+      <fbd_sku>az-boutique_BOVE00357</fbd_sku>
+      <supplier_sku>BOVE00357</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>6.9000</price>
+        <total>6.9000</total>
+        <discount>5.9200</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>888</id>
+      <fbd_sku>az-boutique_PPF11014-24</fbd_sku>
+      <supplier_sku>PPF11014-24</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>51.3500</price>
+        <total>51.3500</total>
+        <discount>44.0800</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

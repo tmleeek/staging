@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000926</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-12-27 22:03:30</created_at>
+    <total_amount>54.5500</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-1345@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_colissimo</code>
+    <amount>7.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>NATHALIE</firstname>
+      <lastname>BOUTET HERVIOU</lastname>
+      <company/>
+      <address1>9 RUE DE LA GUIGNARDIERE</address1>
+      <address2></address2>
+      <postal_code>37170</postal_code>
+      <city>CHAMBRAY LES TOURS</city>
+      <country>FR</country>
+      <phone>0616053336</phone>
+    </billing>
+    <shipping>
+      <firstname>NATHALIE</firstname>
+      <lastname>BOUTET HERVIOU</lastname>
+      <company/>
+      <address1>9 RUE DE LA GUIGNARDIERE</address1>
+      <address2></address2>
+      <postal_code>37170</postal_code>
+      <city>CHAMBRAY LES TOURS</city>
+      <country>FR</country>
+      <phone>0616053336</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>1729</id>
+      <fbd_sku>az-boutique_25829</fbd_sku>
+      <supplier_sku>25829</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>38.9000</price>
+        <total>38.9000</total>
+        <discount>35.6600</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>1730</id>
+      <fbd_sku>az-boutique_PPC11718-20</fbd_sku>
+      <supplier_sku>PPC11718-20</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>15.6500</price>
+        <total>15.6500</total>
+        <discount>14.3400</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

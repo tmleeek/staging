@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000760</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-10-31 22:07:49</created_at>
+    <total_amount>51.7500</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-1091@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_colissimo</code>
+    <amount>7.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Philippe</firstname>
+      <lastname>MARTINAIS</lastname>
+      <company/>
+      <address1>7 rue Hector Berlioz</address1>
+      <address2></address2>
+      <postal_code>35530</postal_code>
+      <city>35530 - SERVON SUR VILAINE</city>
+      <country>FR</country>
+      <phone>0299002911</phone>
+    </billing>
+    <shipping>
+      <firstname>Philippe</firstname>
+      <lastname>MARTINAIS</lastname>
+      <company/>
+      <address1>7 rue Hector Berlioz</address1>
+      <address2></address2>
+      <postal_code>35530</postal_code>
+      <city>35530 - SERVON SUR VILAINE</city>
+      <country>FR</country>
+      <phone>0299002911</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>1374</id>
+      <fbd_sku>az-boutique_61735</fbd_sku>
+      <supplier_sku>61735</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>32.9500</price>
+        <total>32.9500</total>
+        <discount>31.8200</discount>
+        <tax>0.0000</tax>
+        <weee>0.0500</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>1375</id>
+      <fbd_sku>az-boutique_POUV48280-03</fbd_sku>
+      <supplier_sku>POUV48280-03</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>18.8000</price>
+        <total>18.8000</total>
+        <discount>18.1800</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

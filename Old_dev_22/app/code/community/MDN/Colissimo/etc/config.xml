@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MDN_Colissimo>
+            <version>0.1</version>
+        </MDN_Colissimo>
+    </modules>
+    <global>
+        <helpers>
+            <colissimo>
+                <class>MDN_Colissimo_Helper</class>
+            </colissimo>
+        </helpers>
+        <models>
+            <colissimo>
+                <class>MDN_Colissimo_Model</class>
+            </colissimo>
+            <!--
+             RewriteConflict
+            combined this functionality in Tatva_Attachpdf_Model_Sales_Order_Pdf_Shipment
+            <sales>
+                <rewrite>
+                    <order_pdf_shipment>MDN_Colissimo_Model_Pdf_Shipment</order_pdf_shipment>
+                </rewrite>
+            </sales>  -->
+
+        </models>
+        <blocks>
+            <colissimo>
+                <class>MDN_Colissimo_Block</class>
+            </colissimo>
+            
+            <adminhtml>
+                <rewrite>
+                    <!--
+
+                    rewrite conflict
+                    this class will be used as a parent class Gls_Unibox_Block_Adminhtml_Sales_Order_Shipment_View
+                    <sales_order_shipment_view>MDN_Colissimo_Block_Adminhtml_Sales_Order_Shipment_View</sales_order_shipment_view>
+                    this class will be used as a parent class Gls_Unibox_Block_Adminhtml_Sales_Order_Shipment_View_Form
+                    <sales_order_shipment_view_form>MDN_Colissimo_Block_Adminhtml_Sales_Order_Shipment_View_Form</sales_order_shipment_view_form>
+
+                    -->
+                    <sales_order_shipment_create_items>MDN_Colissimo_Block_Adminhtml_Sales_Order_Shipment_Create_Items</sales_order_shipment_create_items>
+                </rewrite>
+            </adminhtml>            
+        </blocks>
+        <events>
+            <sales_order_shipment_save_before>
+                <observers>
+                    <mdn_colissimo_observer>
+                        <type>singleton</type>
+                        <class>MDN_Colissimo_Model_Observer</class>
+                        <method>createColissimoShipment</method>
+                    </mdn_colissimo_observer>
+                </observers>
+            </sales_order_shipment_save_before>
+        </events>
+    </global>
+    <admin>
+        <routers>
+            <colissimo>
+                <use>admin</use>
+                <args>
+                    <module>MDN_Colissimo</module>
+                    <frontName>colissimo</frontName>
+                </args>
+            </colissimo>
+
+            <!--<adminhtml>
+                <args>
+                    <modules>
+                        <MDN_Colissimo before="Mage_Adminhtml">MDN_Colissimo_Adminhtml</MDN_Colissimo>
+                    </modules>
+                </args>
+            </adminhtml>-->
+        </routers>
+    </admin>
+    <crontab>
+        <jobs>
+            <!--<clean_labels>
+                <schedule>
+                    <cron_expr>0 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <helper>colissimo/Label::cleanLabelDirectories</helper>
+                </run>
+            </clean_labels>-->
+        </jobs>
+    </crontab>
+    <adminhtml>
+        <translate>
+            <modules>
+                <MDN_Colissimo>
+                    <files>
+                        <default>MDN_Colissimo.csv</default>
+                    </files>
+                </MDN_Colissimo>
+            </modules>
+        </translate>
+        <acl>
+            <ressources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <colissimo>
+                                            <title>So Colissimo Flexibility</title>
+                                        </colissimo>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </ressources>
+        </acl>
+        <layout>
+            <updates>
+                <colissimo>
+                    <file>MDN_Colissimo.xml</file>
+                </colissimo>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <colissimo>
+            <account_shipment>
+                <wsdl>https://ws.colissimo.fr/soap.shippingclpV2/services/WSColiPosteLetterService?wsdl</wsdl>
+                <supervision>http://ws.colissimo.fr/supervisionWSShipping/supervision.jsp</supervision>
+            </account_shipment>
+            <account_return>
+                <wsdl>https://ws.colissimo.fr/soap.shippingclp-return-ws-proxy/services/WSColiPosteLetterReturnService?wsdl</wsdl>
+            </account_return>
+            <labels>
+                <labels_lifetime>15</labels_lifetime>
+            </labels>
+            <labels>
+                <label_path>/media/colissimo_shipments/labels</label_path>
+                <label_width>100</label_width>
+                <label_height>150</label_height>
+                <label_x>-12</label_x>
+                <label_y>-18</label_y>
+                <label_new_width>249</label_new_width>
+                <label_new_height>180</label_new_height>
+            </labels>
+            <packing_slip>
+                <qty_cell>70</qty_cell>
+                <sku_cell>110</sku_cell>
+                <name_cell>220</name_cell>
+                <separator_x_pos>440</separator_x_pos>
+                <title_x_pos>260</title_x_pos>
+                <shipto_x_pos>240</shipto_x_pos>
+                <label_x_pos>177</label_x_pos>
+                <label_y_pos>29</label_y_pos>
+            </packing_slip>
+        </colissimo>
+    </default>
+</config>

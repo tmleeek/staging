@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MDN_DropShipping>
+            <version>1.6.8</version>
+        </MDN_DropShipping>
+    </modules>
+    
+    <global>
+    
+        <helpers>
+            <DropShipping>
+                <class>MDN_DropShipping_Helper</class>
+            </DropShipping>
+        </helpers>
+        	          
+        <blocks>
+            <DropShipping>
+                <class>MDN_DropShipping_Block</class>
+            </DropShipping>
+            <!-- add FTP infos into supplier edit page -->
+            <Purchase> 
+                <rewrite>
+                    <Supplier_Edit_Tabs>MDN_DropShipping_Block_Supplier_Edit_Tabs</Supplier_Edit_Tabs>
+                    <Order_Grid>MDN_DropShipping_Block_Purchase_Order_Grid</Order_Grid>
+                </rewrite>
+            </Purchase>     
+        </blocks>
+         
+        <models> 
+            <DropShipping>
+                <class>MDN_DropShipping_Model</class>
+                <resourceModel>DropShipping_mysql4</resourceModel>
+            </DropShipping>
+ 
+            <DropShipping_mysql4>
+                <class>MDN_DropShipping_Model_Mysql4</class>
+              
+                <entities>
+                    <SupplierFile>
+                        <table>dropshipping_supplier_file</table>
+                    </SupplierFile>
+                    <SupplierLog>
+                        <table>dropshipping_supplier_log</table>
+                    </SupplierLog>
+                    <PurchaseOrderSupplierLog>
+                        <table>dropshipping_purchase_order_supplier_log</table>
+                    </PurchaseOrderSupplierLog>
+                </entities>
+            </DropShipping_mysql4> 
+        </models>
+  
+        <resources>
+            <DropShipping_setup>
+                <setup>
+                    <module>MDN_DropShipping</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </DropShipping_setup>
+            <DropShipping_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </DropShipping_write>
+            <DropShipping_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </DropShipping_read>
+        </resources>
+		
+        <!-- Email templates -->
+        <template>
+            <email>
+                <dropshipping_general_email_template translate="label" module="DropShipping">
+                    <label>Supplier Drop ship email</label>
+                    <file>DropShipping/SupplierDropShip.html</file>
+                    <type>html</type>
+                </dropshipping_general_email_template>
+                <dropshipping_dropship_request_email_template translate="label" module="DropShipping">
+                    <label>Supplier Drop ship Request email</label>
+                    <file>DropShipping/DropShipRequest.html</file>
+                    <type>html</type>
+                </dropshipping_dropship_request_email_template>
+                <dropshipping_price_request_email_template translate="label" module="DropShipping">
+                    <label>Supplier Price Request email</label>
+                    <file>DropShipping/PriceRequest.html</file>
+                    <type>html</type>
+                </dropshipping_price_request_email_template>
+            </email>
+        </template>
+
+        <events>
+            <default>
+                <observers>
+                    <dropshipping>
+                        <class>DropShipping/observer</class>
+                        <method>checkForLog</method>
+                    </dropshipping>
+                </observers>
+            </default>
+        </events>
+        
+    </global>
+
+    <frontend>
+        <secure_url>
+            <quote>/DropShipping/</quote>
+        </secure_url>
+        <routers>
+            <DropShipping>
+                <use>standard</use>
+                <args>
+                    <module>MDN_DropShipping</module>
+                    <frontName>DropShipping</frontName>
+                </args>
+            </DropShipping>
+        </routers>
+        <translate>
+            <modules>
+                <MDN_DropShipping>
+                    <files>
+                        <default>MDN_DropShipping.csv</default>
+                    </files>
+                </MDN_DropShipping>
+            </modules>
+        </translate>
+    </frontend>
+            
+    <default>
+        <dropshipping>
+            <misc>
+                <notify_customer_on_drop_ship>1</notify_customer_on_drop_ship>
+                <display_orders_with_stock>1</display_orders_with_stock>
+                <attach_pdf>1</attach_pdf>
+                <create_invoice_on_dropship>1</create_invoice_on_dropship>
+            </misc>
+            <dropship_file_import_settings>
+                <file_extensions>csv,txt,doc</file_extensions>
+                <prune_logs_delay>1</prune_logs_delay>
+            </dropship_file_import_settings>
+            <drop_shippable_order>
+                <disable_po_in_dropship_action>0</disable_po_in_dropship_action>
+            </drop_shippable_order>
+            <tabs>
+                <display_pending_supplier_response>1</display_pending_supplier_response>
+                <display_pending_price_response>0</display_pending_price_response>
+                <display_pending_supplier_delivery>1</display_pending_supplier_delivery>
+                <display_pending_tracking_number>1</display_pending_tracking_number>
+                <display_dropshipped_history>1</display_dropshipped_history>
+            </tabs>
+            <available_actions>
+                <dropship>1</dropship>
+                <pricerequest>1</pricerequest>
+                <dropship_request>1</dropship_request>
+                <create_purchase_order>0</create_purchase_order>
+            </available_actions>
+            <price_response_confirmation>
+                <action>dropship</action>
+            </price_response_confirmation>
+            <dropship_request>
+                <attach_documents>1</attach_documents>
+                <attach_packing_slip>1</attach_packing_slip>
+                <attach_po_pdf>1</attach_po_pdf>
+            </dropship_request>
+        </dropshipping>
+    </default>
+
+    <admin>
+        <routers>
+            <DropShipping>
+                <use>admin</use>
+                <args>
+                    <module>MDN_DropShipping</module>
+                    <frontName>DropShipping</frontName>
+                </args>
+            </DropShipping>
+        </routers>
+    </admin>
+
+
+    <crontab>
+        <jobs>
+            
+            <dropshipping_checksupplierimport>
+                <schedule>
+                    <!-- <cron_expr>59 23 * * *</cron_expr> -->
+                    <cron_expr>05 11 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>DropShipping/Observer::checkSupplierImportedFiles</model>
+                </run>
+            </dropshipping_checksupplierimport>
+            
+            <dropshipping_sendDropShipOrders>
+                <schedule>
+                    <cron_expr>0 */1 * * *</cron_expr>
+                    <!-- <cron_expr>05 11 * * *</cron_expr> -->
+                </schedule>
+                <run>
+                    <model>DropShipping/Observer::sendDropShipOrders</model>
+                </run>
+            </dropshipping_sendDropShipOrders>
+            
+        </jobs>
+    </crontab>
+    
+    <adminhtml>
+        <secure_url>
+            <quote>/DropShipping/</quote>
+        </secure_url>
+    
+        <menu>
+            <erp>
+                <children>
+                    <purchasing>
+                        <children>
+                            <dropshipping translate="title" module="DropShipping">
+                                <title>DropShipping</title>
+                                <action>DropShipping/Admin/Grid</action>
+                                <sort_order>90</sort_order>
+                            </dropshipping>
+                        </children>
+                    </purchasing>
+                </children>
+            </erp>
+        </menu>
+    
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <erp>
+                            <children>
+                                <purchasing>
+                                    <children>
+                                        <dropshipping translate="title" module="DropShipping">
+                                            <title>DropShipping</title>
+                                            <action>DropShipping/Admin/Grid</action>
+                                            <sort_order>90</sort_order>
+                                        </dropshipping>
+                                    </children>
+                                </purchasing>
+                                <tools>
+                                    <children>
+                                        <dropshipping translate="title" module="DropShipping">
+                                            <title>Drop Shipped Orders</title>
+                                            <action>DropShipping/Admin/GridDropShippingPO</action>
+                                            <sort_order>999</sort_order>
+                                        </dropshipping>
+                                    </children>
+                                </tools>
+                            </children>
+                        </erp>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <dropshipping module="DropShipping">
+                                            <title>Drop Shipping</title>
+                                        </dropshipping>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        
+        <layout>
+            <updates>
+                <DropShipping>
+                    <file>DropShipping.xml</file>
+                </DropShipping>
+            </updates>
+        </layout>
+    
+        <translate>
+            <modules>
+                <MDN_DropShipping>
+                    <files>
+                        <default>MDN_DropShipping.csv</default>
+                    </files>
+                </MDN_DropShipping>
+            </modules>
+        </translate>        
+    </adminhtml>
+
+</config> 

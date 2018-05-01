@@ -1,0 +1,23 @@
+<script type="text/javascript">
+    document.observe("dom:loaded", function() {
+        //For bundle products the bundle variable seems to conflict with twttr.events.bind method ,
+        //after the method is called the bundle variables becomes undefined.
+        if (typeof bundle !== 'undefined') {
+            var mybundle = bundle;
+        }
+
+        (function() {
+            if (typeof twttr !== 'undefined') {
+                twttr.ready(function (twttr) {
+                    var tweetReward = new TwitterTweetReward('<?php echo $this->getTweetProcessingUrl() ?>');
+                    var _0x2b20=["\x34\x2E\x36\x2E\x31\x28\x27\x32\x27\x2C\x33\x28\x61\x29\x7B\x35\x28\x61\x2E\x64\x2E\x37\x28\x27\x38\x2D\x39\x27\x29\x29\x7B\x62\x2E\x63\x28\x29\x3B\x30\x7D\x30\x7D\x29\x3B","\x7C","\x73\x70\x6C\x69\x74","\x72\x65\x74\x75\x72\x6E\x7C\x62\x69\x6E\x64\x7C\x74\x77\x65\x65\x74\x7C\x66\x75\x6E\x63\x74\x69\x6F\x6E\x7C\x74\x77\x74\x74\x72\x7C\x69\x66\x7C\x65\x76\x65\x6E\x74\x73\x7C\x68\x61\x73\x43\x6C\x61\x73\x73\x4E\x61\x6D\x65\x7C\x72\x65\x77\x61\x72\x64\x73\x73\x6F\x63\x69\x61\x6C\x7C\x72\x65\x77\x61\x72\x64\x61\x62\x6C\x65\x7C\x7C\x74\x77\x65\x65\x74\x52\x65\x77\x61\x72\x64\x7C\x6F\x6E\x54\x77\x65\x65\x74\x7C\x74\x61\x72\x67\x65\x74","\x72\x65\x70\x6C\x61\x63\x65","","\x5C\x77\x2B","\x5C\x62","\x67"];eval(function (_0xbb82x1,_0xbb82x2,_0xbb82x3,_0xbb82x4,_0xbb82x5,_0xbb82x6){_0xbb82x5=function (_0xbb82x3){return _0xbb82x3.toString(_0xbb82x2);} ;if(!_0x2b20[5][_0x2b20[4]](/^/,String)){while(_0xbb82x3--){_0xbb82x6[_0xbb82x5(_0xbb82x3)]=_0xbb82x4[_0xbb82x3]||_0xbb82x5(_0xbb82x3);} ;_0xbb82x4=[function (_0xbb82x5){return _0xbb82x6[_0xbb82x5];} ];_0xbb82x5=function (){return _0x2b20[6];} ;_0xbb82x3=1;} ;while(_0xbb82x3--){if(_0xbb82x4[_0xbb82x3]){_0xbb82x1=_0xbb82x1[_0x2b20[4]]( new RegExp(_0x2b20[7]+_0xbb82x5(_0xbb82x3)+_0x2b20[7],_0x2b20[8]),_0xbb82x4[_0xbb82x3]);} ;} ;return _0xbb82x1;} (_0x2b20[0],14,14,_0x2b20[3][_0x2b20[2]](_0x2b20[1]),0,{}));
+                });
+            }
+
+            if (typeof mybundle !== 'undefined') {
+                //restore the bundle
+                bundle = mybundle;
+            }
+        })();
+    });
+</script>

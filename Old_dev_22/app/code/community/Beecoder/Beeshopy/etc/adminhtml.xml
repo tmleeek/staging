@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adminhtml>
+    <menu>
+      <facebook-store translate="title" module="Beeshopy">
+        <title>Facebook Store</title>
+        <action>beetailer-installation/admin/index</action>
+        <sort_order>100</sort_order>
+      </facebook-store> 
+    </menu>
+
+    <acl>
+      <resources>
+        <admin>
+          <children>
+            <facebook-store translate="title" module="Beeshopy">
+              <title>Facebook Store</title>
+              <sort_order>100</sort_order>
+            </facebook-store>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+  </adminhtml>

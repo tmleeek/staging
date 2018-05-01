@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Webshops4All_DuplicateBlock>
+      <version>0.1.0</version>
+    </Webshops4All_DuplicateBlock>
+  </modules>
+
+<global>
+    <blocks>
+      <adminhtml>
+        <rewrite>
+          <cms_block_edit>Webshops4All_DuplicateBlock_Block_Adminhtml_Cms_Block_Edit</cms_block_edit>
+        </rewrite>
+      </adminhtml>
+    </blocks>
+    <routers>
+       <adminhtml>
+           <rewrite>
+                  <cms_block>
+                      <from><![CDATA[#^/admin/cms_block/$#]]></from>
+                      <to>/admin/cms_block/</to>
+                  </cms_block>
+            </rewrite>
+       </adminhtml>
+    </routers>
+</global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Webshops4All_DuplicateBlock before="Mage_Adminhtml">Webshops4All_DuplicateBlock_Adminhtml</Webshops4All_DuplicateBlock>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

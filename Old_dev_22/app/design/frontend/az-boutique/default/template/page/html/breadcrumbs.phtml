@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/*
+ * - Added grid class
+ */
+
+?>
+<?php if($crumbs && is_array($crumbs)): 
+$aitio_model =Mage::getModel('aitmanufacturers/aitmanufacturers')->getCollection();
+$collectionarray = array();
+$current_url = explode("/",$this->helper('core/url')->getCurrentUrl());
+$additional = array();
+
+foreach($aitio_model as $data)
+{
+    
+    if(in_array($data['url_key'],$current_url))
+    {
+        $brandname = $data['title'];
+    }
+}    
+?>
+<script>
+    var brandname;
+    jQuery(document).ready(function(){
+    brandname = '<p style="margin:0 0 0 -4px;display:inline;color:#de2666;"><?php echo $brandname?></p>';     
+    jQuery('.breadcrumbs li').last().append(brandname);
+});
+</script>
+<div class="breadcrumbs">
+    <ul class="clearer" itemscope itemtype="http://schema.org/BreadcrumbList">
+       <li class="back"><a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''; ?>"><img src="<?php echo $this->getSkinUrl('images/breadcrumb_arrow.png'); ?>"><?php echo $this->__('Back'); ?></a></li>
+        <?php
+        foreach($crumbs as $_crumbName=>$_crumbInfo):
+            $seo_data = '';
+            if(!$_crumbInfo['last'])
+                $seo_itemdata = 'itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"';
+                ?>
+            <li class="<?php echo $_crumbName ?>" <?php if(!$_crumbInfo['last']){echo 'itemprop="itemListElement" itemscopeitemtype="http://schema.org/ListItem"';}?>>
+            <?php if($_crumbInfo['link']): ?>
+                <a itemprop="item" href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>"><span itemprop="name" class="seo_hyperlink"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span></a>
+            <?php elseif($_crumbInfo['last']): ?>
+                <strong><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?php echo $this->escapeHtml($_crumbInfo['label']) ?>
+            <?php endif; ?>
+            <?php if(!$_crumbInfo['last']): ?>
+                <meta itemprop="position" content="<?php echo $i;?>" />
+                <span>/ </span>
+            <?php endif; ?>
+            </li>
+        <?php
+        $i = $i + 1;
+        endforeach;
+        ?>
+    </ul>
+</div>
+<?php endif; ?>

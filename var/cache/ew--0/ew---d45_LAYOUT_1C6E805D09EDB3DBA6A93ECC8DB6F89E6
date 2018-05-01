@@ -1,0 +1,1272 @@
+a:4:{s:4:"hash";i:349105062;s:5:"mtime";i:1525188642;s:6:"expire";i:9999999999;s:4:"tags";a:9:{i:0;s:11:"d45_DEFAULT";i:1;s:12:"d45_CMS_PAGE";i:2;s:12:"d45_STORE_FR";i:3;s:38:"d45_THEME_FRONTEND_AZ_BOUTIQUE_DEFAULT";i:4;s:19:"d45_CMS_INDEX_INDEX";i:5;s:19:"d45_PAGE_ONE_COLUMN";i:6;s:22:"d45_CUSTOMER_LOGGED_IN";i:7;s:28:"d45_LAYOUT_GENERAL_CACHE_TAG";i:8;s:8:"d45_MAGE";}}
+<block name="formkey" type="core/template" template="core/formkey.phtml"/>
+<label>All Pages</label>
+<block type="page/html" name="root" output="toHtml" template="page/3columns.phtml">
+   <block type="page/html_head" name="head" as="head">
+      <action method="addJs">
+         <script>prototype/prototype.js</script>
+      </action>
+      <action method="addJs">
+         <script>lib/ccard.js</script>
+      </action>
+      <action method="addJs">
+         <script>prototype/validation.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/builder.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/effects.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/dragdrop.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/controls.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/slider.js</script>
+      </action>
+      <action method="addJs">
+         <script>varien/js.js</script>
+      </action>
+      <action method="addJs">
+         <script>varien/form.js</script>
+      </action>
+      <action method="addJs">
+         <script>varien/menu.js</script>
+      </action>
+      <action method="addJs">
+         <script>mage/translate.js</script>
+      </action>
+      <action method="addJs">
+         <script>mage/cookies.js</script>
+      </action>
+      <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
+      <action method="addItem">
+         <type>skin_css</type>
+         <name>css/styles-ie.css</name>
+         <params/>
+         <if>lt IE 8</if>
+      </action>
+      <action method="addCss">
+         <stylesheet>css/widgets.css</stylesheet>
+      </action>
+      <action method="addCss">
+         <stylesheet>css/print.css</stylesheet>
+         <params>media=&quot;print&quot;</params>
+      </action>
+      <action method="addItem">
+         <type>js</type>
+         <name>lib/ds-sleight.js</name>
+         <params/>
+         <if>lt IE 7</if>
+      </action>
+      <action method="addItem">
+         <type>skin_js</type>
+         <name>js/ie6.js</name>
+         <params/>
+         <if>lt IE 7</if>
+      </action>
+   </block>
+   <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
+      <label>Page Top</label>
+   </block>
+   <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml"/>
+   <block type="page/html_header" name="header" as="header">
+      <block type="page/template_links" name="top.links" as="topLinks"/>
+      <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
+      <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+         <label>Navigation Bar</label>
+         <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/>
+      </block>
+      <block type="page/html_wrapper" name="top.container" as="topContainer" translate="label">
+         <label>Page Header</label>
+         <action method="setElementClass">
+            <value>top-container</value>
+         </action>
+      </block>
+      <block type="page/html_welcome" name="welcome" as="welcome"/>
+   </block>
+   <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+   <block type="core/text_list" name="left" as="left" translate="label">
+      <label>Left Column</label>
+   </block>
+   <block type="core/messages" name="global_messages" as="global_messages"/>
+   <block type="core/messages" name="messages" as="messages"/>
+   <block type="core/text_list" name="content" as="content" translate="label">
+      <label>Main Content Area</label>
+   </block>
+   <block type="core/text_list" name="right" as="right" translate="label">
+      <label>Right Column</label>
+   </block>
+   <block type="lazyload/lazyload" name="lazyloading.javascript.files" as="lazyloading.javascript.files">
+      <action method="unsetData">
+         <key>cache_lifetime</key>
+      </action>
+      <action method="unsetData">
+         <key>cache_tags</key>
+      </action>
+   </block>
+   <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+      <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
+         <label>Page Footer</label>
+         <action method="setElementClass">
+            <value>bottom-container</value>
+         </action>
+      </block>
+      <block type="page/switch" name="store_switcher" as="store_switcher" template="page/switch/stores.phtml"/>
+      <block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml"/>
+   </block>
+   <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">
+      <label>Page Bottom</label>
+      <block type="page/html_cookieNotice" name="global_cookie_notice" as="global_cookie_notice" template="page/html/cookienotice.phtml" before="-"/>
+   </block>
+</block>
+<block type="core/profiler" output="toHtml" name="core_profiler"/>
+<reference name="head">
+   <block type="core/template" name="optional_zip_countries" as="optional_zip_countries" template="directory/js/optional_zip_countries.phtml"/>
+</reference>
+<reference name="footer">
+   <block type="cms/block" name="cms_footer_links" before="footer_links">
+      <action method="setBlockId">
+         <block_id>footer_links</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="top.links">
+   <action method="addLink" translate="label title" module="customer">
+      <label>My Account</label>
+      <url helper="customer/getAccountUrl"/>
+      <title>My Account</title>
+      <prepare/>
+      <urlParams/>
+      <position>10</position>
+   </action>
+</reference>
+<reference name="left">
+   <block type="core/template" name="left.permanent.callout" template="callouts/left_col.phtml">
+      <action method="setImgSrc">
+         <src>images/media/col_left_callout.jpg</src>
+      </action>
+      <action method="setImgAlt" translate="alt" module="catalog">
+         <alt>Our customer service is available 24/7. Call us at (555) 555-0123.</alt>
+      </action>
+      <action method="setLinkUrl">
+         <url>checkout/cart</url>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+   <block type="core/template" name="right.permanent.callout" template="callouts/right_col.phtml">
+      <action method="setImgSrc">
+         <src>images/media/col_right_callout.jpg</src>
+      </action>
+      <action method="setImgAlt" translate="alt" module="catalog">
+         <alt>Keep your eyes open for our special Back to School items and save A LOT!</alt>
+      </action>
+   </block>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="catalog" ifconfig="catalog/seo/site_map">
+      <label>Site Map</label>
+      <url helper="catalog/map/getCategoryUrl"/>
+      <title>Site Map</title>
+   </action>
+</reference>
+<block type="catalog/product_price_template" name="catalog_product_price_template"/>
+<reference name="catalog_product_price_template">
+   <action method="addPriceBlockType">
+      <type>msrp</type>
+      <block>catalog/product_price</block>
+      <template>catalog/product/price_msrp.phtml</template>
+   </action>
+   <action method="addPriceBlockType">
+      <type>msrp_item</type>
+      <block>catalog/product_price</block>
+      <template>catalog/product/price_msrp_item.phtml</template>
+   </action>
+   <action method="addPriceBlockType">
+      <type>msrp_noform</type>
+      <block>catalog/product_price</block>
+      <template>catalog/product/price_msrp_noform.phtml</template>
+   </action>
+</reference>
+<reference name="header">
+   <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="catalogsearch" ifconfig="catalog/seo/search_terms">
+      <label>Search Terms</label>
+      <url helper="catalogsearch/getSearchTermUrl"/>
+      <title>Search Terms</title>
+   </action>
+   <action method="addLink" translate="label title" module="catalogsearch">
+      <label>Advanced Search</label>
+      <url helper="catalogsearch/getAdvancedSearchUrl"/>
+      <title>Advanced Search</title>
+   </action>
+</reference>
+<reference name="footer_links">
+   <block type="sales/guest_links" name="return_link"/>
+   <action method="addLinkBlock">
+      <blockName>return_link</blockName>
+   </action>
+</reference>
+<reference name="top.links">
+   <block type="checkout/links" name="checkout_cart_link">
+      <action method="addCartLink"/>
+      <action method="addCheckoutLink"/>
+   </block>
+</reference>
+<reference name="right">
+   <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+      <action method="addItemRender">
+         <type>simple</type>
+         <block>checkout/cart_item_renderer</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>grouped</type>
+         <block>checkout/cart_item_renderer_grouped</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>configurable</type>
+         <block>checkout/cart_item_renderer_configurable</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+         <label>Shopping Cart Sidebar Extra Actions</label>
+      </block>
+   </block>
+</reference>
+<reference name="topCart.extra_actions">
+   <block type="paypal/express_shortcut" name="paypal.partner.top_cart.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="cart_sidebar.extra_actions">
+   <block type="paypal/express_shortcut" name="paypal.partner.cart_sidebar.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="right">
+   <block type="poll/activePoll" name="right.poll">
+      <action method="setPollTemplate">
+         <template>poll/active.phtml</template>
+         <type>poll</type>
+      </action>
+      <action method="setPollTemplate">
+         <template>poll/result.phtml</template>
+         <type>results</type>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="reports/product_viewed" before="right.permanent.callout" name="right.reports.product.viewed" template="reports/product_viewed.phtml"/>
+   <block type="reports/product_compared" before="right.permanent.callout" name="right.reports.product.compared" template="reports/product_compared.phtml"/>
+</reference>
+<reference name="head" before="-">
+   <block type="googleanalytics/ga" name="google_analytics" as="google_analytics" template="googleanalytics/ga.phtml"/>
+</reference>
+<reference name="top.links">
+   <block type="wishlist/links" name="wishlist_link"/>
+   <action method="addLinkBlock">
+      <blockName>wishlist_link</blockName>
+   </action>
+</reference>
+<reference name="right">
+   <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" after="cart_sidebar" template="wishlist/sidebar.phtml"/>
+</reference>
+<reference name="topCart.extra_actions">
+   <block type="paypaluk/express_shortcut" name="paypaluk.partner.top_cart.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="cart_sidebar.extra_actions">
+   <block type="paypaluk/express_shortcut" name="paypaluk.partner.cart_sidebar.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="contacts" ifconfig="contacts/contacts/enabled">
+      <label>Contact Us</label>
+      <url>contacts</url>
+      <title>Contact Us</title>
+      <prepare>true</prepare>
+   </action>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="rss" ifconfig="rss/config/active">
+      <label>RSS</label>
+      <url>rss</url>
+      <title>RSS</title>
+      <prepare>true</prepare>
+      <urlParams/>
+      <position/>
+      <li/>
+      <a>class=&quot;link-rss&quot;</a>
+   </action>
+</reference>
+<block type="rss/list" name="head_rss" ifconfig="rss/config/active"/>
+<reference name="cart_sidebar">
+   <action method="addItemRender">
+      <type>bundle</type>
+      <block>bundle/checkout_cart_item_renderer</block>
+      <template>checkout/cart/sidebar/default.phtml</template>
+   </action>
+</reference>
+<reference name="wishlist_sidebar">
+   <action method="addPriceBlockType">
+      <type>bundle</type>
+      <block>bundle/catalog_product_price</block>
+      <template>bundle/catalog/product/price.phtml</template>
+   </action>
+</reference>
+<reference name="catalog_product_price_template">
+   <action method="addPriceBlockType">
+      <type>bundle</type>
+      <block>bundle/catalog_product_price</block>
+      <template>bundle/catalog/product/price.phtml</template>
+   </action>
+</reference>
+<reference name="left">
+   <block type="newsletter/subscribe" name="left.newsletter" template="newsletter/subscribe.phtml"/>
+</reference>
+<reference name="right">
+   <block type="aitmanufacturers/manufacturers_brief" name="manufacturers.brief" template="aitmanufacturers/manufacturers_brief.phtml">
+            </block>
+</reference>
+<reference name="left">
+            
+        </reference>
+<reference name="head">
+   <block name="inject" template="autocompleteplus/inject.phtml" type="autocompleteplus_autosuggest/inject"/>
+   <block type="autocompleteplus_autosuggest/autocomplete"/>
+</reference>
+<reference name="before_body_end">
+   <block type="beecoder_beeshopy/beetailerCode" name="beecoderbeeshopy_beetailercode" template="beeshopy/beetailercode.phtml"/>
+</reference>
+<reference name="before_body_end">
+   <block type="chat/display" name="chat_zopim_default">
+                
+                
+            </block>
+   <block type="core/template" name="chat_footer">
+      <action method="setTemplate" ifconfig="chat/chatconfig/debug">
+         <template>chat/test.phtml</template>
+      </action>
+   </block>
+</reference>
+<reference name="head">
+   <block type="currencymanager/js" name="currencymanager.js.config">
+      <action ifconfig="currencymanager/general/enabled" method="setTemplate">
+         <name>et_currencymanager/js.phtml</name>
+      </action>
+   </block>
+   <action ifconfig="currencymanager/general/enabled" method="addItem">
+      <type>js</type>
+      <name>et/currencymanager/et_currencymanager_round.js</name>
+   </action>
+</reference>
+<reference name="head">
+   <block type="core/template" name="likesite" as="likesite" template="evlike/sitename.phtml"/>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="ev_fb_init" as="ev_fb_init" template="evlike/fbinit.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/itemslider.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/generic-nav.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/brands/brands.css</name>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-1.7.2.min.js</script>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-noconflict.js</script>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/itemslider.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/generic-nav.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/ultra-slideshow/ultra-slideshow.css</name>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-1.7.2.min.js</script>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-noconflict.js</script>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/itemgrid.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/accordion.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/ultra-megamenu/ultra-megamenu.css</name>
+   </action>
+   <action method="addItem" ifconfig="ultramegamenu/mainmenu/classic_menu">
+      <type>skin_css</type>
+      <name>css/infortis/ultra-megamenu/classic.css</name>
+      <params/>
+   </action>
+   <action method="addItem" ifconfig="ultramegamenu/mainmenu/wide_menu">
+      <type>skin_css</type>
+      <name>css/infortis/ultra-megamenu/wide.css</name>
+      <params/>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-1.7.2.min.js</script>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-noconflict.js</script>
+   </action>
+   <action method="removeItem" ifconfig="ultramegamenu/mainmenu/wide_menu">
+      <type>js</type>
+      <name>varien/menu.js</name>
+      <params/>
+   </action>
+</reference>
+<reference name="top.menu">
+   <action method="unsetChild">
+      <name>catalog.topnav</name>
+   </action>
+   <block type="ultramegamenu/navigation" name="catalog.topnav.menu" template="infortis/ultramegamenu/mainmenu.phtml"/>
+</reference>
+<reference name="catalog.topnav.menu">
+   <block type="cms/block" name="block_header_nav_dropdown">
+      <action method="setBlockId">
+         <block_id>block_header_nav_dropdown</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_nav_links">
+      <action method="setBlockId">
+         <block_id>block_nav_links</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="root">
+   <block type="ultramegamenu/navigation" name="umm.sidemenu" template="infortis/ultramegamenu/categories.phtml" before="-"/>
+</reference>
+<reference name="before_body_end">
+   <block type="tracker/tracker" name="lengow_tracker" template="lengow/tracker/tag.phtml"/>
+</reference>
+<reference name="footer_links">
+   <action method="removeLinkByUrl">
+      <url helper="catalog/map/getCategoryUrl"/>
+   </action>
+   <action method="addLink" translate="label title" module="xsitemap">
+      <label>Site Map</label>
+      <url helper="xsitemap/data/getSitemapUrl"/>
+      <title>Site Map</title>
+   </action>
+</reference>
+<reference name="head">
+   <block type="alternatelang/head" name="alternatelang.head"/>
+</reference>
+<reference name="before_body_end">
+   <block type="mana_core/singleton" name="m_core_singletons"/>
+</reference>
+<reference name="footer">
+   <block type="semantium_msemanticbasic/thanks" name="msemanticbasic.thanks"/>
+</reference>
+<reference name="head">
+   <action method="addCss" ifconfig="rewards/general/layoutsactive">
+      <stylesheet>css/rewards/skin.css</stylesheet>
+   </action>
+   <action method="addCss" ifconfig="rewards/general/layoutsactive">
+      <stylesheet>css/rewards/catalog.css</stylesheet>
+   </action>
+</reference>
+<reference name="rewards_catalog_product_list_predictpoints">
+   <block type="rewards/product_list_earning" template="rewards/product/list/earning.phtml" name="rewards_catalog_product_list_predictpoints.earning" priority="20"/>
+</reference>
+<reference name="header">
+   <block type="rewards/special_header" name="rewards.special.header" as="rewardsHeader" template="rewards/special/header.phtml"/>
+</reference>
+<reference name="top.links">
+   <block type="rewards/integrated_special_header" name="rewards.top.links.points_balance" as="rewards_points_balance" template="rewards/special/header.phtml"/>
+</reference>
+<reference name="right">
+   <block type="rewards/customer_sidebar" name="rewards_sidebar" as="rewards" after="cart_sidebar" template="rewards/customer/sidebar.phtml"/>
+</reference>
+<reference name="header">
+   <block type="core/template" name="cart_points_js" template="rewards/checkout/js.phtml"/>
+</reference>
+<reference name="content">
+   <block type="core/template" name="cart_points_js" template="rewards/checkout/js.phtml"/>
+</reference>
+<reference name="rewards_catalog_product_list_predictpoints">
+   <block type="rewards/product_list_optimizedprice" template="rewardsspend/product/list/optimizedprice.phtml" name="optimizedprice" priority="10"/>
+</reference>
+<reference name="catalog_product_price_template">
+   <action ifconfig="rewards/general/layoutsactive" method="addPriceBlockType">
+      <type>simple</type>
+      <block>rewardsonly/product_price</block>
+   </action>
+   <action ifconfig="rewards/general/layoutsactive" method="addPriceBlockType">
+      <type>configurable</type>
+      <block>rewardsonly/product_price</block>
+   </action>
+   <action ifconfig="rewards/general/layoutsactive" method="addPriceBlockType">
+      <type>grouped</type>
+      <block>rewardsonly/product_price</block>
+   </action>
+</reference>
+<reference name="lazyloading.javascript.files">
+   <action method="addLink">
+      <path>tatva_ajax/fancybox/jquery.fancybox-1.3.4.js</path>
+      <type>skin_js</type>
+      <position>45</position>
+   </action>
+   <action method="addLink">
+      <path>tatva_ajax/tatva_ajax_cart.js</path>
+      <type>skin_js</type>
+      <position>46</position>
+   </action>
+   <action method="addLink">
+      <path>jquery-fancy-ajax.js</path>
+      <type>skin_js</type>
+      <position>47</position>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addCss">
+      <stylesheet>js/tatva_ajax/fancybox/jquery.fancybox-1.3.4.css</stylesheet>
+   </action>
+   <block type="core/template" name="ajaxupdate" template="ajax/ajaxupdate.phtml" output="toHtml"/>
+</reference>
+<reference name="header">
+   <block type="checkout/cart_sidebar" name="cartTop" template="ajax/ajax_topcart.phtml" before="-">
+      <action method="addItemRender">
+         <type>simple</type>
+         <block>checkout/cart_item_renderer</block>
+         <template>ajax/checkout/cart/ajax_default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>grouped</type>
+         <block>checkout/cart_item_renderer_grouped</block>
+         <template>ajax/checkout/cart/ajax_default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>configurable</type>
+         <block>checkout/cart_item_renderer_configurable</block>
+         <template>ajax/checkout/cart/ajax_default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>bundle</type>
+         <block>bundle/checkout_cart_item_renderer</block>
+         <template>ajax/checkout/cart/ajax_default.phtml</template>
+      </action>
+      <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions"/>
+   </block>
+</reference>
+<reference name="head">
+   <action method="addCss">
+      <stylesheet>css/tatva/tatva.css</stylesheet>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/tatva/region.js</name>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addCss">
+      <stylesheet>valdecode/cookielaw/css/cookielaw.css</stylesheet>
+   </action>
+</reference>
+<reference name="after_body_start">
+   <block name="cookielaw.after_body_start" type="core/template" before="-" template="cookielaw/after_body_start.phtml">
+      <action method="setCacheLifetime">
+         <lifetime>3600</lifetime>
+      </action>
+      <block name="cookielaw.after_body_start.widget" type="core/template" before="-" template="cookielaw/widget.phtml"/>
+   </block>
+</reference>
+<reference name="before_body_end">
+   <block name="cookielaw.before_body_end" type="core/template" after="-" template="cookielaw/before_body_end.phtml">
+      <action method="setCacheLifetime">
+         <lifetime>3600</lifetime>
+      </action>
+      <block name="cookielaw.before_body_end.widget" type="core/template" before="-" template="cookielaw/widget.phtml"/>
+   </block>
+</reference>
+<reference name="head">
+   <block type="yotpo/yotpo" as="yotpo-js" template="yotpo/app_key_js.phtml" name="yotpo.js">
+            </block>
+</reference>
+<reference name="content">
+   <block type="cms/block" name="yotpo" as="yotpo">
+      <block type="yotpo/yotpo" name="yotpo.bottomline" as="yotpo-bottomline" template="yotpo/bottomline.phtml"/>
+      <block type="yotpo/yotpo" name="yotpo.qabottomline" as="yotpo-qa-bottomline" template="yotpo/qa_bottomline.phtml"/>
+      <block type="yotpo/yotpo" name="yotpo.reviews" as="yotpo-reviews" template="yotpo/reviews.phtml"/>
+   </block>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="contacts" ifconfig="zendesk/features/footer_link_enabled">
+      <label>Support</label>
+      <url>zendesk</url>
+      <title>Support</title>
+      <prepare>true</prepare>
+   </action>
+</reference>
+<reference name="before_body_end">
+   <block type="zendesk/supporttab" name="zendesk_support_tab"/>
+</reference>
+<reference name="lazyloading.javascript.files">
+   <action method="addLink">
+      <path>infortis/jquery/plugins/jquery.owlcarousel.min.js</path>
+      <type>js</type>
+      <position>1</position>
+   </action>
+   <action method="addLink">
+      <path>infortis/jquery/plugins/jquery.easing.min.js</path>
+      <type>js</type>
+      <position>2</position>
+   </action>
+   <action method="addLink">
+      <path>infortis/jquery/plugins/jquery.accordion.min.js</path>
+      <type>js</type>
+      <position>4</position>
+   </action>
+   <action method="addLink">
+      <path>infortis/jquery/plugins/jquery.ba-throttle-debounce.min.js</path>
+      <type>js</type>
+      <position>5</position>
+   </action>
+   <action method="addLink">
+      <path>infortis/before_body_tag_scripts.js</path>
+      <type>js</type>
+      <position>10</position>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addJs">
+      <script>infortis/jquery/jquery-1.7.2.min.js</script>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/jquery-noconflict.js</script>
+   </action>
+   <action method="addJs">
+      <script>infortis/jquery/plugins/jquery.tabs.min.js</script>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/styles-infortis.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/generic-cck.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/accordion.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/dropdown.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/itemslider.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/generic-nav.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/icons.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/itemgrid.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/tabs.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/icons-theme.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/icons-social.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/common.css</name>
+      <params/>
+   </action>
+   <action method="addCss">
+      <stylesheet helper="ultimo/cssgen/getDesignFile"/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/override-components.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/override-modules.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/override-theme.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/infortis/_shared/grid12.css</name>
+      <params/>
+   </action>
+   <action method="addCss">
+      <stylesheet helper="ultimo/cssgen/getGridFile"/>
+   </action>
+   <action method="addCss">
+      <stylesheet helper="ultimo/cssgen/getLayoutFile"/>
+   </action>
+   <action method="addCss" ifconfig="ultimo/customization/custom_css">
+      <stylesheet>css/custom.css</stylesheet>
+   </action>
+   <action method="addCssIe">
+      <css>css/styles-ie.css</css>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/styles-ie7.css</name>
+      <params/>
+      <if>lte IE 7</if>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/styles-ie8.css</name>
+      <params/>
+      <if>lte IE 8</if>
+   </action>
+   <block type="core/template" name="head.theme.css" template="page/html/head_theme_css.phtml" before="-"/>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="footer.theme.scripts" template="page/html/footer_theme_scripts.phtml" before="-"/>
+</reference>
+<reference name="root">
+   <action method="addBodyClass" ifconfig="ultimo_design/effects/shadow">
+      <classname>shadow</classname>
+   </action>
+   <block type="core/text_list" name="main_before_top" as="main_before_top" translate="label">
+      <label>Main Before Top</label>
+   </block>
+   <block type="core/text_list" name="preface" as="preface" translate="label">
+      <label>Page Preface</label>
+   </block>
+   <block type="core/text_list" name="postscript" as="postscript" translate="label">
+      <label>Page Postscript</label>
+   </block>
+</reference>
+<remove name="right.permanent.callout"/>
+<remove name="left.permanent.callout"/>
+<reference name="right">
+   <action method="unsetChild">
+      <name>cart_sidebar</name>
+   </action>
+   <action method="unsetChild">
+      <name>catalog.compare.sidebar</name>
+   </action>
+   <action method="unsetChild">
+      <name>right.reports.product.compared</name>
+   </action>
+   <action method="unsetChild">
+      <name>right.reports.product.viewed</name>
+   </action>
+   <action method="unsetChild">
+      <name>wishlist</name>
+   </action>
+   <action method="unsetChild">
+      <name>sale.reorder.sidebar</name>
+   </action>
+   <action method="unsetChild">
+      <name>right.poll</name>
+   </action>
+   <action method="unsetChild">
+      <name>paypal.partner.right.logo</name>
+   </action>
+   <block type="cms/block" name="block_right_top" before="-">
+      <action method="setBlockId">
+         <block_id>block_right_top</block_id>
+      </action>
+   </block>
+   <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml"/>
+   <block type="cms/block" name="block_right_bottom" after="-">
+      <action method="setBlockId">
+         <block_id>block_right_bottom</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="left">
+   <remove name="left.newsletter"/>
+   <action method="unsetChild">
+      <name>tags_popular</name>
+   </action>
+   <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+   <block type="reports/product_compared" name="right.reports.product.compared" template="reports/product_compared.phtml"/>
+   <block type="reports/product_viewed" name="left.reports.product.viewed" template="reports/product_viewed.phtml"/>
+   <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml"/>
+   <block type="poll/activePoll" name="right.poll">
+      <action method="setPollTemplate">
+         <template>poll/active.phtml</template>
+         <type>poll</type>
+      </action>
+      <action method="setPollTemplate">
+         <template>poll/result.phtml</template>
+         <type>results</type>
+      </action>
+   </block>
+   <block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
+   <block type="cms/block" name="block_left_top" before="-">
+      <action method="setBlockId">
+         <block_id>block_left_top</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_left_bottom" after="-">
+      <action method="setBlockId">
+         <block_id>block_left_bottom</block_id>
+      </action>
+   </block>
+   <action ifconfig="ultimo/header/compare" method="unsetChild">
+      <name>catalog.compare.sidebar</name>
+   </action>
+</reference>
+<reference name="header">
+   <block type="page/html_welcome" name="welcome" as="welcome"/>
+   <block type="page/template_links" name="top.links.new" as="topLinksLatest" template="page/template/links_top.phtml"/>
+   <block type="checkout/cart_sidebar" name="cart_sidebar2" as="cart_sidebar2" template="checkout/cart/mini.phtml" before="-">
+      <action method="addItemRender">
+         <type>simple</type>
+         <block>checkout/cart_item_renderer</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>grouped</type>
+         <block>checkout/cart_item_renderer_grouped</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>configurable</type>
+         <block>checkout/cart_item_renderer_configurable</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+         <label>Shopping Cart Sidebar Extra Actions</label>
+      </block>
+      <block type="cms/block" name="block_mini_cart_above_products">
+         <action method="setBlockId">
+            <block_id>block_mini_cart_above_products</block_id>
+         </action>
+      </block>
+   </block>
+   <block type="directory/currency" name="currency" template="directory/currency.phtml"/>
+   <block type="cms/block" name="block_header_top_links">
+      <action method="setBlockId">
+         <block_id>block_header_top_links</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_header_top_links2">
+      <action method="setBlockId">
+         <block_id>block_header_top_links2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_header_top_left">
+      <action method="setBlockId">
+         <block_id>block_header_top_left</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_header_top_left2">
+      <action method="setBlockId">
+         <block_id>block_header_top_left2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_header_top_right">
+      <action method="setBlockId">
+         <block_id>block_header_top_right</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_header_top_right2">
+      <action method="setBlockId">
+         <block_id>block_header_top_right2</block_id>
+      </action>
+   </block>
+   <block type="catalog/product_compare_sidebar" name="compare.mini" as="compareMini" template="catalog/product/compare/mini.phtml"/>
+</reference>
+<reference name="top.links">
+   <action method="setTemplate">
+      <template>page/template/links_top.phtml</template>
+   </action>
+   <remove name="checkout_cart_link"/>
+</reference>
+<reference name="footer">
+   <block type="newsletter/subscribe" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml"/>
+   <block type="cms/block" name="block_footer_links">
+      <action method="setBlockId">
+         <block_id>block_footer_links</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_links2">
+      <action method="setBlockId">
+         <block_id>block_footer_links2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_primary_bottom_left">
+      <action method="setBlockId">
+         <block_id>block_footer_primary_bottom_left</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_primary_bottom_right">
+      <action method="setBlockId">
+         <block_id>block_footer_primary_bottom_right</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_column1">
+      <action method="setBlockId">
+         <block_id>block_footer_column1</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_column2">
+      <action method="setBlockId">
+         <block_id>block_footer_column2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_column3">
+      <action method="setBlockId">
+         <block_id>block_footer_column3</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_column4">
+      <action method="setBlockId">
+         <block_id>block_footer_column4</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_column5">
+      <action method="setBlockId">
+         <block_id>block_footer_column5</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_column6">
+      <action method="setBlockId">
+         <block_id>block_footer_column6</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_row2_column1">
+      <action method="setBlockId">
+         <block_id>block_footer_row2_column1</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_row2_column2">
+      <action method="setBlockId">
+         <block_id>block_footer_row2_column2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_row2_column3">
+      <action method="setBlockId">
+         <block_id>block_footer_row2_column3</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_row2_column4">
+      <action method="setBlockId">
+         <block_id>block_footer_row2_column4</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_row2_column5">
+      <action method="setBlockId">
+         <block_id>block_footer_row2_column5</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_row2_column6">
+      <action method="setBlockId">
+         <block_id>block_footer_row2_column6</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_payment">
+      <action method="setBlockId">
+         <block_id>block_footer_payment</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_footer_bottom">
+      <action method="setBlockId">
+         <block_id>block_footer_bottom</block_id>
+      </action>
+   </block>
+</reference>
+<label>CMS Pages (All)</label>
+<reference name="content">
+   <block type="core/template" name="page_content_heading" template="cms/content_heading.phtml"/>
+   <block type="page/html_wrapper" name="cms.wrapper" translate="label">
+      <label>CMS Content Wrapper</label>
+      <action method="setElementClass">
+         <value>std</value>
+      </action>
+      <block type="cms/page" name="cms_page"/>
+   </block>
+</reference>
+<reference name="head">
+   <block type="evlike/like" name="likemeta" as="likemeta" template="evlike/head.phtml">
+      <action method="setIsCmsButton">
+         <value>1</value>
+      </action>
+   </block>
+</reference>
+<reference name="content">
+   <block type="evlike/like" name="defaultcms.likebutton" template="evlike/likebutton.phtml" before="cms_page">
+      <action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_cms_default">
+         <value>1</value>
+      </action>
+      <action method="setIsCmsButton">
+         <value>1</value>
+      </action>
+   </block>
+</reference>
+<reference name="left">
+   <action method="insert" ifconfig="ultramegamenu/sidemenu/enable_cms_left">
+      <block>umm.sidemenu</block>
+      <siblingName/>
+      <after>0</after>
+      <alias>umm.sidemenu.cms.left</alias>
+   </action>
+</reference>
+<reference name="right">
+   <action method="insert" ifconfig="ultramegamenu/sidemenu/enable_cms_right">
+      <block>umm.sidemenu</block>
+      <siblingName/>
+      <after>0</after>
+      <alias>umm.sidemenu.cms.right</alias>
+   </action>
+</reference>
+<reference name="before_body_end">
+   <block type="semantium_msemanticbasic/business" name="msemanticbasic.business"/>
+</reference>
+<reference name="head">
+   <action method="setContentType">
+      <content>application/xhtml+xml; charset=UTF-8</content>
+   </action>
+</reference>
+<reference name="content">
+   <block type="page/html_wrapper" name="i_block_cms_page_top" before="-">
+      <action method="setElementClass">
+         <value>block_cms_page_top std</value>
+      </action>
+      <block type="cms/block" name="block_cms_page_top">
+         <action method="setBlockId">
+            <block_id>block_cms_page_top</block_id>
+         </action>
+      </block>
+   </block>
+</reference>
+<label>CMS Home Page</label>
+<reference name="right">
+   <block type="paypal/logo" name="paypal.partner.right.logo" template="paypal/partner/logo.phtml"/>
+</reference>
+<reference name="root">
+   <block type="ultraslideshow/slideshow" name="ultraslideshow" as="ultraslideshow" template="infortis/ultraslideshow/slideshow.phtml">
+      <action method="setPredefined">
+         <value>1</value>
+      </action>
+   </block>
+</reference>
+<reference name="main_before_top">
+   <action method="insert" ifconfig="ultraslideshow/general/position1">
+      <block>ultraslideshow</block>
+   </action>
+</reference>
+<reference name="preface">
+   <action method="insert" ifconfig="ultraslideshow/general/position2">
+      <block>ultraslideshow</block>
+   </action>
+</reference>
+<reference name="left">
+   <action method="insert" ifconfig="ultramegamenu/sidemenu/enable_home_left">
+      <block>umm.sidemenu</block>
+      <siblingName>home_left</siblingName>
+      <after>0</after>
+   </action>
+   <action method="unsetChild">
+      <alias>umm.sidemenu.cms.left</alias>
+   </action>
+</reference>
+<reference name="right">
+   <action method="insert" ifconfig="ultramegamenu/sidemenu/enable_home_right">
+      <block>umm.sidemenu</block>
+      <siblingName>home_right</siblingName>
+      <after>0</after>
+   </action>
+   <action method="unsetChild">
+      <alias>umm.sidemenu.cms.right</alias>
+   </action>
+</reference>
+<remove name="i_block_cms_page_top"/>
+<reference name="preface">
+   <block type="page/html_wrapper" name="i_block_home_preface">
+      <action method="setElementClass">
+         <value>block_home_preface std</value>
+      </action>
+      <block type="cms/block" name="block_home_preface">
+         <action method="setBlockId">
+            <block_id>block_home_preface</block_id>
+         </action>
+      </block>
+   </block>
+</reference>
+<reference name="left">
+   <block type="core/text_list" name="home_left" as="home_left" translate="label" before="-">
+      <label>Home Left</label>
+   </block>
+   <action ifconfig="ultimo/sidebar_blocks_home/compare" method="unsetChild">
+      <name>catalog.compare.sidebar</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/compared" method="unsetChild">
+      <name>right.reports.product.compared</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/viewed" method="unsetChild">
+      <name>left.reports.product.viewed</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/wishlist" method="unsetChild">
+      <name>wishlist</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/poll" method="unsetChild">
+      <name>right.poll</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/tags" method="unsetChild">
+      <name>tags_popular</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild">
+      <name>paypal.partner.right.logo</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/block_left_top" method="unsetChild">
+      <name>block_left_top</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/block_left_bottom" method="unsetChild">
+      <name>block_left_bottom</name>
+   </action>
+</reference>
+<reference name="home_left">
+   <block type="cms/block" name="block_home_left1">
+      <action method="setBlockId">
+         <block_id>block_home_left1</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_home_left2">
+      <action method="setBlockId">
+         <block_id>block_home_left2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_home_left3">
+      <action method="setBlockId">
+         <block_id>block_home_left3</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="core/text_list" name="home_right" as="home_right" translate="label" before="-">
+      <label>Home Left</label>
+   </block>
+   <action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild">
+      <name>paypal.partner.right.logo</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/block_right_top" method="unsetChild">
+      <name>block_right_top</name>
+   </action>
+   <action ifconfig="ultimo/sidebar_blocks_home/block_right_bottom" method="unsetChild">
+      <name>block_right_bottom</name>
+   </action>
+</reference>
+<reference name="home_right">
+   <block type="cms/block" name="block_home_right1">
+      <action method="setBlockId">
+         <block_id>block_home_right1</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_home_right2">
+      <action method="setBlockId">
+         <block_id>block_home_right2</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="block_home_right3">
+      <action method="setBlockId">
+         <block_id>block_home_right3</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="postscript">
+   <block type="page/html_wrapper" name="i_block_home_postscript">
+      <action method="setElementClass">
+         <value>block_home_postscript std</value>
+      </action>
+      <block type="cms/block" name="block_home_postscript">
+         <action method="setBlockId">
+            <block_id>block_home_postscript</block_id>
+         </action>
+      </block>
+   </block>
+</reference>
+<label>All One-Column Layout Pages</label>
+<reference name="root">
+   <action method="setTemplate">
+      <template>page/1column.phtml</template>
+   </action>
+   <action method="setIsHandle">
+      <applied>1</applied>
+   </action>
+</reference>
+<reference name="top.links">
+   <action method="addLink" translate="label title" module="customer">
+      <label>Log Out</label>
+      <url helper="customer/getLogoutUrl"/>
+      <title>Log Out</title>
+      <prepare/>
+      <urlParams/>
+      <position>100</position>
+   </action>
+</reference>
+<reference name="right">
+   <block type="sales/reorder_sidebar" name="sale.reorder.sidebar" as="reorder" template="sales/reorder/sidebar.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>js</type>
+      <name>varien/weee.js</name>
+   </action>
+</reference>

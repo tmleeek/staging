@@ -1,0 +1,9 @@
+<script>
+        <?php Mage::getSingleton('adminhtml/url')->turnOffSecretKey(); ?>
+        var OrganizerSaveTaskUrl = '<?php echo Mage::getSingleton("adminhtml/url")->getUrl('Organizer/Task/Save'); ?>';
+        var OrganizerRefreshListUrl = '<?php echo Mage::getSingleton("adminhtml/url")->getUrl('Organizer/Task/EntityList'); ?>';
+        var OrganizerDeleteTaskUrl = '<?php echo Mage::getSingleton("adminhtml/url")->getUrl('Organizer/Task/Delete'); ?>';
+        var OrganizerEditTaskUrl = '<?php echo Mage::getSingleton("adminhtml/url")->getUrl('Organizer/Task/Edit'); ?>';
+        var OrganizerNotifyUrl = '<?php echo Mage::getSingleton("adminhtml/url")->getUrl('Organizer/Task/Notify'); ?>';
+        <?php Mage::getSingleton('adminhtml/url')->turnOnSecretKey(); ?>
+</script>

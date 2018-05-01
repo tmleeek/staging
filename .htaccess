@@ -1,0 +1,396 @@
+############################################
+#AuthUserFile /data/apache/htdocs/magento/.htpasswd
+#AuthGroupFile /null
+#AuthName "Authorized Users Only."
+#AuthType Basic
+#Require valid-user
+
+########################################################################################
+## uncomment these lines for CGI mode
+## make sure to specify the correct cgi php binary file name
+## it might be /cgi-bin/php-cgi
+
+#    Action php5-cgi /usr/bin/php5-cgi
+#    AddHandler php5-cgi .php
+
+############################################
+## GoDaddy specific options
+
+#   Options -MultiViews
+
+## you might also need to add this line to php.ini
+##     cgi.fix_pathinfo = 1
+## if it still doesn't work, rename php.ini to php5.ini
+
+############################################
+## this line is specific for 1and1 hosting
+
+    #AddType x-mapp-php5 .php
+    #AddHandler x-mapp-php5 .php
+
+############################################
+## default index file
+
+    DirectoryIndex index.php
+
+<IfModule mod_php5.c>
+
+############################################
+## adjust memory limit
+
+
+    php_value memory_limit 4096M
+    php_value max_execution_time 18000
+
+############################################
+## disable magic quotes for php request vars
+
+    php_flag magic_quotes_gpc off
+
+############################################
+## disable automatic session start
+## before autoload was initialized
+
+    php_flag session.auto_start off
+
+############################################
+## enable resulting html compression
+
+    php_flag zlib.output_compression on
+
+###########################################
+# disable user agent verification to not break multiple image upload
+
+    php_flag suhosin.session.cryptua off
+
+###########################################
+# turn off compatibility with PHP4 when dealing with objects
+
+    php_flag zend.ze1_compatibility_mode Off
+
+</IfModule>
+
+<IfModule mod_security.c>
+###########################################
+# disable POST processing to not break multiple image upload
+
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+
+<IfModule mod_deflate.c>
+
+############################################
+## enable apache served files compression
+## http://developer.yahoo.com/performance/rules.html#gzip
+
+    # Insert filter on all content
+    ###SetOutputFilter DEFLATE
+    # Insert filter on selected content types only
+    #AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+
+    # Netscape 4.x has some problems...
+    #BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+    # Netscape 4.06-4.08 have some more problems
+    #BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+    # MSIE masquerades as Netscape, but it is fine
+    #BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+    # Don't compress images
+    #SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+    # Make sure proxies don't deliver the wrong content
+    #Header append Vary User-Agent env=!dont-vary
+
+</IfModule>
+
+<IfModule mod_ssl.c>
+
+############################################
+## make HTTPS env vars available for CGI mode
+
+    SSLOptions StdEnvVars
+
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+############################################
+## enable rewrites
+
+    Options +FollowSymLinks
+    RewriteEngine on
+
+############################################
+## you can put here your magento root folder
+## path relative to web root
+
+    #RewriteBase /magento/
+
+############################################
+
+
+
+############################################
+## uncomment next line to enable light API calls processing
+
+#    RewriteRule ^api/([a-z][0-9a-z_]+)/?$ api.php?type=$1 [QSA,L]
+
+############################################
+## rewrite API2 calls to api.php (by now it is REST only)
+
+    RewriteRule ^api/rest api.php?type=rest [QSA,L]
+
+############################################
+## workaround for HTTP authorization
+## in CGI environment
+
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+############################################
+## TRACE and TRACK HTTP methods disabled to prevent XSS attacks
+
+    RewriteCond %{REQUEST_METHOD} ^TRAC[EK]
+    RewriteRule .* - [L,R=405]
+
+############################################
+## redirect for mobile user agents
+
+    #RewriteCond %{REQUEST_URI} !^/mobiledirectoryhere/.*$
+    #RewriteCond %{HTTP_USER_AGENT} "android|blackberry|ipad|iphone|ipod|iemobile|opera mobile|palmos|webos|googlebot-mobile" [NC]
+    #RewriteRule ^(.*)$ /mobiledirectoryhere/ [L,R=302]
+
+############################################
+## always send 404 on missing files in these folders
+
+    RewriteCond %{REQUEST_URI} !^/(media|skin|js)/
+
+############################################
+## never rewrite for existing files, directories and links
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+############################################
+## rewrite everything else to index.php
+
+    RewriteRule .* index.php [L]
+
+</IfModule>
+
+
+############################################
+## Prevent character encoding issues from server overrides
+## If you still have problems, use the second line instead
+
+    AddDefaultCharset Off
+    #AddDefaultCharset UTF-8
+
+<IfModule mod_expires.c>
+
+############################################
+## Add default Expires header
+## http://developer.yahoo.com/performance/rules.html#expires
+
+    ExpiresDefault "access plus 1 year"
+
+</IfModule>
+
+############################################
+## By default allow all access
+
+    Order allow,deny
+    Allow from all
+	Deny from 192.243.55.129
+	Deny from 192.243.55.130
+	Deny from 192.243.55.131
+	Deny from 192.243.55.132
+	Deny from 192.243.55.133
+	Deny from 192.243.55.134
+	Deny from 192.243.55.135
+	Deny from 192.243.55.136
+	Deny from 192.243.55.137
+	Deny from 192.243.55.138
+	Deny from 192.243.55.139
+	Deny from 141.8.142.76
+	Deny from 93.158.152.12
+	Deny from 91.200.34.24
+
+#RewriteCond %{REMOTE_ADDR} !^(82\.228\.251\.185|82\.207\.103\.128|213\.246\.39\.246|178\.32\.251\.164|178\.32\.251\.171|181\.47\.64\.103|37\.187\.249\.15|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|128\.199\.188\.181|212\.3\.97\.202|115\.245\.73\.174|115\.244\.208\.36|46\.23\.65\.163|123\.239\.50\.55|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185|124\.124\.53\.99)$
+RewriteCond %{REMOTE_ADDR} !^(134\.119\.191\.102|109\.226\.22\.73|82\.228\.251\.185|5\.39\.30\.42|92\.177\.107\.90|82\.207\.103\.128|212\.3\.97\.202|64\.235\.97\.186|82\.207\.103\.128|88\.178\.159\.100|80\.13\.87\.6|78\.215\.190\.73|92\.177\.107\.90|2\.139\.179\.87|92\.177\.107\.90|195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|103\.224\.241\.178|109\.73\.161\.37|103\.24\.183\.252)$
+RewriteCond %{REMOTE_ADDR} !^185\.8\.52\.
+RewriteCond %{REMOTE_ADDR} !^185\.8\.53\.
+RewriteCond %{REMOTE_ADDR} !^185\.8\.54\.
+RewriteCond %{REMOTE_ADDR} !^185\.8\.55\.
+RewriteCond %{REMOTE_ADDR} !^212\.23\.45\.9[6-9]
+RewriteCond %{REMOTE_ADDR} !^212\.23\.45\.10[0-9]
+RewriteCond %{REMOTE_ADDR} !^212\.23\.45\.111
+RewriteCond %{REMOTE_ADDR} !^213\.254\.248\.9[6-9]
+RewriteCond %{REMOTE_ADDR} !^213\.254\.248\.1[0-1][0-9]
+RewriteCond %{REMOTE_ADDR} !^213\.254\.248\.12[0-7]
+RewriteCond %{REMOTE_ADDR} !^212\.35\.124\.1[6-8][0-9]
+RewriteCond %{REMOTE_ADDR} !^212\.35\.124\.19[0-1]
+RewriteCond %{REMOTE_ADDR} !^84\.233\.249\.9[6-9]
+RewriteCond %{REMOTE_ADDR} !^84\.233\.249\.1[0-1][0-9]
+RewriteCond %{REMOTE_ADDR} !^84\.233\.249\.12[0-7]
+RewriteCond %{REMOTE_ADDR} !^62\.72\.112\.12[8-9]
+RewriteCond %{REMOTE_ADDR} !^62\.72\.112\.13[0-9]
+RewriteCond %{REMOTE_ADDR} !^62\.72\.112\.14[0-3]
+RewriteCond %{REMOTE_ADDR} !^84\.199\.92\.12[8-9]
+RewriteCond %{REMOTE_ADDR} !^84\.199\.92\.1[3-8][0-9]
+RewriteCond %{REMOTE_ADDR} !^84\.199\.92\.19[0-1]
+RewriteRule ^.*$ http://www.az-boutique.fr [R=302,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(78\.234\.186\.20|80\.13\.87\.6|78\.56\.179\.15|5\.39\.30\.42|37\.162\.247\.221|80\.215\.210\.82|109\.98\.160\.136|103\.250\.150\.155|178\.32\.251\.164|94\.185\.69\.177|181\.47\.64\.103|202\.131\.107\.106|178\.32\.251\.171|5\.39\.30\.61|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185|124\.124\.53\.99)$
+#RewriteCond %{REMOTE_ADDR} !^(134\.119\.191\.102|109\.226\.22\.73|82\.228\.251\.185|5\.39\.30\.42|92\.177\.107\.90|82\.207\.103\.128|212\.3\.97\.202|64\.235\.97\.186|82\.207\.103\.128|88\.178\.159\.100|80\.13\.87\.6|78\.215\.190\.73|92\.177\.107\.90|2\.139\.179\.87|92\.177\.107\.90|195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|103\.224\.241\.178|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)admin(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(213\.246\.39\.246|178\.32\.251\.164|178\.32\.251\.171|181\.47\.64\.103|37\.187\.249\.15|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|128\.199\.188\.181|212\.3\.97\.202|115\.245\.73\.174|115\.244\.208\.36|46\.23\.65\.163|123\.239\.50\.55|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185|124\.124\.53\.99)$
+#RewriteCond %{REMOTE_ADDR} !^(5\.39\.30\.42|195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)downloader(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(213\.246\.39\.246|178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|86\.203\.207\.138|108\.174\.50\.179|212\.3\.97\.202|115\.245\.73\.174|115\.244\.208\.36|46\.23\.65\.163|123\.239\.50\.55|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185|124\.124\.53\.99)$
+#RewriteCond %{REMOTE_ADDR} !^(82\.228\.251\.185|5\.39\.30\.42|195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)apc(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(213\.246\.39\.246|178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|46\.23\.65\.163|123\.239\.50\.55|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185)$
+#RewriteCond %{REMOTE_ADDR} !^(82\.228\.251\.185|5\.39\.30\.42|195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)tatvascript(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(213\.246\.39\.246|178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|46\.23\.65\.163|123\.239\.50\.55|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185)$
+#RewriteCond %{REMOTE_ADDR} !^(82\.228\.251\.185|195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)Scripts(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(137\.117\.197\.249|46\.218\.228\.203|213\.174\.107\.86|217\.174\.193\.166|213\.246\.39\.246|151\.80\.19\.8|178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|115\.244\.208\.36|46\.23\.65\.163|103\.246\.84\.40|122\.170\.114\.165|176\.31\.63\.156|82\.228\.251\.185|95\.131\.137\.17|95\.131\.137\.18|95\.131\.137\.19|95\.131\.137\.21|95\.131\.137\.26|95\.131\.137\.27|95\.131\.141\.162|95\.131\.141\.168|95\.131\.141\.169|95\.131\.141\.170|95\.131\.141\.171|88\.164\.17\.216|178\.32\.88\.78)$
+#RewriteCond %{REMOTE_ADDR} !^(195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)lengow(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(137\.117\.197\.249|46\.218\.228\.203|213\.246\.39\.240|151\.80\.19\.8|178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|115\.244\.208\.36|46\.23\.65\.163|103\.246\.84\.40|122\.170\.114\.165|176\.31\.63\.156|82\.228\.251\.185|95\.131\.137\.17|95\.131\.137\.18|95\.131\.137\.19|95\.131\.137\.21|95\.131\.137\.26|95\.131\.137\.27|95\.131\.141\.162|95\.131\.141\.168|95\.131\.141\.169|95\.131\.141\.170|95\.131\.141\.171|88\.164\.17\.216|178\.32\.88\.78)$
+#RewriteCond %{REMOTE_ADDR} !^(195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)beezup(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(213\.174\.107\.86)$
+#RewriteCond %{REMOTE_ADDR} !^(195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)flux(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|115\.244\.208\.36|46\.23\.65\.163|103\.246\.84\.40|122\.170\.114\.165|176\.31\.63\.156|82\.228\.251\.185|95\.131\.137\.17|95\.131\.137\.18|95\.131\.137\.19|95\.131\.137\.21|95\.131\.137\.26|95\.131\.137\.27|95\.131\.141\.162|95\.131\.141\.168|95\.131\.141\.169|95\.131\.141\.170|95\.131\.141\.171|88\.164\.17\.216|178\.32\.88\.78)$
+#RewriteCond %{REMOTE_ADDR} !^(195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)bugsazb(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+#RewriteCond %{REMOTE_ADDR} !^(178\.32\.251\.164|178\.32\.251\.171|5\.39\.30\.61|91\.148\.218\.113|182\.70\.15\.245|86\.203\.199\.163|202\.131\.107\.106|86\.203\.207\.138|108\.174\.50\.179|212\.3\.97\.202|115\.245\.73\.174|115\.244\.208\.36|46\.23\.65\.163|123\.239\.50\.55|178\.32\.88\.78|80\.90\.43\.76|82\.127\.22\.72|193\.253\.246\.147|90\.84\.144\.107|109\.190\.175\.141|115\.240\.17\.182|193\.248\.246\.217|115\.240\.62\.65|82\.228\.250\.85|89\.224\.188\.172|82\.228\.251\.119|89\.224\.110\.30|82\.237\.95\.165|88\.178\.159\.100|122\.170\.114\.164|122\.170\.114\.165|182\.237\.8\.100|88\.163\.171\.54|182\.237\.8\.100|183\.182\.91\.146|122\.179\.129\.155|103\.241\.233\.133|82\.228\.250\.85|109\.190\.175\.141|103\.246\.84\.40|82\.228\.251\.185)$
+#RewriteCond %{REMOTE_ADDR} !^(195\.154\.235\.91|195\.154\.199\.164|103\.224\.241\.218|109\.73\.161\.37|103\.24\.183\.252)$
+#RewriteRule ^(.*?)server-status(.*?)$  http://www.az-boutique.fr [R=301,L]
+
+###########################################
+## Deny access to release notes to prevent disclosure of the installed Magento version
+
+    <Files RELEASE_NOTES.txt>
+        order allow,deny
+        deny from all
+    </Files>
+
+############################################
+## If running in cluster environment, uncomment this
+## http://developer.yahoo.com/performance/rules.html#etags
+
+    #FileETag none
+           
+
+	<IfModule mod_expires.c>
+	############################################
+	## Add default Expires header
+	## http://developer.yahoo.com/performance/rules.html#expires
+	ExpiresActive On
+	ExpiresDefault "access plus 1 month"
+	ExpiresByType image/jpg "access 1 month"
+	ExpiresByType image/jpeg "access 1 month"
+	ExpiresByType image/gif "access 1 month"
+	ExpiresByType image/png "access 1 month"
+	ExpiresByType text/css "access 1 month"
+	ExpiresByType application/pdf "access 1 month"
+	ExpiresByType text/x-javascript "access 1 month"
+	ExpiresByType application/x-shockwave-flash "access 1 month"
+	ExpiresByType image/x-icon "access 1 year"
+	</IfModule>
+
+	# Set Expires Headers
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+	Header set Cache-Control "public"
+	Header set Expires "Tue, 14 Aug 2020 03:00:00 PST"
+	</FilesMatch>
+
+	<FilesMatch "\.(bmp|css|flv|gif|ico|jpg|jpeg|js|pdf|png|svg|swf|tif|tiff)$">
+	Header set Last-Modified "Mon, 31 Jan 2011 00:00:00 GMT"
+	</FilesMatch>
+	# Set the cache-control max-age
+
+	# 1 year
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf)$">
+	Header set Cache-Control "max-age=31449600, public"
+	</FilesMatch>
+
+	# 2 DAYS
+	<FilesMatch "\.(xml|js|css)$">
+	Header set Cache-Control "max-age=604800, public, must-revalidate"
+	</FilesMatch>
+
+	# 4 HOURS
+	<FilesMatch "\.(html|htm|txt)$">
+	Header set Cache-Control "max-age=14400, must-revalidate"
+	</FilesMatch>
+
+	# BEGIN Turn ETags Off
+	<ifModule mod_headers.c>
+	Header unset ETag
+	</ifModule>
+	# END Turn ETags Off
+
+	# BEGIN Remove Last-Modified Header
+	<ifModule mod_headers.c>
+	Header unset Last-Modified
+	</ifModule>
+	# END Remove Last-Modified Header
+
+
+	############################################
+	# cookieless domain for images and stuff
+	RewriteCond %{HTTP_HOST} ^static\.tilluminati\.com [NC]
+	RewriteCond %{HTTP_HOST} ^media\.tilluminati\.com [NC]
+	RewriteCond %{HTTP_HOST} ^skin\.tilluminati\.com [NC]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^(.*)$ http://www.tilluminati.com/$1 [R=301,L]
+
+	############################################
+	## enable apache served files compression
+	## http://developer.yahoo.com/performance/rules.html#gzip
+
+	# Insert filter on all content
+	SetOutputFilter DEFLATE
+
+	# Insert filter on selected content types only
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+
+	# Netscape 4.x has some problems...
+	BrowserMatch ^Mozilla/4 gzip-only-text/htm
+
+	# Netscape 4.06-4.08 have some more problems
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+	# MSIE masquerades as Netscape, but it is fine
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+	# Don't compress images
+	SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+	# Make sure proxies don't deliver the wrong content
+	Header append Vary User-Agent env=!dont-vary
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php56” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddType application/x-httpd-ea-php56 .php .php5 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

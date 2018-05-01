@@ -1,0 +1,86 @@
+<div class="entry-edit">
+    <div class="content-header">
+        <table cellspacing="0" class="grid-header">
+            <tr>
+                <td><h3 class="icon-head head-products"><?php echo Mage::helper('Mpm/Carl')->getChannelLabel($this->getChannel()); ?></h3></td>
+            </tr>
+        </table>
+    </div>
+
+    <table border="0" width="100%">
+        <tr>
+            <td width="50%">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('General') ?></h4>
+                </div>
+                <div class="grid">
+                        <table border="0" cellspacing="0" width="300px" class="data">
+                            <tbody>
+                                <tr class="even">
+                                    <td><strong><?php echo $this->__('Offers'); ?></strong></td>
+                                    <td><?php echo $this->getOffersCount(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo $this->__('Offers with you'); ?></strong></td>
+                                    <td><?php echo $this->getYourOffersCount(); ?></td>
+                                </tr>
+                                <tr class="even">
+                                    <td><strong><?php echo $this->__('Buy box winner'); ?></strong></td>
+                                    <td><?php echo $this->getBbwCount(); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo $this->__('Sellers'); ?></strong></td>
+                                    <td><?php echo $this->getSellersCount(); ?></td>
+                                </tr>
+                                <tr class="even">
+                                    <td><strong><?php echo $this->__('Offers without competitors'); ?></strong></td>
+                                    <td><?php echo $this->getOffersWithCompetitorCount(0, 0); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo $this->__('Offers with 1 competitor'); ?></strong></td>
+                                    <td><?php echo $this->getOffersWithCompetitorCount(1, 1); ?></strong></td>
+                                </tr>
+                                <tr class="even">
+                                    <td><strong><?php echo $this->__('Offers with 2 competitors'); ?></strong></td>
+                                    <td><?php echo $this->getOffersWithCompetitorCount(2, 2); ?></td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo $this->__('Offers with 3+ competitors'); ?></strong></td>
+                                    <td><?php echo $this->getOffersWithCompetitorCount(3, 99999); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </td>
+            <td width="50%">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Best sellers'); ?></h4>
+                </div>
+                <div class="entry-edit">
+                        <div class="grid">
+                            <table border="0" cellspacing="0" width="100%" class="data">
+                                <thead>
+                                <tr class="headings">
+                                    <th><?php echo $this->__('Seller'); ?></th>
+                                    <th><?php echo $this->__('Offers'); ?></th>
+                                    <th><?php echo $this->__('Bbw'); ?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($this->getMainCompetitors() as $competitor): ?>
+                                    <tr>
+                                        <td><?php echo $competitor->name; ?></td>
+                                        <td class="a-center"><?php echo $competitor->total; ?></td>
+                                        <td class="a-center"><?php echo $competitor->bbw; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

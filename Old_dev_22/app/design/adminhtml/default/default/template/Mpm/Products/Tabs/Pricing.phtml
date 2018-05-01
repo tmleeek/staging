@@ -1,0 +1,128 @@
+
+<script>
+    var MPM_URL_UPDATE_PRODUCT = '<?php echo $this->getUrl('adminhtml/Mpm_Products/changeSetting', array('product_id' => '#product_id#', 'channel' => '#channel#', 'field' => '#field#', 'value' => '#value#')); ?>';
+</script>
+<?php $product = $this->getProduct();?>
+
+<style>
+    .current_behaviour td
+    {
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+<?php if (!$this->getDisableOffers()): ?>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+<?php endif; ?>
+
+<?php if (!$this->getCurrentLog() || ($this->getCurrentLog()->getError() == 0)): ?>
+
+<div class="grid">
+    <table cellspacing="0" class="data" width="100%">
+        <thead>
+            <tr class="headings">
+                <td align="center"><b><?php echo $this->__('Target seller'); ?></b></th>
+                <td align="center"><b><?php echo $this->__('Seller price'); ?></b></th>
+                <td align="center"><b><?php echo $this->__('My cost (excl tax)'); ?></b></th>
+                <td align="center"><b><?php echo $this->__('My price (incl tax)'); ?></b></th>
+                <td align="center"><b><?php echo $this->__('My rank'); ?></b></th>
+                <td align="center"><b><?php echo $this->__('My margin %'); ?></b></th>
+                <td align="center"><b><?php echo $this->__('Behaviour'); ?></b></th>
+                <td align="center">&nbsp;</th>
+                <?php if ($this->showRules()): ?>
+                    <td align="center"><b><?php echo $this->__('Rules'); ?></b> </th>
+                <?php endif; ?>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php $isFirst = true; ?>
+            <?php $currentBehaviour = $product->getBehavior(); ?>
+            <?php foreach($this->getBehaviours() as $behaviour): ?>
+
+                <?php $debugData = $this->getDebugData($behaviour['value']); ?>
+                <?php if ($debugData instanceof stdClass): ?>
+
+                    <?php $channelCurrency = $this->getChannelCurrency();  ?>
+                    <tr
+                        id="row_<?php echo $this->getChannel(); ?>_<?php echo $product->getProductId(); ?>_behaviour_<?php echo $behaviour['value']; ?>"
+                        >
+                        <td align="center" style="background-color:beige;">
+                                    <?php echo $debugData->bbw_name; ?>
+                        </td>
+                        <td align="center" style="background-color:beige;">
+                            <?php echo !empty($debugData->best_offer) ? $channelCurrency.' '.$debugData->best_offer : ''; ?>
+                        </td>
+                        <td align="center" style="background-color: #ffe8bc;">
+                            <?php echo $channelCurrency.' '.number_format($debugData->base_cost, 2, '.', ''); ?> <img src="<?php echo $this->getSkinUrl('Mpm/images/mpm_help.png'); ?>" onclick="toggleDiv('cost_help_<?php echo $behaviour['value']; ?>');">
+                            <br>
+                            <div id="cost_help_<?php echo $behaviour['value']; ?>" style="display: none;">
+                                <i><font size="1"><?php echo $this->getCostDetails($debugData); ?></font></i>
+                            </div>
+                        </td>
+                        <td align="center" style="background-color: #ffe8bc;">
+                            <?php echo $this->getFinalPrice($channelCurrency, $debugData); ?>
+                        </td>
+                        <td align="center" style="background-color: #ffe8bc;">
+                            <?php echo $debugData->target_position; ?>
+                        </td>
+                        <td align="center" style="background-color: #ffe8bc;">
+                            <?php echo $debugData->final_margin; ?>%
+                            <br><i><?php echo $channelCurrency.' '.$debugData->margin_amount; ?></i>
+                        </td>
+                        <td align="center" style="background-color: mistyrose;">
+                            <input type="radio" value="<?php echo $behaviour['value']; ?>"
+                                <?php echo  ($currentBehaviour == $behaviour['value'] ? 'checked="checked"' : ''); ?>
+                                   name="mpm[<?php echo $this->getChannel(); ?>][<?php echo $product->getProductId();?>][behavior]"
+                                   id="mpm[<?php echo $this->getChannel(); ?>][behavior][<?php echo $behaviour['value']; ?>]"
+                                    onclick="
+                                        return updateProductData('<?php echo $product->getProductId(); ?>',
+                                        '<?php echo $this->getChannel(); ?>', 'behavior',  this.value);
+                                        decorateCurrentBehaviour('<?php echo $this->getChannel(); ?>', '<?php echo $product->getProductId(); ?>');
+                                        "
+                            >
+                            <br><b><?php echo Mage::Helper('Mpm')->__($behaviour['label']); ?></b>
+                            <?php if (!empty($debugData->margin)): ?>
+                                <br><?php echo $debugData->margin; ?>%
+                            <?php endif; ?>
+                        </td>
+                        <td align="center" style="background-color: mistyrose;"><img src="<?php echo $this->getSmileyUrl($debugData->status); ?>" width="48"></td>
+
+
+                        <?php if ($this->showRules()): ?>
+                            <td>
+                            <span style="font-size: 10px">
+                            <?php foreach($this->getRules($debugData) as $rule): ?>
+                                <?php echo $rule['label']; ?><br />
+                            <?php endforeach; ?>
+                            </span>
+                            </td>
+                        <?php endif; ?>
+                    </tr>
+            <?php else: ?>
+                    <tr>
+                        <td colspan="10"><font color="red"><?php echo $debugData; ?></font></td>
+                    </tr>
+            <?php endif; ?>
+            <?php $isFirst = false; ?>
+        <?php endforeach; ?>
+        </tbody>
+        </table>
+</div>
+
+<?php else: ?>
+
+    <?php if ($this->getCurrentLog() && $this->getCurrentLog()->getError()): ?>
+        <p><center><font color="red"><?php echo $this->getCurrentLog()->getDebug(); ?></font></center></p>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if (!$this->getDisableOffers()): ?>
+    <?php echo $this->getLayout()->createBlock('Mpm/Products_Tabs_Competitors')->setTemplate('Mpm/Products/Tabs/Grid.phtml')->toHtml(); ?>
+<?php endif; ?>
+
+<script>
+    decorateCurrentBehaviour('<?php echo $this->getChannel(); ?>', '<?php echo $product->getProductId(); ?>');
+</script>

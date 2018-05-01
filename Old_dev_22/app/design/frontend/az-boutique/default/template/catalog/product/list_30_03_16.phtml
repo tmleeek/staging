@@ -1,0 +1,537 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_collectionSize = $_productCollection->count();
+?>
+<?php $session = Mage::getSingleton('core/session');   ?>
+<?php $store    = Mage::app()->getStore()->getId();  ?>
+<!-- timer active -->
+<?php $timer_active = Mage::getStoreConfig('timer/general/activate_apptha_timer');
+$timer_head_active = Mage::getStoreConfig('timer/general/activate_apptha_heading');
+$timer_desc_active = Mage::getStoreConfig('timer/general/activate_apptha_description');
+$timer_color = Mage::getStoreConfig('timer/apptha_timer_color/text');
+$desc_color = Mage::getStoreConfig('timer/apptha_timer_color/description');
+$head_color = Mage::getStoreConfig('timer/apptha_timer_color/heading_text_color');
+$timer_head = Mage::getStoreConfig('timer/general/heading');
+$count=1;
+$aitio_model =Mage::getModel('aitmanufacturers/aitmanufacturers');
+$productavaiblity_model=mage::getModel('SalesOrderPlanning/ProductAvailabilityStatus');
+
+?>
+
+<?php if ($_collectionSize && $tmpHtml = $this->getChildHtml('block_category_above_collection')): ?>
+    <div class="block_category_above_collection std"><?php echo $tmpHtml; ?></div>
+<?php endif; ?>
+
+<?php if(!$_collectionSize): ?>
+    <?php if ($tmpHtml = $this->getChildHtml('block_category_above_empty_collection')): ?>
+        <div class="block_category_above_empty_collection std"><?php echo $tmpHtml; ?></div>
+    <?php else: ?>
+        <p class="note-msg empty-catalog"><?php echo $this->__('There are no products matching the selection.') ?></p>
+    <?php endif; ?>
+<?php else: ?>
+
+<?php
+    $_helper = $this->helper('catalog/output');
+    $theme = $this->helper('ultimo');
+    $helpLabels = $this->helper('ultimo/labels');
+    $helpTemplate = $this->helper('ultimo/template');
+    $helpImg = $this->helper('infortis/image');
+
+    //Default image size
+    $imgWidth = 295;
+    $imgHeight = 295;
+
+    //Aspect ratio settings
+    if ($theme->getCfg('category/aspect_ratio'))
+        $imgHeight = 0; //Height will be computed automatically (based on width) to keep the aspect ratio
+
+    //Hide toolbar
+    $hideToolbar = false;
+    if ($this->getHideToolbar())
+    {
+        $hideToolbar = true;
+    }
+?>
+
+<div class="category-products">
+    <?php if (!$hideToolbar): ?>
+        <?php echo $this->getToolbarHtml() ?>
+    <?php endif; ?>
+    <?php if($this->getMode()!='grid'): //List mode ?>
+
+    <?php
+        //Get list configuration array
+        $lc = $theme->getCfgGroup('category_list');
+
+        //List classes
+        $listClasses = '';
+        if ($lc['hover_effect'])
+            $listClasses = ' hover-effect';
+
+
+    ?>
+
+    <?php $_iterator = 0; ?>
+    <ul class="products-list<?php if($listClasses) echo $listClasses; ?>" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+         <?php
+            if($_SERVER['HTTPS'] == "on")
+            {
+                $ajaxaddtocartlist = $this->getAddToCartUrl($_product,array("_secure"=>true));
+                $viewproduct = $_product->getProductUrl('',array("_secure"=>true));
+            }
+            else
+            {
+                $ajaxaddtocartlist = $this->getAddToCartUrl($_product);
+                $viewproduct = $_product->getProductUrl();
+            }
+            ?>
+        <?php $toDate = $_product->getSpecialTODate(); ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+        <?php $collection_new=''; $marque=''; $gamme=''; $brand=''; ?>
+        <?php $marque = $_product['manufacturer']; ?>
+        <?php $gamme_collection = $_product['gamme_collection_new']; ?>
+        <?php $brand = $aitio_model->getBrand($_product->getManufacturer(),$store); ?>
+        <?php $collection_new = $aitio_model->getGammeCollection($_product['gamme_collection_new'],$store); ?>
+            <?php //Product Image ?>
+            <div class="product-image-wrapper grid12-4 mobile-grid-half">
+
+                <a href="<?php echo $viewproduct ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" style="max-width:<?php echo $imgWidth; ?>px;">
+                    <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+
+                    <?php if ($theme->getCfg('category/alt_image')): ?>
+                        <?php echo $theme->getAltImgHtml($_product, $imgWidth, $imgHeight); ?>
+                    <?php endif; ?>
+
+                    <?php echo $helpLabels->getLabels($_product); //Product labels ?>
+                </a>
+
+            </div> <!-- end: product-image-wrapper -->
+
+            <?php //Product description ?>
+            <div class="product-shop grid12-5 mobile-grid-half">
+                <div class="product-shop-inner">
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a>
+                  <?php if($brand): ?>
+                    <br/>
+					   <?php $admin_set_brand_url=$aitio_model->getlistUrl($store,$marque); ?>
+					   <a href="<?php echo $this->getUrl($admin_set_brand_url); ?>"><?php echo $brand; ?></a>
+					 <?php else: ?>
+						<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a>
+					<?php endif; ?>
+
+                    <?php if($collection_new): ?>
+                       <br/>
+                      <?php $admin_set_brand_url_new=$aitio_model->getlistgammeUrl($store,$gamme,$marque); ?>
+                      <?php $session->setMarque($marque); ?>
+                      <?php $session->setGammeCollection($gamme); ?>
+                      <?php Mage::app()->getRequest()->setParam('marque',$marque); ?>
+
+					   <a href="<?php echo $this->getUrl($admin_set_brand_url_new); ?>"><?php echo $collection_new; ?></a>
+					 <?php else: ?>
+						<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a>
+					<?php endif; ?>
+                     </h2>
+                     <div class="yotpo-list"><?php $this->helper('yotpo')->showBottomline($this, $_product); ?></div>
+
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $viewproduct ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                </div>
+            </div>
+            <div class="review-custom-tatva">
+            <?php  $productAvailabilityStatus = $productavaiblity_model->load($_product->getId(), 'pa_product_id');
+                if ($_product->gettype_id() == 'bundle')
+                {
+                     //echo Mage::helper('BundleAvailability')->getAvailabilityMessageForBundleviewandlistpage($_product->getId());
+                     echo Mage::helper('BundleAvailability')->getAvailabilityMessageForBundleCustomtatva($_product->getId(),'1');
+                }
+                else
+                {
+                    $availabilityMessage = '';
+                    if ($productAvailabilityStatus) {
+                        echo $availabilityMessage = $productAvailabilityStatus->getMessage();
+                    }
+                }?>
+             </div>
+            <div class="right-column grid12-3 mobile-grid-half">
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                 <div class="listactions">
+                    <button onclick="location.href ='<?php echo $viewproduct ?>'" class="button btn-cart view-button" title="<?php echo $this->__('View Product'); ?>" type="button"><span><span><?php echo $this->__('View Product'); ?></span></span></button>
+                 </div>
+                         <?php if($_product->isSaleable()): ?>
+                            <!-- ajax cart start -->
+                             <?php if(Mage::getStoreConfig('ajax/addtocart/enabledpro')){ ?>
+
+							<?php if ( !($_product->getTypeInstance(true)->hasOptions($_product) || $_product->isGrouped()) ) { ?>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $ajaxaddtocartlist ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<span id='ajax_loader<?php echo $_product->getId()?>' style='display:none;float:left'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+							<?php } else { ?>
+                                 <?php if(($_product->getTypeId()=='bundle')){ ?>
+                               <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $ajaxaddtocartlist ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<span id='ajax_loader<?php echo $_product->getId()?>' style='display:none;float:left'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+							<?php } } ?>
+
+						  <?php }else{ ?>
+						    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $ajaxaddtocartlist ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+
+					      <?php } ?>
+                        <!-- ajax cart end -->
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+
+                <?php
+                if ($lc['addtolinks_simple'])
+                    echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right');
+                else
+                    echo $helpTemplate->getCategoryAddtoLinksComplex($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right');
+                ?>
+
+                 <!-- timer display start -->
+                 <?php if($timer_active == 1) :?>
+               <?php if(($_product->getPrice() > $_product->getSpecialPrice()) && (strtotime($special_to_date)>=strtotime(Mage::getModel('core/date')->date('Y-m-d H:i:s')))) : ?>
+                <?php if($_product->getSpecialPrice()!= 0 || $_product->getSpecialPrice()!= "" ) :?>
+                <?php if($timer_head_active == 'showall' || $timer_head_active == 'listpage' && $timer_head_active!='hideall' && $timer_head!= '') : ?>
+                                        <div id="heading<?php echo $count; ?>" style="color:#<?php echo $head_color; ?>; font-size: 14px; font-weight:bold;padding-top:3px;clear: both;"><?php echo $timer_head ?></div>
+                <?php endif; ?>
+                                        <div id="countbox_<?php echo $count; ?>" class="timer-grid"></div>
+                <?php if($timer_desc_active == 'showall' || $timer_desc_active == 'listpage' && $timer_desc_active!='hideall') : ?>
+                 <div class='clear'></div><div class='timerdate' id="caption<?php echo $count; ?>"><span class='hour' style='margin:1px 23px 0 4px'><?php echo $this->__('D') ?></span><span class='hour' style='margin:1px 19px 0 6px'><?php echo $this->__('H') ?></span><span class='min'  style='margin:1px 20px 0 7px'><?php echo $this->__('M') ?></span><span class='sec' style='margin:1px 0 0 6px'><?php echo $this->__('S') ?></span></div>
+                <?php endif;endif;endif;endif; ?>
+                 <!-- timer display end -->
+            </div>
+
+        </li>
+         <?php if($timer_active == 1) :?>   <!-- timer active start -->
+                 <?php if(($_product->getPrice() > $_product->getSpecialPrice()) && (strtotime($special_to_date)>=strtotime(Mage::getModel('core/date')->date('Y-m-d H:i:s')))) : ?>
+
+                  <?php if($_product->getSpecialPrice()!= 0 || $_product->getSpecialPrice()!= "" ) :?>
+                          <script type="text/javascript">
+                            var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)).' 11:59:00 PM'; ?>");
+                            start = "<?php echo Date("m/d/y h:i:s A", strtotime(Mage_Core_Model_Locale::date(null, null, "en_US", true))); ?>";
+                            start_date = Date.parse(start);
+                            var dnow<?php echo $count; ?> = new Date(start_date);
+                            if(CountStepper>0)
+                                ddiff= new Date((dnow<?php echo $count; ?>)-(dthen<?php echo $count; ?>));
+                            else
+                                ddiff = new Date((dthen<?php echo $count; ?>)-(dnow<?php echo $count; ?>));
+                            gsecs<?php echo $count; ?> = Math.floor(ddiff.valueOf()/1000);
+                            var iid<?php echo $count; ?> = "countbox_<?php echo $count; ?>";
+                            CountBack(gsecs<?php echo $count; ?>,"countbox_"+j, j);
+                            j++;
+        </script>
+                <?php $count = $count + 1; ?>
+                <?php endif;endif; ?>
+                <?php endif; ?> <!-- timer active ends -->
+    <?php endforeach; ?>
+    </ul>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: //Grid mode ?>
+
+    <?php
+        //Get grid configuration array
+        $gc = $theme->getCfgGroup('category_grid');
+
+        //Get number of columns (from parameter or from theme config)
+        $columnCount = 3;
+        if ($this->getGridColumnCount())
+        {
+            $columnCount = $this->getGridColumnCount();
+        }
+        else
+        {
+            $columnCount = $gc['column_count'];
+        }
+
+        //Grid classes
+        $gridClasses = '';
+        if ($gc['display_name'] == 2 && $gc['display_name_single_line'] == true)
+            $gridClasses .= ' single-line-name';
+        if ($gc['centered'])
+            $gridClasses .= ' centered';
+        if ($gc['hover_effect'])
+            $gridClasses .= ' hover-effect';
+        if ($gc['equal_height'])
+            $gridClasses .= ' equal-height';
+
+        //Size of grid elements
+        if ($gc['elements_size'])
+        {
+            $gridClasses .= ' size-' . $gc['elements_size'];
+        }
+        else
+        {
+            //Calculate size based on number of columns
+            if ($columnCount >= 6)
+            {
+                $gridClasses .= ' size-xs';
+            }
+            elseif ($columnCount >= 4)
+            {
+                $gridClasses .= ' size-s';
+            }
+        }
+
+        //Container "actions" at the bottom of the grid item stores button and add-to links
+        //If at least one of those elements was set as "Display on hover" but no element was set as "Display":
+        //apply appropriate classes to the container.
+        $actionsClasses = '';
+        if ($gc['display_addtocart'] == 1 || ($gc['display_addtolinks'] == 1 && !$gc['addtolinks_simple']))
+        {
+            $actionsClasses = ' display-onhover';
+        }
+        if ($gc['display_addtocart'] == 2 || ($gc['display_addtolinks'] == 2 && !$gc['addtolinks_simple']))
+        {
+            $actionsClasses = '';
+        }
+    ?>
+
+    <ul class="products-grid category-products-grid itemgrid itemgrid-adaptive itemgrid-<?php echo $columnCount; ?>col<?php if($gridClasses) echo $gridClasses; ?>">
+        <?php foreach ($_productCollection as $_product): ?>
+        <?php
+            if($_SERVER['HTTPS'] == "on")
+            {
+                $viewproduct = trim($_product->getProductUrl(),'https:');
+            }
+            else
+            {
+                $viewproduct = $_product->getProductUrl();
+            }
+            ?>
+         <?php $toDate = $_product->getSpecialTODate(); ?>
+        <?php $collection_new=''; $marque=''; $gamme=''; $brand=''; ?>
+        <?php $marque = $_product['manufacturer']; ?>
+        <?php $gamme = $_product['gamme_collection_new']; ?>
+        <?php $brand = $aitio_model->getManufacturerName($_product->getManufacturer(),$store); ?>
+        <?php $collection_new = $aitio_model->getGammeCollection($_product['gamme_collection_new'],$store); ?>
+            <li class="item">
+
+                <div class="product-image-wrapper" style="max-width:<?php echo $imgWidth; ?>px;">
+
+                    <a href="<?php echo $viewproduct ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true); ?>" class="product-image">
+                        <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true); ?>" />
+
+                        <?php if ($theme->getCfg('category/alt_image')): ?>
+                            <?php echo $theme->getAltImgHtml($_product, $imgWidth, $imgHeight); ?>
+                        <?php endif; ?>
+
+                        <?php echo $helpLabels->getLabels($_product); //Product labels ?>
+                    </a>
+
+                    <?php //Add-to links
+                        if ($gc['display_addtolinks'] != 0 && $gc['addtolinks_simple'])
+                        {
+                            if ($gc['display_addtolinks'] == 1) //Display on hover
+                                echo $helpTemplate->getCategoryAddtoLinksComplex_2($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage display-onhover');
+                            else //Always display
+                                echo $helpTemplate->getCategoryAddtoLinksComplex_2($_product, $this->getAddToCompareUrl($_product), 'addto-links-icons addto-onimage');
+                        }
+                    ?>
+
+                </div> <!-- end: product-image-wrapper -->
+<?php
+                    if($_SERVER['HTTPS'] == "on")
+                    {
+                       $addtocart = $this->getAddToCartUrl($_product,array("_secure"=>true)) ;
+                       $viewproduct = trim($_product->getProductUrl(),'https:');
+                       
+                    }
+                    else
+                    {
+                        $addtocart = $this->getAddToCartUrl($_product);
+                        $viewproduct = $_product->getProductUrl();
+                    }
+                 ?>
+                <h2 class="product-name"><a href="<?php echo $viewproduct ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+
+                     <?php if($brand): ?>
+                     <br/>
+					   <?php $admin_set_brand_url=$aitio_model->getlistUrl($store,$marque); ?>
+					  <a href="<?php echo $this->getUrl($admin_set_brand_url); ?>"><?php echo $brand; ?></a>
+					 <?php else: ?>
+						<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a>
+					<?php endif; ?>
+
+                    <?php if($collection_new): ?>
+                      <br/>
+                      <?php $admin_set_brand_url_new=$aitio_model->getlistgammeUrl($store,$gamme,$marque); ?>
+                      <?php $session->setMarque($marque); ?>
+                      <?php $session->setGammeCollection($gamme); ?>
+
+					   <a href="<?php echo $this->getUrl($admin_set_brand_url_new); ?>"><?php echo $collection_new; ?></a>
+					 <?php else: ?>
+						<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a>
+					<?php endif; ?> </h2>
+                    <div class="yotpo-list"><?php echo $this->helper('yotpo')->showBottomline($this, $_product); ?></div>
+
+                <?php if ($gc['display_price'] == 1) echo '<div class="display-onhover">'; ?>
+                    <?php echo $this->getPriceHtml($_product, true); ?>
+                <?php if ($gc['display_price'] == 1) echo '</div>'; ?>
+
+                 <!-- timer display start -->
+                 <?php if($timer_active == 1) :?>
+                 <?php $special_to_date=''; ?>
+               <?php if(($_product->getPrice() > $_product->getSpecialPrice()) && (strtotime($special_to_date)>=strtotime(Mage::getModel('core/date')->date('Y-m-d H:i:s')))) : ?>
+                <?php if($_product->getSpecialPrice()!= 0 || $_product->getSpecialPrice()!= "" ) :?>
+                <?php if($timer_head_active == 'showall' || $timer_head_active == 'listpage' && $timer_head_active!='hideall' && $timer_head!= '') : ?>
+                                        <div id="heading<?php echo $count; ?>" style="color:#<?php echo $head_color; ?>; font-size: 14px; font-weight:bold;padding-top:3px;clear: both;"><?php echo $timer_head ?></div>
+                <?php endif; ?>
+                                        <div id="countbox_<?php echo $count; ?>" class="timer-grid"></div>
+                <?php if($timer_desc_active == 'showall' || $timer_desc_active == 'listpage' && $timer_desc_active!='hideall') : ?>
+                 <div class='clear'></div><div class='timerdate' id="caption<?php echo $count; ?>"><span class='hour' style='margin:1px 23px 0 4px'><?php echo $this->__('D') ?></span><span class='hour' style='margin:1px 19px 0 6px'><?php echo $this->__('H') ?></span><span class='min'  style='margin:1px 20px 0 7px'><?php echo $this->__('M') ?></span><span class='sec' style='margin:1px 0 0 6px'><?php echo $this->__('S') ?></span></div>
+                <?php endif;endif;endif;endif; ?>
+                 <!-- timer display end -->
+
+
+                <?php
+                    //If at least one element was set as "Display on hover" but no element was set as "Display":
+                    //aggregate classes from those elements and apply them to the "actions" container.
+                    $actionsClasses = '';
+                    if ($gc['display_addtocart'] == 1 || ($gc['display_addtolinks'] == 1 && !$gc['addtolinks_simple']))
+                    {
+                        $actionsClasses = ' display-onhover';
+                    }
+                    if ($gc['display_addtocart'] == 2 || ($gc['display_addtolinks'] == 2 && !$gc['addtolinks_simple']))
+                    {
+                        $actionsClasses = '';
+                    }
+                ?>
+                 <div class="review-custom-tatva">
+                <?php
+                $productAvailabilityStatus = $productavaiblity_model->load($_product->getId(), 'pa_product_id');
+                if ($_product->gettype_id() == 'bundle')
+                {
+                     //echo Mage::helper('BundleAvailability')->getAvailabilityMessageForBundleviewandlistpage($_product->getId());
+                     echo Mage::helper('BundleAvailability')->getAvailabilityMessageForBundleCustomtatva($_product->getId(),'1');
+                }
+                else
+                {
+                    $availabilityMessage = '';
+                    if ($productAvailabilityStatus) {
+                        echo $availabilityMessage = $productAvailabilityStatus->getMessage();
+                    }
+                }?>
+                </div>
+                 <div class="listgridactions">
+                <button onclick="location.href ='<?php echo $_product->getProductUrl() ?>'" class="button btn-cart view-button" title="<?php echo $this->__('View Product'); ?>" type="button"><span><span><?php echo $this->__('View Product'); ?></span></span></button>
+                </div>
+                <div class="actions clearer<?php echo $actionsClasses; ?>">
+                    <?php //Cart button ?>
+                    <?php if ($gc['display_addtocart'] != 0): ?>
+                                 <?php if($_product->isSaleable()): ?>
+                            <!-- ajax cart start -->
+                             <?php if(Mage::getStoreConfig('ajax/addtocart/enabledpro')){ ?>
+
+							<?php if ( !($_product->getTypeInstance(true)->hasOptions($_product) || $_product->isGrouped()) ) { ?>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $addtocart ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<span id='ajax_loader<?php echo $_product->getId()?>' style='display:none;float:left'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+							<?php } else {   ?>
+                              <?php if(($_product->getTypeId()=='bundle')){ ?>
+							  	<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $addtocart ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<span id='ajax_loader<?php echo $_product->getId()?>' style='display:none;float:left'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+							<?php } } ?>
+
+						  <?php }else{ ?>
+						    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $addtocart ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+
+                          <?php } ?>
+                        <!-- ajax cart end -->
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+                    <?php //Add-to links
+                        if ($gc['display_addtolinks'] != 0 && !$gc['addtolinks_simple'])
+                        {
+                            echo $helpTemplate->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right addto-texticons');
+                        }
+                    ?>
+                </div> <!-- end: actions -->
+            </li>
+
+             <?php if($timer_active == 1) :?>   <!-- timer active start -->
+             <?php $special_to_date=''; ?>
+                  <?php if(($_product->getPrice() > $_product->getSpecialPrice()) && (strtotime($special_to_date)>=strtotime(Mage::getModel('core/date')->date('Y-m-d H:i:s')))) : ?>
+
+                  <?php if($_product->getSpecialPrice()!= 0 || $_product->getSpecialPrice()!= "" ) :?>
+                          <script type="text/javascript">
+                            var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)).' 11:59:00 PM'; ?>");
+                            start = "<?php echo Date("m/d/y h:i:s A", strtotime(Mage_Core_Model_Locale::date(null, null, "en_US", true))); ?>";
+                            start_date = Date.parse(start);
+                            var dnow<?php echo $count; ?> = new Date(start_date);
+                            if(CountStepper>0)
+                                ddiff= new Date((dnow<?php echo $count; ?>)-(dthen<?php echo $count; ?>));
+                            else
+                                ddiff = new Date((dthen<?php echo $count; ?>)-(dnow<?php echo $count; ?>));
+                            gsecs<?php echo $count; ?> = Math.floor(ddiff.valueOf()/1000);
+                            var iid<?php echo $count; ?> = "countbox_<?php echo $count; ?>";
+                            CountBack(gsecs<?php echo $count; ?>,"countbox_"+j, j);
+                            j++;
+        </script>
+                <?php $count = $count + 1; ?>
+                <?php endif;endif; ?>
+                <?php endif; ?> <!-- timer active ends -->
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; //end: if grid mode ?>
+
+    <?php if (!$hideToolbar): ?>
+        <div class="toolbar-bottom">
+            <?php echo $this->getToolbarHtml() ?>
+        </div>
+    <?php endif; ?>
+</div>
+<?php endif; ?>
+
+<?php if ($_collectionSize && $tmpHtml = $this->getChildHtml('block_category_below_collection')): ?>
+    <div class="block_category_below_collection std"><?php echo $tmpHtml; ?></div>
+<?php endif; ?>
+
+ <style>
+.timer-grid{float: left;width: 100%;padding: 0;color: #<?php echo $timer_color; ?>;font-size: 18px;font-family: arial;font-weight: bold;}
+.timer-list{float: left;width: 100%;padding: 0;color: #<?php echo $timer_color; ?>;font-size: 18px;font-family:arial;font-weight: bold;}
+.timerdate{float: left;width: 100%;padding:0 0 3px 0;color: #<?php echo $desc_color; ?>;font-size: 12px;}
+</style>
+<?php if(DISABLE_AJAX_MANUAL_SCRIPTS !== true): ?>
+<script type="text/javascript"> var url_topcart = "<?php echo $this->getUrl('ajax/ajax/headercart'); ?>";</script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl("js/tatva_ajax/tatva_ajax_cart.js"); ?>"></script>
+<?php endif; ?>

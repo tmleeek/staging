@@ -1,0 +1,217 @@
+[06-Nov-2015 08:55:05 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[06-Nov-2015 10:13:58 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 72 bytes) in /data/apache/htdocs/magento/lib/Zend/Db/Statement/Pdo.php on line 290
+[10-Nov-2015 10:19:35 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 10:19:42 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 10:19:44 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 10:19:46 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 10:19:47 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 10:44:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 11:58:17 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 12:00:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[10-Nov-2015 12:00:56 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:129
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(129): PDO->__construct('mysql:host=loca...', 'azb_pre_usr', 'Nu64*DSA', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_Adapter in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 144
+[18-Feb-2016 05:45:58 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 05:46:04 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 05:46:08 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 05:46:14 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 05:46:18 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 05:46:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 05:47:01 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 06:10:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 06:10:48 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[18-Feb-2016 06:10:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[24-Feb-2016 15:20:49 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] No such file or directory' in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php:132
+Stack trace:
+#0 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(132): PDO->__construct('mysql:host=loca...', 'dataazb_liveazb', 'lor5#4!3fTg', Array)
+#1 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Mysql.php(96): Zend_Db_Adapter_Pdo_Abstract->_connect()
+#2 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(320): Zend_Db_Adapter_Pdo_Mysql->_connect()
+#3 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Abstract.php(459): Varien_Db_Adapter_Pdo_Mysql->_connect()
+#4 /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php(241): Zend_Db_Adapter_Abstract->query('SET NAMES utf8', Array)
+#5 /data/apache/htdocs/magento/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SET NAMES utf8', Array)
+#6 /data/apache/htdocs/magento/app/code/core/Mage/Core/Model/Resource.php(169): Varien_Db_ in /data/apache/htdocs/magento/lib/Zend/Db/Adapter/Pdo/Abstract.php on line 147
+[28-Sep-2016 05:33:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[28-Sep-2016 05:33:36 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[21-Nov-2016 11:59:27 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[21-Nov-2016 11:59:27 UTC] PHP Warning:  Module 'ssh2' already loaded in Unknown on line 0
+[21-Nov-2016 11:59:27 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[21-Nov-2016 13:07:29 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[21-Nov-2016 13:07:29 UTC] PHP Warning:  Module 'ssh2' already loaded in Unknown on line 0
+[21-Nov-2016 13:07:29 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[24-Feb-2017 08:47:50 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[24-Feb-2017 08:48:30 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[24-Feb-2017 08:54:49 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[23-Jan-2018 04:13:04 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[23-Jan-2018 04:13:04 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Carl configuration is missing' in /data/devazb/public_html/app/code/community/MDN/Mpm/Helper/Carl.php:206
+Stack trace:
+#0 /data/devazb/public_html/app/code/community/MDN/Mpm/Helper/Carl.php(176): MDN_Mpm_Helper_Carl->getToken()
+#1 /data/devazb/public_html/app/code/community/MDN/Mpm/Model/Export/Catalog.php(30): MDN_Mpm_Helper_Carl->getChannelsSubscribed()
+#2 /data/devazb/public_html/app/code/community/MDN/Mpm/Helper/Export.php(28): MDN_Mpm_Model_Export_Catalog->generateCatalog()
+#3 /data/devazb/public_html/app/code/community/MDN/Mpm/Helper/Export.php(7): MDN_Mpm_Helper_Export->generateCatalog()
+#4 /data/devazb/public_html/shell/bmsPerformanceCatalogExport.php(16): MDN_Mpm_Helper_Export->ExportCatalog()
+#5 /data/devazb/public_html/shell/bmsPerformanceCatalogExport.php(24): MDN_Shell_CatalogExport->run()
+#6 {main}
+  thrown in /data/devazb/public_html/app/code/community/MDN/Mpm/Helper/Carl.php on line 206
+[27-Feb-2018 12:15:41 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[27-Feb-2018 12:24:21 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[27-Feb-2018 12:24:30 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[27-Feb-2018 12:25:42 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0
+[27-Feb-2018 12:31:08 UTC] PHP Warning:  Module 'iconv' already loaded in Unknown on line 0

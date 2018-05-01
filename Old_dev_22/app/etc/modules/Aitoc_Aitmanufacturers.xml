@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Aitoc_Aitmanufacturers>
+            <active>true</active>
+            <codePool>local</codePool>
+            <self_name>Shop By Brands</self_name>
+            <priority>1000</priority>
+        </Aitoc_Aitmanufacturers>
+    </modules>
+</config>
+<!--
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->

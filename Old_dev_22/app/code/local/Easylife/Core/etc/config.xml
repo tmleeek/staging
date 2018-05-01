@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Easylife_Core>
+            <version>0.0.3</version>
+        </Easylife_Core>
+    </modules>
+    <global>
+        <resources>
+            <easylife_core_setup>
+                <setup>
+                    <module>Easylife_Core</module>
+                </setup>
+            </easylife_core_setup>
+        </resources>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <system_store_edit_form>Easylife_Core_Block_Adminhtml_System_Store_Edit_Form</system_store_edit_form>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+</config>

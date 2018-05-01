@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Freegift>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+                <Mage_Admin/>
+            </depends>
+        </Tatva_Freegift>
+    </modules>
+</config> 

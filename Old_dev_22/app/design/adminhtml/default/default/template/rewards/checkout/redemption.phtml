@@ -1,0 +1,15 @@
+
+<?php if ($this->hasCartPointsData()): ?>
+    <?php echo $this->getChildHtml('rewards_cartpoints_spender_js') ?>
+    
+    <div class="entry-edit box-right rewards-cartpoints-spender-box">
+        <div class="entry-edit-head">
+            <h4 class="icon-head"><?php echo $this->__("Spend Points") ?></h4>
+        </div>
+        <fieldset class="np">
+            <div class="content" style="text-align: center;">
+                <?php echo $this->getChild('rewards_cartpoints_spender')->toHtml() ?>
+            </div>
+        </fieldset>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+     <default>
+	<reference name="head">
+            <action method="addCss"><stylesheet>css/productvideo/style.css</stylesheet></action>
+            <action method="addCss" ><stylesheet>css/tinybox2/style.css</stylesheet></action>
+            <action method="addJs"  ><script>niveus/tinybox2/tinybox.js</script></action>
+	</reference>		
+    </default>
+    
+    <catalog_product_view translate="label">
+    	<reference name="content">
+    		<reference name="product.info">
+    			<reference name="product.info.media">
+    				<block type="productvideo/video" name="product.info.media.video" as="media_video" template="niveusproductvideo/video.phtml"/>
+    			</reference>
+    		</reference>
+    	</reference>
+    </catalog_product_view>
+
+</layout>

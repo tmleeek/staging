@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Core>
+            <version>0.1.0</version>
+        </Tatva_Core>
+    </modules>
+    <global>
+       <!-- <models>
+            <core>
+                <rewrite>
+                    <url_rewrite>Tatva_Core_Model_Url_Rewrite</url_rewrite>
+                </rewrite>
+           </core>
+        </models>-->
+		<!--<models>
+            <core>
+                <rewrite>
+                    <email_template>Tatva_Core_Model_Email_Template</email_template>
+                </rewrite>
+           </core>
+        </models>-->
+		<resources>
+            <tatvacore_setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tatvacore_setup>
+            <tatvacore_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tatvacore_write>
+            <tatvacore_read>
+                <connection>
+                    <use>core_read</use>
+                    </connection>
+            </tatvacore_read>
+        </resources>
+    </global>
+</config>

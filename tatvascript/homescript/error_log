@@ -1,0 +1,103 @@
+[09-Feb-2018 13:56:24 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 13:56:24 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 13:56:24 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 13:57:07 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 13:57:07 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 13:57:07 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 13:57:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 13:57:10 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 13:57:10 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 13:58:13 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 13:58:13 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 13:58:13 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 14:02:29 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:02:29 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:02:29 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 14:06:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:06:10 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:06:11 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 14:07:15 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:07:15 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:07:15 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 14:07:16 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:07:16 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:07:17 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 14:07:19 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:07:19 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:07:19 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 20
+[09-Feb-2018 14:21:45 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:21:46 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:21:46 UTC] PHP Fatal error:  Call to undefined function pinr_r() in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 15
+[09-Feb-2018 14:22:05 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:22:05 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:23:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:23:20 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:23:20 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 15
+[09-Feb-2018 14:24:34 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:24:34 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:24:34 UTC] PHP Fatal error:  Call to a member function getPdf() on a non-object in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 15
+[09-Feb-2018 14:24:50 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:24:50 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:24:50 UTC] PHP Fatal error:  Using $this when not in object context in /home/azboutik/public_html/tatvascript/homescript/test_invoice.php on line 17
+[09-Feb-2018 14:30:57 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:30:57 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:31:35 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:31:35 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:31:56 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:31:56 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[09-Feb-2018 14:42:48 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[09-Feb-2018 14:42:48 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[20-Feb-2018 04:42:29 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[20-Feb-2018 04:42:29 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:02:47 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:02:47 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:03:41 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:03:41 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:08:39 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:08:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:10:03 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:10:03 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:10:05 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:10:05 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:10:53 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:10:53 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:10:54 UTC] PHP Parse error:  syntax error, unexpected '*' in /home/azboutik/public_html/app/code/local/Tatva/MarketPlaces/Model/Rueducommerce.php on line 113
+[17-Apr-2018 14:11:08 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:11:08 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:13:46 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:13:46 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:15:02 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:15:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:17:02 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:17:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:17:20 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:17:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:18:11 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:18:11 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:20:15 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:20:15 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:20:15 UTC] PHP Fatal error:  Call to undefined method SimpleXMLElement::getData() in /home/azboutik/public_html/app/code/local/Tatva/MarketPlaces/Model/Rueducommerce.php on line 188
+[17-Apr-2018 14:20:31 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:20:31 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:21:39 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:21:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:21:47 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:21:47 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:21:48 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:21:48 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:26:11 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:26:11 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:28:46 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:28:46 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:28:52 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:28:52 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:34:41 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:34:41 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:37:37 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:37:37 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:48:12 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:48:12 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:49:28 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:49:28 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[17-Apr-2018 14:51:10 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[17-Apr-2018 14:51:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0

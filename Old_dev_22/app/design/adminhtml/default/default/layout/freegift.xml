@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <!--<freegift_adminhtml_freegift_index>
+        <reference name="content">
+            <block type="freegift/adminhtml_freegift" name="freegift" />
+        </reference>
+    </freegift_adminhtml_freegift_index>-->
+	<adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>freegift</name>
+                <block>freegift/adminhtml_catalog_product_tab</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+	<adminhtml_catalog_product_freegift>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="freegift/adminhtml_freegift" name="catalog.product.edit.tab.freegift"/>
+            <block type="adminhtml/widget_grid_serializer" name="freegift_grid_serializer">
+                <reference name="freegift_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>catalog.product.edit.tab.freegift</grid_block_name>
+                        <data_callback>getSelectedFreegiftProducts</data_callback>
+                        <hidden_input_name>links[freegift]</hidden_input_name>
+                        <reload_param_name>products_freegift</reload_param_name>
+                    </action>
+                    <!--<action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>-->
+                </reference>
+            </block>
+        </block>
+    </adminhtml_catalog_product_freegift>
+	<adminhtml_catalog_product_freegiftgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="freegift/adminhtml_freegift" name="catalog.product.edit.tab.freegift"/>
+        </block>
+    </adminhtml_catalog_product_freegiftgrid>
+	
+</layout>

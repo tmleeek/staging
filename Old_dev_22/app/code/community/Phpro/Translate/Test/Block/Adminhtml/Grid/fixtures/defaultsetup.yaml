@@ -1,0 +1,2 @@
+config:
+  default/admin/security/use_form_key: 0 # No secure keys in url

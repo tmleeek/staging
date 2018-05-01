@@ -1,0 +1,162 @@
+
+<div class="<?php echo $this->getWidgetNotificationClass(); ?>" style="<?php echo $this->getInlineStyling(); ?>">
+    <span id="rewardssocial-notification-loading" style="display: none;">
+        <img src="<?php echo $this->getSkinUrl('images/rewardssocial/ajax-loader.gif'); ?>" />
+    </span>
+    <span class="not-logged-in" style="display: none;">
+        <?php echo $this->getTextWithLoginLinks($this->__("[login_link]Login or create an account[/login_link] to earn <b>%s</b> for sharing!", $this->getPointsCurrency())) ?>
+    </span>
+    <span class="many-rewards" style="display: none;">
+        <?php echo $this->__("Earn <b>%s</b> for sharing!", $this->getPointsCurrency()) ?>
+    </span>
+    <?php foreach ($this->getPointsNotifications() as $name => $block): ?>
+        <span id="rewardssocial-<?php echo $name ?>-notification" class="one-reward" style="display: none;">
+            <?php echo $block->toHtml() ?>
+        </span>
+    <?php endforeach ?>
+</div>
+
+<script type="text/javascript">
+    var socialWidgetName = '<?php echo $this->getSocialWidgetName(); ?>';
+    window[socialWidgetName] = new RewardsSocialWidgetHover();
+</script>
+
+<?php if ($this->getHasPredictedPoints()): ?>
+    <script type="text/javascript">
+        Event.observe(document, 'dom:loaded', function() {
+
+            var isLoggedIn  = <?php echo ($this->isLoggedIn() ? 'true' : 'false') ?>,
+                rewardCount = <?php echo $this->getRewardCount() ?>,
+                widgetNotificationClass = '<?php echo $this->getWidgetNotificationClass(); ?>',
+                socialWidgetName = '<?php echo $this->getSocialWidgetName(); ?>';
+
+            var notLoggedIn = $$('.' + widgetNotificationClass + ' .not-logged-in')[0],
+                manyRewards = $$('.' + widgetNotificationClass + ' .many-rewards')[0],
+                oneReward   = $$('.' + widgetNotificationClass + ' .one-reward');
+
+            // Magento prior to 1.6.1.0 has Prototype 1.6.0.3 which doesn't support
+            // 'mouseenter' and 'mouseleave' events
+            var needCustomEvents = (Prototype.Version.search("1.6") === 0);
+            mouseenter = needCustomEvents ? 'custom:mouseenter' : 'mouseenter';
+            mouseleave = needCustomEvents ? 'custom:mouseleave' : 'mouseleave';
+
+            var hideAllRewardNotifications = function()
+            {
+                notLoggedIn.style.setProperty('display', 'none');
+                manyRewards.style.setProperty('display', 'none');
+                oneReward.each(function(element) {
+                    element.style.setProperty('display', 'none');
+                });
+            };
+
+            var showRewardNotification = function(element) {
+                if (element) {
+                    element.style.setProperty('display', 'block');
+                }
+            };
+
+            var enableWidgetHover = function()
+            {
+                var i,
+                    widgetName,
+                    widget,
+                    rewardNotifications = {},
+                    widgets = window[socialWidgetName].widgets;
+
+                for (i = 0; i < widgets.length; i += 1) {
+                    widgetName = widgets[i];
+
+                    rewardNotifications[widgetName] = $('rewardssocial-' + widgetName + '-notification');
+                    widget = $$('.rewardssocial-widget.rewardssocial-' + widgetName)[0];
+
+                    // here we wrap the callback in another function call because local var 'widgetName' will have changed by the time the callback runs
+                    Event.observe(widget, mouseenter, (function(persistentWidgetName) {
+                        var rewardNotification = rewardNotifications[persistentWidgetName];
+                        return function(e) {
+                            hideAllRewardNotifications();
+                            if (typeof rewardNotification !== 'undefined') {
+                                showRewardNotification(rewardNotification);
+                            }
+                        };
+                    })(widgetName));
+
+                    Event.observe(widget, mouseleave, function(e) {
+                        hideAllRewardNotifications();
+                        showRewardNotification(manyRewards);
+                    });
+                }
+            };
+
+            if (!isLoggedIn) {
+                showRewardNotification(notLoggedIn);
+            } else if (rewardCount == 1) {
+                // Only one reward available; no need to use a hover.
+                showRewardNotification(oneReward[0]);
+            } else if (rewardCount > 1) {
+                // More than one reward is available, so show a simple message and show details on hover.
+                showRewardNotification(manyRewards);
+                enableWidgetHover();
+            }
+        });
+
+        (function(){
+            function firstCommonAncestor(elm1, elm2){
+                var p = elm1.up();
+                while( !elm2.descendantOf(p) ){
+                    p = p.up();
+                }
+                return p;
+            }
+            function stopEvent(e){
+                try{
+                    e.stop();
+                }catch(ex){}
+            }
+            Event.observe(document, 'mouseout', function(e){
+                var from = e.element();
+                var to = e.relatedTarget;
+                p = null;
+                if ( !to || (from !== to && !to.descendantOf(from))) {
+                    /* mouseleave should bubble up until the to element because we have left all elements up to that one */
+                    var stopOn = null;
+                    if( to ){
+                        if( from.descendantOf(to) ){
+                            stopOn = to.childElements();
+                        }else{
+                            p = firstCommonAncestor(from, to);
+                            if( p && to.descendantOf(p) ){
+                                stopOn = p.childElements();
+                            }
+                        }
+                    }
+                    if( stopOn ){
+                        stopOn.invoke('observe', 'custom:mouseleave', stopEvent);
+                    }
+                    from.fire('custom:mouseleave');
+                    if( stopOn ){
+                        stopOn.invoke('stopObserving', 'custom:mouseleave', stopEvent);
+                    }
+                }
+                var p = null;
+                if( to && !from.descendantOf(to)){
+                    /* mouseenter can bubble, no problem! */
+                    var stopOn = null;
+                    if( to.descendantOf(from)){
+                        stopOn = from.childElements();
+                    }else{
+                        // do first common ancestor's children, see below.
+                        p = firstCommonAncestor(to, from);
+                        stopOn = p.childElements();
+                    }
+                    if( stopOn ){
+                        stopOn.invoke('observe', 'custom:mouseenter', stopEvent);
+                    }
+                    to.fire('custom:mouseenter');
+                    if( stopOn ){
+                        stopOn.invoke('stopObserving', 'custom:mouseenter', stopEvent);
+                    }
+                }
+            });
+        })();
+    </script>
+<?php endif ?>

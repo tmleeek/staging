@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000373</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>1</item_count>
+    <created_at>2017-06-28 13:03:03</created_at>
+    <total_amount>44.9500</total_amount>
+    <total_discount>44.9500</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-403@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Anne Marie</firstname>
+      <lastname>Denoyer</lastname>
+      <company>23 avenue du vieux tharon</company>
+      <address1>23 avenue du vieux tharon</address1>
+      <address2></address2>
+      <postal_code>44730</postal_code>
+      <city>tharon plage saint michel chef chef</city>
+      <country>FR</country>
+      <phone>0688926627</phone>
+    </billing>
+    <shipping>
+      <firstname>Anne Marie</firstname>
+      <lastname>Denoyer</lastname>
+      <company>23 avenue du vieux tharon</company>
+      <address1>23 avenue du vieux tharon</address1>
+      <address2></address2>
+      <postal_code>44730</postal_code>
+      <city>tharon plage saint michel chef chef</city>
+      <country>FR</country>
+      <phone>0688926627</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>629</id>
+      <fbd_sku>az-boutique_60359</fbd_sku>
+      <supplier_sku>60359</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>44.9500</price>
+        <total>44.9500</total>
+        <discount>44.9500</discount>
+        <tax>0.0000</tax>
+        <weee>0.0500</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

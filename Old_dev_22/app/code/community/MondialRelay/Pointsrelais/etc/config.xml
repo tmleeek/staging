@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<MondialRelay_Pointsrelais>
+			<version>1.4.2</version>	
+			<depends>
+				<Mage_Adminhtml />
+				<Mage_Shipping />
+			</depends>
+		</MondialRelay_Pointsrelais>
+	</modules>
+	<default>
+		<carriers>
+			<pointsrelais>
+				<active>0</active>
+				<sallowspecific>0</sallowspecific>
+				<model>pointsrelais/carrier_pointsrelais</model>
+				<title>Mondial Relay - Livraison en point relais</title>
+				<specificerrmsg>L'expédition en Points Relais n'est pour le moment pas disponible. Si vous avez des questions concernant ce mode de livraison, merci de nous contacter.</specificerrmsg>
+				<handling_type>F</handling_type>
+				<package_weight>0</package_weight>
+				<enseigne>BDTEST12</enseigne>
+				<marque>BD</marque>
+				<cle>MRT_2012</cle>
+				<marque_url>BDTEST1211</marque_url>
+				<cle_url>MRT_2012</cle_url>
+				<adresse1_enseigne>test</adresse1_enseigne>
+				<adresse3_enseigne>test</adresse3_enseigne>
+				<adresse4_enseigne></adresse4_enseigne>
+				<cp_enseigne>02270</cp_enseigne>
+				<ville_enseigne>crecy sur serre</ville_enseigne>
+				<pays_enseigne>FR</pays_enseigne>
+				<tel_enseigne>0123456789</tel_enseigne>
+				<mobile_enseigne></mobile_enseigne>
+				<mail_enseigne>test@test.com</mail_enseigne>
+			</pointsrelais>
+			<pointsrelaiscd>
+				<active>0</active>
+				<sallowspecific>0</sallowspecific>
+				<model>pointsrelais/carrier_pointsrelaiscd</model>
+				<title>Mondial Relay - Livraison en ColisDrive</title>
+				<specificerrmsg>L'expédition en Points Relais n'est pour le moment pas disponible. Si vous avez des questions concernant ce mode de livraison, merci de nous contacter.</specificerrmsg>
+				<handling_type>F</handling_type>
+				<package_weight>0</package_weight>
+				<enseigne>BDTEST12</enseigne>
+				<marque>BD</marque>
+				<cle>MRT_2012</cle>
+				<marque_url>BDTEST1211</marque_url>
+				<cle_url>MRT_2012</cle_url>
+				<adresse1_enseigne>test</adresse1_enseigne>
+				<adresse3_enseigne>test</adresse3_enseigne>
+				<adresse4_enseigne>10</adresse4_enseigne>
+				<cp_enseigne>02270</cp_enseigne>
+				<ville_enseigne>crecy sur serre</ville_enseigne>
+				<pays_enseigne>FR</pays_enseigne>
+				<tel_enseigne>0123456789</tel_enseigne>
+				<mobile_enseigne></mobile_enseigne>
+				<mail_enseigne>test@test.com</mail_enseigne>
+			</pointsrelaiscd>
+			<pointsrelaisld1>
+				<active>0</active>
+				<model>pointsrelais/carrier_pointsrelaisld1</model>
+				<title>Mondial Relay - Livraison à Domicile</title>
+				<description>Mondial Relay - Livraison à Domicile</description>
+				<specificerrmsg>L'expédition en Points Relais n'est pour le moment pas disponible. Si vous avez des questions concernant ce mode de livraison, merci de nous contacter.</specificerrmsg>
+				<enseigne>BDTEST12</enseigne>
+				<marque>BD</marque>
+				<cle>MRT_2012</cle>
+				<marque_url>BDTEST1211</marque_url>
+				<cle_url>MRT_2012</cle_url>
+				<adresse1_enseigne>test</adresse1_enseigne>
+				<adresse3_enseigne>test</adresse3_enseigne>
+				<adresse4_enseigne></adresse4_enseigne>
+				<cp_enseigne>02270</cp_enseigne>
+				<ville_enseigne>crecy sur serre</ville_enseigne>
+				<pays_enseigne>FR</pays_enseigne>
+				<tel_enseigne>0123456789</tel_enseigne>
+				<mobile_enseigne></mobile_enseigne>
+				<mail_enseigne>test@test.com</mail_enseigne>
+                
+			</pointsrelaisld1>
+			<pointsrelaislds>
+				<active>0</active>
+				<model>pointsrelais/carrier_pointsrelaislds</model>
+				<title>Mondial Relay - Livraison à Domicile spécialisé</title>
+				<description>Mondial Relay - Livraison à Domicile spécialisé</description>
+				<specificerrmsg>L'expédition en Points Relais n'est pour le moment pas disponible. Si vous avez des questions concernant ce mode de livraison, merci de nous contacter.</specificerrmsg>
+				<default_developed_length>10</default_developed_length>
+				<enseigne>BDTEST12</enseigne>
+				<marque>BD</marque>
+				<cle>MRT_2012</cle>
+				<marque_url>BDTEST1211</marque_url>
+				<cle_url>MRT_2012</cle_url>
+				<adresse1_enseigne>test</adresse1_enseigne>
+				<adresse3_enseigne>test</adresse3_enseigne>
+				<adresse4_enseigne></adresse4_enseigne>
+				<cp_enseigne>02270</cp_enseigne>
+				<ville_enseigne>crecy sur serre</ville_enseigne>
+				<pays_enseigne>FR</pays_enseigne>
+				<tel_enseigne>0123456789</tel_enseigne>
+				<mobile_enseigne></mobile_enseigne>
+				<mail_enseigne>test@test.com</mail_enseigne>
+			</pointsrelaislds>
+		</carriers>
+	</default>
+	<global>
+		<models>
+			<pointsrelais>
+				<class>MondialRelay_Pointsrelais_Model</class>
+                <resourceModel>pointsrelais_mysql4</resourceModel>
+			</pointsrelais>
+            <pointsrelais_mysql4>
+                <class>MondialRelay_Pointsrelais_Model_Mysql4</class>
+                <entities>
+                    <pointsrelais>
+                        <table>mondialrelay_pointsrelais</table>
+                    </pointsrelais>
+                    <pointsrelaisldscd>
+                        <table>mondialrelay_pointsrelaiscd</table>
+                    </pointsrelaisldscd>
+                    <pointsrelaisld1>
+                        <table>mondialrelay_pointsrelaisld1</table>
+                    </pointsrelaisld1>
+                    <pointsrelaislds>
+                        <table>mondialrelay_pointsrelaislds</table>
+                    </pointsrelaislds>
+                </entities>
+            </pointsrelais_mysql4>
+			<adminhtml>
+				<rewrite>
+					<system_config_source_shipping_pointsrelais>MondialRelay_Pointsrelais_Model_System_Config_Source_Shipping_Pointsrelais</system_config_source_shipping_pointsrelais>
+					<system_config_backend_shipping_pointsrelais>MondialRelay_Pointsrelais_Model_System_Config_Backend_Shipping_Pointsrelais</system_config_backend_shipping_pointsrelais>
+                    
+					<system_config_source_shipping_pointsrelaisld1>MondialRelay_Pointsrelais_Model_System_Config_Source_Shipping_Pointsrelaisld1</system_config_source_shipping_pointsrelaisld1>
+					<system_config_backend_shipping_pointsrelaisld1>MondialRelay_Pointsrelais_Model_System_Config_Backend_Shipping_Pointsrelaisld1</system_config_backend_shipping_pointsrelaisld1>
+                    
+					<system_config_source_shipping_pointsrelaislds>MondialRelay_Pointsrelais_Model_System_Config_Source_Shipping_Pointsrelaislds</system_config_source_shipping_pointsrelaislds>
+					<system_config_backend_shipping_pointsrelaislds>MondialRelay_Pointsrelais_Model_System_Config_Backend_Shipping_Pointsrelaislds</system_config_backend_shipping_pointsrelaislds>
+                    
+					<system_config_source_shipping_pointsrelaiscd>MondialRelay_Pointsrelais_Model_System_Config_Source_Shipping_Pointsrelaiscd</system_config_source_shipping_pointsrelaiscd>
+					<system_config_backend_shipping_pointsrelaiscd>MondialRelay_Pointsrelais_Model_System_Config_Backend_Shipping_Pointsrelaiscd</system_config_backend_shipping_pointsrelaiscd>
+				</rewrite>
+		  	</adminhtml>
+		</models>
+        <blocks>
+            <pointsrelais>
+                <class>MondialRelay_Pointsrelais_Block</class>
+            </pointsrelais>
+			<adminhtml>
+				<rewrite>
+					<system_config_form>MondialRelay_Pointsrelais_Block_System_Config_Form</system_config_form>
+					<system_config_form_field_exportpointsrelais>MondialRelay_Pointsrelais_Block_System_Config_Form_Field_Exportpointsrelais</system_config_form_field_exportpointsrelais>
+					<system_config_form_field_exportpointsrelaiscd>MondialRelay_Pointsrelais_Block_System_Config_Form_Field_Exportpointsrelaiscd</system_config_form_field_exportpointsrelaiscd>
+					<system_config_form_field_exportpointsrelaisld1>MondialRelay_Pointsrelais_Block_System_Config_Form_Field_Exportpointsrelaisld1</system_config_form_field_exportpointsrelaisld1>
+					<system_config_form_field_exportpointsrelaislds>MondialRelay_Pointsrelais_Block_System_Config_Form_Field_Exportpointsrelaislds</system_config_form_field_exportpointsrelaislds>
+					<!--<sales_order_shipment_view>MondialRelay_Pointsrelais_Block_Sales_Order_Shipment_View</sales_order_shipment_view>-->
+				</rewrite>
+			</adminhtml>
+        </blocks>
+		<resources>
+			<pointsrelais_setup>
+				<setup>
+					<module>MondialRelay_Pointsrelais</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</pointsrelais_setup>
+            <pointsrelais_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </pointsrelais_write>
+            <pointsrelais_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </pointsrelais_read>
+		</resources>
+		<helpers>
+			<pointsrelais>
+				<class>MondialRelay_Pointsrelais_Helper</class>
+			</pointsrelais>
+		</helpers>
+		<!--<rewrite>
+			<mondialrelay_pointsrelais_sales_order_shipment>
+				<from><![CDATA[#^/.*sales_order_shipment/save/#]]></from>
+				<to>/pointsrelais/sales_order_shipment/save/</to>
+			</mondialrelay_pointsrelais_sales_order_shipment>
+		</rewrite>-->
+	</global>
+	<frontend>
+        <events>
+            <!--<sales_convert_quote_address_to_order>
+                <observers>
+                    <change_adress>
+                        <type>singleton</type>
+							<class>MondialRelay_Pointsrelais_Model_Observer</class>
+                        <method>changeAddress</method>
+                    </change_adress>
+                </observers>
+            </sales_convert_quote_address_to_order>-->
+        </events>
+        <routers>
+            <pointsrelais>
+                <use>standard</use>
+                <args>
+                    <module>MondialRelay_Pointsrelais</module>
+                    <frontName>pointsrelais</frontName>
+                </args>
+            </pointsrelais>
+        </routers>
+		<layout>
+            <updates>
+                <pointsrelais>
+                    <file>pointsrelais.xml</file>
+                </pointsrelais>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <pointsrelais>
+                <use>admin</use>
+                <args>
+                    <module>MondialRelay_Pointsrelais</module>
+                    <frontName>pointsrelais</frontName>
+                </args>
+            </pointsrelais>
+        </routers>
+    </admin>
+	<adminhtml>
+		<menu>
+            <sales translate="title" module="pointsrelais">
+                <title>Sales</title>
+                <sort_order>20</sort_order>
+                <depends><module>Mage_Sales</module></depends>
+                <children>
+                    <mondialrelay translate="title" module="sales">
+                        <title>Mondial Relay</title>
+                        <sort_order>31</sort_order>
+						<children>
+							<impression translate="title" module="sales">
+								<title>Impression des étiquettes</title>
+								<action>pointsrelais/sales_impression</action>
+								<sort_order>10</sort_order>
+							</impression>
+						</children>
+                    </mondialrelay>
+				</children>
+			</sales>
+		</menu>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<sales translate="title" module="sales">
+							<title>Sales</title>
+							<sort_order>20</sort_order>
+							<children>
+								<mondialrelay translate="title" module="sales">
+									<title>Mondial Relay</title>
+									<sort_order>31</sort_order>
+									<children>
+										<impression translate="title" module="sales">
+											<title>Impression des Ã©tiquettes</title>
+											<sort_order>10</sort_order>
+										</impression>
+									</children>
+								</mondialrelay>
+							</children>
+						</sales>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+	<stores>
+		<admin>
+			<design>
+				<theme>
+					<default>mondialrelay</default>
+				</theme>
+			</design>
+		</admin>
+	</stores>
+</config>

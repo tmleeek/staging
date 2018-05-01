@@ -1,0 +1,150 @@
+
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct();
+       $ait_model=Mage::getModel('aitmanufacturers/aitmanufacturers');
+       $catalogRuleProducts=$ait_model->getCatalofruledata($_product);
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div class="product-view tatvaoptionview" style="width:50%;">
+    <div class="product-essential" style="width:90%">
+    <?php $id = $this->getRequest()->getParam('id'); ?>
+    <?php if($id): ?>
+    <form action="<?php echo $this->getUrl('ajax/cart/updateItemOptions',array('id'=>$id)); ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    <?php else : ?>
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    <?php endif; ?>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="product-shop-options">
+             <div class="tatvaoption clearfix">
+             <div class="product-image-options"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(150, 118); ?>" /></div>
+             <div class="product-name-options">
+
+                 <h1>
+                 <?php $brand = $this->getBrand($_product->getMarque()); ?>
+
+			     <?php if($brand): ?>
+			       <?php echo $brand->getValue() ?><?php echo ' - '; ?>
+			     <?php endif;?>
+                 <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                 <?php if($_product->getGammeCollectionNew()!=''): ?>
+                 <?php $new_coll=''; ?>
+                 <?php $new_coll=$ait_model->getGammeCollection($_product['gamme_collection_new'],$storeId); ?>
+                    <?php echo ' - '; ?><?php echo $new_coll; ?>
+                 <?php endif; ?>
+                 <?php if($_product->getManufacturer()): ?>
+
+                 <?php $brand_name = $ait_model->getManufacturerName($_product->getManufacturer(),$storeId); ?>
+                 <?php echo ' - '; ?><?php echo $brand_name; ?>
+                 <?php endif; ?>
+               </h1>
+
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                
+                <?php if($catalogRuleProducts->getSize()): ?>
+                   <?php foreach($catalogRuleProducts as $catalogRule){ ?>
+                      <?php $rule = Mage::getModel('catalogrule/rule')->load($catalogRule->getRuleId());    ?>
+                      <?php if(strtotime($rule->getToDate()) >= strtotime(Mage::getModel('core/date')->date('Y-m-d H:i:s'))): ?>
+                       <div class="untildate"><?php echo $this->__('Offer valid until:');  ?>: <?php echo date("d/m/Y", strtotime($rule->getToDate())); ?></div>
+                  <?php endif; break;?>
+                  <?php } ?>
+                  <?php endif; ?>
+             </div>
+             </div>
+             <div class="product-option-options">
+              <div class="ajaxactions">
+                <button onclick="window.open('<?php echo $_product->getProductUrl() ?>')" class="button btn-cart view-button" title="<?php echo $this->__('View Product'); ?>" type="button"><span><span><?php echo $this->__('View Product'); ?></span></span></button>
+              </div>
+
+             <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box ajaxoptionbox">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+    		        
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+
+
+        <div class="clearer"></div>
+          </div>
+     </div>
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+        <?php endif;?>
+
+    </form>
+
+    <script type="text/javascript">
+        var cart_url= "<?php echo $this->getUrl('checkout/cart'); ?>";
+        var image	= "<?php echo $this->getSkinUrl('images/tatva_ajax/ajax_loader.gif'); ?>";
+        var loading_text = "<?php echo $this->__('Please wait...'); ?>";
+    </script>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+    	productAddToCartForm.submit = function(button, url) {  
+		if (this.validator.validate()) {
+			var form = this.form;
+			var oldUrl = form.action;
+			if (url) {
+				form.action = url;
+			}
+			var e = null;
+			// Start of our new ajax code
+			if (!url) {
+				url = jQuery('#product_addtocart_form').attr('action');
+			}
+			url = url.replace("checkout/cart","ajax/cart"); // New Code
+			var data = jQuery('#product_addtocart_form').serialize();
+			data += '&isAjax=1';
+            showviewloading();
+			try {
+				jQuery.ajax( {
+					url : url,
+					dataType : 'json',
+					type : 'post',
+					data : data,
+					success : function(data) {
+					    jQuery("#pro-view-loading").remove();
+                        jQuery("#pro-view-img").remove();
+                        parent.setAjaxData(data,true);
+				    }
+				});
+			} catch (e) {
+			}
+
+			// End of our new ajax code
+			this.form.action = oldUrl;
+			if (e) {
+				throw e;
+			}
+		}
+	}.bind(productAddToCartForm);
+    productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    </div>
+</div>

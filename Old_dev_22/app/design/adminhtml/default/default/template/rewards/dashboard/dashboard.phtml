@@ -1,0 +1,49 @@
+<?php if ($this->displayRewardsDashboard()) : ?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4><?php echo $this->__("Sweet Tooth Usage") ?></h4>
+    </div>
+    <fieldset class="rewards-np">
+        <div id="rewards_dashboard" style="padding:10px;">
+            <div id="rewards_dashboard_loading" style="display: none;">
+                <span>
+                    <img src="<?php echo $this->getSkinUrl('images/ajax-loader-tr.gif') ?>" alt="<?php echo Mage::helper('adminhtml')->__('Loading...') ?>"/>
+                    <br/><?php echo Mage::helper('adminhtml')->__('Refreshing...') ?>
+                </span>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    var rewardsDashboardLoading = $('rewards_dashboard_loading');
+    var usageBlock = Element.extend($('rewards_dashboard'));
+    var checkRewardsUsageUri = "<?php echo $this->getUrl('rewardsadmin/manage_dashboard_usage/checkUsage'
+        , array('_forced_secure' => $this->getRequest()->isSecure())) ?>";
+
+    window.onload = function() {
+
+        rewardsDashboardLoading.show();
+        // temporarily disable default Magento loader handler
+        Ajax.Responders.unregister(varienLoaderHandler.handler);
+
+        (function displayUsage() {
+            new Ajax.Request(
+                checkRewardsUsageUri,
+                {
+                    onSuccess: function(t) {
+                        var result = t.responseJSON;
+                        usageBlock.down().insert({before: result});
+                        rewardsDashboardLoading.hide();
+                    }
+                }
+            );
+        })();
+
+        // restore default Magento loader handler
+        Ajax.Responders.register(varienLoaderHandler.handler);
+    }
+//]]>
+</script>
+<?php endif;?>

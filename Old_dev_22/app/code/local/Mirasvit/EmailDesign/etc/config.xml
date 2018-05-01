@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Mirasvit_EmailDesign>
+            <version>1.0.0</version>
+        </Mirasvit_EmailDesign>
+    </modules>
+    <global>
+        <models>
+            <emaildesign>
+                <class>Mirasvit_EmailDesign_Model</class>
+                <resourceModel>emaildesign_resource</resourceModel>
+            </emaildesign>
+
+            <emaildesign_resource>
+                <class>Mirasvit_EmailDesign_Model_Resource</class>
+                <entities>
+                    <design>
+                        <table>m_emaildesign_design</table>
+                    </design>
+                    <template>
+                        <table>m_emaildesign_template</table>
+                    </template>
+                </entities>
+            </emaildesign_resource>
+        </models>
+        <helpers>
+            <emaildesign>
+                <class>Mirasvit_EmailDesign_Helper</class>
+            </emaildesign>
+        </helpers>
+        <resources>
+            <emaildesign_setup>
+                <setup>
+                    <module>Mirasvit_EmailDesign</module>
+                </setup>
+            </emaildesign_setup>
+        </resources>
+        <blocks>
+            <emaildesign>
+                <class>Mirasvit_EmailDesign_Block</class>
+            </emaildesign>
+        </blocks>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <emaildesign module="emaildesign">
+                    <file>mirasvit_emaildesign.xml</file>
+                </emaildesign>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <emaildesign>
+                <use>admin</use>
+                <args>
+                    <module>Mirasvit_EmailDesign</module>
+                    <frontName>emaildesign</frontName>
+                </args>
+            </emaildesign>
+        </routers>
+    </admin>
+</config>

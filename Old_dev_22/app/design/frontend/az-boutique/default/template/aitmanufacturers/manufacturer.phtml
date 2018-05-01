@@ -1,0 +1,104 @@
+<?php
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+/**
+* @copyright  Copyright (c) 2009 AITOC, Inc.
+*/
+?>
+<?php $manufacturer = $this->getManufacturer();
+$aitio_model =Mage::getModel('aitmanufacturers/aitmanufacturers')->getCollection();
+$collectionarray = array();
+$current_url = explode("/",$this->helper('core/url')->getCurrentUrl());
+$additional = array();
+foreach($aitio_model as $data)
+{
+
+    if(in_array($data['url_key'],$current_url))
+    {
+        $brandname = $data['title'];
+    }
+}
+$paging =  $this->getRequest()->getParam('p');
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="category-head">
+    <h2><?php echo $manufacturer->getManufacturer()?> <?php echo $brandname;?> </h2>
+</div>
+<?php
+if($paging < 2)
+{
+    if ($image = $manufacturer->getImage()){ ?>
+        <div><img src="<?php echo Mage::helper('aitmanufacturers/image')->getUrl($image) ?>" alt="<?php echo $this->htmlEscape($manufacturer->getTitle()) ?>" title="<?php echo $this->htmlEscape($manufacturer->getTitle()) ?>" style="padding: 0 10px 10px 0" /></div>
+    <?php
+    }
+
+    $content = $manufacturer->getContent();
+    if(!empty($content))
+    {
+    ?>   <br />
+        <div class="text-overflow-brand"><?php echo $content; ?></div>
+        <?php
+        if(strlen($content) > 600)
+        {
+        ?>
+            <a class="btn-overflow pinktext" href="#Viewmore"><?php echo $this->__("View more...") ?></a><br />
+        <?php
+        }
+    }
+}
+?>
+<div style="clear:both;"></div>
+<?php if ($productList = $this->getChildHtml('product_list')): ?>
+    <?php echo $productList;?>
+<?php else: ?>
+    <?php echo Mage::helper('aitmanufacturers')->__('There are no products matching the selection.') ?>
+<?php endif ?>
+<?php
+if($paging < 2 && !empty($content) && strlen($content) > 600)
+{
+?>
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function()
+{
+    var text = jQuery('.text-overflow-brand'),
+         btn = jQuery('.btn-overflow');
+           h = text[0].scrollHeight;
+
+    if(h > 129)
+    {
+    	btn.addClass('less');
+    	btn.css('display', 'block');
+    }
+
+    btn.click(function(e)
+    {
+      e.stopPropagation();
+
+      if (btn.hasClass('less'))
+      {
+          btn.removeClass('less');
+          btn.addClass('more');
+          btn.text('<?php echo $this->__("Reduce...") ?>');
+          text.animate({'height': h});
+      }
+      else
+      {
+          btn.addClass('less');
+          btn.removeClass('more');
+          btn.text('<?php echo $this->__("View more...") ?>');
+          text.animate({'height': '129px'});
+      }
+    });
+});
+</script>
+<?php
+}
+?>

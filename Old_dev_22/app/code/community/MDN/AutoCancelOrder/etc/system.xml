@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <autocancelorder translate="label" module="AutoCancelOrder">
+            <class>autocancelorder-section</class>
+            <header_css>autocancelorder-header</header_css>
+            <label>Auto Cancel Order</label>
+            <tab>sales</tab>
+            <sort_order>320</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <versionning translate="label">
+                    <label>Version</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <sender translate="label">
+                            <label>Version</label>
+                            <frontend_model>AutoCancelOrder/adminhtml_system_config_version</frontend_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sender>                        
+                    </fields>
+                </versionning>
+                <general translate="label">
+                    <label>General</label>
+                     <sort_order>1</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    <fields>
+                        <consider_order_after translate="label">
+                            <label>Consider Order after</label>
+                            <frontend_type>date</frontend_type> 
+                            <frontend_model>AutoCancelOrder/adminhtml_system_config_form_field_date</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Only orders placed after this date can be cancelled. type : YYYY-MM-dd</comment>
+                        </consider_order_after>
+                        <enable_cron translate="label">
+                            <label>Enable cron</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable_cron>
+                        <unhold translate="label">
+                            <label>Unhold Orders Before Cancel</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </unhold>
+                        <apply_on_orders translate="label">
+                            <label>Apply On Orders</label>
+                            <frontend_type>multiselect</frontend_type>
+                           <source_model>AutoCancelOrder/System_Config_Source_OrderStatus</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </apply_on_orders>
+                        <apply_on_order_button translate="label">
+                            <label>Apply</label>
+                            <frontend_model>AutoCancelOrder/System_Config_Button_ApplyOnOrder</frontend_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Click on this button to check immediately</comment>
+                        </apply_on_order_button>
+                        <show_logs_button translate="label">
+                            <label>Show logs</label>
+                            <frontend_model>AutoCancelOrder/System_Config_Button_ShowLogs</frontend_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Click on this button to show the logs</comment>
+                        </show_logs_button>
+                    </fields>
+                </general>
+                <delay_cancelation  translate="label">
+                    <label>Cancellation Periods in hours</label>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <delay_for_cancelation translate="label">
+                            <label>Delay for cancellation</label>
+                            <frontend_model>AutoCancelOrder/Adminhtml_System_Config_Form_Fieldset_PaymentMethodsTable</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                         </delay_for_cancelation>
+                    </fields>
+                 </delay_cancelation>    
+            </groups>
+        </autocancelorder>
+    </sections>
+</config>

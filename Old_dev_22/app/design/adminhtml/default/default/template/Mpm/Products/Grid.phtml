@@ -1,0 +1,43 @@
+<script>
+    var MPM_URL_UPDATE_PRODUCT = '<?php echo $this->getUrl('*/*/changeSetting', array('product_id' => '#product_id#', 'channel' => '#channel#', 'field' => '#field#', 'value' => '#value#')); ?>';
+    if (typeof(Translator) == 'undefined') {
+        var Translator = new Translate(<?php echo $this->getTranslateJson(); ?>);
+    } else {
+        Translator.add(<?php echo $this->getTranslateJson(); ?>);
+    }
+
+</script>
+
+<style>
+    .action_column
+    {
+        background-color: mistyrose;
+    }
+    .separator_column
+    {
+        background-color: #d9e8ea;
+    }
+    .bbw_column
+    {
+        background-color:beige;
+
+    }
+    .me_column
+    {
+        background-color: #ffe8bc;
+    }
+</style>
+
+<div class="entry-edit">
+
+    <div class="content-header">
+        <table cellspacing="0" class="grid-header">
+            <tr>
+                <td><h3><?php echo $this->__('Pricing wizard')?></h3></td>
+            </tr>
+        </table>
+    </div>
+
+    <?php echo $this->getGridParentHtml() ?>
+
+</div>

@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    function testConnection() {
+        var elem = $('<?php echo $this->getHtmlId() ?>');
+
+        params = {
+            awskey: $('cloudfront_general_key').value,
+            awssecret: $('cloudfront_general_secret').value,
+            awsorigin: $('cloudfront_general_origin').value,
+            awsdistribution: $('cloudfront_general_distribution').value
+        };
+
+        if(params.awsdistribution != "") {
+            var should_proceed = confirm("You already have a Distribution ID specified. Are you sure you want to create a new Distribution?");
+        } else {
+            var should_proceed = true;
+        }
+        
+        if(should_proceed) {
+            new Ajax.Request('<?php echo $this->getAjaxUrl() ?>', {
+                parameters: params,
+                onSuccess: function(response) {
+                    result = 'Error Creating Distribution';
+                    try {
+                        data = JSON.parse(response.responseText);
+                        if(data.status == "success") {
+                            $('cloudfront_general_distribution').value = data.distribution
+                            result = data.message;
+                            elem.removeClassName('fail').addClassName('success');
+                            alert("Distribution successfully created. Please remember, you must Save the Config for these changes to take effect. Distributions can take about 15 minutes to activate.");
+                        } else {
+                            elem.removeClassName('success').addClassName('fail');
+                            alert(data.message);
+                        }
+
+                    } catch (e) {
+                        elem.removeClassName('success').addClassName('fail');
+                    }
+                    $('connection_test_result').update(result);
+                }
+            });
+        }
+    }
+</script>
+<button style="" onclick="javascript:testConnection(); return false;" class="scalable" type="button" id="<?php echo $this->getHtmlId() ?>">
+    <span id="connection_test_result"><?php echo $this->escapeHtml($this->getButtonLabel()) ?></span>
+</button>

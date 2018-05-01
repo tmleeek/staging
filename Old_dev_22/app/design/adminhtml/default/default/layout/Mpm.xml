@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addCss">
+                <name>Mpm/mpm.css</name>
+            </action>
+            <action method="addJs">
+                <script>mdn/mpm.js</script>
+            </action>
+            <action method="addCss">
+                <name>Mpm/jquery-ui-1.11.4.custom/jquery-ui.min.css</name>
+            </action>
+            <action method="addCss">
+                <name>Mpm/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css</name>
+            </action>
+            <action method="addCss">
+                <name>Mpm/token-input.css</name>
+            </action>
+            <action method="addCss">
+                <name>Mpm/token-input-facebook.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="jquery_files" template="Mpm/JQuery.phtml" />
+        </reference>
+    </adminhtml_system_config_edit>
+
+    <adminhtml_mpm_pricer_errors>
+        <reference name="content">
+            <block type="Mpm/Pricer_Errors" template="Mpm/Pricer/Errors.phtml" />
+        </reference>
+    </adminhtml_mpm_pricer_errors>
+
+    <adminhtml_mpm_rules_index>
+        <reference name="content">
+            <block type="Mpm/Rules_Main" template="Mpm/Rules/Main.phtml" as="mpm_rules_main" name="mpm_rules_main">
+                <block type="Mpm/Rules_Tabs" as="mpm_rules_tab" name="mpm_rules_tab"/>
+            </block>
+        </reference>
+    </adminhtml_mpm_rules_index>
+
+    <adminhtml_mpm_dashboard_index>
+        <reference name="content">
+            <block type="core/template" name="jquery_files" template="Mpm/JQuery.phtml" />
+            <block type="Mpm/Dashboard_Main" name="mpm_dashboard_main" template="Mpm/Dashboard/Main.phtml">
+                <block type="Mpm/Dashboard_Matching" name="mpm_dashboard_matching" as="mpm_dashboard_matching" template="Mpm/Dashboard/Matching.phtml"/>
+                <block type="Mpm/Dashboard_Graph" name="mpm_dashboard_graph" as="mpm_dashboard_graph" template="Mpm/Dashboard/Graph.phtml"/>
+                <block type="Mpm/Dashboard_Tabs" name="mpm_dashboard_tabs" as="mpm_dashboard_tabs"/>
+            </block>
+        </reference>
+    </adminhtml_mpm_dashboard_index>
+
+    <adminhtml_mpm_shippings_index>
+        <reference name="head">
+            <action method="addCss">
+                <name>Mpm/mpm.css</name>
+            </action>
+            <action method="addJs">
+                <script>mdn/mpm.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="Mpm/Shippings_Main" template="Mpm/Shippings/Main.phtml" />
+        </reference>
+    </adminhtml_mpm_shippings_index>
+
+    <adminhtml_mpm_products_commissions>
+        <reference name="content">
+            <block type="Mpm/Commissions_Grid" template="Mpm/Commissions/Grid.phtml" />
+        </reference>
+    </adminhtml_mpm_products_commissions>
+
+    <adminhtml_mpm_rules_edit>
+        <reference name="head">
+            <action method="addJs">
+                <script>mdn/mpm.js</script>
+            </action>
+            <action method="addCss">
+                <name>Mpm/token-input.css</name>
+            </action>
+            <action method="addCss">
+                <name>Mpm/token-input-facebook.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="jquery_files" template="Mpm/JQuery.phtml" />
+            <block type="Mpm/Rules_Edit" as="mpm_rules_edit" id="mpm_rules_edit" name="mpm_rules_edit">
+                <block type="Mpm/Rules_Edit_Tabs" as="mpm_rules_edit_tabs" name="mpm_rules_edit_tabs" id="mpm_rules_edit_tabs"/>
+            </block>
+        </reference>
+    </adminhtml_mpm_rules_edit>
+
+    <adminhtml_mpm_products_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+            <action method="addCss">
+                <name>Mpm/mpm.css</name>
+            </action>
+            <action method="addJs">
+                <script>mdn/mpm.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="Mpm/Products_GridV2" template="Mpm/Products/Grid.phtml" />
+        </reference>
+    </adminhtml_mpm_products_index>
+
+    <adminhtml_mpm_report_index>
+        <reference name="content">
+            <block type="Mpm/Report_Grid" template="Mpm/Report/Grid.phtml" />
+        </reference>
+    </adminhtml_mpm_report_index>
+
+    <adminhtml_mpm_products_offerspopup>
+
+        <reference name="content">
+            <block type="Mpm/Products_Tabs"/>
+        </reference>
+
+        <reference name="head">
+            <action method="addCss">
+                <name>Mpm/mpm.css</name>
+            </action>
+            <action method="addJs">
+                <script>mdn/mpm.js</script>
+            </action>
+        </reference>
+
+        <reference name="root">
+            <action method="setTemplate"><template>Mpm/Popup.phtml</template></action>
+        </reference>
+
+    </adminhtml_mpm_products_offerspopup>
+
+    <adminhtml_mpm_offers_index>
+        <reference name="content">
+            <block type="Mpm/Offers_Grid" template="Mpm/Offers/Grid.phtml" />
+        </reference>
+    </adminhtml_mpm_offers_index>
+
+</layout>

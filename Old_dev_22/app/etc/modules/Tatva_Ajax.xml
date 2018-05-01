@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Ajax>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tatva_Ajax>
+    </modules>
+</config> 

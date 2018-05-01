@@ -1,0 +1,45 @@
+Translate,Translate
+Search & translate,Search & translate
+Unstranslated strings,Unstranslated strings
+Translation stats,Translation stats
+About PHPro,About PHPro
+About,About
+PHPro Translate module,PHPro Translate module
+Search for:,Search for:
+Search string,Search string
+Enter a string (e.g. "My account") and click "Submit search",Enter a string (e.g. "My account") and click "Submit search"
+Search original strings,Search original strings
+Only list untranslated,Only list untranslated
+Locale,Locale
+Options:,Options:
+Case sensitive,Case sensitive
+In Modules:,In Modules:
+In Interface:,In Interface:
+Frontend,Frontend
+Admin HTML,Admin HTML
+Results:,Results:
+Truncate log table,Truncate log table
+Remove duplicates in log table,Remove duplicates in log table
+Submit Search,Submit Search
+Search results for:,Search results for:
+Translated string,Translated string
+Origin string,Origin string
+Source,Source
+Translation Statistics,Translation Statistics
+Translated strings in %s,Translated strings in %s
+%d strings in modules,%d strings in modules
+%d strings in theme,%d strings in theme
+%d strings in database,%d strings in database
+%d untranslated strings,%d untranslated strings
+This data is cached. Please flush the Magento cache to refresh this data.,This data is cached. Please flush the Magento cache to refresh this data.
+Attention! 100% translation can mean either a fully translated locale or simply no logged untranslated strings!,Attention! 100% translation can mean either a fully translated locale or simply no logged untranslated strings!
+Original,Original
+Item information,Item information
+Extra Information:,Extra Information:
+Edit Item,Edit Item
+Save Item,Save Item
+No results found.,No results found.
+Remove all the records from the &quot;untransalated strings&quot; table,Remove all the records from the &quot;untranslated strings&quot; table
+Remove duplicate strings that are in the system and &quot;untranslated strings&quot; table, Remove duplicate strings that are in the system and &quot;untranslated strings&quot; table
+Table truncated,Table truncated
+Following duplicates are found and removed:,Following duplicates are found and removed:

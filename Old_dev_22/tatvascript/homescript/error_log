@@ -1,0 +1,12 @@
+[08-Mar-2018 07:21:13 UTC] PHP Warning:  require_once(/data/devazb/public_html/tatvascript/homescript/app/Mage.php): failed to open stream: No such file or directory in /data/devazb/public_html/tatvascript/homescript/test.php on line 5
+[08-Mar-2018 07:21:13 UTC] PHP Fatal error:  require_once(): Failed opening required '/data/devazb/public_html/tatvascript/homescript/app/Mage.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /data/devazb/public_html/tatvascript/homescript/test.php on line 5
+[08-Mar-2018 07:21:53 UTC] PHP Warning:  require_once(../app/Mage.php): failed to open stream: No such file or directory in /data/devazb/public_html/tatvascript/homescript/test.php on line 5
+[08-Mar-2018 07:21:53 UTC] PHP Fatal error:  require_once(): Failed opening required '../app/Mage.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /data/devazb/public_html/tatvascript/homescript/test.php on line 5
+[08-Mar-2018 07:40:22 UTC] PHP Fatal error:  Call to undefined method Mage_Sales_Model_Resource_Order_Collection::getSql() in /data/devazb/public_html/tatvascript/homescript/test.php on line 29
+[08-Mar-2018 07:57:31 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 88 bytes) in /data/devazb/public_html/lib/Zend/Db/Statement/Pdo.php on line 290
+[08-Mar-2018 07:57:46 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 88 bytes) in /data/devazb/public_html/lib/Zend/Db/Statement/Pdo.php on line 290
+[08-Mar-2018 10:47:23 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 92 bytes) in /data/devazb/public_html/lib/Varien/Object.php on line 270
+[08-Mar-2018 10:47:27 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 98 bytes) in /data/devazb/public_html/lib/Varien/Object.php on line 245
+[08-Mar-2018 10:51:40 UTC] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 98 bytes) in /data/devazb/public_html/lib/Varien/Object.php on line 245
+[03-Apr-2018 04:23:07 UTC] PHP Fatal error:  Call to a member function UpdateOrder() on boolean in /data/devazb/public_html/tatvascript/homescript/test_invoice.php on line 16
+[03-Apr-2018 04:30:51 UTC] PHP Fatal error:  Call to a member function UpdateOrder() on boolean in /data/devazb/public_html/tatvascript/homescript/test_invoice.php on line 16

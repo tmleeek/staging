@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <autocancelorder_admin_showlogs>
+        <reference name="head">
+             <action method="addCss"><stylesheet>autocancelorder.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="AutoCancelOrder/Grid" name="autocancelordershowgrid" template="AutoCancelOrder/Grid.phtml">
+           </block>
+        </reference>
+    </autocancelorder_admin_showlogs>
+    
+</layout>

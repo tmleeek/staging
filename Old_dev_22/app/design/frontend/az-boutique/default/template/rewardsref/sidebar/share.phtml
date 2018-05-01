@@ -1,0 +1,45 @@
+
+<?php if ($this->isCustomerLoggedIn()): ?>
+    <div class="block box base-mini ad-reviews rewardsref-sidebar-share">
+        <div class="head block-title">
+            <h4><strong><?php echo $this->__('My Referral Link') ?></strong></h4>
+        </div>
+        <div class="content block-content">
+            <div class="referral_url">
+                <span class="label"><?php echo $this->__('Referral Link:') ?></span>
+                <span class="value"><?php echo $this->getReferralUrl() ?></span>
+            </div>
+            <div class="referral_code">
+                <span class="label"><?php echo $this->__('Referral Code:') ?></span>
+                <span class="value"><?php echo $this->getReferralCode() ?></span>
+            </div>
+            <div class="referral_email">
+                <span class="label"><?php echo $this->__('Referral Email:') ?></span>
+                <span class="value"><?php echo $this->getReferralEmail() ?></span>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="rewardsref-share-tweet rewardsref-share-widget">
+                <a href="https://twitter.com/share" class="twitter-share-button myclass" data-url="<?php echo $this->getReferralUrl(); ?>" data-text="Check out this cool website!" data-count="none">Tweet</a>
+            </div>
+            <div class="rewardsref-share-fbsend rewardsref-share-widget">
+                <div class="fb-send" data-href="<?php echo $this->getReferralUrl(); ?>"></div>
+
+                <!-- Start Facebook JavaScript -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <!-- End Facebook JavaScript -->
+            </div>
+            <div class="rewardsref-share-email rewardsref-share-widget">
+                <a href="<?php echo $this->getReferralEmailUrl() ?>"><?php echo $this->__("Email") ?></a>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

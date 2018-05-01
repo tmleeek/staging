@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<config>
+    <menu>
+        <magestyapps translate="title" module="magestyapps">
+            <title>MagestyApps</title>
+            <sort_order>89</sort_order>
+        </magestyapps>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <magestyapps>
+                        <title>MagestyApps</title>
+                        <sort_order>89</sort_order>
+                    </magestyapps>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

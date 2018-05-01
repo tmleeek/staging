@@ -1,0 +1,57 @@
+<div class="htmleditor-design">
+    <textarea id="<?php echo $this->getName() ?>" name="<?php echo $this->getName() ?>" class="codemirror"><?php echo $this->getValue() ?></textarea>
+    <iframe id="preview<?php echo $this->getName() ?>"></iframe>
+    <div class="clearfix"></div>
+</div>
+
+
+<script>
+document.observe('dom:loaded', function() {
+    var editorId  = '<?php echo $this->getName() ?>';
+    var previewId = 'preview<?php echo $this->getName() ?>';
+
+    var item = $(editorId);
+    var delay;
+    var editor = CodeMirror.fromTextArea(item, {
+        mode           : 'text/html',
+        tabMode        : 'indent',
+        matchTags      : true,
+        viewportMargin : Infinity,
+        tabSize        : 2,
+    });
+
+    editor.on('change', function() {
+        clearTimeout(delay);
+        delay = setTimeout(updatePreview, 300);
+    });
+
+    $('template_type').on('change', function() {
+        clearTimeout(delay);
+        delay = setTimeout(updatePreview, 300);
+    });
+
+    function updatePreview() {
+        var previewFrame = document.getElementById(previewId);
+        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+        var text = editor.getValue();
+        if ($('template_type').value == 'text') {
+            text = nl2br(text);
+        }
+        preview.open();
+        preview.write(text);
+        preview.close();
+    }
+    setTimeout(updatePreview, 300);
+
+    setInterval(function() {
+        editor.refresh();
+        editor.save()
+    }, 100);
+
+    function nl2br(str)
+    {
+        var breakTag = '<br>';
+        return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+    }
+});
+</script>

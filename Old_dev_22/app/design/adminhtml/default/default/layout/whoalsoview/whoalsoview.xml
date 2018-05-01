@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Here, we reference the XML node path of our route -->
+    <adminhtml_whoalsoview_index>
+        <reference name="content">
+            <!-- We also reference our block by namespacename_modulename/adminhtml_controllername, and name it uniquely -->
+            <block type="whoalsoview/adminhtml_whoalsoview" name="who_also_view" />
+        </reference>
+    </adminhtml_whoalsoview_index>
+    <!-- <adminhtml_whoalsoview_grid>
+       <block type="core/text_list" name="root" output="toHtml">
+            <block type="whoalsoview/adminhtml_whoalsoview_grid" name="admin.whoalsoview.grid"/>
+        </block>
+    </adminhtml_whoalsoview_grid> -->
+</layout>

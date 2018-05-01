@@ -1,0 +1,29 @@
+
+<!--<?php $_locale = Mage::helper('rewardssocial/facebook_data')->getFacebookLocale(); ?>
+
+
+<script type="text/javascript">
+Event.observe(document, 'dom:loaded', function() {
+    window.fbAsyncInit = window.fbAsyncInit || function() {
+        FB.init({
+            xfbml: true
+        });
+    };
+
+    if (document.getElementById('fb-root') == undefined) {
+        // if FB is not already defined (currently by Evolved Like) insert div and load JS SDK async
+        var fbRootDiv = new Element('div');
+        fbRootDiv.id = "fb-root";
+        $$('body')[0].insert(fbRootDiv);
+
+        // Load the SDK asynchronously
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/<?php echo $_locale ?>/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    }
+});
+</script>-->

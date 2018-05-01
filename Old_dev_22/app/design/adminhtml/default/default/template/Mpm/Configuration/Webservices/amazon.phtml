@@ -1,0 +1,29 @@
+<?php $credentials = Mage::helper('Mpm/Carl')->getWebserviceCredentials($this->channelCode); ?>
+<table>
+    <tbody>
+    <tr>
+        <td class="label">
+            <label for="seller_webservice_<?php echo $this->channelCode; ?>_merchant_id"><?php echo $this->__('Merchant ID'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="seller_webservice_<?php echo $this->channelCode; ?>_merchant_id" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_merchant_id][value]" value="<?php echo (isset($credentials->MERCHANT_ID)) ? $credentials->MERCHANT_ID : '' ; ?>"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="seller_webservice_<?php echo $this->channelCode; ?>_access_key"><?php echo $this->__('Access Key'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="seller_webservice_<?php echo $this->channelCode ;?>_access_key" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_access_key][value]" value="<?php echo (isset($credentials->AWS_ACCESS_KEY_ID)) ? $credentials->AWS_ACCESS_KEY_ID : ''; ?>"/>
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="seller_webservice_<?php echo $this->channelCode; ?>_secret_key"><?php echo $this->__('Secret key'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="seller_webservice_<?php echo $this->channelCode; ?>_secret_key" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_secret_key][value]" value="<?php echo (isset($credentials->AWS_SECRET_ACCESS_KEY)) ? $credentials->AWS_SECRET_ACCESS_KEY : ''; ?>"/>
+        </td>
+    </tr>
+    </tbody>
+</table>

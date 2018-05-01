@@ -1,0 +1,106 @@
+# ensure we have access
+Order allow,deny
+Allow from all
+
+# turn off MultiViews if enabled
+Options -MultiViews
+
+<IfModule !mod_litespeed>
+	# For *.var requests, negotiate using type-map
+	AddHandler type-map .var
+
+	# use custom extensions so existing handlers for .gz/.Z don't interfere
+	AddEncoding x-gzip .zg
+	AddEncoding x-compress .zc
+	AddEncoding deflate .zd
+
+	# Necessary to add charset while using type-map
+	AddType application/x-javascript;charset=utf-8 js
+	AddType text/css;charset=utf-8 css
+</IfModule>
+
+<IfModule mod_litespeed>
+	<IfModule mime_module>
+		<files *.js>
+			ForceType text/javascript
+		</files>
+
+		<files *.css>
+			ForceType text/css
+		</files>
+	</IfModule>
+	
+	<IfModule headers_module>
+		<IfModule deflate_module>
+			# Netscape 4.x
+			BrowserMatch ^Mozilla/4 no-gzip
+			# For browsers that pretend to be Mozilla4
+			BrowserMatch \b(MSIE|Safari) !no-gzip
+			# IE5.5 and 6.0 has bugs
+			BrowserMatch \bMSIE\s(5\.5|6\.0) no-gzip
+			# IE 6.0 after SP2 may not have gzip bugs!
+			BrowserMatch \bMSIE.*SV !no-gzip
+			# Sometimes Opera pretends to be IE6
+			BrowserMatch \bOpera !no-gzip
+
+			AddOutputFilterByType DEFLATE text/css
+			AddOutputFilterByType DEFLATE text/javascript
+
+			Header append Vary User-Agent
+		</IfModule>
+	</IfModule>
+
+	<IfModule gzip_module>
+		mod_gzip_on Yes
+
+		mod_gzip_item_exclude reqheader "User-agent: Mozilla/4"
+		mod_gzip_item_include reqheader ^User-agent\:.*\b(MSIE|Safari)
+		mod_gzip_item_exclude reqheader ^User-agent\:.*\bMSIE\s(5\.5|6\.0)
+		mod_gzip_item_include reqheader ^User-agent\:.*\bMSIE.*SV
+		mod_gzip_item_include reqheader ^User-agent\:.*\bOpera
+
+		mod_gzip_item_include file \.js$
+		mod_gzip_item_include file \.css$
+
+		mod_gzip_item_include mime ^text/css$
+		mod_gzip_item_include mime ^text/javascript$
+		mod_gzip_item_exclude mime ^image/
+	</IfModule> 
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 1 year"
+
+	# do this just in case previous expire was set earlier
+	ExpiresByType text/css "access plus 1 year"
+	ExpiresByType text/javascript "access plus 1 year"
+	ExpiresByType application/x-javascript "access plus 1 year"
+
+	ExpiresByType image/gif "access plus 1 year"
+	ExpiresByType image/png "access plus 1 year"
+	ExpiresByType image/jpg "access plus 1 year"
+	ExpiresByType image/jpeg "access plus 1 year"
+	ExpiresByType image/bmp "access plus 1 year"
+	ExpiresByType image/svg "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header set Cache-Control "public, max-age=31536000"
+</IfModule>
+
+<IfModule mod_expires.c>
+	<IfModule mod_headers.c>
+		# if the other modules are enabled, there really isn't a need for an ETag
+		# it will just bloat the response headers
+		FileETag None
+	</IfModule>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	# if the browser is ie 5 or 6 without SV1 and not opera
+	RewriteCond %{HTTP_USER_AGENT} MSIE\ [56]
+	RewriteCond %{HTTP_USER_AGENT} !(\ SV1|Opera)
+	RewriteRule ^(.*)\.var$ $1 [L]
+</IfModule>

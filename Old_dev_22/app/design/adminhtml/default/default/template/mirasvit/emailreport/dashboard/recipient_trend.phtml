@@ -1,0 +1,98 @@
+<div class="entry-edit">
+<div class="entry-edit-head"><h4><?php echo Mage::helper('email')->__('Recipient Trend') ?></h4></div>
+<fieldset>  
+<?php $_collection = $this->getCollection() ?>
+
+<div id="recipienttrendchart" style="width: 100%; height: 243px;"></div>
+<script type="text/javascript">
+    var chart;
+    var recipeintTrendData = [];
+    <?php foreach ($this->getCollection() as $_item): ?>
+        recipeintTrendData.push({
+            title        : '<?php echo $_item->getPeriod() ?>',
+            pending      : <?php echo intval($_item->getData('num_pending')) ?>,
+            delivered    : <?php echo intval($_item->getData('num_delivered')) ?>,
+            unsubscribed : <?php echo intval($_item->getData('num_unsubscribed')) ?>,
+            others       : <?php echo intval($_item->getData('num_missed')) + intval($_item->getData('num_error')) + intval($_item->getData('num_canceled')) ?>
+        });
+    <?php endforeach ?>
+
+    AmCharts.ready(function () {
+        chart                     = new AmCharts.AmSerialChart();
+        chart.dataProvider        = recipeintTrendData;
+        chart.categoryField       = "title";
+        chart.startDuration       = 0;
+        // chart.depth3D             = 10;
+        // chart.angle               = 30;
+        chart.plotAreaBorderColor = "#DADADA";
+        chart.plotAreaBorderAlpha = 1;
+        // chart.rotate              = true;
+
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.gridAlpha = 0.07;
+        categoryAxis.axisColor = "#DADADA";
+        categoryAxis.startOnAxis = true;
+
+        var valueAxis = new AmCharts.ValueAxis();
+        // valueAxis.stackType = "regular";
+        valueAxis.gridAlpha = 0.07;
+        valueAxis.title = "Total Emails";
+        chart.addValueAxis(valueAxis);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField  = "pending";
+        graph.title       = "Pending Emails";
+        graph.balloonText = "Pending: [[value]]";
+        graph.type        = "smoothedLine";
+        graph.lineAlpha   = 1;
+        graph.lineThickness = 2;
+        graph.fillAlphas  = 0;
+        graph.bulletSize = 5;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField  = "delivered";
+        graph.title       = "Delivered Emails";
+        graph.balloonText = "Delivered: [[value]]";
+        graph.type        = "smoothedLine";
+        graph.lineAlpha   = 1;
+        graph.lineThickness = 2;
+        graph.fillAlphas  = 0.1;
+        graph.bulletSize = 50;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField  = "unsubscribed";
+        graph.title       = "Unsubscribed";
+        graph.balloonText = "Unsubscribed: [[value]]";
+        graph.type        = "smoothedLine";
+        graph.lineAlpha   = 1;
+        graph.lineThickness = 2;
+        graph.fillAlphas  = 0;
+        graph.bulletSize = 5;
+        chart.addGraph(graph);
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField  = "others";
+        graph.title       = "Others (Cancled, Missed, Error)";
+        graph.balloonText = "Others: [[value]]";
+        graph.type        = "smoothedLine";
+        graph.lineThickness = 2;
+        graph.lineAlpha   = 1;
+        graph.fillAlphas  = 0;
+        graph.bulletSize = 5;
+        chart.addGraph(graph);
+
+        var legend = new AmCharts.AmLegend();
+        chart.addLegend(legend);
+
+        var chartCursor = new AmCharts.ChartCursor();
+        chartCursor.zoomable = false; // as the chart displayes not too many values, we disabled zooming
+        chartCursor.cursorAlpha = 0;
+        chart.addChartCursor(chartCursor);
+
+        chart.write("recipienttrendchart");
+    });
+</script>
+</fieldset>
+</div>

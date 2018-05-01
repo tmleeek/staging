@@ -1,0 +1,14 @@
+<config>
+   <modules>
+      <Extendware_EWImageOpt>
+         <active>true</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Image Optimization</name>
+         </extendware>
+      </Extendware_EWImageOpt>
+   </modules>
+</config>

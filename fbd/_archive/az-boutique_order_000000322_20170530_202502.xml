@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000322</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>3</item_count>
+    <created_at>2017-05-30 20:19:15</created_at>
+    <total_amount>55.3500</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-336@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_tnt</code>
+    <amount>9.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>FATIMANTA</firstname>
+      <lastname>DUMET CISSE</lastname>
+      <company/>
+      <address1>36 RUE DE LA BOURDONNAIS</address1>
+      <address2></address2>
+      <postal_code>78960</postal_code>
+      <city>VOISINS LE BRETONNEUX</city>
+      <country>FR</country>
+      <phone>0664864452</phone>
+    </billing>
+    <shipping>
+      <firstname>FATIMANTA</firstname>
+      <lastname>DUMET CISSE</lastname>
+      <company/>
+      <address1>36 RUE DE LA BOURDONNAIS</address1>
+      <address2></address2>
+      <postal_code>78960</postal_code>
+      <city>VOISINS LE BRETONNEUX</city>
+      <country>FR</country>
+      <phone>0664864452</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>531</id>
+      <fbd_sku>az-boutique_69141</fbd_sku>
+      <supplier_sku>69141</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>26.5500</price>
+        <total>26.5500</total>
+        <discount>23.9600</discount>
+        <tax>0.0000</tax>
+        <weee>0.0500</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>532</id>
+      <fbd_sku>az-boutique_PBAR48032-60</fbd_sku>
+      <supplier_sku>PBAR48032-60</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>19.9000</price>
+        <total>19.9000</total>
+        <discount>17.9900</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>533</id>
+      <fbd_sku>az-boutique_CT503103</fbd_sku>
+      <supplier_sku>CT503103</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>8.9000</price>
+        <total>8.9000</total>
+        <discount>8.0500</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

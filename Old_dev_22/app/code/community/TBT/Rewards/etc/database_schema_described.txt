@@ -1,0 +1,1 @@
+Please see https://support.sweettoothrewards.com/entries/21128238-database-architecture for the latest database architecture.

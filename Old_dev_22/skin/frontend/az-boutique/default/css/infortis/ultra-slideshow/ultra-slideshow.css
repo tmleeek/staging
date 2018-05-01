@@ -1,0 +1,12 @@
+.the-slideshow-wrapper{}
+.the-slideshow-wrapper:after{display:block;content:".";clear:both;font-size:0;line-height:0;height:0;overflow:hidden;}
+.the-slideshow{margin:0 auto;}
+.the-slideshow .slides{display:none;}
+.the-slideshow-banners{-webkit-backface-visibility:hidden;margin-bottom:0.1%;}
+.the-slideshow-banners .banner{position:relative;}
+.the-slideshow-banners a.banner,
+.the-slideshow-banners .banner a{display:block;}
+.the-slideshow .fade-on-slideshow-hover,
+.the-slideshow-wrapper .fade-on-slideshow-wrapper-hover{transition:opacity 300ms ease-in-out;-moz-transition:opacity 300ms ease-in-out;-webkit-transition:opacity 300ms ease-in-out;-o-transition:opacity 300ms ease-in-out;}
+.the-slideshow:hover .fade-on-slideshow-hover,
+.the-slideshow-wrapper:hover .fade-on-slideshow-wrapper-hover{opacity:0.75;filter:alpha(opacity=75);}

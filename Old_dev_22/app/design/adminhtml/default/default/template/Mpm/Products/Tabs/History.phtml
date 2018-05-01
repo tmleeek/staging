@@ -1,0 +1,33 @@
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<?php $this->initDatas(); ?>
+
+<table border="1" cellspacing="0" width="100%">
+    <tr>
+        <td></td>
+        <?php foreach($this->getAllDates() as $date): ?>
+            <th><?php echo date('j M', strtotime($date)); ?></th>
+        <?php endforeach; ?>
+    </tr>
+    <?php foreach($this->getCompetitors() as $competitor): ?>
+        <tr>
+            <td><font color="<?php echo ($this->isMe($this->competitorNames[$competitor]) ? 'blue' : 'black'); ?>"><?php echo $this->competitorNames[$competitor];?></font></td>
+            <?php $lastValue = null; ?>
+            <?php foreach($this->getAllDates() as $date): ?>
+                <?php $item = $this->getValue($competitor.'_'.$date); ?>
+                <td <?php echo (!empty($item->offer->rank) && $item->offer->rank == 1 ? 'bgcolor="lightgreen"' : ''); ?> align="center">
+                    <font color="<?php echo ($this->isMe($this->competitorNames[$competitor]) ? 'blue' : 'black'); ?>">
+                        <?php if ($item && $item->offer->price): ?>
+                            <?php echo number_format($item->offer->shipping + $item->offer->price, 2, '.', ''); ?>
+                            <?php if ($lastValue): ?>
+                                &nbsp;<img src="<?php echo $this->getProgressImage($item, $lastValue); ?>">
+                            <?php endif; ?>
+                            <?php if ($item) {$lastValue = $item; } ?>
+                        <?php endif; ?>
+                    </font>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+    <?php endforeach; ?>
+</table>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_Reports>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <TBT_Rewards/>
+                <TBT_Milestone/>
+            </depends>
+        </TBT_Reports>
+    </modules>
+</config>

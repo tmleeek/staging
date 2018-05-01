@@ -1,0 +1,259 @@
+<?php $show_frontend =Mage::getStoreConfig('eventschedule/eventschedule/active');  ?>
+<?php if($show_frontend=='1'): ?>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Schedule Event Here</h4>
+</div>
+
+<?php $days=Mage::getModel('eventschedule/eventschedule')->getdaycollection(); ?>
+<div id="loading_ajax" style="position: absolute; text-align: center; right: 60%; top: 55%;display: block;">
+   <img src="<?php echo $this->getSkinUrl('images/fancybox_loading.gif'); ?>" alt="Processing" />
+</div>
+<div class="fieldset fieldset-wide">
+  <div class="hor-scroll">
+    <table cellspacing="0" class="form-list">
+     <tbody>
+     <tr>
+      <td class="label"><label for="name">Day</label></td>
+      <td class="value">
+       <select  name="day" id="daySel">
+        <option value="all"><?php echo $this->__('Select All'); ?></option>
+         <?php foreach($days as $keys=>$day): ?>
+          <option value="<?php echo $keys; ?>"><?php echo $day; ?></option>
+        <?php endforeach; ?>
+      </select>
+      <td class="scope-label"><span class="nobr">[STORE VIEW]</span></td>
+    </tr>
+
+    <tr>
+      <td class="label"><label for="name">Month</label></td>
+      <td class="value">
+       <select  name="month" id="monthSel">
+            <option value="all"><?php echo $this->__('Select All'); ?></option>
+       </select>
+      <td class="scope-label"><span class="nobr">[STORE VIEW]</span></td>
+    </tr>
+
+    <tr>
+      <td class="label"><label for="name">Year</label></td>
+      <td class="value">
+       <select  name="year" id="yearSel">
+        <option value="all"><?php echo $this->__('Select All'); ?></option>
+       </select>
+      <td class="scope-label"><span class="nobr">[STORE VIEW]</span></td>
+
+   </tr>
+
+    <tr>
+      <td class="label"><label for="name">Events</label></td>
+      <td class="value">
+
+       <select id="eventSel" name="event">
+         <option value="all"><?php echo $this->__('Select All'); ?></option>
+       </select>
+      <td class="scope-label"><span class="nobr">[STORE VIEW]</span></td>
+    </tr>
+
+    <tr>
+      <td class="label"><label for="name">Brands</label></td>
+      <td class="value">
+       <select  name="brand" id="brandSel">
+         <option value="all"><?php echo $this->__('Select All'); ?></option>
+        </select>
+      <td class="scope-label"><span class="nobr">[STORE VIEW]</span></td>
+    </tr>
+
+    </tbody>
+    </table>
+    </div>
+   </div>
+   
+<script type="text/javascript">
+   jQuery(document).ready(function(){
+                jQuery(window).load(function() {
+                     jQuery("#brandSel").prop("disabled", true);
+                     jQuery("#eventSel").prop("disabled", true);
+                     jQuery("#monthSel").prop("disabled", true);
+                     jQuery("#yearSel").prop("disabled", true);
+                     jQuery("#day").prop("disabled", true);
+                     jQuery("#month").prop("disabled", true);
+                     jQuery("#year").prop("disabled", true);
+                     jQuery("#event").prop("disabled", true);
+                     jQuery("#brand").prop("disabled", true);
+                     jQuery('#loading_ajax').hide();
+
+
+               });
+                    jQuery('#eventSel').live('change',function(){
+                        var day = jQuery('#daySel').val();
+                        var month = jQuery('#monthSel').val();
+                        var year = jQuery('#yearSel').val();
+                        var event = jQuery('#eventSel').val();
+                        eventSelOptions(day,month,year,event);
+
+                    });
+
+                     jQuery('#daySel').live('change',function(){
+                        var day = jQuery('#daySel').val();
+                        daySelOptions(day);
+                    });
+                     jQuery('#monthSel').live('change',function(){
+                        var day = jQuery('#daySel').val();
+                        var month = jQuery('#monthSel').val();
+                        monthSelOptions(day,month);
+                    });
+                     jQuery('#yearSel').live('change',function(){
+                        var day = jQuery('#daySel').val();
+                        var month = jQuery('#monthSel').val();
+                        var year = jQuery('#yearSel').val();
+                        yearSelOptions(day,month,year);
+                     });
+                   });
+
+
+
+                   /* For Day Filter  --strat*/
+                    function daySelOptions(day){
+                      jQuery('#loading_ajax').hide();
+                       jQuery.ajax({
+                        url:"<?php echo $this->getUrl('eventschedule/index/day'); ?>",
+                        type: "POST",
+                        data:{day:day},
+                        beforeSend: function() {
+                         jQuery('#loading_ajax').show();
+                        }
+                    }).done(function ( data ) {
+                        jQuery('#loading_ajax').hide();
+                        jQuery('#monthSel').removeAttr('disabled');
+                        dy = jQuery.parseJSON(data);
+                        if(dy != null)
+                        {
+
+                           var count=dy.count;
+                           if(count > 0)
+                           {
+                            jQuery('#monthSel').empty();
+                            jQuery("#monthSel").append('<option value="' +'all'+ '">' + 'Select All'+ '</option>');
+                            for(var i=0; i < count; i++)
+                            {
+                             jQuery("#monthSel").append('<option value="' + dy[i] + '">' + dy[i]+ '</option>');
+                             }
+                           }
+                           if(count<=0)
+                          {
+                            alert('For Selected Date no data Found please Select Another Date');
+                          }
+                       }
+
+                    });
+                 }
+                   /* For day filter --ends */
+
+                 /* For month Filter  --strat*/
+                    function monthSelOptions(day,month){
+                       jQuery('#loading_ajax').hide();
+                       jQuery.ajax({
+                        url:"<?php echo $this->getUrl('eventschedule/index/month'); ?>",
+                        type: "POST",
+                        data:{day:day,month:month},
+                        beforeSend: function() {
+                            jQuery('#loading_ajax').show();
+                        }
+                    }).done(function ( data ) {
+                       jQuery('#loading_ajax').hide();
+                       jQuery('#yearSel').removeAttr('disabled');
+                        mnth = jQuery.parseJSON(data);
+                        if(mnth != null)
+                        {
+
+                           var count=mnth.count;
+                           if(count > 0)
+                           {
+                            jQuery('#yearSel').empty();
+                            jQuery("#yearSel").append('<option value="' +'all'+ '">' + 'Select All'+ '</option>')
+                            for(var i=0; i < count; i++)
+                            {
+                             jQuery("#yearSel").append('<option value="' + mnth[i] + '">' + mnth[i]+ '</option>');
+                             }
+                           }
+                           if(count<=0)
+                          {
+                            alert('For Selected Month no data Found please Select Another Month');
+                          }
+                       }
+                    });
+                 }
+                   /* For month filter --ends */
+
+
+                  /* For year Filter  --strat*/
+                    function yearSelOptions(day,month,year){
+                       jQuery('#loading_ajax').hide();
+                       jQuery.ajax({
+                        url:"<?php echo $this->getUrl('eventschedule/index/year'); ?>",
+                        type: "POST",
+                        data:{day:day,month:month,year:year},
+                        beforeSend: function() {
+                          jQuery('#loading_ajax').show();
+                        }
+                    }).done(function ( data ) {
+                       jQuery('#loading_ajax').hide();
+                        jQuery('#eventSel').removeAttr('disabled');
+                        yr = jQuery.parseJSON(data);
+                        if(yr != null)
+                        {
+                           var count=yr.count;
+                           if(count > 0)
+                           {
+                            jQuery('#eventSel').empty();
+                            jQuery("#eventSel").append('<option value="' +'all'+ '">' + 'Select All'+ '</option>')
+                            for(var i=0; i < count; i++)
+                            {
+                             jQuery("#eventSel").append('<option value="' + yr[i] + '">' + yr[i]+ '</option>');
+                             }
+                           }
+                           if(count<=0)
+                          {
+                           alert('For Selected Month no data Found please Select Another Month');
+                          }
+                       }
+                    });
+                 }
+                   /* For year filter --ends */
+
+                   function eventSelOptions(day,month,year,event){
+                      jQuery('#loading_ajax').hide();
+                       jQuery.ajax({
+                        url:"<?php echo $this->getUrl('eventschedule/index/event'); ?>",
+                        type: "POST",
+                        data:{day:day,month:month,year:year,event:event},
+                        beforeSend: function() {
+                           jQuery('#loading_ajax').show();
+                        }
+                    }).done(function ( data ) {
+                        jQuery('#loading_ajax').hide();
+                        jQuery('#brandSel').removeAttr('disabled');
+                        obj = jQuery.parseJSON(data);
+                        if(obj != null)
+                        {
+                            var count=obj.count;
+                           if(count > 0)
+                           {
+                            jQuery('#brandSel').empty();
+                            jQuery("#brandSel").append('<option value="' +'all'+ '">' + 'Select All'+ '</option>')
+                            for(var i=0; i < count; i++)
+                            {
+                             jQuery("#brandSel").append('<option value="' + obj[i] + '">' + obj[i]+ '</option>');
+                             }
+                           }
+                          if(count<=0)
+                          {
+                            alert('For Selected Event no data Found please Select Another Events');
+                          }
+                       }
+                    });
+                 }
+
+
+</script>
+
+<?php endif; ?>

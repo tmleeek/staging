@@ -1,0 +1,30 @@
+<?php $credentials = Mage::helper('Mpm/Carl')->getWebserviceCredentials($this->channelCode); ?>
+<?php //echo '<pre>';var_dump($credentials);die('</pre>'); ?>
+<table>
+    <tbody>
+    <tr>
+        <td class="label">
+            <label for="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_partner_id][value]"><?php echo $this->__('Partner ID'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_partner_id][value]" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_partner_id][value]" value="<?php echo (isset($credentials->PARTNER_ID)) ?  $credentials->PARTNER_ID : ''; ?>" />
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_shop_id][value]"><?php echo $this->__('Shop ID'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_shop_id][value]" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_shop_id][value]" value="<?php echo (isset($credentials->SHOP_ID)) ? $credentials->SHOP_ID : ''; ?>" />
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_key][value]"><?php echo $this->__('Key'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_key][value]" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_key][value]" value="<?php echo (isset($credentials->KEY)) ? $credentials->KEY : ''; ?>" />
+        </td>
+    </tr>
+    </tbody>
+</table>

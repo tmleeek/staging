@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    //<![CDATA[
+    document.write('<a href="https://twitter.com/<?php echo $this->getStoreTwitterUsername(); ?>" class="twitter-follow-button rewardssocial-rewardable" data-show-count="<?php echo $this->isCounterEnabled() ? 'true' : 'false' ; ?>" data-show-screen-name="<?php echo $this->isUsernameDisplayEnabled() ? 'true' : 'false' ; ?>" <?php /*data-width="210px" */ ?>>Follow</a>');
+    //]]>
+</script>
+
+
+<script type="text/javascript">
+    if (typeof window.twttr == 'undefined') {
+        window.twttr = (function (d,s,id) {
+            var t, js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+            js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+            return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+        } (document, "script", "twitter-wjs"));
+    }
+
+    document.observe("dom:loaded", function() {
+        window.twttr.ready(function (twttr) {
+            if (typeof TwitterFollowReward === 'undefined') {
+                return this;
+            }
+            var followReward = new TwitterFollowReward('<?php echo $this->getFollowProcessingUrl(); ?>');
+            eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('4.6.1(\'2\',3(a){5(!a.0.7(\'8-9\')){b}c.d()});',14,14,'target|bind|follow|function|twttr|if|events|hasClassName|rewardssocial|rewardable||return|followReward|onFollow'.split('|'),0,{}));
+        });
+    });
+</script>

@@ -1,0 +1,330 @@
+/**
+ * Contus Support Interactive.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file PRICE COUNTDOWN-LICENSE.txt.
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento 1.4.x and 1.5.x COMMUNITY edition
+ * Contus Support does not guarantee correct work of this package
+ * on any other Magento edition except Magento 1.4.x and 1.5.x COMMUNITY edition.
+ * =================================================================
+ */
+ 
+ .timer-grid{float: left;width: 100%;padding: 3px 0 0 0;color: #000000;font-size: 18px;font-family: arial; font-weight: bold;}
+ .timer-list{float: left;width: 100%;padding: 0;color: #000000;font-size: 18px;font-family: arial; font-weight: bold;}
+ .timer-view{float: left;width: 100%;padding:2px 0 0 0px;color: #000000;font-size: 40px; font-family:arial;font-weight: bold;}
+ .timer-view .day{margin:1px 1px}
+ .timer-view .hour{margin:1px 1px}
+ .timer-view .min{margin:1px 1px}
+ .timer-view .sec{margin:1px 1px}
+ .timer-compare{float: left;width: 100%;padding: 0;color: #000000;font-size: 22px;font-family: arial; font-weight: bold;}
+ .timerspec{float: left;width: 100%;color: #1E7EC8;font-size: 13px;}
+ .timerdate{float: left;width: 100%;padding:0 0 3px 0;color: #1E7EC8;font-size: 12px;}
+ .timerdate .day{margin:1px 1px; width:20px; text-align: center;}
+ .timerdate .hour{margin:1px 1px;width:20px; text-align: center;}
+ .timerdate .min{margin:1px 1px; width:20px; text-align: center;}
+ .timerdate .sec{margin:1px 1px; width:20px; text-align: center;}
+/*
+ * Product images gallery and zoom
+ */
+
+
+
+/* Basic zoom styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* This is the moving lens square underneath the mouse pointer. */
+.cloud-zoom-lens {
+	border:1px solid #ccc;
+	margin:-1px; /* Set this to minus the border thickness. */
+	background-color:#fff;
+	cursor:move;
+}
+
+/* This is the zoom window. */
+.cloud-zoom-big {
+	border:1px solid #e5e5e5;
+	overflow:hidden;
+}
+
+/* This is the loading message. */
+.cloud-zoom-loading {
+    color:white;
+    background:#222;
+    padding:0.25em;
+    border:1px solid #000;
+}
+
+#wrap {
+	/* Decrease default z-index */
+	z-index:99 !important;
+}
+
+/* Zoom position: "inside"
+-------------------------------------------------------------- */
+.product-image .mousetrap {
+	z-index:100 !important;
+	
+	/* For responsive layout */
+	width:100% !important;
+	height:100% !important;
+}
+.zoom-inside #wrap { overflow:hidden; }
+
+/* No borders if zoom position is "inside" */
+.zoom-inside .cloud-zoom-big { border:none; }
+
+/* Display images without Cloud Zoom
+-------------------------------------------------------------- */
+/* Hide zoom area */
+.simple-mode .cloud-zoom-big,
+.simple-mode .cloud-zoom-lens { display:none !important; }
+.simple-mode .cloud-zoom-lens { cursor:default !important; }
+
+
+/* Zoom button (enlarge the main image)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.zoom-btn-small {
+	position:absolute;
+	right:4px;
+	bottom:4px;
+	padding:0 1em;
+	line-height:2.6666em;
+	z-index:100;
+	background-color:#fff;
+	background-color:rgba(255,255,255, 0.7);
+	color:#333;
+}
+.zoom-btn-small:hover { background-color:#fff; }
+
+/* Use lightbox without cloud zoom */
+.zoom-btn-large {
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	padding:0;
+	z-index:100;
+	cursor:pointer;
+	
+	text-indent:-9999px;
+	overflow:hidden;
+}
+.zoom-btn-large:hover { background-color:rgba(255,255,255, 0.15); }
+
+
+
+/* Skins %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+/* Default skin
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.img-box .product-image { margin: 0 auto; position:relative; /* Labels (e.g. "sale") are positioned relative to this box */ }
+.img-box .product-image.product-image-zoom { z-index:9; } /*TODO: obsolete*/
+
+/* Image pop-up */
+.product-image-popup { margin:0 auto; }
+.product-image-popup .nav { font-weight:bold; text-align:center; }
+.product-image-popup .image { display:block; margin:10px 0;  }
+.product-image-popup .image-label { margin:0 0 10px; }
+
+/* Thumbnails */
+.img-box .more-images { margin-top:12px; }
+/*.img-box .more-images .thumbnails { width:80%; margin:0 auto; }*/
+
+/*.img-box .more-images .thumbnails .item { float:left; }*/ /* Deprecated */
+.img-box .more-images .thumbnails .item.last { margin-right:0; } /* Deprecated */
+.img-box .more-images .thumbnails .item a {
+	margin:0 3px;
+	display:block;
+	overflow:hidden;
+	text-decoration:none;
+	text-align:center;
+}
+
+/* Thumbnails - with slider */
+.img-box .more-images .thumbnails.slides { display:none; }
+
+	/* Minimum size of thumbnail if lazy loading enabled */
+	.img-box .more-images .thumbnails .owl-item.loading { min-height:50px; }
+	.img-box .more-images .thumbnails .owl-item.loading a { min-height:36px; }
+
+/* Thumbnails - without slider */
+.img-box .more-images .thumbnails.show-all { width:100%; text-align: center; }
+.img-box .more-images .thumbnails.show-all .item { float: none; display: inline-block; }
+
+
+/* Skin 1: with thin borders
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.img-box-style1 .product-image {
+	border:1px solid #eee;
+	padding:5px;
+}
+
+/* Thumbnails */
+/* Prevent cutting off thumbnails */
+.img-box-style1 .more-images .thumbnails .owl-wrapper-outer { padding:1px 0; display: inline-block; }
+.img-box-style1 .more-images .thumbnails .item a {
+	margin:0 2px 4px;
+	padding:4px;
+	border:1px solid #eee;
+}
+.img-box-style1 .more-images .thumbnails .item a:hover { border-color:#999; position:relative; z-index:1; }
+
+
+/* Thumbnails carousel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+.img-box .itemslider-thumbnails { margin-left: auto; margin-right: auto; }
+.itemslider-thumbnails			{ max-width:237px; } /* count-3 is default */
+.itemslider-thumbnails.count-1	{ max-width:79px; }
+.itemslider-thumbnails.count-2	{ max-width:158px; }
+
+/**
+ * Lightbox
+ */
+
+
+
+/* ColorBox Core Style
+-------------------------------------------------------------- */
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; }
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box;}
+
+/* ColorBox skin.
+   The following styles are ordered & tabbed
+   in a way that represents the nesting of the generated HTML.
+-------------------------------------------------------------- */
+#cboxOverlay{background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1339165706/9b/overlay.png) repeat 0 0;}
+#colorbox{}
+    #cboxContent{background:#fff; overflow:hidden; border:none;/*10px solid #333*/ padding:10px; }
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{margin-bottom:40px; /*10px above buttons*/ }
+        #cboxCurrent{position:absolute; bottom:17px; left:80px; color:#999;}
+        #cboxSlideshow{position:absolute; bottom:4px; right:30px; color:#0092ef;}
+		
+		#cboxPrevious,
+		#cboxNext { position:absolute; background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1398663498/d0/slider-arrows.png) no-repeat #ddd; width:30px; height:30px; text-indent:-9999px; }
+		#cboxPrevious:hover,
+		#cboxNext:hover { background-color:#333; }
+        #cboxPrevious{bottom:10px; left:10px; background-position:-10px -10px;}
+        #cboxPrevious:hover{background-position:-10px -60px;}
+        #cboxNext{bottom:10px; left:40px; background-position:-60px -10px;}
+        #cboxNext:hover{background-position:-60px -60px;}
+		
+        #cboxLoadingOverlay{background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1339165706/a5/loading_background.png) no-repeat center center;}
+        #cboxLoadingGraphic{background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1339165706/14/loading.gif) no-repeat center center;}
+		
+        #cboxClose{position:absolute; bottom:10px; right:10px; background:url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1373556154/d2/close-button.png) -10px -10px no-repeat #ddd; width:30px; height:30px; text-indent:-9999px;}
+        #cboxClose:hover{background-position:-10px -60px; background-color:#333;}
+
+        /* Captions */
+        #cboxTitle {position:absolute; bottom:17px; left:0; text-align:center; width:100%; color:#999;}
+        /* Alternative position and style of captions */
+        /*
+        #cboxTitle {
+            position: absolute;
+            bottom: 50px;
+            left: 10px;
+            text-align: left;
+            right: 10px;
+            color: #000;
+            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.75);
+            padding: 10px;
+        }
+        */
+
+#cboxNext,
+#cboxPrevious,
+#cboxClose {
+	transition:			background-color 300ms ease-in-out, background-position 300ms ease-in-out;
+	-moz-transition:	background-color 300ms ease-in-out, background-position 300ms ease-in-out;
+	-webkit-transition:	background-color 300ms ease-in-out, background-position 300ms ease-in-out;
+	-o-transition:		background-color 300ms ease-in-out, background-position 300ms ease-in-out;
+}
+
+
+
+A.sliderHandle
+{
+	background: url("//prod.az-boutique.fr/media/extendware/ewminify/media/css/1398252997/1d/slider_handle.gif") no-repeat;
+	height: 17px;
+	width: 11px;
+	position: absolute;
+	cursor: pointer;
+	border: none;
+	z-index: 100;
+}
+.sliderRail
+{
+	position: relative;
+	background: url("//prod.az-boutique.fr/media/extendware/ewminify/media/css/1398252997/47/slider_rail.gif") repeat-x;
+	height: 17px;
+	position: relative;
+	width: 192px;
+	margin-top: 16px;
+}
+.sliderCaption
+{
+	margin-bottom: 12px;
+	margin-left: 12px;
+	margin-top: 10px;
+	width: 128px;
+}
+
+.enterpriseSliderCaption
+{
+        margin-bottom: 12px;
+        margin-left: -45px;
+        margin-top: -5px;
+        width: 128px;
+}
+
+.slider
+{
+	margin-bottom: 6px;
+}
+.sliderHandle-sliding
+{
+	cursor: e-resize;
+}
+.sliderRail-sliding
+{
+	cursor: e-resize;
+}
+.cartSlider_caption
+{
+	position: relative;
+	text-align: center;
+	top: -4px;
+}
+.cartSlider_cell
+{
+	width: 16px;
+	height: 38px;
+}
+.cartSlider .sliderRail
+{
+	width: 222px;
+}
+

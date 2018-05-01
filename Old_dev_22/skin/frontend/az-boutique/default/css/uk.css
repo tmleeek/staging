@@ -1,0 +1,28 @@
+@media (min-width : 960px)
+and (max-width : 1060px) {
+#nav li a {
+  font-size: 12px !important;
+  padding: 0px 10px !important;
+}
+}
+
+
+@media screen
+and (min-width : 1060px)
+and (max-width : 1160px) {
+
+#nav li a {
+    font-size: 14px !important;
+    padding: 0 8px !important;
+}
+}
+
+@media screen
+and (min-width : 1160px)
+and (max-width : 1260px) {
+
+#nav li a {
+    font-size: 16px !important;
+    padding: 0 8px !important;
+}
+}

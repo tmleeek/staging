@@ -1,0 +1,127 @@
+﻿
+<?php if ($this->getIsNeedToDisplaySideBar()): ?>
+<?php
+	$theme = $this->helper('ultimo');
+	$_cartQty = $this->getSummaryCount();
+   	if ($_cartQty > 0)
+	{
+		$mainTitle = $this->__('View Cart');
+	}
+	else
+	{
+		$mainTitle = $this->__('You have no items in your shopping cart.');
+	}
+
+    //Icon color suffix
+    $iconSuffix = ($theme->getCfgDesign('header/icon_color') == 'b') ? '' : '-'.$theme->getCfgDesign('header/icon_color');
+
+	$cartClasses = '';
+	if (!$_cartQty)
+	{
+		$cartClasses .= ' is-empty';
+		if ($theme->getCfg('header/hide_on_mobile'))
+		{
+			$cartClasses .= ' hide-empty-cart';
+		}
+	}
+	else
+	{
+		$cartClasses .= ' is-not-empty';
+	}
+?>
+
+<div id="mini-cart" class="dropdown<?php echo $cartClasses; ?>" onclick="javascript:window.location.href='<?php echo $this->getUrl('checkout/cart'); ?>'">
+
+    <div class="dropdown-toggle cover" title="<?php echo $mainTitle; ?>" >
+    <div class="feature-icon-hover">
+
+    	 <div class="cartmain"><span class="comparearrow"><a href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('View all items in your shopping cart') ?>"><img src="<?php echo $this->getSkinUrl('images/cart-icon-header.png'); ?>" alt=""></a></span>
+        <div class="hide-below-960"><?php echo $this->__('Cart'); ?><?php echo $this->__(' '); ?></div>
+		<?php if ($_cartQty > 0): ?>
+        	<div class="label amount">(<?php echo $_cartQty; ?>)</div>
+        	<a class="summary" href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('View all items in your shopping cart') ?>">
+                <span class="subtotal">
+					<?php if ($this->canApplyMsrp()): ?>
+                    	<span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+                    <?php else: ?>
+						<?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()); ?>
+                    <?php endif; ?>
+				</span>
+			</a>
+        <?php else: //no products ?>
+        	<div class="empty"><?php echo Mage::helper('checkout')->formatPrice(0); ?></div>
+        <?php endif; ?>
+        <span class="caret">&nbsp;</span>
+
+	</div> <!-- end: dropdown-toggle > div -->
+    </div> <!-- end: dropdown-toggle -->
+    </div> <!-- end: dropdown-toggle -->
+
+    <?php $_items = $this->getRecentItems(); ?>
+    <?php if (count($_items)): ?>
+    	<div class="dropdown-menu left-hand">
+        	<div class="">
+
+				<?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                	<span class="incl-tax">(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)</span>
+                <?php endif; ?>
+                
+				<?php if ($tmpHtml = $this->getChildHtml('block_mini_cart_above_products')): ?> <?php //Predefined CMS block ?>
+                    <div class="block_mini_cart_above_products"><?php echo $tmpHtml; ?></div>
+                <?php endif; ?>
+            
+                <h4 class="block-subtitle"><?php echo $this->__('Recently added item(s)') ?></h4>
+                <ol id="cart-sidebar" class="mini-products-list clearer">
+                <?php foreach($_items as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach; ?>
+                <!-- <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive');</script>        -->
+
+                </ol>
+                <div class="block-info-box ship-price"><span><?php echo $this->remainingshippingamount(); ?></div>
+                <?php
+                /*if($_SERVER['HTTPS'] == "on")
+                {
+                    $carturl = $this->getUrl('checkout/cart',array("_secure"=>true));
+                }
+                else
+                {*/
+                    $carturl = $this->getUrl('checkout/cart');
+               /* }*/
+                ?>
+                 <div class="block-btns">
+                  <div class="btns-box clearfix">
+                     <div class="alignleft pink-btn">
+                         <a href="<?php echo $carturl ?>"><button type="button" title="<?php echo $this->__('View all items in your shopping cart') ?>"><span><?php echo $this->__('My Cart') ?></span></button></a>
+                    </div>
+
+                    <div class="alignright gray-btn">
+                     <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+                        <a href="<?php echo $this->getUrl('checkout/onepage');?>"><button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>"><span><?php echo $this->__('Proceed to Checkout') ?></span></button></a>
+						<?php echo $this->getChildHtml('extra_actions') ?>
+                    <?php endif; ?>
+                  </div>
+               </div>
+               <!--<p><?php echo $this->__('Déjà client ?');?> <a href="#"><?php echo $this->__('Identifiez-vous');?></a> <?php echo $this->__('pour commander en un clic');?></p>                 -->
+            </div>
+			</div> <!-- end: block-content-inner -->
+        </div> <!-- end: dropdown-menu -->
+    <?php else: ?>
+    	<div class="dropdown-menu left-hand block">
+        	<div class="block-content-inner">
+
+				<?php if ($tmpHtml = $this->getChildHtml('block_mini_cart_above_products')): ?>
+                    <div class="block_mini_cart_above_products"><?php echo $tmpHtml; ?></div>
+                <?php endif; ?>
+                <div class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></div>
+
+            </div> <!-- end: block-content-inner -->
+		</div> <!-- end: dropdown-menu -->
+    <?php endif ?>
+
+</div> <!-- end: mini-cart -->
+
+<?php endif;?>
+
+
+

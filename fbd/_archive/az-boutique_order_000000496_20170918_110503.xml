@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000496</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-09-18 10:59:38</created_at>
+    <total_amount>62.8500</total_amount>
+    <total_discount>50.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-629@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Patricia</firstname>
+      <lastname>Gisin </lastname>
+      <company/>
+      <address1>2 Impasse de l Orb </address1>
+      <address2>Vereilhes</address2>
+      <postal_code>34260</postal_code>
+      <city>La Tour sur Orb </city>
+      <country>FR</country>
+      <phone>0671923452</phone>
+    </billing>
+    <shipping>
+      <firstname>Patricia</firstname>
+      <lastname>Gisin </lastname>
+      <company/>
+      <address1>2 Impasse de l Orb </address1>
+      <address2>Vereilhes</address2>
+      <postal_code>34260</postal_code>
+      <city>La Tour sur Orb </city>
+      <country>FR</country>
+      <phone>0671923452</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>862</id>
+      <fbd_sku>az-boutique_GD109470</fbd_sku>
+      <supplier_sku>GD109470</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>29.9000</price>
+        <total>29.9000</total>
+        <discount>23.8100</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>863</id>
+      <fbd_sku>az-boutique_61735</fbd_sku>
+      <supplier_sku>61735</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>32.9500</price>
+        <total>32.9500</total>
+        <discount>26.1900</discount>
+        <tax>0.0000</tax>
+        <weee>0.0500</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

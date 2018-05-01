@@ -1,0 +1,24 @@
+[20-Feb-2017 00:08:49 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[20-Feb-2017 00:08:49 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[20-Feb-2017 01:15:40 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[20-Feb-2017 01:15:40 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[20-Feb-2017 01:22:00 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[20-Feb-2017 01:22:00 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[20-Feb-2017 05:16:04 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[20-Feb-2017 05:16:04 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[02-Mar-2017 00:52:48 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[02-Mar-2017 00:52:48 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[12-Mar-2017 08:32:13 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[12-Mar-2017 08:32:13 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 7
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 8
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 9
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 10
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 11
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 12
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 13
+[12-Mar-2017 10:29:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/azboutik/public_html/maintenance/index.php:1) in /home/azboutik/public_html/maintenance/index.php on line 14
+[12-Mar-2017 10:29:10 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library '/opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so' - /opt/cpanel/ea-php54/root/usr/lib64/php/modules/pdo_mysql.so: cannot open shared object file: No such file or directory in Unknown on line 0
+[12-Mar-2017 10:29:10 UTC] PHP Warning:  Module 'PDO' already loaded in Unknown on line 0

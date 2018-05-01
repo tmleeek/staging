@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000486</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>3</item_count>
+    <created_at>2017-09-13 11:11:33</created_at>
+    <total_amount>22.8000</total_amount>
+    <total_discount>22.8000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-746@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>MARJOLAINE</firstname>
+      <lastname>Bergez Domecq</lastname>
+      <company/>
+      <address1>8, rue de l'Ecole</address1>
+      <address2>8, rue de l'Ecole</address2>
+      <postal_code>64300</postal_code>
+      <city>MASLACQ</city>
+      <country>FR</country>
+      <phone>0641693620</phone>
+    </billing>
+    <shipping>
+      <firstname>MARJOLAINE</firstname>
+      <lastname>Bergez Domecq</lastname>
+      <company/>
+      <address1>8, rue de l'Ecole</address1>
+      <address2>8, rue de l'Ecole</address2>
+      <postal_code>64300</postal_code>
+      <city>MASLACQ</city>
+      <country>FR</country>
+      <phone>0641693620</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>840</id>
+      <fbd_sku>az-boutique_BOAL00759</fbd_sku>
+      <supplier_sku>BOAL00759</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>4.7500</price>
+        <total>4.7500</total>
+        <discount>4.7500</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>842</id>
+      <fbd_sku>az-boutique_PBAR48032-30</fbd_sku>
+      <supplier_sku>PBAR48032-30</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>13.5500</price>
+        <total>13.5500</total>
+        <discount>13.5500</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>843</id>
+      <fbd_sku>az-boutique_THIS012</fbd_sku>
+      <supplier_sku>THIS012</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>4.5000</price>
+        <total>4.5000</total>
+        <discount>4.5000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

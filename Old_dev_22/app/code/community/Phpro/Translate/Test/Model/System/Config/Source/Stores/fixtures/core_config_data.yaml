@@ -1,0 +1,4 @@
+config:
+  default/security/use_form_key: 0
+  stores/fr/general/locale/code: fr_FR
+  stores/de/general/locale/code: de_DE

@@ -1,0 +1,736 @@
+a:4:{s:4:"hash";i:3722642009;s:5:"mtime";i:1525177160;s:6:"expire";i:1525263560;s:4:"tags";a:3:{i:0;s:20:"d45_BACKEND_MAINMENU";i:1;s:14:"d45_BLOCK_HTML";i:2;s:8:"d45_MAGE";}}
+
+<!-- menu start -->
+
+<!-- menu end -->
+<div class="nav-bar">
+﻿    <ul id="nav">
+                <li  class="   level0 "> <a href="https://dev.az-boutique.fr/index.php/admin/dashboard/"   class="" style=""><span>Dashboard</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Sales</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_order/"   class="" style=""><span>Orders</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>La Poste Expeditor INet</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/expeditorinet/export/"   class="" style=""><span>Export orders</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/expeditorinet/import/"   class="" style=""><span>Import shipping</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_invoice/"   class="" style=""><span>Invoices</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_shipment/"   class="" style=""><span>Shipments</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Mondial Relay</span></a>
+                                <ul >
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/pointsrelais/sales_impression/"   class="" style=""><span>Impression des étiquettes</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>TNT</span></a>
+                                <ul >
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/tnt/sales_impression/"   class="" style=""><span>Suivi des expéditions TNT</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_creditmemo/"   class="" style=""><span>Credit Memos</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_transactions/"   class="" style=""><span>Transactions</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_recurring_profile/"   class="" style=""><span>Recurring Profiles (beta)</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_billing_agreement/"   class="" style=""><span>Billing Agreements</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/checkout_agreement/"   class="" style=""><span>Terms and conditions</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Tax</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tax_rule/"   class="" style=""><span>Manage Tax Rules</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tax_rate/"   class="" style=""><span>Manage Tax Zones & Rates</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tax_rate/importExport/"   class="" style=""><span>Import / Export Tax Rates</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tax_class_customer/"   class="" style=""><span>Customer Tax Classes</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tax_class_product/"   class="" style=""><span>Product Tax Classes</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Product Returns</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/ProductReturn/Admin/Grid/"   class="" style=""><span>Customer Returns</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/ProductReturn/PendingProducts/Grid/"   class="" style=""><span>Pending products</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/ekomiflagupdate/adminhtml_ekomiflagupdate/"   class="" style=""><span>Update Ekomiflag</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Lengow</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/lengow_export/"   class="" style=""><span>Manage Products Export</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/lengow_order/"   class="" style=""><span>Manage Orders</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/lengow_feed/"   class="" style=""><span>Manage Feeds</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/lengow_log/"   class="" style=""><span>Logs</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Catalog</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_product/"   class="" style=""><span>Manage Products</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/brandsadmin/adminhtml_aitmanufacturers/attribute/"   class="" style=""><span>Manage Attributes Pages</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_category/"   class="" style=""><span>Manage Categories</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Attributes</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_product_attribute/"   class="" style=""><span>Manage Attributes</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_product_set/"   class="" style=""><span>Manage Attribute Sets</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/urlrewrite/index/"   class="" style=""><span>URL Rewrite Management</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_search/"   class="" style=""><span>Search Terms</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Reviews and Ratings</span></a>
+                                <ul >
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level2 "> <a href="#"  onclick="return false" class="" style=""><span>Customer Reviews</span></a>
+                                <ul >
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_product_review/pending/"   class="" style=""><span>Pending Reviews</span></a>
+                    </li>
+                <li  class="   last level3 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_product_review/"   class="" style=""><span>All Reviews</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/rating/"   class="" style=""><span>Manage Ratings</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Tags</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tag/index/"   class="" style=""><span>All Tags</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/tag/pending/"   class="" style=""><span>Pending Tags</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level1 "> <a href="#"  onclick="return false" class="" style=""><span>Google Sitemap (Extended)</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/mageworx_xsitemap/"   class="" style=""><span>Generate</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/mageworx_seo/"   class="" style=""><span>Settings</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Mobile</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mobile/"   class="" style=""><span>Manage Apps</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mobile/history/"   class="" style=""><span>Submission History</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mobile/template/"   class="" style=""><span>Message Templates</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mobile/queue/"   class="" style=""><span>Message Queue</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/admin_application/"   class="" style=""><span>Admin Application Settings</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Customers</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/customer/"   class="" style=""><span>Manage Customers</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Manage Customer Attributes</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/customerattributes/adminhtml_customerattributes/"   class="" style=""><span>Customer Attribute</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/customerattributes/adminhtml_customeraddress/"   class="" style=""><span>Customer Address Attribute</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/customer_group/"   class="" style=""><span>Customer Groups</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/customer_online/"   class="" style=""><span>Online Customers</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>GLS</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/glsshipment/"   class="" style=""><span>Sendungen verwalten</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/glsclient/"   class="" style=""><span>Mandanten Pflegen</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Promotions</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/promo_catalog/"   class="" style=""><span>Catalog Price Rules</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/promo_quote/"   class="" style=""><span>Shopping Cart Price Rules</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Zopim Live Chat</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/chat/index/dashboard/"   class="" style=""><span>Zopim Dashboard</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/chat/index/account/"   class="" style=""><span>Account Setup</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/chat/"   class="" style=""><span>Configuration</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Newsletter</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/newsletter_template/"   class="" style=""><span>Newsletter Templates</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/newsletter_queue/"   class="" style=""><span>Newsletter Queue</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/newsletter_subscriber/"   class="" style=""><span>Newsletter Subscribers</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/newsletter_problem/"   class="" style=""><span>Newsletter Problem Reports</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Attribute Manager</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/attributemanager/adminhtml_category/category/"   class="" style=""><span>Category Attribute</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/attributemanager/adminhtml_customer/customer/"   class="" style=""><span>Customer Attribute</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/attributemanager/adminhtml_address/address/"   class="" style=""><span>Customer Address Attribute</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>CMS</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/cms_page/"   class="" style=""><span>Pages</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/cms_block/"   class="" style=""><span>Static Blocks</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/widget_instance/"   class="" style=""><span>Widgets</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/poll/"   class="" style=""><span>Polls</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Sell On eBay</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_ebay_listing/index/"   class="" style=""><span>Listings</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_ebay_order/index/"   class="" style=""><span>Sales</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_ebay_log/listing/"   class="" style=""><span>Logs</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_ebay_synchronization/index/"   class="" style=""><span>Configuration</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_support/index/referrer/ebay/"   class="" style=""><span>Help</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>MageBackup</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/magebackup_backup/new/"   class="" style=""><span>Backup Now</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/magebackup_backup/index/"   class="" style=""><span>Manage Backups</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/magebackup_profile/"   class="" style=""><span>Manage Profiles</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Sell On Multi-Channels</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_common_listing/index/"   class="" style=""><span>Listings</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_common_order/index/"   class="" style=""><span>Sales</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_common_log/listing/"   class="" style=""><span>Logs</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_common_synchronization/index/"   class="" style=""><span>Configuration</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/M2ePro/adminhtml_support/index/referrer/common/"   class="" style=""><span>Help</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span><span class="stadmin-menu_main">Rewards</span></span></a>
+                                <ul >
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Reward Rules</span></a>
+                                <ul >
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level2 "> <a href="#"  onclick="return false" class="" style=""><span>Earning Rules</span></a>
+                                <ul >
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_promo_catalog/index/type/1/"   class="" style=""><span>Catalog</span></a>
+                    </li>
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_promo_quote/index/type/1/"   class="" style=""><span>Shopping Cart</span></a>
+                    </li>
+                <li  class="   last level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_special/index/type/1/"   class="" style=""><span>Customer Behavior</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level2 "> <a href="#"  onclick="return false" class="" style=""><span>Spending Rules</span></a>
+                                <ul >
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_promo_catalog/index/type/2/"   class="" style=""><span>Catalog</span></a>
+                    </li>
+                <li  class="   last level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_promo_quote/index/type/2/"   class="" style=""><span>Shopping Cart</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_customer_points/"   class="" style=""><span>Customer Points</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_customer_points/"   class="" style=""><span>Customer Point Balances</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_transfer/"   class="" style=""><span>Point Transfers</span></a>
+                                <ul >
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_transfer/"   class="" style=""><span>Manage Transfers</span></a>
+                    </li>
+                <li  class="   last level3 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_transfer/new/"   class="" style=""><span>Create New Transfer</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/rewardsrefadmin/manage_referrals/"   class="" style=""><span>Customer Referrals</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/tbtmilestoneadmin/manage_history/"   class="" style=""><span>Milestone History</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Reports [beta]</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_metrics/revenue/"   class="" style=""><span>Revenue</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_metrics/numberOfMembers/"   class="" style=""><span>Number of Members</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_metrics/redemptionRate/"   class="" style=""><span>Redemption Rate</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_metrics/earnings/"   class="" style=""><span>Earnings Distribution</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/rewards/"   class="" style=""><span>Configuration</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/rewardsadmin/manage_currency/"   class="" style=""><span>Points Currency</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/rewards/"   class="" style=""><span>Other Configuration</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>MANAdev</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mana_filters/"   class="" style=""><span>Layered Navigation</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mana_seo_schema/"   class="" style=""><span>SEO Schemas</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/mana_seo_url/"   class="" style=""><span>SEO URL Keys</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level1 "> <a href="#"  onclick="return false" class="" style=""><span>Global Configuration</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/mana/"   class="" style=""><span>General</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/mana_filters/"   class="" style=""><span>Layered Navigation</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Reports</span></a>
+                                <ul >
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Auto Cancel Order</span></a>
+                                <ul >
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/AutoCancelOrder/Admin/showLogs/"   class="" style=""><span>Logs</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Sales</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/sales/"   class="" style=""><span>Orders</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/tax/"   class="" style=""><span>Tax</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/invoiced/"   class="" style=""><span>Invoiced</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/shipping/"   class="" style=""><span>Shipping</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/refunded/"   class="" style=""><span>Refunds</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/coupons/"   class="" style=""><span>Coupons</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/paypal_reports/"   class="" style=""><span>PayPal Settlement Reports</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Shopping Cart</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_shopcart/product/"   class="" style=""><span>Products in carts</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_shopcart/abandoned/"   class="" style=""><span>Abandoned carts</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Products</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_sales/bestsellers/"   class="" style=""><span>Bestsellers</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_product/sold/"   class="" style=""><span>Products Ordered</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_product/viewed/"   class="" style=""><span>Most Viewed</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_product/lowstock/"   class="" style=""><span>Low stock</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_product/downloads/"   class="" style=""><span>Downloads</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Customers</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_customer/accounts/"   class="" style=""><span>New Accounts</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_customer/totals/"   class="" style=""><span>Customers by orders total</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_customer/orders/"   class="" style=""><span>Customers by number of orders</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Tags</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_tag/customer/"   class="" style=""><span>Customers</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_tag/product/"   class="" style=""><span>Products</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_tag/popular/"   class="" style=""><span>Popular</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Reviews</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_review/customer/"   class="" style=""><span>Customers Reviews</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_review/product/"   class="" style=""><span>Products Reviews</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/report/search/"   class="" style=""><span>Search Terms</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Product Return</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/ProductReturn/Report/Reason/"   class="" style=""><span>By reason</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/ProductReturn/Report/Product/"   class="" style=""><span>By product</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/report_statistics/"   class="" style=""><span>Refresh Statistics</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 ewcore-main"> <a href="#"  onclick="return false" class="" style=""><span>Extendware</span></a>
+                                <ul >
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Manage Extensions</span></a>
+                                <ul >
+                <li  class="   level2 ewcore-overview"> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_module/"   class="" style=""><span>Overview</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level2 "> <a href="#"  onclick="return false" class="" style=""><span>Bulk Product Updating</span></a>
+                                <ul >
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/admin/catalog_product/"   class="" style=""><span>Manage Products</span></a>
+                    </li>
+                <li  class="   last level3 ewcore-configure"> <a href="https://dev.az-boutique.fr/index.php/admin/ewmpaction_config/index/"   class="" style=""><span>Configure </span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level2 "> <a href="#"  onclick="return false" class="" style=""><span>Extendware Core</span></a>
+                                <ul >
+                <li  class="   last level3 ewcore-configure"> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_config/index/"   class="" style=""><span>Configure </span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level2 "> <a href="#"  onclick="return false" class="" style=""><span>Image Optimization</span></a>
+                                <ul >
+                <li  class="   last level3 ewcore-configure"> <a href="https://dev.az-boutique.fr/index.php/extendware_ewimageopt/adminhtml_config/index/"   class="" style=""><span>Configure </span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 ewcore-extendware-userguide"> <a href="https://dev.az-boutique.fr/index.php/admin/ewmpaction_config/gotoExtendwareUserguides/"   class="" style=""><span>User Guides / Help</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_message/"   class="" style=""><span>Message Inbox</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>System / Developer</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_system_information/"   class="" style=""><span>Information</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_system_message/"   class="" style=""><span>Messages</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_system_cronjob/"   class="" style=""><span>Cronjobs</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level2 "> <a href="#"  onclick="return false" class="" style=""><span>Logs</span></a>
+                                <ul >
+                <li  class="   level3 "> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_system_log/"   class="" style=""><span>Logs</span></a>
+                    </li>
+                <li  class="   last level3 "> <a href="https://dev.az-boutique.fr/index.php/admin/ewcore_system_report/"   class="" style=""><span>Reports</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   last level1 ewcore-extendware-link"> <a href="https://dev.az-boutique.fr/index.php/admin/ewmpaction_config/gotoExtendware/"   class="" style=""><span>Improve Your Store</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>MagestyApps</span></a>
+                                <ul >
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level1 "> <a href="#"  onclick="return false" class="" style=""><span>Advanced Breadcrumbs</span></a>
+                                <ul >
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/crumbs/"   class="" style=""><span>Settings</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="  active  parent level0 "> <a href="#"  onclick="return false" class="active" style=""><span>System</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_account/"   class="" style=""><span>My Account</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/notification/"   class="" style=""><span>Notifications</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/ExtensionConflict_Admin/List/"   class="" style=""><span>Extension Conflict</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Tools</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_backup/"   class="" style=""><span>Backups</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/compiler_process/"   class="" style=""><span>Compilation</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Web Services</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/api_user/"   class="" style=""><span>SOAP/XML-RPC - Users</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/api_role/"   class="" style=""><span>SOAP/XML-RPC - Roles</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/api2_role/"   class="" style=""><span>REST - Roles</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/api2_attribute/"   class="" style=""><span>REST - Attributes</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/oauth_consumer/"   class="" style=""><span>REST - OAuth Consumers</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/oauth_authorizedTokens/"   class="" style=""><span>REST - OAuth Authorized Tokens</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/oauth_admin_token/"   class="" style=""><span>REST - My Apps</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_design/"   class="" style=""><span>Design</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Import/Export</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/import/"   class="" style=""><span>Import</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/export/"   class="" style=""><span>Export</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_convert_gui/"   class="" style=""><span>Dataflow - Profiles</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_convert_profile/"   class="" style=""><span>Dataflow - Advanced Profiles</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_currency/"   class="" style=""><span>Manage Currency</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_currency/"   class="" style=""><span>Rates</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_currencysymbol/"   class="" style=""><span>Symbols</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_email_template/"   class="" style=""><span>Transactional Emails</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_variable/"   class="" style=""><span>Custom Variables</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Permissions</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/permissions_user/"   class="" style=""><span>Users</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/permissions_role/"   class="" style=""><span>Roles</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Magento Connect</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/extension_local/"   class="" style=""><span>Magento Connect Manager</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/extension_custom/"   class="" style=""><span>Package Extensions</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/cache/"   class="" style=""><span>Cache Management</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/process/list/"   class="" style=""><span>Index Management</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_store/"   class="" style=""><span>Manage Stores</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/sales_order_status/"   class="" style=""><span>Order Statuses</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/"   class="" style=""><span>Configuration</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>ERP</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Products/Grid/"   class="" style=""><span>Products</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Stock Management</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Misc/MassStockEditor/"   class="" style=""><span>Mass Stock Editor</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Transfer/Grid/"   class="" style=""><span>Stock transfer</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Warehouse/Grid/"   class="" style=""><span>Warehouse</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/StockMovement/Grid/"   class="" style=""><span>Stock Movements</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Inventory/Grid/"   class="" style=""><span>Stock take</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Serial/Grid/"   class="" style=""><span>Product Serials</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Purchasing</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/SupplyNeeds/Grid/"   class="" style=""><span>Supply Needs</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/Orders/List/"   class="" style=""><span>Purchase orders</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/Suppliers/List/"   class="" style=""><span>Suppliers</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/Orders/Liabilities/"   class="" style=""><span>Suppliers liabilities</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/RemainingSupplyQuantities/List/"   class="" style=""><span>Remaining supply quantities</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/Contacts/List/"   class="" style=""><span>Contacts</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Purchase/Tax/List/"   class="" style=""><span>Tax Rates</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/DropShipping/Admin/Grid/"   class="" style=""><span>DropShipping</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Order Preparation</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/OrderPreparation/OrderPreparation/"   class="" style=""><span>Prepare orders</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/SalesOrderPlanning/LateOrders/"   class="" style=""><span>Late orders</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/OrderPreparation/CarrierTemplate/Grid/"   class="" style=""><span>Carrier templates</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/Scanner/index/index/"   class="" style=""><span>Scanner</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Organizer</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/Organizer/Task/List/"   class="" style=""><span>All Tasks/Events</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/Organizer/Task/Dashboard/"   class="" style=""><span>My Dashboard</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level1 "> <a href="#"  onclick="return false" class="" style=""><span>Tools</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Misc/IdentifyErrors/"   class="" style=""><span>Stock Errors</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/AdvancedStock/Debug/Debug/"   class="" style=""><span>Debug</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/SalesOrderPlanning/ShippingDelay/List/"   class="" style=""><span>Shipping Delay</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/SalesOrderPlanning/ProductAvailabilityRange/List/"   class="" style=""><span>Product availability ranges</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/SalesOrderPlanning/ProductAvailabilityStatus/Grid/"   class="" style=""><span>Product Availability Statuses</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/ClientComputer/Admin/Grid/"   class="" style=""><span>Client computer</span></a>
+                    </li>
+                <li  class="   last level2 "> <a href="https://dev.az-boutique.fr/index.php/admin/BackgroundTask_Admin/Grid/"   class="" style=""><span>Background Tasks</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level0 "> <a href="https://dev.az-boutique.fr/index.php/beetailer-installation/admin/index/"   class="" style=""><span>Facebook Store</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="https://dev.az-boutique.fr/index.php/outofstocksubscription/adminhtml_subscriber/"   class="" style=""><span>Tatvasoft</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/outofstocksubscription/adminhtml_subscriber/"   class="" style=""><span>Out of Stock Subscribers</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/collectionpages/adminhtml_collectionpages/"   class="" style=""><span>Collection Pages Create</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level1 "> <a href="#"  onclick="return false" class="" style=""><span>Transport</span></a>
+                                <ul >
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/tatvashipping/adminhtml_area/"   class="" style=""><span>Areas</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/tatvashipping/adminhtml_apimethod/"   class="" style=""><span>Shipping/ApiMethod</span></a>
+                    </li>
+                <li  class="   level2 "> <a href="https://dev.az-boutique.fr/index.php/tatvashipping/adminhtml_marketmethod/"   class="" style=""><span>Shipping/MarketPlaceMethod</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent last level2 "> <a href="#"  onclick="return false" class="" style=""><span>Grid price / weight</span></a>
+                                <ul >
+                <li  class="   last level3 "> <a href="https://dev.az-boutique.fr/index.php/tatvashipping/adminhtml_rule_colissimo/"   class="" style=""><span>Colissimo</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/advice/adminhtml_advice/"   class="" style=""><span>Add Advice</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Smart price</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/Mpm_Dashboard/"   class="" style=""><span>Dashboard</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/Mpm_Products/"   class="" style=""><span>Pricing wizard</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/Mpm_Rules/"   class="" style=""><span>Rules</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/Mpm_Shippings/"   class="" style=""><span>Shippings</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/mpm/"   class="" style=""><span>Configuration</span></a>
+                    </li>
+            </ul>
+                    </li>
+                <li  class="   level0 "> <a href="https://dev.az-boutique.fr/index.php/admin/autocompleteplus_redirect/goto/"   class="" style=""><span>InstantSearch+</span></a>
+                    </li>
+                <li onmouseover="Element.addClassName(this,'over')" onmouseout="Element.removeClassName(this,'over')" class="   parent level0 "> <a href="#"  onclick="return false" class="" style=""><span>Zendesk</span></a>
+                                <ul >
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/zendesk/"   class="" style=""><span>Dashboard</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/zendesk/create/"   class="" style=""><span>Create Ticket</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/zendesk/launch/"   class="" style=""><span>Launch Zendesk</span></a>
+                    </li>
+                <li  class="   level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/system_config/edit/section/zendesk/"   class="" style=""><span>Settings</span></a>
+                    </li>
+                <li  class="   last level1 "> <a href="https://dev.az-boutique.fr/index.php/admin/zendesk/log/"   class="" style=""><span>Log Viewer</span></a>
+                    </li>
+            </ul>
+                    </li>
+            </ul>
+
+    <a id="page-help-link" href="http://www.magentocommerce.com/gethelp/en_US/Mage_Adminhtml/cache/index/">Get help for this page</a>
+    <script type="text/javascript">$('page-help-link').target = 'magento_page_help'</script>
+
+</div>
+

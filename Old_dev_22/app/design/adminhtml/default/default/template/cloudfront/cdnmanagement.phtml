@@ -1,0 +1,58 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td>
+                <h3><?php echo Mage::helper('adminhtml')->__('Cloudfront CDN Management') ?></h3>
+            </td>
+            <?php if ($this->isRefreshEnabled()): ?>
+                <td class="form-buttons">
+                    <button onclick="setLocation('<?php echo $this->getRefreshAllLink() ?>')" type="button" class="scalable"><span><span><span><?php echo Mage::helper('adminhtml')->__('Refresh All Files on CDN') ?></span></span></span></button>
+                </td>
+            <?php endif; ?>
+        </tr>
+    </table>
+</div>
+<?php if ($this->isRefreshEnabled()): ?>
+    <table class="form-list">
+        <?php if ($this->isMediaCdnEnabled()): ?>
+            <tr>
+                <td class="scope-label">
+                    <button onclick="setLocation('<?php echo $this->getMediaRefreshLink() ?>')" type="button" class="scalable"><span><span><span><?php echo Mage::helper('adminhtml')->__('Refresh Media Files on CDN') ?></span></span></span></button>
+                </td>
+                <td class="scope-label">
+                    <?php echo Mage::helper('adminhtml')->__('Product, Category, and CMS Files.') ?>
+                </td>
+            </tr>
+        <?php endif; ?>
+        <?php if ($this->isSkinCdnEnabled()): ?>
+            <tr>
+                <td class="scope-label">
+                    <button onclick="setLocation('<?php echo $this->getSkinRefreshLink() ?>')" type="button" class="scalable"><span><span><span><?php echo Mage::helper('adminhtml')->__('Refresh Skin Files on CDN') ?></span></span></span></button>
+                </td>
+                <td class="scope-label">
+                    <?php echo Mage::helper('adminhtml')->__('CSS Stylesheets and Theme images.') ?>
+                </td>
+            </tr>
+        <?php endif; ?>
+        <?php if ($this->isJsCdnEnabled()): ?>
+            <tr>
+                <td class="scope-label">
+                    <button onclick="setLocation('<?php echo $this->getJsRefreshLink() ?>')" type="button" class="scalable"><span><span><span><?php echo Mage::helper('adminhtml')->__('Refresh JavaScript on CDN') ?></span></span></span></button>
+                </td>
+                <td class="scope-label">
+                    <?php echo Mage::helper('adminhtml')->__('System Javascript and Libraries') ?>
+                </td>
+            </tr>
+        <?php endif; ?>
+    </table>
+<?php else: ?>
+    <div id="messages">
+        <ul class="messages">
+            <li class="error-msg">
+                <ul>
+                    <li><span>This feature is not enabled. Please enable "Quick CDN Refresh Support" in the System Configuration</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>

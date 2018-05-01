@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000842</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>2</item_count>
+    <created_at>2017-11-29 11:59:02</created_at>
+    <total_amount>20.8900</total_amount>
+    <total_discount>20.8900</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-1249@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_colissimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Marine</firstname>
+      <lastname>Aitelhouassine</lastname>
+      <company/>
+      <address1>10 rue boieldieu</address1>
+      <address2>Chez Bretonnet Florence</address2>
+      <postal_code>91240</postal_code>
+      <city>Saint michel sur orge</city>
+      <country>FR</country>
+      <phone>0608810501</phone>
+    </billing>
+    <shipping>
+      <firstname>Marine</firstname>
+      <lastname>Aitelhouassine</lastname>
+      <company/>
+      <address1>10 rue boieldieu</address1>
+      <address2>Chez Bretonnet Florence</address2>
+      <postal_code>91240</postal_code>
+      <city>Saint michel sur orge</city>
+      <country>FR</country>
+      <phone>0608810501</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>1549</id>
+      <fbd_sku>az-boutique_PTIR41699-11</fbd_sku>
+      <supplier_sku>PTIR41699-11</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>18.8000</price>
+        <total>18.8000</total>
+        <discount>18.8000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>1550</id>
+      <fbd_sku>az-boutique_PCUI42901-20</fbd_sku>
+      <supplier_sku>PCUI42901-20</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>2.0900</price>
+        <total>2.0900</total>
+        <discount>2.0900</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

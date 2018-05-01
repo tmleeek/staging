@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MagestyApps
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extension to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to https://www.magestyapps.com for more information or
+ * send an email to office@magestyapps.com .
+ *
+ * @category    MagestyApps
+ * @package     MagestyApps_AdvancedBreadcrumbs
+ * @copyright   Copyright (c) 2016 MagestyApps (https://www.magestyapps.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <sections>
+        <crumbs translate="label">
+            <label>Advanced Breadcrumbs</label>
+            <tab>magestyapps</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="crumbs">
+                    <label>Breadcrumbs for product page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <force_full_path>
+                            <label>Force show full path</label>
+                            <comment>If 'Yes' then the full path to product will be shown in breadcrumbs even when visitors open a product page from a middle category.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </force_full_path>
+                        <search_crumb_enabled>
+                            <label>Enable 'Search results' breadcrumb</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Displays "Search results for..." breadcrumb when viewing a product from search results page.</comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </search_crumb_enabled>
+                        <one_path translate="label">
+                            <label>Show only one path</label>
+                            <comment>This setting makes sense when a product is assigned to multiple categories.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </one_path>
+                        <hide_duplicates translate="label">
+                            <label>Hide duplicated categories</label>
+                            <frontend_type>select</frontend_type>
+                            <depends><one_path>0</one_path></depends>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hide_duplicates>
+                        <default_category translate="label,comment">
+                            <label>Default category</label>
+                            <frontend_type>select</frontend_type>
+                            <depends><one_path>1</one_path></depends>
+                            <source_model>crumbs/system_config_source_category</source_model>
+                            <comment>The longest category, which includes selected category in its path, will be chosen</comment>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_category>
+                    </fields>
+                </general>
+                <additional_pages translate="label" module="crumbs">
+                    <label>Breadcrumbs for additional pages</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <customer_account translate="label">
+                            <label>Customer account pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_account>
+                        <checkout translate="label">
+                            <label>Cart and checkout pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkout>
+                        <contacts translate="label">
+                            <label>Contacts page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contacts>
+                        <cms_pages translate="label">
+                            <label>CMS pages</label>
+                            <frontend_type>label</frontend_type>
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cms_pages>
+                    </fields>
+                </additional_pages>
+            </groups>
+        </crumbs>
+    </sections>
+</config>

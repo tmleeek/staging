@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<order>
+  <header>
+    <order_fbd_id>000000106</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>4</item_count>
+    <created_at>2017-01-03 16:49:09</created_at>
+    <total_amount>18.4000</total_amount>
+    <total_discount>18.4000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-75@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>DJI KRISNARD</firstname>
+      <lastname>SEGLA</lastname>
+      <company/>
+      <address1>4 RUE DE LA PARFUMERIE</address1>
+      <address2></address2>
+      <postal_code>92600</postal_code>
+      <city>ASNIERES SUR SEINE</city>
+      <country>FR</country>
+      <phone>0668951227</phone>
+    </billing>
+    <shipping>
+      <firstname>DJI KRISNARD</firstname>
+      <lastname>SEGLA</lastname>
+      <company/>
+      <address1>4 RUE DE LA PARFUMERIE</address1>
+      <address2></address2>
+      <postal_code>92600</postal_code>
+      <city>ASNIERES SUR SEINE</city>
+      <country>FR</country>
+      <phone>0668951227</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>118</id>
+      <fbd_sku>az-boutique_PTUA47739-32</fbd_sku>
+      <supplier_sku>PTUA47739-32</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>10.9000</price>
+        <total>10.9000</total>
+        <discount>10.9000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>119</id>
+      <fbd_sku>az-boutique_PUSP47722-08</fbd_sku>
+      <supplier_sku>PUSP47722-08</supplier_sku>
+      <qty>3.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>2.5000</price>
+        <total>7.5000</total>
+        <discount>7.5000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+        <sequence>
+          <id>2</id>
+          <state>created</state>
+        </sequence>
+        <sequence>
+          <id>3</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

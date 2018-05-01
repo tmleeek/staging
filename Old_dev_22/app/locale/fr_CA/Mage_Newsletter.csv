@@ -1,0 +1,129 @@
+ Copy, Copier
+Subscriber,Abonné
+Subcribed,Abonné
+Subscribers,Abonnés
+Newsletter Subscribers,Abonnés à l'infolettre
+Subscribers From,Abonnés de
+Newsletter Subscriptions,Abonnement à l'infolettre
+Newsletter Sign-up,Abonnement à l'infolettre
+Newsletter subscription success,Abonnement à l'infolettre réussi
+Action,Action
+Add to Queue,Ajouter à la file
+Add New Template,Ajouter un nouveau gabarit
+Cancelled,Annulé
+Cancel,Annuler
+Paused,Arrêté
+Are you sure that you want to delete this template?,Êtes-vous certain de vouloir supprimer ce gabarit ?
+Are you sure that you want to strip all tags?,Êtes-vous certain de vouloir supprimer tous les libellés ?
+No subscribers selected,Aucun abonné sélectionné
+No Templates Found,Aucun gabarit trouvé
+No problems found,Aucun problème trouvé
+Edit Queue,Éditer file
+Edit Newsletter,Éditer l'infolettre
+Edit Template,Éditer le gabarit
+Edit Newsletter Template,Éditer le gabarit de l'infolettre
+Toggle Editor,Changer d'éditeur
+Customer,Client
+Error Code,Code d'erreur
+Invalid subscription confirmation code,Code de confirmation d'inscription non valide
+Start,Commencer
+Newsletter subscription confirmation,Confirmation de l'abonnement à l'infolettre
+Need to Confirm,Confirmation nécessaire
+Template Content,Contenu du gabarit
+Convert to Plain Text,Convertir en texte simple
+Email,Courriel
+Create Newsletter Template,Créer un nouveau gabarit d'infolettre
+Date Added,Date d'ajout
+Queue Date Start,Date de démarrage de la file
+Date Updated,Date de mise à jour
+Queue Start,Début de la file
+Newsletter unsubscription success,Désabonnement à l'infolettre réussi
+Unsubscribe,Désabonner
+Not activated,Désactivé
+Unsubscribe Selected,Désinscription sélectionnée
+Unsubcribed,Désinscrit
+Recipients,Destinataires
+Duplicate of template code,Duplication de code de gabarit
+Enter your email address,Entrez votre courriel
+Sending,Envoi en cours
+Sent,Envoyé
+There was an error while saving your subscription,Erreur lors de la sauvegarde de l'inscription
+Sender,Expéditeur
+Sender Email,Expéditeur du courriel
+Confirmation Email Sender,Expéditeur du courriel de confirmation
+Unsubscription Email Sender,Expéditeur du courriel de désinscription
+Success Email Sender,Expéditeur du courriel de succès
+Newsletter Queue,File d'attente de l'infolettre
+Invalid queue selected,File sélectionnée non valide
+Queue Finish,Fin de la file
+Confirmation Email Template,Gabarit du courriel de confirmation
+Unsubscription Email Template,Gabarit du courriel de désinscription
+Success Email Template,Gabarit du courriel de succès
+Newsletter Templates,Gabarits d'infolettre
+ID,ID
+Invalid subscriber ID,Identifiant d'abonné non valide
+Invalid subscription ID,Identifiant d'inscription non valide
+There was a problem with the subscription: %s,Il y a eu un problème lors de l'inscription: %s
+Cannot delete template,Impossible d'effacer le gabarit
+Cannot mark as received subscriber,Impossible d'enregistrer comme abonné reçu
+Cannot save your subscription: %s,Impossible d'enregistrer votre inscription: %s
+Cannot delete subscriber,Impossible de supprimer l'abonné
+Newsletter,Infolettre
+Queue Information,Informations de file
+Template Information,Informations gabarit
+Subscribe,Inscription
+Guest,Invité
+Sign me up,Je m'abonne
+The subscription was successfully saved,L'inscription a été enregistrée
+Form was filled incorrectly,Le formulaire n'a pas été correctement rempli
+Selected problem subscribers successfully unsubscribed,Les abonnés problématiques sélectionnés ont été désabonnés avec succès
+Selected problems successfully deleted,Les problèmes sélectionnés ont été supprimés avec succès
+Store,Magasin
+Thank you for your subscription,Merci pour votre inscription
+Message,Message
+Queue Newsletter,Mettre l'infolettre dans la file d'attente
+Customer Lastname,Nom de famille du client
+Sender Name,Nom de l'expéditeur
+Template Name,Nom du gabarit
+New Template,Nouveau gabarit
+New Newsletter Template,Nouveau gabarit d'infolettre
+Subscription Options,Options d'inscription
+Not Sent,Pas envoyé
+Pause,Pause
+Customer Firstname,Prénom du client
+Newsletter Message Preview,Prévisualisation du message de l'infolettre
+Preview,Prévisualiser
+Preview Template,Prévisualiser le gabarit
+Newsletter Problem Reports,Rapports de problèmes d'infolettre
+Reset,Réinitialiser
+Resume,Reprendre
+Back,Retour
+Return Html Version,Revenir à la version HTML
+Save And Resume,Sauvegarder et reprendre
+Save Newsletter,Sauvegarder l'infolettre
+Save Template,Sauvegarder le gabarit
+Save As,Sauvegarder sous
+Website,Site web
+Status,Statut
+Subject,Sujet
+Queue Subject,Sujet de la file
+Template Subject,Sujet du gabarit
+Delete Template,Supprimer le gabarit
+Delete Selected Problems,Supprimer les problèmes sélectionnés
+Processed,Terminé
+Error Text,Texte d'erreur
+Type,Type
+Template Type,Type de gabarit
+There was a problem with the subscription,Un problème est survenu lors de l'inscription
+There was a problem with the un-subscription.,Un problème est survenu lors de la désinscription
+Confirmation request has been sent,Une demande de confirmation a été envoyée
+Please enter new template name,Veuillez saisir un nouveau nom de gabarit
+Please select subscriber(s),Veuillez sélectionner des abonnés
+View Newsletter,Voir l'infolettre
+Sign up for our newsletter:,Votre courriel pour vous abonner à notre infolettre :
+You have been successfully unsubscribed.,Votre désincription a été prise en compte..
+Your subscription was successfully confirmed,Votre inscription a été prise en compte
+Do you really want to cancel the queue?,Voulez-vous vraiment supprimer la file ?
+Store View,Vue magasin
+Subscribe to newsletter,S'ABONNER A LA NEWSLETTER
+Subscribe to our newsletter,Abonnez-vous � notre newsletter

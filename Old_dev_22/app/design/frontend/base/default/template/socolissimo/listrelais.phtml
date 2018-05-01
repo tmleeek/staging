@@ -1,0 +1,32 @@
+<?php if ($this->getListRelais()) :
+$i=0;
+foreach ($this->getListRelais() as $relais) : ?>
+<div class="soco_point_retrait" id="point_retrait_<?php echo $i; ?>">
+	<div class="soco_distance">A <?php echo number_format ($relais->getDistance(), 2, ',', '') ?>km</div>
+	<div class="soco_point soco_<?php echo $relais->getType() ?>"><?php if ($relais->isBureauPoste()): ?>Bureau de poste<?php elseif($relais->isCommercant()):?>Commerçant<?php endif;?></div>
+	<div class="soco_handicap" >
+	<?php if ($relais->isParking()) : ?>
+		<img alt="parking dédié" src="<?php echo $this->getSkinUrl("images/socolissimo/picto_parking.jpg"); ?>" />
+	<?php endif; ?>
+	<?php if ($relais->isManutention()) : ?>
+		<img alt="outils de manutention pour faciliter le transport du/des colis jusqu’au véhicule" src="<?php echo $this->getSkinUrl("images/socolissimo/picto_manutention.jpg"); ?>" />
+	<?php endif; ?>
+	<?php if ($relais->getIndicateurAcces()) : ?>
+		<img alt="accessibilité aux personnes à mobilité réduite" src="<?php echo $this->getSkinUrl("images/socolissimo/picto_mobilite_reduite.jpg"); ?>" />
+	<?php endif; ?>
+	</div>
+	<div class="soco_adresse_point">
+		<b><?php echo $relais->getLibelle() ?></b><br />
+		<?php echo $relais->getAdresse() ?><br />
+		<?php echo $relais->getCodePostal().' '.$relais->getCommune() ?>
+	</div>
+	<?php if (!$relais->getCongesTotal()) :?>
+	<button type="button" class="btn_socolissimoChoisir button <?php echo $relais->getType();?>" onclick="choisirRelais('<?php echo $i; ?>')" ><span>Choisir <?php if ($relais->isBureauPoste()): ?>ce bureau de poste<?php elseif($relais->isCommercant()):?>ce commerçant<?php endif;?></span></button>
+	<?php else :?>
+	<button type="button" class="btn_socolissimoChoisir button" ><span>en congés</span></button> 	
+	<?php endif;?>
+</div>
+<?php 
+$i++;
+endforeach;
+endif;?>

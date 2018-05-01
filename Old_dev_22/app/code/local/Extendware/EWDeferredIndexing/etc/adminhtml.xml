@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<config>
+	<extendware>
+		<quickaccess>
+			<ewdeferredindexing>
+                <resource>extendware/ewdeferredindexing</resource>
+				<children>
+					<indexing translate="title" module="ewdeferredindexing">
+						<title>Index Management</title>
+						<action>adminhtml/process/list</action>
+						<resource>system/index</resource>
+						<sort_order>1</sort_order>
+					</indexing>
+					<queue translate="title" module="ewdeferredindexing">
+						<title>Queued Index Events</title>
+						<action>adminhtml/ewdeferredindexing_queue</action>
+						<resource>extendware/ewdeferredindexing/queue</resource>
+						<sort_order>2</sort_order>
+					</queue>
+				</children>
+				<title/>
+			</ewdeferredindexing>
+		</quickaccess>
+	</extendware>
+	<menu>
+	    <ewcore translate="title" module="ewdeferredindexing">
+			<title>Extendware</title>
+			<sort_order>89</sort_order>
+			<resource>extendware/ewcore</resource>
+			<class>ewcore-main</class>
+	        <children>
+	            <quickaccess translate="title" module="ewdeferredindexing">
+	                <title>Manage Extensions</title>
+	                <sort_order>1</sort_order>
+	                <resource>extendware/ewdeferredindexing</resource>
+	                <children>
+	                	<ewdeferredindexing translate="title" module="ewdeferredindexing">
+			                <title>Improved Indexing</title>
+			                <sort_order>45548</sort_order>
+			                <resource>extendware/ewdeferredindexing</resource>
+			                <children>
+			                	<indexing translate="title" module="ewdeferredindexing">
+									<title>Index Management</title>
+									<action>adminhtml/process/list</action>
+									<resource>system/index</resource>
+									<sort_order>1</sort_order>
+								</indexing>
+								<queue translate="title" module="ewdeferredindexing">
+									<title>Queued Index Events</title>
+									<action>adminhtml/ewdeferredindexing_queue</action>
+									<resource>extendware/ewdeferredindexing/queue</resource>
+									<sort_order>2</sort_order>
+								</queue>
+								<configure translate="title" module="ewdeferredindexing">
+									<title>Configure</title>
+									<sort_order>9999999</sort_order>
+									<action>adminhtml/ewdeferredindexing_config/index</action>
+									<resource>extendware/ewdeferredindexing/configure</resource>
+								</configure>
+			                </children>
+			            </ewdeferredindexing>
+	                </children>
+	            </quickaccess>
+	            <userguides translate="title" module="ewdeferredindexing">
+	                <title>User Guides / Help</title>
+	                <sort_order>9</sort_order>
+	                <action>adminhtml/ewdeferredindexing_config/gotoExtendwareUserguides</action>
+	                <resource>extendware/ewcore/redirect/userguide</resource>
+	                <class>ewcore-extendware-userguide</class>
+	            </userguides>
+	            <storelink translate="title" module="ewdeferredindexing">
+		            <title>Improve Your Store</title>
+		            <sort_order>9999</sort_order>
+		            <action>adminhtml/ewdeferredindexing_config/gotoExtendware</action>
+		            <resource>extendware/ewcore/redirect/extendware</resource>
+		            <class>ewcore-extendware-link</class>
+		        </storelink>
+	        </children>
+	    </ewcore>
+	</menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware translate="title" module="ewdeferredindexing">
+                    	<title>Extendware</title>
+                    	<sort_order>0</sort_order>
+                        <children>
+                        	<ewdeferredindexing translate="title" module="ewdeferredindexing">
+                        		<title>Improved Indexing</title>
+                        		<children>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewdeferredindexing translate="title">
+						                                <title>General</title>
+						                            </ewdeferredindexing>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewdeferredindexing>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

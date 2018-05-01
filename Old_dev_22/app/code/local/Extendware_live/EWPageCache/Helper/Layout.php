@@ -1,0 +1,24 @@
+<?php /*obfv1*/
+// Copyright © 2015 Extendware
+// Are you trying to customize your extension? Contact us (http://www.extendware.com/contacts/) and we can help!
+// Please note, not all files are encoded and different extensions have different levels of encoding.
+// We are always happy to provide guideance if you are experiencing an issue!
+
+
+
+/**
+ * Below are methods found in this class
+ *
+ * @method mixed public isAjaxHolePunchModeEnabled()
+ * @method mixed public isCacheBackendsAllowed()
+ * @method mixed public isLighteningCacheAllowed()
+ * @method mixed public isPageRulesAllowed()
+ * @method mixed public isPerformanceCacheBackendsInstalled()
+ * @method mixed public isRecentlyComparedProductsDisabled()
+ * @method mixed public isRecentlyViewedProductsDisabled()
+ * @method mixed public isSecondaryCacheAllowed()
+ * @method mixed public isTaggingAllowed()
+ *
+ */
+
+$_F=__FILE__;$_X="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";$_D=strrev("edoced" . "_46esab");eval(gzuncompress($_D($_X)));

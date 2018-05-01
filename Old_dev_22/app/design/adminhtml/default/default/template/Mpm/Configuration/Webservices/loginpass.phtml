@@ -1,0 +1,21 @@
+<?php $credentials = Mage::helper('Mpm/Carl')->getWebserviceCredentials($this->channelCode); ?>
+<table>
+    <tbody>
+    <tr>
+        <td class="label">
+            <label for="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_login][value]"><?php echo $this->__('Login'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_login][value]" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_login][value]" value="<?php echo (isset($credentials->LOGIN)) ?  $credentials->LOGIN : ''; ?>" />
+        </td>
+    </tr>
+    <tr>
+        <td class="label">
+            <label for="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_password][value]"><?php echo $this->__('Password'); ?></label>
+        </td>
+        <td class="value">
+            <input class="input-text" type="text" id="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_password][value]" name="groups[repricing][fields][seller_webservice_<?php echo $this->channelCode; ?>_password][value]" value="<?php echo (isset($credentials->PASSWORD)) ? $credentials->PASSWORD : ''; ?>" />
+        </td>
+    </tr>
+    </tbody>
+</table>

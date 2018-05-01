@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWImageOpt>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewimageopt">
+						            <label>Image Optimizer</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewimageopt translate="label comment ewhelp" module="ewimageopt">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewimageopt">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <filemtime_enabled translate="label comment ewhelp">
+						                            <label>Modified Time Check</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>4</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Disabling this is faster, but will require you to flush the cache if changing images.]]></comment>
+						                        </filemtime_enabled>
+						                    </fields>
+						                </general>
+						                <frontend_images translate="label comment ewhelp" module="ewimageopt">
+						                    <label>Frontend Images</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>31</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                        <catalog_image_cache_enabled translate="label comment ewhelp">
+						                            <label>Catalog Image Cache</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Cache catalog images and add forever expirations]]></comment>
+						                            <ewhelp><![CDATA[This will rewrite catalog images and apply expiration headers to them. This will use a lot more hard disk space.]]></ewhelp>
+						                        </catalog_image_cache_enabled>
+						                        <catalog_image_seo_enabled translate="label comment ewhelp">
+						                            <label>Search Engine Optimization</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>5</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><catalog_image_cache_enabled>1</catalog_image_cache_enabled></depends>
+						                            <comment><![CDATA[Use the product name for catalog images]]></comment>
+						                        </catalog_image_seo_enabled>
+						                        <skin_image_cache_enabled translate="label comment ewhelp">
+						                            <label>Skin Image Cache</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Cache skin images and add forever expirations]]></comment>
+						                            <ewhelp><![CDATA[This will rewrite skin images and apply expiration headers to them. This will use a lot more hard disk space.]]></ewhelp>
+						                        </skin_image_cache_enabled>
+						                        <template_image_cache_enabled translate="label comment ewhelp">
+						                            <label>Template Image Cache</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Cache template media images such as those found in cms pages using {{media url=""}]]></comment>
+						                            <ewhelp><![CDATA[This will rewrite template images and apply expiration headers to them. This will use a lot more hard disk space.]]></ewhelp>
+						                        </template_image_cache_enabled>
+						                        <css_image_cache_enabled translate="label comment ewhelp">
+						                            <label>CSS Image Cache</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Cache CSS images and add forever expirations.  <b>Note</b>: <a href="http://www.extendware.com/magento-minify-javascript-css-html.html"><b>Minify JS / CSS</b></a> must be installed for this to work. If this is not installed you can Custom Directories top optimize css images.]]></comment>
+						                            <ewhelp><![CDATA[This will rewrite CSS images and apply expiration headers to them to make the best use of the browser cache.]]></ewhelp>
+						                        </css_image_cache_enabled>
+						                        <catalog_image_optimizing_enabled translate="label comment ewhelp">
+						                            <label>Catalog Image Optimizing</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><catalog_image_cache_enabled>1</catalog_image_cache_enabled></depends>
+						                            <comment><![CDATA[Optimize catalog images to be faster to download, save bandwidth, etc]]></comment>
+						                        </catalog_image_optimizing_enabled>
+						                        <skin_image_optimizing_enabled translate="label comment ewhelp">
+						                            <label>Skin Image Optimizing</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>50</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><skin_image_cache_enabled>1</skin_image_cache_enabled></depends>
+						                            <comment><![CDATA[Optimize skin images to be faster to download, save bandwidth, etc]]></comment>
+						                        </skin_image_optimizing_enabled>
+						                        <template_image_optimizing_enabled translate="label comment ewhelp">
+						                            <label>Template Image Optimizing</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>60</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><template_image_cache_enabled>1</template_image_cache_enabled></depends>
+						                            <comment><![CDATA[Optimize template images to be faster to download, save bandwidth, etc]]></comment>
+						                        </template_image_optimizing_enabled>
+						                        <css_image_optimizing_enabled translate="label comment ewhelp">
+						                            <label>CSS Image Optimizing</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>70</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><css_image_cache_enabled>1</css_image_cache_enabled></depends>
+						                            <comment><![CDATA[Optimize css images to be faster to download, save bandwidth, etc]]></comment>
+						                        </css_image_optimizing_enabled>
+						                        <directories translate="label comment ewhelp">
+						                            <label>Custom Directories</label>
+						                            <frontend_type>select</frontend_type>
+						                            <frontend_model>ewimageopt/adminhtml_config_form_field_directories</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>100</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>1</splittable_min_items>
+						                            			<splittable_max_items>1</splittable_max_items>
+						                            			<splittable_item_types>directory_relative</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Enter directories <u>relative to the base path</u> where images should also be optimized. For example, /media/wysiwyg/. <b>Warning: </b> This will <u>permanently</u> change images in these directories. Ensure you backup first!]]></comment>
+						                        </directories>
+						                    </fields>
+						                </frontend_images>
+						                <developer translate="label comment ewhelp" module="ewimageopt">
+						                    <label>Developer</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>40</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<optimizer_mode translate="label comment ewhelp">
+						                            <label>Optimizer Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewimageopt/adminhtml_data_option_optimizermode</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Cronjob will optimize every few hours whereas realtime will optimize as pages are accessed. <b>Warning: </b> realtime will cause first requests to be slow until the images are cached]]></comment>
+						                            <ewoverrides>
+														<licensing>
+							                        		<ifhelper>ewimageopt/layout/isImageOptimizationAllowed</ifhelper>
+							                        		<ifvalue>0</ifvalue>
+							                        		<field_option>
+							                        			<disabled>1</disabled>
+							                        			<comment><![CDATA[<b>Only available with the "Image Optimization" addon. Please <a href="http://www.extendware.com/rwcore/redirect/normal/to/purchase_addon/" target="_blank">purchase addon</a> to enable.</b>]]></comment>
+							                        			<value>0</value>
+							                        		</field_option>
+							                        	</licensing>
+						                        	</ewoverrides>
+						                        </optimizer_mode>
+						                        <gif_optimizer translate="label comment ewhelp">
+						                            <label>GIF Optimizer</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Utility used to optimize gif images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable]]></comment>
+						                            <ewoverrides>
+														<licensing>
+							                        		<ifhelper>ewimageopt/layout/isImageOptimizationAllowed</ifhelper>
+							                        		<ifvalue>0</ifvalue>
+							                        		<field_option>
+							                        			<disabled>1</disabled>
+							                        			<comment><![CDATA[<b>Only available with the "Image Optimization" addon. Please <a href="http://www.extendware.com/rwcore/redirect/normal/to/purchase_addon/" target="_blank">purchase addon</a> to enable.</b>]]></comment>
+							                        		</field_option>
+							                        	</licensing>
+						                        	</ewoverrides>
+						                        </gif_optimizer>
+						                        <jpg_optimizer translate="label comment ewhelp">
+						                            <label>JPG Optimizer</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Utility used to optimize jpg images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable. Add "--all-progressive --force" to force progressive images]]></comment>
+						                            <ewoverrides>
+														<licensing>
+							                        		<ifhelper>ewimageopt/layout/isImageOptimizationAllowed</ifhelper>
+							                        		<ifvalue>0</ifvalue>
+							                        		<field_option>
+							                        			<disabled>1</disabled>
+							                        			<comment><![CDATA[<b>Only available with the "Image Optimization" addon. Please <a href="http://www.extendware.com/rwcore/redirect/normal/to/purchase_addon/" target="_blank">purchase addon</a> to enable.</b>]]></comment>
+							                        		</field_option>
+							                        	</licensing>
+						                        	</ewoverrides>
+						                        </jpg_optimizer>
+						                        <png_optimizer translate="label comment ewhelp">
+						                            <label>PNG Optimizer</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Utility used to optimize png images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable <b>Note:</b> You can use the command <u>pngquant -force 256 %s 2>&1</u> if you have pngquant installed and are okay with lossy compression.]]></comment>
+						                            <ewoverrides>
+														<licensing>
+							                        		<ifhelper>ewimageopt/layout/isImageOptimizationAllowed</ifhelper>
+							                        		<ifvalue>0</ifvalue>
+							                        		<field_option>
+							                        			<disabled>1</disabled>
+							                        			<comment><![CDATA[<b>Only available with the "Image Optimization" addon. Please <a href="http://www.extendware.com/rwcore/redirect/normal/to/purchase_addon/" target="_blank">purchase addon</a> to enable.</b>]]></comment>
+							                        		</field_option>
+							                        	</licensing>
+						                        	</ewoverrides>
+						                        </png_optimizer>
+						                    </fields>
+						                </developer>
+									</groups>
+								</ewimageopt>
+								<ewimageopt_advanced translate="label comment ewhelp" module="ewimageopt">
+									<class>separator-top</class>
+									<label>Advanced</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>400</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+						                <hostname translate="label comment ewhelp" module="ewimageopt">
+						                    <label>Hostnames</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <comment><![CDATA[Having different hostnames for different resources can speed up downloads. <u>Only change these values if you are know exactly what you are doing.</u>]]></comment>
+						                    <fields>
+						                        <skin_image translate="label comment ewhelp">
+						                            <label>Skin Images</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Leave blank to use the default hostname. This value must be valid or the resource will not load.]]></comment>
+						                            <ewhelp><![CDATA[<b>Warning:</b> You must enter a valid hostname. The hostname is the bolded part of the following URL: http://<b>www.example.com</b>/path/index.html]]></ewhelp>
+						                        </skin_image>
+						                        <catalog_image translate="label comment ewhelp">
+						                            <label>Catalog Images</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Leave blank to use the default hostname. This value must be valid or the resource will not load.]]></comment>
+						                            <ewhelp><![CDATA[<b>Warning:</b> You must enter a valid hostname. The hostname is the bolded part of the following URL: http://<b>www.example.com</b>/path/index.html]]></ewhelp>
+						                        </catalog_image>
+						                        <template_image translate="label comment ewhelp">
+						                            <label>Template Image</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Leave blank to use the default hostname. This value must be valid or the resource will not load.]]></comment>
+						                            <ewhelp><![CDATA[<b>Warning:</b> You must enter a valid hostname. The hostname is the bolded part of the following URL: http://<b>www.example.com</b>/path/index.html]]></ewhelp>
+						                        </template_image>
+						                    </fields>
+						                </hostname>
+									</groups>
+								</ewimageopt_advanced>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWImageOpt>
+	</modules>
+</config>

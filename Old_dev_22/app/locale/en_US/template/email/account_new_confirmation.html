@@ -1,0 +1,86 @@
+<!--@subject Account confirmation for {{var customer.name}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"store url=\"customer/account/\"":"Customer Account Url",
+"htmlescape var=$customer.name":"Customer Name",
+"var customer.email":"Customer Email",
+"store url=\"customer/account/confirm/\" _query_id=$customer.id _query_key=$customer.confirmation _query_back_url=$back_url":"Confirmation Url",
+"htmlescape var=$customer.password":"Customer password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AZ-boutique.fr</title>
+<style>
+body {
+background:#ffe8f5;
+font-family:Verdana, Geneva, sans-serif;
+font-size:12px;
+padding:0;
+margin:30px 0 0 0;
+}
+</style>
+</head>
+<body>
+<table width="618" border="0" cellspacing="0" cellpadding="0" align="center">
+ {{config path='sales_email/tansactional_email/header'}} 	
+  <tr>
+    <td style="background:#de2666; color:#ffe8f5; text-align:right; text-transform:uppercase; height:20px; font-weight:bold; padding-right:5px; font-family:Verdana, Geneva, sans-serif; font-size:12px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" style="background:#ffffff; color:#333333; margin-bottom:10px; padding:0 9px; line-height:18px; font-family:Verdana, Geneva, sans-serif; font-size:12px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">&nbsp;</td>
+        </tr>
+         <tr>
+                        <td valign="top">
+                            <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 11px 0;">Dear {{htmlescape var=$customer.name}},</h1>
+                            <p style="font-size:12px; line-height:16px; margin:0 0 16px 0;">Your e-mail {{var customer.email}} must be confirmed before using it to log in to our store.</p>
+                            <p style="font-size:12px; line-height:16px; margin:0 0 8px 0;">To confirm the e-mail and instantly log in, please, use <a href="{{store url="customer/account/confirm/" _query_id=$customer.id _query_key=$customer.confirmation _query_back_url=$back_url}}" style="color:#1E7EC8;">this confirmation link</a>. This link is valid only once.</p>
+                            <p style="border:1px solid #E0E0E0; font-size:12px; line-height:16px; margin:0 0 16px 0; padding:13px 18px; background:#f9f9f9;">
+                                Use the following values when prompted to log in:<br/>
+                                <strong>E-mail:</strong> {{var customer.email}}<br/>
+                                <strong>Password:</strong> {{htmlescape var=$customer.password}}<p>
+                            
+                        </td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">Sinc&eacute;res salutations,</td>
+        </tr>
+        <tr>
+          <td height="5"></td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">Le Service Client</td>
+        </tr>
+        <tr>
+          <td height="5" style="font-family:Verdana, Geneva, sans-serif; font-size:12px;"></td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;"><a href="{{store url=""}}" target="_blank" style="color:#c30245; text-decoration:none; border:none; font-family:Verdana, Geneva, sans-serif; font-size:12px;">{{config path="general/store_information/name"}}</a></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td style="background:#de2666; height:23px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  {{config path='sales_email/tansactional_email/footer'}} 	  
+</table>
+</body>
+</html>

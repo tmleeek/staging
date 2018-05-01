@@ -1,0 +1,18 @@
+<div class="entry-edit">
+
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo$this->__('Products List')?></h3></td>
+            <td align="right">
+                <?php if (Mage::getSingleton('admin/session')->isAllowed('admin/erp/tools/stock_errors')): ?>
+                	<i><a href="<?php echo $this->getUrl('AdvancedStock/Misc/IdentifyErrors') ?>"><?php echo $this->__('Check for stock errors'); ?></a></i>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<?php echo $this->getGridParentHtml() ?>
+
+</div>

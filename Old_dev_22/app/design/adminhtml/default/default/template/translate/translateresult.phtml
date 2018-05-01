@@ -1,0 +1,49 @@
+<?php
+$url = "'" . $this->getUrl('*/*/sort') . "'";
+$string = (Mage::getSingleton('core/session')->getTranslateSearchCache()) ? Mage::getModel('core/cache')->load('translate_search_string') : $this->getRequest()->getParam('q');
+?>
+<div class="grid">
+    <div class="content-header">
+        <h3><?php echo $this->__('Search results for: &quot;') . $string . '&quot;' ?></h3>
+    </div>
+    <table class="data">
+        <colgroup>
+            <col width="30" />
+            <col />
+            <col width="60" />
+            <col />
+            <col width="100" />
+        </colgroup>
+        <thead>
+            <tr class="headings">
+                <th>#</th>
+                <th><a href="javascript:sortResult('translate', <?php echo $url ?>)"><?php echo $this->__('Translated string') ?></a></th>
+                <th><a href="javascript:sortResult('origin', <?php echo $url ?>)"><?php echo $this->__('Origin string') ?></a></th>
+                <th><a href="javascript:sortResult('source', <?php echo $url ?>)"><?php echo $this->__('Source') ?></a></th>
+                <th><a href="javascript:sortResult('locale', <?php echo $url ?>)"><?php echo $this->__('Locale') ?></a></th>
+                <th><?php echo $this->__('Edit') ?></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $index = 1; ?>
+            <?php $results = $this->getResults(); ?>
+            <?php foreach ($results as $key => $_result): ?>
+                <?php $locale = substr($key, 0, strpos($key ,':'));
+                $key = substr($key, strpos($key, ':') + 1); ?>
+                <tr class="pointer <?php echo ($index % 2) == 0 ? '' : 'even' ?>" onclick="editUrlExpand(this)">
+                    <td><?php echo $index ?></td>
+                    <td><?php echo htmlspecialchars($_result['translate']) ?></td>
+                    <td><?php echo htmlspecialchars($key) ?></td>
+                    <td><?php echo htmlspecialchars($_result['source']) ?></td>
+                    <td><?php echo $locale ?></td>
+                    <?php if (!isset($_result['db_id'])): ?>
+                        <td><a href="<?php echo $this->getUrl('*/*/edit', $this->getRequestParams(array('translation' => base64_encode($_result['translate']), 'locale' => $locale, 'original' => base64_encode($key)))) ?>"><?php echo $this->__('Edit') ?></a></td>
+                    <?php else: ?>
+                        <td><a href="<?php echo $this->getUrl('*/*/edit', array('id' => $_result['db_id'])) ?>"><?php echo $this->__('Edit') ?></a></td>
+                    <?php endif; ?>
+                </tr>
+                <?php $index++; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

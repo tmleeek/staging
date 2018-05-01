@@ -1,0 +1,24 @@
+<?php
+
+class TBT_Rewards_Block_Manage_Metrics_RedemptionRate_Charts extends Mage_Adminhtml_Block_Template
+{
+
+    protected function _construct()
+    {
+        parent::_construct();
+        $this->setTemplate('rewards/metrics/charts.phtml');
+        $this->setName('rewards.metrics.charts');
+
+        return $this;
+    }
+
+    protected function _prepareLayout()
+    {
+        $chartBlock = $this->getLayout()
+            ->createBlock('rewards/manage_metrics_chart_line', 'rewards.metrics.redemptionRate.lineChart')
+            ->setDataHelper('rewards/metrics_redemptionRate');
+        $this->append($chartBlock, 'rewards.metrics.redemptionRate.lineChart');
+
+        return parent::_prepareLayout();
+    }
+}

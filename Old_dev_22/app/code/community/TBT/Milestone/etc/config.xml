@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_Milestone>
+            <version>0.1.2.0</version>
+        </TBT_Milestone>
+    </modules>
+
+    <global>
+        <events>
+            <!--  Rule Triggering Events: -->
+            <sales_order_save_commit_after>
+                <observers>
+                    <sales_order_place_after>
+                        <class>tbtmilestone/rule_observer</class>
+                        <method>orderPlaceAfter</method>
+                    </sales_order_place_after>
+                </observers>
+            </sales_order_save_commit_after>
+            <sales_order_invoice_save_commit_after>
+                <observers>
+                    <tbtmilestone_sales_order_invoice_save_commit_after>
+                        <class>tbtmilestone/rule_observer</class>
+                        <method>invoiceSaveCommitAfter</method>
+                    </tbtmilestone_sales_order_invoice_save_commit_after>
+                </observers>
+            </sales_order_invoice_save_commit_after>
+            <sales_order_shipment_save_commit_after>
+                <observers>
+                    <tbtmilestone_sales_order_shipment_save_commit_after>
+                        <class>tbtmilestone/rule_observer</class>
+                        <method>shipmentSaveCommitAfter</method>
+                    </tbtmilestone_sales_order_shipment_save_commit_after>
+                </observers>
+            </sales_order_shipment_save_commit_after>
+	        <rewards_referral_save_commit_after>
+                <observers>
+                    <tbtmilestone_rewards_referral_save_commit_after>
+                        <class>tbtmilestone/rule_observer</class>
+                        <method>referralSaveAfter</method>
+                    </tbtmilestone_rewards_referral_save_commit_after>
+                </observers>
+	        </rewards_referral_save_commit_after>
+
+            <!-- Special Adapter Events -->
+            <tbtrewards_special_controller_save_after>
+                <observers>
+                    <tbtmilestone_adapter_special_save>
+	                    <class>tbtmilestone/adapter_special</class>
+	                    <method>afterSaveAction</method>
+                    </tbtmilestone_adapter_special_save>
+                </observers>
+             </tbtrewards_special_controller_save_after>
+             <tbtrewards_special_controller_edit_before>
+                <observers>
+                    <tbtmilestone_adapter_special_edit>
+                        <class>tbtmilestone/adapter_special</class>
+                        <method>beforeEditAction</method>
+                    </tbtmilestone_adapter_special_edit>
+                </observers>
+             </tbtrewards_special_controller_edit_before>
+        </events>
+        <template>
+            <email>
+                <milestone_generic_notification translate="label" module="tbtmilestone">
+                    <label>Sweet Tooth - Generic Milestone Notification</label>
+                    <file>rewards/milestone_generic_notification.html</file>
+                    <type>html</type>
+                </milestone_generic_notification>
+                <milestone_inactivity_notification>
+                    <label>Sweet Tooth - Inactivity Notification</label>
+                    <file>rewards/milestone_inactivity_notification.html</file>
+                    <type>html</type>
+                </milestone_inactivity_notification>
+            </email>
+        </template>
+    </global>
+
+    <crontab>
+        <jobs>
+            <tbtmilestone_dailyCron>
+                <schedule><cron_expr>0 0 * * *</cron_expr></schedule>
+                <run><model>tbtmilestone/rule_observer::dailyCronTrigger</model></run>
+            </tbtmilestone_dailyCron>
+        </jobs>
+    </crontab>
+
+    <tbtmilestone>
+        <rule>
+            <conditions>
+                <orders>
+                    <class>tbtmilestone/rule_condition_orders</class>
+                </orders>
+                <revenue>
+                    <class>tbtmilestone/rule_condition_revenue</class>
+                </revenue>
+                <referrals>
+                    <class>tbtmilestone/rule_condition_referrals</class>
+                </referrals>
+                <inactivity>
+                    <class>tbtmilestone/rule_condition_inactivity</class>
+                </inactivity>
+                <membership>
+                    <class>tbtmilestone/rule_condition_membership</class>
+                </membership>
+            </conditions>
+            <actions>
+                <customergroup>
+                    <class>tbtmilestone/rule_action_customergroup</class>
+                    <name><![CDATA[Change Customer Group]]></name>
+                </customergroup>
+                <grantpoints>
+                    <class>tbtmilestone/rule_action_grantpoints</class>
+                    <name><![CDATA[Reward Points]]></name>
+                </grantpoints>
+            </actions>
+        </rule>
+    </tbtmilestone>
+
+    <rewards>
+        <special>
+            <tbtmilestone_orders>
+                <config>tbtmilestone/adapter_special_orders</config>
+            </tbtmilestone_orders>
+            <tbtmilestone_revenue>
+                <config>tbtmilestone/adapter_special_revenue</config>
+            </tbtmilestone_revenue>
+            <tbtmilestone_referrals>
+                <config>tbtmilestone/adapter_special_referrals</config>
+            </tbtmilestone_referrals>
+            <tbtmilestone_inactivity>
+                <config>tbtmilestone/adapter_special_inactivity</config>
+            </tbtmilestone_inactivity>
+            <tbtmilestone_membership>
+                <config>tbtmilestone/adapter_special_membership</config>
+            </tbtmilestone_membership>
+        </special>
+        <transfer>
+            <reference>
+                <inactivity_milestone>tbtmilestone/rule_condition_inactivity_reference</inactivity_milestone>
+                <membership_milestone>tbtmilestone/rule_condition_membership_reference</membership_milestone>
+                <orders_milestone>tbtmilestone/rule_condition_orders_reference</orders_milestone>
+                <referrals_milestone>tbtmilestone/rule_condition_referrals_reference</referrals_milestone>
+                <revenue_milestone>tbtmilestone/rule_condition_revenue_reference</revenue_milestone>
+            </reference>
+        </transfer>
+    </rewards>
+
+
+    <default>
+        <rewards>
+            <InitialTransferStatus>
+                <milestone>5</milestone>
+            </InitialTransferStatus>
+            <transferComments>
+                <milestone><![CDATA[Points received by reaching a %s.]]></milestone>
+            </transferComments>
+            <milestone>
+                <orders_trigger>payment</orders_trigger>
+                <referrals_trigger>order</referrals_trigger>
+                <orders_email_template_default>milestone_generic_notification</orders_email_template_default>
+                <revenue_email_template_default>milestone_generic_notification</revenue_email_template_default>
+                <referrals_email_template_default>milestone_generic_notification</referrals_email_template_default>
+                <membership_email_template_default>milestone_generic_notification</membership_email_template_default>
+                <inactivity_email_template_default>milestone_inactivity_notification</inactivity_email_template_default>
+            </milestone>
+        </rewards>
+    </default>
+
+    <admin>
+        <routers>
+            <tbtmilestoneadmin>
+                <use>admin</use>
+                <args>
+                    <module>TBT_Milestone</module>
+                    <frontName>tbtmilestoneadmin</frontName>
+                </args>
+            </tbtmilestoneadmin>
+        </routers>
+    </admin>
+
+    <frontend>
+        <layout>
+            <updates>
+                <tbtmilestone>
+                    <file>tbtmilestone.xml</file>
+                </tbtmilestone>
+            </updates>
+        </layout>
+        <routers>
+            <tbtmilestone>
+                <use>standard</use>
+                <args>
+                    <module>TBT_Milestone</module>
+                    <frontName>tbtmilestone</frontName>
+                </args>
+            </tbtmilestone>
+        </routers>
+    </frontend>
+
+    <global>
+        <models>
+            <tbtmilestone>
+                <class>TBT_Milestone_Model</class>
+                <resourceModel>tbtmilestone_mysql4</resourceModel>
+            </tbtmilestone>
+            <tbtmilestone_mysql4>
+                <class>TBT_Milestone_Model_Resource</class>
+                <entities>
+                    <rule>
+                        <table>rewards_milestone_rule</table>
+                    </rule>
+                    <rule_log>
+                        <table>rewards_milestone_rule_log</table>
+                    </rule_log>
+                </entities>
+            </tbtmilestone_mysql4>
+        </models>
+
+        <resources>
+            <tbtmilestone_setup>
+                <setup>
+                    <module>TBT_Milestone</module>
+                    <class>TBT_Milestone_Model_Resource_Setup</class>
+                </setup>
+            </tbtmilestone_setup>
+            <tbtmilestone_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tbtmilestone_write>
+            <tbtmilestone_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tbtmilestone_read>
+        </resources>
+
+        <blocks>
+            <tbtmilestone>
+                <class>TBT_Milestone_Block</class>
+            </tbtmilestone>
+        </blocks>
+
+        <helpers>
+            <tbtmilestone>
+                <class>TBT_Milestone_Helper</class>
+            </tbtmilestone>
+        </helpers>
+
+        <events>
+            <controller_action_predispatch_rewardsadmin_manage_diagnostics_reinstalldb>
+                <observers>
+                    <milestone_before_rewards_manage_diagnostics_reinstalldb>
+                        <class>tbtmilestone/rewards_diagnostics_observer</class>
+                        <method>reinstalldb</method>
+                    </milestone_before_rewards_manage_diagnostics_reinstalldb>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_diagnostics_reinstalldb>
+        </events>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <tbtmilestone>
+                    <file>tbtmilestone.xml</file>
+                </tbtmilestone>
+            </updates>
+        </layout>
+        <menu>
+            <rewards>
+                <children>
+                    <social module="tbtmilestone" translate="title">
+                        <title>Milestone History</title>
+                        <sort_order>60</sort_order>
+                        <action>tbtmilestoneadmin/manage_history</action>
+                    </social>
+                </children>
+            </rewards>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                         <rewards>
+                            <children>
+                                <social module="tbtmilestone" translate="title">
+                                    <title>Milestone History</title>
+                                    <sort_order>60</sort_order>
+                                </social>
+                            </children>
+                        </rewards>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

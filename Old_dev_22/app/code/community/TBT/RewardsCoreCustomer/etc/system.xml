@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * WDCA - Sweet Tooth
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the WDCA SWEET TOOTH POINTS AND REWARDS 
+ * License, which extends the Open Software License (OSL 3.0).
+ * The Sweet Tooth License is available at this URL: 
+ *      https://www.sweettoothrewards.com/terms-of-service
+ * The Open Software License is available at this URL: 
+ *      http://opensource.org/licenses/osl-3.0.php
+ * 
+ * DISCLAIMER
+ * 
+ * By adding to, editing, or in any way modifying this code, WDCA is 
+ * not held liable for any inconsistencies or abnormalities in the 
+ * behaviour of this code. 
+ * By adding to, editing, or in any way modifying this code, the Licensee
+ * terminates any agreement of support offered by WDCA, outlined in the 
+ * provided Sweet Tooth License. 
+ * Upon discovery of modified code in the process of support, the Licensee 
+ * is still held accountable for any and all billable time WDCA spent 
+ * during the support process.
+ * WDCA does not guarantee compatibility with any other framework extension. 
+ * WDCA is not responsbile for any inconsistencies or abnormalities in the
+ * behaviour of this code if caused by other framework extension.
+ * If you did not receive a copy of the license, please send an email to 
+ * support@sweettoothrewards.com or call 1.855.699.9322, so we can send you a copy 
+ * immediately.
+ * 
+ * @category   [TBT]
+ * @package    [TBT_Rewards]
+ * @copyright  Copyright (c) 2014 Sweet Tooth Inc. (http://www.sweettoothrewards.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+
+/**
+ * Helper Config
+ *
+ * @category   TBT
+ * @package    TBT_Rewards
+ * * @author     Sweet Tooth Inc. <support@sweettoothrewards.com>
+ */
+-->
+
+<config>
+   <sections>
+        <rewards translate="label" module="rewards">
+            <groups>
+                <display translate="label">
+                    <fields>
+                        <showSidebar translate="label">
+                            <label>Show Points Sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showSidebar>
+                        <showSidebarIfNotLoggedIn translate="label">
+                            <label>Show Sidebar When Not Logged In</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showSidebarIfNotLoggedIn>
+                        <rewardsCatalogNumProducts translate="label comment">
+                            <label># Products In Mini Rewards Catalog</label>
+                            <comment>The number of products to show in the mini rewards catalog in the customer points management panel.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rewardsCatalogNumProducts>
+                        <customer_summary_msg translate="label comment">
+                            <label>Customer Account Summary Message</label>
+                            <comment><![CDATA[This message is displayed in the summary box for logged in customers. Default is no message (blank). HTML is valid here.]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_summary_msg>
+                        <showSendPointsToAFriend translate="label comment">
+                            <label>Show Send Points To A Friend</label>
+                            <comment>Should the customer be given the option to send points to a friend in the customer account panel rewards section?</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_source_showHide</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showSendPointsToAFriend>
+                        <friend_notification_email_template translate="label comment">
+                            <label>Friend Transfer Notification Email Template</label>
+                            <comment>When a customer sends points to a friend, the customer receiving the points will get this notification email</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </friend_notification_email_template>
+                        <sendInvitationEmailToUnregisteredFriend translate="label comment">
+                            <label>Send Invitation To Store Email</label>
+                            <comment>If enabled and a customer tries to send points to a friend which doesn't have an account, an email invitation to the store will be sent.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>86</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sendInvitationEmailToUnregisteredFriend>
+                        <friend_invitation_email_template translate="label comment">
+                            <label>Friend Invitation To Store Email Template</label>
+                            <comment>When a customer sends points to a friend, the customer receiving the points will get an invitation email to the store if not registered yet ( no points ).</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>87</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </friend_invitation_email_template>                        
+                    </fields>
+                </display>
+                <autointegration translate="label">
+                    <fields>
+                        <header_points_balance translate="label comment">
+                            <label>Customer Points Balance Near Top Page Links</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21224841-display-points-in-the-page-header" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>20</sort_order>
+                            <sort_order>10</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </header_points_balance>
+                        <customer_dashboard_summary translate="label comment">
+                            <label>Points Account Summary in the Customer Dashboard</label>
+                            <comment><![CDATA[
+                                <a href="https://support.sweettoothrewards.com/entries/21254706-display-points-in-the-customer-account-dashboard" target="window">
+                                Click here
+                                </a> for manual integration instructions.
+                            ]]></comment>
+                            <sort_order>70</sort_order>
+                            <frontend_type>select</frontend_type>   <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>    <show_in_website>1</show_in_website>    <show_in_store>1</show_in_store>
+                        </customer_dashboard_summary>
+                       
+                    </fields>
+                </autointegration>
+                <InitialTransferStatus translate="label">
+                    <fields>
+                        <TransferToFriend translate="label">
+                            <label>Transfer To Friend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </TransferToFriend>
+                    </fields>
+                </InitialTransferStatus>
+                <transferComments translate="label">
+                    <fields>
+                        <sendToFriend translate="label comment">
+                            <label>Points Sent to a Friend</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[First %s: Reciever name. Second %s: Sender comments.]]></comment>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sendToFriend>
+                        <receiveFromFriend translate="label comment">
+                            <label>Points Received from a Friend</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[First %s: Sender name. Second %s: Sender comments.]]></comment>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </receiveFromFriend>
+                    </fields>
+                </transferComments>
+            </groups>
+        </rewards>
+    </sections>
+</config>

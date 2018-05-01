@@ -1,0 +1,63 @@
+<?php
+    $ship_code = $_REQUEST['shipping_method'];
+    $address = $this->getAddress();
+    $address_id = $address->getId();
+    $street1 = $address->getStreet();
+    $street = $street1[0];
+    $postcode = $address->getPostcode();
+    $city = $address->getCity();
+    $countryName = Mage::getModel('directory/country')->load($address->getCountry())->getName();
+    $shipping_method_id = 's_method_colissimo_colissimo';   
+?>
+
+<div class="bloc-popin" style="position:absolute; top:30%; z-index:1001;left:19%;">
+    <div>
+        <div class="chmar">
+            <div class="chbg">
+                <div class="title-fond-rose big-text">
+                    <div class="hdtxt">
+                        <strong>
+                            <span class="small-caps"><?php echo $this->__('Near from which address would you like to be delivered?'); ?></span>
+                        </strong>
+                    </div>
+                    <div class="closebtn">
+                        <a href="#">
+                            <img src="<?php echo $this->getSkinUrl('images/tatva/close.png');?>" alt="" border="0" onclick="return closepopup('popinmondialrelay','<?php echo $shipping_method_id;?>')"/>
+                        </a>
+                    </div>
+                    <div class="clear-both"></div>
+                </div>
+                <form name="choicepopup_form" id="choicepopup_form">
+                    <div class="incon">
+                        <div class="home">
+                            <a href="#">
+                                <img src="<?php echo $this->getSkinUrl('images/tatva/house.png');?>" alt="" border="0" />
+                            </a>
+                        </div>
+                        <div class="chtxt">
+                            <h1><?php echo $this->__('Address');?></h1>
+                            <input name="shipaddress" id="shipaddress" type="text" class="chtxtbx" style="width:320px;" value="<?php echo $street;?>"/>
+                        </div>
+                        <div class="chtxt">
+                            <h1><?php echo $this->__('Zip Code');?> <span>*</span></h1>
+                            <input name="shippostcode" id="shippostcode" type="text" class="chtxtbx required-entry" style="width:102px;" value="<?php echo $postcode;?>"/>
+                        </div>
+                        <div class="chtxt">
+                            <h1><?php echo $this->__('City');?> <span>*</span></h1>
+                            <input name="shipcity" id="shipcity" type="text" class="chtxtbx" style="width:130px;" value="<?php echo $city;?>" />
+                        </div>
+                        <div class="btn">
+                            <button type="button" class="uppercase button" style="width:97px;" name="connexion" onclick="mondialrelaysearch(1);"><span><span><?php echo $this->__('search');?></span></span></button>
+                            <input type="hidden" name="txtsearch" id="txtsearch"/>
+                        </div>
+                    </div>
+                </form>
+				<div id="ResponseDiv_mondial">
+                         <?php echo $this->getChildHtml('checkout.mondialrelaypopupdetail');?>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cache-page"></div>

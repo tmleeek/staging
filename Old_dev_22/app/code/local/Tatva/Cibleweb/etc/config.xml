@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Cibleweb>
+            <version>0.1.0</version>
+        </Tatva_Cibleweb>
+    </modules>
+    <frontend>
+        <routers>
+            <cibleweb>
+                <use>standard</use>
+                <args>
+                    <module>Tatva_Cibleweb</module>
+                    <frontName>cibleweb</frontName>
+                </args>
+            </cibleweb>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+			<cibleweb>
+				<use>admin</use>
+				<args>
+					<module>Tatva_Cibleweb</module>
+					<frontName>cibleweb</frontName>
+				</args>
+			</cibleweb>
+        </routers>
+    </admin>
+	<adminhtml>
+	    <acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<cibleweb-config translate="title" module="cibleweb">
+											<title>Configuration extraction Catalog for Ciblweb</title>
+										</cibleweb-config>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+	    </acl>
+        <translate>
+            <modules>
+                <Tatva_Cibleweb>
+                    <files>
+                        <default>Tatva_Cibleweb.csv</default>
+                    </files>
+                </Tatva_Cibleweb>
+            </modules>
+        </translate>
+	</adminhtml>
+    <global>
+        <models>
+            <cibleweb>
+                <class>Tatva_Cibleweb_Model</class>
+            </cibleweb>
+        </models>
+        <helpers>
+            <cibleweb>
+                <class>Tatva_Cibleweb_Helper</class>
+            </cibleweb>
+        </helpers>
+    </global>
+   <crontab>
+        
+		<jobs>
+            <!--<cibleweb_generation_xml>
+                <schedule><cron_expr>* */4 * * *</cron_expr></schedule> 
+                <run><model>cibleweb/exportCatalog::runSaveCatalog</model></run>
+            </cibleweb_generation_xml>-->
+			<!--<ciblewebxml_generation_xml>
+                <schedule><cron_expr>* */4 * * *</cron_expr></schedule> 
+                <run><model>cibleweb/exportxml::runSaveCatalog</model></run>
+            </ciblewebxml_generation_xml>-->
+        </jobs>
+    </crontab>
+</config>

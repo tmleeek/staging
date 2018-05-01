@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_Common>
+            <active>true</active>
+            <codePool>community</codePool>
+        </TBT_Common>
+    </modules>
+</config>

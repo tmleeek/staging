@@ -1,0 +1,12 @@
+tables:
+  core/translate:
+   - key_id: 1
+     string: Size
+     store_id: 0
+     translate: iets anders
+     locale: en_US
+   - key_id: 2
+     string: Color
+     store_id: 0
+     translate: Weight
+     locale: en_US

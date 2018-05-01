@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_shipment_view>
+        <reference name="form">
+            <action method="setTemplate">
+                <template>Gls_Unibox/sales/order/shipment/view/form.phtml</template>
+            </action>
+            <block type="glsbox/glsshipping" name="gls_unibox" template="Gls_Unibox/sales/order/shipment/view/form/glsshipping.phtml"></block>
+        </reference>
+    </adminhtml_sales_order_shipment_view>
+    <adminhtml_glsunibox_submitshipment>
+        <block type="glsbox/glsshipping" name="gls_unibox" template="Gls_Unibox/sales/order/shipment/view/form/glsshipping.phtml"></block>
+    </adminhtml_glsunibox_submitshipment>
+    <adminhtml_glsunibox_deletelabel>
+        <block type="glsbox/glsshipping" name="gls_unibox" template="Gls_Unibox/sales/order/shipment/view/form/glsshipping.phtml"></block>
+    </adminhtml_glsunibox_deletelabel>
+    <adminhtml_glsunibox_printlabel>
+        <block type="glsbox/glsshipping" name="gls_unibox" template="Gls_Unibox/sales/order/shipment/view/form/glsshipping.phtml"></block>
+    </adminhtml_glsunibox_printlabel>
+    <adminhtml_glsunibox_trackingreload>
+        <block type="adminhtml/sales_order_shipment_view_tracking" name="shipment_tracking" template="sales/order/shipment/view/tracking.phtml"></block>
+    </adminhtml_glsunibox_trackingreload>
+</layout>

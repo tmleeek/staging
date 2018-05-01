@@ -1,0 +1,101 @@
+Grid price / weight,Grille prix / poids
+Chronopost,Chronopost
+Colissimo,Colissimo
+Chronopost : Grid price / weight,Chronopost : Grille prix / poids
+Colissimo : Grid price / weight,Colissimo : Grille prix / poids
+UPS : Grid price / weight,UPS : Grille prix / poids
+USPS : Grid price / weight,USPS : Grille prix / poids
+Add New Rule,Ajouter une nouvelle règle
+Minimum weight,Poids minimum
+Maximum weight,Poids maximum
+Amount,Montant
+Action,Action
+Edit,Editer
+Save Rule,Sauvegarder la règle
+Delete Rule,Supprimer la règle
+Add Rule,Ajouter la règle
+Edit Rule,Editer la règle
+Rule does not exist,La règle n'existe pas
+Rule was successfully saved,La règle a bien été sauvegardée
+Unable to find rule to save,Impossible de trouver la règle à sauvegarder
+Rule was successfully deleted,La règle a été supprimée avec succès
+Countries,Pays
+All countries,Tous les pays
+Rule already exists,La règle existe déjà. Veuillez vérifier les tranches de poids et les pays.
+Text shown in the ordering process,Texte affiché dans le processus de commande
+URL tracking,URL de suivi
+Free shipping with minimum order amount,Livraison gratuite avec montant de commande mini
+Minimum order amount for free shipping,Montant minimum de commande pour la livraison gratuite
+Delivery times,Délais de livraison
+Text,Texte
+Add New Text,Ajouter du texte
+Short description,Description courte
+Long description,Description longue
+Rate,Tarif
+Popup Info,Popup d'informations
+Free,Gratuit
+Close,Fermer
+Click,Cliquez
+here,ici
+for more information about this shipping method.,pour plus d'informations sur ce mode de livraison.
+Order weight (packing included),Poids (emballage compris)
+Price,Prix
+between,entre
+and,et
+Areas,Zones
+Area does not exist,La zone n'existe pas
+Area was successfully saved,La zone a été sauvegardée avec succés
+Unable to find area to save,Impossible de trouver la zone à sauvegarder
+Area was successfully deleted,La zone a été supprimée avec succés
+Code,Code
+Label,Libellé
+Save Area,Sauvegarder la zone
+Delete Area,Supprimer la zone
+Add New Area,Ajouter une nouvelle zone
+Area already exists,La zone existe déjà
+Add Area,Ajouter une zone
+Edit Area,Editer une zone
+instead of,au lieu de
+Number of days,Nombre de jours
+(to be delivered no later than %s),(à livrer au plus tard le %s)
+Delivery,Livraison
+Estimate delivery dates,Estimation des dates de livraison
+Shipping Method by default,Mode de livraison par défaut
+used for step cart,utilisé pour l'étape Panier
+Minimum order,Montant minimum de la commande
+Slices,Tranches
+Add New Slice,Ajouter une tranche
+Country by default,Pays par défaut
+used for products catalog,utilisé pour le catalogue des produits (fiche produit)
+The minimum weight must be less than the maximum weight.,Le poids minimum doit être inférieur au poids maximum.
+Near from which address would you like to be delivered?,A proximité de quelle adresse souhaitez-vous être livré ?
+Address,Adresse
+Zip Code,Code postal
+City,Commune
+Search,Rechercher
+At your home,Chez vous
+Near from your home,Proche de chez vous
+,
+Refine your search by pick up place,Affinez votre recherche par point de retrait
+my local store,mon commerçant
+my post office,mon bureau de poste
+my cityssimo space,mon espace cityssimo
+Local store with large opening times range,Commerces de proximité aux horaires étendus
+Post office opening hours,Horaires d'ouverture des bureaux de postes
+Parcel places available 7d/7 - 24h/24,Espaces Colis disponibles 7j/7 - 24h/24
+Only display the pick-up places with an access to people with restricted mobility,N'afficher que les points de retrait accessibles aux personnes a mobilite réduite
+Update the map,Actualiser la carte
+Choose this pick-up place,Choisir ce point de retrait
+Mobile phone,Téléphone portable
+A mobile phone number is always mandatory for the delivery at home made by appointment. Please indicate or confirm your mobile phone number,Un numéro de téléphone portable est indispensable pour la livraison à domicile sur rendez-vous. Merci de renseigner ou de confirmer votre numéro de mobile
+your mobile number must begin by 06 or 07 and contain 10 characters,votre numéro doit commencer par 06 ou 07 et comporter 10 chiffres
+confirm,confirmer
+Change Your Shipping Method,Changer de mode de transport
+Confirm your choice,Confirmez votre choix
+You choose the following,Vous avez choisi le point relais mon commerçant
+relay,suivant
+Modify,Modifier
+search,rechercher
+We did not find any relay corresponding to your research. We invite you to select other types of relays or to modify your address.,Nous n'avons trouvé aucun point relais correspondant à  vos critères de recherche. Nous vous invitons à  sélectionner d'autres types de relais ou à  modifier votre adresse.
+You choose the following relay:,Vous avez choisi le point relais suivant :
+characters left,caractères restants

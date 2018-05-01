@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <video_adminhtml_video_index>
+        <reference name="content">
+            <block type="video/adminhtml_video" name="video" />
+        </reference>
+    </video_adminhtml_video_index>
+    <video_adminhtml_video_edit>
+        <update handle="editor"/>
+    </video_adminhtml_video_edit>
+</layout>

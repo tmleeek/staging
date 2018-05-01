@@ -1,0 +1,2 @@
+[17-Apr-2015 13:48:20 UTC] PHP Fatal error:  require_once(): Failed opening required 'app/Mage.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /data/apache/htdocs/magento/updatedb/updateproduct.php on line 2
+[17-Apr-2015 13:51:32 UTC] PHP Fatal error:  require_once(): Failed opening required 'app/Mage.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /data/apache/htdocs/magento/updatedb/updateproduct.php on line 2

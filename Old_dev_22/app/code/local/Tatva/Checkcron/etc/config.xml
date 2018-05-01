@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Checkcron>
+            <version>0.1.0</version>
+        </Tatva_Checkcron>
+    </modules>
+    <frontend>
+        <routers>
+            <checkcron>
+                <use>standard</use>
+                <args>
+                    <module>Tatva_Checkcron</module>
+                    <frontName>checkcron</frontName>
+                </args>
+            </checkcron>
+        </routers>
+        <layout>
+            <updates>
+                <checkcron>
+                    <file>checkcron.xml</file>
+                </checkcron>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <models>
+            <checkcron>
+                <class>Tatva_Checkcron_Model</class>
+            </checkcron>
+        </models>
+    </global>
+    <crontab>
+        <jobs>
+            <mail_send>
+                <schedule>
+                    <cron_expr>0 23 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>checkcron/testmail::checkmail</model>
+                </run>
+            </mail_send>
+        </jobs>
+    </crontab>
+</config>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order id="28733268" morid="MOR-E35EFM28733268">
+  <utilisateur type="facturation">
+    <nom titre="">Estardier</nom>
+    <prenom>Maya</prenom>
+    <societe></societe>
+    <telhome>336 75 19 16 48</telhome>
+    <teloffice></teloffice>
+    <telfax></telfax>
+    <email>22193645-30@sc.rueducommerce.com</email>
+    <adresse type="facturation">
+      <rue1>29 rue du general de gaulle</rue1>
+      <rue2>29 rue du general de gaulleMairie de Fleurines</rue2>
+      <cpostal>60700</cpostal>
+      <ville>Fleurines</ville>
+      <pays>France</pays>
+      <commentairefacturation></commentairefacturation>
+    </adresse>
+  </utilisateur>
+  <utilisateur type="livraison">
+    <nom titre="">Estardier</nom>
+    <prenom>Maya</prenom>
+    <societe></societe>
+    <telhome>336 75 19 16 48</telhome>
+    <teloffice></teloffice>
+    <telfax></telfax>
+    <email>22193645-30@sc.rueducommerce.com</email>
+    <adresse type="livraison">
+      <rue1>29 rue du general de gaulle</rue1>
+      <rue2>29 rue du general de gaulleMairie de Fleurines</rue2>
+      <cpostal>60700</cpostal>
+      <ville>Fleurines</ville>
+      <pays>France</pays>
+      <commentairelivraison></commentairelivraison>
+    </adresse>
+  </utilisateur>
+  <infocommande>
+    <sitecommande>Rue du Commerce</sitecommande>
+    <refid>1200025929</refid>
+    <status>processing</status>
+    <montant devise="EUR">24.09</montant>
+    <date>06/09/2017 15:01:51</date>
+    <transport>
+      <nom>Colissimo</nom>
+      <montant devise="EUR">9.90</montant>
+    </transport>
+    <list nbproduit="1">
+      <produit ref="62412696" nb="1" modid="MOD-E35EFM39458840" delivery_rule="1" status="processing" gender="Unisexe" color="Inox" brand="Gobel" merchantProductId="41930" merchantOfferId="41930" clothing_size="36" ean13="3075308649906" price="14.19" ecotax="0" basePrice="14.19" discountPercentage="0" discountAmount="0" priceWithoutEcotax="14.19">Cercle à vacherin en inox 18/10 - hauteur 6 cm - diamètre 30 cm - A l'unité - Cercle à vacherin</produit>
+    </list>
+  </infocommande>
+  <paiement>
+    <type>carte</type>
+  </paiement>
+</order>

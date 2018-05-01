@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * LaPoste_ExpeditorINet
+ * 
+ * @category    LaPoste
+ * @package     LaPoste_ExpeditorINet
+ * @copyright   Copyright (c) 2010 La Poste
+ * @author 	    Smile (http://www.smile.fr) & Jibé
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+
+    <modules>
+        <LaPoste_ExpeditorINet>
+            <version>1.0.1</version>
+			<depends>
+				<Mage_Sales />
+				<Mage_Adminhtml />
+			</depends>
+        </LaPoste_ExpeditorINet>
+    </modules>
+
+    <global>
+        <models>
+            <expeditorinet>
+                <class>LaPoste_ExpeditorINet_Model</class>
+            </expeditorinet>
+        </models>
+        <blocks>
+            <expeditorinet>
+                <class>LaPoste_ExpeditorINet_Block</class>
+            </expeditorinet>
+        </blocks>
+        <helpers>
+            <expeditorinet>
+                <class>LaPoste_ExpeditorINet_Helper</class>
+            </expeditorinet>
+        </helpers>
+    </global>
+
+    <admin>
+        <routers>
+            <expeditorinet>
+                <use>admin</use>
+                <args>
+                    <module>LaPoste_ExpeditorINet</module>
+                    <frontName>expeditorinet</frontName>
+                </args>
+            </expeditorinet>
+        </routers>
+    </admin>
+
+    <adminhtml>
+
+        <menu>
+             <sales>
+                 <children>
+                    <expeditorinet translate="title"> <!-- TODO faire marcher : module="expeditor_inet" (aussi dans les children) -->
+                        <title>La Poste Expeditor INet</title>
+                        <sort_order>15</sort_order>
+                        <children>
+                            <export translate="title">
+                                <title>Export orders</title>
+                                <action>expeditorinet/export</action>
+                                <sort_order>10</sort_order>
+                            </export>
+                            <import translate="title">
+                                <title>Import shipping</title>
+                                <action>expeditorinet/import</action>
+                                <sort_order>20</sort_order>
+                            </import>
+                        </children>
+                    </expeditorinet>
+                </children>
+             </sales>
+        </menu>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <sales>
+                            <children>
+                                <expeditorinet translate="title">
+                                    <title>La Poste Expeditor INet</title>
+                                    <children>
+                                        <export translate="title">
+                                            <title>Export orders</title>
+                                        </export>
+                                        <import translate="title">
+                                            <title>Import shipping</title>
+                                        </import>
+                                    </children>
+                                    <sort_order>15</sort_order>
+                                </expeditorinet>
+                            </children>
+                        </sales>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <expeditorinet>
+                                            <title>La Poste Expeditor INet</title>
+                                            <sort_order>100</sort_order>
+                                        </expeditorinet>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+        <translate>
+            <modules>
+                <expeditorinet>
+                    <files>
+                        <default>LaPoste_ExpeditorINet.csv</default>
+                    </files>
+                </expeditorinet>
+            </modules>
+        </translate>
+
+    </adminhtml>
+    
+    <default>
+        <expeditorinet>
+            <export>
+                <file_extension>.txt</file_extension>
+                <file_charset>ISO-8859-1</file_charset>
+                <endofline_character>lf</endofline_character>
+                <field_delimiter>double_quotes</field_delimiter>
+                <field_separator>;</field_separator>
+            </export>
+            <import>
+                <default_tracking_title>So Colissimo</default_tracking_title>
+                <send_email>1</send_email>
+                <shipping_comment></shipping_comment>
+                <include_comment>0</include_comment>
+                <carrier_code>socolissimosimplicite_socolissimosimplicite</carrier_code>
+            </import>
+        </expeditorinet>
+    </default>
+
+</config>

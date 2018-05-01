@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<config>
+	<extendware>
+		<quickaccess>
+			<ewmpaction>
+                <resource>extendware/ewmpaction</resource>
+				<children>
+					<products translate="title" module="ewmpaction">
+						<title>Manage Products</title>
+						<action>adminhtml/catalog_product/</action>
+						<resource>catalog/products</resource>
+						<sort_order>1</sort_order>
+					</products>
+				</children>
+				<title/>
+			</ewmpaction>
+		</quickaccess>
+	</extendware>
+	<menu>
+	    <ewcore translate="title" module="ewmpaction">
+			<title>Extendware</title>
+			<sort_order>89</sort_order>
+			<resource>extendware/ewcore</resource>
+			<class>ewcore-main</class>
+	        <children>
+	            <quickaccess translate="title" module="ewmpaction">
+	                <title>Manage Extensions</title>
+	                <sort_order>1</sort_order>
+	                <resource>extendware/ewmpaction</resource>
+	                <children>
+	                	<ewmpaction translate="title" module="ewmpaction">
+			                <title>Bulk Product Updating</title>
+			                <sort_order>39344</sort_order>
+			                <resource>extendware/ewmpaction</resource>
+			                <children>
+			                	<products translate="title" module="ewmpaction">
+									<title>Manage Products</title>
+									<action>adminhtml/catalog_product/</action>
+									<resource>catalog/products</resource>
+									<sort_order>1</sort_order>
+								</products>
+								<configure translate="title" module="ewmpaction">
+									<title>Configure</title>
+									<sort_order>9999999</sort_order>
+									<action>adminhtml/ewmpaction_config/index</action>
+									<resource>extendware/ewmpaction/configure</resource>
+								</configure>
+			                </children>
+			            </ewmpaction>
+	                </children>
+	            </quickaccess>
+	            <userguides translate="title" module="ewmpaction">
+	                <title>User Guides / Help</title>
+	                <sort_order>9</sort_order>
+	                <action>adminhtml/ewmpaction_config/gotoExtendwareUserguides</action>
+	                <resource>extendware/ewcore/redirect/userguide</resource>
+	                <class>ewcore-extendware-userguide</class>
+	            </userguides>
+	            <storelink translate="title" module="ewmpaction">
+		            <title>Improve Your Store</title>
+		            <sort_order>9999</sort_order>
+		            <action>adminhtml/ewmpaction_config/gotoExtendware</action>
+		            <resource>extendware/ewcore/redirect/extendware</resource>
+		            <class>ewcore-extendware-link</class>
+		        </storelink>
+	        </children>
+	    </ewcore>
+	</menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware translate="title" module="ewmpaction">
+                    	<title>Extendware</title>
+                    	<sort_order>0</sort_order>
+                        <children>
+                        	<ewmpaction translate="title" module="ewmpaction">
+                        		<title>Bulk Product Updating</title>
+                        		<children>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewmpaction translate="title">
+						                                <title>General</title>
+						                            </ewmpaction>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewmpaction>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

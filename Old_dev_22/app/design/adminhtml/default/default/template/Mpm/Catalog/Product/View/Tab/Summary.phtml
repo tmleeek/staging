@@ -1,0 +1,32 @@
+<?php $offers = $this->getPriceComparisonData(); ?>
+<center>
+    <table border="0" cellspacing="5">
+        <tr>
+            <?php foreach ($offers as $offer): ?>
+                <?php
+                $currencySymbol = $this->getChannelsCurrency($offer['channel']);
+                ?>
+
+                <td align="center" width="200" style="border: 1px solid black;">
+
+                    <h1><?php echo $currencySymbol . ' ' . number_format($offer['total'], 2); ?></h1>
+
+                    <h2><?php echo $currencySymbol . ' ' . number_format($offer['total_converted'], 2); ?></h2>
+                    <?php if (isset($offer['url'])): ?>
+                        <a target="_blank" href="<?php echo $offer['url']; ?>"><?php echo $offer['reference']; ?></a>
+                    <?php else: ?>
+                        <?php echo(isset($offer['reference']) ? $offer['reference'] : ''); ?>
+                    <?php endif; ?>
+                    <?php if (isset($offer['competitor'])): ?>
+                        <br>
+                        <small><?php echo $offer['competitor']; ?></small>
+                    <?php endif; ?>
+                    <br><?php echo $offer['seller_name']; ?>
+                    <br><?php echo($offer['channel'] ? '<img src="' . $this->getImageChannel(
+                            $offer['channel']
+                        ) . '" width="50">' : ''); ?>
+                </td>
+            <?php endforeach; ?>
+        </tr>
+    </table>
+</center>

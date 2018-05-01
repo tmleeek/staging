@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<order>
+  <header>
+    <order_fbd_id>000000129</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>5</item_count>
+    <created_at>2017-01-09 11:07:12</created_at>
+    <total_amount>21.5000</total_amount>
+    <total_discount>20.0000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-91@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Amaria</firstname>
+      <lastname>MENOUAR</lastname>
+      <company>FBD INTERNATIONAL</company>
+      <address1>5 RUE DE LA HAYE</address1>
+      <address2>BP 10990</address2>
+      <postal_code>95733</postal_code>
+      <city>ROISSY EN FRANCE</city>
+      <country>FR</country>
+      <phone>0685625141</phone>
+    </billing>
+    <shipping>
+      <firstname>Amaria</firstname>
+      <lastname>MENOUAR</lastname>
+      <company>FBD INTERNATIONAL</company>
+      <address1>5 RUE DE LA HAYE</address1>
+      <address2>BP 10990</address2>
+      <postal_code>95733</postal_code>
+      <city>ROISSY EN FRANCE</city>
+      <country>FR</country>
+      <phone>0685625141</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>177</id>
+      <fbd_sku>az-boutique_THIS212</fbd_sku>
+      <supplier_sku>THIS212</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>3.5000</price>
+        <total>3.5000</total>
+        <discount>3.2600</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>178</id>
+      <fbd_sku>az-boutique_THIS012</fbd_sku>
+      <supplier_sku>THIS012</supplier_sku>
+      <qty>2.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>4.5000</price>
+        <total>9.0000</total>
+        <discount>8.3700</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+        <sequence>
+          <id>2</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>179</id>
+      <fbd_sku>az-boutique_THIS021</fbd_sku>
+      <supplier_sku>THIS021</supplier_sku>
+      <qty>2.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>4.5000</price>
+        <total>9.0000</total>
+        <discount>8.3700</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+        <sequence>
+          <id>2</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

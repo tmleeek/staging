@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <tbtmilestoneadmin_manage_rule_index>
+        <reference name="content">
+            <block type="tbtmilestone/manage_rule" />
+        </reference>
+    </tbtmilestoneadmin_manage_rule_index>
+
+    <rewardsadmin_manage_special_new>
+        <reference name="head">
+            <action method="addJs">
+                <script>tbt/milestone/adapter/special.js</script>
+            </action>
+        </reference>
+    </rewardsadmin_manage_special_new>
+
+    <rewardsadmin_manage_special_edit>
+        <reference name="head">
+            <action method="addJs">
+                <script>tbt/milestone/adapter/special.js</script>
+            </action>
+        </reference>
+    </rewardsadmin_manage_special_edit>
+
+    <tbtmilestoneadmin_manage_history_index>
+        <reference name="content">
+            <block type="tbtmilestone/manage_history" />
+        </reference>
+    </tbtmilestoneadmin_manage_history_index>
+</layout>

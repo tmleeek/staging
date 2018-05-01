@@ -1,0 +1,354 @@
+#zip-config td.value,
+#sftp-config td.value {
+	width: 320px;
+}
+
+.mb-help {
+	background: url('images/help.png') no-repeat center center;
+	display: inline-block;
+	float: right;
+	width: 21px;
+	height: 21px;
+}
+
+.mb-tooltip {
+	position: absolute;
+	z-index: 100103;
+	display: block;
+	visibility: visible;
+	font-size: 12px;
+	line-height: 1.4;
+	opacity: 0;
+	-moz-transition: opacity 0.15s linear;
+	-o-transition: opacity 0.15s linear;
+	-webkit-transition: opacity 0.15s linear;
+	transition: opacity 0.15s linear;
+}
+
+.mb-tooltip.in {
+	opacity: 1;
+}
+
+.mb-tooltip.top {
+	padding: 5px 0;
+	margin-top: -3px;
+}
+
+.mb-tooltip.right {
+	padding: 0 5px;
+	margin-left: 3px;
+}
+
+.mb-tooltip.bottom {
+	padding: 5px 0;
+	margin-top: 3px;
+}
+
+.mb-tooltip.left {
+	padding: 0 5px;
+	margin-left: -3px;
+}
+
+.mb-tooltip-inner {
+	max-width: 200px;
+	padding: 6px 12px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.85);
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.mb-tooltip-arrow {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+}
+
+.mb-tooltip.top .mb-tooltip-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px 5px 0;
+	border-top-color: #000;
+}
+
+.mb-tooltip.top-left .mb-tooltip-arrow {
+	right: 5px;
+	bottom: 0;
+	margin-bottom: -5px;
+	border-width: 5px 5px 0;
+	border-top-color: #000;
+}
+
+.mb-tooltip.top-right .mb-tooltip-arrow {
+	bottom: 0;
+	left: 5px;
+	margin-bottom: -5px;
+	border-width: 5px 5px 0;
+	border-top-color: #000;
+}
+
+.mb-tooltip.right .mb-tooltip-arrow {
+	top: 50%;
+	left: 0;
+	margin-top: -5px;
+	border-width: 5px 5px 5px 0;
+	border-right-color: #000;
+}
+
+.mb-tooltip.left .mb-tooltip-arrow {
+	top: 50%;
+	right: 0;
+	margin-top: -5px;
+	border-width: 5px 0 5px 5px;
+	border-left-color: #000;
+}
+
+.mb-tooltip.bottom .mb-tooltip-arrow {
+	top: 0;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 0 5px 5px;
+	border-bottom-color: #000;
+}
+
+.mb-tooltip.bottom-left .mb-tooltip-arrow {
+	top: 0;
+	right: 5px;
+	margin-top: -5px;
+	border-width: 0 5px 5px;
+	border-bottom-color: #000;
+}
+
+.mb-tooltip.bottom-right .mb-tooltip-arrow {
+	top: 0;
+	left: 5px;
+	margin-top: -5px;
+	border-width: 0 5px 5px;
+	border-bottom-color: #000;
+}
+
+.mb-button {
+	background: #d8d8d8;
+	background-image: -webkit-linear-gradient(top, #fefefe, #d8d8d8);
+	background-image: -moz-linear-gradient(top, #fefefe, #d8d8d8);
+	background-image: -ms-linear-gradient(top, #fefefe, #d8d8d8);
+	background-image: -o-linear-gradient(top, #fefefe, #d8d8d8);
+	background-image: linear-gradient(to bottom, #fefefe, #d8d8d8);
+	border-color: #ccc #aaa #aaa #ccc;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	padding: 0;
+	vertical-align: top;
+}
+
+.mb-button:hover,
+.mb-button:focus {
+	background: #e6e6e6;
+}
+
+.mb-button:active,
+.mb-button-active {
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.mb-button-active:hover,
+.mb-button-active:focus,
+.mb-button:active,
+.mb-button-active {
+	background: #c3c3c3;
+}
+
+.mb-button i {
+	background: none no-repeat center center;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+}
+
+.mb-folder-exclude i,
+.mb-file-exclude i,
+.mb-table-exclude i {
+	background-image: url(images/file-exclude.png);
+}
+
+.mb-subfolders-skip i {
+	background-image: url(images/subfolders-skip.png);
+}
+
+.mb-files-skip i {
+	background-image: url(images/files-skip.png);
+}
+
+.mb-table-skip i {
+	background-image: url(images/table-skip.png);
+}
+
+ul.mb-list-container {
+	overflow: auto;
+	max-height: 300px;
+	max-width: 400px;
+}
+
+ul.mb-list-container a {
+	color: #333;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0px 2px;
+}
+
+ul.mb-list-container a:hover {
+	background: #BDF;
+}
+
+.mb-download-container > a {
+	display: inline-block;
+	margin-top: 5px;
+	background: #fc7e21;
+	background-image: -webkit-linear-gradient(top, #ffac47, #f56c06);
+	background-image: -moz-linear-gradient(top, #ffac47, #f56c06);
+	background-image: -ms-linear-gradient(top, #ffac47, #f56c06);
+	background-image: -o-linear-gradient(top, #ffac47, #f56c06);
+	background-image: linear-gradient(to bottom, #ffac47, #f56c06);
+
+	padding: 2px 7px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ed6502 #a04300 #a04300 #ed6502;
+
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.mb-download-container > a:hover {
+	background: #fc7e21;
+	background-image: -webkit-linear-gradient(top, #f9ddbb, #fc7e21);
+	background-image: -moz-linear-gradient(top, #f9ddbb, #fc7e21);
+	background-image: -ms-linear-gradient(top, #f9ddbb, #fc7e21);
+	background-image: -o-linear-gradient(top, #f9ddbb, #fc7e21);
+	background-image: linear-gradient(to bottom, #f9ddbb, #fc7e21);
+
+	color: #fff;
+	text-decoration: none;
+}
+
+.backup-step {
+	background-color: #666E73;
+	color: #FFFFFF;
+	font-weight: bold;
+	line-height: 14px;
+	vertical-align: baseline;
+	white-space: nowrap;
+	border-radius: 3px;
+	padding: 8px 12px;
+	margin-bottom: 2px;
+}
+
+.backup-step-progress {
+	background-color: #3A87AD;
+}
+
+.backup-step-completed {
+	background-color: #58A358;
+}
+
+#backup-status {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background: #f7f7f7;
+	border-radius: 4px;
+	padding: 10px 0 10px 10px;
+}
+
+.backup-progress {
+	background: #F7F7F7;
+	background-image: linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+	background-image: -moz-linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+	background-image: -webkit-linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+	background-image: -ms-linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+	background-image: -o-linear-gradient(to bottom, #F5F5F5, #F9F9F9);
+	border-radius: 4px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+	height: 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+#backup-progress-bar {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -ms-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-size: 40px 40px;
+
+	background-color: #0E90D2;
+	background-repeat: repeat-x;
+	box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+	color: #FFFFFF;
+	float: left;
+	font-size: 12px;
+	height: 100%;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	transition: width 0.6s ease 0s;
+	width: 0;
+}
+
+#backup-complete-container,
+#backup-error-container {
+	display: none;
+}
+
+.backup-complete-info {
+	background: #DFF0D8;
+	border: 1px solid #D6E9C6;
+	color: #468847;
+	padding: 14px;
+	margin-bottom: 35px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.backup-complete-info h3 {
+	font-size: 22px;
+	line-height: 24px;
+	color: #468847;
+}
+
+.backup-error-info {
+	background: #F2DEDE;
+	border: 1px solid #EED3D7;
+	color: #B94A48;
+	padding: 14px;
+	margin-bottom: 35px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.backup-error-info h3 {
+	font-size: 22px;
+	line-height: 24px;
+	color: #B94A48;
+}
+
+#data_included_databases {
+	width: 280px;
+	padding-left: 5px;
+}
+
+.mb-backup-description {
+	font-size: 11px;
+	margin-top: 5px;
+}

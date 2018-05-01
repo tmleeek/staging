@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   ASPerience
+ * @package    Asperience_Deleteallorders
+ * @author     ASPerience - www.asperience.fr
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <sections>
+        <sales translate="label" module="deleteallorders">
+            <groups>
+                <delete_order translate="label">
+                    <label>Deletion of Orders</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>120</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <is_active translate="label">
+                            <label>Allow to delete the orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </is_active>
+                        <delete_all translate="label">
+                            <label>Also remove orders with invoices, shipments or credit memos related</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </delete_all>
+                        <order_status translate="label">
+                            <label>Delete order status</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>deleteallorders/status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_status>
+                    </fields>
+                </delete_order>
+            </groups>
+        </sales>
+    </sections>
+</config>

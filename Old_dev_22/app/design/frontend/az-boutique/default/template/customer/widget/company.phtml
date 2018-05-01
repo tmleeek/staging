@@ -1,0 +1,58 @@
+<?php
+/**
+ * created : 1 sept. 2009
+ * 
+ * @category SQLI
+ * @package Sqli_Customer
+ * @author Elmiloud Chaabelasri
+ * @copyright SQLI - 2009 - http://www.sqli.com
+ * 
+ * @see Sqli_Customer_Block_Widget_Company
+ */
+?>
+<div class="gauche-form">
+	<span class="legende"><?php echo $this->__('Are you:') ?><strong class="texte-rose"> *</strong></span>
+</div>
+<div class="droite-form">
+		  <input type="radio" 
+         	id="is_individual"
+         	class="champ-radio-checkbox"
+            name="sqli_is_company"
+            value="1"
+            onclick="javascript:visibilityCompany();"
+            <?php if ($this->getObject()->getSqliIsCompany() == '1' || $this->getObject()->getSqliIsCompany() == ''):?>checked="checked"<?php endif ?> />
+          <label for="is_individual"><?php echo $this->__('Particular') ?></label>
+          <input type="radio" id="is_professional"
+          	class="champ-radio-checkbox"
+            name="sqli_is_company"
+            value="0"
+            onclick="javascript:visibilityCompany();"
+            <?php if ($this->getObject()->getSqliIsCompany() == '0'):?>checked="checked"<?php endif ?> />
+           <label for="is_professional"><?php echo $this->__('Professional') ?></label>	
+</div><div class="clear-both"></div>
+
+    <div id='div_company'>
+			<div class="gauche-form">
+				<label for="societe"><?php echo $this->__('Company:') ?><strong class="texte-rose"> *</strong></label>
+			</div>
+			<div class="droite-form">
+				<input name="company" id="societe" class="champ-texte champ-texte-taille-4 required-entry" type="text" value="<?php echo $this->htmlEscape( $this->getObject()->getCompany() ) ?>" title="<?php echo $this->__('Company') ?>" maxlength="35" />
+			</div><div class="clear-both"></div>
+			
+            
+   </div>
+
+<script type="text/javascript">
+//<![CDATA[
+   function visibilityCompany(){
+   
+   var $is_individual = document.getElementById('is_individual').checked;
+   if($is_individual == true){
+   	document.getElementById('div_company').style.display = 'none';
+   }else{   		
+   	document.getElementById('div_company').style.display = 'block';
+   }
+   }
+   visibilityCompany()
+//]]>
+</script>   

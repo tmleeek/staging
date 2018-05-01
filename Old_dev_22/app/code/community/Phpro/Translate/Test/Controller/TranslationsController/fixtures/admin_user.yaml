@@ -1,0 +1,26 @@
+tables:
+  admin/user:
+   -user_id: 1
+    firstname: phpro
+    lastname: developer
+    email: mario.peeters@phpro.be
+    username: phpro
+    password: 99342b37e115c217c16b295d0743784a:DX
+    created: 2011-09-28 15:00:04
+    is_active: 1
+  admin/role:
+   -role_id: 1
+    parent_id: 0
+    tree_level: 1
+    sort_order: 1
+    role_type:G
+    user_id: 1
+    role_name: Administrators
+  admin/rule:
+   -rule_id: 1
+    role_id: 1
+    resource_id: all
+    privileges:''
+    assert_id: 0
+    role_type: G
+    permission: allow

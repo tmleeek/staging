@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   Tatva
+ * @package    Tatva_Alsobought
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Tatva_Alsobought>
+            <version>0.1.0</version>
+        </Tatva_Alsobought>
+    </modules>
+    <global>
+    	<blocks>
+    		<alsobought>
+    			<class>Tatva_Alsobought_Block</class>
+    		</alsobought>
+    	</blocks>
+        <models>
+            <alsobought>
+                <class>Tatva_Alsobought_Model</class>
+            </alsobought>
+        </models>
+        <helpers>
+            <alsobought>
+	        	<class>Tatva_Alsobought_Helper</class>
+	        </alsobought>
+        </helpers>
+        <resources>
+            <alsobought_setup>
+                <setup>
+                    <module>Tatva_Alsobought</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </alsobought_setup>
+            <alsobought_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </alsobought_write>
+            <alsobought_read>
+                <connection>
+                    <use>core_read</use>
+                    </connection>
+            </alsobought_read>
+        </resources>
+		<rewrite>
+			<alsobought_adminhtml_init_grid>
+				<from><![CDATA[#^/?admin/catalog_product/alsobought#]]></from>
+               	<to>/alsobought/adminhtml_index/alsobought</to>
+			</alsobought_adminhtml_init_grid>
+			<alsobought_adminhtml_reload_grid>
+				<from><![CDATA[#^/?admin/catalog_product/gridOnlyAlsobought#]]></from>
+               	<to>/alsobought/adminhtml_index/gridOnlyAlsobought</to>
+			</alsobought_adminhtml_reload_grid>
+		</rewrite>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <alsobought>
+                    <file>alsobought.xml</file>
+                </alsobought>
+            </updates>
+        </layout>
+	    <translate>
+            <modules>
+                <Tatva_Alsobought>
+                    <files>
+                        <default>Tatva_Alsobought.csv</default>
+                    </files>
+                </Tatva_Alsobought>
+            </modules>
+        </translate>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <alsobought_save_order>
+                        <type>singleton</type>
+                        <class>alsobought/observer</class>
+                        <method>updateAlsobought</method>
+                    </alsobought_save_order>
+                </observers>
+            </sales_order_save_after>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <alsobought>
+                <use>admin</use>
+                <args>
+                    <module>Tatva_Alsobought</module>
+                    <frontName>alsobought</frontName>
+                </args>
+            </alsobought>
+        </routers>
+    </admin>
+    <adminhtml>
+	    <acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<alsobought translate="title" module="alsobought">
+											<title>Customers also bought</title>
+										</alsobought>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+	    </acl>
+	    <translate>
+            <modules>
+                <Tatva_Alsobought>
+                    <files>
+                        <default>Tatva_Alsobought.csv</default>
+                    </files>
+                </Tatva_Alsobought>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <alsobought>
+                    <file>alsobought.xml</file>
+                </alsobought>
+            </updates>
+        </layout>
+        <events>
+            <catalog_product_prepare_save>
+                <observers>
+                    <alsobought_init_save_product>
+                        <type>singleton</type>
+                        <class>alsobought/observer</class>
+                        <method>initSaveProduct</method>
+                    </alsobought_init_save_product>
+                </observers>
+            </catalog_product_prepare_save>
+        </events>
+    </adminhtml>
+    <default>
+    	<alsobought>
+    		<general>
+    			<limit>4</limit>
+    		</general>
+    	</alsobought>
+    </default>
+</config>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Tatva_MarketPlaces>
+			<version>0.1.3</version>
+		</Tatva_MarketPlaces>
+	</modules>
+	
+	<!-- GLOBAL  -->
+	<global>
+		<!-- Helpers  -->
+		<helpers>
+			<tatvamarketplaces>
+				<class>Tatva_MarketPlaces_Helper</class>
+			</tatvamarketplaces>
+		</helpers>
+		
+		<!-- Models  -->
+		<models>
+			<tatvamarketplaces>
+				<class>Tatva_MarketPlaces_Model</class>
+			</tatvamarketplaces>
+		</models>
+	
+		<!-- Blocks  -->
+		<blocks>
+			<tatvamarketplaces>
+				<class>Tatva_MarketPlaces_Block</class>
+			</tatvamarketplaces>
+		</blocks>	
+		
+		<!-- Resources  -->
+        <resources>
+            <tatvamarketplaces_setup>
+                <setup>
+                    <module>Tatva_MarketPlaces</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tatvamarketplaces_setup>
+            <tatvamarketplaces_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tatvamarketplaces_write>
+            <tatvamarketplaces_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tatvamarketplaces_read>
+        </resources>		
+        
+        <!-- Templates des emails -->
+		<template>
+            <email>         
+         		<tatvamarketplaces_errors>
+                   <label>Errors during the integration orders</label>
+                   <file>tatva/marketplaces/errors.html</file>
+                   <type>html</type>
+               </tatvamarketplaces_errors>
+         		<tatvamarketplaces_reponse>
+                   <label>Reponse of the import Product</label>
+                   <file>tatva/marketplaces/reponse.html</file>
+                   <type>html</type>
+               </tatvamarketplaces_reponse>               
+           </email>
+        </template>  
+	</global>
+	
+	<!-- Admin  -->
+	<adminhtml>
+	
+		<!-- Traduction  -->
+		<translate>
+			<modules>
+				<Tatva_MarketPlaces>
+					<files>
+						<default>Tatva_MarketPlaces.csv</default>
+					</files>
+				</Tatva_MarketPlaces>
+			</modules>
+		</translate>
+		
+		<!-- Droits -->
+ 	  	<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<tatvamarketplaces_orders translate="title" module="tatvamarketplaces">
+											<title>Multi-channel selling : Orders</title>
+										</tatvamarketplaces_orders>
+										<tatvamarketplaces_2xmoinscher translate="title" module="tatvamarketplaces">
+											<title>Multi-channel selling : 2xmoinscher</title>
+										</tatvamarketplaces_2xmoinscher>
+										<tatvamarketplaces_priceminister translate="title" module="tatvamarketplaces">
+											<title>Multi-channel selling : PriceMinister</title>
+										</tatvamarketplaces_priceminister>
+										<tatvamarketplaces_rueducommerce translate="title" module="tatvamarketplaces">
+											<title>Multi-channel selling : RueDuCommerce</title>
+										</tatvamarketplaces_rueducommerce>
+										<tatvamarketplaces_pixmania translate="title" module="tatvamarketplaces">
+											<title>Multi-channel selling : PIXmania</title>
+										</tatvamarketplaces_pixmania>										
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+	    </acl> 
+	    
+		<events>
+			<sales_order_save_after>
+				<observers>
+					<xfoischer_observer>
+						<type>singleton</type>
+						<class>tatvamarketplaces/2xmoinscher_observer</class>
+						<method>cancelOrder</method>
+					</xfoischer_observer>
+				</observers>
+			</sales_order_save_after>
+		</events>  
+				
+	</adminhtml>
+
+	<!-- Configuration par défaut -->
+	<default>
+		<tatvamarketplaces_orders>
+			<configuration>
+				<sender_mail_errors>sales</sender_mail_errors>
+				<receiver_mail_errors>sales</receiver_mail_errors>
+				<email_errors>tatvamarketplaces_errors</email_errors>
+			</configuration>		
+		</tatvamarketplaces_orders>
+		<tatvamarketplaces_2xmoinscher>
+			<orders>
+				<filename>Rapport de ventes.xls</filename>
+				<sender_mail>sales</sender_mail>
+				<receiver_name_order_canceled>Camille</receiver_name_order_canceled>
+				<receiver_email_order_canceled>camille@2xmoinscher.com</receiver_email_order_canceled>
+			</orders>
+		</tatvamarketplaces_2xmoinscher>
+		<tatvamarketplaces_pixmania>
+			<configuration>
+				<sender_mail_errors>sales</sender_mail_errors>
+				<receiver_mail_errors>sales</receiver_mail_errors>
+				<email_reponse>tatvamarketplaces_reponse</email_reponse>
+			</configuration>		
+		</tatvamarketplaces_pixmania>	
+	</default>
+	
+	    <crontab>
+        <jobs>
+        	<!-- Cron Integration des commandes 2xmoinscher -->
+            <!--<tatvamarketplaces_2xmoinscher_orders>
+                <schedule><cron_expr>00 18 * * *</cron_expr></schedule>
+                <run><model>tatvamarketplaces/2xmoinscher::execute</model></run>
+            </tatvamarketplaces_2xmoinscher_orders>-->
+            
+            <!-- Cron Integration des commandes Pixmania -->
+		   <!--	<tatvamarketplaces_pixmania_orders>
+               	<schedule><cron_expr>0 6-22 * * *</cron_expr></schedule>
+                <run><model>tatvamarketplaces/pixmania::execute</model></run>
+            </tatvamarketplaces_pixmania_orders>-->
+            
+            <!-- Cron MAJ des commandes Pixmania -->
+			<!--<tatvamarketplaces_pixmania_orders_updated>
+               	<schedule><cron_expr>0 6-22 * * *</cron_expr></schedule>
+                <run><model>tatvamarketplaces/status_pixmania::execute</model></run>
+            </tatvamarketplaces_pixmania_orders_updated>-->
+            
+            <!-- Cron Integration des commandes Rueducommerce -->
+			<tatvamarketplaces_rueducommerce_orders>
+               	<schedule><cron_expr>*/20 6-22 * * *</cron_expr></schedule>
+                <run><model>tatvamarketplaces/rueducommerce::execute</model></run>
+            </tatvamarketplaces_rueducommerce_orders>
+            
+            <!-- Cron MAJ des commandes Rueducommerce -->
+			<tatvamarketplaces_rueducommerce_orders_updated>
+               	<schedule><cron_expr>*/20 6-22 * * *</cron_expr></schedule>
+                <run><model>tatvamarketplaces/status_rueducommerce::execute</model></run>
+            </tatvamarketplaces_rueducommerce_orders_updated>
+        </jobs>
+    </crontab>	
+</config>

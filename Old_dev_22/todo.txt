@@ -1,0 +1,63 @@
+/********************************************************************************
+/*  Rules
+/*******************************************************************************/
+
+conditions sur les offres :
+   [FR] - Ma position : Mon classement (position)                                               [OK]
+        - Meilleur vendeur : Vendeur le mieux positionné                                        [OK]
+        - Prix du meilleur vendeur : Prix du vendeur le mieux positionné                        [OK]
+   [EN] - Best seller : Top seller position                                                     [OK]
+
+
+
+Products to reprice
+    - Product to reprice => Include / Exclude products | Inclure / Exclure des produits         [OK]
+    - behaviour => method (variable)
+
+Behavior :
+    [EN] Normal : Cautious                                                                      [OK]
+         Aggressive : Moderate                                                                  [OK]
+         Harakiri : Aggresive                                                                   [OK]
+    [FR] Normal : Prudent                                                                       [OK]
+         Aggressif : Modéré                                                                     [OK]
+         Harakiri : Aggressif                                                                   [OK]
+
+Cost :
+    [EN] Product cost                                                                           [OK]
+    [FR] Prix d'achat des produits                                                              [OK]
+
+Shipping cost :
+    [FR] method : Grille de transport                                                           [OK]
+         coef note : Coefficient à appliquer sur le grille de transport                         [OK]
+    [EN] method : Shipping grid                                                                 [OK]
+         coef note : coefficent to apply on shipping grid                                       [OK]
+
+Profit margin
+    [FR] Marge minimum                                                                          [OK]
+    [EN] Minimum profit margin                                                                  [OK]
+
+Commissions
+    [FR] Commissions sur les ventes                                                             [OK]
+    [EN] Commissions on sales                                                                   [OK]
+
+Tax rate :
+    [FR] formula note : pourcentage (20 pour 20 %)                                              [OK]
+         formula : pourcentage                                                                  [OK]
+    [EN] formula note : percent (20 for 20 %)                                                   [OK]
+         formula : percent                                                                      [OK]
+
+No competitor price
+    [FR] Prix de vente des offres sans concurrent                                               [OK]
+         value note : valeur / pourcentage                                                      [OK]
+    [EN] Price offer without competitor                                                         [OK]
+         value note : value / percent                                                           [OK]
+
+Minimum price
+    [FR] Limite minimum des prix de vente                                                       [OK]
+         formula note : Calcul du prix minimum                                                  [OK]
+    [EN] formula note : Price calculation                                                       [OK]
+
+Maximum price
+    [FR] Limite maximum des prix de vente                                                       [OK]
+         formula note : Calcul du prix maximum                                                  [OK]
+    [EN] formula note : Price calculation                                                       [OK]

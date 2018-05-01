@@ -1,0 +1,212 @@
+From 473846959772d8160b34b92ae3bcecddf24b972f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20Nu=C3=9F?= <julian.nuss@outlook.com>
+Date: Tue, 23 Sep 2014 21:07:29 +0200
+Subject: [PATCH 1/1] [BUGIFX] Zend Framework 1 + PHP5.6
+
+---
+ lib/Zend/Locale/Format.php          | 22 +++++++++++-----------
+ lib/Zend/Service/Audioscrobbler.php |  6 +++---
+ lib/Zend/Service/Technorati.php     |  6 +++---
+ lib/Zend/Validate/Hostname.php      |  4 ++--
+ lib/Zend/Validate/StringLength.php  |  4 ++--
+ lib/Zend/XmlRpc/Client.php          |  6 +++---
+ 6 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/lib/Zend/Locale/Format.php b/lib/Zend/Locale/Format.php
+index f1189f2..6280029 100644
+--- a/lib/Zend/Locale/Format.php
++++ b/lib/Zend/Locale/Format.php
+@@ -310,7 +310,7 @@ class Zend_Locale_Format
+         // Get correct signs for this locale
+         $symbols = Zend_Locale_Data::getList($options['locale'], 'symbols');
+         $oenc = iconv_get_encoding('internal_encoding');
+-        iconv_set_encoding('internal_encoding', 'UTF-8');
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
+ 
+         // Get format
+         $format = $options['number_format'];
+@@ -345,7 +345,7 @@ class Zend_Locale_Format
+         }
+ 
+         if (iconv_strpos($format, '0') === false) {
+-            iconv_set_encoding('internal_encoding', $oenc);
++            (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+             #require_once 'Zend/Locale/Exception.php';
+             throw new Zend_Locale_Exception('Wrong format... missing 0');
+         }
+@@ -471,7 +471,7 @@ class Zend_Locale_Format
+             }
+         }
+ 
+-        iconv_set_encoding('internal_encoding', $oenc);
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+         return (string) $format;
+     }
+ 
+@@ -781,7 +781,7 @@ class Zend_Locale_Format
+         $result['locale'] = $options['locale']; // save the locale used to normalize $number (convenience)
+ 
+         $oenc = iconv_get_encoding('internal_encoding');
+-        iconv_set_encoding('internal_encoding', 'UTF-8');
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
+         $day   = iconv_strpos($format, 'd');
+         $month = iconv_strpos($format, 'M');
+         $year  = iconv_strpos($format, 'y');
+@@ -846,7 +846,7 @@ class Zend_Locale_Format
+         }
+ 
+         if (empty($parse)) {
+-            iconv_set_encoding('internal_encoding', $oenc);
++            (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+             #require_once 'Zend/Locale/Exception.php';
+             throw new Zend_Locale_Exception("Unknown date format, neither date nor time in '" . $format . "' found");
+         }
+@@ -866,7 +866,7 @@ class Zend_Locale_Format
+         preg_match_all('/\d+/u', $number, $splitted);
+ 
+         if (count($splitted[0]) == 0) {
+-            iconv_set_encoding('internal_encoding', $oenc);
++            (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+             #require_once 'Zend/Locale/Exception.php';
+             throw new Zend_Locale_Exception("No date part in '$date' found.");
+         }
+@@ -972,7 +972,7 @@ class Zend_Locale_Format
+                 if (($position !== false) and ((iconv_strpos($date, $result['day']) === false) or
+                                                (isset($result['year']) and (iconv_strpos($date, $result['year']) === false)))) {
+                     if ($options['fix_date'] !== true) {
+-                        iconv_set_encoding('internal_encoding', $oenc);
++                        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+                         #require_once 'Zend/Locale/Exception.php';
+                         throw new Zend_Locale_Exception("Unable to parse date '$date' using '" . $format
+                             . "' (false month, $position, $month)");
+@@ -988,7 +988,7 @@ class Zend_Locale_Format
+             if (isset($result['day']) and isset($result['year'])) {
+                 if ($result['day'] > 31) {
+                     if ($options['fix_date'] !== true) {
+-                        iconv_set_encoding('internal_encoding', $oenc);
++                        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+                         #require_once 'Zend/Locale/Exception.php';
+                         throw new Zend_Locale_Exception("Unable to parse date '$date' using '"
+                                                       . $format . "' (d <> y)");
+@@ -1004,7 +1004,7 @@ class Zend_Locale_Format
+             if (isset($result['month']) and isset($result['year'])) {
+                 if ($result['month'] > 31) {
+                     if ($options['fix_date'] !== true) {
+-                        iconv_set_encoding('internal_encoding', $oenc);
++                        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+                         #require_once 'Zend/Locale/Exception.php';
+                         throw new Zend_Locale_Exception("Unable to parse date '$date' using '"
+                                                       . $format . "' (M <> y)");
+@@ -1020,7 +1020,7 @@ class Zend_Locale_Format
+             if (isset($result['month']) and isset($result['day'])) {
+                 if ($result['month'] > 12) {
+                     if ($options['fix_date'] !== true || $result['month'] > 31) {
+-                        iconv_set_encoding('internal_encoding', $oenc);
++                        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+                         #require_once 'Zend/Locale/Exception.php';
+                         throw new Zend_Locale_Exception("Unable to parse date '$date' using '"
+                                                       . $format . "' (M <> d)");
+@@ -1047,7 +1047,7 @@ class Zend_Locale_Format
+             }
+         }
+ 
+-        iconv_set_encoding('internal_encoding', $oenc);
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $oenc) : ini_set('default_charset', 'UTF-8');;
+         return $result;
+     }
+ 
+diff --git a/lib/Zend/Service/Audioscrobbler.php b/lib/Zend/Service/Audioscrobbler.php
+index c927fbe..1b32baf 100644
+--- a/lib/Zend/Service/Audioscrobbler.php
++++ b/lib/Zend/Service/Audioscrobbler.php
+@@ -69,9 +69,9 @@ class Zend_Service_Audioscrobbler
+     {
+         $this->set('version', '1.0');
+ 
+-        iconv_set_encoding('output_encoding', 'UTF-8');
+-        iconv_set_encoding('input_encoding', 'UTF-8');
+-        iconv_set_encoding('internal_encoding', 'UTF-8');
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('output_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('input_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
+     }
+ 
+     /**
+diff --git a/lib/Zend/Service/Technorati.php b/lib/Zend/Service/Technorati.php
+index 647344b..0ad6b59 100644
+--- a/lib/Zend/Service/Technorati.php
++++ b/lib/Zend/Service/Technorati.php
+@@ -84,9 +84,9 @@ class Zend_Service_Technorati
+      */
+     public function __construct($apiKey)
+     {
+-        iconv_set_encoding('output_encoding', 'UTF-8');
+-        iconv_set_encoding('input_encoding', 'UTF-8');
+-        iconv_set_encoding('internal_encoding', 'UTF-8');
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('output_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('input_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
+ 
+         $this->_apiKey = $apiKey;
+     }
+diff --git a/lib/Zend/Validate/Hostname.php b/lib/Zend/Validate/Hostname.php
+index 2a27243..f1f04f0 100644
+--- a/lib/Zend/Validate/Hostname.php
++++ b/lib/Zend/Validate/Hostname.php
+@@ -550,7 +550,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
+             $status = false;
+ 
+             $origenc = iconv_get_encoding('internal_encoding');
+-            iconv_set_encoding('internal_encoding', 'UTF-8');
++            (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
+             do {
+                 // First check TLD
+                 $matches = array();
+@@ -646,7 +646,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
+                 }
+             } while (false);
+ 
+-            iconv_set_encoding('internal_encoding', $origenc);
++            (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $origenc) : ini_set('default_charset', 'UTF-8');;
+             // If the input passes as an Internet domain name, and domain names are allowed, then the hostname
+             // passes validation
+             if ($status && ($this->_options['allow'] & self::ALLOW_DNS)) {
+diff --git a/lib/Zend/Validate/StringLength.php b/lib/Zend/Validate/StringLength.php
+index 2b7abe2..feb27f4 100644
+--- a/lib/Zend/Validate/StringLength.php
++++ b/lib/Zend/Validate/StringLength.php
+@@ -200,13 +200,13 @@ class Zend_Validate_StringLength extends Zend_Validate_Abstract
+     {
+         if ($encoding !== null) {
+             $orig   = iconv_get_encoding('internal_encoding');
+-            $result = iconv_set_encoding('internal_encoding', $encoding);
++            $result = (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $encoding) : ini_set('default_charset', 'UTF-8');;
+             if (!$result) {
+                 #require_once 'Zend/Validate/Exception.php';
+                 throw new Zend_Validate_Exception('Given encoding not supported on this OS!');
+             }
+ 
+-            iconv_set_encoding('internal_encoding', $orig);
++            (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', $orig) : ini_set('default_charset', 'UTF-8');;
+         }
+ 
+         $this->_encoding = $encoding;
+diff --git a/lib/Zend/XmlRpc/Client.php b/lib/Zend/XmlRpc/Client.php
+index d3fb1da..3a262bf 100644
+--- a/lib/Zend/XmlRpc/Client.php
++++ b/lib/Zend/XmlRpc/Client.php
+@@ -257,9 +257,9 @@ class Zend_XmlRpc_Client
+     {
+         $this->_lastRequest = $request;
+ 
+-        iconv_set_encoding('input_encoding', 'UTF-8');
+-        iconv_set_encoding('output_encoding', 'UTF-8');
+-        iconv_set_encoding('internal_encoding', 'UTF-8');
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('input_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('output_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
++        (PHP_VERSION_ID < 50600) ? iconv_set_encoding('internal_encoding', 'UTF-8') : ini_set('default_charset', 'UTF-8');;
+ 
+         $http = $this->getHttpClient();
+         if($http->getUri() === null) {
+-- 
+2.1.0

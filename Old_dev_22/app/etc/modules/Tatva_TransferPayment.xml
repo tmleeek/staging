@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Tatva_TransferPayment>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends />
+        </Tatva_TransferPayment>
+    </modules>
+</config>

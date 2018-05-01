@@ -1,0 +1,25 @@
+.rewards-modal .content .pinterest-username-container
+{
+	text-align: center;
+}
+
+.rewards-modal .content .pinterest-username-container input
+{
+	margin-top: 10px;
+	font-size: 1.2em;
+	padding: 10px;
+	border-radius: 8px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #a44a02;
+	background-color: #fff3ea;
+	font-weight: bold;
+	width: 60%;
+	text-align: center;
+}
+
+.rewards-modal .content .pinterest-submit-container
+{
+	margin-top: 10px;
+	text-align: right;
+}

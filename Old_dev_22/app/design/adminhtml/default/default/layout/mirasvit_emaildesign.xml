@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<layout version="1.0">
+    <emaildesign_adminhtml>
+        <reference name="head">
+            <action method="addCss"><script>mirasvit/emaildesign.css</script></action>
+            <action method="addJs"><script>mirasvit/code/emaildesign/adminhtml/emaildesign.js</script></action>
+            <action method="addJs"><script>mirasvit/core/codemirror/codemirror.js</script></action>
+            <action method="addJs"><script>mirasvit/core/codemirror/css/css.js</script></action>
+            <action method="addJs"><script>mirasvit/core/codemirror/xml/xml.js</script></action>
+            <action method="addJs"><script>mirasvit/core/codemirror/javascript/javascript.js</script></action>
+            <action method="addJs"><script>mirasvit/core/codemirror/htmlmixed/htmlmixed.js</script></action>
+            <action method="addJs"><script>mirasvit/core/codemirror/htmlembedded/htmlembedded.js</script></action>
+            <action method="addJs"><script>mirasvit/core/ckeditor/ckeditor.js</script></action>
+            <action method="addItem"><type>js_css</type><name>mirasvit/core/codemirror/codemirror.css</name><params/></action>
+        </reference>
+    </emaildesign_adminhtml>
+
+    <emaildesign_adminhtml_design_new>
+        <update handle="emaildesign_adminhtml" />
+    </emaildesign_adminhtml_design_new>
+
+    <emaildesign_adminhtml_design_edit>
+        <update handle="emaildesign_adminhtml" />
+    </emaildesign_adminhtml_design_edit>
+
+    <emaildesign_adminhtml_template_new>
+        <update handle="emaildesign_adminhtml" />
+    </emaildesign_adminhtml_template_new>
+
+    <emaildesign_adminhtml_template_edit>
+        <update handle="emaildesign_adminhtml" />
+    </emaildesign_adminhtml_template_edit>
+
+    <emaildesign_adminhtml_design_preview>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>mirasvit/emaildesign/design/preview.phtml</template>
+            </action>
+            <block type="adminhtml/newsletter_queue_preview_form" name="preview_form" />
+        </reference>
+    </emaildesign_adminhtml_design_preview>
+
+    <emaildesign_adminhtml_template_preview>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>mirasvit/emaildesign/template/preview.phtml</template>
+            </action>
+            <block type="adminhtml/newsletter_queue_preview_form" name="preview_form" />
+        </reference>
+    </emaildesign_adminhtml_template_preview>
+</layout>

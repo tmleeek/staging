@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <alsobought>
+            <class>separator-top</class>
+            <label>Customers also bought</label>
+            <tab>tatva</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>70</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="nouveautes">
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <limit translate="label" module="nouveautes">
+                            <label>Max products displayed in block</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </limit>
+                    </fields>
+                </general>
+             </groups>
+        </alsobought>
+    </sections>
+</config>

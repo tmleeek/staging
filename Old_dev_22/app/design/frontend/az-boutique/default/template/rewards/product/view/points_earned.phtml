@@ -1,0 +1,38 @@
+
+<div class="divider"></div>
+<div class="distri_section">
+    <?php foreach ($this->getDistriRewards() as $reward_currency => $reward_amount): ?>
+        <?php $points_summary = $this->getPointsString($reward_amount, $reward_currency); ?>
+        <?php if ($this->doGraphicalEarning()): ?>
+            <div class="earnable" align="left">
+                <table border=0 cellspacing=0 cellpadding=0><tbody><tr>
+                            <td align="left" class="rewards-mini-icon-holder">
+                                <img src="<?php echo $this->getSkinUrl("images/rewards/add_points.png"); ?>">
+                            </td>
+                            <td align="left">
+                                <?php if ($this->getShowEarningFrom()) : ?>
+                                    <?php echo $this->__('Earn starting from %s for buying this product', $points_summary); ?>
+                                <?php else :?>
+                                    <?php echo $this->__('You will earn %s for buying this product', $points_summary); ?>
+                                <?php endif; ?>
+                            </td>
+                        </tr></tbody></table>
+            </div>
+        <?php else: ?>
+            <div class="you_will_earn">
+                <?php if ($this->getShowEarningFrom()) : ?>
+                    <?php echo $this->__('Earn starting from %s for buying this product', $points_summary); ?>
+                <?php else :?>
+                    <?php echo $this->__('You will earn %s for buying this product', $points_summary); ?>
+                <?php endif; ?>
+            </div>
+        <?php endif ?>
+
+        <!-- $reward_currency is almost always '1' and $reward_amount is an integer amount of points to display. -->
+        <?php $img_url = $this->getPointsImgUrl($reward_amount, $reward_currency); ?>
+        <?php $imgPath = Mage::getSingleton('rewards/currency')->load($reward_currency)->getImage(); ?>
+        <?php if (!empty($imgPath)): ?>
+            <img src="<?php echo $img_url; ?>" class="points_image points_currency_image-<?php echo $reward_currency ?>"/>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>

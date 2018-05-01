@@ -1,0 +1,14 @@
+<config>
+   <modules>
+      <Extendware_EWMPAction>
+         <active>true</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Bulk Product Updating</name>
+         </extendware>
+      </Extendware_EWMPAction>
+   </modules>
+</config>

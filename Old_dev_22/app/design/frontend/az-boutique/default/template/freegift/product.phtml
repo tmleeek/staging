@@ -1,0 +1,270 @@
+
+<?php
+    
+    $_sku = $this->getProduct()->getId(); 
+    //$_collectionSize = count($this->_getProductCollection($_sku)->getData());
+    $_collectionSize = count($this->lastviewproduct($_sku));
+    $ait_model=Mage::getModel('aitmanufacturers/aitmanufacturers');
+    $productavaiblity_model=mage::getModel('SalesOrderPlanning/ProductAvailabilityStatus');
+?>
+<?php //$collection=$this->_getProductCollection(); 
+$collection=$this->lastviewproduct($_sku);
+//echo "<pre>";print_r($collection->getData());die();
+?>
+<?php if($_collectionSize): ?>
+
+<?php
+    $theme = $this->helper('ultimo');
+    $helpImg = $this->helper('infortis/image');
+    $sliderClasses = '';
+    $gridClasses = '';
+
+    $sliderId = "itemslider-alsobought";
+
+    //Slider parameters
+    //--------------------------------------------------------------
+
+    //Responsive mode on/off
+    $isResponsive = true;
+
+    //Assign number of items in a row to specific viewport width
+    $breakpoints = '[0, 1], [320, 2], [480, 3], [960, 4], [1280, 5]';
+
+    //Pagination on/off
+    $pagination = false;
+
+    //Default image size
+    $imgWidth = 196;
+    $imgHeight = 196;
+
+        //Image aspect ratio
+        if ($theme->getCfg('category/aspect_ratio'))
+        {
+            $imgHeight = 0; //Height will be computed automatically (based on width) to keep the aspect ratio
+        }
+
+    //Slider timeout. Set to enable automatic scrolling.
+    $timeout = intval($theme->getCfg('product_page/upsell_timeout'));
+
+    //Number of items that should move on scrolling
+    $move = 0;
+
+    //If set, slider will loop
+    $loop = $theme->getCfg('product_slider/loop');
+
+    //Speed (arrows / touch swipe)
+    $speed = intval($theme->getCfg('product_slider/speed'));
+
+    //Speed (automatic scrolling / pagination)
+    $autoSpeed = intval($theme->getCfg('product_slider/auto_speed'));
+
+    //Pause slider on mouse hover
+    $pause = $theme->getCfg('product_slider/pause');
+
+    //Lazy loading
+    $lazy = $theme->getCfg('product_slider/lazy');
+
+    //Slider classes
+    //--------------------------------------------------------------
+    if($isResponsive)
+    {
+        $sliderClasses .= ' itemslider-responsive';
+    }
+
+    if ($_collectionSize == 1)
+    {
+        $sliderClasses .= ' single-item';
+    }
+
+    //Product grid classes
+    //--------------------------------------------------------------
+
+    //Align elements to the center
+    if ($theme->getCfg('category_grid/centered'))
+    {
+        $gridClasses .= ' centered';
+    }
+	
+	
+?>
+
+
+<?php $store  = Mage::app()->getStore()->getId();  ?>
+<h3 class="Cnditionm section-title padding-right"><?php echo $this->__('Customers who purchased this product also bought...'); ?></h3>
+
+<div class="itemslider-wrapper itemslider-upsell-wrapper slider-arrows1 slider-arrows1-pos-top-right slider-pagination1">
+    <div id="<?php echo $sliderId; ?>" class="itemslider <?php if($sliderClasses) echo $sliderClasses; ?> products-grid<?php if($gridClasses) echo $gridClasses; ?>">
+     <?php //$test[]=$collection; ?>
+
+    <?php foreach($collection as $data){  ?>
+            <?php $id=$data; ?>
+            <?php $object = Mage::getModel('catalog/product'); ?>    
+            <?php $_product = $object->load($id);  
+            if($_product->getVisibility() == 4 && $_product->getStatus() == 1){
+            ?>
+                <div class="item">
+            <a href="<?php echo $_product->getUrlPath() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" class="product-image">
+
+                <?php if ($lazy): ?>
+                    <img class="lazyOwl" data-src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" />
+                <?php else: ?>
+                    <img src="<?php echo $helpImg->getImg($_product, $imgWidth, $imgHeight, 'small_image'); ?>" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" />
+                <?php endif; ?>
+
+            </a>
+
+
+            <?php $brand=''; $marque=''; $gamme=''; $collection_new=''; ?>
+             <?php $marque = $_product->getManufacturer(); ?>
+             <?php $gamme = $_product->getGammeCollectionNew(); ?>
+             <?php $brand = $_product->getAttributeText('manufacturer');//$main_model->getManufacturerName($_product->getManufacturer());?>
+             <?php $collection_new = $_product->getAttributeText('gamme_collection_new'); //$main_model->getGammeCollection($_product['gamme_collection_new']); ?>
+
+            <h3 class="product-name">
+            <a href="<?php echo $_product->getUrlPath() ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>"><?php echo $this->escapeHtml($_product->getName()) ?><!--</a>-->
+             <?php if($brand): ?>
+              <br/>
+			  <?php $admin_set_brand_url=$ait_model->getlistUrl($store,$marque); ?>
+                              <?php
+$url_add_to_cart='checkout/cart/homeadd/product/'.$_product->getId();
+$producturl = $_product->getProductUrl();
+                  $formurl = $this->getUrl($url_add_to_cart);
+                  $addtocarturl = $this->getAddToCartUrl($_product);
+?>
+			  <!--<a href="<?php echo $this->getUrl().$admin_set_brand_url; ?>"><?php echo $brand; ?></a>-->
+              <?php echo $brand; ?>
+			  <?php else: ?>
+			  <!--<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a> -->
+			  <?php endif; ?>
+
+              <?php if($collection_new): ?>
+              <br/>
+              <?php $admin_set_brand_url_new=$ait_model->getlistgammeUrl($store,$gamme,$marque); ?>
+
+              <!--<a href="<?php echo $this->getUrl().$admin_set_brand_url_new; ?>"><?php echo $collection_new; ?></a>-->
+              <?php echo $collection_new; ?>
+			  <?php else: ?>
+			  <!--<a href="javascript:void(0)" class="default_cursor"><strong>&nbsp;</strong></a>-->
+			  <?php endif; ?>
+              </a>
+              </h3>
+
+
+               <div class="yotpo-list"><?php $this->helper('yotpo')->showBottomline($this, $_product); ?></div>
+               <div class="review-custom-tatva">
+                  <?php  $productAvailabilityStatus = $productavaiblity_model->load($_product->getId(), 'pa_product_id');
+                    if ($_product->gettype_id() == 'bundle')
+                    {
+                         echo Mage::helper('BundleAvailability')->getAvailabilityMessageForBundleviewandlistpage($_product->getId());
+                    }
+                    else
+                    {
+                        $availabilityMessage = '';
+                        if ($productAvailabilityStatus) {
+                            echo $availabilityMessage = $productAvailabilityStatus->getMessage();
+                        }
+                    }?>
+               </div>
+             <?php echo $this->getPriceHtml($_product, true); ?>
+
+              <div class="productviewactions">
+                <button onclick="location.href ='<?php echo $producturl ?>'" class="button btn-cart view-button" title="<?php echo $this->__('View Product'); ?>" type="button"><span><span><?php echo $this->__('View Product'); ?></span></span></button>
+              </div>
+
+              <?php if($productAvailabilityStatus->getIsSaleable()): ?>
+                             <?php $formKey = Mage::getSingleton('core/session')->getFormKey(); ?>
+                           <?php $url_add_to_cart='checkout/cart/homeadd/product/'.$_product->getId(); ?>
+                           <form action="<?php echo $formurl; ?>" method="post">
+    <input type="hidden" name="form_key" value="<?php echo $formKey; ?>" />
+                                 <?php if(Mage::getStoreConfig('ajax/addtocart/enabledpro')){ ?>
+
+							<?php if ( !($_product->getTypeInstance(true)->hasOptions($_product) || $_product->isGrouped()) ) { ?>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $addtocarturl ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<span id='ajax_loader<?php echo $_product->getId()?>' style='display:none;float:left'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+							<?php } else { ?>
+                                <?php if(($_product->getTypeId()=='bundle')){ ?>
+							   	<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $addtocarturl ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<span id='ajax_loader<?php echo $_product->getId()?>' style='display:none;float:left'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+							<?php } } ?>
+
+						  <?php }else{ ?>
+						    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $addtocarturl ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+
+					      <?php } ?>
+
+                           </form>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+
+
+            <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+
+        </div>
+    <?php } } ?>
+    </div> <!-- end: itemslider -->
+</div> <!-- end: itemslider-wrapper -->
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function($) {
+        if(!jQuery("#itemslider-alsobought .item").length)	
+		{
+			jQuery(".Cnditionm").remove();
+			
+		}
+        var owl = $('#<?php echo $sliderId; ?>');
+        owl.owlCarousel({
+
+        <?php if ($lazy): ?>
+            lazyLoad: true,
+        <?php endif; ?>
+
+        <?php if(!$isResponsive): ?>
+            responsive: false,
+            items: <?php echo $showItems; ?>,
+        <?php else: ?>
+            itemsCustom: [ <?php echo $breakpoints; ?> ],
+            responsiveRefreshRate: 50,
+        <?php endif; ?>
+
+        <?php if ($speed): ?>
+            slideSpeed: <?php echo $speed; ?>,
+        <?php endif; ?>
+
+        <?php if ($autoSpeed): ?>
+            paginationSpeed: <?php echo $autoSpeed; ?>,
+        <?php endif; ?>
+
+        <?php if ($move !== 1): ?>
+            scrollPerPage: true,
+        <?php endif; ?>
+
+        <?php if ($timeout): ?>
+            autoPlay: <?php echo $timeout; ?>,
+        <?php endif; ?>
+
+        <?php if ($pause): ?>
+            stopOnHover: true,
+        <?php endif; ?>
+
+        <?php if ($loop): ?>
+            rewindNav: true,
+            rewindSpeed: 600,
+        <?php else: ?>
+            rewindNav: false,
+        <?php endif; ?>
+
+        <?php if ($pagination): ?>
+            pagination: true,
+        <?php else: ?>
+            pagination: false,
+        <?php endif; ?>
+
+            navigation: true
+
+        }); //end: owl
+
+    });
+//]]>
+</script>
+<?php endif; ?>

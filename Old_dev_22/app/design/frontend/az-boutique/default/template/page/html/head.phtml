@@ -1,0 +1,166 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $theme = Mage::helper('ultimo'); ?>
+
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<?php if ($theme->getCfgLayout('responsive/responsive')): ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<?php endif; ?>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<!--<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />-->
+<!--------------- SEO Tag ---------------------------------->
+<?php
+$website_name = Mage::app()->getWebsite()->getName();
+$new_logo = str_replace(".","-",$website_name);
+$website_logo = "logo-".$new_logo.".png";
+$website_lang = Mage::app()->getWebsite()->getLanguageCode();
+?>
+<meta name="Author" content="AZ-Boutique" />
+<meta name="Copyright" content="<?php echo $website_name; ?>" />
+<meta name="googlebot" content="NOODP">
+<meta property="og:title" content="<?php echo $this->getTitle() ?>">
+<meta property="og:image" content="<?php echo $this->getSkinUrl('images/').$website_logo ?>">
+
+<meta property="og:description" content="<?php echo htmlspecialchars($this->getDescription()) ?>">
+<link rel="image_src" href="<?php echo $this->getSkinUrl('images/').$website_logo ?> "/>
+
+<link rel="publisher" href="https://plus.google.com/117669097117756570851"/>
+<?php
+if(Mage::getSingleton('cms/page')->getIdentifier() == 'home') {
+?>
+  <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type" : "WebSite",
+    "name" : "AZ-Boutique",
+    "alternateName" : "AZ Boutique",
+    "url" : "http://www.<?php echo $website_name; ?>"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": " http://www.<?php echo $website_name; ?>",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "http://www.<?php echo $website_name; ?>/catalogsearch/result/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+  <meta name="robots" content="INDEX,FOLLOW" />
+<?php
+}
+else
+{
+    $currentUrl = $this->helper('core/url')->getCurrentUrl();
+
+    $allowed = array('?','/collection/','/brand/','/marque/','/temps-de-conservation-au-chaud/','/temps-de-conservation-au-froid/','/couleur/','/matériaux/','/materials/','/type-de-prise/','/sort-by/','/show/','/prix/','/country-of-manufacture/','/catalogsearch/','/maximum-hot-temperature-retention/','/maximum-cold-temperature-retention/','/colors/','/plug-type/','/pays-fabrication/');
+    $metacheck = "Index";
+    foreach ($allowed as $url)
+    {
+        if (strpos($currentUrl,$url) !== false)
+        {
+            //$ip = $_SERVER['REMOTE_ADDR'];
+            //$allowed = array('178.32.251.171');
+            //if (in_array($ip, $allowed))
+            //{
+                //echo $url." = ".$metacheck = "NoIndex";
+            //}
+            ?>
+            <input type="hidden" name="robot" value="<?php echo $url.' = '.$metacheck;?>">
+            <?php
+            $metacheck = "NoIndex";
+        }
+    }
+    if($metacheck == "Index")
+    {
+    ?>
+        <meta name="robots" content="INDEX,FOLLOW" />
+    <?php
+    }
+    else
+    {
+    ?>
+        <meta name="robots" content="NOINDEX,FOLLOW" /><span></span>
+    <?php
+   }
+} ?>
+<!--------------- SEO Tag ---------------------------------->
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="stylesheet" href="<?php echo $this->getskinurl('css/styles.css');?>?v=1.9"/>
+<style>
+    #fancybox-wrap {
+  display: none;
+  left: 0;
+  outline: medium none;
+  padding: 20px;
+  position: fixed !important;
+  top: 35% !important;
+  z-index: 1101;
+}
+</style>
+<?php
+	$skinUrl = $this->getSkinUrl('');
+?>
+
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getLayout()->createBlock('core/template', 'head.theme.scripts')->setTemplate('page/html/head_theme_scripts.phtml')->toHtml(); ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+
+
+<?php //Include Google Fonts
+	$amp = '&amp;';
+	$charSubset = '';
+	if ($subsets = $theme->getCfgDesign('font/primary_char_subset'))
+	{
+		$charSubset = "{$amp}subset={$subsets}";
+	}
+
+	$fontWeight = '';
+	if ($weight = $theme->getCfgDesign('font/primary_font_weight'))
+	{
+		$fontWeight = ':' . $weight;
+	}
+?>
+<?php if ($theme->getCfgDesign('font/primary_font_family_group') == 'google'): ?>
+	<link href='//fonts.googleapis.com/css?family=<?php echo str_replace(' ', '+', $theme->getCfgDesign('font/primary_font_family')); 
+		echo $fontWeight; echo $charSubset; ?>' rel='stylesheet' type='text/css' />
+<?php endif;?>
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/ecomm.phtml')->toHtml(); ?>
+<script type="text/javascript">
+//initialization of variables
+var load_product_addto_cart_portion = false;
+</script>

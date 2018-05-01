@@ -1,0 +1,69 @@
+<?php
+define('MAGENTO', realpath(dirname(__FILE__)));
+include('../app/Mage.php');
+Mage::app();
+ini_set ( 'memory_limit', '2048M' );
+
+
+$write = Mage::getSingleton("core/resource")->getConnection("core_write");
+$read= Mage::getSingleton('core/resource')->getConnection('core_read');
+$row = 0;
+$cvarchartable='core_url_rewrite';
+$store_id=Mage :: app()->getStore();
+
+            /* all manufecture attribute */
+           $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'gamme_collection_new');
+            foreach ($attribute->getSource()->getAllOptions(true, true) as $option){
+              if(!$option['value']=='')
+               {
+                $marque_value[]= $option['label'];
+               }
+             }
+			 $row = 0;
+             //echo "<pre>"; print_r($marque_value); exit;
+			 foreach($marque_value as $marque)
+			 {
+			 	  echo $collection_name_data_sql= 'SELECT * from aitmanufacturers where title="'.$marque.'"';
+				  $collection= $read->fetchOne($collection_name_data_sql);
+                    echo "<pre>"; print_r($collection);echo "</pre>"; //exit;
+				  /*foreach($collection_arr as $collection_id)
+				  {
+				      $marque_key='';  $collection_key='';  $data='';
+
+                     $marque_key= getProductKey($marque);
+                     $collection_key= getProductKey($collection_id);
+                      $key_id=getKeyId($collection_id);
+                      $marque_key_id=getKeyId($marque);
+                      $target_path='brands/index/view/id/'.$key_id;
+
+                      if($marque_key!='' && $collection_key!='')
+                      {
+                         $request_path= $marque_key.'/'.$collection_key.'.html';
+                          $id_path='brands/collection/'.$marque_key_id.'/'.$key_id;
+                          if($id_path && $key_id)
+                          {
+                            $select = "select request_path from ".$cvarchartable." where id_path= '".$id_path."' LIMIT 1";
+                            $data=$read->FetchOne($select);
+                          }
+
+                         if($data=='')
+                         {
+    					  $insert_url_key = "INSERT INTO ".$cvarchartable." (store_id, id_path, request_path, target_path, is_system)
+        		                                          VALUES ('".$store_id."','".$id_path."', '".$request_path."', '".$target_path."', '0');";
+    	                  $write->query($insert_url_key);
+                          echo $id_path.'<br>';  $row++;
+                         }
+                      }
+
+				  }*/
+
+			 }
+
+
+
+echo "Total Inserted Item:--".$row.'<br>';
+echo 'Done';
+
+
+
+?>

@@ -1,0 +1,115 @@
+<!-- Lazy Loading of Javascripts -->
+
+<?php
+
+$links = $this->getLinks();
+
+if(count($links) > 0)
+{
+
+$final_links = array();
+$final_attributes_links = array();
+foreach($links as $l)
+{
+
+if($l->getType() == "js")
+    $link = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS).$l->getPath();
+else if($l->getType() == "skin_js")
+    $link = $this->getSkinUrl("js/".$l->getPath());
+
+$at = $l->getAttributes();
+
+if(is_array($at) && count($at) > 0)
+{
+   $temp = array();
+   $temp["link"] = $link;
+   $temp["attributes"] = $at;
+   $final_attributes_links[] = $temp;
+}
+else
+    $final_links[] = $link;
+
+}
+
+if(count($final_links)>0)
+{
+
+foreach($final_links as $fl)
+{
+     echo '<script type="text/javascript" defer src="'.$fl.'"></script>';
+}
+
+?>
+<!--
+<script type="text/javascript">
+
+var links = '<?php echo implode(",",$final_links); ?>';
+var array_links = links.split(",");
+
+
+ // Add a script element as a child of the body
+function downloadJSAtOnload() {
+
+for(var i=0;i<array_links.length;i++)
+{
+     var element = document.createElement("script");
+     element.src = array_links[i];
+     element.type = "text/javascript";
+     document.body.appendChild(element);
+}
+
+ }
+
+ // Check for browser support of event handling capability
+ if (window.addEventListener)
+ window.addEventListener("load", downloadJSAtOnload, false);
+ else if (window.attachEvent)
+ window.attachEvent("onload", downloadJSAtOnload);
+ else window.onload = downloadJSAtOnload;
+
+</script>
+           -->
+<?php }
+
+if(count($final_attributes_links)>0)
+{
+    $i = 0;
+    //print_r($final_attributes_links);
+
+    foreach($final_attributes_links as $fal) {
+      $i++;
+
+      $attributes = '';
+        if(isset($fal["attributes"]) && is_array($fal["attributes"]) && count($fal["attributes"])>0)
+        {
+              foreach($fal["attributes"] as $key=>$value) {
+                 $attributes .= ' '.$key.'='.$value.' ';
+                }
+        }
+         echo '<script type="text/javascript" '.$attributes.' defer src="'.$fal["link"].'"></script>';
+?>
+   <!--
+<script type="text/javascript">
+
+ // Add a script element as a child of the body
+function downloadJSAtOnload<?php echo $i ?>() {
+          var element = document.createElement("script");
+          element.src = '<?php echo $fal["link"] ?>';
+          <?php foreach($fal["attributes"] as $key=>$value) { ?>
+          element.setAttribute('<?php echo $key ?>','<?php echo $value ?>');
+          <?php } ?>
+          element.type = "text/javascript";
+          document.body.appendChild(element);
+}
+
+
+ // Check for browser support of event handling capability
+ if (window.addEventListener)
+    window.addEventListener("load", downloadJSAtOnload<?php echo $i ?>, false);
+ else if (window.attachEvent)
+    window.attachEvent("onload", downloadJSAtOnload<?php echo $i ?>);
+ else window.onload = downloadJSAtOnload<?php echo $i ?>;
+
+</script>
+             -->
+<?php } } } ?>

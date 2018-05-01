@@ -1,0 +1,67 @@
+.mpm-me-row
+{
+    color: blue;
+    font-weight: bold;
+}
+
+.mpm-bbw-row
+{
+    color: green;
+    font-weight: bold;
+}
+
+.mpm-no-wrap
+{
+    white-space: nowrap;
+}
+
+.emptytable
+{
+    border-width: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-spacing: 0px;
+
+}
+
+.emptytable td
+{
+    background-color: white;
+}
+
+.emptytable tbody
+{
+    border-spacing: 0px;
+}
+
+.emptytable tr th
+{
+    background-color: #CCCCCC;
+    text-align: center;
+}
+
+.price-explanation {
+    position: relative;
+}
+
+.price-explanation .price-explanation-popup
+{
+    display: none;
+}
+
+
+.price-explanation:hover .price-explanation-popup
+{
+    display: block;
+    position: absolute;
+    width: 400px;
+    text-align: left;
+    background-color: #ffffff;
+    border: 2px solid #9fc526;
+    padding: 5px;
+    color: black;
+    font-weight: normal;
+    left: 25px;
+    top: 0px;
+    z-index: 9999;
+}

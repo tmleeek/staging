@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Tatva_Sales>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tatva_Sales>
+    </modules>
+</config>

@@ -1,0 +1,101 @@
+<!-- Code Google de la balise de remarketing -->
+<?php $current_page = ''; ?>
+<?php if(Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms'): ?>
+   <?php if(Mage::getSingleton('cms/page')->getIdentifier()=='home'): ?>
+     <?php $current_page='home'; ?>
+   <?php else: ?>
+     <?php  $current_page = 'other'; ?>
+   <?php endif; ?>
+<?php endif; ?>
+   <?php if(empty($current_page)): ?>
+    <?php  $current_page = Mage::app()->getFrontController()->getRequest()->getControllerName(); ?>
+      <?php if($current_page=='onepage' || $current_page=='multishipping'): ?>
+        <?php $current_page='purchase'; ?>
+         <?php endif; ?>
+   <?php endif; ?>
+   <?php if($current_page!='purchase' && $current_page!='cart' && $current_page!='product' && $current_page!='category'&& $current_page!='home' && $current_page!='other' ): ?>
+     <?php  $current_page = 'other'; ?>
+    <?php endif; ?>
+   <?php $product = Mage::registry('current_product'); ?>
+    <?php if($product): ?>
+       <?php $id=$product->getEntityId(); ?>
+        <?php if($current_page=='product'): ?>
+           <?php $total_val= Mage::helper('tax')->getPrice($product, $product->getFinalPrice());?>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php $item_id=''; $item_price=''; ?>
+  <?php if($current_page=='purchase' || $current_page=='cart'): ?>
+    <?php $session  = Mage::getSingleton('checkout/session'); ?>
+    <?php $quote_id  = $session->getQuoteId(); ?>
+      <?php if($quote_id): ?>
+         <?php $quote = Mage::getModel('sales/quote')->load($quote_id); ?>
+         <?php $qty=intVal($quote['items_qty']); ?>
+         <?php foreach ($quote->getAllItems() as $item): ?>
+                      <?php $item_id.="'".$item->getProduct()->getId()."'".',';  ?>
+                      <?php $item_price.=number_format($item->getProduct()->getPrice(),2).',';   ?>
+         <?php  endforeach; ?>
+         <?php $item_id=substr($item_id,0,-1);  ?>
+         <?php $item_price=substr($item_price,0,-1);  ?>
+         <?php if(!empty($item_id) && !empty($item_price)): ?>
+            <?php $item_id='['.$item_id.']';  ?>
+            <?php $item_price='['.$item_price.']';  ?>
+         <?php endif; ?>
+        <?php endif; ?>
+      <?php endif; ?>
+<?php if($current_page=='other'): ?>
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: "",
+ecomm_pagetype: "<?php echo $current_page; ?>",
+ecomm_totalvalue: ""
+};
+</script>
+<?php endif; ?>
+<?php if($current_page=='category' || $current_page=='home'): ?>
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_pagetype: "<?php echo $current_page; ?>"
+};
+</script>
+<?php endif; ?>
+<?php if($current_page=='product'): ?>
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: <?php echo $id; ?>,
+ecomm_pagetype: "<?php echo $current_page; ?>",
+ecomm_totalvalue: <?php echo $total_val; ?>
+};
+</script>
+<?php endif; ?>
+<?php if(($current_page=='purchase' || $current_page=='cart') && (!empty($item_id))): ?>
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_prodid: <?php echo $item_id; ?>,
+ecomm_pagetype: "<?php echo $current_page; ?>",
+ecomm_totalvalue: <?php echo $item_price; ?>
+};
+</script>
+<?php endif; ?>
+<?php if(($current_page=='purchase' || $current_page=='cart') && (empty($item_id))): ?>
+<script type="text/javascript">
+var google_tag_params = {
+ecomm_pagetype: "<?php echo $current_page; ?>"
+};
+</script>
+<?php endif; ?>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1028312614;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+var google_conversion_format = 1;
+/* ]]> */
+</script>
+<div style="display:none">
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+</div>
+<noscript>
+<div style="display:inline;">
+<!--<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1028312614/?value=0&amp;guid=ON&amp;script=0"/> -->
+</div>
+</noscript>

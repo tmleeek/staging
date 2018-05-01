@@ -1,0 +1,28 @@
+<script type="text/javascript">
+       function clearTrigger(){
+        var message = "<?php echo $this->__("Are you sur you want to clear all the log for this supplier?") ?>";
+        if( confirm(message)  ){
+            var urlClear = "<?php echo $this->getClearLogUrl(); ?>";
+            document.location = urlClear;
+        }
+    }
+</script>
+
+<div class="entry-edit">
+
+    <div class="content-header">
+            <table cellspacing="0" >
+                <tbody>
+                    <tr>
+                        <td><h3><?php echo $this->__("Log Entries"); ?></h3></td>
+                        <td align="right">
+                             <button style="" onclick="clearTrigger();" class="scalable" type="button"><span><?php echo $this->__("Clear Log"); ?></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+<?php // echo $this->getGridParentHtml(); ?>
+ 
+</div>

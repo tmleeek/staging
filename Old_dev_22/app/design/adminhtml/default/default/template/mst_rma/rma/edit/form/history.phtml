@@ -1,0 +1,74 @@
+<?php
+$rma = $this->getRma();
+?>
+<div>
+<div class="entry-edit" id='rma-history-block'>
+	    <div class="entry-edit-head">
+	        <h4 class="icon-head head-shipping-method"><?php echo Mage::helper('rma')->__('RMA History') ?></h4>
+	    </div>
+	    <div class="fieldset">
+	        <div id="history_form" class="rma-history-form">
+	            <span class="field-row">
+	                <label class="normal" for="history_comment"><?php echo Mage::helper('rma')->__('Comment Text') ?></label>
+	                <textarea name="comment[comment]" rows="3" cols="5" style="height:6em; width:99%;" id="history_comment"></textarea>
+	            </span>
+	            <div class="f-left">
+	                <input name="comment[is_customer_notified]" type="checkbox" id="history_notify" value="1" />
+	                    <label class="normal" for="history_notify"><?php echo Mage::helper('rma')->__('Notify Customer by Email') ?></label><br />
+	                <input name="comment[is_visible_on_front]" type="checkbox" id="history_visible" value="1" /><label class="normal" for="history_visible"> <?php echo Mage::helper('rma')->__('Visible on Frontend') ?></label>
+	            </div>
+				<div class="f-right">
+	                <button title="Submit Comment" type="button" class="scalable save" onclick="submitAndReloadArea($('rma-history-block').parentNode, '<?php echo $this->getUrl('*/*/addComment', array('id'=>$rma->getId())) ?>')" style="">
+	                	<span>Submit Comment</span>
+	                </button>
+            	</div>
+	            <div class="clear"></div>
+	            <?php if($rma->getCommentCollection()->count()): ?>
+	                <ul class="note-list">
+	                <?php foreach ($rma->getCommentCollection() as $comment): ?>
+	                    <li>
+	                        <strong><?php echo $this->helper('core')->formatDate($comment->getCreatedAt(), 'medium') ?></strong>
+	                        <strong><?php echo $this->helper('core')->formatTime($comment->getCreatedAt(), 'medium') ?></strong>
+	                        <span class="separator">|</span>
+	                        <strong>
+	                            <?php if ($comment->getUser()): ?>
+	                                <img src="<?php echo $this->getSkinUrl('images/fam_asterisk_orange.gif') ?>" />
+	                                <?php echo $comment->getUser()->getName()?>
+	                            <?php elseif ($comment->getCustomerName()): ?>
+	                            <img src="<?php echo $this->getSkinUrl('images/fam_user_comment.gif') ?>"  />
+	                                <?php echo $this->escapeHtml($comment->getCustomerName())?>
+	                            <?php endif; ?>
+	                        </strong>
+	                        <?php if (!$comment->getCustomerName()): ?>
+	                        	<br/>
+		                        <small><strong class="subdue">
+								<?php if ($comment->getIsVisibleInFrontend()): ?>
+		                            <?php echo $this->helper('rma')->__('Visible on Frontend') ?>
+	                            <?php else: ?>
+	                            	<?php echo $this->helper('rma')->__('Private Comment') ?>
+	                            <?php endif; ?>
+								</strong></small>
+								/
+		                        <small>
+		                        <strong class="subdue">
+		                            <?php if ($comment->getIsCustomerNotified()): ?>
+		                            <?php echo $this->helper('rma')->__('Customer Notified') ?>
+		                            <?php else: ?>
+		                            <?php echo $this->helper('rma')->__('Customer Not Notified') ?>
+		                            <?php endif; ?>
+		                        </strong></small>
+	                        <?php endif; ?>
+	                        <?php if ($comment->getText()): ?>
+	                            <br/><?php echo $comment->getTextHtml() ?>
+	                        <?php endif; ?>
+				            <?php foreach($comment->getAttachments() as $attachment): ?>
+				                <br><a href="<?php echo $attachment->getUrl()?>"><?php echo $attachment->getName() ?></a>
+				            <?php endforeach;?>
+	                    </li>
+	                <?php endforeach; ?>
+	                </ul>
+	            <?php endif ?>
+	        </div>
+	    </div>
+	</div>
+</div>

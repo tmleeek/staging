@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Addonline_Licence>
+            <version>0.0.1</version>
+        </Addonline_Licence>
+    </modules>
+
+    <global>
+		<helpers>
+			<addonline_licence>
+				<class>Addonline_Licence_Helper</class>
+			</addonline_licence>
+		</helpers>
+	</global>
+</config>

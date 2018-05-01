@@ -1,0 +1,2458 @@
+
+.mfv-4 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-4 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-4 { background-image: none; }
+.mfv-4 .m-layer1 { background-image: none; }
+
+.mfv-4.hovered { background-image: none; }
+.mfv-4.hovered .m-layer1 { background-image: none; }
+
+.mfv-4.selected { background-image: none; }
+.mfv-4.selected .m-layer1 { background-image: none; }
+
+.mfv-4.selected.hovered { background-image: none; }
+.mfv-4.selected.hovered .m-layer1 { background-image: none; }
+.mfv-4-state,
+.mfv-4-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-4-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-4-state { background-image: none; }
+.mfv-4-state .m-layer1 { background-image: none; }
+
+.mfv-6 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-6 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-6 { background-image: none; }
+.mfv-6 .m-layer1 { background-image: none; }
+
+.mfv-6.hovered { background-image: none; }
+.mfv-6.hovered .m-layer1 { background-image: none; }
+
+.mfv-6.selected { background-image: none; }
+.mfv-6.selected .m-layer1 { background-image: none; }
+
+.mfv-6.selected.hovered { background-image: none; }
+.mfv-6.selected.hovered .m-layer1 { background-image: none; }
+.mfv-6-state,
+.mfv-6-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-6-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-6-state { background-image: none; }
+.mfv-6-state .m-layer1 { background-image: none; }
+
+.mfv-7 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-7 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-7 { background-image: none; }
+.mfv-7 .m-layer1 { background-image: none; }
+
+.mfv-7.hovered { background-image: none; }
+.mfv-7.hovered .m-layer1 { background-image: none; }
+
+.mfv-7.selected { background-image: none; }
+.mfv-7.selected .m-layer1 { background-image: none; }
+
+.mfv-7.selected.hovered { background-image: none; }
+.mfv-7.selected.hovered .m-layer1 { background-image: none; }
+.mfv-7-state,
+.mfv-7-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-7-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-7-state { background-image: none; }
+.mfv-7-state .m-layer1 { background-image: none; }
+
+.mfv-8 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-8 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-8 { background-image: none; }
+.mfv-8 .m-layer1 { background-image: none; }
+
+.mfv-8.hovered { background-image: none; }
+.mfv-8.hovered .m-layer1 { background-image: none; }
+
+.mfv-8.selected { background-image: none; }
+.mfv-8.selected .m-layer1 { background-image: none; }
+
+.mfv-8.selected.hovered { background-image: none; }
+.mfv-8.selected.hovered .m-layer1 { background-image: none; }
+.mfv-8-state,
+.mfv-8-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-8-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-8-state { background-image: none; }
+.mfv-8-state .m-layer1 { background-image: none; }
+
+.mfv-9 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-9 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-9 { background-image: none; }
+.mfv-9 .m-layer1 { background-image: none; }
+
+.mfv-9.hovered { background-image: none; }
+.mfv-9.hovered .m-layer1 { background-image: none; }
+
+.mfv-9.selected { background-image: none; }
+.mfv-9.selected .m-layer1 { background-image: none; }
+
+.mfv-9.selected.hovered { background-image: none; }
+.mfv-9.selected.hovered .m-layer1 { background-image: none; }
+.mfv-9-state,
+.mfv-9-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-9-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-9-state { background-image: none; }
+.mfv-9-state .m-layer1 { background-image: none; }
+
+.mfv-10 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-10 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-10 { background-image: none; }
+.mfv-10 .m-layer1 { background-image: none; }
+
+.mfv-10.hovered { background-image: none; }
+.mfv-10.hovered .m-layer1 { background-image: none; }
+
+.mfv-10.selected { background-image: none; }
+.mfv-10.selected .m-layer1 { background-image: none; }
+
+.mfv-10.selected.hovered { background-image: none; }
+.mfv-10.selected.hovered .m-layer1 { background-image: none; }
+.mfv-10-state,
+.mfv-10-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-10-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-10-state { background-image: none; }
+.mfv-10-state .m-layer1 { background-image: none; }
+
+.mfv-11 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-11 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-11 { background-image: none; }
+.mfv-11 .m-layer1 { background-image: none; }
+
+.mfv-11.hovered { background-image: none; }
+.mfv-11.hovered .m-layer1 { background-image: none; }
+
+.mfv-11.selected { background-image: none; }
+.mfv-11.selected .m-layer1 { background-image: none; }
+
+.mfv-11.selected.hovered { background-image: none; }
+.mfv-11.selected.hovered .m-layer1 { background-image: none; }
+.mfv-11-state,
+.mfv-11-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-11-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-11-state { background-image: none; }
+.mfv-11-state .m-layer1 { background-image: none; }
+
+.mfv-12 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-12 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-12 { background-image: none; }
+.mfv-12 .m-layer1 { background-image: none; }
+
+.mfv-12.hovered { background-image: none; }
+.mfv-12.hovered .m-layer1 { background-image: none; }
+
+.mfv-12.selected { background-image: none; }
+.mfv-12.selected .m-layer1 { background-image: none; }
+
+.mfv-12.selected.hovered { background-image: none; }
+.mfv-12.selected.hovered .m-layer1 { background-image: none; }
+.mfv-12-state,
+.mfv-12-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-12-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-12-state { background-image: none; }
+.mfv-12-state .m-layer1 { background-image: none; }
+
+.mfv-13 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-13 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-13 { background-image: none; }
+.mfv-13 .m-layer1 { background-image: none; }
+
+.mfv-13.hovered { background-image: none; }
+.mfv-13.hovered .m-layer1 { background-image: none; }
+
+.mfv-13.selected { background-image: none; }
+.mfv-13.selected .m-layer1 { background-image: none; }
+
+.mfv-13.selected.hovered { background-image: none; }
+.mfv-13.selected.hovered .m-layer1 { background-image: none; }
+.mfv-13-state,
+.mfv-13-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-13-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-13-state { background-image: none; }
+.mfv-13-state .m-layer1 { background-image: none; }
+
+.mfv-14 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-14 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-14 { background-image: none; }
+.mfv-14 .m-layer1 { background-image: none; }
+
+.mfv-14.hovered { background-image: none; }
+.mfv-14.hovered .m-layer1 { background-image: none; }
+
+.mfv-14.selected { background-image: none; }
+.mfv-14.selected .m-layer1 { background-image: none; }
+
+.mfv-14.selected.hovered { background-image: none; }
+.mfv-14.selected.hovered .m-layer1 { background-image: none; }
+.mfv-14-state,
+.mfv-14-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-14-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-14-state { background-image: none; }
+.mfv-14-state .m-layer1 { background-image: none; }
+
+.mfv-15 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-15 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-15 { background-image: none; }
+.mfv-15 .m-layer1 { background-image: none; }
+
+.mfv-15.hovered { background-image: none; }
+.mfv-15.hovered .m-layer1 { background-image: none; }
+
+.mfv-15.selected { background-image: none; }
+.mfv-15.selected .m-layer1 { background-image: none; }
+
+.mfv-15.selected.hovered { background-image: none; }
+.mfv-15.selected.hovered .m-layer1 { background-image: none; }
+.mfv-15-state,
+.mfv-15-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-15-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-15-state { background-image: none; }
+.mfv-15-state .m-layer1 { background-image: none; }
+
+.mfv-16 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-16 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-16 { background-image: none; }
+.mfv-16 .m-layer1 { background-image: none; }
+
+.mfv-16.hovered { background-image: none; }
+.mfv-16.hovered .m-layer1 { background-image: none; }
+
+.mfv-16.selected { background-image: none; }
+.mfv-16.selected .m-layer1 { background-image: none; }
+
+.mfv-16.selected.hovered { background-image: none; }
+.mfv-16.selected.hovered .m-layer1 { background-image: none; }
+.mfv-16-state,
+.mfv-16-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-16-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-16-state { background-image: none; }
+.mfv-16-state .m-layer1 { background-image: none; }
+
+.mfv-17 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-17 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-17 { background-image: none; }
+.mfv-17 .m-layer1 { background-image: none; }
+
+.mfv-17.hovered { background-image: none; }
+.mfv-17.hovered .m-layer1 { background-image: none; }
+
+.mfv-17.selected { background-image: none; }
+.mfv-17.selected .m-layer1 { background-image: none; }
+
+.mfv-17.selected.hovered { background-image: none; }
+.mfv-17.selected.hovered .m-layer1 { background-image: none; }
+.mfv-17-state,
+.mfv-17-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-17-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-17-state { background-image: none; }
+.mfv-17-state .m-layer1 { background-image: none; }
+
+.mfv-18 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-18 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-18 { background-image: none; }
+.mfv-18 .m-layer1 { background-image: none; }
+
+.mfv-18.hovered { background-image: none; }
+.mfv-18.hovered .m-layer1 { background-image: none; }
+
+.mfv-18.selected { background-image: none; }
+.mfv-18.selected .m-layer1 { background-image: none; }
+
+.mfv-18.selected.hovered { background-image: none; }
+.mfv-18.selected.hovered .m-layer1 { background-image: none; }
+.mfv-18-state,
+.mfv-18-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-18-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-18-state { background-image: none; }
+.mfv-18-state .m-layer1 { background-image: none; }
+
+.mfv-19 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-19 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-19 { background-image: none; }
+.mfv-19 .m-layer1 { background-image: none; }
+
+.mfv-19.hovered { background-image: none; }
+.mfv-19.hovered .m-layer1 { background-image: none; }
+
+.mfv-19.selected { background-image: none; }
+.mfv-19.selected .m-layer1 { background-image: none; }
+
+.mfv-19.selected.hovered { background-image: none; }
+.mfv-19.selected.hovered .m-layer1 { background-image: none; }
+.mfv-19-state,
+.mfv-19-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-19-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-19-state { background-image: none; }
+.mfv-19-state .m-layer1 { background-image: none; }
+
+.mfv-20 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-20 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-20 { background-image: none; }
+.mfv-20 .m-layer1 { background-image: none; }
+
+.mfv-20.hovered { background-image: none; }
+.mfv-20.hovered .m-layer1 { background-image: none; }
+
+.mfv-20.selected { background-image: none; }
+.mfv-20.selected .m-layer1 { background-image: none; }
+
+.mfv-20.selected.hovered { background-image: none; }
+.mfv-20.selected.hovered .m-layer1 { background-image: none; }
+.mfv-20-state,
+.mfv-20-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-20-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-20-state { background-image: none; }
+.mfv-20-state .m-layer1 { background-image: none; }
+
+.mfv-21 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-21 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-21 { background-image: none; }
+.mfv-21 .m-layer1 { background-image: none; }
+
+.mfv-21.hovered { background-image: none; }
+.mfv-21.hovered .m-layer1 { background-image: none; }
+
+.mfv-21.selected { background-image: none; }
+.mfv-21.selected .m-layer1 { background-image: none; }
+
+.mfv-21.selected.hovered { background-image: none; }
+.mfv-21.selected.hovered .m-layer1 { background-image: none; }
+.mfv-21-state,
+.mfv-21-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-21-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-21-state { background-image: none; }
+.mfv-21-state .m-layer1 { background-image: none; }
+
+.mfv-22 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-22 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-22 { background-image: none; }
+.mfv-22 .m-layer1 { background-image: none; }
+
+.mfv-22.hovered { background-image: none; }
+.mfv-22.hovered .m-layer1 { background-image: none; }
+
+.mfv-22.selected { background-image: none; }
+.mfv-22.selected .m-layer1 { background-image: none; }
+
+.mfv-22.selected.hovered { background-image: none; }
+.mfv-22.selected.hovered .m-layer1 { background-image: none; }
+.mfv-22-state,
+.mfv-22-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-22-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-22-state { background-image: none; }
+.mfv-22-state .m-layer1 { background-image: none; }
+
+.mfv-23 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-23 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-23 { background-image: none; }
+.mfv-23 .m-layer1 { background-image: none; }
+
+.mfv-23.hovered { background-image: none; }
+.mfv-23.hovered .m-layer1 { background-image: none; }
+
+.mfv-23.selected { background-image: none; }
+.mfv-23.selected .m-layer1 { background-image: none; }
+
+.mfv-23.selected.hovered { background-image: none; }
+.mfv-23.selected.hovered .m-layer1 { background-image: none; }
+.mfv-23-state,
+.mfv-23-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-23-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-23-state { background-image: none; }
+.mfv-23-state .m-layer1 { background-image: none; }
+
+.mfv-24 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-24 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-24 { background-image: none; }
+.mfv-24 .m-layer1 { background-image: none; }
+
+.mfv-24.hovered { background-image: none; }
+.mfv-24.hovered .m-layer1 { background-image: none; }
+
+.mfv-24.selected { background-image: none; }
+.mfv-24.selected .m-layer1 { background-image: none; }
+
+.mfv-24.selected.hovered { background-image: none; }
+.mfv-24.selected.hovered .m-layer1 { background-image: none; }
+.mfv-24-state,
+.mfv-24-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-24-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-24-state { background-image: none; }
+.mfv-24-state .m-layer1 { background-image: none; }
+
+.mfv-25 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-25 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-25 { background-image: none; }
+.mfv-25 .m-layer1 { background-image: none; }
+
+.mfv-25.hovered { background-image: none; }
+.mfv-25.hovered .m-layer1 { background-image: none; }
+
+.mfv-25.selected { background-image: none; }
+.mfv-25.selected .m-layer1 { background-image: none; }
+
+.mfv-25.selected.hovered { background-image: none; }
+.mfv-25.selected.hovered .m-layer1 { background-image: none; }
+.mfv-25-state,
+.mfv-25-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-25-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-25-state { background-image: none; }
+.mfv-25-state .m-layer1 { background-image: none; }
+
+.mfv-26 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-26 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-26 { background-image: none; }
+.mfv-26 .m-layer1 { background-image: none; }
+
+.mfv-26.hovered { background-image: none; }
+.mfv-26.hovered .m-layer1 { background-image: none; }
+
+.mfv-26.selected { background-image: none; }
+.mfv-26.selected .m-layer1 { background-image: none; }
+
+.mfv-26.selected.hovered { background-image: none; }
+.mfv-26.selected.hovered .m-layer1 { background-image: none; }
+.mfv-26-state,
+.mfv-26-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-26-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-26-state { background-image: none; }
+.mfv-26-state .m-layer1 { background-image: none; }
+
+.mfv-27 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-27 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-27 { background-image: none; }
+.mfv-27 .m-layer1 { background-image: none; }
+
+.mfv-27.hovered { background-image: none; }
+.mfv-27.hovered .m-layer1 { background-image: none; }
+
+.mfv-27.selected { background-image: none; }
+.mfv-27.selected .m-layer1 { background-image: none; }
+
+.mfv-27.selected.hovered { background-image: none; }
+.mfv-27.selected.hovered .m-layer1 { background-image: none; }
+.mfv-27-state,
+.mfv-27-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-27-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-27-state { background-image: none; }
+.mfv-27-state .m-layer1 { background-image: none; }
+
+.mfv-28 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-28 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-28 { background-image: none; }
+.mfv-28 .m-layer1 { background-image: none; }
+
+.mfv-28.hovered { background-image: none; }
+.mfv-28.hovered .m-layer1 { background-image: none; }
+
+.mfv-28.selected { background-image: none; }
+.mfv-28.selected .m-layer1 { background-image: none; }
+
+.mfv-28.selected.hovered { background-image: none; }
+.mfv-28.selected.hovered .m-layer1 { background-image: none; }
+.mfv-28-state,
+.mfv-28-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-28-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-28-state { background-image: none; }
+.mfv-28-state .m-layer1 { background-image: none; }
+
+.mfv-29 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-29 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-29 { background-image: none; }
+.mfv-29 .m-layer1 { background-image: none; }
+
+.mfv-29.hovered { background-image: none; }
+.mfv-29.hovered .m-layer1 { background-image: none; }
+
+.mfv-29.selected { background-image: none; }
+.mfv-29.selected .m-layer1 { background-image: none; }
+
+.mfv-29.selected.hovered { background-image: none; }
+.mfv-29.selected.hovered .m-layer1 { background-image: none; }
+.mfv-29-state,
+.mfv-29-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-29-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-29-state { background-image: none; }
+.mfv-29-state .m-layer1 { background-image: none; }
+
+.mfv-30 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-30 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-30 { background-image: none; }
+.mfv-30 .m-layer1 { background-image: none; }
+
+.mfv-30.hovered { background-image: none; }
+.mfv-30.hovered .m-layer1 { background-image: none; }
+
+.mfv-30.selected { background-image: none; }
+.mfv-30.selected .m-layer1 { background-image: none; }
+
+.mfv-30.selected.hovered { background-image: none; }
+.mfv-30.selected.hovered .m-layer1 { background-image: none; }
+.mfv-30-state,
+.mfv-30-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-30-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-30-state { background-image: none; }
+.mfv-30-state .m-layer1 { background-image: none; }
+
+.mfv-31 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-31 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-31 { background-image: none; }
+.mfv-31 .m-layer1 { background-image: none; }
+
+.mfv-31.hovered { background-image: none; }
+.mfv-31.hovered .m-layer1 { background-image: none; }
+
+.mfv-31.selected { background-image: none; }
+.mfv-31.selected .m-layer1 { background-image: none; }
+
+.mfv-31.selected.hovered { background-image: none; }
+.mfv-31.selected.hovered .m-layer1 { background-image: none; }
+.mfv-31-state,
+.mfv-31-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-31-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-31-state { background-image: none; }
+.mfv-31-state .m-layer1 { background-image: none; }
+
+.mfv-32 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-32 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-32 { background-image: none; }
+.mfv-32 .m-layer1 { background-image: none; }
+
+.mfv-32.hovered { background-image: none; }
+.mfv-32.hovered .m-layer1 { background-image: none; }
+
+.mfv-32.selected { background-image: none; }
+.mfv-32.selected .m-layer1 { background-image: none; }
+
+.mfv-32.selected.hovered { background-image: none; }
+.mfv-32.selected.hovered .m-layer1 { background-image: none; }
+.mfv-32-state,
+.mfv-32-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-32-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-32-state { background-image: none; }
+.mfv-32-state .m-layer1 { background-image: none; }
+
+.mfv-33 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-33 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-33 { background-image: none; }
+.mfv-33 .m-layer1 { background-image: none; }
+
+.mfv-33.hovered { background-image: none; }
+.mfv-33.hovered .m-layer1 { background-image: none; }
+
+.mfv-33.selected { background-image: none; }
+.mfv-33.selected .m-layer1 { background-image: none; }
+
+.mfv-33.selected.hovered { background-image: none; }
+.mfv-33.selected.hovered .m-layer1 { background-image: none; }
+.mfv-33-state,
+.mfv-33-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-33-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-33-state { background-image: none; }
+.mfv-33-state .m-layer1 { background-image: none; }
+
+.mfv-34 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-34 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-34 { background-image: none; }
+.mfv-34 .m-layer1 { background-image: none; }
+
+.mfv-34.hovered { background-image: none; }
+.mfv-34.hovered .m-layer1 { background-image: none; }
+
+.mfv-34.selected { background-image: none; }
+.mfv-34.selected .m-layer1 { background-image: none; }
+
+.mfv-34.selected.hovered { background-image: none; }
+.mfv-34.selected.hovered .m-layer1 { background-image: none; }
+.mfv-34-state,
+.mfv-34-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-34-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-34-state { background-image: none; }
+.mfv-34-state .m-layer1 { background-image: none; }
+
+.mfv-35 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-35 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-35 { background-image: none; }
+.mfv-35 .m-layer1 { background-image: none; }
+
+.mfv-35.hovered { background-image: none; }
+.mfv-35.hovered .m-layer1 { background-image: none; }
+
+.mfv-35.selected { background-image: none; }
+.mfv-35.selected .m-layer1 { background-image: none; }
+
+.mfv-35.selected.hovered { background-image: none; }
+.mfv-35.selected.hovered .m-layer1 { background-image: none; }
+.mfv-35-state,
+.mfv-35-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-35-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-35-state { background-image: none; }
+.mfv-35-state .m-layer1 { background-image: none; }
+
+.mfv-36 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-36 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-36 { background-image: none; }
+.mfv-36 .m-layer1 { background-image: none; }
+
+.mfv-36.hovered { background-image: none; }
+.mfv-36.hovered .m-layer1 { background-image: none; }
+
+.mfv-36.selected { background-image: none; }
+.mfv-36.selected .m-layer1 { background-image: none; }
+
+.mfv-36.selected.hovered { background-image: none; }
+.mfv-36.selected.hovered .m-layer1 { background-image: none; }
+.mfv-36-state,
+.mfv-36-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-36-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-36-state { background-image: none; }
+.mfv-36-state .m-layer1 { background-image: none; }
+
+.mfv-37 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-37 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-37 { background-image: none; }
+.mfv-37 .m-layer1 { background-image: none; }
+
+.mfv-37.hovered { background-image: none; }
+.mfv-37.hovered .m-layer1 { background-image: none; }
+
+.mfv-37.selected { background-image: none; }
+.mfv-37.selected .m-layer1 { background-image: none; }
+
+.mfv-37.selected.hovered { background-image: none; }
+.mfv-37.selected.hovered .m-layer1 { background-image: none; }
+.mfv-37-state,
+.mfv-37-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-37-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-37-state { background-image: none; }
+.mfv-37-state .m-layer1 { background-image: none; }
+
+.mfv-38 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-38 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-38 { background-image: none; }
+.mfv-38 .m-layer1 { background-image: none; }
+
+.mfv-38.hovered { background-image: none; }
+.mfv-38.hovered .m-layer1 { background-image: none; }
+
+.mfv-38.selected { background-image: none; }
+.mfv-38.selected .m-layer1 { background-image: none; }
+
+.mfv-38.selected.hovered { background-image: none; }
+.mfv-38.selected.hovered .m-layer1 { background-image: none; }
+.mfv-38-state,
+.mfv-38-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-38-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-38-state { background-image: none; }
+.mfv-38-state .m-layer1 { background-image: none; }
+
+.mfv-39 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-39 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-39 { background-image: none; }
+.mfv-39 .m-layer1 { background-image: none; }
+
+.mfv-39.hovered { background-image: none; }
+.mfv-39.hovered .m-layer1 { background-image: none; }
+
+.mfv-39.selected { background-image: none; }
+.mfv-39.selected .m-layer1 { background-image: none; }
+
+.mfv-39.selected.hovered { background-image: none; }
+.mfv-39.selected.hovered .m-layer1 { background-image: none; }
+.mfv-39-state,
+.mfv-39-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-39-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-39-state { background-image: none; }
+.mfv-39-state .m-layer1 { background-image: none; }
+
+.mfv-40 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-40 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-40 { background-image: none; }
+.mfv-40 .m-layer1 { background-image: none; }
+
+.mfv-40.hovered { background-image: none; }
+.mfv-40.hovered .m-layer1 { background-image: none; }
+
+.mfv-40.selected { background-image: none; }
+.mfv-40.selected .m-layer1 { background-image: none; }
+
+.mfv-40.selected.hovered { background-image: none; }
+.mfv-40.selected.hovered .m-layer1 { background-image: none; }
+.mfv-40-state,
+.mfv-40-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-40-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-40-state { background-image: none; }
+.mfv-40-state .m-layer1 { background-image: none; }
+
+.mfv-41 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-41 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-41 { background-image: none; }
+.mfv-41 .m-layer1 { background-image: none; }
+
+.mfv-41.hovered { background-image: none; }
+.mfv-41.hovered .m-layer1 { background-image: none; }
+
+.mfv-41.selected { background-image: none; }
+.mfv-41.selected .m-layer1 { background-image: none; }
+
+.mfv-41.selected.hovered { background-image: none; }
+.mfv-41.selected.hovered .m-layer1 { background-image: none; }
+.mfv-41-state,
+.mfv-41-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-41-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-41-state { background-image: none; }
+.mfv-41-state .m-layer1 { background-image: none; }
+
+.mfv-42 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-42 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-42 { background-image: none; }
+.mfv-42 .m-layer1 { background-image: none; }
+
+.mfv-42.hovered { background-image: none; }
+.mfv-42.hovered .m-layer1 { background-image: none; }
+
+.mfv-42.selected { background-image: none; }
+.mfv-42.selected .m-layer1 { background-image: none; }
+
+.mfv-42.selected.hovered { background-image: none; }
+.mfv-42.selected.hovered .m-layer1 { background-image: none; }
+.mfv-42-state,
+.mfv-42-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-42-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-42-state { background-image: none; }
+.mfv-42-state .m-layer1 { background-image: none; }
+
+.mfv-43 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-43 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-43 { background-image: none; }
+.mfv-43 .m-layer1 { background-image: none; }
+
+.mfv-43.hovered { background-image: none; }
+.mfv-43.hovered .m-layer1 { background-image: none; }
+
+.mfv-43.selected { background-image: none; }
+.mfv-43.selected .m-layer1 { background-image: none; }
+
+.mfv-43.selected.hovered { background-image: none; }
+.mfv-43.selected.hovered .m-layer1 { background-image: none; }
+.mfv-43-state,
+.mfv-43-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-43-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-43-state { background-image: none; }
+.mfv-43-state .m-layer1 { background-image: none; }
+
+.mfv-44 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-44 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-44 { background-image: none; }
+.mfv-44 .m-layer1 { background-image: none; }
+
+.mfv-44.hovered { background-image: none; }
+.mfv-44.hovered .m-layer1 { background-image: none; }
+
+.mfv-44.selected { background-image: none; }
+.mfv-44.selected .m-layer1 { background-image: none; }
+
+.mfv-44.selected.hovered { background-image: none; }
+.mfv-44.selected.hovered .m-layer1 { background-image: none; }
+.mfv-44-state,
+.mfv-44-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-44-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-44-state { background-image: none; }
+.mfv-44-state .m-layer1 { background-image: none; }
+
+.mfv-45 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-45 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-45 { background-image: none; }
+.mfv-45 .m-layer1 { background-image: none; }
+
+.mfv-45.hovered { background-image: none; }
+.mfv-45.hovered .m-layer1 { background-image: none; }
+
+.mfv-45.selected { background-image: none; }
+.mfv-45.selected .m-layer1 { background-image: none; }
+
+.mfv-45.selected.hovered { background-image: none; }
+.mfv-45.selected.hovered .m-layer1 { background-image: none; }
+.mfv-45-state,
+.mfv-45-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-45-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-45-state { background-image: none; }
+.mfv-45-state .m-layer1 { background-image: none; }
+
+.mfv-46 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-46 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-46 { background-image: none; }
+.mfv-46 .m-layer1 { background-image: none; }
+
+.mfv-46.hovered { background-image: none; }
+.mfv-46.hovered .m-layer1 { background-image: none; }
+
+.mfv-46.selected { background-image: none; }
+.mfv-46.selected .m-layer1 { background-image: none; }
+
+.mfv-46.selected.hovered { background-image: none; }
+.mfv-46.selected.hovered .m-layer1 { background-image: none; }
+.mfv-46-state,
+.mfv-46-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-46-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-46-state { background-image: none; }
+.mfv-46-state .m-layer1 { background-image: none; }
+
+.mfv-47 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-47 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-47 { background-image: none; }
+.mfv-47 .m-layer1 { background-image: none; }
+
+.mfv-47.hovered { background-image: none; }
+.mfv-47.hovered .m-layer1 { background-image: none; }
+
+.mfv-47.selected { background-image: none; }
+.mfv-47.selected .m-layer1 { background-image: none; }
+
+.mfv-47.selected.hovered { background-image: none; }
+.mfv-47.selected.hovered .m-layer1 { background-image: none; }
+.mfv-47-state,
+.mfv-47-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-47-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-47-state { background-image: none; }
+.mfv-47-state .m-layer1 { background-image: none; }
+
+.mfv-48 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-48 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-48 { background-image: none; }
+.mfv-48 .m-layer1 { background-image: none; }
+
+.mfv-48.hovered { background-image: none; }
+.mfv-48.hovered .m-layer1 { background-image: none; }
+
+.mfv-48.selected { background-image: none; }
+.mfv-48.selected .m-layer1 { background-image: none; }
+
+.mfv-48.selected.hovered { background-image: none; }
+.mfv-48.selected.hovered .m-layer1 { background-image: none; }
+.mfv-48-state,
+.mfv-48-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-48-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-48-state { background-image: none; }
+.mfv-48-state .m-layer1 { background-image: none; }
+
+.mfv-49 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-49 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-49 { background-image: none; }
+.mfv-49 .m-layer1 { background-image: none; }
+
+.mfv-49.hovered { background-image: none; }
+.mfv-49.hovered .m-layer1 { background-image: none; }
+
+.mfv-49.selected { background-image: none; }
+.mfv-49.selected .m-layer1 { background-image: none; }
+
+.mfv-49.selected.hovered { background-image: none; }
+.mfv-49.selected.hovered .m-layer1 { background-image: none; }
+.mfv-49-state,
+.mfv-49-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-49-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-49-state { background-image: none; }
+.mfv-49-state .m-layer1 { background-image: none; }
+
+.mfv-50 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-50 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-50 { background-image: none; }
+.mfv-50 .m-layer1 { background-image: none; }
+
+.mfv-50.hovered { background-image: none; }
+.mfv-50.hovered .m-layer1 { background-image: none; }
+
+.mfv-50.selected { background-image: none; }
+.mfv-50.selected .m-layer1 { background-image: none; }
+
+.mfv-50.selected.hovered { background-image: none; }
+.mfv-50.selected.hovered .m-layer1 { background-image: none; }
+.mfv-50-state,
+.mfv-50-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-50-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-50-state { background-image: none; }
+.mfv-50-state .m-layer1 { background-image: none; }
+
+.mfv-51 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-51 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-51 { background-image: none; }
+.mfv-51 .m-layer1 { background-image: none; }
+
+.mfv-51.hovered { background-image: none; }
+.mfv-51.hovered .m-layer1 { background-image: none; }
+
+.mfv-51.selected { background-image: none; }
+.mfv-51.selected .m-layer1 { background-image: none; }
+
+.mfv-51.selected.hovered { background-image: none; }
+.mfv-51.selected.hovered .m-layer1 { background-image: none; }
+.mfv-51-state,
+.mfv-51-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-51-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-51-state { background-image: none; }
+.mfv-51-state .m-layer1 { background-image: none; }
+
+.mfv-52 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-52 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-52 { background-image: none; }
+.mfv-52 .m-layer1 { background-image: none; }
+
+.mfv-52.hovered { background-image: none; }
+.mfv-52.hovered .m-layer1 { background-image: none; }
+
+.mfv-52.selected { background-image: none; }
+.mfv-52.selected .m-layer1 { background-image: none; }
+
+.mfv-52.selected.hovered { background-image: none; }
+.mfv-52.selected.hovered .m-layer1 { background-image: none; }
+.mfv-52-state,
+.mfv-52-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-52-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-52-state { background-image: none; }
+.mfv-52-state .m-layer1 { background-image: none; }
+
+.mfv-53 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-53 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-53 { background-image: none; }
+.mfv-53 .m-layer1 { background-image: none; }
+
+.mfv-53.hovered { background-image: none; }
+.mfv-53.hovered .m-layer1 { background-image: none; }
+
+.mfv-53.selected { background-image: none; }
+.mfv-53.selected .m-layer1 { background-image: none; }
+
+.mfv-53.selected.hovered { background-image: none; }
+.mfv-53.selected.hovered .m-layer1 { background-image: none; }
+.mfv-53-state,
+.mfv-53-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-53-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-53-state { background-image: none; }
+.mfv-53-state .m-layer1 { background-image: none; }
+
+.mfv-54 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-54 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-54 { background-image: none; }
+.mfv-54 .m-layer1 { background-image: none; }
+
+.mfv-54.hovered { background-image: none; }
+.mfv-54.hovered .m-layer1 { background-image: none; }
+
+.mfv-54.selected { background-image: none; }
+.mfv-54.selected .m-layer1 { background-image: none; }
+
+.mfv-54.selected.hovered { background-image: none; }
+.mfv-54.selected.hovered .m-layer1 { background-image: none; }
+.mfv-54-state,
+.mfv-54-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-54-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-54-state { background-image: none; }
+.mfv-54-state .m-layer1 { background-image: none; }
+
+.mfv-55 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-55 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-55 { background-image: none; }
+.mfv-55 .m-layer1 { background-image: none; }
+
+.mfv-55.hovered { background-image: none; }
+.mfv-55.hovered .m-layer1 { background-image: none; }
+
+.mfv-55.selected { background-image: none; }
+.mfv-55.selected .m-layer1 { background-image: none; }
+
+.mfv-55.selected.hovered { background-image: none; }
+.mfv-55.selected.hovered .m-layer1 { background-image: none; }
+.mfv-55-state,
+.mfv-55-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-55-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-55-state { background-image: none; }
+.mfv-55-state .m-layer1 { background-image: none; }
+
+.mfv-56 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-56 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-56 { background-image: none; }
+.mfv-56 .m-layer1 { background-image: none; }
+
+.mfv-56.hovered { background-image: none; }
+.mfv-56.hovered .m-layer1 { background-image: none; }
+
+.mfv-56.selected { background-image: none; }
+.mfv-56.selected .m-layer1 { background-image: none; }
+
+.mfv-56.selected.hovered { background-image: none; }
+.mfv-56.selected.hovered .m-layer1 { background-image: none; }
+.mfv-56-state,
+.mfv-56-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-56-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-56-state { background-image: none; }
+.mfv-56-state .m-layer1 { background-image: none; }
+
+.mfv-57 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-57 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-57 { background-image: none; }
+.mfv-57 .m-layer1 { background-image: none; }
+
+.mfv-57.hovered { background-image: none; }
+.mfv-57.hovered .m-layer1 { background-image: none; }
+
+.mfv-57.selected { background-image: none; }
+.mfv-57.selected .m-layer1 { background-image: none; }
+
+.mfv-57.selected.hovered { background-image: none; }
+.mfv-57.selected.hovered .m-layer1 { background-image: none; }
+.mfv-57-state,
+.mfv-57-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-57-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-57-state { background-image: none; }
+.mfv-57-state .m-layer1 { background-image: none; }
+
+.mfv-58 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-58 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-58 { background-image: none; }
+.mfv-58 .m-layer1 { background-image: none; }
+
+.mfv-58.hovered { background-image: none; }
+.mfv-58.hovered .m-layer1 { background-image: none; }
+
+.mfv-58.selected { background-image: none; }
+.mfv-58.selected .m-layer1 { background-image: none; }
+
+.mfv-58.selected.hovered { background-image: none; }
+.mfv-58.selected.hovered .m-layer1 { background-image: none; }
+.mfv-58-state,
+.mfv-58-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-58-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-58-state { background-image: none; }
+.mfv-58-state .m-layer1 { background-image: none; }
+
+.mfv-59 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-59 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-59 { background-image: none; }
+.mfv-59 .m-layer1 { background-image: none; }
+
+.mfv-59.hovered { background-image: none; }
+.mfv-59.hovered .m-layer1 { background-image: none; }
+
+.mfv-59.selected { background-image: none; }
+.mfv-59.selected .m-layer1 { background-image: none; }
+
+.mfv-59.selected.hovered { background-image: none; }
+.mfv-59.selected.hovered .m-layer1 { background-image: none; }
+.mfv-59-state,
+.mfv-59-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-59-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-59-state { background-image: none; }
+.mfv-59-state .m-layer1 { background-image: none; }
+
+.mfv-60 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-60 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-60 { background-image: none; }
+.mfv-60 .m-layer1 { background-image: none; }
+
+.mfv-60.hovered { background-image: none; }
+.mfv-60.hovered .m-layer1 { background-image: none; }
+
+.mfv-60.selected { background-image: none; }
+.mfv-60.selected .m-layer1 { background-image: none; }
+
+.mfv-60.selected.hovered { background-image: none; }
+.mfv-60.selected.hovered .m-layer1 { background-image: none; }
+.mfv-60-state,
+.mfv-60-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-60-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-60-state { background-image: none; }
+.mfv-60-state .m-layer1 { background-image: none; }
+
+.mfv-61 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-61 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-61 { background-image: none; }
+.mfv-61 .m-layer1 { background-image: none; }
+
+.mfv-61.hovered { background-image: none; }
+.mfv-61.hovered .m-layer1 { background-image: none; }
+
+.mfv-61.selected { background-image: none; }
+.mfv-61.selected .m-layer1 { background-image: none; }
+
+.mfv-61.selected.hovered { background-image: none; }
+.mfv-61.selected.hovered .m-layer1 { background-image: none; }
+.mfv-61-state,
+.mfv-61-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-61-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-61-state { background-image: none; }
+.mfv-61-state .m-layer1 { background-image: none; }
+
+.mfv-62 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-62 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-62 { background-image: none; }
+.mfv-62 .m-layer1 { background-image: none; }
+
+.mfv-62.hovered { background-image: none; }
+.mfv-62.hovered .m-layer1 { background-image: none; }
+
+.mfv-62.selected { background-image: none; }
+.mfv-62.selected .m-layer1 { background-image: none; }
+
+.mfv-62.selected.hovered { background-image: none; }
+.mfv-62.selected.hovered .m-layer1 { background-image: none; }
+.mfv-62-state,
+.mfv-62-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-62-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-62-state { background-image: none; }
+.mfv-62-state .m-layer1 { background-image: none; }
+
+.mfv-63 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-63 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-63 { background-image: none; }
+.mfv-63 .m-layer1 { background-image: none; }
+
+.mfv-63.hovered { background-image: none; }
+.mfv-63.hovered .m-layer1 { background-image: none; }
+
+.mfv-63.selected { background-image: none; }
+.mfv-63.selected .m-layer1 { background-image: none; }
+
+.mfv-63.selected.hovered { background-image: none; }
+.mfv-63.selected.hovered .m-layer1 { background-image: none; }
+.mfv-63-state,
+.mfv-63-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-63-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-63-state { background-image: none; }
+.mfv-63-state .m-layer1 { background-image: none; }
+
+.mfv-64 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-64 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-64 { background-image: none; }
+.mfv-64 .m-layer1 { background-image: none; }
+
+.mfv-64.hovered { background-image: none; }
+.mfv-64.hovered .m-layer1 { background-image: none; }
+
+.mfv-64.selected { background-image: none; }
+.mfv-64.selected .m-layer1 { background-image: none; }
+
+.mfv-64.selected.hovered { background-image: none; }
+.mfv-64.selected.hovered .m-layer1 { background-image: none; }
+.mfv-64-state,
+.mfv-64-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-64-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-64-state { background-image: none; }
+.mfv-64-state .m-layer1 { background-image: none; }
+
+.mfv-65 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-65 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-65 { background-image: none; }
+.mfv-65 .m-layer1 { background-image: none; }
+
+.mfv-65.hovered { background-image: none; }
+.mfv-65.hovered .m-layer1 { background-image: none; }
+
+.mfv-65.selected { background-image: none; }
+.mfv-65.selected .m-layer1 { background-image: none; }
+
+.mfv-65.selected.hovered { background-image: none; }
+.mfv-65.selected.hovered .m-layer1 { background-image: none; }
+.mfv-65-state,
+.mfv-65-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-65-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-65-state { background-image: none; }
+.mfv-65-state .m-layer1 { background-image: none; }
+
+.mfv-66 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-66 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-66 { background-image: none; }
+.mfv-66 .m-layer1 { background-image: none; }
+
+.mfv-66.hovered { background-image: none; }
+.mfv-66.hovered .m-layer1 { background-image: none; }
+
+.mfv-66.selected { background-image: none; }
+.mfv-66.selected .m-layer1 { background-image: none; }
+
+.mfv-66.selected.hovered { background-image: none; }
+.mfv-66.selected.hovered .m-layer1 { background-image: none; }
+.mfv-66-state,
+.mfv-66-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-66-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-66-state { background-image: none; }
+.mfv-66-state .m-layer1 { background-image: none; }
+
+.mfv-67 .m-layer1 {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.mfv-67 {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+
+.mfv-67 { background-image: none; }
+.mfv-67 .m-layer1 { background-image: none; }
+
+.mfv-67.hovered { background-image: none; }
+.mfv-67.hovered .m-layer1 { background-image: none; }
+
+.mfv-67.selected { background-image: none; }
+.mfv-67.selected .m-layer1 { background-image: none; }
+
+.mfv-67.selected.hovered { background-image: none; }
+.mfv-67.selected.hovered .m-layer1 { background-image: none; }
+.mfv-67-state,
+.mfv-67-state .m-layer1 {
+    width: 10px;
+    height: 10px;
+}
+.mfv-67-state {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.mfv-67-state { background-image: none; }
+.mfv-67-state .m-layer1 { background-image: none; }
+

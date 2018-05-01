@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tatva_Shipping>
+            <version>0.1.1</version>
+        </Tatva_Shipping>
+    </modules>
+    <global>
+        <resources>
+            <tatvashipping_setup>
+                <setup>
+                    <module>Tatva_Shipping</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tatvashipping_setup>
+            <tatvashipping_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tatvashipping_write>
+            <tatvashipping_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tatvashipping_read>
+        </resources>
+        <helpers>
+            <tatvashipping>
+                <class>Tatva_Shipping_Helper</class>
+            </tatvashipping>
+        </helpers>
+        <blocks>
+            <tatvashipping>
+                <class>Tatva_Shipping_Block</class>
+            </tatvashipping>
+            <shipping>
+            	<rewrite>
+            		<tracking_popup>Tatva_Shipping_Block_Tracking_Popup</tracking_popup>
+            	</rewrite>
+            </shipping>
+        </blocks>
+        <models>
+            <tatvashipping>
+                <class>Tatva_Shipping_Model</class>
+                <resourceModel>tatvashipping_mysql4</resourceModel>
+            </tatvashipping>
+            <tatvashipping_mysql4>
+                <class>Tatva_Shipping_Model_Mysql4</class>
+                <entities>
+                    <shipping_rules>
+                        <table>tatva_shipping_rules</table>
+                    </shipping_rules>
+                    <shipping_area>
+                        <table>tatva_shipping_area</table>
+                    </shipping_area>
+                    <shipping_rules_area>
+                        <table>tatva_shipping_rules_area</table>
+                    </shipping_rules_area>
+                    <shipping_area_country>
+                        <table>tatva_shipping_area_country</table>
+                    </shipping_area_country>
+                    <shipping_apimethod>
+                        <table>tatva_shipping_apimethod</table>
+                    </shipping_apimethod>
+                    <shipping_temp_store_colissimo_web_service_data>
+                        <table>tatva_shipping_temp_store_colissimo_web_service_data</table>
+                    </shipping_temp_store_colissimo_web_service_data>
+                    <shipping_temp_store_colissimo_web_service_data_searchresult>
+                        <table>tatva_shpp_temp_store_colissimo_web_service_srchresult</table>
+                    </shipping_temp_store_colissimo_web_service_data_searchresult>
+                </entities>
+            </tatvashipping_mysql4>
+            <shipping>
+            	<rewrite>
+            		<rate_result_method>Tatva_Shipping_Model_Rate_Result_Method</rate_result_method>
+            	</rewrite>
+            </shipping>
+            <shipping>
+            	<rewrite>
+            		<shipping>Tatva_Shipping_Model_Shipping</shipping>
+            	</rewrite>
+            </shipping>
+        </models>
+        <!--<events>
+            <controller_action_postdispatch_adminhtml>
+				<observers>
+					<check_config>
+                        <type>singleton</type>
+						<class>tatvashipping/observer</class>
+						<method>checkConfig</method>
+					</check_config>
+				</observers>
+			</controller_action_postdispatch_adminhtml>
+        </events>
+        <events>
+            <customer_login>
+				<observers>
+					<check_config>
+						<type>singleton</type>
+						<class>tatvashipping/observer</class>
+						<method>checkConfig</method>
+					</check_config>
+				</observers>
+			</customer_login>
+        </events>-->
+    </global>
+    <frontend>
+        <routers>
+            <tatvashipping>
+                <use>standard</use>
+                <args>
+                    <module>Tatva_Shipping</module>
+                    <frontName>tatvashipping</frontName>
+                </args>
+            </tatvashipping>
+        </routers>
+        <layout>
+            <updates>
+                <tatvashipping>
+                    <file>tatvashipping/tatvashipping.xml</file>
+                </tatvashipping>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Tatva_Shipping>
+                    <files>
+                        <default>Tatva_Shipping.csv</default>
+                    </files>
+                </Tatva_Shipping>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+			<tatvashipping>
+				<use>admin</use>
+				<args>
+					<module>Tatva_Shipping</module>
+					<frontName>tatvashipping</frontName>
+				</args>
+			</tatvashipping>
+        </routers>
+    </admin>
+    <adminhtml>
+        <acl>
+        	<resources>
+        		<admin>
+        			<children>
+        				<tatva translate="title"  module="tatvashipping">
+        					<title>Tatva</title>
+        					<sort_order>20</sort_order>
+        						<children>
+        							<tatvashipping module="tatvashipping">
+        								<title>Transport</title>
+        								<sort_order>20</sort_order>
+        								<children>
+        									<tatvashippingzone module="tatvashipping">
+        										<title>Areas</title>
+        										<sort_order>10</sort_order>
+        									</tatvashippingzone>
+                                            <tatvashippingapimethod module="tatvashipping">
+    						                    <title>ShippingMethod / ApiMethod</title>
+    						                    <sort_order>20</sort_order>
+    						                    <action>tatvashipping/adminhtml_apimethod</action>
+    					                    </tatvashippingapimethod>
+        								    <tatvashippingrules translate="title">
+        	                                    <title>Grid price / weight</title>
+        	                                    <sort_order>30</sort_order>
+        	                                    <children>
+        	                                    	<tatvashippingrules_colissimo module="tatvashipping">
+        												<title>Colissimo</title>
+        												<sort_order>10</sort_order>
+        											</tatvashippingrules_colissimo>
+        	                                    </children>
+        	                                </tatvashippingrules>
+                                       </children>
+        							</tatvashipping>
+        						</children>
+        				</tatva>
+        				<system>
+        					<children>
+        						<config>
+        							<children>
+        								<tatva translate="title" module="tatvashipping">
+        									<title>Tatva Setting</title>
+        								</tatva>
+        							</children>
+        						</config>
+        					</children>
+        				</system>
+        			</children>
+        		</admin>
+        	</resources>
+        </acl>
+        <translate>
+            <modules>
+                <Tatva_Shipping>
+                    <files>
+                        <default>Tatva_Shipping.csv</default>
+                    </files>
+                </Tatva_Shipping>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <carriers>
+        	<!-- Colissimo : REG BO-700 / BO-701 -->
+            <!--<colissimo>
+                <active>1</active>
+                <sort_order>1</sort_order>
+                <sallowspecific>0</sallowspecific>
+                <model>tatvashipping/carrier_colissimo</model>
+                <name>Mon domicile</name>
+                <title>So Colissimo</title>
+				<free_shipping_enable>0</free_shipping_enable>
+				<url_tracking>http://www.coliposte.net/gp/services/main.jsp?m=10003005</url_tracking>
+            </colissimo>
+
+            <colissimoappointment>
+                <active>1</active>
+                <sort_order>5</sort_order>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AD,FR</specificcountry>
+                <model>tatvashipping/carrier_colissimoappointment</model>
+                <name>Sur rendez-vous</name>
+                <title>So Colissimo</title>
+				<free_shipping_enable>0</free_shipping_enable>
+				<url_tracking>http://www.coliposte.net/gp/services/main.jsp?m=10003005</url_tracking>
+            </colissimoappointment>
+
+            <colissimolocalstore>
+                <active>1</active>
+                <sort_order>2</sort_order>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AD,FR</specificcountry>
+                <model>tatvashipping/carrier_colissimolocalstore</model>
+                <name>Mon commerçant</name>
+                <title>So Colissimo</title>
+				<free_shipping_enable>0</free_shipping_enable>
+				<url_tracking>http://www.coliposte.net/gp/services/main.jsp?m=10003005</url_tracking>
+            </colissimolocalstore>
+
+            <colissimopostoffice>
+                <active>1</active>
+                <sort_order>3</sort_order>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AD,FR</specificcountry>
+                <model>tatvashipping/carrier_colissimopostoffice</model>
+                <name>Mon bureau de poste</name>
+                <title>So Colissimo</title>
+				<free_shipping_enable>0</free_shipping_enable>
+				<url_tracking>http://www.coliposte.net/gp/services/main.jsp?m=10003005</url_tracking>
+            </colissimopostoffice>
+
+            <colissimocityssimo>
+                <active>1</active>
+                <sort_order>4</sort_order>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>AD,FR</specificcountry>
+                <model>tatvashipping/carrier_colissimocityssimo</model>
+                <name>En espace Cityssimo</name>
+                <title>So Colissimo</title>
+				<free_shipping_enable>0</free_shipping_enable>
+				<url_tracking>http://www.coliposte.net/gp/services/main.jsp?m=10003005</url_tracking>
+            </colissimocityssimo>-->
+			
+			<gls>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>tatvashipping/carrier_gls</model>
+                <name>GLS</name>
+                <title>GLS</title>
+				<free_shipping_enable>0</free_shipping_enable>
+				<!--<url_tracking>http://www.chronopost.fr/WEB_SHIPPING/inputLTNumbersNoJahia.do</url_tracking>-->
+            </gls>
+              <!--<retrait>
+            	<active>0</active>
+            	<model>tatvashipping/carrier_retrait</model>
+            	<name>Retrait en magasin</name>
+                <title>Retrait en magasin</title>
+            </retrait>-->
+		</carriers>
+        <crontab>
+            <jobs>
+                <!-- Cron Marketplace Order Shipping Change -->
+                <tatvamarketplaces_orders_update>
+                   	<schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                    <run><model>tatvashipping/marketplace_orders_update::UpdateOrder</model></run>
+                </tatvamarketplaces_orders_update>
+                <!-- Cron Marketplace Order Shipping Change -->
+            </jobs>
+        </crontab>
+    </default>
+</config>

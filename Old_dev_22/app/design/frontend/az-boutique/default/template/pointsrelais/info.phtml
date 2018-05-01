@@ -1,0 +1,171 @@
+<?php
+
+//On récupère les details du point relais
+$detail_pointrelais = $this->getDetailPointRelais();
+
+?>
+<?php if ($this->getRequest()->getPost('popup_relais') != 1):?>
+<div id="backgroundLighbox"  style="height: <?php echo $this->getRequest()->getPost('hauteur') ?>px; width: <?php echo $this->getRequest()->getPost('largeur') ?>px; " ></div>
+<?php endif;?>
+<div id="detailsPointRelais"">
+    <div class="colonne-gauche">
+        <h1><?php echo $this->__('Votre') ?> <span style="font-weight: bold;"><?php echo $this->__('Point Relais') ?></span></h1>
+        <div class="adresse">
+            <h2><?php echo $detail_pointrelais->LgAdr1 ?></h2>
+            <?php if($detail_pointrelais->LgAdr2) : ?>
+                <p><?php echo '<p>' . strtolower($detail_pointrelais->LgAdr2) ?></p>
+            <?php endif; ?>
+            <?php if($detail_pointrelais->LgAdr3) : ?>
+                <p><?php echo strtolower($detail_pointrelais->LgAdr3) ?></p>
+            <?php endif; ?>
+            <?php if($detail_pointrelais->LgAdr4) : ?>
+                <p><?php echo strtolower($detail_pointrelais->LgAdr4) ?></p>
+            <?php endif; ?>
+            <p><?php echo $detail_pointrelais->CP . " " . $detail_pointrelais->Ville; ?></p>
+            <div class="situation">
+                <p><?php echo $detail_pointrelais->Localisation1 ?></p>
+                <p><?php echo $detail_pointrelais->Localisation2 ?></p>
+            </div>
+        </div>
+<?php if($detail_pointrelais->URL_Plan): ?>
+        <div class="googlemap">
+            <iframe src="<?php echo $detail_pointrelais->URL_Plan ?>" height="230" width="390" frameborder="no" scrolling="no">Plan d'accès au magasin</iframe>
+        </div>
+        <?php else: ?>
+        <div class="googlemap">
+            <?php echo 'Plan non disponible' ;?>
+        </div>
+        <?php endif; ?>
+    </div>
+    <div class="colonne-droite">
+        <?php if($detail_pointrelais->URL_Photo) : ?>
+        <div class="photo">
+            <img src="<?php echo $detail_pointrelais->URL_Photo ?>" alt="<?php echo $detail_pointrelais->LgAdr1 ?>" />
+        </div>
+        <?php endif; ?>
+        <div class="horaires">
+            <h2><?php echo $this->__('Horaires d\'ouverture') ?></h2>
+            <table>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Lundi') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Lundi->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Lundi->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Lundi->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Lundi->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Lundi->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Lundi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Lundi->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Lundi->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Lundi->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Lundi->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Mardi') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Mardi->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mardi->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Mardi->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mardi->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Mardi->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Mardi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mardi->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Mardi->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mardi->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Mardi->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Mercredi') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Mercredi->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mercredi->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Mercredi->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mercredi->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Mercredi->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Mercredi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mercredi->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Mercredi->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Mercredi->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Mercredi->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Jeudi') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Jeudi->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Jeudi->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Jeudi->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Jeudi->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Jeudi->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Jeudi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Jeudi->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Jeudi->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Jeudi->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Jeudi->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Vendredi') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Vendredi->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Vendredi->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Vendredi->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Vendredi->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Vendredi->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Vendredi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Vendredi->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Vendredi->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Vendredi->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Vendredi->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Samedi') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Samedi->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Samedi->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Samedi->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Samedi->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Samedi->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Samedi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Samedi->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Samedi->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Samedi->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Samedi->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php try { $detail_pointrelais->Horaires_Dimanche; ?>
+                <tr>
+                    <td class="jour"><?php echo $this->__('Dimanche') ?></td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Dimanche->string[0] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Dimanche->string[0],-4,2) . "h". substr($detail_pointrelais->Horaires_Dimanche->string[0],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Dimanche->string[1],-4,2) . "h". substr($detail_pointrelais->Horaires_Dimanche->string[1],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <?php if($detail_pointrelais->Horaires_Lundi->string[2] != 0) : ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Dimanche->string[2],-4,2) . "h". substr($detail_pointrelais->Horaires_Dimanche->string[2],-2) . " - "; ?>
+                            <?php echo substr($detail_pointrelais->Horaires_Dimanche->string[3],-4,2) . "h". substr($detail_pointrelais->Horaires_Dimanche->string[3],-2); ?>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php
+                }
+                catch (Exception $e) {
+                    $errors[] = $e->getMessage();
+                }?>
+            </table>
+            <?php if ($this->getRequest()->getPost('popup_relais') == 1):?>
+	<div class="fermer"><a href="#" onclick="window.close(); return false;">Fermer</a></div>
+	<?php else:?>
+	<div class="fermer"><a href="#" onclick="PointsRelais.fermer(); return false;">Fermer</a></div>
+	<?php endif;?>
+    </div>
+
+	<?php if ($this->getRequest()->getPost('popup_relais') == 1):?>
+	</body>
+</html>
+	<?php endif;?>

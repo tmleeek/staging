@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order id="28749402" morid="MOR-967D7M28749402">
+  <utilisateur type="facturation">
+    <nom titre="">Barbier</nom>
+    <prenom>Tiffany</prenom>
+    <societe/>
+    <telhome>336 10 56 23 00</telhome>
+    <teloffice/>
+    <telfax/>
+    <email>50007222-8@sc.rueducommerce.com</email>
+    <adresse type="facturation">
+      <rue1>17 RUE DE LA MADELEINE</rue1>
+      <rue2>17 RUE DE LA MADELEINE</rue2>
+      <cpostal>17000</cpostal>
+      <ville>LA ROCHELLE</ville>
+      <pays>France</pays>
+      <commentairefacturation/>
+    </adresse>
+  </utilisateur>
+  <utilisateur type="livraison">
+    <nom titre="">Barbier</nom>
+    <prenom>Tiffany</prenom>
+    <societe/>
+    <telhome>336 10 56 23 00</telhome>
+    <teloffice/>
+    <telfax/>
+    <email>50007222-8@sc.rueducommerce.com</email>
+    <adresse type="livraison">
+      <rue1>17 RUE DE LA MADELEINE</rue1>
+      <rue2>17 RUE DE LA MADELEINE</rue2>
+      <cpostal>17000</cpostal>
+      <ville>LA ROCHELLE</ville>
+      <pays>France</pays>
+      <commentairelivraison/>
+    </adresse>
+  </utilisateur>
+  <infocommande>
+    <sitecommande>Rue du Commerce</sitecommande>
+    <refid>1200171021</refid>
+    <status>processing</status>
+    <montant devise="EUR">54.41</montant>
+    <date>08/09/2017 20:47:24</date>
+    <transport>
+      <nom>Colissimo</nom>
+      <montant devise="EUR">9.90</montant>
+    </transport>
+    <list nbproduit="1">
+      <produit ref="64639906" nb="1" modid="MOD-967D7M39482752" delivery_rule="1" status="processing" color="Rouge" gender="Unisexe" merchantOfferId="41817" merchantProductId="41817" ean13="3760197600601" brand="YooCook" clothing_size="16.8" price="44.5100" ecotax="0.0100" basePrice="44.5" discountPercentage="" discountAmount="" priceWithoutEcotax="44.5">Thermomètre à infra-rouge - je pèse, je mesure</produit>
+    </list>
+  </infocommande>
+  <paiement>
+    <type>carte</type>
+  </paiement>
+</order>

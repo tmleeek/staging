@@ -1,0 +1,117 @@
+<?php
+/**
+ * @copyright	Copyright (c) 2016 MageBackup (http://www.magebackup.com). All rights reserved.
+ * @license		http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+$profile			= $this->getProfile();
+$tables				= Mage::getSingleton('magebackup/profile_database')->getTablesArray();
+$databases			= Mage::getSingleton('magebackup/profile_database')->getDatabasesArray();
+$includedDatabase	= $profile->getIncludedDatabases();
+?>
+
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">
+			<?php echo Mage::helper('magebackup')->__('Database Tables Exclusion'); ?>
+		</h4>
+	</div>
+	<fieldset>
+		<input type="hidden" name="data[excluded_tables]" id="data_excluded_tables" value="<?php echo $profile->getValue('excluded_tables'); ?>" />
+		<input type="hidden" name="data[skipped_tables]" id="data_skipped_tables" value="<?php echo $profile->getValue('skipped_tables'); ?>" />
+
+		<ul id="maindb-tables-container" class="mb-list-container">
+			<?php foreach ($tables as $table) : ?>
+				<li>
+					<button type="button" class="mb-button mb-table-exclude" data-value="<?php echo $table; ?>" title="<?php echo $this->__('Exclude this table'); ?>"><i></i></button>
+					<button type="button" class="mb-button mb-table-skip" data-value="<?php echo $table; ?>" title="<?php echo $this->__('Skip backup its contents'); ?>"><i></i></button>
+					<a href="javascript:void(0);"><?php echo $table; ?></a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</fieldset>
+
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">
+			<?php echo Mage::helper('magebackup')->__('Database Inclusion'); ?>
+		</h4>
+	</div>
+	<fieldset>
+		<select name="data[included_databases]" id="data_included_databases" class="select" multiple="multiple" size="10">
+			<?php foreach ($databases as $database) : ?>
+				<option value="<?php echo $database; ?>"<?php echo count($includedDatabase) && in_array($database, $includedDatabase) ? ' selected="selected"' : ''; ?>><?php echo $database; ?></option>
+			<?php endforeach; ?>
+		</select>
+	</fieldset>
+</div>
+
+<script type="text/javascript">
+
+MageBackup.$(document).ready( function() {
+	var toggleCheck = function ($el, values) {
+		values = values.trim() == '' ? [] : values.split(',');
+
+		var value = $el.attr('data-value');
+
+		if (MageBackup.$.inArray(value, values) < 0) {
+			$el.addClass('mb-button-active');
+			values.push($el.attr('data-value'));
+		} else {
+			$el.removeClass('mb-button-active');
+
+			while (values.indexOf(value) != -1) {
+				values.splice(values.indexOf(value), 1);
+			}
+		}
+
+		return values.join(',');
+	};
+
+	var toggleClass = function ($el, values) {
+		values = values.trim() == '' ? [] : values.split(',');
+
+		var value = $el.attr('data-value');
+
+		if (MageBackup.$.inArray(value, values) < 0) {
+			$el.removeClass('mb-button-active');
+		} else {
+			$el.addClass('mb-button-active');
+		}
+	};
+
+	// excluded tables
+	var $el				= MageBackup.$('#maindb-tables-container');
+	var excluded_tables	= MageBackup.$('#data_excluded_tables').val();
+
+	$el.find('.mb-button').mbtooltip({
+		html:		true,
+		container:	'body',
+		trigger:	'hover'
+	});
+
+	$el.find('.mb-table-exclude').each(function() {
+		toggleClass(MageBackup.$(this), excluded_tables);
+	});
+
+	$el.find('.mb-table-exclude').bind('click', function() {
+		var values	= toggleCheck(MageBackup.$(this), MageBackup.$('#data_excluded_tables').val());
+
+		MageBackup.$('#data_excluded_tables').val(values);
+	});
+
+	// skipped dirs
+	var skipped_tables	= MageBackup.$('#data_skipped_tables').val();
+
+	$el.find('.mb-table-skip').each(function() {
+		toggleClass(MageBackup.$(this), skipped_tables);
+	});
+
+	$el.find('.mb-table-skip').bind('click', function() {
+		var values	= toggleCheck(MageBackup.$(this), MageBackup.$('#data_skipped_tables').val());
+
+		MageBackup.$('#data_skipped_tables').val(values);
+	});
+});
+
+</script>
+

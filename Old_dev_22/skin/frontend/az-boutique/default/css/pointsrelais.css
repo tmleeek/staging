@@ -1,0 +1,17 @@
+#backgroundLighbox{-khtml-opacity:.8;-moz-opacity:.8;filter:alpha(opacity=80);opacity:.8;background:#000;height:100%;width:100%;position:fixed;left:0;top:0;z-index:1000;}
+#detailsPointRelais{border:16px solid #fff;width:742px;height:360px;position:fixed;top:50%;left:50%;margin:-180px 0 0 -371px;background:#fff;overflow:hidden;z-index:1001;}
+#detailsPointRelais{text-align:left;font-size:11px;}
+#detailsPointRelais .colonne-gauche{float:left;width:420px;}
+#detailsPointRelais h1{color:red;font-weight:normal;font-size:17pt;padding:0 0 0 50px;background:url(../images/mondialrelay/img_fleche.gif) no-repeat;}
+#detailsPointRelais p{margin:0;line-height:1em;}
+#detailsPointRelais .adresse{padding:0 0 0 70px;margin:20px 0 0;background:url(../images/mondialrelay/logo_PR_01.gif) no-repeat;}
+#detailsPointRelais .adresse h2{font-size:11px;font-weight:bold;color:#000;}
+#detailsPointRelais .situation{margin:10px 0 0;}
+#detailsPointRelais .googlemap{position:absolute;bottom:0;left:0;}
+#detailsPointRelais .colonne-droite{float:right;width:310px;margin:0 0 0 10px;}
+#detailsPointRelais .horaires{margin:0 0 0 50px;}
+#detailsPointRelais .horaires h2{margin:20px 0 5px;color:red;font-weight:normal;font-size:17pt;}
+#detailsPointRelais .horaires td{line-height:1em;width:100px;}
+#detailsPointRelais .horaires td.jour{font-weight:bold;}
+#detailsPointRelais .fermer{position:absolute;right:10px;bottom:0px;padding:0 0 0 25px;background:url(../images/mondialrelay/img_fermer.gif) no-repeat;}
+#detailsPointRelais .fermer a{color:red;text-decoration:none;font-weight:bold;}

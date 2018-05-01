@@ -1,0 +1,137 @@
+<?php
+$rma = $this->getRma();
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title">
+    <h1><?php echo $this->__('RMA') ?> #<?php echo $rma->getIncrementId()?> - <?php echo $rma->getStatus()->getName() ?></h1>
+</div>
+<?php if ($rma->getIsResolved()): ?>
+    <button onclick="window.location.href='<?php echo $this->getPrintUrl()?>';" class="button pull-right"><span><span><?php echo $this->__('Print Shipping Label')?></span></span></button>
+<?php endif; ?>
+<div class="fieldset">
+    <h2 class="legend"><?php echo $this->__("Request Information") ?></h2>
+    <table width='100%'>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <b><?php echo $this->__("RMA") ?>:</b> #<?php echo $rma->getIncrementId() ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b><?php echo $this->__("Order") ?>:</b>
+                    <?php if ($rma->getCustomerId()): ?>
+                        <?php echo Mage::helper('rma')->getOrderLabel($rma->getOrderId(), $this->getOrderUrl($rma->getOrderId()))?>
+                    <?php else: ?>
+                        <?php echo Mage::helper('rma')->getOrderLabel($rma->getOrderId())?>
+                    <?php endif?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b><?php echo $this->__("Date Requested") ?>:</b> <?php echo Mage::helper('core')->formatDate($rma->getCreatedAt(), 'medium') ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b><?php echo $this->__("Status") ?>:</b> <?php echo $rma->getStatus()->getName() ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b><?php echo $this->__("Contact Information") ?>:</b><br> <?php echo $rma->getShippingAddressHtml() ?>
+                </td>
+            </tr>
+        <?php foreach ($this->getCustomFields() as $field): ?>
+        <?php if (!$value = Mage::helper('rma/field')->getValue($rma, $field)) continue; ?>
+            <tr>
+                <td>
+                    <b><?php echo $this->__($field->getName()) ?>:</b> <?php echo $value ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<div class="fieldset">
+    <h2 class="legend"><?php echo $this->__("Items RMA Requested for") ?></h2>
+ <table class="data-table" id="rma-table">
+        <thead>
+            <tr class="first last">
+                <th><?php echo $this->__("Product Name") ?></th>
+                <th><?php echo $this->__("SKU") ?></th>
+                <th><?php echo $this->__("Qty") ?></th>
+                <th><?php echo $this->__("Reason") ?></th>
+                <th><?php echo $this->__("Condition") ?></th>
+                <th><?php echo $this->__("Resolution") ?></th>
+            </tr>
+        </thead>
+        <tbody>
+<?php foreach($rma->getItemCollection() as $item):?>
+			<tr>
+                <td><?php echo Mage::helper('rma')->getOrderItemLabel($item) ?></td>
+                <td><?php echo $item->getProduct()->getSku() ?></td>
+                <td><?php echo $item->getQtyRequested() ?></td>
+                <td><?php echo $item->getReasonName() ?></td>
+                <td><?php echo $item->getConditionName() ?></td>
+                <td><?php echo $item->getResolutionName() ?></td>
+			</tr>
+<?php endforeach?>
+		</tbody>
+	</table>
+</div>
+<form action="<?php echo $this->getCommentPostUrl()?>" method="POST" enctype="multipart/form-data"    id="rma-form-validate" >
+<input name='id' type='hidden' value='<?php echo $this->getId() ?>'>
+<div class='fieldset'>
+    <h2 class="legend"><?php echo $this->__("Add Comment") ?></h2>
+    <ul class="form-list">
+        <li class="wide">
+            <div class="input-box">
+                <textarea name='comment' id='comment' class="input-text"></textarea>
+            </div>
+        </li>
+        <li class="wide">
+            <label for="attachment"><?php echo $this->__("Attach files") ?></label>
+            <div class="input-box">
+                <?php echo Mage::helper('mstcore/attachment')->getFileInputHtml() ?>
+            </div>
+        </li>
+    </ul>
+    <button type="submit" title="<?php echo $this->__("Submit") ?>" class="button"><span><span><?php echo $this->__("Submit") ?></span></span></button>
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('rma-form-validate', true);
+//]]>
+</script>
+
+<?php if ($this->getCommentCollection()->count()): ?>
+<div class="fieldset rma-history">
+    <h2 class="legend"><?php echo $this->__("RMA History") ?></h2>
+    <?php foreach($this->getCommentCollection() as $comment):?>
+    <div class="fieldset">
+        <h2 class="legend">
+            <?php if ($comment->getCustomerName()):?>
+                <?php echo $comment->getCustomerName() ?> |
+            <?php elseif ($comment->getUser()): ?>
+                <?php echo $comment->getUser()->getName() ?> | |
+            <?php endif ?>
+            <?php echo Mage::helper('core')->formatDate($comment->getCreatedAt(), 'medium') ?>
+        </h2>
+
+        <?php echo $comment->getTextHtml() ?>
+        <?php if($attachments = $comment->getAttachments()): ?>
+            <?php foreach($attachments as $attachment): ?>
+                <br><a href="<?php echo $attachment->getUrl()?>"><?php echo $attachment->getName() ?></a>
+            <?php endforeach;?>
+        <?php endif ?>
+    </div>
+    <?php endforeach ?>
+</div>
+<?php endif; ?>
+<?php if ($rma->getCustomerId()): ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo Mage::getUrl('rma/rma')?>"><small>&laquo; </small><?php echo $this->__('Back to My Returns') ?></a></p>
+</div>
+<?php endif;?>

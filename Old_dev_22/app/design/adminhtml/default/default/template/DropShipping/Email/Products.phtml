@@ -1,0 +1,31 @@
+<table border="1" cellspacing="0" width="100%">
+    <tr>
+        <th>QTY</th>
+        <th>SKU</th>
+        <th>Supplier REF</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Packed</th>
+    </tr>
+    <?php foreach($this->getPurchaseOrder()->getProducts() as $product): ?>
+        <tr>
+            <td align="center"><?php echo $product->getpop_qty(); ?></td>
+            <td align="left"><?php echo $product->getsku(); ?></td>
+            <td align="left"><?php echo $product->getpop_supplier_ref(); ?></td>
+            <td align="left"><?php echo $product->getpop_product_name(); ?></td>
+            <td align="right"><?php echo $this->getOrder()->formatPrice($product->getpop_price_ht()); ?></td>
+            <td align="right"><?php echo $this->getOrder()->formatPrice($product->getRowTotal()); ?></td>
+            <td align="center"><input type="checkbox"></td>
+        </tr>
+    <?php endforeach; ?>
+        <tr>
+            <td colspan="7" align="right">
+                <p><b>Subtotal : </b><?php echo $this->getOrder()->formatPrice($this->getPurchaseOrder()->getTotalHt()); ?></p>
+                <p><b>Shipping : </b><?php echo $this->getOrder()->formatPrice($this->getPurchaseOrder()->getpo_shipping_cost()); ?></p>
+                <p><b>Grand total : </b><?php echo $this->getOrder()->formatPrice($this->getPurchaseOrder()->getTotalTtc()); ?></p>                
+            </td>
+        </tr>
+</table>
+
+

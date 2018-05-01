@@ -1,0 +1,31 @@
+<div id="mpm_rules_edit_tab" class="columns">
+    <div id="mpm_rules_edit_tab_menu" class="side-col">
+        <?php echo $this->getChildHtml('mpm_rules_edit_tabs'); ?>
+    </div>
+    <div class="main-col">
+        <div class="main-col-inner">
+            <div class="content-header">
+                <h3 class="icon-head head-products"><?php echo $this->getHeader() ?></h3>
+                <p class="content-buttons form-buttons">
+                    <?php echo $this->getBackButtonHtml() ?>
+                    <?php echo $this->getCancelButtonHtml() ?>
+                    <?php echo $this->getDeleteButtonHtml() ?>
+                    <?php echo $this->getSaveButtonHtml() ?>
+                </p>
+            </div>
+            <form id="ruleForm" method="POST" action="<?php echo $this->getUrl('*/*/Save'); ?>">
+                <?php echo $this->getBlockHtml('formkey')?>
+                <div id="mpm_rules_edit_tab_content"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var conditionUrl = "<?php echo $this->getUrl('*/*/getConditionBlock', array('rule_id' => Mage::registry('current_rule')->getId())); ?>";
+    Condition = new ConditionClass(conditionUrl);
+    var perimeterUrl = "<?php echo $this->getUrl('*/*/getPerimeterBlock', array('rule_id' => Mage::registry('current_rule')->getId())); ?>";
+    Perimeter = new PerimeterClass(perimeterUrl);
+
+</script>

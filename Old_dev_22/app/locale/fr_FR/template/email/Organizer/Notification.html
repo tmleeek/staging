@@ -1,0 +1,84 @@
+<!--@subject Assignation de Tache @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
+@-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AZ-boutique.fr</title>
+<style>
+body {
+background:#ffe8f5;
+font-family:Verdana, Geneva, sans-serif;
+font-size:12px;
+padding:0;
+margin:30px 0 0 0;
+}
+</style>
+</head>
+<body>
+<table width="618" border="0" cellspacing="0" cellpadding="0" align="center">
+ {{config path='sales_email/tansactional_email/header'}} 	
+  <tr>
+    <td style="background:#de2666; color:#ffe8f5; text-align:right; text-transform:uppercase; height:20px; font-weight:bold; padding-right:5px; font-family:Verdana, Geneva, sans-serif; font-size:12px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="top" style="background:#ffffff; color:#333333; margin-bottom:10px; padding:0 9px; line-height:18px; font-family:Verdana, Geneva, sans-serif; font-size:12px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">&nbsp;</td>
+        </tr>
+          <tr>
+                <td valign="top">
+					Bonjour
+					
+					<p>Une tache vous a &eacute;t&eacute; assign&eacute;e.</p>
+					
+					<p>Entit&eacute; : <a href="{{var task_link}}">{{var entity_name}}</a></p>
+					
+					<p>De : {{var author}}</p>
+					
+					<p>Sujet : {{var subject}}</p>
+					
+					<p>Commentaires : {{var comments}}</p>
+				
+                </td>
+            </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">&nbsp;</td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">Sinc&eacute;res salutations,</td>
+        </tr>
+        <tr>
+          <td height="5"></td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;">Le Service Client</td>
+        </tr>
+        <tr>
+          <td height="5" style="font-family:Verdana, Geneva, sans-serif; font-size:12px;"></td>
+        </tr>
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-size:12px;"><a href="{{store url=""}}" target="_blank" style="color:#c30245; text-decoration:none; border:none; font-family:Verdana, Geneva, sans-serif; font-size:12px;">{{config path="general/store_information/name"}}</a></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td style="background:#de2666; height:23px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="10"></td>
+  </tr>
+  {{config path='sales_email/tansactional_email/footer'}} 	  
+</table>
+</body>
+</html>

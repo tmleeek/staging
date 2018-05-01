@@ -1,0 +1,32 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   design_default
+ * @package    Mage_Cybermut
+ * @copyright  Copyright (c) 2004-2007 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php $_code = $this->getMethodCode(); ?>
+<?php $_method = $this->getMethod(); ?>
+<td class="logo-mode-livraison"><label for="p_method_<?php echo $_code ?>"><img src="<?php echo $this->getSkinUrl('images/illustration_cic.png') ?>" alt="CB" /></label>
+</td>
+<td class="x-small-text align-justify">
+	<label for="p_method_<?php echo $_code ?>">
+		<span><strong><?php echo Mage::helper('tatvasales')->__($this->htmlEscape($_method->getTitle())); ?></strong></span><br class="cache" />
+        <?php echo $this->getCmsBlock() ?>
+	</label>
+</td>
+
+

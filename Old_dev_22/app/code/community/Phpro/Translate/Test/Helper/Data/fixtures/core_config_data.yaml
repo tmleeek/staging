@@ -1,0 +1,3 @@
+config:
+  stores/admin/security/use_form_key: 0
+  default/translate/general/translation_logging: 1

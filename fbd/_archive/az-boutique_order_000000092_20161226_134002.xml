@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<order>
+  <header>
+    <order_fbd_id>000000092</order_fbd_id>
+    <order_supplier_id></order_supplier_id>
+    <supplier_code>az-boutique</supplier_code>
+    <origin>Ixina France</origin>
+    <language>fr_FR</language>
+    <currency>EUR</currency>
+    <item_count>3</item_count>
+    <created_at>2016-12-26 13:34:30</created_at>
+    <total_amount>18.7000</total_amount>
+    <total_discount>18.7000</total_discount>
+    <total_tax>0.0000</total_tax>
+    <customer_email>shop-59@ixina.fr</customer_email>
+  </header>
+  <shipment>
+    <code>owsh1_az_boutique_collisimo</code>
+    <amount>6.9000</amount>
+    <vat>0.0000</vat>
+  </shipment>
+  <address>
+    <billing>
+      <firstname>Eric </firstname>
+      <lastname>de la Simone</lastname>
+      <company/>
+      <address1>19, rue charriere</address1>
+      <address2></address2>
+      <postal_code>Paris</postal_code>
+      <city>75011</city>
+      <country>FR</country>
+      <phone>0630867461</phone>
+    </billing>
+    <shipping>
+      <firstname>Eric </firstname>
+      <lastname>de la Simone</lastname>
+      <company/>
+      <address1>19, rue charriere</address1>
+      <address2></address2>
+      <postal_code>Paris</postal_code>
+      <city>75011</city>
+      <country>FR</country>
+      <phone>0630867461</phone>
+    </shipping>
+  </address>
+  <items>
+    <item>
+      <id>94</id>
+      <fbd_sku>az-boutique_PMAR12917-25</fbd_sku>
+      <supplier_sku>PMAR12917-25</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>6.9000</price>
+        <total>6.9000</total>
+        <discount>6.9000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>95</id>
+      <fbd_sku>az-boutique_PEPL48280-08</fbd_sku>
+      <supplier_sku>PEPL48280-08</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>8.9000</price>
+        <total>8.9000</total>
+        <discount>8.9000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+    <item>
+      <id>96</id>
+      <fbd_sku>az-boutique_LB7541940</fbd_sku>
+      <supplier_sku>LB7541940</supplier_sku>
+      <qty>1.0000</qty>
+      <packing>1</packing>
+      <amount>
+        <price>2.9000</price>
+        <total>2.9000</total>
+        <discount>2.9000</discount>
+        <tax>0.0000</tax>
+        <weee>0.0000</weee>
+      </amount>
+      <sequences>
+        <sequence>
+          <id>1</id>
+          <state>created</state>
+        </sequence>
+      </sequences>
+    </item>
+  </items>
+  <extra_fields/>
+</order>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MDN_BundleAvailability>
+            <version>0.9</version>
+        </MDN_BundleAvailability>
+    </modules>
+    
+    <global>
+    
+        <helpers>
+            <BundleAvailability>
+                <class>MDN_BundleAvailability_Helper</class>
+            </BundleAvailability>
+        </helpers>
+        	          
+        <blocks>
+            <BundleAvailability>
+                <class>MDN_BundleAvailability_Block</class>
+            </BundleAvailability>
+        </blocks>
+
+    </global>
+
+</config> 

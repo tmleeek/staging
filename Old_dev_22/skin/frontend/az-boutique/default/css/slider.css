@@ -1,0 +1,278 @@
+ul.solidblockmenu {
+	margin: 0;
+	padding:1px 0px 9px 40px;
+	list-style: none;
+	position:relative;
+	text-align: left;
+	background:url(../../images/slider/scroolbg.gif);
+	height:18px;
+	z-index:4;
+}
+ul.solidblockmenu li {
+	display: inline;
+}
+ul.solidblockmenu li a {
+	font-size:14px;
+	color: #5a5a5a;
+	padding:0px 25px 0px 25px;
+	margin-right:40px; /*spacing between each menu link*/
+	text-decoration: none;
+	text-align: center;
+	line-height: 26px;
+	display: block;
+	float: left;
+}
+ul.solidblockmenu li.active { /*style of LI that gets dynamically added to menu to create background effect*/
+	position:absolute;
+	background:url(../../images/slider/bluehbg.gif) repeat-x top;
+	padding:1px 0px 1px 0px;
+	height:24px;
+	color:#FFF;
+}
+/*--Paging Styles--*/
+
+.paging a:hover, a.current, a.active {
+	background:url(../../images/slider/bluehbg.gif) repeat-x top;
+}
+.banscrollbg {
+	background:url(../../images/slider/bannerscrollbg.gif) repeat-x top;
+	float:left;
+	height:28px;
+	padding:6px;
+}
+#primopiano_big {
+	position: relative;
+	float:left;
+	overflow: hidden;
+}
+ul#primopiano_menu {
+	position: absolute;
+	bottom:0px;
+	height:18px;
+	z-index:100000;
+}
+ul#primopiano_menu li {
+	width:18px;
+	height:18px;
+	display:inline-block;
+	background:url(../../images/slider/num.png) no-repeat left top;
+	z-index:1000;
+	margin-right:2px;
+	float:left;
+}
+ul#primopiano_menu li.active, ul#primopiano_menu li a:hover {
+	/*background-position: left bottom;*/ /*for square button enable it*/
+    background:url(../../images/slider/num-act.png) no-repeat left top;
+}
+ul#primopiano_menu li a {
+	display: block;
+	text-decoration: none;
+}
+ul#primopiano_slide li {
+	position: relative;
+	float: left;
+	overflow: hidden;
+}
+ul#primopiano_slide li a {
+	float: left;
+}
+ul#primopiano_slide li .text {
+	float: right;
+	background:url(../../images/slider/content_bg.jpg) top;
+	font-size:14px;
+	color:#cccccc;
+	padding:15px 25px 0px 25px;
+	margin:0px;
+	overflow: hidden;
+	background-repeat: repeat;
+}
+ul#primopiano_slide li .text div {
+	overflow: hidden;
+	clear: both;
+	line-height: 22px;
+}
+ul#primopiano_slide li img {
+	border: 0;
+}
+ul#primopiano_slide li h2 {
+	line-height: normal;
+	padding:0px 0px 10px 0px;
+	margin:0px;
+	color: #58554e;
+	font-size: 25px;
+	font-weight: normal;
+	font-family: 'TradeGothicLTStdBold', Arial;
+	font-size:33px;
+	color:#ffffff;
+	line-height:38px
+}
+#primopiano_big .jcarousel-clip {
+	z-index: 2;
+	position: relative;
+	padding-bottom: 2px;
+	margin: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	overflow: hidden;
+	padding-top: 0px
+}
+#primopiano_big .jcarousel-list {
+	z-index: 1;
+	position: relative;
+	padding-bottom: 0px;
+	margin: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	overflow: hidden;
+	top: 0px;
+	padding-top: 0px;
+	left: 0px
+}
+#primopiano_big .jcarousel-next {
+	z-index: 3;
+	position: absolute;
+	width:22px;
+	bottom:180px;
+	display: block;
+	background: url(../../images/slider/next.png) no-repeat;
+	height:66px;
+	cursor: pointer;
+	right:0px
+}
+#primopiano_big .jcarousel-prev {
+	z-index: 3;
+	position: absolute;
+	width:21px;
+	bottom:180px;
+	display: block;
+	background:url(../../images/slider/prev.png) no-repeat;
+	height:66px;
+	cursor: pointer;
+	left:0px
+}
+
+.carousel-prev {
+	width:18px;
+	height:18px;
+	display:block;
+	cursor:pointer;
+	margin:0;
+	text-indent:-9999px;
+	background:url(../images/arrow-left.png) no-repeat 0 0px;
+	position:absolute;
+	outline:none;
+	top:-37px;
+	right:31px;
+}
+.carousel-next {
+	width:18px;
+	height:18px;
+	display:block;
+	cursor:pointer;
+	margin:0;
+	text-indent:-9999px;
+	background:url(../images/arrow-right.png) no-repeat 0 0;
+	position:absolute;
+	outline:none;
+	top:-37px;
+	right:10px;
+}
+.magscroll-main {
+	margin:0;
+	padding:0px;
+	width:576px;
+	float:left;
+}
+#carouselContainer {
+	width:100%;
+	float:right;
+	padding:0px 0px 15px 0px !important;
+	position:relative;
+}
+#carouselContainer1 {
+	width:100%;
+	float:right;
+	padding:0 !important;
+	position:relative;
+}
+ul.imageCarousel {
+	width:576px;
+	float:left;
+	margin-right:20px
+}
+ul.imageCarousel li {
+	padding:0px;
+	margin:0px 16px 0px 0px;
+	width:120px;
+	border:1px solid #e2e2e2; padding:5px;
+    float:left;
+}
+.topmark ul.imageCarousel li {
+	padding:0px 0 0 0 !important;
+}
+.jcarousel-container {
+	height:auto;
+	display:block;
+	overflow:hidden;
+}
+.jcarousel-container-horizontal {
+	width:100%;
+	float:left;
+}
+.jcarousel-item {
+/*width:95px;
+	height: 125px;*/
+}
+.jcarousel-item-horizontal {
+	margin-left:0;
+}
+.jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-right:0;
+}
+.topmark .carousel-prev, .topmark .carousel-next {
+	margin-top:60px !important;
+}
+.carousel-prev {
+	width:18px;
+	height:18px;
+	display:block;
+	cursor:pointer;
+	margin:0;
+	text-indent:-9999px;
+	background:url(../images/arrow-left.png) no-repeat 0 0px;
+	position:absolute;
+	outline:none;
+	top:-37px;
+	right:31px;
+}
+.carousel-next {
+	width:18px;
+	height:18px;
+	display:block;
+	cursor:pointer;
+	margin:0;
+	text-indent:-9999px;
+	background:url(../images/arrow-right.png) no-repeat 0 0;
+	position:absolute;
+	outline:none;
+	top:-37px;
+	right:10px;
+}
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+.zoom {
+	width:95px;
+	/*height:125px;*/
+	margin:0px;
+	padding:0px;
+	display:block;
+	position:relative;
+}
+.featured-product-box .magscroll-main .jcarousel-container-horizontal {
+	float: left;
+	width: 576px;
+}

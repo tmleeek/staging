@@ -1,0 +1,41 @@
+
+<script type="application/javascript">
+    jQuery().ready(function($) {
+        $(function () {
+            $('#container_matching').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                credits: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Products matching per channel'
+                },
+                xAxis: {
+                    categories: <?php echo json_encode($this->getMatchingCategories()); ?>
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Products'
+                    },
+                    reversedStacks: false
+                },
+                legend: {
+                    reversed: false
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal',
+                        pointWidth: 30
+                    }
+                },
+                series: <?php echo json_encode($this->getMatchingSeries()); ?>
+            });
+        });
+    });
+
+</script>
+
+<div id="container_matching"></div>

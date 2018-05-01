@@ -1,0 +1,869 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <tatva translate="label" module="tatvashipping">
+            <label>Tatvasoft</label>
+            <sort_order>101</sort_order>
+        </tatva>
+    </tabs>
+   <sections>
+   <!--  Shipping methods : REG BO-700 -->
+   	<carriers translate="label" module="tatvashipping">
+   		<groups>
+   			<!--<colissimo>
+   			 	<label>La Poste so colissimo</label>
+           		<frontend_type>text</frontend_type>
+                <sort_order>0</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+                  <name translate="label">
+                      <label>Name</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>21</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </name>
+				  <specialfee translate="label">
+                      <label>Special Fee</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </specialfee>
+ 				  <free_shipping_enable translate="label">
+                      <label>Free shipping with minimum order amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </free_shipping_enable>
+                  <free_shipping_subtotal translate="label">
+                      <label>Minimum order amount for free shipping</label>
+					  <frontend_model>tatvashipping/adminhtml_system_config_freeShippingSubtotal</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </free_shipping_subtotal>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <delivery_text translate="label">
+                      <label>Delivery times</label>
+                      <comment>Text shown in the ordering process</comment>
+					  <frontend_model>tatvashipping/adminhtml_system_config_deliveryTimes</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>50</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </delivery_text>
+                  <url_tracking translate="label">
+                      <label>URL tracking</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>60</sort_order>
+                      <show_in_default>2</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </url_tracking>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>65</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>
+                  <sallowspecific translate="label">
+                      <label>Ship to applicable countries</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>70</sort_order>
+                      <frontend_class>shipping-applicable-country</frontend_class>
+                      <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </sallowspecific>
+                  <specificcountry translate="label">
+                      <label>Ship to Specific countries</label>
+                      <frontend_type>multiselect</frontend_type>
+                      <sort_order>80</sort_order>
+                      <source_model>adminhtml/system_config_source_country</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </specificcountry>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+            	</fields>
+   			</colissimo>
+
+            <colissimolocalstore>
+   			 	<label>To your local store so colissimo</label>
+           		<frontend_type>text</frontend_type>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+                  <name translate="label">
+                      <label>Name</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>21</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </name>
+				  <specialfee translate="label">
+                      <label>Special Fee</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </specialfee>
+ 				  <free_shipping_enable translate="label">
+                      <label>Free shipping with minimum order amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </free_shipping_enable>
+                  <free_shipping_subtotal translate="label">
+                      <label>Minimum order amount for free shipping</label>
+					  <frontend_model>tatvashipping/adminhtml_system_config_freeShippingSubtotal</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </free_shipping_subtotal>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <url_tracking translate="label">
+                      <label>URL tracking</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>60</sort_order>
+                      <show_in_default>2</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </url_tracking>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>65</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>
+                  <sallowspecific translate="label">
+                      <label>Ship to applicable countries</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>70</sort_order>
+                      <frontend_class>shipping-applicable-country</frontend_class>
+                      <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </sallowspecific>
+                  <specificcountry translate="label">
+                      <label>Ship to Specific countries</label>
+                      <frontend_type>multiselect</frontend_type>
+                      <sort_order>80</sort_order>
+                      <source_model>adminhtml/system_config_source_country</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </specificcountry>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+            	</fields>
+   			</colissimolocalstore>
+
+            <colissimopostoffice>
+   			 	<label>In a post office so colissimo</label>
+           		<frontend_type>text</frontend_type>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+                  <name translate="label">
+                      <label>Name</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>21</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </name>
+				  <specialfee translate="label">
+                      <label>Special Fee</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </specialfee>
+ 				  <free_shipping_enable translate="label">
+                      <label>Free shipping with minimum order amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </free_shipping_enable>
+                  <free_shipping_subtotal translate="label">
+                      <label>Minimum order amount for free shipping</label>
+					  <frontend_model>tatvashipping/adminhtml_system_config_freeShippingSubtotal</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </free_shipping_subtotal>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <url_tracking translate="label">
+                      <label>URL tracking</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>60</sort_order>
+                      <show_in_default>2</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </url_tracking>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>65</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>
+                  <sallowspecific translate="label">
+                      <label>Ship to applicable countries</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>70</sort_order>
+                      <frontend_class>shipping-applicable-country</frontend_class>
+                      <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </sallowspecific>
+                  <specificcountry translate="label">
+                      <label>Ship to Specific countries</label>
+                      <frontend_type>multiselect</frontend_type>
+                      <sort_order>80</sort_order>
+                      <source_model>adminhtml/system_config_source_country</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </specificcountry>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+            	</fields>
+   			</colissimopostoffice>
+
+            <colissimocityssimo>
+   			 	<label>In a cityssimo space so colissimo</label>
+           		<frontend_type>text</frontend_type>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+                  <name translate="label">
+                      <label>Name</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>21</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </name>
+				  <specialfee translate="label">
+                      <label>Special Fee</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </specialfee>
+ 				  <free_shipping_enable translate="label">
+                      <label>Free shipping with minimum order amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </free_shipping_enable>
+                  <free_shipping_subtotal translate="label">
+                      <label>Minimum order amount for free shipping</label>
+					  <frontend_model>tatvashipping/adminhtml_system_config_freeShippingSubtotal</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </free_shipping_subtotal>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <url_tracking translate="label">
+                      <label>URL tracking</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>60</sort_order>
+                      <show_in_default>2</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </url_tracking>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>65</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>
+                  <sallowspecific translate="label">
+                      <label>Ship to applicable countries</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>70</sort_order>
+                      <frontend_class>shipping-applicable-country</frontend_class>
+                      <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </sallowspecific>
+                  <specificcountry translate="label">
+                      <label>Ship to Specific countries</label>
+                      <frontend_type>multiselect</frontend_type>
+                      <sort_order>80</sort_order>
+                      <source_model>adminhtml/system_config_source_country</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </specificcountry>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+            	</fields>
+   			</colissimocityssimo>
+
+            <colissimoappointment>
+   			 	<label>By Appointment so colissimo</label>
+           		<frontend_type>text</frontend_type>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+                  <name translate="label">
+                      <label>Name</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>21</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </name>
+                  <specialfee translate="label">
+                      <label>Special Fee</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>22</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </specialfee>
+ 				  <free_shipping_enable translate="label">
+                      <label>Free shipping with minimum order amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </free_shipping_enable>
+                  <free_shipping_subtotal translate="label">
+                      <label>Minimum order amount for free shipping</label>
+					  <frontend_model>tatvashipping/adminhtml_system_config_freeShippingSubtotal</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </free_shipping_subtotal>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>23</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <url_tracking translate="label">
+                      <label>URL tracking</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>60</sort_order>
+                      <show_in_default>2</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </url_tracking>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>65</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>
+                  <sallowspecific translate="label">
+                      <label>Ship to applicable countries</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>70</sort_order>
+                      <frontend_class>shipping-applicable-country</frontend_class>
+                      <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </sallowspecific>
+                  <specificcountry translate="label">
+                      <label>Ship to Specific countries</label>
+                      <frontend_type>multiselect</frontend_type>
+                      <sort_order>80</sort_order>
+                      <source_model>adminhtml/system_config_source_country</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </specificcountry>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+            	</fields>
+   			</colissimoappointment>-->
+			<gls>
+   			 	<label>GLS</label>
+           		<frontend_type>text</frontend_type>
+                <sort_order>10</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+				   <deduct_colissimo_amount translate="label">
+                      <label>Deduct colissimo amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </deduct_colissimo_amount>               
+ 				  <free_shipping_enable translate="label">
+                      <label>Free shipping with minimum order amount</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                      <sort_order>30</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </free_shipping_enable>     
+                  <free_shipping_subtotal translate="label">
+                      <label>Minimum order amount for free shipping</label>
+					  <frontend_model>tatvashipping/adminhtml_system_config_freeShippingSubtotal</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </free_shipping_subtotal>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <delivery_text translate="label">
+                      <label>Delivery times</label>
+                      <comment>Text shown in the ordering process</comment>
+					  <frontend_model>tatvashipping/adminhtml_system_config_deliveryTimes</frontend_model>
+					  <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                      <sort_order>50</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </delivery_text>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>65</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>                  
+                  <sallowspecific translate="label">
+                      <label>Ship to applicable countries</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>70</sort_order>
+                      <frontend_class>shipping-applicable-country</frontend_class>
+                      <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </sallowspecific>
+                  <specificcountry translate="label">
+                      <label>Ship to Specific countries</label>
+                      <frontend_type>multiselect</frontend_type>
+                      <sort_order>80</sort_order>
+                      <source_model>adminhtml/system_config_source_country</source_model>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                     <show_in_store>1</show_in_store>
+                  </specificcountry>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+            	</fields>
+   			</gls>
+            <!--<retrait>
+   				<label>Retrait</label>
+   			    <frontend_type>text</frontend_type>
+                <sort_order>8</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                   <active translate="label">
+                      <label>Enabled</label>
+                      <frontend_type>select</frontend_type>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </active>
+                  <title translate="label">
+                      <label>Title</label>
+                      <comment>Text shown in the ordering process</comment>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>20</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </title>
+                  <sort_order translate="label">
+                      <label>Sort order</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>25</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>0</show_in_store>
+                  </sort_order>
+                  <description translate="label">
+                      <label>Short description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>40</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </description>
+                  <long_description translate="label">
+                      <label>Long description</label>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>50</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </long_description>
+                  <side translate="label">
+                          <label>Choose Specific side</label>
+                          <frontend_type>select</frontend_type>
+                          <source_model>tatvaadminhtml/system_config_source_leftright</source_model>
+                          <sort_order>101</sort_order>
+                          <show_in_default>1</show_in_default>
+                          <show_in_website>1</show_in_website>
+                          <show_in_store>1</show_in_store>
+                      </side>
+				</fields>
+   			</retrait>-->
+   		</groups>
+   	</carriers>
+    <tatva translate="label" module="tatvashipping">
+        <label>Tatva Setting1</label>
+        <tab>tatva</tab>
+        <frontend_type>text</frontend_type>
+        <sort_order>10</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+        <groups>
+            <tatva_settings>
+                <label>Tatva Setting2</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>100</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <account translate="label">
+                        <label>Account</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </account>
+					<password translate="label">
+                        <label>Password</label>
+                        <frontend_type>password</frontend_type>
+                        <sort_order>11</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </password>
+				   <webservice translate="label">
+                        <label>Webservice URL</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>12</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </webservice>
+                </fields>
+            </tatva_settings>
+        </groups>
+    </tatva>
+    <marketplace_shipping translate="label" module="tatvashipping">
+        <label>MarketPlace Shipping Setting</label>
+        <tab>m2epro</tab>
+        <frontend_type>text</frontend_type>
+        <sort_order>10</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+        <groups>
+            <!--<allow_marketplace_shipping  translate="label" module="tatvashipping">
+                <label>MarketPlace Shipping Grid Calculation</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>10</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <active translate="label">
+                        <label>Enabled</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>0</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </active>
+                </fields>
+            </allow_marketplace_shipping>-->
+            <marketplace_shipping  translate="label" module="tatvashipping">
+                <label>MarketPlace Shipping Store Setting</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>20</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                <fields>
+                    <store_select translate="label">
+                        <label>Select Amazon Store</label>
+                        <frontend_type>multiselect</frontend_type>
+                        <source_model>adminhtml/system_config_source_store</source_model>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>0</show_in_website>
+                        <show_in_store>0</show_in_store>
+                    </store_select>
+                </fields>
+            </marketplace_shipping>
+        </groups>
+    </marketplace_shipping>
+   </sections>
+</config>

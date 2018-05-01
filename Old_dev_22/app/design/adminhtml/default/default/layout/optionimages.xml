@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<adminhtml_catalog_product_new>
+		<reference name="head">
+				<action method="addCss"><name>optionimages.css</name></action>
+		</reference>	
+		<reference name="js">
+			<block type="optionimages/adminhtml_catalog_product_edit_js" name="optionimages" template="optionimages/catalog/product/edit/js.phtml" />
+		</reference>		
+	</adminhtml_catalog_product_new>
+	
+	<adminhtml_catalog_product_edit>
+		<reference name="head">
+				<action method="addCss"><name>optionimages.css</name></action>
+		</reference>		
+		<reference name="js">
+			<block type="optionimages/adminhtml_catalog_product_edit_js" name="optionimages" template="optionimages/catalog/product/edit/js.phtml" />
+		</reference>		
+	</adminhtml_catalog_product_edit>
+	
+</layout>

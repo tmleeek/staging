@@ -1,0 +1,384 @@
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterCheckboxes
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+ol.m-filter-css-checkboxes li a.m-checkbox-unchecked { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792344/7f/checkbox_unchecked.png) 0 0 no-repeat; }
+ol.m-filter-css-checkboxes li a.m-checkbox-checked { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792344/08/checkbox_checked.png) 0 0 no-repeat; }
+ol.m-filter-css-checkboxes li a.m-checkbox-unchecked:hover { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792344/3c/checkbox_unchecked_hover.png) 0 0 no-repeat; }
+ol.m-filter-css-checkboxes li a.m-checkbox-checked:hover { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/20/checkbox_checked_hover.png) 0 0 no-repeat; }
+ol.m-filter-css-checkboxes li a.m-checkbox-unchecked,
+ol.m-filter-css-checkboxes li a.m-checkbox-checked { padding-left: 20px; text-decoration: none; }
+
+.m-filter-checkboxes li input { margin-right: 5px; position: relative; bottom: 2px; }
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterClear
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.block-layered-nav .m-filterclear { float:left; font-weight: normal; font-size: 11px; text-transform: none; }
+.block-layered-nav .m-filterclear .btn-remove { margin: 0; }
+/*
+.col-main .block-layered-nav .m-filterclear { position: static; float: right; font-weight: normal; font-size: 11px; text-transform: none; }
+.col-main .block-layered-nav .m-filterclear .btn-remove {margin: 3px 0 2px 5px; }
+*/
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterColors
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.m-filter-colors {overflow: hidden; width: 100%; margin-bottom: 10px;}
+.horizontal .m-color {float: left; margin: 2px;}
+.m-filter-colors.vertical li { margin:  4px 0 0; }
+.state.m-color { display:  inline-block; margin-left: 3px; }
+
+.m-filter-colors.labels li { overflow: hidden; margin: 4px 0 0; }
+.m-filter-colors.labels .m-color { float: left; margin: 0 4px 0; }
+.m-filter-colors.labels li a { text-decoration: none; }
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterExpandCollapse
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.block-layered-nav .m-collapseable { cursor: pointer; }
+/*.block-layered-nav .m-collapseable.m-expanded { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/38/bkg_layered-down.gif) 9px 11px no-repeat; }*/
+.block-layered-nav .m-filter-expand-collapse { float: left; font-weight: normal; font-size: 11px; text-transform: none; }
+.block-layered-nav .m-filter-expand-collapse .btn-expand-collapse { margin: 0; display: block; width: 11px; height: 11px; font-size: 0; line-height: 0; text-indent: -999em; overflow: hidden; }
+.block-layered-nav .m-expanded .m-filter-expand-collapse .btn-expand-collapse { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/cf/m-expanded.png) 0 0 no-repeat; }
+.block-layered-nav .m-collapsed .m-filter-expand-collapse .btn-expand-collapse { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/70/m-collapsed.png) 0 0 no-repeat; }
+
+/********************************/
+/* dropdown menu in left column */
+/********************************/
+.block-layered-nav dl { position: relative; zoom: 1; left: 0; top: 0; }
+.block-layered-nav dt.m-dropdown-menu { cursor: pointer; }
+.block-layered-nav dd.m-dropdown-menu { position: absolute; background: #e7f1f4; z-index: 1; padding: 5px 5px 10px 5px; }
+
+
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterDropdown
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.m-filter-dropdown { width: 100%; margin-top: 3px; }
+
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterGroup
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.block-layered-nav .m-collapseable-group { cursor: pointer; }
+.block-layered-nav .m-filter-group-expand-collapse { float: left; font-weight: normal; font-size: 11px; text-transform: none; }
+.block-layered-nav .m-filter-group-expand-collapse .btn-expand-collapse { margin: 0; display: block; width: 11px; height: 11px; font-size: 0; line-height: 0; text-indent: -999em; overflow: hidden; }
+.block-layered-nav .m-expanded .m-filter-group-expand-collapse .btn-expand-collapse { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792344/a0/m-expanded.png) 0 0 no-repeat; }
+.block-layered-nav .m-collapsed .m-filter-group-expand-collapse .btn-expand-collapse { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/70/m-collapsed.png) 0 0 no-repeat; }
+
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterHelp
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.m-help { cursor: help; display: inline-block; position: relative; }
+.m-help a.dots { cursor: help; }
+.m-help a.details { cursor: help; }
+.m-help .m-text { position: absolute; top: 5px; z-index: 999; background: #F8F7F5; border: 1px #ccc solid; width: 180px; padding: 10px; text-transform:none; }
+.col-left .m-help .m-text { left: 5px; }
+.col-right .m-help .m-text { right: 5px; }
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterPositioning
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+/* CSS Document */
+.hidden       { display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
+
+/* Containers of Layered Navigation */
+.col-main .block-layered-nav,
+.col-main .block-layered-nav .block-content { background: transparent; border: none; padding: 0; margin: 20px 0 0; position: relative;}
+
+/* Titles SHOP BY and CURRENTLY SHOPPING BY */
+.col-main .block-layered-nav .block-subtitle,
+.col-main .block-layered-nav .currently .block-subtitle { cursor: auto; margin: 0; padding: 0 5px 0 0; border: none; background: none; font-weight: bold; text-transform: uppercase; }
+.col-main .block-layered-nav dl.m-mobile { display: none; }
+.col-main .block-layered-nav dl { float: left; }
+
+/* CURRENTLY SHOPPING BY bar */
+.col-main .block-layered-nav .currently,
+.col-main .block-layered-nav .currently ol { float: left; width: 100%; }
+.col-main .block-layered-nav .currently li { float: left; white-space: nowrap; margin-right: 10px; background: transparent; border: none; padding-left: 0; }
+
+.col-main .block-layered-nav #narrow-by-list { clear: both; position: relative; }
+
+/* Actions */
+.col-main .block-layered-nav .actions,
+.col-main .block-layered-nav .m-horizontal-actions,
+.col-main .block-layered-nav .m-subtitle-actions { position: absolute; right: 5px; top:50%; margin: -6px 0 0; }
+.col-main .block-layered-nav .actions { background: transparent; border: none; float: left; padding: 6px 10px; top:-20px; }
+
+/* Top (as Menu) LN =================================================================================================================================== */
+
+/* SHOP BY bar */
+.col-main .block-layered-nav.m-topmenu.m-wide dl { height: 32px; }
+.col-main .block-layered-nav.m-topmenu.m-wide dl dt { float: left; padding: 7px 20px 7px 10px; cursor: pointer; background: url("//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/38/i-dropdown.gif") 0px 14px no-repeat; margin-left: 5px; font-weight: normal; text-transform: none;}
+.col-main .block-layered-nav.m-topmenu.m-wide dl dt.block-subtitle { background-image: none; padding-left: 0; margin-left: 0; }
+.col-main .block-layered-nav.m-topmenu.m-wide dl dd { background: white; position: absolute; width: auto; padding: 20px 10px 10px 10px; border-bottom: 5px solid #DEE5E8; display: block; z-index: 9999;
+/*    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='#eaeaea');
+    background: -webkit-gradient(linear, left top, left bottom, from(#eaeaea), to(white));
+    background: -moz-linear-gradient(top,  white,  #eaeaea);
+*/
+    filter: alpha(opacity=90);
+  	-moz-opacity: 0.9;
+  	opacity: 0.9;
+
+    }
+.col-main .block-layered-nav.m-topmenu .m-filter-slider { margin:0 !important; }
+/* Javascript operates with these classes */
+.col-main .block-layered-nav.m-topmenu dl dt.m-ln {  }
+.col-main .block-layered-nav.m-topmenu dl dd.m-ln {  }
+.col-main .block-layered-nav.m-topmenu dl dd.m-ln li { white-space: nowrap; }
+
+/* Classes added on Mouse Over */
+.col-main .block-layered-nav.m-topmenu dl dt.m-popup-filter { background: #DEE5E8; }
+.col-main .block-layered-nav.m-topmenu dl dd.m-popup-filter {  }
+
+/* Top LN - Horizontaly laid filters =================================================================================================================================== */
+.col-main .block-layered-nav.m-top dl { width: 19%; }
+.col-main .block-layered-nav.m-top.two-filter-columns dl { width: 50%; }
+.col-main .block-layered-nav.m-top.three-filter-columns dl { width: 33%; }
+.col-main .block-layered-nav.m-top.four-filter-columns dl { width: 23%; }
+.col-main .block-layered-nav.m-top dl dd { background: transparent; margin-right: 5px;}
+
+/*Responsive accordion menu for mobile divices========================================================================*/
+.col-main .block-layered-nav.one-filter-column dl { width: 100%; }
+.col-main .block-layered-nav.one-filter-column dl { padding:0; margin:0; }
+.col-main .block-layered-nav.one-filter-column dl.m-mobile { display: block; }
+.col-main .block-layered-nav.one-filter-column dl dt,
+.col-main .block-layered-nav.one-filter-column .block-subtitle { cursor: pointer; display:block; padding:5px !important; position: relative; margin:0; background: #eee; border-bottom:1px solid #ddd; border-top:1px solid #f9f9f9;}
+.col-main .block-layered-nav.one-filter-column dl dt:hover,
+.col-main .block-layered-nav.one-filter-column .block-subtitle { background: #ddd;
+transition: background 300ms ease-in-out;
+-moz-transition: background 300ms ease-in-out;
+-webkit-transition: background 300ms ease-in-out;
+-o-transition: background 300ms ease-in-out;}
+.col-main .block-layered-nav.one-filter-column dl dd { padding:10px 5px; margin:0; background: transparent; }
+.col-main .block-layered-nav.one-filter-column .m-filterclear { position: relative; right: 5px; }
+.col-main .block-layered-nav.one-filter-column .m-filter-colors { margin:0; }
+.col-main .block-layered-nav.one-filter-column .currently { margin:0; }
+.col-main .block-layered-nav.one-filter-column .currently ol { float: left; width: auto; }
+.col-main .block-layered-nav.one-filter-column .actions { right: 20px; top:0; margin: 0; padding: 5px 10px; z-index:3; }
+
+.col-main .block-layered-nav.one-filter-column .m-expand-collapse { float: left; font-weight: normal; font-size: 11px; text-transform: none; margin-bottom: -5px; display: none; }
+.col-main .block-layered-nav.one-filter-column .m-expand-collapse .btn-expand-collapse { margin: 0; display: block; width: 11px; height: 11px; font-size: 0; line-height: 0; text-indent: -999em; overflow: hidden; }
+.col-main .block-layered-nav.one-filter-column .m-expanded .m-expand-collapse .btn-expand-collapse { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1385671608/b3/m-expanded.png) 0 0 no-repeat; }
+.col-main .block-layered-nav.one-filter-column .m-collapsed .m-expand-collapse .btn-expand-collapse { background: url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1385671608/1a/m-collapsed.png) 0 0 no-repeat; }
+.col-main .block-layered-nav.one-filter-column .m-expand-collapse { display: block; }
+.col-main .block-layered-nav.one-filter-column .currently + div .block-subtitle,
+.col-main .block-layered-nav.one-filter-column .currently + div + div .block-subtitle { display: none; }
+
+.col-main .block-layered-nav.m-wide.m-mobile-only { margin: 0; }
+.col-main .block-layered-nav.m-wide.m-mobile-only .m-shop-by { display: none; }
+
+/* Types styling for Top LN only */
+.m-standard {} /* One item can be selected at the time */
+.m-list {} /* Text, multiple select */
+.m-checkboxes {} /* checkboxes - form elements */
+.m-css_checkboxes {} /* checkboxes - images */
+.m-colors {} /* Colors and Images - horizontal */
+.m-colors_vertical {} /* Colors and Images - vertical */
+.m-colors_label {} /* Colors and Images with labels */
+.m-dropdown {} /* Dropdowns */
+.m-radios {} /* Radio buttons */
+.m-slider {} /* Slider */
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterRadios
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+
+.m-filter-radios li input { margin-right: 5px; position: relative; bottom: 2px; }
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterShowMore
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.m-more-less { font-size: 11px; text-align: right; }
+.m-expandable-filter { overflow: hidden; }
+.m-scrollable-filter { overflow-x: hidden !important; overflow-y: scroll !important; border: 1px solid #ccc; padding: 2px 0 2px 5px; background: rgba(255,255,255,0.5); }
+.m-scrollable-filter li { white-space: nowrap; }
+
+.m-filter-popup { padding: 10px; }
+.m-filter-popup .m-columns { overflow: hidden; }
+.m-filter-popup .m-columns > li { float: left; width: 200px; text-align: left; }
+.m-filter-popup .m-columns.m-filter-colors.horizontal { width: 600px; }
+.m-filter-popup .m-columns.m-filter-colors.horizontal > li { width: auto; }
+.m-filter-popup .buttons-set { margin: 8px 0 0; }
+.m-filter-popup .m-filter-colors { margin: 0; }
+.m-showmore-popup-container { box-shadow : 15px 15px 25px 5px rgba( 0, 0, 0, 0.4 ); }
+
+.m-option-search { padding: 4px 0; }
+.m-option-search input { width: 100%; }
+.m-option-search input.m-empty { color: #c0c0c0; }
+.m-no-match { display: none; }
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterSlider
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+
+/* For All */
+.m-filter-slider { margin: 10px 0 15px; }
+/* Responsive layout */
+.one-filter-column .m-filter-slider { margin-bottom: 20px;  }
+.one-filter-column .m-slider-values { line-height: 25px; }
+.one-filter-column .m-slider-values input { width: 50px; padding: 1px 3px; }
+
+/* Default style - style1 */
+.m-filter-slider { height: 17px; position: relative; background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/16/bkg_slider.png) 0 0 repeat-x; }
+.m-filter-slider > .m-slider-from, .m-filter-slider > .m-slider-to { height: 17px; width: 17px; position: absolute; }
+.m-filter-slider > .m-slider-span { height: 8px; position: absolute; background: none; border-bottom: 2px solid #969696; margin: 0; }
+.m-filter-slider > .m-slider-from { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/05/slider.png) 0 0 no-repeat; cursor: e-resize; }
+.m-filter-slider > .m-slider-to { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/05/slider.png) -19px 0 no-repeat; cursor: w-resize; }
+
+.m-slider-values {text-align: center; margin-top: 3px; } 
+.m-slider-values .m-slider-min-value { float: left; }
+.m-slider-values .m-slider-max-value { float: right;}
+.m-slider-selected-value {}
+
+/* Style2 */
+.m-filter-slider.style2 { border: 2px solid #c8c8c8; border-width: 0 1px; background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1382397516/7d/bkg_slider2.png) center 0 repeat-x; }
+.m-filter-slider.style2 > .m-slider-span { height: 6px; border-bottom: 5px solid #969696; }
+.m-filter-slider.style2 > .m-slider-from, .m-filter-slider.style2 > .m-slider-to { height: 17px; width: 5px; background: #26b1e8 none; }
+.m-filter-slider.style2 > .m-slider-from { margin-right: 1px; }
+.m-filter-slider.style2 > .m-slider-to { margin-left: 1px; }
+/* Touch screen slider style */
+.one-filter-column .m-filter-slider.style2 > .m-slider-from,
+.one-filter-column .m-filter-slider.style2 > .m-slider-to {
+width:15px;
+height:30px;
+top:-7px;
+}
+/* Style3 */
+.m-filter-slider.style3 { background: #e6e6e6; }
+.m-filter-slider.style3,
+.m-filter-slider.style3 > .m-slider-span { height: 5px; border: none; }
+.m-filter-slider.style3 > .m-slider-span { background: #888; }
+.m-filter-slider.style3 > .m-slider-from,
+.m-filter-slider.style3 > .m-slider-to,
+.m-filter-slider.style3:before,
+.m-filter-slider.style3:after { height: 20px; width: 10px; top:-9px; background: #aaa none; z-index: 4; }
+.m-filter-slider.style3 > .m-slider-from,
+.m-filter-slider.style3 > .m-slider-to{
+box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.5);
+border:1px solid #ccc;
+background: #eeeeee;
+background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc));
+background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%);
+background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%);
+background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%);
+background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
+}
+.m-filter-slider.style3:before,
+.m-filter-slider.style3:after { position: absolute; left: 0; height:22px; top:-8px; width: 5px; background-color: #e6e6e6; display: block; content: ""; z-index: 3;}
+.m-filter-slider.style3:before{}
+.m-filter-slider.style3:after { right: 0; left: auto;}
+
+/* Touch screen slider style */
+.one-filter-column .m-filter-slider.style3:before,
+.one-filter-column .m-filter-slider.style3:after{
+width:5px;
+height:30px;
+top:-12px;
+}
+.one-filter-column .m-filter-slider.style3 > .m-slider-from,
+.one-filter-column .m-filter-slider.style3 > .m-slider-to {
+width:28px;
+height:28px;
+top:-14px;
+}
+/* Style4 */
+.m-filter-slider.style4,
+.m-filter-slider.style4 > .m-slider-span,
+.m-filter-slider.style4 > .m-slider-from,
+.m-filter-slider.style4 > .m-slider-to { border-radius:15px; height:10px; }
+.m-filter-slider.style4 {
+background:#e3e3e3;
+box-shadow: inset 1px 1px 3px 1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.2);
+border: 1px solid #f2f2f2;
+}
+.m-filter-slider.style4 > .m-slider-from,
+.m-filter-slider.style4 > .m-slider-to {
+background: #aaa none;
+box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
+width:18px;
+height:18px;
+top:-5px;
+border:1px solid #eee;
+background: #ffffff;
+background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 47%, #ededed 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed));
+background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
+}
+.m-filter-slider.style4 > .m-slider-span {
+background: #838383;
+box-shadow: inset 0px 1px 3px 1px rgba(0,0,0,0.2);
+border: none;
+margin-left: -20px;
+padding-left: 20px;
+}
+/* Touch screen slider style */
+.one-filter-column .m-filter-slider.style4 > .m-slider-from,
+.one-filter-column .m-filter-slider.style4 > .m-slider-to {
+width:28px;
+height:28px;
+top:-10px;
+}
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterSuperSlider
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+input.m-slider { width: 30px; }
+.col-main .block-layered-nav.m-topmenu dl.m-slider.m-inline dt { background-image: none; padding-left: 0; }
+.col-main .block-layered-nav.m-topmenu dl.m-slider.m-inline dd { background: none; position: static; border-bottom: 0; float: left;
+    padding: 7px 10px 7px 0; }
+
+.col-main .block-layered-nav.m-topmenu dl.m-slider.m-inline dd .m-filter-slider { float: left; width: 130px; }
+.col-main .block-layered-nav.m-topmenu dl.m-slider.m-inline dd .m-slider-values { float: left; margin-top: 0; margin-left: 5px; }
+.col-main .block-layered-nav.m-topmenu dl.m-slider.m-inline dd .m-slider-min-value,
+.col-main .block-layered-nav.m-topmenu dl.m-slider.m-inline dd .m-slider-max-value
+    { display: none; }
+
+.m-slider-values.left-aligned { text-align: left; }
+
+/**
+ * @category    Mana
+ * @package     ManaPro_FilterTree
+ * @copyright   Copyright (c) http://www.manadev.com
+ * @license     http://www.manadev.com/license  Proprietary License
+ */
+.m-expanded > .m-tree-item, .m-collapsed > .m-tree-item, .m-leaf > .m-tree-item { padding-left: 15px; }
+.m-expanded > .m-tree-item, .m-collapsed > .m-tree-item { cursor: pointer; }
+.m-expanded > .m-tree-item { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/a2/expanded.png) 0 4px no-repeat; }
+.m-collapsed > .m-tree-item { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792344/bb/collapsed.png) 0 4px no-repeat; }
+.m-expanded > .m-tree-item:hover { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792344/9d/expanded_over.png) 0 4px no-repeat; }
+.m-collapsed > .m-tree-item:hover { background: transparent url(//prod.az-boutique.fr/media/extendware/ewminify/media/css/1361792342/60/collapsed_over.png) 0 4px no-repeat; }
+.m-expanded > ul, .m-collapsed > ul { margin-left: 10px; }
+

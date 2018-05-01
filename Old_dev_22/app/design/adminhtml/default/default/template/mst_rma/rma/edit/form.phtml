@@ -1,0 +1,133 @@
+<?php
+$rma = $this->getRma();
+$fieldForm = $this->getFieldForm();
+?>
+<form id="edit_form" action="<?php echo $this->getUrl('*/*/save') ?>" method="post" enctype="multipart/form-data">
+<input name="form_key" type="hidden" value="<?php echo $this->getFormKey()?>" />
+<input name='rma_id' value='<?php echo $rma->getId()?>' type='hidden'>
+<input name='order_id' value='<?php echo $rma->getOrderId()?>' type='hidden'>
+
+<div class="entry-edit">
+
+	<?php if ($fieldForm): ?>
+	<div class="box-left">
+	    <div class="entry-edit">
+	  		<?php echo $this->getGeneralInfoForm()->toHtml() ?>
+	    </div>
+    </div>
+	<div class="box-right">
+		<div class="entry-edit">
+			<?php echo $fieldForm->toHtml() ?>
+		</div>
+	</div>
+	<div class="clear"></div>
+<?php else: ?>
+<?php echo $this->getGeneralInfoForm()->toHtml() ?>
+<?php endif; ?>
+
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="fieldset-legend ">Items</h4>
+	</div>
+	<div class="fieldset">
+		<div id="rma_item_edit_grid">
+			<div class="grid">
+				<div class="hor-scroll">
+					<table cellspacing="0" class="data" id="rma_item_edit_grid_table">
+					<thead>
+						<tr class="headings">
+							<th class="no-link"><span class="nobr">Product Name</span></th>
+							<th class="no-link"><span class="nobr">SKU</span></th>
+							<th class="no-link"><span class="nobr">Stock Qty</span></th>
+							<th class="no-link"><span class="nobr">Ordered Qty</span></th>
+							<th class="no-link"><span class="nobr">Qty to Return</span></th>
+							<th class="no-link"><span class="nobr">Reason to Return</span></th>
+							<th class="no-link"><span class="nobr">Item Condition</span></th>
+							<th class="no-link"><span class="nobr">Resolution</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+if ($rma->getId()) {
+	$collection = $rma->getItemCollection();
+} else {
+	$collection = $this->getOrderItemCollection();
+}
+$i = 0;
+						 foreach ($collection as $item): ?>
+<?php if ($item->getParentItem()) continue; ?>
+<?php if (!$rma->getId()) {
+	$item = Mage::getModel('rma/item')->initFromOrderItem($item);
+}
+$i++;
+?>
+						<tr class="even">
+							<td><?php echo Mage::helper('rma')->getOrderItemLabel($item)?></td>
+							<td><?php echo $item->getProduct()->getSku()?></td>
+							<td><?php echo $item->getQtyStock()?></td>
+							<td><?php echo $item->getQtyOrdered()?></td>
+							<td>
+								<input name='items[<?php echo $i ?>][item_id]' value='<?php echo $item->getId()?>' type='hidden'>
+								<input name='items[<?php echo $i ?>][order_item_id]' value='<?php echo $item->getOrderItemId()?>' type='hidden'>
+
+								<input name='items[<?php echo $i ?>][qty_requested]' class="input-text required-entry" value ='<?php echo $item->getQtyRequested()?$item->getQtyRequested():0?>'></td>
+							<td>
+		                        <select name="items[<?php echo $i ?>][reason_id]">
+		                            <option value=""><?php echo $this->__('--')?></option>
+		                            <?php foreach ($this->getReasonCollection() as $reason): ?>
+		                            <option value="<?php echo $reason->getId()?>" <?php echo $reason->getId() == $item->getReasonId()?'selected' : ''?>><?php echo $reason->getName() ?></option>
+		                            <?php endforeach;?>
+		                        </select>
+							</td>
+							<td>
+		                        <select name="items[<?php echo $i ?>][condition_id]">
+		                            <option value=""><?php echo $this->__('--')?></option>
+		                            <?php foreach ($this->getConditionCollection() as $condition): ?>
+		                            <option value="<?php echo $condition->getId()?>" <?php echo $condition->getId() == $item->getConditionId()?'selected' : ''?>><?php echo $condition->getName() ?></option>
+		                            <?php endforeach;?>
+		                        </select>
+							</td>
+							<td>
+		                        <select name="items[<?php echo $i ?>][resolution_id]">
+		                            <option value=""><?php echo $this->__('--')?></option>
+		                            <?php foreach ($this->getResolutionCollection() as $resolution): ?>
+		                            <option value="<?php echo $resolution->getId()?>" <?php echo $resolution->getId() == $item->getResolutionId()?'selected' : ''?>><?php echo $resolution->getName() ?></option>
+		                            <?php endforeach;?>
+		                        </select>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<div class="box-left">
+	    <div class="entry-edit">
+	  <?php echo $this->getShippingAddressForm()->toHtml() ?>
+	    </div>
+    </div>
+	<div class="box-right">
+		<div class="entry-edit">
+			<div class="entry-edit-head">
+			    <h4 class="icon-head head-edit-form fieldset-legend">Return Address</h4>
+			    <div class="form-buttons"></div>
+			</div>
+		    <div class="fieldset ">
+			    <div class="hor-scroll">
+			   <?php echo $this->getReturnAddressHtml() ?>
+		        </div>
+		    </div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+<?php if ($rma->getId()) :?>
+	<?php echo $this->getHistoryHtml() ?>
+<?php endif;?>
+</div>
+</div>

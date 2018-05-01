@@ -1,0 +1,105 @@
+"<b>Only available with the ""Image Optimization"" addon. Please <a href=""http://www.extendware.com/rwcore/redirect/normal/to/purchase_addon/"" target=""_blank"">purchase addon</a> to enable.</b>","<b>Only available with the ""Image Optimization"" addon. Please <a href=""http://www.extendware.com/rwcore/redirect/normal/to/purchase_addon/"" target=""_blank"">purchase addon</a> to enable.</b>"
+"<b>Warning:</b> You must enter a valid hostname. The hostname is the bolded part of the following URL: http://<b>www.example.com</b>/path/index.html","<b>Warning:</b> You must enter a valid hostname. The hostname is the bolded part of the following URL: http://<b>www.example.com</b>/path/index.html"
+"Add after","Add after"
+"Add Directory","Add Directory"
+"Add Filter","Add Filter"
+Advanced,Advanced
+Always,Always
+"An error occurred while flushing the cache","An error occurred while flushing the cache"
+"An error occurred while optimizing the images.","An error occurred while optimizing the images."
+"Are you sure you want to flush the image cache?","Are you sure you want to flush the image cache?"
+"Auto Configuration","Auto Configuration"
+"Auto Configure","Auto Configure"
+"Auto-configuration has been disabled in the demo. When you install the extension on your store you can use auto-configuration.","Auto-configuration has been disabled in the demo. When you install the extension on your store you can use auto-configuration."
+"Auto-configuration is NOT a substitute for configuring manually. Auto-configuration can usually (but not always) pick decent settings to help you get started. After auto-configuration you should review all settings and ensure they work. Do you want to continue?","Auto-configuration is NOT a substitute for configuring manually. Auto-configuration can usually (but not always) pick decent settings to help you get started. After auto-configuration you should review all settings and ensure they work. Do you want to continue?"
+"Auto-configuration will usually configure your site fairly well, but it is not perfect. Please review each configuration item and verify optimum settings have been selected.","Auto-configuration will usually configure your site fairly well, but it is not perfect. Please review each configuration item and verify optimum settings have been selected."
+Automatic,Automatic
+"Automatic (aggressive)","Automatic (aggressive)"
+Both,Both
+"Cache catalog images and add forever expirations","Cache catalog images and add forever expirations"
+"Cache CSS images and add forever expirations.  <b>Note</b>: <a href=""http://www.extendware.com/magento-minify-javascript-css-html.html""><b>Minify JS / CSS</b></a> must be installed for this to work. If this is not installed you can Custom Directories top optimize css images.","Cache CSS images and add forever expirations.  <b>Note</b>: <a href=""http://www.extendware.com/magento-minify-javascript-css-html.html""><b>Minify JS / CSS</b></a> must be installed for this to work. If this is not installed you can Custom Directories top optimize css images."
+"Cache skin images and add forever expirations","Cache skin images and add forever expirations"
+"Cache template media images such as those found in cms pages using {{media url=""""}","Cache template media images such as those found in cms pages using {{media url=""""}"
+"Catalog Image Cache","Catalog Image Cache"
+"Catalog Image Optimizing","Catalog Image Optimizing"
+"Catalog Images","Catalog Images"
+"Closure Compiler (java)","Closure Compiler (java)"
+"Closure Compiler (online)","Closure Compiler (online)"
+"Command failed to run: %s","Command failed to run: %s"
+Configuration,Configuration
+"Configuration is already optimal according to auto-configuration. You can review the configuration manually to further optimize as auto-configuration is limited in scope.","Configuration is already optimal according to auto-configuration. You can review the configuration manually to further optimize as auto-configuration is limited in scope."
+"Configuration Results","Configuration Results"
+"Could not copy %s to %s","Could not copy %s to %s"
+"Could not create cache directory: %s","Could not create cache directory: %s"
+"Could not create directory %s","Could not create directory %s"
+"Could not delete directory: %s","Could not delete directory: %s"
+"Could not find file: %s","Could not find file: %s"
+Cronjob,Cronjob
+"Cronjob will optimize every few hours whereas realtime will optimize as pages are accessed. <b>Warning: </b> realtime will cause first requests to be slow until the images are cached","Cronjob will optimize every few hours whereas realtime will optimize as pages are accessed. <b>Warning: </b> realtime will cause first requests to be slow until the images are cached"
+"CSS Compressor (php)","CSS Compressor (php)"
+"CSS Image Cache","CSS Image Cache"
+"CSS Image Optimizing","CSS Image Optimizing"
+"Custom Directories","Custom Directories"
+Delete,Delete
+Developer,Developer
+"Did you know purchasing %s can speed up your store even more?","Did you know purchasing %s can speed up your store even more?"
+Directory,Directory
+"Disabling this is faster, but will require you to flush the cache if changing images.","Disabling this is faster, but will require you to flush the cache if changing images."
+"Enter directories <u>relative to the base path</u> where images should also be optimized. For example, /media/wysiwyg/. <b>Warning: </b> This will <u>permanently</u> change images in these directories. Ensure you backup first!","Enter directories <u>relative to the base path</u> where images should also be optimized. For example, /media/wysiwyg/. <b>Warning: </b> This will <u>permanently</u> change images in these directories. Ensure you backup first!"
+Extendware,Extendware
+External,External
+"Flush Cache","Flush Cache"
+"Flush Optimized Image Cache","Flush Optimized Image Cache"
+"Frontend Images","Frontend Images"
+General,General
+"GIF Optimizer","GIF Optimizer"
+"Having different hostnames for different resources can speed up downloads. <u>Only change these values if you are know exactly what you are doing.</u>","Having different hostnames for different resources can speed up downloads. <u>Only change these values if you are know exactly what you are doing.</u>"
+Hostnames,Hostnames
+"Image Optimizer","Image Optimizer"
+"Images that have been seen at least one time on the site have been optimized.","Images that have been seen at least one time on the site have been optimized."
+Internal,Internal
+"JPG Optimizer","JPG Optimizer"
+"JSMin (php)","JSMin (php)"
+"JSMinPlus (php)","JSMinPlus (php)"
+"Leave blank to use the default hostname. This value must be valid or the resource will not load.","Leave blank to use the default hostname. This value must be valid or the resource will not load."
+Main,Main
+"Modified Time Check","Modified Time Check"
+Never,Never
+None,None
+"Optimize catalog images to be faster to download, save bandwidth, etc","Optimize catalog images to be faster to download, save bandwidth, etc"
+"Optimize css images to be faster to download, save bandwidth, etc","Optimize css images to be faster to download, save bandwidth, etc"
+"Optimize Images","Optimize Images"
+"Optimize skin images to be faster to download, save bandwidth, etc","Optimize skin images to be faster to download, save bandwidth, etc"
+"Optimize template images to be faster to download, save bandwidth, etc","Optimize template images to be faster to download, save bandwidth, etc"
+"Optimized images caches (usually no need to flush).","Optimized images caches (usually no need to flush)."
+"Optimizer Mode","Optimizer Mode"
+Page,Page
+"Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs.","Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs."
+"PNG Optimizer","PNG Optimizer"
+"Real-time + Cronjob","Real-time + Cronjob"
+Results,Results
+"Search Engine Optimization","Search Engine Optimization"
+Settings,Settings
+"Skin Image Cache","Skin Image Cache"
+"Skin Image Optimizing","Skin Image Optimizing"
+"Skin Images","Skin Images"
+Template,Template
+"Template Image","Template Image"
+"Template Image Cache","Template Image Cache"
+"Template Image Optimizing","Template Image Optimizing"
+"The cache has been flushed. You will also want to flush the <a href=""%s"">Full Page Cache</a>","The cache has been flushed. You will also want to flush the <a href=""%s"">Full Page Cache</a>"
+"This must be a valid regular expression with the beginning and ending ""/"". For example, /page/. You can read the PHP preg documentation for more information","This must be a valid regular expression with the beginning and ending ""/"". For example, /page/. You can read the PHP preg documentation for more information"
+"This will rewrite catalog images and apply expiration headers to them. This will use a lot more hard disk space.","This will rewrite catalog images and apply expiration headers to them. This will use a lot more hard disk space."
+"This will rewrite CSS images and apply expiration headers to them to make the best use of the browser cache.","This will rewrite CSS images and apply expiration headers to them to make the best use of the browser cache."
+"This will rewrite skin images and apply expiration headers to them. This will use a lot more hard disk space.","This will rewrite skin images and apply expiration headers to them. This will use a lot more hard disk space."
+"This will rewrite template images and apply expiration headers to them. This will use a lot more hard disk space.","This will rewrite template images and apply expiration headers to them. This will use a lot more hard disk space."
+"Updated to %s","Updated to %s"
+"Updated to %s because exec() is disabled. Contact your host to enable.","Updated to %s because exec() is disabled. Contact your host to enable."
+"Updated to %s because software is not installed on the server: %s. Contact your host to install this software.","Updated to %s because software is not installed on the server: %s. Contact your host to install this software."
+"URL Filter RegExp","URL Filter RegExp"
+"Use the product name for catalog images","Use the product name for catalog images"
+"Utility used to optimize gif images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable","Utility used to optimize gif images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable"
+"Utility used to optimize jpg images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable. Add ""--all-progressive --force"" to force progressive images","Utility used to optimize jpg images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable. Add ""--all-progressive --force"" to force progressive images"
+"Utility used to optimize png images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable <b>Note:</b> You can use the command <u>pngquant -force 256 %s 2>&1</u> if you have pngquant installed and are okay with lossy compression.","Utility used to optimize png images. This utility will need to be installed on your server for optimizing to work. Leave blank to disable <b>Note:</b> You can use the command <u>pngquant -force 256 %s 2>&1</u> if you have pngquant installed and are okay with lossy compression."
+"WARNING: normally you should not run this this through the web server. The cronjob will automatically optimize images. Please note, an image must be accessed on the site one time before it is optimized in most cases. Are you sure you want to proceed?","WARNING: normally you should not run this this through the web server. The cronjob will automatically optimize images. Please note, an image must be accessed on the site one time before it is optimized in most cases. Are you sure you want to proceed?"
+"YUI Compressor (java)","YUI Compressor (java)"

@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+
+    <catalog_category_default>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="facebook_like_button" />
+        <update handle="twitter_tweet_button" />
+        <update handle="referral_share_button" />
+
+        <reference name="content">
+            <reference name="defaultcat.likebutton">
+                <action method="setHidden"><value>1</value></action>
+            </reference>
+
+            <block type="rewardssocial/widgets" name="rewardssocial.widgets" template="rewardssocial/widgets.phtml" before="category.products">
+                <!-- like button -->
+                <block type="rewardssocial/facebook_like_button" name="facebook.like" template="rewardssocial/facebook/like/button.phtml">
+                    <action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_category_default"><value>1</value></action>
+                    <action method="setIsCategoryButton"><value>1</value></action>
+                </block>
+
+                <!-- google+ button -->
+                <block type="rewardssocial/google_plusOne_button" name="google.plusone" template="rewardssocial/google/plusone/button.phtml" />
+
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_button" name="twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+
+                <!-- referral link share button -->
+                <block type="rewardssocial/referral_share_button" name="referral.share" template="rewardssocial/referral/share/button.phtml" />
+
+                <!-- follow button -->
+                <block type="rewardssocial/twitter_follow_button" name="twitter.follow" template="rewardssocial/twitter/follow/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/twitter_tweet_rewards" name="twitter.tweet.rewards"
+                as="twitter.tweet.rewards" template="rewardssocial/twitter/tweet/body_end/event_register.phtml" />
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="facebook_like_button" />
+        <update handle="twitter_tweet_button" />
+        <update handle="referral_share_button" />
+
+        <reference name="content">
+            <reference name="defaultcat.likebutton">
+                <action method="setHidden"><value>1</value></action>
+            </reference>
+
+            <block type="rewardssocial/widgets" name="rewardssocial.widgets" template="rewardssocial/widgets.phtml" before="category.products">
+                <!-- like button -->
+                <block type="rewardssocial/facebook_like_button" name="facebook.like" template="rewardssocial/facebook/like/button.phtml">
+                    <action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_category_default"><value>1</value></action>
+                    <action method="setIsCategoryButton"><value>1</value></action>
+                </block>
+
+                <!-- google+ button -->
+                <block type="rewardssocial/google_plusOne_button" name="google.plusone" template="rewardssocial/google/plusone/button.phtml" />
+
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_button" name="twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+
+                <!-- referral link share button -->
+                <block type="rewardssocial/referral_share_button" name="referral.share" template="rewardssocial/referral/share/button.phtml" />
+
+                <!-- follow button -->
+                <block type="rewardssocial/twitter_follow_button" name="twitter.follow" template="rewardssocial/twitter/follow/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/twitter_tweet_rewards" name="twitter.tweet.rewards"
+                as="twitter.tweet.rewards" template="rewardssocial/twitter/tweet/body_end/event_register.phtml" />
+        </reference>
+    </catalog_category_layered>
+
+    <catalog_product_view>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="facebook_like_button" />
+        <update handle="twitter_tweet_button" />
+        <update handle="pinterest_pin_button" />
+        <update handle="referral_share_button" />
+
+        <reference name="content">
+            <reference name="likebutton">
+                <action method="setHidden"><value>1</value></action>
+            </reference>
+
+            <block type="rewardssocial/widgets" name="rewardssocial.widgets" template="rewardssocial/widgets.phtml" before="product.info">
+                <!-- like button -->
+                <block type="rewardssocial/facebook_like_button" name="facebook.like" template="rewardssocial/facebook/like/button.phtml">
+                    <action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_product_default"><value>1</value></action>
+                </block>
+
+                <!-- facebook share button -->
+                <block type="rewardssocial/facebook_share_button" name="facebook.share" template="rewardssocial/facebook/share/button.phtml" />
+
+                <!-- pinterest button -->
+                <block type="rewardssocial/pinterest_pin_button" name="pinterest.pin" template="rewardssocial/pinterest/pin/button.phtml" />
+
+                <!-- google+ button -->
+                <block type="rewardssocial/google_plusOne_button" name="google.plusone" template="rewardssocial/google/plusone/button.phtml" />
+
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_button" name="twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+
+                <!-- referral link share button -->
+                <block type="rewardssocial/referral_share_button" name="referral.share" template="rewardssocial/referral/share/button.phtml" />
+
+                <!-- follow button -->
+                <block type="rewardssocial/twitter_follow_button" name="twitter.follow" template="rewardssocial/twitter/follow/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="product.info">
+            <reference name="info.likebutton">
+                <action method="setHidden"><value>1</value></action>
+            </reference>
+
+            <block type="rewardssocial/widgets" name="info.rewardssocial.widgets" template="rewardssocial/widgets.phtml">
+                <!-- like button -->
+                <block type="rewardssocial/facebook_like_button" name="info.facebook.like" template="rewardssocial/facebook/like/button.phtml" />
+
+                <!-- facebook share button -->
+                <block type="rewardssocial/facebook_share_button" name="facebook.share" template="rewardssocial/facebook/share/button.phtml" />
+
+                <!-- pinterest button -->
+                <block type="rewardssocial/pinterest_pin_button" name="pinterest.pin" template="rewardssocial/pinterest/pin/button.phtml" />
+
+                <!-- google+ button -->
+                <block type="rewardssocial/google_plusOne_button" name="google.plusone" template="rewardssocial/google/plusone/button.phtml" />
+
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_button" name="twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+
+                <!-- referral link share button -->
+                <block type="rewardssocial/referral_share_button" name="referral.share" template="rewardssocial/referral/share/button.phtml" />
+
+                <!-- follow button -->
+                <block type="rewardssocial/twitter_follow_button" name="twitter.follow" template="rewardssocial/twitter/follow/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/twitter_tweet_rewards" name="twitter.tweet.rewards"
+                as="twitter.tweet.rewards" template="rewardssocial/twitter/tweet/body_end/event_register.phtml" />
+
+            <block type="rewardssocial/facebook_share_rewards" name="fb.share.rewards"
+                as="fb.share.rewards" template="rewardssocial/facebook/body_end/event_register_share.phtml" />
+
+            <block type="rewardssocial/pinterest_pin_rewards" name="pinterest.pin.rewards"
+                as="pinterest.pin.rewards" template="rewardssocial/pinterest/pin/body_end/event_register.phtml" />
+        </reference>
+
+    </catalog_product_view>
+
+    <cms_page>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="facebook_like_button" />
+        <update handle="twitter_tweet_button" />
+        <update handle="referral_share_button" />
+
+        <reference name="content">
+            <reference name="defaultcms.likebutton">
+                <action method="setHidden"><value>1</value></action>
+            </reference>
+
+            <block type="rewardssocial/widgets" name="rewardssocial.widgets" template="rewardssocial/widgets.phtml" before="cms_page">
+                <!-- like button -->
+                <block type="rewardssocial/facebook_like_button" name="facebook.like" template="rewardssocial/facebook/like/button.phtml">
+                    <action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_cms_default"><value>1</value></action>
+                    <action method="setIsCmsButton"><value>1</value></action>
+                </block>
+
+                <!-- google+ button -->
+                <block type="rewardssocial/google_plusOne_button" name="google.plusone" template="rewardssocial/google/plusone/button.phtml" />
+
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_button" name="twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+
+                <!-- referral link share button -->
+                <block type="rewardssocial/referral_share_button" name="referral.share" template="rewardssocial/referral/share/button.phtml" />
+
+                <!-- follow button -->
+                <block type="rewardssocial/twitter_follow_button" name="twitter.follow" template="rewardssocial/twitter/follow/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/twitter_tweet_rewards" name="twitter.tweet.rewards"
+                as="twitter.tweet.rewards" template="rewardssocial/twitter/tweet/body_end/event_register.phtml" />
+        </reference>
+    </cms_page>
+
+    <cms_index_defaultindex>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="facebook_like_button" />
+        <update handle="twitter_tweet_button" />
+        <update handle="referral_share_button" />
+
+        <reference name="content">
+            <reference name="defaultcms.likebutton">
+                <action method="setHidden"><value>1</value></action>
+            </reference>
+
+            <block type="rewardssocial/widgets" name="rewardssocial.widgets" template="rewardssocial/widgets.phtml" before="cms_page">
+                <!-- like button -->
+                <block type="rewardssocial/facebook_like_button" name="facebook.like" template="rewardssocial/facebook/like/button.phtml">
+                    <action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_cms_default"><value>1</value></action>
+                    <action method="setIsCmsButton"><value>1</value></action>
+                </block>
+
+                <!-- google+ button -->
+                <block type="rewardssocial/google_plusOne_button" name="google.plusone" template="rewardssocial/google/plusone/button.phtml" />
+
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_button" name="twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+
+                <!-- referral link share button -->
+                <block type="rewardssocial/referral_share_button" name="referral.share" template="rewardssocial/referral/share/button.phtml" />
+
+                <!-- follow button -->
+                <block type="rewardssocial/twitter_follow_button" name="twitter.follow" template="rewardssocial/twitter/follow/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/twitter_tweet_rewards" name="twitter.tweet.rewards"
+                as="twitter.tweet.rewards" template="rewardssocial/twitter/tweet/body_end/event_register.phtml" />
+        </reference>
+    </cms_index_defaultindex>
+
+    <rewardsref_customer_index>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="twitter_tweet_button" />
+        <update handle="referral_share_button" />
+
+        <reference name="affiliate">
+            <block type="rewardssocial/referral_widgets" name="referral.share.widgets" as="referral.share.widgets" template="rewardssocial/widgets.phtml">
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_referral_button" name="referral.twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+                <!-- facebook share button -->
+                <block type="rewardssocial/facebook_share_referral_button" name="referral.facebook.share" template="rewardssocial/facebook/share/button.phtml" />
+            </block>
+        </reference>
+    </rewardsref_customer_index>
+
+    <checkout_onepage_success>
+        <update handle="rewards_social_widgets_head" />
+        <update handle="twitter_tweet_button" />
+        <!-- <update handle="pinterest_pin_button" /> -->
+
+        <reference name="content">
+            <block type="rewardssocial/purchase_share" name="rewardssocial.checkout.purchase.share" template="rewardssocial/purchase/share.phtml">
+                <block type="rewardssocial/purchase_items" name="rewardssocial.order.items" template="rewardssocial/purchase/items.phtml" />
+            </block>
+        </reference>
+
+        <reference name="rewardssocial.checkout.purchase.widgets">
+            <!-- facebook share button -->
+            <block type="rewardssocial/facebook_share_purchase_button" name="purchase.facebook.share" template="rewardssocial/facebook/share/button.phtml" />
+            <!-- tweet button -->
+            <block type="rewardssocial/twitter_tweet_purchase_button" name="purchase.twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+            <!-- pinterest button -->
+           <!--  <block type="rewardssocial/pinterest_pin_purchase_button" name="purchase.pinterest.pin" template="rewardssocial/pinterest/pin/button.phtml" /> -->
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/purchase_share" name="purchase.share.event.register"
+                as="purchase.share.event.register" template="rewardssocial/purchase/share/body_end/event_register.phtml" />
+        </reference>
+    </checkout_onepage_success>
+
+    <!-- Layout handles for buttons -->
+    <twitter_tweet_button>
+        <label>Twitter Tweet Button Layout Handle - will load JS + CSS needed.</label>
+
+        <!-- <reference name="head">
+            <action method="addCss">
+                <file helper="rewardssocial/twitter_tweet/getCss" />
+                <stylesheet>css/rewardssocial/twitter/tweet.css</stylesheet> 
+            </action>
+        </reference>-->
+
+        <reference name="before_body_end">
+            <block type="core/template" name="twitter.tweet.sdk"
+                as="twitter.tweet.sdk" template="rewardssocial/twitter/tweet/body_end/load_sdk.phtml" />
+        </reference>
+    </twitter_tweet_button>
+
+    <referral_share_button>
+        <label>Referral Share Button Layout Handle - will load JS + CSS needed.</label>
+
+        <reference name="head">
+            <action method="addJs">
+                <file helper="rewardssocial/referral_share/getJs" />
+                <!-- <script>tbt/rewardssocial/referral/share/reward.js</script> -->
+            </action>
+            <!-- <action method="addCss">
+                <file helper="rewardssocial/referral_share/getCss" />
+                <stylesheet>css/rewardsref/my_referrals.css</stylesheet> 
+            </action>
+            <action method="addCss">
+                <file helper="rewardssocial/referral_share/getRewardsCss" />
+                <stylesheet>css/rewardssocial/referral/share.css</stylesheet>--> 
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="rewardssocial/referral_share_rewards" template="rewardssocial/referral/share/js.phtml" />
+        </reference>
+
+        <reference name="affiliate">
+            <block type="rewardssocial/referral_widgets" name="referral.share.widgets" as="referral.share.widgets" template="rewardssocial/widgets.phtml">
+                <!-- tweet button -->
+                <block type="rewardssocial/twitter_tweet_referral_button" name="referral.twitter.tweet" template="rewardssocial/twitter/tweet/tweetbutton.phtml" />
+                <!-- facebook share button -->
+                <block type="rewardssocial/facebook_share_referral_button" name="referral.facebook.share" template="rewardssocial/facebook/share/button.phtml" />
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/referral_share_rewards" name="referral_share_event_register"
+                as="referral_share_event_register" template="rewardssocial/referral/body_end/event_register.phtml" />
+        </reference>
+    </referral_share_button>
+
+    <facebook_like_button>
+        <label>Facebook Like Button Layout Handle - will load JS + CSS needed.</label>
+
+        <reference name="head">
+            <action method="addJs">
+                <script>tbt/rewardssocial/facebook/like/reward.js</script>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/rewardssocial/facebook/like.css</stylesheet>
+            </action>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="rewardssocial/facebook_like_rewards" name="fb_like_event_register"
+                as="fb_like_event_register" template="rewardssocial/facebook/body_end/event_register.phtml" />
+        </reference>
+    </facebook_like_button>
+
+    <pinterest_pin_button>
+        <label>Pinterest Pin Button Layout Handle - will load JS + CSS needed.</label>
+
+        <!-- <reference name="head">
+            <action method="addCss">
+                <file helper="rewardssocial/pinterest_pin/getCss" />
+                <stylesheet>css/rewardssocial/pinterest/modal.css</stylesheet> 
+            </action>
+        </reference>-->
+
+        <reference name="before_body_end">
+            <block type="core/template" name="purchase.pinterest.pin.sdk"
+                as="purchase.pinterest.pin.sdk" template="rewardssocial/pinterest/pin/body_end/load_sdk.phtml" />
+        </reference>
+    </pinterest_pin_button>
+
+    <rewards_social_widgets_head>
+        <label>Rewards Social Widgets Head Layout Handle</label>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/rewardssocial/widgets.css</stylesheet>
+            </action>
+            <action method="addJs">
+                <script>tbt/rewardssocial/widgets/init.js</script>
+            </action>
+            <action method="addJs">
+                <file helper="rewardssocial/twitter_follow/getJs" />
+                <!-- <script>tbt/rewardssocial/twitter/follow/reward.js</script> -->
+            </action>
+            <action method="addJs">
+                <file helper="rewardssocial/google_plusone/getJs" />
+                <!-- <script>tbt/rewardssocial/google/plusone/reward.js</script> -->
+            </action>
+            <action method="addJs">
+                <file helper="rewardssocial/pinterest_pin/getJs" />
+                <!-- <script>tbt/rewardssocial/pinterest/pin/reward.js</script> -->
+            </action>
+            <action method="addJs">
+                <file helper="rewardssocial/facebook_share/getJs" />
+                <!-- <script>tbt/rewardssocial/facebook/share/reward.js</script> -->
+            </action>
+            <action method="addJs">
+                <file helper="rewardssocial/twitter_tweet/getJs" />
+                <!-- <script>tbt/rewardssocial/twitter/tweet/reward.js</script> -->
+            </action>
+            <action method="addJs">
+                <file helper="rewardssocial/purchase_share/getJs" />
+                <!-- <script>tbt/rewardssocial/purchase/share/reward.js</script> -->
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="rewardssocial_fb_init" as="rewardssocial_fb_init" after="ev_fb_init"
+                template="rewardssocial/facebook/body_end/register_fb_init.phtml" />
+            </reference>
+    </rewards_social_widgets_head>
+</layout>

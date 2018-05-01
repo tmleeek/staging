@@ -1,0 +1,7 @@
+<config>
+	<modules>
+		<Extendware_EWPageCache>
+			<addons>secondary_cache,tagging,cache_backends,page_rules</addons>
+		<Extendware_EWPageCache>
+	</modules>
+</config>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+       <reference name="right">
+            <block type="aitmanufacturers/manufacturers_brief" name="manufacturers.brief" template="aitmanufacturers/manufacturers_brief.phtml">
+            </block>
+        </reference>
+       <reference name="left">
+            <!--<block type="aitmanufacturers/manufacturers_brief" name="manufacturers.brief" template="aitmanufacturers/manufacturers_brief.phtml">
+            </block>-->
+        </reference>
+    </default>
+	<aitmanufacturers_index_list>
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		<reference name="content">
+			<block type="aitmanufacturers/manufacturers_featured" name="manufacturers_featured" template="aitmanufacturers/manufacturers_featured.phtml"/>
+			<block type="aitmanufacturers/manufacturers" name="manufacturers" template="aitmanufacturers/manufacturers.phtml"/>
+        </reference>
+        <reference name="right">
+        	<remove name="manufacturers.brief" />
+        </reference>
+    </aitmanufacturers_index_list> 
+
+    <aitmanufacturers_index_view>
+        <reference name="left">
+        <!--<block type="manapro_filteradvanced/actions" name="m_filter_actions" template="manapro/filteradvanced/actions.phtml" />                 -->
+            <block type="core/template" name="manufacturer_layered_nav" before="manufacturer_categories" template="aitmanufacturers/manufacturer_layered_nav.phtml"/>
+            <block type="aitmanufacturers/manufacturer_categories" name="manufacturer_categories" before="-" template="aitmanufacturers/manufacturer_categories.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="manufacturer_layered_nav_top" before="_" template="aitmanufacturers/manufacturer_layered_nav_top.phtml"/>
+            <block type="aitmanufacturers/manufacturer" name="manufacturer" template="aitmanufacturers/manufacturer.phtml">
+	            <block type="aitmanufacturers/product_list" name="product_list" as="product_list">
+                    <block type="aitmanufacturers/product_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+	            </block>
+            </block>
+        </reference>
+    </aitmanufacturers_index_view>
+    
+    <catalog_seo_sitemap_category translate="label">        
+        <reference name="seo.sitemap.links">
+            <action method="addLink" translate="label title" module="catalog" >
+            	<label>Attributes Sitemap</label>
+            	<url helper="aitmanufacturers/data/getSeoBrandsUrl"/>
+            	<title>Attributes Sitemap</title>
+            </action>
+        </reference>
+    </catalog_seo_sitemap_category>
+    <catalog_seo_sitemap_product translate="label">        
+        <reference name="seo.sitemap.links">
+            <action method="addLink" translate="label title" module="catalog" >
+            	<label>Attributes Sitemap</label>
+            	<url helper="aitmanufacturers/data/getSeoBrandsUrl"/>
+            	<title>Attributes Sitemap</title>
+            </action>
+        </reference>
+    </catalog_seo_sitemap_product>
+    <catalog_seo_sitemap_brand translate="label">
+        <label>Catalog Seo Sitemap (Attribute List)</label>
+        <update handle="catalog_seo_sitemap" />
+        <reference name="seo.sitemap.container">
+            <action method="setTitle" translate="title" module="catalog"><title>Attributes</title></action>
+            <block type="aitmanufacturers/seo_sitemap_brand" name="seo.sitemap.sitemap" as="sitemap" after="pager_top" template="aitmanufacturers/sitemap.phtml">
+                <action method="bindPager"><pager>seo.sitemap.pager.top</pager></action>
+                <action method="bindPager"><pager>seo.sitemap.pager.bottom</pager></action>
+                <action method="setItemsTitle" translate="title" module="catalog"><title>attributes</title></action>
+            </block>
+        </reference>
+        <reference name="seo.sitemap.links">
+            <action method="addLink" translate="label title" module="catalog"><label>Categories Sitemap</label><url helper="catalog/map/getCategoryUrl"/><title>Categories Sitemap</title></action>
+        </reference>
+        <reference name="seo.sitemap.links">
+            <action method="addLink" translate="label title" module="catalog"><label>Products Sitemap</label><url helper="catalog/map/getProductUrl"/><title>Products Sitemap</title></action>
+        </reference>
+    </catalog_seo_sitemap_brand>
+</layout> 
+<!--
+/**
+ * Shop By Brands
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitmanufacturers
+ * @version      3.3.1
+ * @license:     zAuKpf4IoBvEYeo5ue8Cll0eto0di8JUzOnOWiuiAF
+ * @copyright:   Copyright (c) 2014 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->

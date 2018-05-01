@@ -1,0 +1,209 @@
+
+<?php
+    $loggedin_cus_id=Mage::helper('customer')->getCustomer()->getEntityId() ;
+
+    $wishList = Mage::getSingleton('wishlist/wishlist')->loadByCustomer($loggedin_cus_id);
+    $wishListItemCollection = $wishList->getItemCollection();
+    if(count($wishListItemCollection))
+      {
+      $arrProductIds = array();
+        foreach ($wishListItemCollection as $item)
+        {
+         $product = $item->getProduct();
+         $arrProductIds[] = $product->getId();
+        }
+      }
+
+     $wishlistcoll =   Mage::helper('wishlist')->getWishlistItemCollection();
+     $wishlistcollarray =   Mage::helper('wishlist')->getWishlistItemCollection()->getData();
+     foreach($wishlistcoll as $item)
+      {
+        $itemarray[] = $item->getProductId();
+      }
+     $count = 0;
+?>
+<?php if($this->getItemCount()): ?>
+<div class="crosssell">
+    <h2><?php echo $this->__('Based on your selection, you may be interested in the following items:') ?></h2>
+    <ul id="crosssell-products-list">
+    <?php foreach ($this->getItems() as $_item): ?>
+        <li class="item">
+            <a class="product-image" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75); ?>" width="75" height="75" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+            <div class="product-details">
+                <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h3>
+                <?php echo $this->getPriceHtml($_item, true) ?>
+
+            <?php if(Mage::getStoreConfig('ajax/cartpage/enabled_ccs')){ ?>
+
+               	<?php if ( !($_item->getTypeInstance(true)->hasOptions($_item) || $_item->isGrouped()) ) { ?>
+                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $this->getAddToCartUrl($_item) ?>','<?php echo $_item->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button><span id='ajax_loader_crossell<?php echo $_item->getId()?>' style='display:none'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+                <?php } else { ?>
+				<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="showOptions('<?php echo $_item->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+				<a href='<?php echo $this->getUrl('ajax/ajax/productoptions',array('product_id'=>$_item->getId()));?>' class='fancybox' id='fancybox<?php echo $_item->getId()?>' style='display:none'>Link</a>
+							<?php }  ?>
+
+            <?php } else { ?>
+
+                  <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+            <?php } ?>
+
+                <?php if(Mage::getStoreConfig('ajax/wishlistcompare/enabledpro')){ ?>
+					 <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <?php if(in_array($_item->getId(), $arrProductIds))
+                                 { $checkUser=1; }
+                              else{ $checkUser=0; }
+                             $wishlist = Mage::getModel('wishlist/item')->load($_item->getId(),'product_id');
+                             if($wishlist->getId() && $checkUser==1)
+                             {
+                              if(in_array($_item->getId(), $itemarray))
+                                {
+                                 $itemId = $wishlistcollarray[$count]['wishlist_item_id'];
+                                 $itemLoad = Mage::getModel('wishlist/item')->load($itemId);
+                              ?>
+
+                            <li><a href="#" onclick='if(confirm("Are you sure you would like to remove this item from the wishlist?")) {removeWishlist("<?php echo $this->helper('wishlist')->getRemoveUrl($itemLoad) ?>","<?php echo $_item->getId()?>");return false;}' class="link-wishlist"><span class="fabShopSprite" id="wishlist<?php echo $_item->getId()?>"><?php echo $this->__('Remove from Wishlist') ?></span></a></li>
+                            <?php $count++; } ?>
+                            <?php } else { ?>
+                            <li><a href="#" onclick='ajaxWishlist("<?php echo $this->helper('wishlist')->getAddUrl($_item) ?>","<?php echo $_item->getId()?>");return false;' class="link-wishlist"><span class="fabShopSprite" id="wishlist<?php echo $_item->getId()?>"><?php echo $this->__('Add to Wishlist') ?></span></a></li>
+                            <?php } ?>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_item)): ?>
+                            <li><span class="separator">|</span> <a href="#" onclick='ajaxCompare("<?php echo $_compareUrl ?>","<?php echo $_item->getId()?>");return false;' class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                    <span id='ajax_loading<?php echo $_item->getId()?>' style='display:none'><img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/></span>
+
+					<?php }else{?>
+					<ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_item)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+						  </ul>
+					<?php } ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <script type="text/javascript">decorateList('crosssell-products-list', 'none-recursive')</script>
+</div>
+<?php endif; ?>
+<div class="addtocart_popup" id="addtocart_popup" style="position:absolute;display:none;">
+	<div class="popup-text"></div>
+</div>
+<script type="text/javascript">
+jQuery.noConflict();
+	jQuery(document).ready(function(){
+		jQuery('.fancybox').fancybox(
+			{
+			   hideOnContentClick : true,
+			   width: 520,
+			   autoDimensions: true,
+               type : 'iframe',
+			   showTitle: false,
+			   scrolling: 'no',
+			   onComplete: function(){
+				jQuery('#fancybox-frame').load(function() { // wait for frame to load and then gets it's height
+					jQuery('#fancybox-content').height(jQuery(this).contents().find('body').height()+30);
+					jQuery.fancybox.resize();
+				 });
+
+			   }
+			}
+		);
+	});
+
+	function showOptions(id){
+		jQuery('#fancybox'+id).trigger('click');
+	}
+
+    function setAjaxData(data,iframe){
+		if(data.status == 'ERROR'){
+			//alert(data.message);
+            jQuery('.popup-text').html(data.message);
+                    jQuery.fancybox({
+    		                 'content' : jQuery("#addtocart_popup").html(),
+    						 'padding' : 20,
+    				         });
+		}else{
+			if(jQuery('.block-cart')){
+	            jQuery('.block-cart').replaceWith(data.sidebar);
+	        }
+	        if(jQuery('.header .links')){
+	            jQuery('.header .links').replaceWith(data.toplink);
+	        }
+
+            url_topcart = "<?php echo $this->getUrl('ajax/ajax/headercart');?>";
+                        jQuery.ajax({
+              	                url: url_topcart,
+              					type:"POST",
+              					data:{},
+              					success: function(data)
+                                    {
+                                       jQuery('.top-link-cart:first').parent("li").html(data);
+                                       truncted_details();
+              					     }
+              				    });
+            url_checkout_cart = "<?php echo $this->getUrl('checkout/cart/index');?>";
+                        jQuery.ajax({
+              	                url: url_checkout_cart,
+              					type:"POST",
+              					data:{},
+              					success: function(data)
+                                    {
+                                       var result = data;
+
+                                       $('region_id').setAttribute('defaultValue', estimateRegionId);
+                                       data_cart_content = jQuery(result).find('div.cart').html();
+                                       jQuery('.cart').html(data_cart_content);
+                                       new RegionUpdater('country', 'region', 'region_id',region_json);
+                                       jQuery('.fancybox').fancybox({
+                              			   hideOnContentClick : true,
+                              			   width: 520,
+                              			   autoDimensions: true,
+                                           type : 'iframe',
+                              			   showTitle: false,
+                              			   scrolling: 'no',
+                              			   onComplete: function(){
+                              				jQuery('#fancybox-frame').load(function() {
+                              					jQuery('#fancybox-content').height(jQuery(this).contents().find('body').height()+30);
+                              					jQuery.fancybox.resize();
+                              				 });
+
+                              			   }
+                              			});
+                                      truncted_details();
+                                      displayTopCart();
+              					     }
+              				    });
+	        //jQuery.fancybox.close();
+            jQuery('.popup-text').html(data.message);
+                    jQuery.fancybox({
+    		                 'content' : jQuery("#addtocart_popup").html(),
+    						 'padding' : 20,
+    				         });
+		}
+
+	}
+	function setLocationAjax(url,id){
+		url += 'isAjax/1';
+		url = url.replace("checkout/cart","ajax/cart");
+        showcartloading();
+		try {
+			jQuery.ajax( {
+				url : url,
+				dataType : 'json',
+				success : function(data)
+                   {
+         			 setAjaxData(data,false);
+			     	}
+
+			});
+		} catch (e) {
+		}
+	}
+    var url_headercart = "<?php echo $this->getUrl('ajax/ajax/headercart') ?>";
+    </script>

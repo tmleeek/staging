@@ -1,0 +1,56 @@
+<div class="entry-edit">
+
+    <div class="columns">
+        <div class="side-col">
+            <?php echo $this->getChildHtml('mpm_rules_tab'); ?>
+        </div>
+        <div class="main-col">
+            <div class="main-col-inner">
+                <div class="content-header">
+                    <table cellspacing="0" class="grid-header">
+                        <tr>
+                            <td><h3 class="icon-head head-products"><?php echo $this->__('Rules') ?></h3></td>
+                            <td align="right">
+                                <button onclick="Rule.types(this);"
+                                        class="scalable add" type="button">
+                                    <span><?php echo $this->__('Create new rule') ?></span></button>
+                                <?php echo $this->getRulesTypesAsCombo(); ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="smartprice_rules_tab_content"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    Rule = {
+
+        types: function(elt){
+
+            document.getElementById('ruleTypesSelect').style.display = 'inline';
+            elt.setAttribute('class', 'scalable delete');
+            elt.innerHTML = "<span><?php echo $this->__('Cancel') ?></span>";
+            elt.setAttribute('onclick', 'Rule.cancel(this)');
+
+        },
+        add: function(type){
+            if(type)
+                document.location.href='<?php echo $this->getEditUrl() ?>?type='+type;
+        },
+        cancel: function(elt){
+
+            document.getElementById('ruleTypesSelect').style.display = 'none';
+            elt.setAttribute('class', 'scalable add');
+            elt.innerHTML = "<span><?php echo $this->__('Create new rule') ?></span>";
+            elt.setAttribute('onclick', 'Rule.types(this)');
+
+        }
+
+    }
+
+</script>

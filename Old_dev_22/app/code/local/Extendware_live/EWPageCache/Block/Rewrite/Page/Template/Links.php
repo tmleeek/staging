@@ -1,0 +1,5 @@
+<?php
+class Extendware_EWPageCache_Block_Rewrite_Page_Template_Links extends Extendware_EWPageCache_Block_Override_Mage_Page_Template_Links
+{
+	
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <tbtbillboard_billboard_show>
+        <reference name="content">
+            <block type="tbtbillboard/billboard" name="billboard" />
+        </reference>
+    </tbtbillboard_billboard_show>
+</layout>

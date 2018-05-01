@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<layout>
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>video</name>
+                <block>tatvavideo/adminhtml_catalog_product_edit_tab_video</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+</layout>

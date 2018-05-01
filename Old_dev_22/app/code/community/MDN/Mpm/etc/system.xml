@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <mpm translate="label" module="Mpm">
+            <label>Smart price</label>
+            <tab>service</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <groups>
+
+                <status  translate="label">
+                    <label>Account status</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <status translate="label">
+                            <label>Configuration progress</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Status</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </status>
+                    </fields>
+                </status>
+
+                <account translate="label">
+                    <label>Account</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <login translate="label">
+                            <label>Login</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </login>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </password>
+                        <verification translate="label">
+                            <label>Verification</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Verification</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Check here if your login / password combination is correct</comment>
+                        </verification>
+                        <ip translate="label">
+                            <label>My IP</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Ip</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If you experience connection issues, make sure that your IP is white list by boostmyshop</comment>
+                        </ip>
+                        <reset translate="label">
+                            <label>Reset</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Reset</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Reset offers, reports, logs</comment>
+                        </reset>
+
+                    </fields>
+                </account>
+
+                <webservices translate="label">
+                    <label>Webservices credentials</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <credentials translate="label">
+                            <label>Credentials</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_WebservicesCredentials</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </credentials>
+                    </fields>
+                </webservices>
+
+                <mapping translate="label">
+                    <label>Mapping (fields association)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <mapping translate="label">
+                            <label>Fields</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Mapping</frontend_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </mapping>
+                    </fields>
+                </mapping>
+
+                <repricing translate="label">
+                    <label>Repricing</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable>
+                        <test_mode translate="label">
+                            <label>Test mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If enable, calculated price are not saved</comment>
+                        </test_mode>
+                        <save_product_after_update translate="label">
+                            <label>Save product after price update</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_webiste>0</show_in_webiste>
+                            <show_in_store>0</show_in_store>
+                            <comment>Helps to update price on frontend</comment>
+                        </save_product_after_update>
+                        <force_price_reindex translate="label">
+                            <label>Force price index</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_webiste>0</show_in_webiste>
+                            <show_in_store>0</show_in_store>
+                            <comment>Force price reindex once imported, to use with caution because it may slow down import</comment>
+                        </force_price_reindex>
+                        <change_product_updated_at translate="label">
+                            <label>Change product updated at date when price changed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </change_product_updated_at>
+                        <configuration translate="label">
+                            <label>Configuration per channel</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_RepricingConfiguration</frontend_model>
+                            <backend_model>Mpm/System_Config_Backend_SellerReference</backend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </configuration>
+                        <clean_attributes_for_missing_products translate="label">
+                            <label>Clean useless attributes</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_CleanAttributesForMissingProducts</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </clean_attributes_for_missing_products>
+                        <enable_clean_attributes translate="label">
+                            <label>Enable automatic attributes cleaning</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>590</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Scheduled everyday at 11:00PM</comment>
+                        </enable_clean_attributes>
+                    </fields>
+                </repricing>
+
+                <catalog_export translate="label">
+                    <label>Catalog Export</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enable_cron translate="label">
+                            <label>Enable cron</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Automatically push catalog every evening</comment>
+                        </enable_cron>
+                        <export translate="label">
+                            <label>Export now</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_CatalogExport_Export</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </export>
+                        <download_export translate="label">
+                            <label>Download export now</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_CatalogExport_ExportDownload</frontend_model>
+                            <sort_order>600</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comments>Download XML file instead of sending it to Carl (for debug purpose)</comments>
+                        </download_export>
+                        <export_file_format translate="label">
+                            <label>Catalog export file format</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Mpm/System_Config_CatalogExportFormat</source_model>
+                            <sort_order>610</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </export_file_format>
+                        <categories translate="label">
+                            <label>Categories to export</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_CategoriesToExport</frontend_model>
+                            <sort_order>800</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </categories>
+                        <export_only_with_stock translate="label">
+                            <label>Export only products with stock</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>801</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If Embedded Erp is installed, export only products with available quantity > 0</comment>
+                        </export_only_with_stock>
+                        <product_types translate="label">
+                            <label>Product types to export</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Mpm/System_Config_ProductType</source_model>
+                            <sort_order>802</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </product_types>
+                        <product_visibilities translate="label">
+                            <label>Product visibilities to export</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Mpm/System_Config_ProductVisibility</source_model>
+                            <sort_order>803</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </product_visibilities>
+                        <allowed_manufacturers translate="label">
+                            <label>Allowed Manufacturer(s)</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Mpm/System_Config_Manufacturer</source_model>
+                            <sort_order>804</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </allowed_manufacturers>
+                        <created_at_after translate="label">
+                            <label>Created At After</label>
+                            <frontend_type>date</frontend_type>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Date</frontend_model>
+                            <sort_order>805</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </created_at_after>
+                        <created_at_before translate="label">
+                            <label>Created At Before</label>
+                            <frontend_type>date</frontend_type>
+                            <frontend_model>Mpm/System_Config_Button_Carl_Date</frontend_model>
+                            <sort_order>806</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </created_at_before>
+                        <product_count translate="label">
+                            <label>Number of products exported</label>
+                            <frontend_model>Mpm/System_Config_Button_Carl_ProductsExportedCount</frontend_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </product_count>
+                        <enable_single_update translate="label">
+                            <label>Enable single update</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Enable with caution</comment>
+                        </enable_single_update>
+                        <whitelisted_attributes translate="label">
+                            <label>Attribute(s) to include in export</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>5000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Fill attribute names separated by a coma</comment>
+                        </whitelisted_attributes>
+                    </fields>
+                </catalog_export>
+
+                <catalog_export_erp translate="label">
+                    <label>Catalog Export (ERP settings)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>201</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <exclude_supplier_no_stock translate="label">
+                            <label>Exclude suppliers with 0 stock</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If enabled, suppliers without stock are not used to select the best supplier</comment>
+                        </exclude_supplier_no_stock>
+                        <exclude_supplier_no_price translate="label">
+                            <label>Exclude suppliers without price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If enabled, suppliers without buying price are not used to select the best supplier</comment>
+                        </exclude_supplier_no_price>
+                    </fields>
+                </catalog_export_erp>
+
+                <history translate="label">
+                    <label>Export history</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>Mpm/System_Config_Form_Fieldset_Carl_History</frontend_model>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </history>
+
+                <version translate="label">
+                    <label>Release</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>Mpm/System_Config_Form_Fieldset_Carl_Release</frontend_model>
+                    <sort_order>400</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </version>
+
+            </groups>
+        </mpm>
+    </sections>
+</config>

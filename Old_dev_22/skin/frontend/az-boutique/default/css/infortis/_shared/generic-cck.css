@@ -1,0 +1,26 @@
+.v-centered-content{display:table;}
+.v-centered-content .v-center{display:table-cell;vertical-align:middle;}
+.section-title{clear:both;margin:0;display:block;}
+.section-title.padding-right{padding-right:80px !important;}
+.section-line{clear:both;display:block;font-size:0;line-height:0;height:0;margin:0 0 10px;padding:10px 0 0;background:none;border-bottom:1px solid #e5e5e5;text-indent:-9999em;overflow:hidden;}
+.custom-sidebar-right{float:right !important;}
+.custom-sidebar-right .inner{padding-left:10px;border-left:1px solid #e5e5e5;}
+.custom-sidebar-left{float:left !important;}
+.custom-sidebar-left .inner{padding-right:10px;border-right:1px solid #e5e5e5;}
+.links > li,
+.links > li > a{line-height:3em;}
+.links > li > a{padding:0 0.5833em;}
+.links > li.label{padding-right:0.5833em;}
+.links > li{float:left;}
+.links > li > a{display:block;}
+.links-wrapper-separators .links > li{margin-left:-1px;}
+.links-wrapper-separators .links > li > a{background-image:url(../../../images/img/link-separator.png);background-position:right center;background-repeat:no-repeat;}
+.links-wrapper-separators .links > li.last > a{background-image:none;}
+.links-wrapper-separators .links > li.hide-separator > a{background-image:none;}
+.links-wrapper-separators .links > li.separator-left > a{background-position:left center;}
+.links-wrapper-separators-left .links > li{margin-left:-1px;}
+.links-wrapper-separators-left .links > li > a{background-image:url(../../../images/img/link-separator.png);background-position:left center;background-repeat:no-repeat;}
+.links-wrapper-separators-left .links > li.first > a{background-image:none;}
+.links-wrapper-separators-left .links > li.hide-separator > a{background-image:none;}
+.links-wrapper-separators-left .links > li.separator-right > a{background-position:right center;}
+a.go{background:url(../../../images/infortis/_shared/cck/bullet.png) 97% 50% no-repeat;padding-right:17px;display:inline !important;}

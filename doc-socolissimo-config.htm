@@ -1,0 +1,670 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+<title>Documentation Configuration Module SoColissimo</title>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"/>
+<meta http-equiv="content-language" content="fr"/>
+<meta name="robots" content="noindex,nofollow"/>
+</head>
+<body>
+<div class="field"><a name="summary"></a>
+<h4>Sommaire</h4>
+<div class="table-of-contents">
+<ul>
+	<li><a href="#introduction">Introduction</a></li>
+	<li><a href="#property_label">Le libellé : `label`</a></li>
+	<li><a href="#property_fees">Les frais de port : `fees`</a>
+		<ul>
+			<li><a href="#more_formulas">Initiation aux formules</a></li>
+			<li><a href="#more_tables">Utilisation des tables de tarifs</a></li>
+			<li><a href="#more_copy">Faire une copie d'une propriété d'une autre méthode</a></li>
+			<li><a href="#more_special_functions">Fonctions spéciales dans les formules</a></li>
+			<li class="new"><a href="#more_attributes_options">Utilisation des attributs ou des options des produits</a> (ajout des stocks dans la version 2.3.2)</li>
+			<li class="new"><a href="#more_foreach">Utilisation des boucles foreach</a> (ajouté dans version 2.1.7)</li>
+			<li class="new"><a href="#more_custom_variables">Utilisation des variables personnalisées de Magento (Custom Variables)</a> (ajouté dans version 2.2.7)</li>
+		</ul>
+	</li>
+	<li><a href="#property_conditions">Les conditions : `conditions`</a></li>
+	<li><a href="#property_destination">La destination : `destination`</a></li>
+	<li><a href="#property_enabled">L'activation : `enabled`</a></li>
+	<li><a href="#property_code">Le code : `code`</a></li>
+	<li><a href="#property_description">La description : `description`</a></li>
+	<li><a href="#property_origin">L'origine : `origin`</a></li>
+	<li><a href="#property_customer_groups">Les groupes client : `customer_groups`</a></li>
+	<li><a href="#property_tracking_url">L'URL de suivi : `tracking_url`</a></li>
+	<li><a href="#property__comment">Commentaires</a></li>
+	<li><a href="#changelog">Changelog</a></li>
+</ul>
+</div>
+</div><div class="field"><a name="introduction"></a>
+
+
+<h4>Introduction</h4>
+<p>
+	Si vous souhaitez poser une question, utilisez le sujet suivant : <a href="http://www.magentocommerce.com/boards/viewthread/38223/">http://www.magentocommerce.com/boards/viewthread/38223/</a>
+</p>
+
+<p>
+	La syntaxe de configuration est une syntaxe proche de la syntaxe JSON.
+</p>
+<p>
+
+	Exemple :
+</p>
+<div class="code"><span class="comment"># National</span><br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"National"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"AD,FR,MC"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_excluding_tax}&lt;1000.00"</span>,<br/>
+
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"1.30 + {table {cart.weight} in 0.5:5.30, 1.0:6.50, 2.0:7.40, 3.0:8.30, 5.0:10.10}"</span>,<br/>
+}</div>
+
+<p>
+	Le caractère `#` en début de ligne indique un commentaire.<br/>
+	Un élément de configuration débute par le caractère `{` et se termine par `}`.<br/>
+	Un élément de configuration contient plusieurs propriétés associées à des valeurs.<br/>
+
+	Les propriétés sont alphanumériques (a-z0-9_), le séparateur propriété/valeur est le caractère `:`, les valeurs sont numériques, booléennes ou des chaînes de caractères délimitées par des guillemets. En fin de ligne, une virgule sert de séparateur entre les différentes propriétés.
+</p>
+<p>
+	Liste des propriétés :
+</p>
+<ul>
+	<li><b>label</b>: nom (libellé)</li>
+	<li><b>description</b>: description (visible seulement si le template l'affiche)</li>
+	<li><b>code</b>: code de la méthode de livraison (facultatif mais s'il est spécifié il doit être unique)</li>
+	<li><b>enabled</b>: bloc de configuration activé ou non (ex: <span class="value">true</span> ou <span class="value">false</span>)</li>
+	<li class="new"><b>fees</b>: frais de port (ex: <span class="value">"15.00"</span> ou <span class="value">"{table {cart.weight} in 0.5:5.30, 1.0:6.50}"</span> ou <span class="value">"100 * {cart.weight}"</span>)</li>
+	<li class="new"><b>conditions</b>: conditions d'activation (ex: <span class="value">"{cart.weight}&gt;=1.0"</span> ou <span class="value">"{cart.price_excluding_tax}&lt;100.00"</span> ou <span class="value">"({cart.weight}&lt;=1.0) and ({cart.weight}&gt;3.0) and {free_shipping}"</span> ou <span class="value">"{count products where product.attribute.color=='Bleu'}&gt;1 or {count products where product.option.size=='2m'}&gt;2"</span>)</li>
+	<li><b>destination</b>: pays (éventuellement régions) autorisés en destination (ex: <span class="value">"FR,DE,US"</span> ou <span class="value">"FR(2A,2B,25000)"</span> ou <span class="value">"FR-(2A,2B)"</span> ou <span class="value">"FR(01,02,39600),CH,DE"</span>)</li>
+	<li class="new"><b>origin</b>: pays (éventuellement régions) autorisés en origine (ex: <span class="value">"FR,DE,US"</span> ou <span class="value">"FR(2A,2B,25000)"</span> ou <span class="value">"FR-(2A,2B)"</span> ou <span class="value">"FR(01,02,39600),CH,DE"</span>)</li>
+	<li class="new"><b>customer_groups</b>: groupes de client autorisés (ex: <span class="value">"NOT LOGGED IN,Retailer"</span> ou <span class="value">"0,3"</span>)</li>
+</ul>
+
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_label"></a>
+
+
+<h4>Le libellé : `label`</h4>
+<p>Il s'agit du nom qui sera donné à la méthode de livraison.</p>
+<p>On peut insérer certains éléments comme le poids des marchandises dans le libellé.<br/>
+Pour ce faire, utiliser les variables suivantes :</p>
+<ul>
+	<li><b>{destination.country.name}</b>: le pays de destination</li>
+	<li><b>{destination.country.code}</b>: le code du pays de destination</li>
+	<li><b>{destination.region.code}</b>: le code de la région de destination</li>
+	<li><b>{destination.postcode}</b>: le code postal de destination</li>
+	<li><b>{origin.country.name}</b>: le pays d'envoi</li>
+	<li><b>{origin.country.code}</b>: le code du pays d'envoi</li>
+	<li><b>{origin.region.code}</b>: le code de la région d'envoi</li>
+	<li><b>{origin.postcode}</b>: le code postal d'envoi</li>
+	<li><b>{cart.weight}</b>: poids des marchandises</li>
+	<li><b>{cart.weight.unit}</b>: l'unité de poids</li>
+	<li><b>{cart.quantity}</b>: la quantité d'articles</li>
+	<li><b>{cart.price_including_tax}</b>: prix TTC</li>
+	<li><b>{cart.price_excluding_tax}</b>: prix HT</li>
+	<li><b>{store.code}</b>: code du magasin</li>
+	<li><b>{store.name}</b>: nom du magasin</li>
+	<li><b>{store.address}</b>: adresse du magasin</li>
+	<li><b>{store.phone}</b>: téléphone du magasin</li>
+	<li><b>{date.timestamp}</b>: timestamp UNIX de la date actuelle</li>
+	<li><b>{date.year}</b>: année de la date actuelle</li>
+	<li><b>{date.month}</b>: mois de la date actuelle</li>
+	<li><b>{date.day}</b>: jour de la date actuelle</li>
+	<li><b>{date.hour}</b>: heure de la date actuelle</li>
+	<li><b>{date.minute}</b>: minute de la date actuelle</li>
+	<li><b>{date.second}</b>: seconde de la date actuelle</li>
+</ul>
+<div class="code">label: <span class="string">"Colissimo ({cart.weight} / {destination.country.name})"</span>,</div>
+<p>La ligne ci-dessus affichera par exemple "Colissimo (3.0kg / France)".</p>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_fees"></a>
+
+
+<h4>Les frais de port : `fees`</h4>
+<p>
+	La propriété `fees` se spécifie sous la forme d'une <a href="#more_formulas">formule (voir l'initiation aux formules)</a>.
+</p>
+<div class="code"><span class="comment"># Frais fixes</span><br/>fees: 10.00,<br/>
+<br/>
+<span class="comment"># Table de prix</span><br/>fees: <span class="string">"{table {cart.weight} in 0.5:5.30, 1.0:6.50}"</span>,<br/>
+<br/>
+<span class="comment"># Formule</span><br/>fees: <span class="string">"0.1 * {cart.price_excluding_tax} + 10.00"</span>,<br/>
+<br/>
+<span class="comment"># Combinaison</span><br/>fees: <span class="string">"0.1 * {cart.price_excluding_tax} + {table {cart.weight} in 0.5:5.30, 1.0:6.50} + 10.00"</span>,
+</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_formulas"></a>
+
+
+<h4>Initiation aux formules</h4>
+<p>
+	Les propriétés `fees` et `conditions` sont spécifiées sous la forme de formules.
+</p>
+<p>
+	Signes mathématiques disponibles :
+</p>
+<ul>
+	<li>opérateurs : *, /, + et -</li>
+	<li>modulo : %</li>
+	<li>parenthèses : ( et )</li>
+	<li>les opérateurs booléens &amp;&amp;, and, ||, or, ==, &lt;, &gt;, &lt;=, &gt;=</li>
+	<li>les opérateurs binaires &amp; et |</li>
+	<li>le groupe d'opérateur C ? X : Y (ex: "{cart.price_exluding_tax}&gt;100 ? 15*{cart.weight} : 20*{cart.weight}")</li>
+</ul>
+<p>
+	Fonctions disponibles :
+</p>
+<ul>
+	<li>arrondis : round(x), floor(x), ceil(x)</li>
+	<li>valeur absolue : abs(x)</li>
+	<li>maximum : max(x,y)</li>
+	<li>minimum : min(x,y)</li>
+	<li>entier aléatoire : rand(min,max)</li>
+	<li>puissance : pow(x,puissance)</li>
+	<li>nombre PI : pi()</li>
+	<li>racine carrée : sqrt(x)</li>
+	<li>logarithme : log(x) pour le logarithme népérien ou log(x,base)</li>
+	<li>exponentiel : exp(x)</li>
+</ul>
+<p>
+	Possibilité d'utiliser les fonctionnalités avancées suivantes : casting  en entier (int) ou en nombre flottant (float),
+	comparaison avec la valeur null ou les valeurs booléennes true et false.
+</p>
+<p>
+	Variables disponibles :
+</p>
+<ul>
+
+	<li><b>{cart.weight}</b>: poids du colis</li>
+	<li><b>{cart.price_including_tax}</b>: prix TTC</li>
+	<li><b>{cart.price_excluding_tax}</b>: prix HT</li>
+	<li><b>{cart.quantity}</b>: nombre d'articles dans le panier</li>
+	<li><b>{date.timestamp}</b>: timestamp UNIX de la date actuelle</li>
+	<li><b>{date.year}</b>: année de la date actuelle</li>
+	<li><b>{date.month}</b>: mois de la date actuelle</li>
+	<li><b>{date.day}</b>: jour de la date actuelle</li>
+	<li><b>{date.hour}</b>: heure de la date actuelle</li>
+	<li><b>{date.minute}</b>: minute de la date actuelle</li>
+	<li><b>{date.second}</b>: seconde de la date actuelle</li>
+	<li><b>{free_shipping}</b>: frais de port offert (par une règle dans Magento) [true/false]</li>
+</ul>
+<p>
+	Vous avez la possibilité de mettre des espaces et des retours à la ligne dans les formules (pour aérer).
+</p>
+<p class="new" style="font-weight: bold;">
+	Vous pouvez également utiliser des fonctionnalités avancées telles que les tables de tarifs, la copie d'une propriété d'une autre méthode,
+	les fonctions spéciales, l'utilisation des attributs et des options des produits ou encore l'utilisation des variables personnalisées.
+</p>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_tables"></a>
+
+
+<h4>Utilisation des tables de tarifs</h4>
+<p>
+	Dans une table, on peut inclure ou exclure une valeur limite avec les caractères '[' et ']' :
+</p>
+<div class="code"><span class="comment"># Limite supérieure 1.0 incluse</span><br/>
+fees: <span class="string">"{table {cart.weight} in 1.0]:5.00}"</span>,<br/>
+
+<br/>
+<span class="comment"># Limite supérieure 1.0 exclue</span><br/>
+fees: <span class="string">"{table {cart.weight} in 1.0[:5.00}"</span>,</div>
+
+<p>
+	Dans une table, on doit spécifier la valeur de référence. Pour cela, on peut utiliser une des variables disponibles.<br/>
+	Vous pouvez aussi utiliser une formule afin de définir une autre variable de référence.
+</p>
+
+<div class="code"><span class="comment"># Les valeurs limites sont comparées au poids du panier</span><br/>
+fees: <span class="string">"{table {cart.weight} in 0.5:5.30, 1.0:6.50}"</span>,<br/>
+<br/>
+<span class="comment"># Les valeurs limites sont comparées à la quantité d'articles</span><br/>
+fees: <span class="string">"{table {cart.quantity} in 10:5.30, 20:6.50}"</span>,<br/>
+<br/>
+<span class="comment"># Les valeurs limites sont comparées au prix TTC</span><br/>
+fees: <span class="string">"{table {cart.price_including_tax} in 15.00:5.30, 30.00:6.50}"</span>,<br/>
+<br/>
+<span class="comment"># Les valeurs limites sont comparées au prix HT</span><br/>
+fees: <span class="string">"{table {cart.price_excluding_tax} in 15.00:5.30, 30.00:6.50}"</span>,<br/>
+<br/>
+<span class="comment"># Les valeurs limites sont comparées à une valeur de référence définie par l'utilisateur</span><br/>
+fees: <span class="string">"{table ceil({cart.weight}/10) in 1:5.30, 2:6.50}"</span>,
+</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_copy"></a>
+
+
+<h4>Faire une copie d'une propriété d'une autre méthode</h4>
+<p>
+Il est possible de faire une copie d'une propriété dans une autre à l'aide de la syntaxe ci-dessous.
+</p>
+<p>
+Vous pouvez utiliser cette technique dans les propriétés 'conditions', 'fees',
+'enabled', 'label', 'description', 'destination', 'origin', 'customer_groups' et 'tracking_url'
+<strong>mais pas dans la propriété 'code'</strong>.
+</p>
+
+<div class="code"><span class="comment"># Colissimo</span><br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"AD,FR,MC"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_excluding_tax}&lt;1000.00"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"1.30 + {table {cart.weight} in 0.5:5.30, 1.0:6.50, 2.0:7.40, 3.0:8.30, 5.0:10.10}"</span>,<br/>
+}<br/>
+...<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># Copie des conditions d'une autre méthode</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"({colissimo.conditions}) and ({cart.weight}&gt;10.0)"</span>,<br/>
+...<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># Copie des frais de port d'une autre méthode</span><br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"({colissimo.fees}) + 15.00"</span>,<br/>
+...
+</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_special_functions"></a>
+
+
+<h4>Fonctions spéciales dans les formules</h4>
+
+<p>
+Vous pouvez utiliser dans les formules des fonctions spéciales.
+</p>
+<p>
+Liste des fonctions spéciales :
+</p>
+<ul>
+	<li><b>min(x,y) :</b> calcule le minimum entre plusieurs valeurs (éventuellement plus de deux valeurs). Si l'une des valeurs est nulle, elle est ignorée.</li>
+	<li><b>max(x,y) :</b> calcule le maximum entre plusieurs valeurs (éventuellement plus de deux valeurs). Si l'une des valeurs est nulle, elle est ignorée.</li>
+</ul>
+
+<div class="code"><span class="comment"># Exemple d'utilisation de la fonction min pour proposé des frais de port gratuits<br/>
+# et un supplément pour les méthodes de transport plus rapides</span><br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"courrier_suivi"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Courrier suivi"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"FR"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&lt;80"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{table {cart.weight} in 0.050:2.21, 0.100:2.77, 0.500:4.60}"</span>,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"courrier_suivi_offert"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Frais de port offerts - Courrier suivi"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"{courrier_suivi.destination}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&gt;=80 and {cart.weight}&lt;=0.500"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: 0.00,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"lettre_recommandee"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Lettre Recommandée"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"FR"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&lt;80"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{TABLE {cart.weight} IN 0.050:4.3,0.100:4.75,0.250:5.62,0.500:6.42,1.000:7.32,2.000:8.56,10.000:10.30}"</span>,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"lettre_recommandee_offert"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Frais de port offerts - Lettre Recommandée"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"{lettre_recommandee.destination}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&gt;=80 and {cart.weight}&gt;0.500 and {cart.weight}&lt;=10.000"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: 0.00,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"supplement_lettre_recommandee"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Supplément Lettre Recommandée"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"{lettre_recommandee.destination}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{courrier_suivi_offert.conditions}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{lettre_recommandee.fees} - {courrier_suivi.fees}"</span>,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"FR"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&lt;80"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{table {cart.weight} in 0.3:8.7,0.8:9.9,1.8:10.85,2.8:11.8,4.8:13.7,6.8:15.6,9.8:18.45,14.8:20.45,29.8:26.45}"</span>,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"colissimo_offert"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Frais de port offerts - Colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"{colissimo.destination}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&gt;=80 and {cart.weight}&gt;10 and {cart.weight}&lt;=29.8"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: 0.00,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"supplement_colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Supplément Colissimo"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"{colissimo.destination}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{courrier_suivi_offert.conditions} or {lettre_recommandee_offert.conditions}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{colissimo.fees} - min({courrier_suivi.fees},{lettre_recommandee.fees})"</span>,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"chronopost"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Chronopost"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"FR"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&lt;80"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{TABLE {cart.weight} IN 1:13.29, 2:13.99, 3:18.4, 4:19.24, 5:20.08, 6:20.92, 7:21.76, 8:22.6, 9:23.44, 10:24.28, 15:28.48, 20:32.68, 25:36.88, 30:41.08}"</span>,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"chronopost_offert"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Frais de port offerts - Chronopost"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"FR"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&lt;80 and {cart.weight}&gt;29.8 and {cart.weight}&lt;=30"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: 0.00,<br/>
+}<br/>
+<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;code: <span class="string">"supplement_chronopost"</span>,<br/>
+&nbsp;&nbsp;&nbsp;label: <span class="string">"Supplément Chronopost"</span>,<br/>
+&nbsp;&nbsp;&nbsp;destination: <span class="string">"{chronopost.destination}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{courrier_suivi_offert.conditions} or {lettre_recommandee_offert.conditions} or {colissimo_offert.conditions}"</span>,<br/>
+&nbsp;&nbsp;&nbsp;fees: <span class="string">"{chronopost.fees} - min({courrier_suivi.fees},{lettre_recommandee.fees},{colissimo.fees})"</span>,<br/>
+}
+</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_attributes_options"></a>
+
+
+<h4>Utilisation des attributs ou des options des produits</h4>
+
+<p>
+Il est possible d'utiliser les attributs ou les options des produits à l'aide de la syntaxe ci-dessous.
+</p>
+<p>
+Vous pouvez utiliser cette technique dans les propriétés 'conditions' et 'fees'.
+</p>
+
+<div class="code"><span class="comment"># Si au moins un produit possède l'attribut 'color' égal à 'Bleu'<br/></span>
+conditions: <span class="string">"{count products where product.attribute.color=='Bleu'}&gt;0"</span>,<br/>
+...<br/>
+<span class="comment"># Si tous les produits possèdent l'option 'size' supérieure ou égal à '1'<br/></span>
+conditions: <span class="string">"{count products where product.option.size&gt;='1'}=={cart.quantity}"</span>,<br/>
+...<br/>
+<span class="comment"># Le nombre de SKU différents<br/></span>
+conditions: <span class="string">"{count distinct product.attribute.sku}"</span>,<br/>
+...<br/>
+<span class="comment"># La somme de toutes les options 'size' est supérieure à 30<br/></span>
+conditions: <span class="string">"{sum product.option.size}&gt;30"</span>,<br/>
+...<br/>
+<span class="comment"># Le nombre de produits en stock<br/></span>
+conditions: <span class="string">"{count products where product.stock.is_in_stock==true}"</span>,<br/>
+...
+</div>
+
+<p>
+Liste des préfixes possibles :
+</p>
+<ul>
+	<li><b>count :</b> nombre (toujours suivi de 'products')</li>
+	<li><b>count distinct :</b> nombre distinct (toujours suivi d'une propriété)</li>
+	<li><b>sum :</b> somme (toujours suivi d'une propriété)</li>
+</ul>
+<p>
+Liste des propriétés possibles :
+</p>
+<ul>
+	<li><b>product.attribute.* :</b> attribut<br/>Liste d'attributs intéressants :
+		<ul>
+			<li><b>sku :</b> la référence</li>
+			<li><b>name :</b> le nom</li>
+			<li><b>weight :</b> le poids</li>
+			<li><b>price :</b> le prix (tel qu'il a été saisi sur la fiche du produit)</li>
+			<li><b>special_price :</b> le prix promotionnel (tel qu'il a été saisi sur la fiche du produit)</li>
+		</ul>
+	</li>
+	<li><b>product.option.* :</b> option</li>
+	<li><b>product.stock.is_in_stock :</b> disponibilité du produit</li>
+	<li><b>product.stock.quantity :</b> stock du produit</li>
+</ul>
+<p>
+	Il est possible de spécifier des conditions que doivent remplir les produits pour être pris en compte. Pour cela, il suffit d'ajouter <span class="code"> where </span> suivi d'une formule.
+</p>
+<p>
+	Si la propriété est de type <strong>Oui/Non</strong>, vous devez utiliser les valeurs <span class="code">true</span>/<span class="code">false</span> ou <span class="code">1</span>/<span class="code">0</span> sans les guillemets.
+</p>
+<div class="code"><span class="comment"># Propriété de type Oui/Non</span><br/>
+conditions: <span class="string">"{count products where product.attribute.colissimo_allowed==1}"</span>,<br/>
+<span class="comment"># ou</span><br/>
+conditions: <span class="string">"{count products where product.attribute.colissimo_allowed==true}"</span>,</div>
+
+<p>
+	Si la propriété est de type <strong>Liste de sélection</strong> et que vous souhaitez faire une comparaison avec l'id plutôt qu'avec la valeur, vous devez utiliser la syntaxe suivante :
+</p>
+
+<div class="code"><span class="comment"># Condition validée si l'attribut 'color' est égale à la valeur dont l'id est 1</span><br/>
+conditions: <span class="string">"{count products where product.attribute.color.id==1}"</span>,</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_foreach"></a>
+
+
+<h4>Utilisation des boucles foreach</h4>
+
+<p>
+	Les boucles foreach permettent d'effectuer un calcul sur des groupes de produits plutôt que de tenir compte de tous les produits du panier.<br/>
+	Le résultat global d'une boucle foreach est la somme des résultats de chaque passage dans la boucle.
+</p>
+<p>
+	A l'intérieur d'une boucle foreach, il est possible d'utiliser de nouvelles variables :
+</p>
+<ul>
+	<li><b>{selection.weight}</b>: poids de la sélection</li>
+	<li><b>{selection.quantity}</b>: nombre d'articles dans la sélection</li>
+</ul>
+<p>
+	Lorsque la sélection se fait sur le sku, chaque sélection est composée d'un seul article. On peut donc utiliser d'autres variables :
+</p>
+<ul>
+	<li><b>{product.weight}</b>: poids de l'article sélectionné</li>
+	<li><b>{product.quantity}</b>: quantité de l'article sélectionné</li>
+	<li><b>{product.attribute.*}</b>: attribut de l'article sélectionné</li>
+	<li><b>{product.option.*}</b>: option de l'article sélectionné</li>
+</ul>
+
+<div class="code"><span class="comment"># Regroupement des produits par origine puis traitement des groupes séparémment</span><br/>
+fees: <span class="string">"{foreach product.attribute.code_origin}{table {selection.weight} in 0.0:0.00, 1.0:11.00, 3.0:12.00, 5.0:13.00}{/foreach}"</span>,<br/>
+<br/>
+<span class="comment"># Calcul individuel des frais de port</span><br/>
+fees: <span class="string">"{foreach product.attribute.sku}{product.attribute.shipping}*{product.quantity}{/foreach}"</span>,<br/>
+</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="more_custom_variables"></a>
+
+
+<h4>Utilisation des variables personnalisées de Magento (Custom Variables)</h4>
+<p>
+	Depuis la version 1.4.0.1 de Magento, il est possible de définir des variables personnalisées.
+</p>
+<p>
+	La version 2.2.7 d'Owebia Shipping vous permet d'utiliser ces variables personnalisées grâce à la syntaxe suivante :
+</p>
+<div class="code"><span class="comment"># Utilisation de la variable personnalisée my_var<br/></span>
+fees: <span class="string">"{customvar.my_var}*5.00"</span>,<br/>
+...<br/>
+<span class="comment"># Idem en utilisant la syntaxe standard de Magento<br/></span>
+fees: <span class="string">"{{customVar code=my_var}}*5.00"</span>,<br/>
+...</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_conditions"></a>
+
+
+<h4>Les conditions : `conditions`</h4>
+<p>
+	La propriété `conditions` se spécifie sous la forme d'une <a href="#more_formulas">formule (voir l'initiation aux formules)</a>
+	qui doit retourner une valeur booléenne (true ou false).
+</p>
+
+<div class="code"><span class="comment"># Tranches de prix</span><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># De 0 à 70 TTC</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_including_tax}&lt;=70"</span>,<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># De 0 à 70 HT</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{cart.price_excluding_tax}&lt;=70"</span>,<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># De 20 exclu à 70 inclu</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"({cart.price_excluding_tax} &gt; 20) and ({cart.price_excluding_tax} &lt;= 70)"</span>,<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># De 10 inclu à 50 exclu</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"({cart.price_excluding_tax} &gt;= 10) and ({cart.price_excluding_tax} &lt; 50)"</span>,<br/>
+<br/>
+<br/>
+<span class="comment"># Tranches de poids</span><br/>		
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># De 0.5 exclu à 3 inclu</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"({cart.weight} &gt; 0.5) and ({cart.weight} &lt;= 3.0)"</span>,<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># De 1 inclu à 5 exclu</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"({cart.weight} &gt;= 1.0) and ({cart.weight} &lt; 5.0)"</span>,<br/>
+<br/>
+<br/>
+<span class="comment"># Free shipping</span><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># Only when free shipping</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{free_shipping}"</span>,<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># Only when no free shipping</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"!{free_shipping}"</span>,<br/>
+<br/>
+<br/>
+<span class="comment"># Attribut ou option des produits</span><br/>		
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># Si au moins un produit possède l'attribut 'color' égal à 'Bleu'</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{count products where product.attribute.color=='Bleu'}&gt;1"</span>,<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<span class="comment"># Si tous les produits possèdent l'option 'size' supérieure ou égal à '1'</span><br/>
+&nbsp;&nbsp;&nbsp;conditions: <span class="string">"{count products where product.option.size&gt;='1'}=={cart.quantity}"</span>,</div>
+
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_destination"></a>
+
+
+<h4>La destination : `destination`</h4>
+<p>
+	Les codes pays utilisés sont ceux de Magento (à priori ils sont les mêmes que les codes ISO 3166-1 alpha-2).<br/>
+	Il est possible de spécifier les codes régions <span class="new">ou les codes postaux</span> que l'on veut filtrer ou exclure.<br/>
+</p>
+
+<div class="code"><span class="comment"># France, Belgique</span><br/>
+destination: <span class="string">"FR,BE"</span>,<br/>
+<br/>
+<span class="comment"># France sauf la Corse</span><br/>
+destination: <span class="string">"FR-(2A,2B)"</span>,<br/>
+
+<br/>
+<span class="comment"># Corse</span><br/>
+destination: <span class="string">"FR(2A,2B)"</span>,<br/>
+<br/>
+<span class="comment"># Le monde entier sauf l'Allemagne et la Corse</span><br/>
+destination: <span class="string">"* - ( DE, FR(2A,2B) )"</span>,</div>
+
+<div class="tips">
+	<p><strong>Astuce</strong><br/>Dans l'éditeur, vous pouvez utiliser les code pays mais aussi les noms des pays ainsi que des raccourcis pour insérer des groupes de pays.</p>
+	<ul>
+		<li><strong>UE</strong> ou <strong>Union Européenne</strong> : ajoute les pays de l'Union Européenne.</li>
+		<li><strong>DOM</strong> : ajoute les Départements d'Outre-Mer Français.</li>
+		<li><strong>COM</strong> : ajoute les Collectivités d'Outre-Mer Françaises.</li>
+		<li><strong>Outre-Mer</strong> : ajoute tout l'Outre-Mer Français.</li>
+		<li><strong>Corse</strong> : ajoute la corse ("FR(2A,2B)").</li>
+	</ul>
+	<p>
+		Vous pouvez interragir avec les pays se trouvant dans l'Aperçu. Si vous cliquez sur l'un d'eux, un menu vous offre la possibilité d'effectuer certaines actions.
+	</p>
+</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_enabled"></a>
+
+
+<h4>L'activation : `enabled`</h4>
+<p>Permet d'activer ou de désactiver la méthode de livraison.</p>
+<p>La valeur doit être booléenne.</p>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_code"></a>
+
+
+<h4>Le code : `code`</h4>
+<p>C'est l'identifiant de la méthode de livraison.</p>
+<p>Il doit être unique. S'il n'est pas unique, il sera modifié.</p>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_description"></a>
+<div class="help-header">
+	<p>Voir également la propriété <a href="#property_label">label</a>.</p>
+	<p><a href="#summary">Sommaire</a></p>
+</div>
+
+<h4>La description : `description`</h4>
+<p>Il s'agit de la description de la méthode de livraison.</p>
+<p>Le fonctionnement est identique à la propriété <a href="#property_label">label</a>.</p>
+
+<div class="help-footer">
+	<p>Voir également la propriété <a href="#property_label">label</a>.</p>
+	<p><a href="#summary">Sommaire</a></p>
+</div>
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_origin"></a>
+<div class="help-header">
+	<p>Voir également la propriété <a href="#property_destination">destination</a>.</p>
+	<p><a href="#summary">Sommaire</a></p>
+</div>
+
+<h4>L'origine : `origin`</h4>
+<p>
+	Idem que la destination mais pour filtrer l'origine de livraison.<br/>
+	La syntaxe est identique au filtrage de la <a href="#property_destination">destination</a>.
+</p>
+
+<div class="help-footer">
+	<p>Voir également la propriété <a href="#property_destination">destination</a>.</p>
+	<p><a href="#summary">Sommaire</a></p>
+</div>
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property_customer_groups"></a>
+
+
+<h4>Les groupes client : `customer_groups`</h4>
+<p>
+	On peut utiliser le nom ou l'ID des groupes client.
+</p>
+
+<div class="code"><span class="comment"># Groupes NOT LOGGED IN et General</span><br/>
+customer_groups: <span class="string">"NOT LOGGED IN,General"</span>,<br/>
+
+<br/>
+<span class="comment"># Groupes NOT LOGGED IN et General par leur ID</span><br/>
+customer_groups: <span class="string">"0,1"</span>,<br/>
+<br/>
+<span class="comment"># Groupe Retailer</span><br/>
+customer_groups: <span class="string">"Retailer"</span>,</div>
+
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div><div class="field"><a name="property__comment"></a>
+
+
+<h4>Commentaires</h4>
+<p>
+	Vous pouvez ajouter un commentaire sur la méthode de livraison. Celui-ci ne sera affiché nul part mais vous pouvez y mettre des annotations.
+</p>
+
+<div class=help-footer><p><a href="#summary">Sommaire</a></p></div></div>
+</div>
+</body>
+</html>

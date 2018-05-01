@@ -1,0 +1,94 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category   azboutique_custom
+ * @package    Sqli
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if ($products = $this->getItems()): ?>
+<div class="bloc-bordure-grise">
+	<div class="titre-blanc-fond-rose"><strong><?php echo $this->__('You could be interrested in the following articles') ?>...</strong></div>
+	<div class="bloc-fond-rose-clair-alsobought produits-proposes">
+<?php
+$_index = 1;
+$brand_url = 'marque';
+$storeCode = Mage::app()->getStore()->getCode(); 
+if($storeCode != 'profr' && $storeCode != 'fr')
+	$brand_url = 'brand';
+foreach($products as $product) : ?>
+<?php $brand = $this->getBrand($product->getMarque()); ?>
+						<div class="produit-item-propose">
+							<div class="image-produit-item-liste">
+                                <a href="<?php echo Mage::getBaseUrl().$product->getUrlKey(); ?>">
+                                    <span class="bandeau-sur-image bandeau-promo-20"></span>
+                                    <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(116, 116); ?>" alt="" />
+                                </a>
+                                <br class="cache" />
+                                <div class="lien-zoom">
+                                    <a href="#" onmouseover="afficherImageZoomee(this)" onmouseout="cacherImageZoomee(this)" onclick="return false">
+                                        <span><?php echo $this->__('Zoom picture') ?></span>
+                                    </a>
+                                </div>
+
+                                <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(300, 300); ?>" alt="" class="image-zoomee<?php if($_index%3 == 0):?>-bis<?php endif;?>" style="display:none" height="300" width="300"/>
+                            </div>
+                            <div class="produit-detail-item-liste-block-alsobought">
+								<div class="produit-detail-item-liste-alsobought">
+									<div class="titre-produit-item-liste" style="height:auto;display: block;">
+                                        <h1>
+                                            <a href="<?php echo Mage::getBaseUrl().$product->getUrlKey(); ?>">
+                                                <strong><?php echo $product->getName() ?></strong>
+                                            </a>
+                                        </h1>
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+									<?php if($brand): ?>
+                                        <div class="titre-gris">
+                                            <h3>
+												<?php $admin_set_brand_url = Mage::getModel('bm/manage')->load($brand->getId())->getBrandUrlFr(); ?>
+                                                <a href="<?php echo $this->getUrl('/',array($brand_url=>$admin_set_brand_url)) ?>">
+                                                    <?php echo $brand->getValue() ?>
+                                                </a>
+                                            </h3>
+                                        </div>
+                                    <?php endif;?>
+
+								</div>
+                                <div class="prix-produit-item-liste-alsobought-price">
+										<table cellpadding="0"><tr><td>
+										<?php if ($product->getTypeId() == "configurable"): ?><div class="prix-a-partir-de"><?php echo $this->__('from') ?></div><?php endif; ?>
+										<?php echo $this->getPriceHtml($product, true) ?>
+										</td></tr></table>
+									</div>
+							<div><span class="bouton-rose-d "><span class="bouton-rose-b"><span class="bouton-rose-bd"><span class="bouton-rose-bg"><span class="bouton-rose-hd"><a onclick="a_click('<?php echo $this->helper('checkout/cart')->getAddUrl($product, array());//$this->getAddToCartUrl($product) ?>')" style="cursor: pointer;" class="uppercase"><?php echo $this->__('Add to cart') ?></a></span></span></span></span></span></div>
+
+							</div>
+
+							</div>
+<?php
+$_index++;
+endforeach; ?>
+		<div class="clear-both"></div>
+	</div>
+</div>
+<?php endif; ?>

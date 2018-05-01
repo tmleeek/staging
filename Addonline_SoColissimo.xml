@@ -1,0 +1,75 @@
+<_>
+   <form_key>GHNa9HsWn5Ss8odk</form_key>
+   <name>Addonline_SoColissimo</name>
+   <channel>local</channel>
+   <version_ids>
+      <version_ids>2</version_ids>
+   </version_ids>
+   <summary></summary>
+   <description></description>
+   <license>OSL v3.0</license>
+   <license_uri>http://www.opensource.org/licenses/osl-3.0.php</license_uri>
+   <version>{{filled by script}}</version>
+   <stability>stable</stability>
+   <notes></notes>
+   <authors>
+      <name>
+         <name>Addonline</name>
+      </name>
+      <user>
+         <user>jetpulp</user>
+      </user>
+      <email>
+         <email>contact@jetpulp.fr</email>
+      </email>
+   </authors>
+   <depends_php_min>5.2.0</depends_php_min>
+   <depends_php_max>5.6.0</depends_php_max>
+   <depends>
+      <package>
+         <name>
+            <name></name>
+         </name>
+         <channel>
+            <channel/>
+         </channel>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+         <files>
+            <files>    </files>
+         </files>
+      </package>
+      <extension>
+         <name>
+            <name></name>
+         </name>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+      </extension>
+   </depends>
+   <contents>
+      <target>
+         <target>{{filled by script}}</target>
+      </target>
+      <path>
+         <path>{{filled by script}}</path>
+      </path>
+      <type>
+         <type>{{filled by script}}</type>
+      </type>
+      <include>
+         <include>{{filled by script}}</include>
+      </include>
+      <ignore>
+         <ignore>{{filled by script}}</ignore>
+      </ignore>
+   </contents>
+</_>

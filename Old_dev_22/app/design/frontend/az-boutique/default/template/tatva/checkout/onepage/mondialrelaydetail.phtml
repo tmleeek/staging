@@ -1,0 +1,478 @@
+<?php
+
+$ship_code = '';
+if(isset($_REQUEST['shipping_method']))
+{
+$ship_code = $_REQUEST['shipping_method'];
+}
+
+$address = $this->getAddress();
+
+ $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
+ $var_address_id = $this->getAddress()->getId();
+
+$address_id = $this->getAddress()->getId();
+    $street1 = $address->getStreet();
+    $street = $street1[0];
+    $postcode = $address->getPostcode();
+    $city = $address->getCity();
+    $countryName = Mage::getModel('directory/country')->load($address->getCountry())->getName();
+ 
+if($ship_code == 'pointsrelais_pointsrelais')
+{
+   $arr_relay = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->getMondialrelayarr();
+}
+else
+{
+     if($_REQUEST['search'] == '1')
+     {
+
+       $street = $_REQUEST['address'];
+       $postcode = $_REQUEST['postcode'];
+       $city = $_REQUEST['city'];
+       $model = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->deleteMondialRelayData($customer_id);
+       $params = array(
+							   'Enseigne'     => Mage::getStoreConfig('carriers/pointsrelais/enseigne'),
+							   'Pays'         => $address->getCountry(),
+							   'CP'           => $postcode,
+				    );
+
+
+      				$code_1 = implode("",$params);
+      				$code_1 .= Mage::getStoreConfig('carriers/pointsrelais/cle');
+
+
+      				$params["Security"] = strtoupper(md5($code_1));
+
+                    $model = Mage::getModel('tatvashipping/tempcolissimowebservicedata')->insertMondialRelay($params);
+                    $arr_relay = Mage::getResourceSingleton('tatvashipping/tempcolissimowebservicedata')->getMondialrelayarr();
+     }
+}
+?>
+<div class="incon1">
+<div class="inconbx2">
+<div class="lftcolmn" style="height: 490px;overflow-y: scroll;padding-right:10px;">
+<?php
+
+$arrAddress = array();
+$arrCity = array();
+$arrPostalcode = array();
+$arrContent = array();
+
+
+
+
+if(count($arr_relay) > 0)
+{
+for($i=0;$i<count($arr_relay);$i++){
+
+
+$arrAddress[$i] = addslashes($arr_relay[$i]['address2']);
+$arrCity[$i] = addslashes($arr_relay[$i]['city']);
+$arrPostalcode[$i] = $arr_relay[$i]['postalcode'];
+
+$arr_days = array();
+$arr_days = array(0=>'lundi',1=>'mardi',2=>'mercredi',3=>'jeudi',4=>'vendredi',5=>'samedi',6=>'dimanche');
+
+$var_content = '';
+
+$var_content = "<table width='250px' cellspacing='0' cellpadding='0'>";
+
+
+$var_content .= "<tr><td colspan='2'><div class='popadd2'><strong>".$arr_relay[$i]['name']."</strong><br />";
+
+if($arr_relay[$i]['address'] != "")
+{
+        $var_content .= $arr_relay[$i]['address']."<br />";
+}
+
+if($arr_relay[$i]['address2'] != "")
+{
+        $var_content .= $arr_relay[$i]['address2']."<br />";
+}
+if($arr_relay[$i]['address3'] != "")
+{
+        $var_content .= $arr_relay[$i]['address3']."<br />";
+}
+$var_content .= $arr_relay[$i]['postalcode']."&nbsp;&nbsp;".$arr_relay[$i]['city']."</div></td></tr>";
+
+$var_type = $arr_relay[$i]['type'];
+$var_name = $arr_relay[$i]['name'];
+$var_address = addslashes($arr_relay[$i]['address']);
+$var_address2 = addslashes($arr_relay[$i]['address2']);
+$var_address3 = addslashes($arr_relay[$i]['address3']);
+$var_city = $arr_relay[$i]['city'];
+$var_postalcode = $arr_relay[$i]['postalcode'];
+$var_id = $arr_relay[$i]['identifiant'];
+
+
+
+$load_fun = 'LoadConfirmpopup(\"'.$var_name.'\",\"'.$var_address.'\",\"'.$var_address2.'\",\"'.$var_address3.'\",\"'.$var_city.'\",\"'.$var_postalcode.'\",\"'.$var_id.'\")';
+
+$var_content .= "<tr><td colspan='2'><div class='chbtn' style='padding-right:6px;'><span class='bouton-rose-d'><span class='bouton-rose-b'><span class='bouton-rose-bd'><span class='bouton-rose-bg'><span class='bouton-rose-hd'><input type='button' class='uppercase' style='width:205px;' name='choose_relay' value='".$this->__('Choose this pick-up place')."' onclick='".$load_fun."' ></span></span></span></span></span></div></td></tr><tr><td height='5px' colspan='2'></td></tr>";
+
+for($j=0;$j<count($arr_days);$j++)
+{$style = "style='background-color:#95B1BC'";
+  if($j%2 == 0){ $style= "style='background-color:#D0DCE1'";}
+
+
+  $opening_hours = "";
+  $closing_hours = "";
+
+  $var_arr_days =  array();
+  if($arr_relay[$i][$arr_days[$j]] != "")
+  {
+
+ if(eregi(" ",$arr_relay[$i][$arr_days[$j]] ))
+ {
+  $var_arr_days = explode(" ",$arr_relay[$i][$arr_days[$j]]);
+  if($var_arr_days[0] != '00:00-00:00')
+  {
+    $opening_hours = $var_arr_days[0];
+  }
+
+  if($var_arr_days[1] != '00:00-00:00')
+  {
+    $closing_hours = $var_arr_days[1];
+  }
+
+ }
+
+  if($opening_hours != '' || $closing_hours != '')
+  {
+  $var_content .= "<tr ".$style." height='20px'><td width='30%'><b>".$arr_days[$j]."</b></td><td  >".$opening_hours.'&nbsp;'.$closing_hours."</td></tr>";
+  }
+  }
+
+}
+
+
+
+
+$var_content .= "</table>";
+
+
+
+
+
+$arrContent[$i] = $var_content;
+?>
+<div class="lftbox" onMouseOver="this.className='lftbox1'" onMouseOut="this.className='lftbox'"  onclick="javascript:myclick(<?php echo $i;?>)" style="cursor:pointer;" >
+<div class="lftbxhd"><div class="lftblhd"></div>
+<div style="float:right;text-align:right;">
+<div class="inconbsicn" style="margin-right:0px;">
+<a href="#"><img src="<?php echo $this->getSkinUrl('images/tatva/logo_little_mondial_relay.png');?>" alt=""  border="0" /></a></div>
+<div class="inconbxtxh" style="margin-left:5px;width:auto;color:#C30245;"><?php
+echo $arr_relay[$i]['type'];?></div>
+</div>
+</div>
+<div class="popadd2"><strong><?php echo $arr_relay[$i]['name'];?></strong><br />
+<?php
+if($arr_relay[$i]['address'] != "")
+{
+        echo $arr_relay[$i]['address'].'<br />';
+}
+if($arr_relay[$i]['address2'] != "")
+{
+        echo $arr_relay[$i]['address2'].'<br />';
+}
+if($arr_relay[$i]['address3'] != "")
+{
+        echo $arr_relay[$i]['address3'].'<br />';
+}
+echo $arr_relay[$i]['postalcode'].'&nbsp;&nbsp;'.$arr_relay[$i]['city'];
+?>
+</div>			
+						<div class="chbtn">
+                        <button type="button" class="uppercase button" style="width:210px;" name="choose_relay" onclick="LoadConfirmpopup('<?php echo $arr_relay[$i]['name'];?>','<?php echo addslashes($arr_relay[$i]['address']);?>','<?php echo addslashes($arr_relay[$i]['address2']);?>','<?php echo addslashes($arr_relay[$i]['address3']);?>','<?php echo $arr_relay[$i]['city'];?>','<?php echo $arr_relay[$i]['postalcode'];?>','<?php echo $arr_relay[$i]['identifiant'];?>','<?php echo $var_address_id;?>')"><span><span><?php echo $this->__('Choose this pick-up place');?></span></span></button>
+    			    </div>
+</div>
+
+<?php }
+
+}
+else
+{ ?>
+<div style="color:green;"><?php echo $this->__('We did not find any relay corresponding to your research. We invite you to select other types of relays or to modify your address.'); ?></div>
+<?php }
+
+?>
+</div>
+<div class="rtcolmn" id="map_mondial" style="width: 592px; height: 490px" ></div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+
+var addarrAddress = new Array('<?php echo count($arrAddress) > 0  ? implode("','",$arrAddress) : '' ?>');
+var addarrCity = new Array('<?php echo count($arrCity) > 0 ? implode("','",$arrCity) : ''; ?>');
+var addarrPostalcode = new Array('<?php echo count($arrPostalcode) > 0 ? implode("','",$arrPostalcode) : ''; ?>');
+var addarrContent = new Array("<?php echo count($arrContent) > 0 ? implode('","',$arrContent) : ''; ?>");
+
+
+
+function LoadConfirmpopup(relay_name,relay_address,relay_address2,relay_address3,relay_city,relay_postalcode,relay_id,shipping_address_id){
+	/*document.getElementById("subject_id").value = id;
+	document.getElementById("subject").innerHTML = subject;*/
+
+
+   // document.getElementById("span_relay_type").innerHTML = relay_type;
+    document.getElementById("relay_name_mondial").value = relay_name;
+    document.getElementById("span_relay_name_mondial").innerHTML = relay_name;
+    var address_new = '';
+
+    if(relay_address != '')
+    {
+      address_new = relay_address+'<br>';
+    }
+
+    if(relay_address2 != '')
+    {
+      address_new = relay_address2+'<br>';
+    }
+    if(relay_address3 != '')
+    {
+      address_new += relay_address3+'<br>';
+    }
+    document.getElementById("relay_address_mondial").value = relay_address;
+    document.getElementById("span_relay_address_mondial").innerHTML = address_new;
+    document.getElementById("relay_address2_mondial").value = relay_address2;
+    document.getElementById("relay_address3_mondial").value = relay_address3;
+    document.getElementById("relay_city_mondial").value = relay_city;
+    document.getElementById("relay_postalcode_mondial").value = relay_postalcode;
+    document.getElementById("relay_id_mondial").value = relay_id;
+    document.getElementById("span_relay_city_mondial").innerHTML = relay_postalcode+'&nbsp;'+relay_city;
+	document.getElementById("shipping_address_id_mondial").value = shipping_address_id;
+
+
+    
+	cacherPopin('popinmondialrelay');
+	afficherPopin('mondialconfirmpopup');
+}
+
+
+
+function change_class(obj) {
+obj.style.className = 'lftbox1';
+}
+
+
+var address1 = "<?php echo addslashes($street); ?>";
+
+var city = "<?php echo addslashes($city); ?>";
+
+var postcode = "<?php echo $postcode; ?>";
+
+var country = '<?php echo $countryName; ?>';
+var gmarkers = [];
+    var infowindow = new google.maps.InfoWindow(
+    {
+        size: new google.maps.Size(200,150)
+    });
+//<![CDATA[
+    // this variable will collect the html which will eventually be placed in the side_bar
+    var side_bar_html = "";
+    // This function picks up the click and opens the corresponding info window
+    function myclick(i)
+    {
+    map.setZoom(11); 
+    google.maps.event.trigger(gmarkers[i],"click");
+    //map.setZoom(11); 
+    }
+	
+	function createMarker(latlng,name,html,pointType) {
+	    var contentString = html;
+	    var marker = new google.maps.Marker({
+	        position: latlng,
+	        icon: pointType,
+	        map: map
+	        });
+	        // === Store the category and name info as a marker properties ===
+
+	        gmarkers.push(marker);
+
+	    google.maps.event.addListener(marker, 'click', function() {
+	        infowindow.setContent(contentString);
+	        infowindow.open(map,marker);
+	        });
+
+	      return marker;
+    }
+      // arrays to hold copies of the markers and html used by the side_bar
+      // because the function closure trick doesnt work there
+      
+      
+      
+	  
+	  var geocoder;
+    var map;
+    var image = new google.maps.MarkerImage('<?php echo $this->getSkinUrl("images/tatva/house.png");?>',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(38, 35),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 35));
+
+    var iconMondial = new google.maps.MarkerImage('<?php echo $this->getSkinUrl("images/tatva/logo_little_mondial_relay.png");?>',
+      // This marker is 20 pixels wide by 32 pixels tall.
+      new google.maps.Size(22, 24),
+      // The origin for this image is 0,0.
+      new google.maps.Point(0,0),
+      // The anchor for this image is the base of the flagpole at 0,32.
+      new google.maps.Point(0, 24));
+
+
+      var myLatlng = new google.maps.LatLng(47.0000,2.0000);
+		    geocoder = new google.maps.Geocoder();
+		    var myOptions = {
+		      zoom: 5,
+		      center: myLatlng,
+		      mapTypeId: google.maps.MapTypeId.ROADMAP
+		    }
+		    var map = new google.maps.Map(document.getElementById("map_mondial"), myOptions);
+		     google.maps.event.addListener(map, 'click', function() {
+		        infowindow.close();
+		        });
+		    codeAddress(address1+','+city+','+postcode+','+country);
+		    function codeAddress(address) {
+		    geocoder.geocode( { 'address': address}, function(results, status) {
+		      if (status == google.maps.GeocoderStatus.OK) {
+		        map.setCenter(results[0].geometry.location);
+		        var marker = new google.maps.Marker({
+		            map: map,
+		            icon: image,
+		            position: results[0].geometry.location
+		        });
+		      } 
+			  else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
+		            setTimeout(function() {
+		                codeAddress(address);
+		            }, 200);
+			  } else {
+		        //alert("123Geocode was not successful for the following reason: " + status);
+		      }
+		    });
+		  }
+		  
+		  function createMarker(latlng,name,html,pointType) {
+			    var contentString = html;
+			    var marker = new google.maps.Marker({
+			        position: latlng,
+			        icon: pointType,
+			        map: map
+			        });
+			        // === Store the category and name info as a marker properties ===
+
+			        gmarkers.push(marker);
+
+			    google.maps.event.addListener(marker, 'click', function() {
+			        infowindow.setContent(contentString);
+			        infowindow.open(map,marker);
+			        });
+
+			      return marker;
+             }
+		  
+		  function createmarkerfromAddress(address,arrContent) {
+		    geocoder.geocode( { 'address': address}, function(results, status) {
+		      if (status == google.maps.GeocoderStatus.OK) {
+		      	
+				var marker =  createMarker(results[0].geometry.location,name,arrContent,iconMondial);
+			      
+		        
+		      } 
+			  else if (status === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {    
+		            setTimeout(function() {
+		                createmarkerfromAddress(address,arrContent);
+		            }, 200);
+			  } else {
+		        //alert("456Geocode was not successful for the following reason: " + status);
+		      }
+		    });
+		  }
+
+         var len = addarrAddress.length;
+
+          for(var i=0;i<len;i++)
+			{
+    			if(addarrAddress[i] != '')
+    			{
+                   createmarkerfromAddress(addarrAddress[i]+','+addarrCity[i]+','+addarrPostalcode[i]+',France',addarrContent[i]);
+				    //alert(latlang);
+				   //var marker =  createMarker(latlang,name,addarrContent[i],iconMondial);
+                }
+            }
+         /* function createmarkerfromAddress(address,city,postalcode,content,id) {
+            address = address+','+city+','+postalcode;
+		      if (geocoder) {
+		        geocoder.getLatLng(
+		          address,
+		          function(point) {
+		            if (point) {
+                         var marker = createMarker(point,content,iconMondial,id);
+                         map.addOverlay(marker);
+		            }
+		          }
+		        );
+		      }
+		  }
+
+          var len = addarrAddress.length;
+
+          for(var i=0;i<len;i++)
+			{
+    			if(addarrAddress[i] != '')
+    			{
+                   createmarkerfromAddress(addarrAddress[i],addarrCity[i],addarrPostalcode[i],addarrContent[i],i);
+                }
+            }*/
+			
+			/*for(var i=0;i<len;i++)
+			{
+    			if(addarrAddress[i] != '')
+    			{
+                   createmarkerfromAddress(addarrAddress[i],addarrCity[i],addarrPostalcode[i],addarrContent[i],i);
+                }
+            }*/
+
+
+
+
+
+      // create the map
+
+
+      //map.setCenter(new GLatLng(37.369999,-121.940002),4);
+
+      // add the points
+     /* var point = new GLatLng(43.65654,-79.90138);
+      var marker = createMarker(point,"This place","Some stuff to display in the<br>First Info Window")
+      map.addOverlay(marker);*/
+
+      /*var point = new GLatLng(43.91892,-78.89231);
+      var marker = createMarker(point,"That place","Some stuff to display in the<br>Second Info Window")
+      map.addOverlay(marker);*/
+
+      /*var point = new GLatLng(43.82589,-78.89231);
+      var marker = createMarker(point,"The other place","Some stuff to display in the<br>Third Info Window")
+      map.addOverlay(marker);*/
+
+
+      // put the assembled side_bar_html contents into the side_bar div
+      //document.getElementById("side_bar").innerHTML = side_bar_html;
+
+
+
+    // This Javascript is based on code provided by the
+    // Community Church Javascript Team
+    // http://www.bisphamchurch.org.uk/
+    // http://econym.org.uk/gmap/
+
+    //]]>
+
+    </script>
+
+
+

@@ -1,0 +1,5 @@
+<?php foreach ($this->getNotifications() as $notification): ?>
+    <div class="st-notify">
+        <strong>Note:</strong> <?php echo $notification['text'] ?>  <a href="<?php echo $notification['link'] ?>" target="_blank"><?php echo $notification['linkText'] ?></a>
+    </div>
+<?php endforeach; ?>
